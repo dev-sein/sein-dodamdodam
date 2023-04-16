@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>관리자 페이지</title>
+    <link rel="stylesheet" href="/static/css/admin/admin.css">
+</head>
+<body>
+<!-- 헤더 -->
+<header>
+    <div class="logo-wrapper">
+        <div class="logo">도담 도담</div>
+    </div>
+    <div class="time-wrapper">
+        <div class="time-left">현재 시간 : </div>
+        <!-- 현재 시간 js로 들어감 -->
+        <div class="time"></div>
+    </div>
+</header>
+
+<main>
+    <!-- 사이드 바 메뉴 -->
+    <nav>
+        <div class="menu-bar">
+            <ul>
+                <li class="menu">
+                    <a class="menus" href="#">홈</a>
+                </li>
+                <li class="menu">
+                    <a class="menus" href="#">회원 목록</a>
+                </li>
+                <li class="menu">
+                    <a class="menus" href="#">이벤트 게시글</a>
+                </li>
+                <li class="menu">
+                    <a class="menus" href="#">모집 게시글</a>
+                </li>
+                <li class="menu">
+                    <a class="menus" href="#">자유 게시글</a>
+                </li>
+                <li class="menu">
+                    <a class="menus" href="#">후기 게시글</a>
+                </li>
+                <li class="menu">
+                    <a class="menus" href="#">관리 게시글</a>
+                </li>
+                <li class="menu">
+                    <a class="menus" href="#">문화공간 목록</a>
+                </li>
+                <li class="menu">
+                    <a class="menus" href="#">배너신청 현황</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- contents -->
+    <content>
+        <!-- 검색 창 -->
+        <article class="module--search">
+            <div class="search__searchbox">
+                <form action="" class="search__searchbox__form">
+                    <input id="searchbox" type="text" placeholder="원하시는 키워드로 검색해보세요"/>
+                    <button type="button" class="search__searchbox__button">
+                        <img src="search.png"/>
+                    </button>
+                </form>
+            </div>
+        </article>
+        <!-- 검색 창 -->
+        <div class="inner-wrapper">
+            <div class="page-title">홈</div>
+        </div>
+    </content>
+    <!-- contents -->
+</main>
+
+</body>
+<script src="/static/js/admin"></script>
+</html>
