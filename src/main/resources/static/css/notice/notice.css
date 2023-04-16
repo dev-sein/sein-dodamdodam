@@ -412,7 +412,7 @@ td{
     color: rgb(124, 130, 136);
     font-size: 15px;
     font-weight: 400;
-    
+
     width: 32px;
     height: 32px;
 
@@ -432,5 +432,12 @@ a {
 }
 
 .button-numbers:hover {
+    background-color: #f0f0f0;
+}
+
+#left-svg:hover {
+    background-color: #f0f0f0;
+}
+#right-svg:hover {
     background-color: #f0f0f0;
 }
