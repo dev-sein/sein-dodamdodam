@@ -1,0 +1,98 @@
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-top: 30px;
+}
+
+thead {
+    background-color: var(--main-color);
+    color: #fff;
+}
+
+th {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: left;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+}
+
+th:first-child {
+    width: 20px;
+    text-align: center;
+}
+
+th:nth-child(2) {
+    width: 70px;
+    text-align: center;
+}
+
+tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+td {
+    font-size: 14px;
+    padding: 3px 15px;
+    border: 1px solid #ddd;
+}
+
+td:first-child {
+    text-align: center;
+}
+
+
+.select-all {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.select-member {
+    /* margin-left: 10px; */
+    cursor: pointer;
+}
+
+.detail-top{
+    width: 120px;
+}
+
+/* 체크 박스 */
+
+
+
+/* 상세보기 버튼 */
+.show-detail {
+    background-color: var(--main-color);
+    /* background-color: #222; */
+    border-radius: 4px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Farfetch Basis","Helvetica Neue",Arial,sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+    margin: 7px 0;
+    max-width: none;
+    min-height: 30px;
+    height: 35px;
+    min-width: 10px;
+    outline: none;
+    overflow: hidden;
+    /* padding: 9px 20px 8px; */
+    position: relative;
+    text-align: center;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 100%;
+}
+
+.show-detail:hover{
+    opacity: .75;
+}
