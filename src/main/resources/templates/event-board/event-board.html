@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 정보 게시판 목록</title>
+    <link rel="stylesheet" href="../../static/css/event-board/event-info-board.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">  
+</head>
+<body>
+    <div id="root">
+        <div id="root-inner">
+            <!-- 헤더 박스 1  -->
+        <div id="header-apply">
+        <div id="open-apply">
+            <div id="open-apply-side">
+            <div id="open-apply-inner">
+                <p id="apply-text">
+                    <span class="minute" style="color: rgb(255, 255, 255);">1분이면 등록 완료!</span>
+                    <span class="apply"><strong>이벤트 등록 신청하기</strong></span>
+                </p>
+            </div>
+        </div>
+
+    <button id="apply-exit-btn" class="btn" type="button">
+        <svg class="exit-svg" focusable="false" aria-hidden="true" viewBox="0 0 24 24">
+            <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+        </svg>
+    </button>
+        </div>
+    </div><!-- header=apply -->
+
+    <!-- 본문 -->
+    <div id="gaia">
+        <div class="content">
+            <p class="event">이벤트 모집</p>
+            <div class="content-inner">
+                <div class="content-start">
+                    <div class="content-title">
+                        <div class="event-list">
+                            <div class="event-list-title">이벤트 모집중</div>
+                            <div class="search-box">
+                                <div class="total-search">
+                                    <div class="total-form">
+                                        <div class="total-inner">전체</div>
+                                        <input aria-hidden="true" tabindex="-1" class="search-select" value="">
+                                        <svg class="search-sign" focusable="false" aria-hidden="true" viewBox="0 0 24 24">
+                                            <path d="M7 10l5 5 5-5z"></path>
+                                        </svg>
+                                        <fieldset aria-hidden="true" class="total-input">
+                                            <legend class="search-legend">
+                                                <span class="notranslate"></span>
+                                            </legend>
+                                        </fieldset>
+                                    </div>
+                                </div><!-- total search -->
+
+                                <div class="total-search">
+                                    <div class="total-form">
+                                        <div class="total-inner">제목</div>
+                                        <input aria-hidden="true" tabindex="-1" class="search-select" value="">
+                                        <svg class="search-sign" focusable="false" aria-hidden="true" viewBox="0 0 24 24">
+                                            <path d="M7 10l5 5 5-5z"></path>
+                                        </svg>
+                                        <fieldset aria-hidden="true" class="total-input">
+                                            <legend class="search-legend">
+                                                <span class="notranslate"></span>
+                                            </legend>
+                                        </fieldset>
+                                    </div>
+                                </div> <!-- title search -->
+                                
+                                <form class="input-keyword">
+                                    <div class="form-border">
+                                        <div class="form-input">
+                                            <input placeholder="검색어를 입력해주세요" type="text" class="search-input">
+                                        </div>
+                                        <button class="search-button" type="button">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M17.5198 16.7459C20.5958 13.2606 20.3576 7.96481 16.9811 4.76972C13.6045 1.57462 8.30367 1.62898 4.99337 4.89266C1.68307 8.15634 1.55352 13.4559 4.70041 16.8774C7.84729 20.2989 13.1392 20.6122 16.6678 17.5859L20.9638 21.8759L21.0058 21.9239L21.8518 21.0779L17.5198 16.7459ZM11.0698 3.59994C12.9233 3.59716 14.7106 4.28855 16.0798 5.53794C17.5393 6.86404 18.4042 8.7214 18.4798 10.6919C18.6153 13.6965 16.927 16.4867 14.2026 17.7608C11.4782 19.0349 8.25445 18.5419 6.03538 16.5117C3.8163 14.4816 3.03913 11.3144 4.06642 8.48763C5.09371 5.66089 7.72305 3.73165 10.7278 3.59994H11.0698Z" fill="#60656A">
+                                            </path></svg>
+                                            <span class="search-span"></span>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div><!-- search 끝 -->
+
+                        <ul class="event-content">
+                            
+                            <li class="event-instance">
+                                <div class="instance">
+                                    <img class="thumbnail" src="https://static.makercenter.wadiz.kr/board/image/b5365bd3-c344-482b-b9f0-239f0185073a.jpg">
+                                <div class="instance-detail">
+                                    <div class="detail-header">
+                                        <div class="detail-hedaer-left-center"></div>
+                                        <div class="detail-hedaer-right">중요</div>
+                                    </div>
+
+                                    <div class="detail-title">[이벤트유형] 이벤트 제목입니다. 역삼역에서 진행되는 이벤트를 소개합니다.</div>
+                                    <div class="detail-writer">이벤트 게시자</div>
+                                    <div class="detail-date">2023.04.15</div>
+                                </div>
+                                </div>
+                            </li>
+
+                            <li class="event-instance">
+                                <div class="instance">
+                                    <img class="thumbnail" src="https://static.makercenter.wadiz.kr/board/image/c039bc2b-3c0c-42b9-af2a-eae4b7be060d.png">
+                                <div class="instance-detail">
+                                    <div class="detail-header">
+                                        <div class="detail-hedaer-left-center"></div>
+                                        
+                                    </div>
+
+                                    <div class="detail-title">[이벤트유형] 이벤트 제목입니다. 역삼역에서 진행되는 이벤트를 소개합니다.</div>
+                                    <div class="detail-writer">이벤트 게시자</div>
+                                    <div class="detail-date">2023.04.15</div>
+                                </div>
+                                </div>
+                            </li>
+
+                            <li class="event-instance">
+                                <div class="instance">
+                                    <img class="thumbnail" src="https://static.makercenter.wadiz.kr/board/image/eb21f4da-8daa-486c-8a93-e737b257a9d6.png">
+                                <div class="instance-detail">
+                                    <div class="detail-header">
+                                        <div class="detail-hedaer-left-center"></div>
+                                        
+                                    </div>
+
+                                    <div class="detail-title">[이벤트유형] 이벤트 제목입니다. 역삼역에서 진행되는 이벤트를 소개합니다.</div>
+                                    <div class="detail-writer">이벤트 게시자</div>
+                                    <div class="detail-date">2023.04.15</div>
+                                </div>
+                                </div>
+                            </li>
+
+                            <li class="event-instance">
+                                <div class="instance">
+                                    <img class="thumbnail" src="https://static.makercenter.wadiz.kr/board/image/001be3d0-8591-4d1a-97a7-3975a0517471.jpg">
+                                <div class="instance-detail">
+                                    <div class="detail-header">
+                                        <div class="detail-hedaer-left-center"></div>
+                                        
+                                    </div>
+
+                                    <div class="detail-title">[이벤트유형] 이벤트 제목입니다. 역삼역에서 진행되는 이벤트를 소개합니다.</div>
+                                    <div class="detail-writer">이벤트 게시자</div>
+                                    <div class="detail-date">2023.04.15</div>
+                                </div>
+                                </div>
+                            </li>
+
+                            <li class="event-instance">
+                                <div class="instance">
+                                    <img class="thumbnail" src="	https://static.makercenter.wadiz.kr/board/image/9b201cef-1d29-412c-b5b6-cc57b2c1ae7a.jpg">
+                                <div class="instance-detail">
+                                    <div class="detail-header">
+                                        <div class="detail-hedaer-left-center"></div>
+                                        
+                                    </div>
+
+                                    <div class="detail-title">[이벤트유형] 이벤트 제목입니다. 역삼역에서 진행되는 이벤트를 소개합니다.</div>
+                                    <div class="detail-writer">이벤트 게시자</div>
+                                    <div class="detail-date">2023.04.15</div>
+                                </div>
+                                </div>
+                            </li>
+
+                             <li class="event-instance">
+                                <div class="instance">
+                                    <img class="thumbnail" src="https://static.makercenter.wadiz.kr/board/image/5eb1abeb-131a-4289-90d5-d018f95d087f.jpg">
+                                <div class="instance-detail">
+                                    <div class="detail-header">
+                                        <div class="detail-hedaer-left-center"></div>
+                                        
+                                    </div>
+
+                                    <div class="detail-title">[이벤트유형] 이벤트 제목입니다. 역삼역에서 진행되는 이벤트를 소개합니다.</div>
+                                    <div class="detail-writer">이벤트 게시자</div>
+                                    <div class="detail-date">2023.04.15</div>
+                                </div>
+                                </div>
+                            </li>
+
+                            <li class="event-instance">
+                                <div class="instance">
+                                    <img class="thumbnail" src="https://static.makercenter.wadiz.kr/board/image/ac0391f3-1403-4c1d-89c4-2f51f3ca4210.jpg">
+                                <div class="instance-detail">
+                                    <div class="detail-header">
+                                        <div class="detail-hedaer-left-center"></div>
+                                        
+                                    </div>
+
+                                    <div class="detail-title">[이벤트유형] 이벤트 제목입니다. 역삼역에서 진행되는 이벤트를 소개합니다.</div>
+                                    <div class="detail-writer">이벤트 게시자</div>
+                                    <div class="detail-date">2023.04.15</div>
+                                </div>
+                                </div>
+                            </li>
+
+                            <li class="event-instance">
+                                <div class="instance">
+                                    <img class="thumbnail" src="	https://static.makercenter.wadiz.kr/board/image/26f031b9-3a0c-4a83-a7b2-503be2cdf517.jpg">
+                                <div class="instance-detail">
+                                    <div class="detail-header">
+                                        <div class="detail-hedaer-left-center"></div>
+                                        
+                                    </div>
+
+                                    <div class="detail-title">[이벤트유형] 이벤트 제목입니다. 역삼역에서 진행되는 이벤트를 소개합니다.</div>
+                                    <div class="detail-writer">이벤트 게시자</div>
+                                    <div class="detail-date">2023.04.15</div>
+                                </div>
+                                </div>
+                            </li>
+
+                            <li class="event-instance">
+                                <div class="instance">
+                                    <img class="thumbnail" src="	https://static.makercenter.wadiz.kr/board/image/2b886fad-290c-41cf-9d71-69bfbcfd4c03.png">
+                                <div class="instance-detail">
+                                    <div class="detail-header">
+                                        <div class="detail-hedaer-left-center"></div>
+                                        
+                                    </div>
+
+                                    <div class="detail-title">[이벤트유형] 이벤트 제목입니다. 역삼역에서 진행되는 이벤트를 소개합니다.</div>
+                                    <div class="detail-writer">이벤트 게시자</div>
+                                    <div class="detail-date">2023.04.15</div>
+                                </div>
+                                </div>
+                            </li>
+
+                            <li class="event-instance">
+                                <div class="instance">
+                                    <img class="thumbnail" src="https://static.makercenter.wadiz.kr/board/image/b5365bd3-c344-482b-b9f0-239f0185073a.jpg">
+                                <div class="instance-detail">
+                                    <div class="detail-header">
+                                        <div class="detail-hedaer-left-center"></div>
+                                        
+                                    </div>
+
+                                    <div class="detail-title">[이벤트유형] 이벤트 제목입니다. 역삼역에서 진행되는 이벤트를 소개합니다.</div>
+                                    <div class="detail-writer">이벤트 게시자</div>
+                                    <div class="detail-date">2023.04.15</div>
+                                </div>
+                                </div>
+                            </li>
+
+                            <li class="event-instance">
+                                <div class="instance">
+                                    <img class="thumbnail" src="https://static.makercenter.wadiz.kr/board/image/b5365bd3-c344-482b-b9f0-239f0185073a.jpg">
+                                <div class="instance-detail">
+                                    <div class="detail-header">
+                                        <div class="detail-hedaer-left-center"></div>
+                                        
+                                    </div>
+
+                                    <div class="detail-title">[이벤트유형] 이벤트 제목입니다. 역삼역에서 진행되는 이벤트를 소개합니다.</div>
+                                    <div class="detail-writer">이벤트 게시자</div>
+                                    <div class="detail-date">2023.04.15</div>
+                                </div>
+                                </div>
+                            </li>
+
+                            <li class="event-instance">
+                                <div class="instance">
+                                    <img class="thumbnail" src="https://static.makercenter.wadiz.kr/board/image/b5365bd3-c344-482b-b9f0-239f0185073a.jpg">
+                                <div class="instance-detail">
+                                    <div class="detail-header">
+                                        <div class="detail-hedaer-left-center"></div>
+                                        
+                                    </div>
+
+                                    <div class="detail-title">[이벤트유형] 이벤트 제목입니다. 역삼역에서 진행되는 이벤트를 소개합니다.</div>
+                                    <div class="detail-writer">이벤트 게시자</div>
+                                    <div class="detail-date">2023.04.15</div>
+                                </div>
+                                </div>
+                            </li>
+
+                            <li class="event-instance">
+                                <div class="instance">
+                                    <img class="thumbnail" src="https://static.makercenter.wadiz.kr/board/image/b5365bd3-c344-482b-b9f0-239f0185073a.jpg">
+                                <div class="instance-detail">
+                                    <div class="detail-header">
+                                        <div class="detail-hedaer-left-center"></div>
+                                        
+                                    </div>
+
+                                    <div class="detail-title">[이벤트유형] 이벤트 제목입니다. 역삼역에서 진행되는 이벤트를 소개합니다.</div>
+                                    <div class="detail-writer">이벤트 게시자</div>
+                                    <div class="detail-date">2023.04.15</div>
+                                </div>
+                                </div>
+                            </li>
+
+                            <li class="event-instance">
+                                <div class="instance">
+                                    <img class="thumbnail" src="https://static.makercenter.wadiz.kr/board/image/b5365bd3-c344-482b-b9f0-239f0185073a.jpg">
+                                <div class="instance-detail">
+                                    <div class="detail-header">
+                                        <div class="detail-hedaer-left-center"></div>
+                                        
+                                    </div>
+
+                                    <div class="detail-title">[이벤트유형] 이벤트 제목입니다. 역삼역에서 진행되는 이벤트를 소개합니다.</div>
+                                    <div class="detail-writer">이벤트 게시자</div>
+                                    <div class="detail-date">2023.04.15</div>
+                                </div>
+                                </div>
+                            </li>
+
+                            <li class="event-instance">
+                                <div class="instance">
+                                    <img class="thumbnail" src="https://static.makercenter.wadiz.kr/board/image/b5365bd3-c344-482b-b9f0-239f0185073a.jpg">
+                                <div class="instance-detail">
+                                    <div class="detail-header">
+                                        <div class="detail-hedaer-left-center"></div>
+                                        
+                                    </div>
+
+                                    <div class="detail-title">[이벤트유형] 이벤트 제목입니다. 역삼역에서 진행되는 이벤트를 소개합니다.</div>
+                                    <div class="detail-writer">이벤트 게시자</div>
+                                    <div class="detail-date">2023.04.15</div>
+                                </div>
+                                </div>
+                            </li>
+
+                            <li class="event-instance">
+                                <div class="instance">
+                                    <img class="thumbnail" src="https://static.makercenter.wadiz.kr/board/image/b5365bd3-c344-482b-b9f0-239f0185073a.jpg">
+                                <div class="instance-detail">
+                                    <div class="detail-header">
+                                        <div class="detail-hedaer-left-center"></div>
+                                        
+                                    </div>
+
+                                    <div class="detail-title">[이벤트유형] 이벤트 제목입니다. 역삼역에서 진행되는 이벤트를 소개합니다.</div>
+                                    <div class="detail-writer">이벤트 게시자</div>
+                                    <div class="detail-date">2023.04.15</div>
+                                </div>
+                                </div>
+                            </li>
+
+                            <li class="event-instance">
+                                <div class="instance">
+                                    <img class="thumbnail" src="https://static.makercenter.wadiz.kr/board/image/b5365bd3-c344-482b-b9f0-239f0185073a.jpg">
+                                <div class="instance-detail">
+                                    <div class="detail-header">
+                                        <div class="detail-hedaer-left-center"></div>
+                                        
+                                    </div>
+
+                                    <div class="detail-title">[이벤트유형] 이벤트 제목입니다. 역삼역에서 진행되는 이벤트를 소개합니다.</div>
+                                    <div class="detail-writer">이벤트 게시자</div>
+                                    <div class="detail-date">2023.04.15</div>
+                                </div>
+                                </div>
+                            </li>
+
+                            <li class="event-instance">
+                                <div class="instance">
+                                    <img class="thumbnail" src="https://static.makercenter.wadiz.kr/board/image/b5365bd3-c344-482b-b9f0-239f0185073a.jpg">
+                                <div class="instance-detail">
+                                    <div class="detail-header">
+                                        <div class="detail-hedaer-left-center"></div>
+                                        
+                                    </div>
+
+                                    <div class="detail-title">[이벤트유형] 이벤트 제목입니다. 역삼역에서 진행되는 이벤트를 소개합니다.</div>
+                                    <div class="detail-writer">이벤트 게시자</div>
+                                    <div class="detail-date">2023.04.15</div>
+                                </div>
+                                </div>
+                            </li>
+
+                            <li class="event-instance">
+                                <div class="instance">
+                                    <img class="thumbnail" src="https://static.makercenter.wadiz.kr/board/image/b5365bd3-c344-482b-b9f0-239f0185073a.jpg">
+                                <div class="instance-detail">
+                                    <div class="detail-header">
+                                        <div class="detail-hedaer-left-center"></div>
+                                        
+                                    </div>
+
+                                    <div class="detail-title">[이벤트유형] 이벤트 제목입니다. 역삼역에서 진행되는 이벤트를 소개합니다.</div>
+                                    <div class="detail-writer">이벤트 게시자</div>
+                                    <div class="detail-date">2023.04.15</div>
+                                </div>
+                                </div>
+                            </li>
+
+                            <li class="event-instance">
+                                <div class="instance">
+                                    <img class="thumbnail" src="https://static.makercenter.wadiz.kr/board/image/b5365bd3-c344-482b-b9f0-239f0185073a.jpg">
+                                <div class="instance-detail">
+                                    <div class="detail-header">
+                                        <div class="detail-hedaer-left-center"></div>
+                                        
+                                    </div>
+
+                                    <div class="detail-title">[이벤트유형] 이벤트 제목입니다. 역삼역에서 진행되는 이벤트를 소개합니다.</div>
+                                    <div class="detail-writer">이벤트 게시자</div>
+                                    <div class="detail-date">2023.04.15</div>
+                                </div>
+                                </div>
+                            </li>
+
+                            <li class="event-instance">
+                                <div class="instance">
+                                    <img class="thumbnail" src="https://static.makercenter.wadiz.kr/board/image/b5365bd3-c344-482b-b9f0-239f0185073a.jpg">
+                                <div class="instance-detail">
+                                    <div class="detail-header">
+                                        <div class="detail-hedaer-left-center"></div>
+                                        
+                                    </div>
+
+                                    <div class="detail-title">[이벤트유형] 이벤트 제목입니다. 역삼역에서 진행되는 이벤트를 소개합니다.</div>
+                                    <div class="detail-writer">이벤트 게시자</div>
+                                    <div class="detail-date">2023.04.15</div>
+                                </div>
+                                </div>
+                            </li>
+
+                            <li class="event-instance">
+                                <div class="instance">
+                                    <img class="thumbnail" src="https://static.makercenter.wadiz.kr/board/image/b5365bd3-c344-482b-b9f0-239f0185073a.jpg">
+                                <div class="instance-detail">
+                                    <div class="detail-header">
+                                        <div class="detail-hedaer-left-center"></div>
+                                        
+                                    </div>
+
+                                    <div class="detail-title">[이벤트유형] 이벤트 제목입니다. 역삼역에서 진행되는 이벤트를 소개합니다.</div>
+                                    <div class="detail-writer">이벤트 게시자</div>
+                                    <div class="detail-date">2023.04.15</div>
+                                </div>
+                                </div>
+                            </li>
+
+                            <li class="event-instance">
+                                <div class="instance">
+                                    <img class="thumbnail" src="https://static.makercenter.wadiz.kr/board/image/b5365bd3-c344-482b-b9f0-239f0185073a.jpg">
+                                <div class="instance-detail">
+                                    <div class="detail-header">
+                                        <div class="detail-hedaer-left-center"></div>
+                                        
+                                    </div>
+
+                                    <div class="detail-title">[이벤트유형] 이벤트 제목입니다. 역삼역에서 진행되는 이벤트를 소개합니다.</div>
+                                    <div class="detail-writer">이벤트 게시자</div>
+                                    <div class="detail-date">2023.04.15</div>
+                                </div>
+                                </div>
+                            </li>
+
+                            <li class="event-instance">
+                                <div class="instance">
+                                    <img class="thumbnail" src="https://static.makercenter.wadiz.kr/board/image/b5365bd3-c344-482b-b9f0-239f0185073a.jpg">
+                                <div class="instance-detail">
+                                    <div class="detail-header">
+                                        <div class="detail-hedaer-left-center"></div>
+                                        
+                                    </div>
+
+                                    <div class="detail-title">[이벤트유형] 이벤트 제목입니다. 역삼역에서 진행되는 이벤트를 소개합니다.</div>
+                                    <div class="detail-writer">이벤트 게시자</div>
+                                    <div class="detail-date">2023.04.15</div>
+                                </div>
+                                </div>
+                            </li>
+                        </ul>
+<!-- 본문 내용 끝 -->
+<!-- 하단 페이징 -->
+                        <div class="pageing">
+                            <div class="paging-content">
+                                <button class="page-btn" tabindex="-1" type="button" disabled>
+                                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 24L15 18L21 12" stroke="#868E96" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                                </button>
+                                <span>
+                                    <button class="page-count btn">1</button>
+                                    <button class="page-count btn">2</button>
+                                    <button class="page-count btn">3</button>
+                                    <button class="page-count btn">4</button>
+                                    <button class="page-count btn">5</button>
+                                </span>
+                                <button class="page-btn" tabindex="0" type="button">
+                                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 12L21 18L15 24" stroke="#868E96" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                                </button>
+                            </div>
+                        </div> <!-- 페이징 끝 -->
+                    </div>
+                </div> <!-- 본문, 페이징까지 끝 / content-start-->
+                <div class="footer-blank"></div>
+            </div>
+        </div>
+    </div> <!-- gaia -->
+
+</div>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    
+    const $exit = $("#apply_exit_btn")
+    console.log($exit);
+    $exit.on("click", function (){
+        alert('들어옴');
+        $('#header-apply').css("display", "none");
+    }
+    );
+</script>
+</html>
+
