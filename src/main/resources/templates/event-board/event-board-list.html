@@ -509,11 +509,13 @@
     
     const $exit = $("#apply_exit_btn")
     console.log($exit);
-    $exit.on("click", function (){
-        alert('들어옴');
-        $('#header-apply').css("display", "none");
-    }
-    );
+
+$(document).ready(function () {
+  $('#apply-exit-btn').on("click", $exit, function () {
+    $('#header-apply').css("display","none");
+  });
+});
+
 </script>
 </html>
 
