@@ -210,7 +210,7 @@ td:first-child {
 }
 
 .arrow-left {
-    background-image: url(left-arrow.png);
+    background-image: url(../../images/admin/left-arrow.png);
     background-repeat: no-repeat;
     background-size: cover;
     width: 20px;
@@ -220,7 +220,7 @@ td:first-child {
 }
 
 .arrow-right {
-    background-image: url(right-arrow.png);
+    background-image: url(../../images/admin/right-arrow.png);
     background-repeat: no-repeat;
     background-size: cover;
     width: 20px;
