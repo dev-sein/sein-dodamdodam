@@ -18,12 +18,26 @@
     font-weight: normal;
     font-style: normal;
 }
+/* 스크롤 없애기 */
+::-webkit-scrollbar {
+    display: none;
+}
+/* 스크롤 없애기 */
+
 
 :root{
     /* --main-color: #000; */
     /* --main-color: #666666; */
     /* --main-color: #4169E1; */
-    --main-color: #0f0f0fe7;
+    /* --main-color: #0f0f0fe7; */
+    /* --main-color: #526499cc; */
+    /* --main-color: #a7aab4cc;
+    --main-color: #212945cc;
+    --main-color: #1a348b9e;
+    --main-color: #2C3E50; */
+    --main-color: #1083765c;
+    /* --main-color: #F7CAC9; */
+    /* --main-color: #2980B9; */
     /* --main-color: #363b3e; */
     /* --main-color: #2a2b32; */
     /* --main-color: #333333; */
@@ -39,7 +53,11 @@ body{
     padding: 0;
     /* font-family: "TheJamsil5Bold"; */
     /* font-family: 'OAGothic-ExtraBold'; */
-    font-family: 'KOTRA_BOLD-Bold';
+    /* font-family: 'KOTRA_BOLD-Bold'; */
+    /* font-family: NotoSansKR; */
+    font-family: 'Black Han Sans', sans-serif;
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: 700;
     position: relative;
     width: 100%;
     height: 100%;
@@ -47,13 +65,18 @@ body{
 }
 
 header{
-    background-color: var(--main-color);
+    /* background-color: var(--main-color); */
+    background-color: #fff;
     width: 100%;
     height: 70px;
-    color: #fff;
+    color: #1083765c;
+    /* color: #fff; */
     position: relative;
     font-size: 18px;
     display: flex;
+    font-family: 'KOTRA_BOLD-Bold';
+    font-weight: 400;
+    border-bottom: 1px solid #1083765c;
 }
 
 .logo-wrapper{
@@ -67,7 +90,7 @@ header{
     text-align: center;
     padding-right: 60px;
     margin: 0;
-    border-bottom: 0.3px solid white;
+    /* border-bottom: 0.3px solid white; */
     width: 150px;
 }
 
@@ -121,10 +144,9 @@ main{
     border: 0;
     cursor: pointer;
     height: fit-content;
-    /* font-family: "TheJamsil5Bold"; */
-    /* font-family: 'OAGothic-ExtraBold'; */
-    font-family: 'KOTRA_BOLD-Bold';
-    font-size: 19px;
+    /* font-family: 'KOTRA_BOLD-Bold'; */
+    font-family: 'TheJamsil5Bold';
+    font-size: 20px;
     color: #fff;
     /* background-color: var(--main-color); */
     padding-left: 40px;
@@ -135,6 +157,9 @@ main{
 content{
     width: 100%;
     height: 100%;
+    /* background: #10837614; */
+    background: #1083760d;
+
 }
 
 .inner-wrapper{
@@ -148,6 +173,7 @@ content{
     /* box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px; */
     box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
     position: relative;
+    background-color: #fff;
 }
 
 .page-title{
@@ -158,8 +184,9 @@ content{
     font-family: "TheJamsil5Bold";
     /* font-family: 'OAGothic-ExtraBold'; */
     /* font-family: 'KOTRA_BOLD-Bold'; */
-    padding-top: 30px;
+    padding-top: 25px;
     margin-left: 30px;
+    color: #000000b8;
 }
 
 /* searchBox */
@@ -193,7 +220,7 @@ content{
     color: #434343;
     border-radius: 16px;
     box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.1);
-    /* border: 2px solid #000; */
+    border: 2px solid #1083765c;
 }
 
 
@@ -217,8 +244,10 @@ content{
 
 ::placeholder{
     font-family: "TheJamsil5Bold";
+    font-family: 'Black Han Sans', sans-serif;
+    font-weight: bold;
     /* font-family: 'OAGothic-ExtraBold'; */
     /* font-family: 'KOTRA_BOLD-Bold'; */
-    color: #828282;
+    color: #8282827e;
 }
 
