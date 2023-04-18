@@ -15,30 +15,42 @@
     <!-- header 시작 -->
     <!-- header 끝 -->
     <div id="page-container">
-        <main id="iam-account-app"> <!-- main -->
-            <div class="account-container"> <!-- sns를 통한 로그인 -->
+        <main id="iam-account-app">
+            <!-- SNS 로그인 버튼 시작 -->
+            <div class="account-container">
                 <h2 class="account-title">간편가입</h2>
                 <div class="first-benefit">
                     <div class="first-benefit-content">
                         <span class="first-benefit-gift-icon"></span>
                         <span class="first-benefit-gift-text">도담도담이 처음이라면? <strong>혜택</strong></span>
-                    </div><!-- first-benefit-content -->
+                    </div>
                 </div>
-
-                <div><!-- sns로그인 -->
-                    <button class="kakaobutton"><span><span class="Button_children__weH0H"><svg viewBox="0 0 32 32"
-                                    focusable="false" role="presentation"
-                                    class="withIcon_icon__1YH1P SNSButtonList_kakaoIcon__1s6gw" aria-hidden="true">
-                                    <path
-                                        d="M16 4.64c-6.96 0-12.64 4.48-12.64 10.08 0 3.52 2.32 6.64 5.76 8.48l-.96 4.96 5.44-3.6 2.4.16c6.96 0 12.64-4.48 12.64-10.08S22.96 4.56 16 4.64z">
-                                    </path>
-                                </svg>카카오로 시작하기</span></span></button>
-                    <button class="naverbutton" type="button"><span><span class="Button_children__weH0H"><svg
-                                    viewBox="0 0 32 32" focusable="false" role="presentation"
-                                    class="withIcon_icon__1YH1P SNSButtonList_naverIcon__3TjPM" aria-hidden="true">
-                                    <path d="M19.52 5.76v10.32L12.48 5.76H4.8v20.48h7.68V15.92l7.12 10.32h7.6V5.76z">
-                                    </path>
-                                </svg><b>네이버로 시작하기</b></span></span></button>
+                <div>
+                    <!-- kakao 로그인 시작 -->
+                    <button class="kakaobutton">
+                        <span>
+                            <span class="Button_children__weH0H">
+                                <svg viewBox="0 0 32 32" focusable="false" role="presentation" class="withIcon_icon__1YH1P SNSButtonList_kakaoIcon__1s6gw" aria-hidden="true">
+                                    <path d="M16 4.64c-6.96 0-12.64 4.48-12.64 10.08 0 3.52 2.32 6.64 5.76 8.48l-.96 4.96 5.44-3.6 2.4.16c6.96 0 12.64-4.48 12.64-10.08S22.96 4.56 16 4.64z"></path>
+                                </svg>
+                                카카오로 시작하기
+                            </span>
+                        </span>
+                    </button>
+                    <!-- kakao 로그인 끝-->
+                    <!-- naver 로그인 시작-->
+                    <button class="naverbutton" type="button">
+                        <span>
+                            <span class="Button_children__weH0H">
+                                <svg viewBox="0 0 32 32" focusable="false" role="presentation" class="withIcon_icon__1YH1P SNSButtonList_naverIcon__3TjPM" aria-hidden="true">
+                                    <path d="M19.52 5.76v10.32L12.48 5.76H4.8v20.48h7.68V15.92l7.12 10.32h7.6V5.76z"></path>
+                                </svg>
+                                <b>네이버로 시작하기</b>
+                            </span>
+                        </span>
+                    </button>
+                    <!-- naver 로그인 끝-->
+                    <!-- google, facebook, apple 로그인 버튼 시작 -->
                     <div class="snsbuttoncircle">
                         <button id="google">
                             <span class="google">
@@ -66,37 +78,32 @@
                                         <path d="M0 0h20v20H0z"></path>
                                     </g>
                                 </svg>
-                            </span></button>
+                            </span>
+                        </button>
                         <button id="facebook">
                             <span class="facebook">
-                                <svg viewBox="0 0 48 48" focusable="false" role="presentation"
-                                    class="withIcon_icon__1YH1P" aria-hidden="true">
-                                    <path
-                                        d="M14.4 19.547h5.673v-5.256a8.559 8.559 0 0 1 2.4-6.132c2.618-2.628 6.109-2.3 11.127-1.861v5.913h-3.71a3.374 3.374 0 0 0-2.29.766 3.514 3.514 0 0 0-.655 2.3v4.27h6.437l-.873 6.57h-5.564V43.2h-6.872V26.118H14.4v-6.57z">
-                                    </path>
+                                <svg viewBox="0 0 48 48" focusable="false" role="presentation" class="withIcon_icon__1YH1P" aria-hidden="true">
+                                    <path d="M14.4 19.547h5.673v-5.256a8.559 8.559 0 0 1 2.4-6.132c2.618-2.628 6.109-2.3 11.127-1.861v5.913h-3.71a3.374 3.374 0 0 0-2.29.766 3.514 3.514 0 0 0-.655 2.3v4.27h6.437l-.873 6.57h-5.564V43.2h-6.872V26.118H14.4v-6.57z"></path>
                                 </svg>
-                            </span></button>
+                            </span>
+                        </button>
                         <button id="apple">
                             <span class="apple">
-                                <svg viewBox="0 0 32 32" focusable="false" role="presentation"
-                                    class="withIcon_icon__1YH1P" aria-hidden="true">
-                                    <path
-                                        d="M24.96 26c-1.12 1.68-2.32 3.28-4.08 3.28s-2.32-1.04-4.4-1.04-2.64 1.04-4.4 1.12S9.04 27.6 7.92 26c-2.32-3.28-4-9.36-1.68-13.44 1.098-1.973 3.148-3.299 5.512-3.36 1.688 0 3.368 1.12 4.408 1.12s3.04-1.44 5.12-1.2a6.157 6.157 0 0 1 4.867 2.62c-1.691 1.087-2.82 2.936-2.867 5.053a5.926 5.926 0 0 0 3.562 5.352 13.472 13.472 0 0 1-1.913 3.901zm-7.6-21.36a6.072 6.072 0 0 1 3.894-1.998c.038.139.045.303.045.469 0 1.44-.521 2.759-1.386 3.777A4.871 4.871 0 0 1 16.04 8.8h-.042a6.886 6.886 0 0 1-.016-.451 5.66 5.66 0 0 1 1.384-3.716z">
-                                    </path>
+                                <svg viewBox="0 0 32 32" focusable="false" role="presentation" class="withIcon_icon__1YH1P" aria-hidden="true">
+                                    <path d="M24.96 26c-1.12 1.68-2.32 3.28-4.08 3.28s-2.32-1.04-4.4-1.04-2.64 1.04-4.4 1.12S9.04 27.6 7.92 26c-2.32-3.28-4-9.36-1.68-13.44 1.098-1.973 3.148-3.299 5.512-3.36 1.688 0 3.368 1.12 4.408 1.12s3.04-1.44 5.12-1.2a6.157 6.157 0 0 1 4.867 2.62c-1.691 1.087-2.82 2.936-2.867 5.053a5.926 5.926 0 0 0 3.562 5.352 13.472 13.472 0 0 1-1.913 3.901zm-7.6-21.36a6.072 6.072 0 0 1 3.894-1.998c.038.139.045.303.045.469 0 1.44-.521 2.759-1.386 3.777A4.871 4.871 0 0 1 16.04 8.8h-.042a6.886 6.886 0 0 1-.016-.451 5.66 5.66 0 0 1 1.384-3.716z"></path>
                                 </svg>
-                            </span></button>
+                            </span>
+                        </button>
                     </div>
-                </div><!-- sns 로그인 끝 -->
-
-                <div class="equity-signup">
-                    <a class="corporate" href="${pageContext.request.contextPath}/user/signUpCorp.user">기업 회원가입</a>
-                </div><!-- equity signup -->
+                    <!-- google, facebook, apple 로그인 버튼 끝 -->
+                </div>
             </div>
+            <!-- SNS 로그인 버튼 끝 -->
             <div class="signup-intro"> </div>
             <div class="account-container-email">
                 <h3 class="signup-intro-email">이메일 간편가입</h3>
                 <!-- 회원가입 정보 입력 폼 -->
-                <form action="${pageContext.request.contextPath}/user/signUpOk.user" name="joinForm" method="post">
+                <form action="" name="joinForm" method="post">
                		 <div class="email-signup-form-container">
                         <div class="email-field-container">
                             <label class="EmailAuthField">아이디</label>
@@ -112,10 +119,10 @@
                             <em class="identification-error error-message">아이디를 입력해주세요.</em>
                         </div><!-- email-field -->
                         <!-- 한줄 복사 -->
-                        <div class="password-field"><label>비밀번호</label><!-- 비밀번호 -->
+                        <div class="password-field">
+                            <label>비밀번호</label><!-- 비밀번호 -->
                             <div class="password-field-text">
-                                <input name="userPassword" placeholder="비밀번호 입력" type="password"
-                                    class="input-password-container" id="password-input" aria-invalid="false">
+                                <input name="userPassword" placeholder="비밀번호 입력" type="password" class="input-password-container" id="password-input" aria-invalid="false">
                                 <button aria-label="비밀번호 보기" class="Button_TextField_icon" type="button">
                                     <span class="eye" id="eye1">
                                         <span class="Button_children_pw">
@@ -129,7 +136,6 @@
                         </div>
                         <em class="password-error error-message">비밀번호를 입력해주세요.</em>
                         <!-- password 1  -->
-
                         <div class="recheck-password"><label></label>
                             <div class="TextField_field__1B2AH">
                                 <input name="userPassword" placeholder="비밀번호 확인" type="password"
@@ -154,19 +160,18 @@
                                 <div class="EmailAuthField_inputField">
                                     <input name="userNickname" placeholder="닉네임 입력" type="text" class="nickname-field email-field" id="nickname">
                                 </div>
-                            </div><!-- email-field-input-continer -->
+                            </div>
                             <em class="nickname-error error-message">최소 2자입니다.</em>
-                        </div><!-- email-field -->
-                        <!-- 한줄 복사 -->
+                        </div>
                         <div class="email-field-container">
                             <label class="EmailAuthField">이메일</label>
                             <div class="email-field-input-continer">
                                 <div class="EmailAuthField_inputField">
                                     <input name="userEmail" placeholder="이메일 입력" type="text" class="email-field" id="email-input">
                                 </div>
-                            </div><!-- email-field-input-continer -->
+                            </div>
                             <em class="email-error error-message">이메일을 입력해주세요.</em>
-                        </div><!-- email-field -->
+                        </div>
                 	</div>
                     <div class="name-field" id="name-name"><label>이름</label>
                         <div class="TextField_field__1B2AH">
@@ -174,54 +179,61 @@
                         </div>
                         <em class="name-error error-message">이름을 입력해주세요.</em>
                     </div>
-                    <!-- 이름 끝 -->
                     <div class="name-field phone-field" id="phone-name"><label>핸드폰 번호</label>
                         <div class="TextField_field__1B2AH">
                             <input name="userPhone" placeholder="핸드폰 번호 입력" type="text" class="name-input" id="input-phone-number" maxlength="11">
                         </div>
                         <em class="phone-error error-message">핸드폰 번호를 입력해주세요.</em>
                     </div>
-					<!-- phoneNumber 끝 -->
-                    <div class="SignUpAllCheckTermsCheckbox"> <!-- 회원 약관 동의 -->
+                    <!-- 회원 약관 동의 -->
+                    <div class="SignUpAllCheckTermsCheckbox">
                         <label for="termsUpdateRequestCheckBox" class="termscheckbox" id="termscheckbox">
                             <input id="termsUpdateRequestCheckBox" type="checkbox" class="Checkbox">
                             <span class="checkbox-icon" aria-hidden="true">
-                                <svg viewBox="0 0 16 2" focusable="false" role="presentation" class="withIcon_icon__1YH1P_Checkbox_removeIcon__12oZL" aria-hidden="true"><path fill-rule="evenodd" d="M0 0h16v2H0z"></path></svg>
-                                                <svg id="check-box" viewBox="0 0 48 48" focusable="false" role="presentation" class="withIcon_icon__1YH1P_Checkbox_checkIcon__2QgEJ" aria-hidden="true"><path d="M18 39.6L4.8 26.4l3.36-3.36L18 32.76l21.84-21.72 3.36 3.36z"></path></svg></span>
-                                <span class="Checkbox_content__1uyi7"></span></label><label
-                            for="termsUpdateRequestCheckBox"
-                            class="SignUpAllCheckTermsCheckbox_termsAllCheckLabel__3TxCG">
-                            <p class="checkbox-content-label-text">전체동의</p>
-                            <p class="checkboxDescription">회원·서비스(필수), 투자 서비스 (선택), 스타트업찾기 서비스 (선택), 이벤트·혜택알림 동의(선택), 만
-                                14세 이상(필수)</p>
+                                <svg viewBox="0 0 16 2" focusable="false" role="presentation" class="withIcon_icon__1YH1P_Checkbox_removeIcon__12oZL" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M0 0h16v2H0z"></path>
+                                </svg>
+                                <svg id="check-box" viewBox="0 0 48 48" focusable="false" role="presentation" class="withIcon_icon__1YH1P_Checkbox_checkIcon__2QgEJ" aria-hidden="true">
+                                    <path d="M18 39.6L4.8 26.4l3.36-3.36L18 32.76l21.84-21.72 3.36 3.36z"></path>
+                                </svg>
+                            </span>
+                            <span class="Checkbox_content__1uyi7"></span>
                         </label>
-                        <button class="Button_button" type="button"><span>
-                                <button class="SignUpAllCheckTermsCheckbox_termsMoreButton" type="button"><span>
+                        <label for="termsUpdateRequestCheckBox" class="SignUpAllCheckTermsCheckbox_termsAllCheckLabel__3TxCG">
+                            <p class="checkbox-content-label-text">전체동의</p>
+                            <p class="checkboxDescription">회원·서비스(필수), 투자 서비스 (선택), 스타트업찾기 서비스 (선택), 이벤트·혜택알림 동의(선택), 만 14세 이상(필수)</p>
+                        </label>
+                        <button class="Button_button" type="button">
+                            <span>
+                                <button class="SignUpAllCheckTermsCheckbox_termsMoreButton" type="button">
+                                    <span>
                                         <span class="Button_children">
-                                            <svg viewBox="0 0 32 32" focusable="false" role="presentation"
-                                                class="withIcon_icon__1YH1P" aria-hidden="true">
-                                                <path d="M16 22.4L5.6 12l1.12-1.12L16 20.16l9.28-9.28L26.4 12 16 22.4z">
-                                                </path>
-                                            </svg></span></span></button>
+                                            <svg viewBox="0 0 32 32" focusable="false" role="presentation" class="withIcon_icon__1YH1P" aria-hidden="true">
+                                                <path d="M16 22.4L5.6 12l1.12-1.12L16 20.16l9.28-9.28L26.4 12 16 22.4z"></path>
+                                            </svg>
+                                        </span>
+                                    </span>
+                                </button>
+                            </span>
+                        </button>
                     </div>
-
-
                     <!-- <button class="signup-submit-button"  type="button" onclick="send()"> -->
-                    <button class="signup-submit-button" type="submit" onclick=""> <!-- 완료 버튼 -->
-                                               <span><span class="signup-submit-button-text" >완료</span></span></button>
+                    <!-- 완료 버튼 -->
+                    <button class="signup-submit-button" type="submit" onclick=""> 
+                        <span>
+                            <span class="signup-submit-button-text" >완료</span>
+                        </span>
+                    </button>
                 </form>
-
-                    <p class="login-page-link">이미 도담도담 계정이 있나요?<!-- 하단 메세지 -->
-                        <a href="/web/waccount/wAccountLogin">로그인</a>
-                    </p>
-                <!-- 여기부터 -->
-
-            </div><!-- account-container-email -->
-            <!-- signup intro -->
-        </main><!-- main -->
+                <!-- 하단 메세지 -->
+                <p class="login-page-link">
+                    이미 도담도담 계정이 있나요?
+                    <a href="">로그인</a>
+                </p>
+            </div>
+        </main>
     </div>
-    
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-<script src="../../static/js/member/signUp.js"></script>
+<script src="../../static/js/member/join.js"></script>
 </html>
