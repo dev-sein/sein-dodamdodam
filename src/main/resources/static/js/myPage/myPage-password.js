@@ -23,18 +23,18 @@ $passwordInput.on("blur", function(){
     if($passwordInputValue.length < 8){
         $passwordWarning.text("최소 8자입니다.");
         $passwordWarning.css("display", "block");
-        $passwordInput.css("border-color", "#dde2e6");
+        $passwordInput.css("border-color", "#f66");
         passwordFlag = false;
     }else if($passwordInputValue.length > 20){
         $passwordWarning.text("최대 20자입니다.");
         $passwordWarning.css("display", "block");
-        $passwordInput.css("border-color", "#dde2e6");
+        $passwordInput.css("border-color", "#f66");
         passwordFlag = false;
     }else if(!regExp.test($passwordInputValue)){
         console.log("들어옴");
         $passwordWarning.text("영문,숫자,특수문자를 조합한 8자 이상");
         $passwordWarning.css("display", "block");
-        $passwordInput.css("border-color", "#dde2e6");
+        $passwordInput.css("border-color", "#f66");
         passwordFlag = false;
     }else {
         $passwordWarning.css("display", "none");
@@ -59,7 +59,7 @@ $passwordCheckInput.on("blur", function(){
     if($passwordCheckInputValue.length < 1){
         $passwordCheckWarning.text("동일한 비밀번호를 입력해주세요.");
         $passwordCheckWarning.css("display", "block");
-        $passwordCheckInput.css("border-color", "#dde2e6");
+        $passwordCheckInput.css("border-color", "#f66");
         passwordCheckFlag = false;
     } else if($passwordCheckInputValue == $passwordInputValue){
         $passwordCheckWarning.css("display", "none");
@@ -68,7 +68,7 @@ $passwordCheckInput.on("blur", function(){
     } else {
         $passwordCheckWarning.text("동일한 비밀번호를 입력해주세요.");
         $passwordCheckWarning.css("display", "block");
-        $passwordCheckInput.css("border-color", "#dde2e66");
+        $passwordCheckInput.css("border-color", "#f66");
         passwordCheckFlag = false;
     }
     completeAllCheck();
