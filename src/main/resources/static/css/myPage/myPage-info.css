@@ -1,0 +1,202 @@
+@charset "UTF-8";
+
+
+@font-face {
+    font-family: wadizicon;
+    font-weight: 400;
+    font-style: normal;
+    src: url(https://static.wadiz.kr/static/web/media/wadizicon.1de1502a.eot#iefix) format("embedded-opentype"),url(https://static.wadiz.kr/static/web/media/wadizicon.f5cdf486.woff2) format("woff2"),url(https://static.wadiz.kr/static/web/media/wadizicon.9eb6b0a9.woff) format("woff"),url(https://static.wadiz.kr/static/web/media/wadizicon.e5379495.ttf) format("truetype"),url(https://static.wadiz.kr/static/web/media/wadizicon.077f5804.svg#wadizicon) format("svg")
+}
+
+body {
+    line-height: 1.33;
+    font-family: Noto Sans KR;
+}
+
+body {
+    overflow-y: scroll;
+    line-height: 1.5em;
+    letter-spacing: -.02em;
+    color: rgba(0,0,0,.84);
+    font-size: 15px;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body, html {
+    -webkit-text-size-adjust: none;
+}
+
+a, address, article, aside, audio, b, body, button, canvas, caption, dd, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, html, i, img, input, label, legend, li, nav, ol, p, pre, section, small, span, strong, summary, table, tbody, td, th, thead, time, tr, ul, video {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+    font: inherit;
+    box-sizing: border-box;
+}
+
+article, blockquote, body, dd, div, dl, dt, h1, h2, h3, h4, html, li, main, ol, p, section, table, tbody, td, th, thead, tr, ul {
+    margin: 0;
+    padding: 0;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, em, div {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+body a {
+    text-decoration: none;
+}
+
+a, a:active, a:hover, a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+body>#root, #wadizTopBanner, #page-container {
+    transform-origin: 50% 0;
+    transition-property: opacity,transform;
+    transition-duration: 80ms;
+    transition-timing-function: ease-out;
+}
+
+.wz.container, body a {
+    color: rgba(0,0,0,.84);
+}
+
+#accountWrap {
+    width: 100%;
+    padding-bottom: 160px;
+    background: #f9f9f9;
+}
+
+#newContainer {
+    min-height: 100%;
+    background: #eee;
+}
+
+#accountWrap #newContainer {
+    background: #f9f9f9;
+}
+
+.account-wrap {
+    padding: 35px 20px;
+    padding-left: max(20px, env(safe-area-inset-left));
+    padding-right: max(20px, env(safe-area-inset-right));
+    font-family: Noto Sans KR;
+}
+
+.account-wrap h2 {
+    margin-bottom: 8px;
+    font-size: 20px;
+    color: #4a4a4a;
+    font-weight: normal;
+}
+
+.account-wrap h2.big {
+    margin-bottom: 16px;
+    font-size: 20px;
+    color: #4a4a4a;
+    font-weight: normal;
+}
+
+.my-info {
+    width: 100%;
+    height: 56px;
+    border-top: solid 1px #e4e4e4;
+    padding-left: 20px;
+    box-sizing: border-box;
+    display: block;
+}
+
+.my-info-text {
+    width: 90%;
+    height: 56px;
+}
+
+.my-info div {
+    float: left;
+}
+
+.account-wrap h3 {
+    font-size: 13px;
+    line-height: 16px;
+    color: #4a4a4a;
+    font-weight: normal;
+}
+
+.my-info h3 {
+    margin-top: 13px;
+    margin-bottom: 3px;
+}
+
+.my-info p {
+    font-size: 10px;
+}
+
+.my-info-btn {
+    width: 5%;
+    height: 56px;
+    text-align: right;
+    margin: 0 5px;
+}
+
+.my-info div {
+    float: left;
+}
+
+.my-info-btn i {
+    color: #9b9b9b;
+    line-height: 56px;
+}
+
+.my-info h3 a {
+    text-decoration: underline;
+}
+
+/* 가상요소 */
+[class*=icon-]:before, i.icon:before, i.wadizicon {
+    display: inline-block;
+    margin-top: -0.2em;
+    vertical-align: middle;
+    text-transform: none;
+    /* line-height: 1; */
+    font-family: wadizicon !important;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-style: normal;
+    font-variant: normal;
+}
+
+/* before */
+.icon-chevron-right:before, i.icon.chevron-right:before, i.wadizicon.wa-chevron-right:before {
+	content: "";
+}
+
+/* after */
+.my-info:after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+
+/* ================================================media===================================== */
+@media screen and (min-width: 1000px) {
+.account-wrap {
+    width: 350px;
+    margin: 0 auto;
+    padding-top: 75px;
+}
+
+}

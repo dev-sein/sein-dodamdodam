@@ -1,0 +1,628 @@
+@charset "UTF-8";
+
+
+@font-face {
+    font-family: Noto Sans KR;
+    font-weight: 300;
+    font-style: normal;
+    src: url(https://static.wadiz.kr/assets/fonts/notosans/NotoSansKR-Light.woff2) format("woff2"),url(https://static.wadiz.kr/assets/fonts/notosans/NotoSansKR-Light.woff) format("woff"),url(https://static.wadiz.kr/assets/fonts/notosans/NotoSansKR-Light.otf) format("opentype");
+    unicode-range: u+0020-u+007e,u+1100-u+11f9,u+3131-u+318e,u+327f-u+327f,u+ac00-u+d7a3,u+ff01-u+ff60
+}
+
+@font-face {
+    font-family: Noto Sans KR;
+    font-weight: 400;
+    font-style: normal;
+    src: url(https://static.wadiz.kr/assets/fonts/notosans/NotoSansKR-Regular.woff2) format("woff2"),url(https://static.wadiz.kr/assets/fonts/notosans/NotoSansKR-Regular.woff) format("woff"),url(https://static.wadiz.kr/assets/fonts/notosans/NotoSansKR-Regular.otf) format("opentype");
+    unicode-range: u+0020-u+007e,u+1100-u+11f9,u+3131-u+318e,u+327f-u+327f,u+ac00-u+d7a3,u+ff01-u+ff60
+}
+
+@font-face {
+    font-family: Noto Sans KR;
+    font-weight: 500;
+    font-style: normal;
+    src: url(https://static.wadiz.kr/assets/fonts/notosans/NotoSansKR-Medium.woff2) format("woff2"),url(https://static.wadiz.kr/assets/fonts/notosans/NotoSansKR-Medium.woff) format("woff"),url(https://static.wadiz.kr/assets/fonts/notosans/NotoSansKR-Medium.otf) format("opentype");
+    unicode-range: u+0020-u+007e,u+1100-u+11f9,u+3131-u+318e,u+327f-u+327f,u+ac00-u+d7a3,u+ff01-u+ff60
+}
+
+@font-face {
+    font-family: Noto Sans KR;
+    font-weight: 700;
+    font-style: normal;
+    src: url(https://static.wadiz.kr/assets/fonts/notosans/NotoSansKR-Bold.woff2) format("woff2"),url(https://static.wadiz.kr/assets/fonts/notosans/NotoSansKR-Bold.woff) format("woff"),url(https://static.wadiz.kr/assets/fonts/notosans/NotoSansKR-Bold.otf) format("opentype");
+    unicode-range: u+0020-u+007e,u+1100-u+11f9,u+3131-u+318e,u+327f-u+327f,u+ac00-u+d7a3,u+ff01-u+ff60
+}
+
+@font-face {
+    font-family: wadizicon;
+    font-weight: 400;
+    font-style: normal;
+    src: url(https://static.wadiz.kr/static/web/media/wadizicon.1de1502a.eot#iefix) format("embedded-opentype"),url(https://static.wadiz.kr/static/web/media/wadizicon.f5cdf486.woff2) format("woff2"),url(https://static.wadiz.kr/static/web/media/wadizicon.9eb6b0a9.woff) format("woff"),url(https://static.wadiz.kr/static/web/media/wadizicon.e5379495.ttf) format("truetype"),url(https://static.wadiz.kr/static/web/media/wadizicon.077f5804.svg#wadizicon) format("svg")
+}
+
+body {
+    line-height: 1.33;
+    font-family: Noto Sans KR !important;
+}
+
+body {
+    overflow-y: scroll;
+    line-height: 1.5em;
+    letter-spacing: -.02em;
+    color: rgba(0,0,0,.84);
+    font-size: 15px;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+}
+
+
+a, address, article, aside, audio, b, body, button, canvas, caption, dd, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, html, i, img, input, label, legend, li, nav, ol, p, pre, section, small, span, strong, summary, table, tbody, td, th, thead, time, tr, ul, video {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+    font: inherit;
+    box-sizing: border-box;
+}
+
+article, blockquote, body, dd, div, dl, dt, h1, h2, h3, h4, html, li, main, ol, p, section, table, tbody, td, th, thead, tr, ul {
+    margin: 0;
+    padding: 0;
+}
+
+article, main, section {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+body a {
+    text-decoration: none;
+}
+
+a, a:active, a:hover, a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    background: none;
+    color: inherit;
+}
+
+
+.wz.container, body a {
+    color: rgba(0,0,0,.84);
+}
+
+input, optgroup, select, textarea {
+    color: inherit;
+}
+
+.account-drop {
+    background: #fff;
+    font-weight: 400;
+}
+
+
+.account-drop .wrap {
+    margin: 0 auto;
+    padding: 43px 16px 64px;
+}
+
+.account-drop h1, .account-drop h2, .account-drop p {
+    margin-bottom: 8px;
+}
+
+.account-drop h1 {
+    line-height: 36px;
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.account-drop p {
+    line-height: 28px;
+    letter-spacing: -.4px;
+	color: #868e96;
+    font-size: 17px;
+}
+
+strong {
+    font-weight: 700;
+}
+
+.account-drop .message-box {
+    margin: 20px auto;
+    border: 1px solid #babdc0;
+    background: #f5f7fa;
+    padding: 16px;
+}
+
+.account-drop dl {
+    margin-bottom: 20px;
+    border-top: 1px solid #e6eaed;
+}
+
+.account-drop .message-box dl {
+    margin-bottom: 0;
+    border-top: 0;
+}
+
+.account-drop dl dt, .account-drop dl dd {
+    line-height: 24px;
+    letter-spacing: -.4px;
+}
+
+.account-drop dl dt {
+    padding-top: 16px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.account-drop .message-box dt, .account-drop .message-box dd {
+    line-height: 24px;
+}
+
+.account-drop .message-box dt {
+    padding-top: 0;
+    letter-spacing: -.3px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.account-drop dl dd {
+    border-bottom: 1px solid #e6eaed;
+    padding-bottom: 20px;
+    color: #44484b;
+    font-size: 13px;
+}
+
+.account-drop .message-box dd {
+    margin-bottom: 20px;
+    border-bottom: 0;
+    padding-bottom: 0;
+    letter-spacing: -.2px;
+    color: #44484b;
+    font-size: 13px;
+}
+
+.account-drop .message-box a {
+    transition: color .2s;
+    text-decoration: underline;
+    color: #395bbf;
+}
+
+.account-drop .message-box dd:last-child {
+    margin-bottom: 0;
+}
+
+.account-drop h2 {
+    margin-top: 64px;
+    line-height: 32px;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.selectbox {
+    width: 100%;
+    height: 44px;
+    border-color: #e7e7e7;
+    margin-bottom: 7px;
+    padding-left: 20px;
+    color: #4a4a4a;
+}
+
+.account-drop .selectbox {
+    position: relative;
+    margin: 24px 0;
+    border: 1px solid #e6eaed;
+    background: #fff;
+    max-width: 350px;
+    height: auto;
+    font-size: 0;
+}
+
+
+.account-drop .selectbox:after, .account-drop .selectbox select, .account-drop .selectbox span {
+    padding: 16px;
+    line-height: 25px;
+}
+
+.account-drop .selectbox select {
+    position: relative;
+    opacity: 0;
+    z-index: 2;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    -webkit-appearance: none;
+}
+
+.account-drop .selectbox span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-right: 43px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #60656a;
+    font-size: 17px;
+    box-sizing: border-box;
+}
+
+.account-drop .selectbox em, .account-drop .reason-text em {
+    display: block;
+    color: #f66;
+    font-size: 13px;
+}
+
+.account-drop .selectbox em {
+    position: absolute;
+    bottom: -19px;
+    left: 0;
+    line-height: 1.3em;
+}
+
+.account-drop .reason-text em {
+    margin-top: 2px;
+}
+
+.account-drop .selectbox:after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    line-height: 25px;
+    font-size: 24.99px;
+    display: inline-block;
+    margin-top: -0.2em;
+    vertical-align: middle;
+    text-transform: none;
+    line-height: 1;
+    font-family: wadizicon!important;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-style: normal;
+    font-variant: normal;
+    speak: none;
+    content: "\e94e";
+}
+
+.account-drop .reason-text {
+    margin-top: 40px;
+    max-width: 350px;
+}
+
+.account-drop .reason-text input, .account-drop .verify-box .user-verify input, .account-drop .verify-box .user-verify-confirm input {
+    margin-bottom: 0;
+    padding: 0 16px;
+    height: 48px;
+    line-height: 48px;
+    font-size: 17px;
+}
+
+.account-drop .reason-text input {
+    width: 100%;
+}
+
+.account-drop p em {
+    letter-spacing: -.5px;
+    color: #f25555;
+    font-size: 15px;
+}
+
+.account-drop p label {
+    margin-right: 0;
+    line-height: 28px;
+    letter-spacing: -.3px;
+    font-size: 15px;
+}
+
+label.wz.checkbox {
+    display: block;
+}
+
+.account-drop p label input {
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+label.wz.checkbox>input {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+}
+/* 상기 와디즈 탈퇴 시 유의 사항을 확인하였습니다. */
+label.wz.checkbox>span {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    padding-left: 24px;
+    vertical-align: top;
+    /* 추가함 */
+    line-height: 20px;
+}
+/* 가상요소 */
+/* label.wz.checkbox>span:before {
+	
+    position: absolute;
+    top: 2px;
+    left: 0;
+    transition: .25s;
+    border: 1px solid rgba(0,0,0,.15);
+    background-color: #fff;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    content: "";
+} */
+
+label.wz.checkbox>input:checked+span:before {
+    border-color: transparent;
+    background-color: #00c4c4;
+}
+
+label.wz.checkbox>span:before {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    transition: .25s;
+    border: 1px solid rgba(0,0,0,.15);
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    content: "";
+}
+
+label.wz.checkbox>span:after {
+    display: inline-block;
+    margin-top: -0.2em;
+    vertical-align: middle;
+    text-transform: none;
+    line-height: 1;
+    font-family: wadizicon!important;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-style: normal;
+    font-variant: normal;
+    speak: none;
+    content: "";
+    position: absolute;
+    top: 6px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+.account-drop .verify-box {
+    position: relative;
+    margin-top: 24px;
+    margin-bottom: 40px;
+}
+
+.wz.button {
+    transition-property: background-color,border-color,color,opacity;
+    transition-duration: .2s;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 3px;
+    background-color: #fff;
+    cursor: pointer;
+    padding: 0 1.41176em;
+    height: 48px;
+    vertical-align: middle;
+    line-height: 1;
+    color: rgba(0,0,0,.54);
+    font-size: 17px;
+    font-weight: 400;
+    box-sizing: border-box!important;
+    -webkit-appearance: none;
+    display: inline-block;
+    padding-top: 0.07em;
+    text-decoration: none;
+}
+
+.wz.button.primary, .wz.button.primary-outline {
+    border-color: #00c4c4;
+}
+
+.wz.button.primary {
+    background-color: #00c4c4;
+    color: #fff;
+}
+
+.wz.input {
+    display: block;
+    position: relative;
+    font-size: 17px;
+}
+
+.wz.input.action {
+    display: flex;
+    outline: none;
+}
+
+.account-drop .verify-box .user-verify, .account-drop .verify-box .user-verify-confirm {
+    position: relative;
+}
+
+.account-drop .verify-box .user-verify {
+    margin-bottom: 8px;
+    padding-right: 102px;
+}
+
+.wz.input.icon>i.icon, .wz.input>input, .wz.input>textarea {
+    color: rgba(0,0,0,.84);
+    font-size: 17px;
+    font-weight: 400;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -webkit-font-smoothing: antialiased;
+}
+
+.wz.input>input, .wz.input>textarea {
+    transition-property: border-color,height,padding-right,color;
+    transition-duration: .2s,0s;
+    outline: none;
+    border: 1px solid rgba(0,0,0,.15);
+    background: #fff;
+    padding: 0 0.94118em;
+    width: 100%;
+    vertical-align: middle;
+    color: rgba(0,0,0,.84);
+    font-family: roboto,Noto Sans KR,-apple-system,dotum,sans-serif;
+    font-size: 17px;
+    font-weight: 300;
+}
+
+.wz.input>input {
+    height: 48px;
+    line-height: 1.2em;
+    font-size: 17px;
+    font-weight: 300;
+}
+
+.wz.input>input[disabled], .wz.input>input[readonly], .wz.input>textarea[disabled], .wz.input>textarea[readonly] {
+    border-color: rgba(0,0,0,.15);
+    background-color: rgba(0,0,0,.06);
+    cursor: default;
+    pointer-events: none;
+}
+
+.wz.input>input[readonly], .wz.input>textarea[readonly] {
+    color: rgba(0,0,0,.84);
+}
+
+.wz.input.action>input {
+    padding-right: 5.88235em;
+    box-sizing: border-box;
+}
+
+.account-drop .verify-box .user-verify input, .account-drop .verify-box .user-verify-confirm input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.wz.input.action>.wz.button, .wz.input.action>button {
+    position: absolute;
+    right: 0;
+    margin: 5px 5px 0 0;
+    outline: none;
+    padding-right: 1.06667em;
+    padding-left: 1.06667em;
+    height: 38px;
+    line-height: 38px;
+    word-break: keep-all;
+    font-size: .88235em;
+}
+
+.account-drop .verify-box .user-verify-confirm form {
+    margin-bottom: 2px;
+    padding-right: 121px;
+}
+
+.account-drop .verify-box .verify-code {
+    position: relative;
+    overflow: hidden;
+}
+
+.account-drop .verify-box .verify-code input {
+    padding-right: 50px;
+}
+
+.account-drop .verify-box .verify-code .timer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 9px;
+    line-height: 52px;
+    color: #557cf2;
+    font-size: 13px;
+}
+
+.wz.button.gray, .wz.button.gray-outline {
+    border-color: #90949c;
+}
+
+.wz.button.gray {
+    background-color: #90949c;
+    color: #fff;
+}
+
+.account-drop hr {
+    margin: 40px -16px 24px;
+    border: 0;
+    border-top: 1px solid #e6eaed;
+}
+
+.account-drop .verify-box .user-verify-confirm em {
+    color: #f66;
+    font-size: 13px;
+}
+
+.wz.button.disabled, .wz.button:disabled {
+    opacity: .45;
+    cursor: default;
+    color: rgba(0,0,0,.7);
+    pointer-events: none;
+}
+
+.wz.button.red, .wz.button.red-outline {
+    border-color: #f66;
+}
+
+.wz.button.red {
+    background-color: #f66;
+    color: #fff;
+}
+
+.wz.button.red.disabled, .wz.button.red:disabled {
+    color: hsla(0,0%,100%,.7);
+}
+
+#btnDropOut{
+	cursor: pointer;
+}
+
+/* =========================================media============================================== */
+@media screen and (min-width: 732px){
+.account-drop .wrap {
+    margin: 0 auto;
+    padding-right: 0;
+    padding-left: 0;
+    width: 700px;
+}
+
+.account-drop h1 {
+    line-height: 44px;
+    font-size: 36px;
+}
+
+.account-drop p {
+    margin-right: -16px;
+}
+
+.account-drop h2 {
+    margin-top: 80px;
+    line-height: 36px;
+    font-size: 28px;
+}
+
+.account-drop .verify-box {
+    width: 350px;
+}
+
+}
