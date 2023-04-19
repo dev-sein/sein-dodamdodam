@@ -96,7 +96,7 @@ header{
 
 nav{
     background-color: var(--main-color);
-    height: 100%;
+    height: calc(100vh - 70px);
     width: 250px;
 }
 

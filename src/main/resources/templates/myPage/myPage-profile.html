@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로필 정보 설정</title>
+    <!-- link 적용 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/myPage/myPage-profile.css">
+</head>
+<body>
+      <!-- 프로필 정보 설정 -->
+      <div id="waccountWrap">
+             <div class="waccount-wrap">            
+                <div id="waccountContainer">
+                   <h3>프로필 정보 설정</h3>
+                   <div id="tabContent1" class="tab-content">
+                      <h5>프로필 사진</h5>
+                      <div class="profileimg-wrap">
+                         <button type="file" id="resultProfileImg" class="profileimg" onclick="setThumbnail"><em id="image_container" style="background-image:url(https://static.wadiz.kr/static/icon/profile-icon-4.png)"></em></button>
+                         <p class="setting-profileimg">
+                            <button type="button" onclick="$('#uploadProfileImg').click()" id="btn_updatePhoto">
+                               <span id="img">바꾸기</span>
+                            </button>
+                            <button type="button" onclick="deletePhoto()" id="btn_deletePhoto">삭제</button>
+                         </p>
+                      </div>
+                      <h5>회사 / 직책</h5>
+                      <ul class="input-div2">
+                         <li><input type="text" class="input-text" maxlength="50" id="belongsTo" placeholder="회사" value=""></li>
+                         <li><input type="text" class="input-text" maxlength="50" id="position" placeholder="직책" value=""></li>
+                      </ul>
+                      <h5>주소 변경</h5>
+                         <form id="shippingDetailForm">
+                            <input type="text" id="location1" name="address" value="[06236] 서울 강남구 테헤란로 146" class="input-text" onclick="Wpost(); $('#location1')[0].blur();">
+                            <input type="text" id="location2" maxlength="96" name="addressDetails" value="현익빌딩 3,4층 (신한은행건물)" class="input-text">
+                         </form>
+                      <h5>회사 소개를 해주세요.</h5>
+                  <div class="textarea-wrap">
+                         <textarea id="introduceme" maxlength="80"></textarea>
+                      </div>
+                      <div class="btn-bottom">
+                         <ul class="btn-div2">
+                            <li>
+                               <button type="button" class="wz button gray btn-darkgray" onclick="cancelModify()" id="mint">취소</button>
+                            </li>
+                            <li>
+                               <button type="button" class="wz button primary btn-mint" onclick="modify()" id="gray">확인</button>
+                            </li>
+                         </ul>
+                      </div>
+               </div>
+            </div>
+         </div>
+      </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/static/js/myPage/myPage-profile.js"></script>
+</html>
