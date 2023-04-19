@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>관리자 유저목록</title>
+    <title>문화공간 목록</title>
     <link rel="stylesheet" href="../../static/css/admin/admin.css">
     <link rel="stylesheet" href="../../static/css/admin/user.css">
 </head>
@@ -14,13 +14,13 @@
 <div class="modal-whole">
     <div class="modal">
         <div class="modal-header">
-            <h2 class="modal-title">회원 정보</h2>
+            <h2 class="modal-title">문화공간 정보</h2>
             <span class="close" onclick="closeModal()">&times;</span>
         </div>
         <div class="modal-body">
             <div class="member-profile">
                 <div class="profile-image">
-                    <img src="../../static/images/admin/teacher.png">
+                    <img src="teacher.png">
                 </div>
                 <div class="member-info">
                     <div class="info-row">
@@ -117,7 +117,7 @@
         </article>
         <!-- 검색 창 -->
         <div class="inner-wrapper">
-            <div class="page-title">회원 목록</div>
+            <div class="page-title">문화공간 목록</div>
             <table>
                 <thead>
                 <tr>
@@ -132,15 +132,17 @@
                         <!-- 체크박스 -->
                         <!-- <input type="checkbox" id="select-all" class="substituted"> -->
                     </th>
-                    <th>회원번호</th>
+                    <th>번호</th>
+                    <th>분류명</th>
                     <th>이름</th>
-                    <th>휴대폰 번호</th>
-                    <th>생년월일</th>
-                    <th>주소</th>
+                    <th>지역</th>
+                    <th>전화번호</th>
+                    <th>상태</th>
                     <th class="detail-top">상세보기</th>
                 </tr>
                 </thead>
                 <tbody>
+                <!-- 목록 하나 시작 -->
                 <tr>
                     <td>
                         <!-- 체크박스 -->
@@ -153,13 +155,15 @@
                         <!-- 체크박스 -->
                     </td>
                     <td>1</td>
-                    <td>한동석</td>
-                    <td>010-1234-5678</td>
-                    <td>2000.01.01</td>
-                    <td>경기도 남양주시</td>
+                    <td>체육시설</td>
+                    <td>다목적구장-응봉공원</td>
+                    <td>서울시 성동구</td>
+                    <td>02-2293-7646</td>
+                    <td>접수중</td>
                     <td><button class="show-detail" onclick="showModal()">상세보기</button></td>
                 </tr>
-                <!-- 회원 -->
+                <!-- 목록 하나 끝 -->
+                <!-- 목록 하나 시작 -->
                 <tr>
                     <td>
                         <!-- 체크박스 -->
@@ -172,13 +176,15 @@
                         <!-- 체크박스 -->
                     </td>
                     <td>2</td>
-                    <td>박다예</td>
-                    <td>010-5678-1234</td>
-                    <td>2001.01.01</td>
-                    <td>경기도 군포시</td>
+                    <td>체육시설</td>
+                    <td>다목적구장-응봉공원</td>
+                    <td>서울시 성동구</td>
+                    <td>02-2293-7646</td>
+                    <td>접수중</td>
                     <td><button class="show-detail" onclick="showModal()">상세보기</button></td>
                 </tr>
-                <!-- 회원 -->
+                <!-- 목록 하나 끝 -->
+                <!-- 목록 하나 시작 -->
                 <tr>
                     <td>
                         <!-- 체크박스 -->
@@ -191,13 +197,15 @@
                         <!-- 체크박스 -->
                     </td>
                     <td>3</td>
-                    <td>김욱성</td>
-                    <td>010-4321-8765</td>
-                    <td>1998.04.29</td>
-                    <td>서울특별시 송파구</td>
+                    <td>체육시설</td>
+                    <td>목동다목적경기장 평일(주간)</td>
+                    <td>서울시 양천구</td>
+                    <td>02-2640-3818</td>
+                    <td>예약마감</td>
                     <td><button class="show-detail" onclick="showModal()">상세보기</button></td>
                 </tr>
-                <!-- 회원 -->
+                <!-- 목록 하나 끝 -->
+                <!-- 목록 하나 시작 -->
                 <tr>
                     <td>
                         <!-- 체크박스 -->
@@ -210,13 +218,15 @@
                         <!-- 체크박스 -->
                     </td>
                     <td>4</td>
-                    <td>이순철</td>
-                    <td>010-4321-8765</td>
-                    <td>1997.01.01</td>
-                    <td>서울특별시 송파구</td>
+                    <td>체육시설</td>
+                    <td>다목적구장-응봉공원</td>
+                    <td>서울시 성동구</td>
+                    <td>02-2293-7646</td>
+                    <td>접수중</td>
                     <td><button class="show-detail" onclick="showModal()">상세보기</button></td>
                 </tr>
-                <!-- 회원 -->
+                <!-- 목록 하나 끝 -->
+                <!-- 목록 하나 시작 -->
                 <tr>
                     <td>
                         <!-- 체크박스 -->
@@ -229,13 +239,15 @@
                         <!-- 체크박스 -->
                     </td>
                     <td>5</td>
-                    <td>김정표</td>
-                    <td>010-4321-8765</td>
-                    <td>1997.01.01</td>
-                    <td>서울특별시 노원구</td>
+                    <td>체육시설</td>
+                    <td>목동다목적경기장 평일(주간)</td>
+                    <td>서울시 양천구</td>
+                    <td>02-2640-3818</td>
+                    <td>접수종료</td>
                     <td><button class="show-detail" onclick="showModal()">상세보기</button></td>
                 </tr>
-                <!-- 회원 -->
+                <!-- 목록 하나 끝 -->
+                <!-- 목록 하나 시작 -->
                 <tr>
                     <td>
                         <!-- 체크박스 -->
@@ -248,13 +260,15 @@
                         <!-- 체크박스 -->
                     </td>
                     <td>6</td>
-                    <td>김동한</td>
-                    <td>010-4321-8765</td>
-                    <td>1998.01.01</td>
-                    <td>인천광역시 남동구</td>
+                    <td>체육시설</td>
+                    <td>잠실제1풋살경기장</td>
+                    <td>서울시 송파구</td>
+                    <td>02-2240-8782</td>
+                    <td>접수중</td>
                     <td><button class="show-detail" onclick="showModal()">상세보기</button></td>
                 </tr>
-                <!-- 회원 -->
+                <!-- 목록 하나 끝 -->
+                <!-- 목록 하나 시작 -->
                 <tr>
                     <td>
                         <!-- 체크박스 -->
@@ -267,13 +281,15 @@
                         <!-- 체크박스 -->
                     </td>
                     <td>7</td>
-                    <td>임의택</td>
-                    <td>010-4321-8765</td>
-                    <td>1998.01.01</td>
-                    <td>경기도 평택시</td>
+                    <td>체육시설</td>
+                    <td>목동다목적경기장 평일(주간)</td>
+                    <td>서울시 양천구</td>
+                    <td>02-2640-3818</td>
+                    <td>접수종료</td>
                     <td><button class="show-detail" onclick="showModal()">상세보기</button></td>
                 </tr>
-                <!-- 회원 -->
+                <!-- 목록 하나 끝 -->
+                <!-- 목록 하나 시작 -->
                 <tr>
                     <td>
                         <!-- 체크박스 -->
@@ -286,13 +302,15 @@
                         <!-- 체크박스 -->
                     </td>
                     <td>8</td>
-                    <td>윤민우</td>
-                    <td>010-4321-8765</td>
-                    <td>1999.01.01</td>
-                    <td>서울특별시 동작구</td>
+                    <td>체육시설</td>
+                    <td>잠실제1풋살경기장</td>
+                    <td>서울시 송파구</td>
+                    <td>02-2240-8782</td>
+                    <td>접수중</td>
                     <td><button class="show-detail" onclick="showModal()">상세보기</button></td>
                 </tr>
-                <!-- 회원 -->
+                <!-- 목록 하나 끝 -->
+                <!-- 목록 하나 시작 -->
                 <tr>
                     <td>
                         <!-- 체크박스 -->
@@ -305,13 +323,15 @@
                         <!-- 체크박스 -->
                     </td>
                     <td>9</td>
-                    <td>김세윤</td>
-                    <td>010-4321-8765</td>
-                    <td>1997.10.15</td>
-                    <td>경기도 성남시</td>
+                    <td>체육시설</td>
+                    <td>다목적구장-응봉공원</td>
+                    <td>서울시 성동구</td>
+                    <td>02-2293-7646</td>
+                    <td>접수종료</td>
                     <td><button class="show-detail" onclick="showModal()">상세보기</button></td>
                 </tr>
-                <!-- 회원 -->
+                <!-- 목록 하나 끝 -->
+                <!-- 목록 하나 시작 -->
                 <tr>
                     <td>
                         <!-- 체크박스 -->
@@ -324,13 +344,14 @@
                         <!-- 체크박스 -->
                     </td>
                     <td>10</td>
-                    <td>정세인</td>
-                    <td>010-4321-8765</td>
-                    <td>2000.01.01</td>
-                    <td>경기도 평택시</td>
+                    <td>체육시설</td>
+                    <td>다목적구장-응봉공원</td>
+                    <td>서울시 성동구</td>
+                    <td>02-2293-7646</td>
+                    <td>예약마감</td>
                     <td><button class="show-detail" onclick="showModal()">상세보기</button></td>
                 </tr>
-                <!-- 회원 -->
+                <!-- 목록 하나 끝 -->
                 </tbody>
             </table>
             <div class="pages-wrapper">
