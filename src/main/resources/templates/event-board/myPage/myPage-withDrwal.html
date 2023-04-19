@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원탈퇴</title>
+    <!-- link 적용 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/static/myPage/myPage-withDrawal.css">
+</head>
+<body>
+    <div>
+        <div id="wz-header"></div>
+        <main class="account-drop wzui">
+              <div class="wrap">
+                <h1>회원 탈퇴</h1>
+                <p><strong>린먕</strong>님, 와디즈를 이용하시는데 혹시 아래와 같은 불편함이 있으셨으면, 아래 방법을 한번 이용해보세요.</p>
+                <div class="message-box">
+                  <dl>
+                    <dt>문자 메시지 / 이메일 수신이 불편하신가요?</dt>
+                    <dd>해당 정보는 MY 정보설정 &gt; <a href="/web/waccount/wAccountUpdateBasicInfo">기본 정보 설정</a>에서 하실 수 있습니다.</dd>
+                    <dt>투자회원 가입 시 업로드한 개인 신분증 때문에 불편하신가요?</dt>
+                    와디즈에서는 실명인증 확인 후, 24시간 이내 즉시 파기하고 있습니다.
+                    <dt>기타 불편한 사항이 있으시면 언제든 나눔의집에게 알려주세요.</dt>
+                    <dd>
+                    <a href="#" data-intercom-message="회원 탈퇴 관련 질문">나눔의집에 문의하기</a> ㅣ 1234-1234 ㅣ 카카오톡 친구추가 ‘와디즈’ ㅣ info@dhouse.kr</dd>
+                  </dl>
+                </div>
+                <div class="reason-text" id="inputDropOutReason" style="display:none">
+                  <input type="text" name="reason-text" id="reason-text" placeholder="사유를 입력해 주세요." class="large" maxlength="64">
+                  <em id="inputDropOutReasonError" style="display:none">탈퇴 사유를 입력해주세요.</em>
+                </div>
+                <h2>탈퇴 전, 꼭 확인하세요!</h2>
+                <p>탈퇴 전 반드시 아래 유의 사항을 확인하시기 바랍니다.<br><em>등록 진행 중인 기부가 있을때는 탈퇴가 불가능합니다.</em></p>
+                <dl>
+                  <dt>탈퇴 후 재가입 시 기존 정보 복구 불가</dt>
+                  <dd>참여한 기부 및 레벨, 포인트 등 개인 정보 일괄 삭제</dd>
+                  <dt>나눔의집 내 모든 서비스에서 탈퇴</dt>
+                  <dd>기부하기, 기부기업 소개, 배너 홍보 등 나눔의집 회원으로서 이용하던 서비스 모두 이용 불가</dd>
+                  <dt>포인트 미환급 불이익 감수</dt>
+                  <dd>기부 kg에 따른 포인트 일괄 삭제로 추후 재가입 및 홍보 이용 시 레벨 초기화</dd>
+                </dl>
+                    <label class="wz checkbox">
+                    <input type="checkbox" name="agree" value="Y" id="dropConfirm" onclick="test()">
+                        <span>상기 와디즈 탈퇴 시 유의 사항을 확인하였습니다.</span>
+                    </label>
+                </p>
+                <hr>
+                <form action="${pageContext.request.contextPath}/profileUpdate.myPage" name="delete" method="post">
+                <div class="drop-button">
+                  <input type="submit" value="회원 탈퇴" class="wz button red" disabled="disabled" id="btnDropOut">
+                </div></form>
+              </div>
+            </main>
+    </div>
+    </body>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/static/js/myPage/myPage-withDrawal.js"></script>
+<script>
+	let contextPath = "${pageContext.request.contextPath}";
+	let userId = "${user.userId}";
+</script>
+</html>
