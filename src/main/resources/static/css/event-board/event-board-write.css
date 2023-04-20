@@ -286,6 +286,7 @@ button:not(:disabled) {
     width: 116px;
     font-size: 15px;
     font-weight: 500;
+    font-family: inherit;
 }
 
 .waffle.button {
@@ -373,3 +374,27 @@ input[name=address]::placeholder {
     font-family: 'Noto Sans KR';
 }
 
+.submit-btn{
+    border-color: #00c4c4;
+    background-color: #00c4c4;
+    color: #fff;
+    padding: 14px 28px;
+    line-height: 1.4;
+    font-size: 18px;
+    font-family: inherit;
+    width: 444px;
+}
+
+.submit-btn[disabled]{
+    opacity: .45;
+    cursor: default;
+    pointer-events: none;
+}
+
+.submit-notice{
+    line-height: 18px;
+    letter-spacing: 0;
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 16px;
+}

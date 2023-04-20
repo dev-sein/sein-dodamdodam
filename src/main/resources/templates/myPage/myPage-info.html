@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My 정보설정</title>
+      <!-- link 적용 -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="../../static/css/myPage/myPage-info.css">
+</head>
+<body>
+    <div id="page-container">
+		<main id="main-app">
+			<!-- main -->
+			<div id="accountWrap">
+	            <!-- S : #newContainer -->
+	            <div id="newContainer">
+	                <!-- account-wrap with-footer -->
+	                <div class="account-wrap with-footer">
+	                    <h2 class="big">MY 정보설정</h2>
+	                    <a class="my-info" href="${pageContext.request.contextPath}/dhouse/user/myId.jsp">
+	                        <div class="my-info-text">
+	                            <h3>기본 정보 설정</h3>
+	                            <p>이름, 이메일, 휴대폰, SNS연동 등</p>
+	                        </div>
+	                        <div class="my-info-btn">
+	                            <i class="wadizicon wa-chevron-right"></i>
+	                        </div>
+	                    </a>
+	                    <a class="my-info" href="${pageContext.request.contextPath}/dhouse/user/myPassword.jsp">
+	                       <div class="my-info-text">
+	                         <h3>비밀번호 등록</h3>
+	                         <p>계정 비밀번호 등록</p>
+	                       </div>
+	                       <div class="my-info-btn">
+	                         <i class="wadizicon wa-chevron-right"></i>
+	                       </div>
+	                    </a>
+                        <a class="my-info" href="${pageContext.request.contextPath}/dhouse/user/myId.jsp">
+	                        <div class="my-info-text">
+	                            <h3>프로필 정보 설정</h3>
+	                            <p>프로필 사진, 경력, 학력,관심분야</p>
+	                        </div>
+	                        <div class="my-info-btn">
+	                            <i class="wadizicon wa-chevron-right"></i>
+	                        </div>
+	                    </a>
+                        <a class="my-info" href="${pageContext.request.contextPath}/dhouse/user/myId.jsp">
+	                        <div class="my-info-text">
+	                            <h3>이벤트 혜택 알림 설정</h3>
+	                            <p>이메일,SMS 알림 설정</p>
+	                        </div>
+	                        <div class="my-info-btn">
+	                            <i class="wadizicon wa-chevron-right"></i>
+	                        </div>
+	                    </a>
+                        <a class="my-info" href="${pageContext.request.contextPath}/dhouse/user/myId.jsp">
+	                        <div class="my-info-text">
+	                            <h3>새소식 알림 설정</h3>
+	                            <p>프로젝트별 새소식(메일, 앱 푸시)수신</p>
+	                        </div>
+	                        <div class="my-info-btn">
+	                            <i class="wadizicon wa-chevron-right"></i>
+	                        </div>
+	                    </a>
+                        <a class="my-info" href="${pageContext.request.contextPath}/dhouse/user/myId.jsp">
+	                        <div class="my-info-text">
+	                            <h3>메이커 팔로잉</h3>
+	                            <p>소식 받기 알림 설정</p>
+	                        </div>
+	                        <div class="my-info-btn">
+	                            <i class="wadizicon wa-chevron-right"></i>
+	                        </div>
+	                    </a>
+	                    <div class="my-info">
+	                        <h3><a href="${pageContext.request.contextPath}/dhouse/user/myPageWithdraw.jsp">회원 탈퇴</a></h3>
+	                    </div>
+	                </div>
+	                <!-- //account-wrap with-footer -->
+	            </div>
+	            <!-- E : #newContainer -->
+        	</div>
+        </main>
+	</div>
+</body>
+</html>
