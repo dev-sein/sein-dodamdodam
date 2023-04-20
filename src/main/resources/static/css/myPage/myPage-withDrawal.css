@@ -589,9 +589,9 @@ label.wz.checkbox>span:after {
     color: #fff;
 }
 
-.wz.button.red.disabled, .wz.button.red:disabled {
+/* .wz.button.red.disabled, .wz.button.red:disabled {
     color: hsla(0,0%,100%,.7);
-}
+} */
 
 #btnDropOut{
 	cursor: pointer;

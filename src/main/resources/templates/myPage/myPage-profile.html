@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>프로필</title>
+        <!-- css 적용 -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../../static/css/myPage/myPage-profile.css">
 </head>
 <body>
     <div id="container">
@@ -15,14 +20,14 @@
                         <div class="ProfileCorp_inner">
                             <h3 class="BlindText"></h3>
                             <!-- 프로필 이미지 -->
-                            <div aria-hidden="true" class="Avatar">
-                                <span class="Avatar_image" style="background-image: url('https://static.wadiz.kr/static/icon/profile-icon-4.png'); border: 1px solid rgb(221, 226, 230);"></span>
+                            <div aria-hidden="true" class="Avatar" >
+                                <span class="Avatar_image" style="background-image: url('https://static.wadiz.kr/assets/icon/profile-icon-6.png'); border: 1px solid rgb(221, 226, 230);"></span>
                             </div>
                             <!-- 사업자 회원 정보 -->
                             <div class="ProfileCorp_info">
                                 <dl class="ProfileInfo_box" aria-label="회원정보">
                                     <dt class="BlindText">회원닉네임</dt>
-                                    <dd class="ProfileInfo_nickname">땅콩이</dd>
+                                    <dd class="ProfileInfo_nickname">린먕</dd>
                                     <dt class="BlindText">회원유형</dt>
                                     <dd class="ProfileInfo_type">개인 회원</dd>
                                 </dl>
@@ -32,14 +37,14 @@
                                 <!-- 카테고리 박스 -->
                                 <dl class="ProfileActivityInfo_infoCountBox">
                                     <div>
-                                        <dt>게시글</dt>
+                                        <dt>참여</dt>
                                         <dd>
                                             0
                                             <span class="BlindText"></span>
                                         </dd>
                                     </div>
                                     <div>
-                                        <dt>댓글</dt>
+                                        <dt>지지서명</dt>
                                         <dd>
                                             0
                                             <span class="BlindText">회</span>
@@ -47,14 +52,16 @@
                                     </div>
                                     <!--  -->
                                     <div>
-                                        <dt></dt>
+                                        <dt>팔로워</dt>
                                         <dd>
+                                            0
                                             <span class="BlindText"></span>
                                         </dd>
                                     </div>
                                     <div>
-                                        <dt></dt>
+                                        <dt>팔로잉</dt>
                                         <dd>
+                                            0
                                             <span class="BlindText"></span>
                                         </dd>
                                     </div>
@@ -68,7 +75,7 @@
                             </a>
                             <a href="https://www.wadiz.kr/web/wmypage/myprofile/modifyprofile" class="ProfileSet">
                                 <span>
-                                    <span class="ProfileSet_button">프로필 설정</span>
+                                    <span class="ProfileSet_button">프로필 편집하기</span>
                                 </span>
                             </a>
                         </div>
@@ -78,9 +85,12 @@
                     <div class="mypage-project bg">
                         <div class="tab-list">
                             <ul role="tablist">
-                                <!-- 기부한 -->
+                                <!-- 참여한 -->
                                 <li class="active">
-                                    <a href="https://www.wadiz.kr/web/wmypage/myprofile/fundinglist" role="tab" aria-selected="true" aria-controls="tabFunding" tabindex="0">기부한</a>
+                                    <a class="list1" href="#" role="tab" aria-selected="true" aria-controls="tabFunding" tabindex="0">참여한</a>
+                                </li>
+                                <li class="active">
+                                    <a class="list2" href="#2" role="tab" aria-selected="true" aria-controls="tabFunding" tabindex="0">찜한</a>
                                 </li>
                             </ul>
                         </div>
@@ -91,63 +101,9 @@
                             </div>
                             <!-- 공개 참여 현황 -->
                             <div id="projectCardList" class="card-list">
-                                <p id="emptyProjectText" style="display: none;">공개로 참여한 기부현황이 없습니다.</p>
+                                <p id="emptyProjectText" ">공개로 참여한 프로젝트가 없습니다.</p>
                                 <ul>
                                     <!-- 기부목록 -->
-                                    <li class="reward " data-hiddentype="F" data-campaintype="RWD" data-campaignid="155943" data-campaignhiddenseq="">
-                                        <a href="/web/campaign/detail/155943">
-                                            <div class="project-card">
-                                                <div class="card-img-section">
-                                                      <em class="project-img" style="background-image:url(/images/user/microwave.jpg)"></em>
-                                                    <em class="project-type reward">기부</em>
-                                                </div>
-                                                <div class="card-info-section">
-                                                    <h4>전자레인지 무료나눔</h4>
-                                                    <h5>일시 : 2023.02.20</h5>
-                                                    <div class="card-category">
-                                                        <span class="category1">가전제품</span>
-                                                        <span class="category2"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="reward " data-hiddentype="F" data-campaintype="RWD" data-campaignid="155943" data-campaignhiddenseq="">
-                                        <a href="/web/campaign/detail/155943">
-                                            <div class="project-card">
-                                                <div class="card-img-section">
-                                                      <em class="project-img" style="background-image:url(/images/user/washer.jpg)"></em>
-                                                    <em class="project-type reward">기부</em>
-                                                </div>
-                                                <div class="card-info-section">
-                                                    <h4>세탁기 무료나눔</h4>
-                                                    <h5>일시 : 2023.02.21</h5>
-                                                    <div class="card-category">
-                                                        <span class="category1">가전제품</span>
-                                                        <span class="category2"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="reward " data-hiddentype="F" data-campaintype="RWD" data-campaignid="155943" data-campaignhiddenseq="">
-                                        <a href="/web/campaign/detail/155943">
-                                            <div class="project-card">
-                                                <div class="card-img-section">
-                                                      <em class="project-img" style="background-image:url(/images/user/screen.png)"></em>
-                                                    <em class="project-type reward">기부</em>
-                                                </div>
-                                                <div class="card-info-section">
-                                                    <h4>모니터 무료나눔</h4>
-                                                    <h5>일시 : 2023.02.22</h5>
-                                                    <div class="card-category">
-                                                        <span class="category1">가전제품</span>
-                                                        <span class="category2"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -157,4 +113,6 @@
         </div>
 </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/static/js/myPage/myPage-profile.js"></script>
 </html>

@@ -104,7 +104,7 @@ body>#root, #wadizTopBanner, #page-container {
 
 .account-wrap h2.big {
     margin-bottom: 16px;
-    font-size: 20px;
+    font-size: 25px;
     color: #4a4a4a;
     font-weight: normal;
 }
@@ -128,7 +128,7 @@ body>#root, #wadizTopBanner, #page-container {
 }
 
 .account-wrap h3 {
-    font-size: 13px;
+    font-size: 16px;
     line-height: 16px;
     color: #4a4a4a;
     font-weight: normal;
@@ -140,7 +140,7 @@ body>#root, #wadizTopBanner, #page-container {
 }
 
 .my-info p {
-    font-size: 10px;
+    font-size: 12px;
 }
 
 .my-info-btn {

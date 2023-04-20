@@ -1,0 +1,270 @@
+body {
+    font-family: Roboto,Noto Sans KR,-apple-system,Dotum,sans-serif;
+    overflow-y: scroll;
+    line-height: 1.5em;
+    letter-spacing: -.02em;
+    color: rgba(0,0,0,.84);
+    font-size: 15px;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a, address, article, aside, audio, b, body, button, canvas, caption, dd, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, html, i, img, input, label, legend, li, nav, ol, p, pre, section, small, span, strong, summary, table, tbody, td, th, thead, time, tr, ul, video {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+    font: inherit;
+    box-sizing: border-box;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+article, blockquote, body, dd, div, dl, dt, h1, h2, h3, h4, html, li, main, ol, p, section, table, tbody, td, th, thead, tr, ul {
+    margin: 0;
+    padding: 0;
+}
+
+li, ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body, body button, body input, body li, body ol, body select, body textarea, body ul {
+    box-sizing: border-box;
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+body li, body ol, body ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a, em, div {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+a, a:active, a:hover, a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+body a {
+    text-decoration: none;
+    color: rgba(0,0,0,.84);
+}
+
+strong {
+    font-weight: 700;
+}
+
+.free-board-container {
+    background: #f4f4f4;
+    padding-bottom: 210px;
+    width: 100%;
+    height: 100%;
+}
+
+.free-board-top {
+    z-index: 10;
+    border-top: 1px solid #e4e4e4;
+    background: #f4f4f4;
+    width: 100%;
+}
+
+.free-board-top:after {
+    display: block;
+    clear: both;
+    content: "";
+}
+
+.free-board-top .free-board-title {
+    float: left;
+    margin-bottom: 24px;
+    background: #2c3d50;
+    width: 100%;
+    height: 100px;
+}
+
+.free-board-top .free-board-title:after {
+    display: block;
+    clear: both;
+    content: "";
+}
+
+.free-board-top .free-board-title .title-bar {
+    margin-left: 2%;
+
+}
+
+.free-board-top .free-board-title .title-bar:after {
+    display: block;
+    clear: both;
+    content: "";
+}
+
+.title-bar-month {
+    float: left;
+    margin-top: 15px;
+    margin-left: 10px;
+    background: #e4e4e4;
+    padding: 12px 0;
+    width: 70px;
+    text-align: center;
+    line-height: initial;
+    color: #2c3d50;
+    font-size: 14px;
+}
+
+.title-bar-month strong {
+    font-size: 38px;
+}
+
+.title-bar-text {
+    float: left;
+    margin: 15px 0 0 12px;
+    width: 65%;
+    line-height: 1.25;
+    word-break: break-word;
+    color: #fff;
+    font-size: 17px;
+}
+
+.title-bar-text span {
+    display: block;
+    margin-top: 2px;
+    color: #a6afde;
+    font-size: 13px;
+}
+
+.free-board-type {
+    margin: 0 auto 15px;
+    width: 90%;
+}
+
+.bar-button-list {
+    margin-top: 11px;
+    height: 100%;
+}
+
+.bar-button-list:after {
+    display: block;
+    clear: both;
+    content: "";
+}
+
+.bar-button {
+    float: left;
+    border-right: 1px solid #e4e4e4;
+    cursor: pointer;
+    width: 100%;
+    max-width: 20%;
+    height: 100%;
+}
+
+.bar-button:first-child {
+    border-left: 1px solid #e4e4e4;
+}
+
+.bar-button a {
+    display: block;
+    border-top: 1px solid #e4e4e4;
+    border-bottom: 1px solid #e4e4e4;
+    background: #fff;
+    padding: 5px 0;
+    text-align: center;
+    font-size: 14px;
+}
+
+.bar-button a em {
+    display: block;
+    margin: 0 auto 10px;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    font-weight: 500;
+}
+
+.bar-butto .type-all>em {
+    width: auto;
+    line-height: 18px;
+    font-weight: 500;
+}
+
+
+
+
+
+
+
+
+@media screen and (min-width: 769px) {
+    .free-board-container {
+        padding-bottom: 90px;
+    }
+
+    .free-board-top {
+        position: sticky;
+        position: -webkit-sticky;
+        top: 0;
+        border-bottom: 1px solid #e4e4e4;
+        height: 103px;
+    }
+
+    .free-board-top .free-board-title {
+        width: 48%;
+    }
+
+    .free-board-top .free-board-title .title-bar {
+        float: right;
+        width: 515px;
+    }
+
+    .title-bar-text {
+        margin: 23px 0 0 20px;
+        width: 400px;
+        line-height: initial;
+        font-size: 21px;
+    }
+
+    .title-bar-text span {
+        font-size: 14px;
+    }
+
+    .free-board-type {
+        float: left;
+        width: 52%;
+        height: 100px;
+    }
+
+    .bar-button-list {
+        margin-top: 0;
+        padding-right: 8px;
+        padding-left: 16px;
+    }
+
+    .bar-button {
+        width: 112px;
+    }
+    
+    .bar-button a {
+        padding: 19px 0 21px;
+    }
+
+    .bar-button a em {
+        margin: 0 auto 20px;
+    }
+}
+
+
