@@ -1,0 +1,10 @@
+.menus-bar {
+    margin: 80px auto 60px;
+    max-width: 1280px;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
