@@ -1,3 +1,4 @@
+// 현재시간
 var Target = document.querySelector(".time");
 
 function clock() {
@@ -13,7 +14,7 @@ function clock() {
     var seconds = time.getSeconds();
 
     Target.innerText =
-        `${month + 1}월 ${date}일 ${week[day]}요일 ` +
+        ` ${month + 1}월 ${date}일 ${week[day]}요일 ` +
         `${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
 
 }
@@ -39,6 +40,12 @@ selectMembers.forEach(member => {
         }
     });
 });
+
+// 스크롤 기능 막기
+window.addEventListener("scroll", () => {
+    window.scrollTo(0, 0);
+});
+// 스크롤 기능 막기
 
 
 
