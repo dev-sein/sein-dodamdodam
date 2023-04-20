@@ -1,5 +1,13 @@
 @charset "UTF-8";
 
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;700&display=swap');
+
+@font-face {
+    font-family: wadizicon;
+    font-weight: 400;
+    font-style: normal;
+    src: url(https://static.wadiz.kr/static/web/media/wadizicon.1de1502a.eot#iefix) format("embedded-opentype"),url(https://static.wadiz.kr/static/web/media/wadizicon.f5cdf486.woff2) format("woff2"),url(https://static.wadiz.kr/static/web/media/wadizicon.9eb6b0a9.woff) format("woff"),url(https://static.wadiz.kr/static/web/media/wadizicon.e5379495.ttf) format("truetype"),url(https://static.wadiz.kr/static/web/media/wadizicon.077f5804.svg#wadizicon) format("svg")
+}
 
 body {
     line-height: 1.33;
@@ -14,6 +22,11 @@ body {
     font-size: 15px;
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body, html {
+    -webkit-text-size-adjust: none;
 }
 
 a, address, article, aside, audio, b, body, button, canvas, caption, dd, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, html, i, img, input, label, legend, li, nav, ol, p, pre, section, small, span, strong, summary, table, tbody, td, th, thead, time, tr, ul, video {
@@ -25,343 +38,542 @@ a, address, article, aside, audio, b, body, button, canvas, caption, dd, div, dl
     box-sizing: border-box;
 }
 
-article, blockquote, body, dd, div, dl, dt, h1, h2, h3, h4, html, li, main, ol, p, section, table, tbody, td, th, thead, tr, ul {
-    margin: 0;
-    padding: 0;
+article, main, section {
+    display: block;
 }
 
-body, h1, h2, h3, h4, h5, h6, p, em, div {
-    margin: 0;
-    padding: 0;
-    border: 0;
+body>#root, #wadizTopBanner, #page-container {
+    transform-origin: 50% 0;
+    transition-property: opacity,transform;
+    transition-duration: 80ms;
+    transition-timing-function: ease-out;
 }
 
-button {
-    border-radius: 0;
-    cursor: pointer;
-    background: none;
-    color: inherit;
-}
-
-body, body button, body input, body li, body ol, body select, body textarea, body ul {
-    box-sizing: border-box;
-    margin: 0;
-    border: 0;
-    padding: 0;
+strong {
+    font-weight: 700;
 }
 
 body li, body ol, body ul {
     list-style: none;
 }
 
-#waccountWrap {
-    width: 100%;
-    min-height: 100%;
-    background: #f9f9f9;
-    font-family: 'Noto Sans KR';
-    -webkit-font-smoothing: antialiased;/* webkit-font-smoothing : 부드러운 폰트 */
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
-.waccount-wrap {
+/* container */
+#mypageWrap {
     width: 100%;
 }
 
-#waccountContainer {
-    padding: 35px 20px 100px;
-    color: #4a4a4a;
-}
-/* 프로필 정보 설정 */
-.waccount-wrap h3 {
-    margin-bottom: 15px;
-    font-size: 20px;
-    line-height: 24px;
-    font-weight: normal;
-}
-/* 프로필 사진 */
-.waccount-wrap h5 {
-    margin-bottom: 5px;
-    padding-top: 10px;
-    font-size: 15px;
-    line-height: 20px;
-    font-weight: normal;
-}
-/* 프로필 사진 수정 및 삭제 */
-#image {
-	visibility:hidden;
+#mypageWrap, #mypageWrap * {
+    font-family: "Noto Sans KR";
+    -webkit-font-smoothing: antialiased;
 }
 
-.profileimg-wrap {
-    width: 100%;
-    margin-bottom: 20px;
+/* 사업자 프로필 */
+.ProfileCorp {
+    margin: 0 auto;
+    padding: 8px 24px 32px;
+    max-width: 870px;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    box-sizing: content-box;
+    color: inherit;
 }
 
-.profileimg-wrap .profileimg {
+.ProfileCorp_inner {
     position: relative;
-    display: block;
-    padding: 0;
-    width: 100px;
-    height: 100px;
-    margin: 0 auto 25px;
-    background: #000;
-    border: none;
-    border-radius: 50%;
+}
+
+/* 프로필 상세목록 - BlindText */
+.BlindText {
+    position: absolute;
+    margin: -1px;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
     overflow: hidden;
 }
 
-.profileimg-wrap .profileimg em {
-    display: inline-block;
+/* 프로필 이미지 */
+.Avatar {
+    display: inline-flex;
+    position: relative;
+    outline: none;
+    border: none;
+    border-radius: 100%;
+    padding: 0;
+    width: 64px;
+    height: 64px;
+    vertical-align: middle;
+    margin-bottom: 8px;
+}
+
+.Avatar>span {
+    display: block;
+    position: absolute;
+    opacity: 1;
+    border-radius: 100%;
+    background: no-repeat 50% / cover;
     width: 100%;
     height: 100%;
-    text-align: center;
-    background: no-repeat center center #fff;
-    background-size: cover;
+}
+/* 회원 닉네임 */
+.ProfileInfo_box .ProfileInfo_nickname {
+    line-height: 28px;
+    letter-spacing: -.3px;
+    font-size: 16px;
+    font-weight: 700;
+    display: inline;
+    margin-right: 4px;
+    vertical-align: middle;
 }
 
-.profileimg-wrap .setting-profileimg {
-    display: block;
-    text-align: center;
-}
-
-.profileimg-wrap .setting-profileimg button {
+/* 회원 타입 */
+.ProfileInfo_box .ProfileInfo_type {
+    line-height: 18px;
+    letter-spacing: 0;
+    font-size: 12px;
+    font-weight: 400;
     display: inline-block;
-    padding: 0;
-    margin: 0 5px;
-    font-size: 13px;
-    color: #4a4a4a;
-    line-height: 13px;
-    background: none;
-    border: none;
-    border-bottom: 1px solid #4a4a4a;
+    vertical-align: middle;
+    word-spacing: -1.5px;
+    color: #adb5bd;
 }
 
-.input-div2 {
-    width: 100%;
-    padding: 0;
-}
-/* 회사 */
-.input-div2 li:first-child {
-    float: left;
-    width: 49%;
-    padding: 0;
-}
-/* 직책 */
-.input-div2 li:last-child {
-    float: right;
-    width: 49%;
-    padding: 0;
+/* 가상요소 */
+.ProfileInterestKeyword {
+    margin-left: -4px;
 }
 
-.input-text, textarea {
+.ProfileInterestKeyword:after {
+    display: block;
+    clear: both;
+    content: "";
+}
+
+/* 카테고리 박스 */
+.ProfileActivityInfo_infoCountBox {
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+    text-align: center;
+    color: #495057;
+}
+/* 레벨 */
+.ProfileActivityInfo_infoCountBox>div {
+    display: flex;
+    position: relative;
+    flex: 1;
+    flex-direction: column-reverse;
+    align-items: center;
+    padding: 12px 10px 16px;
+}
+
+.ProfileActivityInfo_infoCountBox dt {
+    line-height: 18px;
+    letter-spacing: 0;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.ProfileActivityInfo_infoCountBox dd {
+    line-height: 20px;
+    letter-spacing: 0;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* 프로필 설정 */
+.ProfileSet {
+    position: relative;
+    transition-property: background-color,border-color,color,opacity;
+    transition-duration: .15s;
+    border: 1px solid #cdd3d8;
+    border-radius: 4px;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 9px 16px;
+    vertical-align: middle;
+    text-decoration: none;
+    line-height: 1.43;
+    white-space: nowrap;
+    color: #495057;
+    font-size: 14px;
+    font-weight: 500;
+    box-sizing: border-box!important;
+    margin-top: 8px;/* 합침 */
     -webkit-appearance: none;
-    appearance: none;
-    border-radius: 0;
+    -webkit-font-smoothing: antialiased;
 }
 
-.input-text {
-    box-sizing: border-box;
+a.ProfileSet {
+	display: inline-block;
+    align-items: center;
+    text-decoration: none;
+	padding: 9px 16px;
+    line-height: 1.45;
+    font-size: 14px;
+    text-align: center;
+    width: 100%;
+    color: inherit;
+    margin-left: 10px;
+}
+
+.ProfileSet span {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: top;
+}
+
+.ProfileSet .ProfileSet_button {
+    vertical-align: top;
+}
+
+/* 배너신청하기 버튼 : 색지정 */
+a.Mint {
+	border-color: #00c4c4;
+	background-color: #00c4c4;
+    color: #fff !important;
+}
+
+#apply:hover {
+	border-color: #00b2b2;
+	background-color: #00b2b2;
+}
+
+a.ProfileSet:hover{
+	border-color: #E9ECEF;
+	background-color: #E9ECEF;
+}
+
+
+/* 참여한 */
+.mypage-project.bg {
+    background: #F5F7FA;
+    padding-bottom: 160px;
+}
+
+.mypage-project .tab-list {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 1px 0 0 rgb(0 0 0 / 8%);
+    z-index: 100;
+    transition-property: background-color,-webkit-backdrop-filter,backdrop-filter;
+    transition-duration: .5s;
+    border-top: none;
+}
+
+.mypage-project.bg .tab-list {
+    border-top: none;
+}
+
+.mypage-project .tab-list ul li {
+    float: left;
+    width: 33.33333%;
+}
+
+.mypage-project .tab-list ul li a {
     display: block;
     width: 100%;
-    padding: 0 17px;
-    margin-bottom: 7px;
-    height: 46px;
-    line-height: 45px;
-    font-size: 13px;
-    color: #4a4a4a;
-    background: #fff;
-    border: 1px solid #e4e4e4;
-    outline: none;
+    height: 47px;
+    font-size: 15px;
+    line-height: 48px;
+    color: #90949c;
+    text-align: center;
+    border-bottom: 1px solid #fff;
+    text-decoration: none;
 }
 
-.input-text {
-    -webkit-appearance: none;
-    border-radius: 0;
+.mypage-project .tab-list ul li.active a  {
+    color: #00c4c4;
+    height: 47px;
 }
+
+.mypage-project .project-list {
+    width: 100%;
+    padding: 0;
+    /* background: #F5F7FA; */
+}
+
 /* 가상요소 */
-.input-div2:after {
+.mypage-project .tab-list ul:after {
     content: "";
     clear: both;
     display: block;
 }
 
-/* 회사소개 내용 */
-.textarea-wrap {
-    width: 100%;
-    margin-bottom: 20px;
+/* 공개 참여 기부가 있을 때 */
+.mypage-project .top-area {
+    position: relative;
+    padding: 16px 16px 24px;
 }
 
-.textarea-wrap textarea {
-    box-sizing: border-box;
-    display: block;
-    width: 100%;
-    padding: 0 17px;
-    margin-bottom: 7px;
-    height: 100px;
-    line-height: 20px;
-    font-size: 13px;
-    color: #4a4a4a;
-    background: #fff;
-    border: 1px solid #e4e4e4;
-    outline: none;
-    resize: none;
-}
-
-/* 버튼 */
-.btn-bottom {
-    width: 100%;
-    padding-top: 20px;
-}
-
-.btn-div2 {
-    width: 100%;
-    padding: 0;
-}
-
-.wz.button {
-    transition-property: background-color,border-color,color,opacity;
-    transition-duration: .2s;
-    border: 1px solid rgba(0,0,0,.15);
-    border-radius: 3px;
-    background-color: #fff;
-    cursor: pointer;
-    padding: 0 1.41176em;
-    height: 48px;
-    vertical-align: middle;
-    line-height: 1;
-    color: rgba(0,0,0,.54);
-    font-size: 17px;
+.mypage-project .top-area .status-text {
+    font-size: 12px;
     font-weight: 400;
+    line-height: 16px;
+    color: #44484b;
+}
+
+/* 공개 참여 기부가 없을 때 */
+.mypage-project .card-list {
+    width: 100%;
+}
+
+#emptyProjectText {
+    padding: 80px 0;
+    text-align: center;
+    line-height: 24px;
+    letter-spacing: -0.5;
+    font-size: 17px;
+    color: #44484B;
+}
+
+/* 리워드 리스트 */
+.mypage-project .card-list ul li {
+    position: relative;
+    margin-bottom: 16px;
+}
+
+.project-card, .project-card * {
+    box-sizing: content-box !important;
+}
+
+.project-card {
+    width: 100%;
+    text-align: left;
+    position: relative;
+}
+
+.project-card .card-img-section {
+    position: relative;
+    width: 100%;
+}
+
+.project-card .card-img-section .project-img {
+    display: block;
+    width: 100%;
+    min-height: 225px;
+    background: #0f171e 50% 50%/cover;
+}
+
+.project-card .card-img-section .project-type {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    padding: 0 6px;
+    height: 24px;
+    font-size: 12px;
+    line-height: 24px;
+    color: #fff;
+    z-index: 10;
+    opacity: .96;
+}
+
+.project-card .card-img-section .project-type.reward {
+    background: #00c4c4;
+}
+
+/* 가상요소 */
+.project-card .card-img-section:after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    content: '';
+    border: 1px solid rgba(0, 0, 0, .06);
     box-sizing: border-box!important;
-    -webkit-appearance: none;
-    display: inline-block;
-    padding-top: 0.07em;
-    text-decoration: none;
 }
 
-/* 프로필 취소 */
-.btn-div2 li:first-child {
+/* 기부목록 */
+.project-card .card-info-section {
+    position: relative;
+    height: 143px;
+    padding: 0 20px;
+    border: 1px solid #DADCE0;
+    border-top: none;
+    background: #fff;
+}
+
+.project-card .card-info-section h4 {
+    padding: 16px 0 0;
+    margin: 0 0 8px;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -.02em;
+    line-height: 24px;
+    max-height: 48px;
+    color: #1D2129;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+}
+
+.project-card .card-info-section h5 {
+    margin: 0;
+    padding-bottom: 16px;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 18px;
+    color: #90949c;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.project-card .card-info-section .card-category {
+    position: absolute;
+    left: 0;
+    bottom: 20px;
+    width: 100%;
+    height: 12px;
+}
+
+.project-card .card-info-section .card-category .category1 {
     float: left;
-    width: 49%;
-    padding: 0;
-}
-
-.waccount-wrap .btn-darkgray {
     display: block;
-    width: 100%;
-    height: 46px;
+    padding-left: 20px;
+    width: 52%;
+    text-align: left;
     font-size: 13px;
-    line-height: 46px;
-    text-align: center;
-    color: #fff;
-    background: #8c8881;
-    border: none;
-    box-sizing: border-box;
+    color: #0d0f12;
+    letter-spacing: -1px;
+    box-sizing: border-box!important;
 }
 
-.wz.button.gray, .wz.button.gray-outline {
-    border-color: #90949c;
-}
-
-.wz.button.gray {
-    background-color: #90949c;
-    color: #fff;
-}
-
-/* 프로필 왁인 */
-.btn-div2 li:last-child {
+.project-card .card-info-section .card-category .category2 {
     float: right;
-    width: 49%;
-    padding: 0;
-}
-
-.waccount-wrap .btn-mint {
     display: block;
-    width: 100%;
-    height: 46px;
-    font-size: 13px;
-    line-height: 44px;
-    text-align: center;
-    color: #fff;
-    background: #23dbab;
-    border: none;
-    box-sizing: border-box;
+    padding-right: 20px;
+    width: 48%;
+    text-align: right;
+    font-size: 11px;
+    color: #00c4c4;
+    letter-spacing: -1px;
+    box-sizing: border-box!important;
 }
 
-.wz.button.primary, .wz.button.primary-outline {
-    border-color: #00c4c4;
+/* 가상요소 */
+.project-card .card-info-section .card-category:after {
+    content: "";
+    clear: both;
+    display: block;
 }
 
-.wz.button.primary {
-    background-color: #00c4c4;
-    color: #fff;
-}
 
-#gray:hover{
-	background-color: #00b2b2;
-}
-
-#mint:hover{
-	background-color:#60656A;
-}
-
-#imageAdd{
-	background-color: #fff;
-	border-color: #fff;
-}
-
-#file {
-  display: none;
-}
-
-.setting-profileimg{
-	position: relative;
-    display: flex;
-}
-
-.btn-upload{
-    left: 45%;
-	cursor:pointer;
-	position: absolute;
-    top: 99px;
-}
-
-.btn-upload span{
-font-size: 13px;
-}
-
-#btn_deletePhoto{
-	right: 36%;
-	margin: 0;
-	text-decoration: none;
-}
-
-#btn_deletePhoto span{
-	font-size: 13px;
-	text-decoration: none!important;
-}
-#preview{
-	width: 100px;
-	height: 100px;
-}
-
-/* ===================================media=================================== */
+/* ======================================media========================================== */
 @media screen and (min-width: 960px) {
-#waccountContainer {
-    width: 400px;
+.mypage-project .tab-list ul {
+    width: 960px;
     margin: 0 auto;
-    padding: 50px 0;
+    padding: 0 24px;
+}
+
+.myprofile-wrap .mypage-project .card-list ul, .myprofile-wrap .mypage-project .tab-list ul, .myprofile-wrap .mypage-project .top-area {
+    width: 918px;
+}
+
+.mypage-project .tab-list ul li {
+    width: auto;
+    margin-right: 24px;
+}
+
+.mypage-project .tab-list ul li.active a {
+    font-weight: 700;
+}
+
+.mypage-project .top-area {
+    width: 960px;
+    margin: 0 auto;
+    padding: 16px 24px 35px;
+}
+
+.mypage-project .top-area .status-text {
+    font-size: 13px;
+    line-height: 18px;
+}
+
+.mypage-project .card-list ul {
+    width: 960px;
+    margin: -2px auto 0;
+    padding: 0 9px;
+}
+
+.mypage-project .card-list ul li {
+    float: left;
+    width: 300px;
+    padding: 0 15px;
+}
+
+.project-card .card-img-section .project-img {
+    height: 225px;
+    overflow: hidden;
+}
+
+.mypage-project .card-list ul:after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+}
+
+@media screen and (min-width: 769px) {
+.ProfileCorp {
+    padding-top: 50px;
+    padding-bottom: 80px;
+}
+
+.ProfileCorp_inner {
+    display: flex;
+    padding-left: 94px;
+}
+
+.Avatar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: 80px;
+}
+
+.ProfileCorp_info {
+    flex-basis: 370px;
+    flex-shrink: 0;
+    max-width: 370px;
+}
+
+.ProfileActivityInfo_infoCountBox {
+    justify-content: initial;
+    margin: 6px 0 -12px;
+}
+
+.ProfileActivityInfo_infoCountBox>div {
+    flex: none;
+    padding: 12px 20px 16px;
 }
 
 
-
-
-
-
-
-
-
-
-
+.ProfileActivityInfo_infoCountBox>div:first-child {
+    padding-left: 0;
 }
 
+.ProfileActivityInfo_infoCountBox dt {
+    margin-top: 2px;
+}
 
-
+.ProfileSet {
+    margin: auto 0 0 auto;
+    max-width: 327px;
+}

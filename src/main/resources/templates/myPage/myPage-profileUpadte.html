@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/myPage/myPage-profile.css">
+    <link rel="stylesheet" href="/static/css/myPage/myPage-profileUpdate.css">
 </head>
 <body>
       <!-- 프로필 정보 설정 -->
@@ -20,7 +20,8 @@
                    <div id="tabContent1" class="tab-content">
                       <h5>프로필 사진</h5>
                       <div class="profileimg-wrap">
-                         <button type="file" id="resultProfileImg" class="profileimg" onclick="setThumbnail"><em id="image_container" style="background-image:url(https://static.wadiz.kr/static/icon/profile-icon-4.png)"></em></button>
+                         <button type="file" id="resultProfileImg" class="profileimg" onclick="setThumbnail">
+                           <em id="image_container" style="background-image: url('https://static.wadiz.kr/assets/icon/profile-icon-6.png');"></em></button>
                          <p class="setting-profileimg">
                             <button type="button" onclick="$('#uploadProfileImg').click()" id="btn_updatePhoto">
                                <span id="img">바꾸기</span>
@@ -28,17 +29,17 @@
                             <button type="button" onclick="deletePhoto()" id="btn_deletePhoto">삭제</button>
                          </p>
                       </div>
-                      <h5>회사 / 직책</h5>
+                      <h5>직업 / 직책</h5>
                       <ul class="input-div2">
-                         <li><input type="text" class="input-text" maxlength="50" id="belongsTo" placeholder="회사" value=""></li>
+                         <li><input type="text" class="input-text" maxlength="50" id="belongsTo" placeholder="직업" value=""></li>
                          <li><input type="text" class="input-text" maxlength="50" id="position" placeholder="직책" value=""></li>
                       </ul>
                       <h5>주소 변경</h5>
                          <form id="shippingDetailForm">
-                            <input type="text" id="location1" name="address" value="[06236] 서울 강남구 테헤란로 146" class="input-text" onclick="Wpost(); $('#location1')[0].blur();">
-                            <input type="text" id="location2" maxlength="96" name="addressDetails" value="현익빌딩 3,4층 (신한은행건물)" class="input-text">
+                            <input type="text" id="location1" name="address" value="주소를 입력해주세요" class="input-text" onclick="Wpost(); $('#location1')[0].blur();">
+                            <input type="text" id="location2" maxlength="96" name="addressDetails" value="상세주소를 입력해주세요" class="input-text">
                          </form>
-                      <h5>회사 소개를 해주세요.</h5>
+                      <h5>자신을 소개를 해주세요.</h5>
                   <div class="textarea-wrap">
                          <textarea id="introduceme" maxlength="80"></textarea>
                       </div>
@@ -58,5 +59,5 @@
       </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-<script src="/static/js/myPage/myPage-profile.js"></script>
+<script src="/static/js/myPage/myPage-profileUpdate.js"></script>
 </html>
