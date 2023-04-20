@@ -19,9 +19,9 @@
     font-style: normal;
 }
 /* 스크롤 없애기 */
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
     display: none;
-}
+} */
 /* 스크롤 없애기 */
 
 
@@ -95,9 +95,11 @@ header{
 }
 
 nav{
-    background-color: var(--main-color);
-    height: 100%;
+    background-color: #fff;
+    /* 헤더 70px + border 1px */
+    height: calc(100vh - 71px);
     width: 250px;
+    /* border-right: 1px solid var(--main-color); */
 }
 
 .time-wrapper{
@@ -127,7 +129,8 @@ li{
 }
 
 main{
-    height: calc(100vh - 70px);
+    /* 헤더 70px + border 1px */
+    height: calc(100vh - 71px);
     width: 100%;
     display: flex;
 }
@@ -146,8 +149,8 @@ main{
     height: fit-content;
     /* font-family: 'KOTRA_BOLD-Bold'; */
     font-family: 'TheJamsil5Bold';
-    font-size: 20px;
-    color: #fff;
+    font-size: 17px;
+    color: #474747;
     /* background-color: var(--main-color); */
     padding-left: 40px;
     text-align: left;
@@ -158,7 +161,7 @@ content{
     width: 100%;
     height: 100%;
     /* background: #10837614; */
-    background: #1083760d;
+    background: #1083761c;
 
 }
 
@@ -184,9 +187,33 @@ content{
     font-family: "TheJamsil5Bold";
     /* font-family: 'OAGothic-ExtraBold'; */
     /* font-family: 'KOTRA_BOLD-Bold'; */
-    padding-top: 25px;
+    padding-top: 22px;
     margin-left: 30px;
     color: #000000b8;
+}
+
+.title-wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+
+.delete-button{
+    width: 120px;
+    background-color: #fff;
+    color: #000000b8;
+    margin-top: 22px;
+    text-align: center;
+    border-radius: 5px;
+    position: relative;
+    right: 20px;
+    align-items: center;
+    font-size: 18px;
+    line-height: 18px;
+    padding: 9px 0;
+    border: 1px solid #00000029;
+    font-family: TheJamsil5Bold;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    cursor: pointer;
 }
 
 /* searchBox */
@@ -220,7 +247,7 @@ content{
     color: #434343;
     border-radius: 16px;
     box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.1);
-    border: 2px solid #1083765c;
+    border: 1.5px solid #1083765c;
 }
 
 
@@ -243,11 +270,10 @@ content{
 /* searchBox */
 
 ::placeholder{
-    font-family: "TheJamsil5Bold";
-    font-family: 'Black Han Sans', sans-serif;
+    /* font-family: "TheJamsil5Bold"; */
+    /* font-family: 'Black Han Sans', sans-serif; */
     font-weight: bold;
     /* font-family: 'OAGothic-ExtraBold'; */
     /* font-family: 'KOTRA_BOLD-Bold'; */
     color: #8282827e;
 }
-
