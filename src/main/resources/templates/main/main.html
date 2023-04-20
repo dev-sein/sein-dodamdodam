@@ -6,9 +6,106 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>도담도담</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="/static/css/components/header.css">
     <link rel="stylesheet" href="/static/css/main/main.css">
 </head>
 <body>
+    <header>
+        <div class="web-header">
+            <div class="web-header-large">
+                <header class="header-wrapper">
+                    <div class="header-container">
+                        <!-- <h1 class="wadiz-logo">
+                            <a href="/templates/main/main.html" style="width: 100px;">
+                                <span class="label">도담도담</span>
+                                <img alt="" src="" style="width: 88%;">
+                            </a>
+                        </h1> -->
+                        <ul class="header-menu-category-ul">
+                            <li class="header-menu-category-li"><a
+                                class="header-menu-category-a" href="/templates/main/main.html">
+                                    <h1 class="wadiz-logo">
+                                        <span>도담도담</span>
+                                    </h1>
+                            </a></li>
+                            <li class="header-menu-category-li"><a
+                                class="header-menu-category-a" href="">
+                                    <span>사업소개</span>
+                            </a></li>
+                            <li class="header-menu-category-li"><a
+                                class="header-menu-category-a" href=""> <span>오픈예정</span>
+                            </a></li>
+                            <li class="header-menu-category-li"><a
+                                class="header-menu-category-a" href=""> <span>홍보하기</span>
+                            </a></li>
+                            <li class="header-menu-category-li"><a
+                                class="header-menu-category-a" href=""> <span>고객센터</span>
+                            </a></li>
+                        </ul>
+                        <div class="web-header-utils">
+                            <div class="header-search-div">
+                                <form>
+                                    <div class="header-search-index-div" tabindex="-1">
+                                        <div class="header-search-empty-div"></div>
+                                        <div class="header-search-input-div">
+                                            <input type="search" placeholder="새로운 것을 찾으시나요?"
+                                                aria-label="검색" value="" style="">
+                                        </div>
+                                        <button type="submit" class="header-search-button"
+                                            aria-label="검색">
+                                            <svg viewBox="0 0 40 40" focusable="false" role="presentation"
+                                                class="withIcon_icon__20lDO" aria-hidden="true"
+                                                style="width: 24px; height: 24px;">
+                                                <path fill="none" d="M0 0h40v40H0z"></path>
+                                                <path
+                                                    d="M29.2 27.91a14.38 14.38 0 1 0-1.42 1.4l7.16 7.15.07.08 1.41-1.41zM18.45 6a12.36 12.36 0 0 1 8.35 3.23 12.24 12.24 0 0 1 4 8.59A12.39 12.39 0 1 1 17.88 6z"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            <c:if
+                                test="${not empty sessionScope.memberId || not empty cookie.memberIdentification }">
+                                <!-- 로그아웃 버튼! -->
+                                <div class="buttonWrap headerButton">
+                                    <button class="listButton logoutButton"
+                                        onclick="location.href = '${pageContext.request.contextPath}/user/loging.user'">
+                                    </button>
+                                </div>
+                                <!-- // 로그아웃 버튼! -->
+                            </c:if>
+                            <div class="header-user-div">
+                                <!-- <div class="header-user-container">
+                                    <button type="button" class="header-user-button" onclick="location.href='${pageContext.request.contextPath}/user/logout.user'">로그아웃</button>
+                                    <button data-event="iam.signup" class="header-user-button" onclick="location.href='${pageContext.request.contextPath}/dhouse/user/mypage.user'">마이페이지</button>
+                                </div> -->
+                                <div class="header-user-container">
+                                    <button type="button" class="header-user-button">로그인</button>
+                                    <button data-event="iam.signup" class="header-user-button" onclick="location.href='${pageContext.request.contextPath}/user/signUp.user'">회원가입</button>
+                                </div>
+                            </div>
+                            <div class="web-header-funding-open funding-open">
+                                <div>
+                                    <div>
+                                        <button aria-label="기부 참여하기"
+                                            class="header-make-button header-make-button2 header-make-button3 funding-open-button"
+                                            type="button">
+                                            <span> 
+                                                <span class="header-make-project-span">
+                                                    프로젝트 만들기
+                                                </span>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+            </div>
+        </div>
+    </header>
     <main>
         <!-- <div class="banner">
 
@@ -77,7 +174,7 @@
                     와디즈 알아보기
                 </div>
                 <div class="guide-menu-list">
-                    <div class="guide-frequent select">
+                    <div class="guide-frequent-select">
                         <div class="guide-frequent-container">
                             <div class="frequent-title-bar">
                                 <div class="frequent-title">자주 묻는 질문</div>
@@ -94,14 +191,13 @@
                                 </div>
                                 <div class="context-inner">
                                     <div class="context">
-                                        배너광고 프로모션 상품을 신청했는데, 할인 금액이
-                                        <span class="more">...</span>
+                                        배너광고 프로모션 상품을 신청했는데, 할인 금액이<span class="more">...</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="guide-frequent">
+                    <!-- <div class="guide-frequent">
                         <div class="container-noselect">
                             <div class="title-bar-noselect">
                                 자주<br>묻는 질문
@@ -114,8 +210,8 @@
                                 <path d="M13 17L15 20" stroke="white" stroke-width="2" stroke-miterlimit="10"></path>
                             </svg>
                         </div>
-                    </div>
-                    <div class="guide-use select">
+                    </div> -->
+                    <!-- <div class="guide-use-select">
                         <div class="guide-use-container">
                             <div class="use-title-bar">
                                 <div class="use-title">이용 가이드</div>
@@ -130,13 +226,12 @@
                                 <div class="context-mark">Q</div>
                                 <div class="context-inner">
                                     <div class="context">
-                                        서포터가 교환·반품(환불)을 신청했어요. 어떻게 해야
-                                        <span class="more">...</span>
+                                        서포터가 교환·반품(환불)을 신청했어요. 어떻게 해야<span class="more">...</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="guide-use">
                         <div class="container-noselect">
                             <div class="title-bar-noselect">
@@ -155,9 +250,31 @@
                             </svg>
                         </div>
                     </div>
-                    <div class="guide-reserve select">
-
-                    </div>
+                    <!-- <div class="guide-reserve-select">
+                        <div class="guide-reserve-container">
+                            <div class="reserve-title-bar">
+                                <div class="reserve-title">백wa사전</div>
+                                <div class="plus-menu">
+                                    <div class="plus">더보기</div>
+                                    <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 11L6 6L1 1" stroke="white" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="context-container">
+                                <div class="context-mark">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="white" stroke-width="2.5" stroke-miterlimit="10"></path><path d="M15 12L10 9V15L15 12Z" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </div>
+                                <div class="context-inner">
+                                    <div class="context">
+                                        광고센터 알아보기 | 와디즈 광고 서비스 이용하고 싶<span class="more">...</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
                     <div class="guide-reserve">
                         <div class="container-noselect">
                             <div class="title-bar-noselect">
@@ -177,6 +294,494 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="boards-bar">
+            <div class="board-bar">
+                <div class="board-title-bar">
+                    <div class="board-title">
+                        공지사항
+                    </div>
+                    <div class="plus-menu">
+                        <div class="plus">
+                            더보기
+                        </div>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 13L11 8L6 3" stroke="#495057" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="board-ul">
+                    <!-- 게시글 1개 시작 -->
+                    <div class="board-li">
+                        <div class="board-title">
+                            <div class="board-title-context">
+                                한 달간의 와디즈 소식을 모아보는, 월간와디즈
+                            </div>
+                        </div>
+                        <div class="board-register-date">
+                            2023.04.04
+                        </div>
+                    </div>
+                    <!-- 게시글 1개 끝 -->
+                    <!-- 게시글 1개 시작 -->
+                    <div class="board-li">
+                        <div class="board-title">
+                            <div class="board-title-context">
+                                2023 와디즈 콘텐츠 파트너 모집 안내(~2/26)
+                            </div>
+                        </div>
+                        <div class="board-register-date">
+                            2023.02.06
+                        </div>
+                    </div>
+                    <!-- 게시글 1개 끝 -->
+                    <!-- 게시글 1개 시작 -->
+                    <div class="board-li">
+                        <div class="board-title">
+                            <div class="board-title-context">
+                                [서비스 안내] 프리오더 서비스 정책 변경 안내
+                            </div>
+                        </div>
+                        <div class="board-register-date">
+                            2023.02.03
+                        </div>
+                    </div>
+                    <!-- 게시글 1개 끝 -->
+                </div>
+            </div>
+            <div class="board-bar">
+                <div class="board-title-bar">
+                    <div class="board-title">
+                        공지사항
+                    </div>
+                    <div class="plus-menu">
+                        <div class="plus">
+                            더보기
+                        </div>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 13L11 8L6 3" stroke="#495057" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="board-ul">
+                    <!-- 게시글 1개 시작 -->
+                    <div class="board-li">
+                        <div class="board-title">
+                            <div class="board-title-context">
+                                한 달간의 와디즈 소식을 모아보는, 월간와디즈
+                            </div>
+                        </div>
+                        <div class="board-register-date">
+                            2023.04.04
+                        </div>
+                    </div>
+                    <!-- 게시글 1개 끝 -->
+                    <!-- 게시글 1개 시작 -->
+                    <div class="board-li">
+                        <div class="board-title">
+                            <div class="board-title-context">
+                                2023 와디즈 콘텐츠 파트너 모집 안내(~2/26)
+                            </div>
+                        </div>
+                        <div class="board-register-date">
+                            2023.02.06
+                        </div>
+                    </div>
+                    <!-- 게시글 1개 끝 -->
+                    <!-- 게시글 1개 시작 -->
+                    <div class="board-li">
+                        <div class="board-title">
+                            <div class="board-title-context">
+                                [서비스 안내] 프리오더 서비스 정책 변경 안내
+                            </div>
+                        </div>
+                        <div class="board-register-date">
+                            2023.02.03
+                        </div>
+                    </div>
+                    <!-- 게시글 1개 끝 -->
+                </div>
+            </div>
+        </div>
+        <div class="events-bar">
+            <div class="event-container">
+                <button type="button" class="arrow-icon-left">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="40" height="40" rx="20" fill="#F2F4F6"></rect>
+                        <path d="M22 25L17 20L22 15" stroke="#495057" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                </button>
+                <button type="button" class="arrow-icon-right">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="40" height="40" rx="20" transform="matrix(-1 0 0 1 40 0)" fill="#F2F4F6"></rect>
+                        <path d="M18 25L23 20L18 15" stroke="#495057" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                </button>
+                <div class="event-banner">
+                    <div class="event-title">
+                        <div class="event-title-container">
+                            이벤트·혜택
+                        </div>
+                        <div class="plus-menu">
+                            <div class="plus">
+                                더보기
+                            </div>
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 13L11 8L6 3" stroke="#495057" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="event-swiper-container">
+                        <div class="swiper-wrapper">
+                            <!-- 이벤트 박스 1개 시작 -->
+                            <div class="event-swiper-box">
+                                <div class="event-swiper-container">
+                                    <div class="event-swiper-image"></div>
+                                    <div class="event-status">
+                                        <div></div>
+                                        <div class="status-container">
+                                            <div class="important-status">중요</div>
+                                            <div class="finish-status">종료</div>
+                                        </div>
+                                    </div>
+                                    <div class="event-box-title-container">
+                                        <div class="event-box-title">
+                                            [기획전]4월 기획전 참여 메이커 모집
+                                        </div>
+                                    </div>
+                                    <div class="event-box-context-container">
+                                        <div class="event-box-context">
+                                            봄 맞이 인테리어, 가정의달 선물, 건강/다이어트 프로젝트를 메이커님이라면 꼭 확인해 주세요.
+                                        </div>
+                                    </div>
+                                    <div class="event-box-date-container">
+                                        2023.03.20
+                                        &nbsp;~&nbsp;
+                                        2023.04.16
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 이벤트 박스 1개 끝 -->
+                            <!-- 이벤트 박스 1개 시작 -->
+                            <div class="event-swiper-box">
+                                <div class="event-swiper-container">
+                                    <div class="event-swiper-image" style="background-image: url(https://static.makercenter.wadiz.kr/board/image/3a54037a-3fb9-4677-94e3-d6e0351e0612.jpg);"></div>
+                                    <div class="event-status">
+                                        <div></div>
+                                        <div class="status-container">
+                                            <div class="important-status">중요</div>
+                                            <div class="finish-status">종료</div>
+                                        </div>
+                                    </div>
+                                    <div class="event-box-title-container">
+                                        <div class="event-box-title">
+                                            [기획전]4월 기획전 참여 메이커 모집
+                                        </div>
+                                    </div>
+                                    <div class="event-box-context-container">
+                                        <div class="event-box-context">
+                                            봄 맞이 인테리어, 가정의달 선물, 건강/다이어트 프로젝트를 메이커님이라면 꼭 확인해 주세요.
+                                        </div>
+                                    </div>
+                                    <div class="event-box-date-container">
+                                        2023.03.20
+                                        &nbsp;~&nbsp;
+                                        2023.04.16
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 이벤트 박스 1개 끝 -->
+                            <!-- 이벤트 박스 1개 시작 -->
+                            <div class="event-swiper-box">
+                                <div class="event-swiper-container">
+                                    <div class="event-swiper-image" style="background-image: url(https://static.makercenter.wadiz.kr/board/image/7111d226-bfeb-4f89-b8a8-71ef5b7a5ace.jpg);"></div>
+                                    <div class="event-status">
+                                        <div></div>
+                                        <div class="status-container">
+                                            <div class="important-status">중요</div>
+                                            <div class="finish-status">종료</div>
+                                        </div>
+                                    </div>
+                                    <div class="event-box-title-container">
+                                        <div class="event-box-title">
+                                            [기획전]4월 기획전 참여 메이커 모집
+                                        </div>
+                                    </div>
+                                    <div class="event-box-context-container">
+                                        <div class="event-box-context">
+                                            봄 맞이 인테리어, 가정의달 선물, 건강/다이어트 프로젝트를 메이커님이라면 꼭 확인해 주세요.
+                                        </div>
+                                    </div>
+                                    <div class="event-box-date-container">
+                                        2023.03.20
+                                        &nbsp;~&nbsp;
+                                        2023.04.16
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 이벤트 박스 1개 끝 -->
+                            <!-- 이벤트 박스 1개 시작 -->
+                            <div class="event-swiper-box">
+                                <div class="event-swiper-container">
+                                    <div class="event-swiper-image" style="background-image: url(	https://static.makercenter.wadiz.kr/board/image/ceca1a4c-ec23-4199-bd12-10e35ac3fc61.png);"></div>
+                                    <div class="event-status">
+                                        <div></div>
+                                        <div class="status-container">
+                                            <div class="important-status">중요</div>
+                                            <div class="progress-status">종료</div>
+                                        </div>
+                                    </div>
+                                    <div class="event-box-title-container">
+                                        <div class="event-box-title">
+                                            [기획전]4월 기획전 참여 메이커 모집
+                                        </div>
+                                    </div>
+                                    <div class="event-box-context-container">
+                                        <div class="event-box-context">
+                                            봄 맞이 인테리어, 가정의달 선물, 건강/다이어트 프로젝트를 메이커님이라면 꼭 확인해 주세요.
+                                        </div>
+                                    </div>
+                                    <div class="event-box-date-container">
+                                        2023.03.20
+                                        &nbsp;~&nbsp;
+                                        2023.04.16
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 이벤트 박스 1개 끝 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="recruits-bar">
+            <div class="recruit-container">
+                <button type="button" class="arrow-icon-left">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="40" height="40" rx="20" fill="#F2F4F6"></rect>
+                        <path d="M22 25L17 20L22 15" stroke="#495057" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                </button>
+                <button type="button" class="arrow-icon-right">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="40" height="40" rx="20" transform="matrix(-1 0 0 1 40 0)" fill="#F2F4F6"></rect>
+                        <path d="M18 25L23 20L18 15" stroke="#495057" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                </button>
+                <div class="recruit-title">
+                    <div class="recruit-title-container">
+                        <div class="recruit-title-context">
+                            메이커 성공사례
+                        </div>
+                        <div class="plus-menu">
+                            <div class="plus">
+                                더보기
+                            </div>
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 13L11 8L6 3" stroke="#495057" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="recruit-swiper-view">
+                    <div class="recruit-swiper-container">
+                        <div class="recruit-swiper-wrapper">
+                            <!-- 모집 박스 1개 시작 -->
+                            <div class="recruit-swiper-box">
+                                <div class="recruit-swiper-container">
+                                    <div class="recruit-swiper-image"></div>
+                                    <div class="recruit-box-context">
+                                        <div class="recruit-box-title">
+                                            [메이커] 저희는 와디즈 메이커 입니다. 메이커 5인의 성공스토리
+                                        </div>
+                                        <div class="recruit-box-writer">
+                                            와디즈 메이커
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 모집 박스 1개 끝 -->
+                            <!-- 모집 박스 1개 시작 -->
+                            <div class="recruit-swiper-box">
+                                <div class="recruit-swiper-container">
+                                    <div class="recruit-swiper-image" style="background-image: url(https://static.makercenter.wadiz.kr/board/image/8cc2499a-b0ac-4b67-b699-efa65243a544.png);"></div>
+                                    <div class="recruit-box-context">
+                                        <div class="recruit-box-title">
+                                            [보드게임] 신규 보드게임, 경쟁력 있게 선보이려면
+                                        </div>
+                                        <div class="recruit-box-writer">
+                                            올린스튜디오 정석현 대표
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 모집 박스 1개 끝 -->
+                            <!-- 모집 박스 1개 시작 -->
+                            <div class="recruit-swiper-box">
+                                <div class="recruit-swiper-container">
+                                    <div class="recruit-swiper-image" style="background-image: url(https://static.makercenter.wadiz.kr/board/image/8cc2499a-b0ac-4b67-b699-efa65243a544.png);"></div>
+                                    <div class="recruit-box-context">
+                                        <div class="recruit-box-title">
+                                            [보드게임] 신규 보드게임, 경쟁력 있게 선보이려면
+                                        </div>
+                                        <div class="recruit-box-writer">
+                                            올린스튜디오 정석현 대표
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 모집 박스 1개 끝 -->
+                            <!-- 모집 박스 1개 시작 -->
+                            <div class="recruit-swiper-box">
+                                <div class="recruit-swiper-container">
+                                    <div class="recruit-swiper-image" style="background-image: url(https://static.makercenter.wadiz.kr/board/image/8cc2499a-b0ac-4b67-b699-efa65243a544.png);"></div>
+                                    <div class="recruit-box-context">
+                                        <div class="recruit-box-title">
+                                            [보드게임] 신규 보드게임, 경쟁력 있게 선보이려면
+                                        </div>
+                                        <div class="recruit-box-writer">
+                                            올린스튜디오 정석현 대표
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 모집 박스 1개 끝 -->
+                            <!-- 모집 박스 1개 시작 -->
+                            <div class="recruit-swiper-box">
+                                <div class="recruit-swiper-container">
+                                    <div class="recruit-swiper-image" style="background-image: url(https://static.makercenter.wadiz.kr/board/image/8cc2499a-b0ac-4b67-b699-efa65243a544.png);"></div>
+                                    <div class="recruit-box-context">
+                                        <div class="recruit-box-title">
+                                            [보드게임] 신규 보드게임, 경쟁력 있게 선보이려면
+                                        </div>
+                                        <div class="recruit-box-writer">
+                                            올린스튜디오 정석현 대표
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 모집 박스 1개 끝 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="events-bar">
+            <div class="event-container">
+                <button type="button" class="arrow-icon-left">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="40" height="40" rx="20" fill="#F2F4F6"></rect>
+                        <path d="M22 25L17 20L22 15" stroke="#495057" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                </button>
+                <button type="button" class="arrow-icon-right">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="40" height="40" rx="20" transform="matrix(-1 0 0 1 40 0)" fill="#F2F4F6"></rect>
+                        <path d="M18 25L23 20L18 15" stroke="#495057" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                </button>
+                <div class="event-banner">
+                    <div class="event-title">
+                        <div class="event-title-container">
+                            와디즈 아카데미
+                        </div>
+                        <div class="plus-menu">
+                            <div class="plus">
+                                더보기
+                            </div>
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 13L11 8L6 3" stroke="#495057" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="event-swiper-container">
+                        <div class="swiper-wrapper">
+                            <!-- 이벤트 박스 1개 시작 -->
+                            <div class="event-swiper-box">
+                                <div class="event-swiper-container">
+                                    <div class="event-swiper-image" style="background-image: url('https://static.makercenter.wadiz.kr/board/image/ffaa703e-9caa-4d9c-a97f-0ccefd3d6388.jpg');"></div>
+                                    <div class="event-box-title-container">
+                                        <div class="event-box-title">
+                                            카테고리성공비법서 : 스포츠 하편
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 이벤트 박스 1개 끝 -->
+                            <!-- 이벤트 박스 1개 시작 -->
+                            <div class="event-swiper-box">
+                                <div class="event-swiper-container">
+                                    <div class="event-swiper-image" style="background-image: url('	https://static.makercenter.wadiz.kr/board/image/cf918d9f-be9e-4bce-8899-e263e0db2579.jpg');"></div>
+                                    <div class="event-box-title-container">
+                                        <div class="event-box-title">
+                                            카테고리성공비법서 : 스포츠 하편
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 이벤트 박스 1개 끝 -->
+                            <!-- 이벤트 박스 1개 시작 -->
+                            <div class="event-swiper-box">
+                                <div class="event-swiper-container">
+                                    <div class="event-swiper-image" style="background-image: url('	https://static.makercenter.wadiz.kr/board/image/cf918d9f-be9e-4bce-8899-e263e0db2579.jpg');"></div>
+                                    <div class="event-box-title-container">
+                                        <div class="event-box-title">
+                                            카테고리성공비법서 : 스포츠 상편
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 이벤트 박스 1개 끝 -->
+                            <!-- 이벤트 박스 1개 시작 -->
+                            <div class="event-swiper-box">
+                                <div class="event-swiper-container">
+                                    <div class="event-swiper-image" style="background-image: url('https://static.makercenter.wadiz.kr/board/image/7bfd00cc-1ff0-4eca-a475-54a17dd5e3c5.jpg');"></div>
+                                    <div class="event-box-title-container">
+                                        <div class="event-box-title">
+                                            카테고리성공비법서 : 출판·클래스 하편
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 이벤트 박스 1개 끝 -->
+                            <!-- 이벤트 박스 1개 시작 -->
+                            <div class="event-swiper-box">
+                                <div class="event-swiper-container">
+                                    <div class="event-swiper-image" style="background-image: url('	https://static.makercenter.wadiz.kr/board/image/97cad177-ca22-4da8-9ad6-be00ac99c599.jpg');"></div>
+                                    <div class="event-box-title-container">
+                                        <div class="event-box-title">
+                                            카테고리성공비법서 : 출판·클래스 상편
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 이벤트 박스 1개 끝 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="static-banner-container">
+            <div class="static-banner">
+                <div class="static-banner-context">
+                    <div class="static-banner-date">
+                        격주 목요일 오전 8시!
+                    </div>
+                    <div class="satic-banner-title">
+                        메이커님의 시작과 성장을 위한
+                        <br>
+                        펀딩 정보를 보내드릴게요
+                    </div>
+                </div>
+                <a href="" class="apply-form">
+                    <svg width="22" height="16" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.5 9.41545L0.5 6.10352e-05H22.5L11.5 9.41545ZM0.5 1.60012V16.0001H22.5V1.60012L11.5 11.0155L0.5 1.60012Z" fill="white"></path>
+                    </svg>
+                    <div class="a-context">
+                        뉴스레터 신청하기
+                    </div>
+                </a>
             </div>
         </div>
     </main>
