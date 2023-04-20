@@ -1,11 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>관리자 페이지</title>
-    <link rel="stylesheet" href="admin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/admin/admin.css">
+    <link rel="stylesheet" href="../../static/css/admin/banner-management.css">
 </head>
 <body>
     <!-- 헤더 -->
@@ -58,24 +63,49 @@
         <!-- contents -->
         <content>
             <!-- 검색 창 -->
-            <article class="module--search">
+            <div class="module--search">
                 <div class="search__searchbox">
                     <form action="" class="search__searchbox__form">
                         <input id="searchbox" type="text" placeholder="원하시는 키워드로 검색해보세요"/>
                         <button type="button" class="search__searchbox__button">
-                            <img src="search.png"/>
+                            <img src="../../static/images/admin/search.png"/>
                         </button>
                     </form>
                 </div>
-            </article>
+            </div>
             <!-- 검색 창 -->
             <div class="inner-wrapper">
-                <div class="page-title">회원 목록</div>
+                <div class="page-title">배너 관리</div>
+                <!-- 배너 관리 -->
+                <article class="module--banner">
+                    <div class="banner__wrapper">
+                      <!-- <div class="banner__title">배너 목록</div> -->
+                      <div class="banner__button-wrapper">
+                        <button type="button" class="banner__add-button">추가</button>
+                        <button type="button" class="banner__delete-button">삭제</button>
+                      </div>
+                    </div>
+                    <div class="banner__list">
+                      <!-- 반복문으로 배너 아이템 추가 -->
+                      <!-- 시작 -->
+                      <div class="banner__item">
+                        <input type="checkbox" class="banner__checkbox"/>
+                        <div class="banner__image">
+                          <img class="add-image" src="../../static/images/admin/plus.png"/>
+                        </div>
+                        <div class="banner__info">
+                          <div class="banner__title">배너1</div>
+                          <!-- <div class="banner__description">배너 설명</div> -->
+                        </div>
+                      </div>
+                      <!-- 끝 -->
+                    </div>
+                  </article>
             </div>
         </content>
         <!-- contents -->
     </main>
-
 </body>
-<script src="admin.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="../../static/js/admin/admin.js"></script>
 </html>

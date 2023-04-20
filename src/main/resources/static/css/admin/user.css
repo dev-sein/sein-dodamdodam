@@ -6,6 +6,7 @@ table {
     border-spacing: 0;
     margin-top: 30px;
     border-color: #1083765c;
+    table-layout: fixed;
 }
 
 thead {
@@ -29,7 +30,7 @@ th {
     font-weight: bold;
     text-align: left;
     padding: 10px 15px;
-    border: 1px solid #ddd;
+    border: 1px solid #cad7d552;
 }
 
 th:first-child {
@@ -39,7 +40,7 @@ th:first-child {
 
 th:nth-child(2) {
     width: 70px;
-    text-align: center;
+    /* text-align: center; */
 }
 
 tbody tr:hover {
@@ -48,10 +49,10 @@ tbody tr:hover {
 }
 
 td {
-    font-size: 15px;
+    font-size: 16px;
     padding: 3px 15px;
     /* border: 1px solid #1083765c; */
-    border: 1px solid #ddd;
+    border: 1px solid #cad7d552;
     font-family: 'NanumGothicLight';
     font-family: 'NanumGothic';
     font-family: 'NanumGothicBold';
@@ -77,7 +78,9 @@ td:first-child {
 
 .detail-top{
     width: 120px;
+    text-align: center;
 }
+
 
 /* 체크 박스 */
 .checkbox-wrapper-21 .control {
@@ -105,7 +108,8 @@ td:first-child {
 }
 .checkbox-wrapper-21 .control:hover input ~ .control__indicator,
 .checkbox-wrapper-21 .control input:focus ~ .control__indicator {
-    background: #ccc;
+    /* background: #ccc; */
+    background: #1083761a;
 }
 .checkbox-wrapper-21 .control input:checked ~ .control__indicator {
     background: var(--main-color);
@@ -118,7 +122,8 @@ td:first-child {
     /* background: #0e647d; */
 }
 .checkbox-wrapper-21 .control input:disabled ~ .control__indicator {
-    background: #e6e6e6;
+    /* background: #e6e6e6; */
+    background: var(--main-color);
     opacity: 0.6;
     pointer-events: none;
 }
@@ -146,15 +151,16 @@ td:first-child {
 
 /* 상세보기 버튼 */
 .show-detail {
-    background-color: var(--main-color);
+    background-color: #9bd8d0fc;
     /* background-color: #222; */
     border-radius: 4px;
     border-style: none;
     box-sizing: border-box;
+    color: #474747;
     color: #fff;
     cursor: pointer;
     display: inline-block;
-    font-family: "Farfetch Basis","Helvetica Neue",Arial,sans-serif;
+    /* font-family: 'THEJAMSIL5BOLD'; */
     font-size: 16px;
     font-weight: 700;
     line-height: 1.5;
