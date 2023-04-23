@@ -1,0 +1,509 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: Noto Sans KR;
+    font-weight: 300;
+    font-style: normal;
+    src: url(https://static.wadiz.kr/assets/fonts/notosans/NotoSansKR-Light.woff2) format("woff2"),url(https://static.wadiz.kr/assets/fonts/notosans/NotoSansKR-Light.woff) format("woff"),url(https://static.wadiz.kr/assets/fonts/notosans/NotoSansKR-Light.otf) format("opentype");
+    unicode-range: u+0020-u+007e,u+1100-u+11f9,u+3131-u+318e,u+327f-u+327f,u+ac00-u+d7a3,u+ff01-u+ff60
+}
+
+@font-face {
+    font-family: Noto Sans KR;
+    font-weight: 400;
+    font-style: normal;
+    src: url(https://static.wadiz.kr/assets/fonts/notosans/NotoSansKR-Regular.woff2) format("woff2"),url(https://static.wadiz.kr/assets/fonts/notosans/NotoSansKR-Regular.woff) format("woff"),url(https://static.wadiz.kr/assets/fonts/notosans/NotoSansKR-Regular.otf) format("opentype");
+    unicode-range: u+0020-u+007e,u+1100-u+11f9,u+3131-u+318e,u+327f-u+327f,u+ac00-u+d7a3,u+ff01-u+ff60
+}
+
+@font-face {
+    font-family: Noto Sans KR;
+    font-weight: 500;
+    font-style: normal;
+    src: url(https://static.wadiz.kr/assets/fonts/notosans/NotoSansKR-Medium.woff2) format("woff2"),url(https://static.wadiz.kr/assets/fonts/notosans/NotoSansKR-Medium.woff) format("woff"),url(https://static.wadiz.kr/assets/fonts/notosans/NotoSansKR-Medium.otf) format("opentype");
+    unicode-range: u+0020-u+007e,u+1100-u+11f9,u+3131-u+318e,u+327f-u+327f,u+ac00-u+d7a3,u+ff01-u+ff60
+}
+
+@font-face {
+    font-family: Noto Sans KR;
+    font-weight: 700;
+    font-style: normal;
+    src: url(https://static.wadiz.kr/assets/fonts/notosans/NotoSansKR-Bold.woff2) format("woff2"),url(https://static.wadiz.kr/assets/fonts/notosans/NotoSansKR-Bold.woff) format("woff"),url(https://static.wadiz.kr/assets/fonts/notosans/NotoSansKR-Bold.otf) format("opentype");
+    unicode-range: u+0020-u+007e,u+1100-u+11f9,u+3131-u+318e,u+327f-u+327f,u+ac00-u+d7a3,u+ff01-u+ff60
+}
+
+@font-face {
+    font-family: wadizicon;
+    font-weight: 400;
+    font-style: normal;
+    src: url(https://static.wadiz.kr/static/web/media/wadizicon.1de1502a.eot#iefix) format("embedded-opentype"),url(https://static.wadiz.kr/static/web/media/wadizicon.f5cdf486.woff2) format("woff2"),url(https://static.wadiz.kr/static/web/media/wadizicon.9eb6b0a9.woff) format("woff"),url(https://static.wadiz.kr/static/web/media/wadizicon.e5379495.ttf) format("truetype"),url(https://static.wadiz.kr/static/web/media/wadizicon.077f5804.svg#wadizicon) format("svg")
+}
+
+:root {
+    --scrollbar-width: 0;
+}
+
+body {
+    line-height: 1.33;
+    font-family: Noto Sans KR !important;
+}
+
+body {
+    overflow-y: scroll;
+    line-height: 1.5em;
+    letter-spacing: -.02em;
+    color: rgba(0,0,0,.84);
+    font-size: 15px;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+}
+
+body, body button, body input, body select, body textarea {
+    font-family: Roboto, 'Noto Sans KR', sans-serif;
+}
+
+body, html {
+    -webkit-text-size-adjust: none;
+}
+
+body {
+    font-family: Roboto, 'Noto Sans KR', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a, address, article, aside, audio, b, body, button, canvas, caption, dd, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, html, i, img, input, label, legend, li, nav, ol, p, pre, section, small, span, strong, summary, table, tbody, td, th, thead, time, tr, ul, video {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+    font: inherit;
+    box-sizing: border-box;
+}
+
+article, blockquote, body, dd, div, dl, dt, h1, h2, h3, h4, html, li, main, ol, p, section, table, tbody, td, th, thead, tr, ul {
+    margin: 0;
+    padding: 0;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, em, div {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body, body button, body input, body li, body ol, body select, body textarea, body ul {
+    box-sizing: border-box;
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+input, optgroup, select, textarea {
+    color: inherit;
+}
+
+button {
+	font-family: 'Noto Sans KR' !important;
+}
+
+a, a:active, a:hover, a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+body a {
+    text-decoration: none;
+}
+
+body li, body ol, body ul {
+    list-style: none;
+}
+
+.wz.container, body a {
+    color: rgba(0,0,0,.84);
+}
+
+#page-container, #wadizTopBanner, body>#root {
+    transform-origin: 50% 0;
+    transition-property: opacity,transform;
+    transition-duration: 80ms;
+    transition-timing-function: ease-out;
+}
+
+body>#root, #wadizTopBanner, #page-container {
+    transform-origin: 50% 0;
+    transition-property: opacity,transform;
+    transition-duration: 80ms;
+    transition-timing-function: ease-out;
+}
+
+#accountWrap {
+    width: 100%;
+    padding-bottom: 160px;
+    background: #f9f9f9;
+}
+
+#newContainer {
+    min-height: 100%;
+    background: #eee;
+}
+
+#accountWrap #newContainer {
+    background: #f9f9f9;
+}
+
+.account-wrap {
+    padding: 35px 20px;
+    padding-left: max(20px, env(safe-area-inset-left));
+    padding-right: max(20px, env(safe-area-inset-right));
+}
+
+.account-wrap h2 {
+    margin-bottom: 8px;
+    font-size: 20px;
+    color: #4a4a4a;
+    font-weight: normal;
+    /* font적용이 안돼서 important함 */
+    font-family: 'Noto Sans KR' !important;
+}
+
+.email-input-wrap {
+    padding-top: 16px;
+}
+
+.input-text, textarea {
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 0;
+}
+
+.input-text {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    padding: 0 17px;
+    margin-bottom: 7px;
+    height: 46px;
+    line-height: 45px;
+    font-size: 13px;
+    color: #4a4a4a;
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    outline: none;
+}
+
+.input-text {
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+
+.input-text.disable {
+    background: #e7e7e7;
+}
+
+.input-area.disabled .input-text, .input-text:disabled {
+    background: #e7e7e7;
+}
+
+.input-btn-wrap div {
+    float: left;
+}
+
+.input-btn-wrap .input {
+    width: 70%;
+}
+
+.input-btn-wrap .btn {
+    width: 28%;
+    margin-left: 4px;
+    display: block;
+    background: #8c8881;
+    height: 46px;
+    line-height: 46px;
+    border: none;
+    text-align: center;
+    overflow: hidden;
+}
+
+.email-input-wrap span {
+    margin-top: 20px;
+    font-size: 15px;
+    color: #fff;
+}
+
+.btn span {
+    line-height: 46px;
+    font-size: 13px;
+    color: #ffffff;
+}
+
+/* 가상요소 */
+.input-btn-wrap:after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.limit_time {
+    position: absolute;
+    top: 13px;
+    right: 10px;
+    text-align: right;
+}
+
+.email-input-wrap span {
+    margin-top: 20px;
+    font-size: 15px;
+    color: #4a4a4a;
+}
+
+.limit_time span {
+    color: #50e3c2;
+    font-size: 13px;
+}
+
+.error-text {
+    margin-bottom: 12px;
+    font-size: 11px;
+    line-height: 1.5;
+    color: #e54545;
+    display: none;
+}
+
+.info-text {
+    margin-bottom: 12px;
+    font-size: 11px;
+    line-height: 14px;
+    color: #2802D2;
+    display: none;
+}
+
+.social-account-wrap {
+    position: relative;
+    width: 100%;
+    padding: 22px 0 35px;
+}
+
+.account-wrap h3 {
+    font-size: 13px;
+    line-height: 16px;
+    color: #4a4a4a;
+    font-weight: normal;
+}
+
+.social-account-wrap .title {
+    margin-bottom: 10px;
+    font-size: 15px;
+    line-height: 20px;
+    color: #4a4a4a;
+    font-weight: 400;
+    /* font적용이 안돼서 important함 */
+    font-family: 'Noto Sans KR' !important;
+}
+
+.social-account-wrap p {
+    margin: 7px 0;
+    font-size: 13px;
+    line-height: 16px;
+    color: #4a4a4a;
+    font-weight: 400;
+    /* font적용이 안돼서 important함 */
+	font-family: 'Noto Sans KR' !important;
+	/* 간격이 맞지 않아 추가함 */
+	letter-spacing: +.00em;
+}
+
+.social-account-wrap ul {
+    width: 100%;
+    height: 100%;
+}
+
+.social-account-wrap li {
+    float: left;
+    width: 25%;
+}
+
+.social-account-wrap a {
+    position: relative;
+    cursor: pointer;
+    display: block;
+    height: 42px;
+    line-height: 38px;
+    text-align: center;
+    margin: 0 6px;
+    font-size: 22px;
+    color: #fff;
+    box-sizing: border-box;
+}
+
+/* div {
+    font-family: wadizicon;
+} */
+
+/* 페이스북 아이콘 */
+.social-account-wrap .facebook a, .social-account-big-wrap .facebook a {
+    background: #3b5998;
+}
+
+.social-account-wrap a.unlinked {
+    opacity: 0.3;
+}
+
+.social-account-wrap li:first-child a {
+    margin-left: 0;
+}
+
+[class*=icon-]:before, i.icon:before, i.wadizicon {
+    display: inline-block;
+    margin-top: -0.2em;
+    vertical-align: middle;
+    text-transform: none;
+    line-height: 1;
+    font-family: wadizicon!important;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-style: normal;
+    font-variant: normal;
+    speak: none;
+}
+
+.social-account-wrap i, .social-account-big-wrap i {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -10px;
+    margin-left: -10px;
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+}
+
+.social-account-wrap i {
+    vertical-align: middle;
+}
+
+.icon-facebook:before, i.icon.facebook:before, i.wadizicon.wa-facebook:before {
+    content: "";
+}
+
+/* 네이버 아이콘 */
+.social-account-wrap .naver a, .social-account-big-wrap .naver a {
+    background: #02c300;
+}
+
+.icon-naver:before, i.icon.naver:before, i.wadizicon.wa-naver:before {
+    content: "";
+}
+
+/* 카카오 아이콘 */
+.social-account-wrap .kakao a, .social-account-big-wrap .kakao a {
+    background: #fdd800;
+    color: #3f2526;
+}
+
+.icon-kakao:before, i.icon.kakao:before, i.wadizicon.wa-kakao:before {
+    content: "";
+}
+
+/* 구글 아이콘 */
+.social-account-wrap .google a, .social-account-big-wrap .google a {
+    background: #fff;
+    border: 1px solid #dadce0;
+    color: #7c8288;
+}
+
+.social-account-wrap .google i, .social-account-big-wrap .google i {
+    background: url(https://www.wadiz.kr/resources/static/svg/icon_google.svg) 50% no-repeat;
+}
+
+.social-account-wrap ul:after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+a.btn-block-mint, button.btn-block-mint {
+    display: block;
+    width: 100%;
+    height: 42px;
+    line-height: 42px;
+    text-align: center;
+    font-size: 15px;
+    color: #fff;
+    border: none;
+    background: #50e3c2;
+    cursor: pointer;
+}
+
+.wz.button {
+    transition-property: background-color,border-color,color,opacity;
+    transition-duration: .2s;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 3px;
+    background-color: #fff;
+    cursor: pointer;
+    padding: 0 1.41176em;
+    height: 48px;
+    vertical-align: middle;
+    line-height: 1;
+    color: rgba(0,0,0,.54);
+    font-size: 17px;
+    font-weight: 400;
+    box-sizing: border-box!important;
+    -webkit-appearance: none;
+    display: inline-block;
+    padding-top: 0.07em;
+    text-decoration: none;
+}
+
+.wz.button.block, .wz.button.fluid {
+    width: 100%;
+    text-align: center;
+}
+
+.wz.button.primary, .wz.button.primary-outline {
+    border-color: #00c4c4;
+}
+
+.wz.button.primary {
+    background-color: #00c4c4;
+    color: #fff;
+}
+
+#emailChangeBtn{
+	cursor:pointer;
+}
+
+#emailChangeBtn span{
+	color: #fff;
+}
+
+#mobileChangeBtn span{
+	color: #fff;
+}
+	
+#emailCheckBtn span{
+	color: #fff;
+}
+
+#mobileCheckBtn span{
+	color: #fff;
+}
+
+/* ================================media================================ */
+@media screen and (min-width: 1000px) {
+.account-wrap {
+    width: 350px;
+    margin: 0 auto;
+    padding-top: 75px;
+}
+
+}
+
