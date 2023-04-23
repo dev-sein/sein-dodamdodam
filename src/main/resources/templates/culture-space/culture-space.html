@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문화 공간</title>
+    <link rel="stylesheet" href="../../static/css/culture-space/culture-space.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">  
+</head>
+<body>
+    <div id="page-container">
+        <main id="main-app">
+            <div class="main-wrapper-content">
+                <div class="culture-space-container">
+                    <section>
+                        <div class="culture-inner">
+                            <div>
+                                <h3 class="culture-space-title">문화공간 소개</h3>
+                            </div>
+                            <div class="culture-space-content-container">
+                                <strong class="culture-space-content">
+                                    <span>누구나 이용 가능한 서울의 문화공간을 소개합니다.</span>
+                                    <div id="map" class="location-map" style="width:100%;height:350px;"></div>
+                                </strong>
+                                <div>
+                            <div class="culture-space-photo-container">
+                                <div class="photo-instance"></div>
+                                <div class="space-info">
+                                <div class="space-name"><strong>DDP(동대문디지털프라자)</div></strong>
+                                <div class="space-address">서울특별시 중구 을지로 281</div>
+                                <div class="space-tel">02-2153-0000</div>
+                               <!--  <div class="space-holiday">살림터: 매월 세번째주 월요일/배움터: 매주 월요일</div> -->
+                                <div class="space-introduction">DDP는 대한민국 서울특별시 동대문에 위치한 복합 문화공간입니다.</div>
+                                <div class="location location-container">
+                                <img src="../../static/images/culture-space/map-icon1.png">
+                                <span class="location-span">지도</span>
+                                <div id="map" class="location-map" style="width:100%;height:350px;"></div>
+                            </div>    
+                        </div>
+                    </div>
+
+                            </div>    
+                            </div>
+                        </div>
+
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div> <!-- page container -->
+</body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3366aee711925269dca27f42bfb64ad1"></script>
+<script>
+       //지도 설정
+   var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(37.5680445876689, 127.010890355484), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };
+
+var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+// 마커가 표시될 위치입니다 
+var markerPosition  = new kakao.maps.LatLng(37.5680445876689, 127.010890355484); 
+
+// 마커를 생성합니다
+var marker = new kakao.maps.Marker({
+    position: markerPosition
+});
+
+// 마커가 지도 위에 표시되도록 설정합니다
+marker.setMap(map);
+
+// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
+// marker.setMap(null);    
+
+</script>
+<script>
+
+    
+
+    $(function(){
+    $('.culture-space-photo-container').mouseover(function(){
+        $('.photo-instance').css("opacity", "0.2");
+        $('.space-info').css({left: '-30%'});
+        $('.space-info').animate({left:'0px'}, {duration: 700});
+        $('.space-info').show();
+    });
+    $('.location-container').on('click', function(){
+        $(".photo-instance").attr("class","location-map");
+        $('.photo-instance').css({right: '-30%'});
+        $('.photo-instance').animate({right:'0px'}, {duration: 700});
+        $('.space-info').hide();
+        $('.photo-instance').css("opacity", "1");
+        // $('.map').show();
+    });
+});
+
+    $('.culture-space-photo-container').mouseout(function(){
+        $('.photo-instance').css("opacity", "1");
+        $('.space-info').css({left: '20%'});
+        $('.space-info').hide();
+    }); 
+
+
+
+</script>
+</html>
+
