@@ -47,6 +47,20 @@ body, body button, body input, body li, body ol, body select, body textarea, bod
     padding: 0;
 }
 
+body, body button, body input, body select, body textarea {
+    font-family: Noto Sans KR !important;
+}
+
+li, ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body li, body ol, body ul {
+    list-style: none;
+}
+
 textarea {
     -webkit-appearance: none;
     appearance: none;
@@ -230,7 +244,86 @@ p.info em.like-count {
     resize: none;
 }
 
+.main-comment .btn-complete {
+    text-align: right;
+}
 
+.btn-color {
+    display: inline-block;
+    padding: 0 12px;
+    height: 33px;
+    line-height: 33px;
+    font-size: 14px;
+    background: #3B5998;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.comment-list {
+    margin-bottom: 15px;
+    border-bottom: none;
+}
+
+#comment-list-detail > li {
+    display: none;
+}
+
+.comment-wrap {
+    margin-top: 20px;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #e4e4e4;
+}
+
+.comment-info {
+    position: relative;
+    margin-bottom: 10px;
+    height: 35px;
+}
+
+.comment-info img {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+    width: 35px;
+    height: 35px;
+    background: no-repeat center center;
+    background-size: cover;
+    border-radius: 50%;
+}
+
+.comment-wrap .comment-content {
+    margin-bottom: 10px;
+    font-size: 13px;
+    line-height: 18px;
+}
+
+.comment-info .name {
+    display: inline-block;
+    vertical-align: middle;
+    height: 35px;
+    line-height: 35px;
+    font-size: 13px;
+}
+
+.comment-bottom .date {
+    display: inline-block;
+    padding: 0 5px;
+    font-size: 12px;
+    line-height: 12px;
+    color: #929292;
+}
+
+.comment-bottom button {
+    padding: 0 5px;
+    font-size: 12px;
+    vertical-align: middle;
+    line-height: 12px;
+    color: #3B5998;
+    background: none;
+    border: none;
+}
 
 
 @media screen and (min-width: 960px){
