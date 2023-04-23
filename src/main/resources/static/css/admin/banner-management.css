@@ -3,10 +3,17 @@
 article{
     width: 85%;
     margin: 0 auto;
+    height: calc(100% - 150px);
+    margin-bottom: 30px;
 }
 
 .module--banner {
     margin-top: 30px;
+    padding-top: 15px;
+    /* padding: 15px 0; */
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+    /* border: 1px solid #000; */
+    border-radius: 10px;
   }
   
   .banner__wrapper {
@@ -14,6 +21,8 @@ article{
     justify-content: flex-end;
     align-items: center;
     margin-bottom: 20px;
+    visibility: hidden;
+    display: none;
   }
   
   .banner__title {
@@ -43,14 +52,16 @@ article{
   
   .banner__list {
     display: flex;
-    flex-wrap: wrap;
-    /* height: calc(100vh - 250px); */
+    height: calc(100% - 62px);
     overflow: auto;
+    overflow-y: scroll;
+    flex-wrap: wrap;
+    justify-content: space-around;
   }
   
   .banner__item {
-    width: 99%;
-    margin-right: 1%;
+    width: 47.5%;
+    /* margin-right: 1%; */
     /* margin-bottom: 20px; */
     position: relative;
   }
@@ -62,17 +73,18 @@ article{
   .banner__checkbox {
     position: absolute;
     top: 10px;
-    right: 10px;
+    right: 15px;
     transform: scale(1.5);
     z-index: 99;
   }
   
   .banner__image {
-    width: 100%;
-    height: 200px;
+    width: 99%;
+    height: 310px;
     overflow: hidden;
     text-align: center;
-    border: 1px solid #555;
+    border: 1px solid #5555554d;
+    /* flex-direction: column; */
     /* background-color: antiquewhite; */
   }
   
@@ -84,10 +96,10 @@ article{
 
   .add-image{
     margin: 0 auto;
-    width: 100px !important;
-    height: 100px !important;
+    width: 60px !important;
+    height: 60px !important;
     position: relative;
-    top: 50px;
+    top: 120px;
   }
   
   .banner__info {
@@ -96,8 +108,9 @@ article{
   
   .banner__title {
     font-size: 16px;
+    font-family: 'THEJAMSIL5BOLD';
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 20px;
   }
   
   .banner__description {
@@ -105,3 +118,53 @@ article{
     color: #555;
   }
   
+  .inner-wrapper{
+    height: calc(100% - 40px);
+  }
+
+  .submit-button{
+    width: 120px;
+    background-color: #fff;
+    color: #000000b8;
+    /* margin-top: 22px; */
+    text-align: center;
+    border-radius: 5px;
+    position: absolute;
+    right: 0;
+    top: -60px;
+    align-items: center;
+    font-size: 18px;
+    line-height: 18px;
+    padding: 9px 0;
+    border: 1px solid #00000029;
+    font-family: TheJamsil5Bold;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    cursor: pointer;
+  }
+
+  .module--banner{
+    position: relative;
+  }
+
+  /* 스크롤바 */
+/* 수직 스크롤바 스타일링 */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* 스크롤바의 배경 색상 */
+  ::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }
+  
+  /* 스크롤바의 색상 */
+  ::-webkit-scrollbar-thumb {
+    background-color: #1083761c;
+    border-radius: 10px;
+  }
+  
+  /* 마우스 오버 시 스크롤바의 색상 */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--main-color);
+  }
+  /* 스크롤바 */
