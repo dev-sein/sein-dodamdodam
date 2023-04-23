@@ -47,6 +47,16 @@ body, body button, body input, body li, body ol, body select, body textarea, bod
     padding: 0;
 }
 
+textarea {
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 0;
+}
+
+input, optgroup, select, textarea {
+    color: inherit;
+}
+
 button:not(:disabled) {
     cursor: pointer;
 }
