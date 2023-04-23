@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+html{
+    --scrollbar-width: 0;
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans KR';
+}
+
+body{
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    overflow-y: scroll;
+    line-height: 1.5em;
+    letter-spacing: -.02em;
+    color: rgba(0,0,0,.84);
+    font-size: 15px;
+    font-weight: 400;
+}
+
+#page-container{
+    transform-origin: 50% 0;
+    transition-property: opacity,transform;
+    transition-duration: 80ms;
+    transition-timing-function: ease-out;
+}
+
+#main-app{
+    display: block;
+    font-family: inherit;
+}
+
+.main-wrapper-content{
+    transition: padding-top .25s;
+}
+
+.culture-space-container{
+    text-align: center;
+    word-break: keep-all;
+    word-wrap: break-word;
+}
+
+.culture-inner{
+    margin: 0 auto;
+    padding: 80px 16px;
+    box-sizing: content-box;
+    max-width: 900px;
+}
+
+.culture-space-title{
+    margin-bottom: 24px;
+    text-align: center;
+    word-break: keep-all;
+    word-wrap: break-word;
+}
+
+h3 {
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+.culture-space-content{
+    margin-bottom: 32px;
+    line-height: 28px;
+    letter-spacing: -.3px;
+    font-size: 16px;
+    font-weight: 700;
+    display: block;
+}
+
+.culture-space-content:before {
+    display: block;
+    margin: 0 auto 8px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+    height: 40px;
+    content: "";
+}
+
+.culture-space-photo-container{
+    display: flex;
+    position: relative;
+
+}
+
+.photo-instance{
+    background-image: url(https://static.wadiz.kr/main/media/bg-success-story-hyundai-01.9e04d8a1.png);
+    padding-top: 32%;
+/*     flex: 1; */
+    border-radius: 8px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+    overflow: hidden;
+    width: 438px;
+    will-change: opacity;
+    -webkit-backface-visibility: hidden;
+}
+
+.photo-instance:hover{
+    z-index: -99;
+}
+
+.space-info:hover{
+    z-index: 9999;
+}
+
+.space-info{
+    position: absolute;
+    top: 32%;
+    margin-left: 20px;
+    text-align: left;
+    font-size:12px;
+    display: none;
+    -webkit-backface-visibility: hidden;
+}
+
+.location-container{
+    cursor: pointer;
+    height: 100%;
+}
+
+.location{
+    position: absolute;
+    top: 0%;
+    margin-bottom:20px;
+    margin-left:350px;
+}
+
+.location-span{
+    margin-left: 13px;
+}
+
+.map{
+    display:none;
+}
+
+
+
+@media screen and (min-width: 1097px){
+.main-wrapper-content {
+    padding-top: 0;
+}
+}
+
+@media screen and (min-width: 1097px){
+.main-wrapper-content {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+}
+
+@media screen and (min-width: 769px){
+.culture-space-title {
+    line-height: 44px;
+    letter-spacing: -.6px;
+    font-size: 32px;
+    font-weight: 700;
+}
+}
+
+@media screen and (min-width: 769px){
+.culture-space-photo-container {
+    gap: 24px;
+}
+}

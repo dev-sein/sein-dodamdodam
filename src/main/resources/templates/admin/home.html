@@ -5,11 +5,12 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>관리자 페이지</title>
+    <title>관리자 홈</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../static/css/admin/admin.css">
+    <link rel="stylesheet" href="../../static/css/admin/home.css">
 </head>
 <body>
     <!-- 헤더 -->
@@ -56,13 +57,17 @@
                     <li class="menu">
                         <a class="menus" href="#">배너신청 현황</a>
                     </li>
+                    <li class="menu">
+                        <a class="menus" href="#">배너관리</a>
+                    </li>
+                    
                 </ul>
             </div>
         </nav>
         <!-- contents -->
         <content>
             <!-- 검색 창 -->
-            <article class="module--search">
+            <!-- <article class="module--search">
                 <div class="search__searchbox">
                     <form action="" class="search__searchbox__form">
                         <input id="searchbox" type="text" placeholder="원하시는 키워드로 검색해보세요"/>
@@ -71,10 +76,249 @@
                         </button>
                     </form>
                 </div>
-            </article>
+            </article> -->
             <!-- 검색 창 -->
             <div class="inner-wrapper">
                 <div class="page-title">홈</div>
+                <div class="inner-box-wrapper">
+                    <!-- part1 시작 -->
+                    <div class="inner-box">
+                        <!-- <div class="inner-box-title-wrapper"> -->
+                            <div class="inner-box-title">
+                                신규 가입 회원
+                            </div>
+                        <!-- </div> -->
+                        <div class="inner-box-list-wrapper">
+                            <div class="inner-box-list">
+                                <table>
+                                    <thead>
+                                        <tr class="member-tr">
+                                            <th class="number">번호</th>
+                                            <th class="title">이름</th>
+                                            <th class="writer">생년월일</th>
+                                            <th class="seen-count">휴대폰번호</th>
+                                            <th>주소</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="member-tr">
+                                            <td class="numbers">1</td>
+                                            <td class="titles">박다예</td>
+                                            <td class="writers">2000.01.01</td>
+                                            <td class="seen-counts">010-1234-1234</td>
+                                            <td class="region">경기도 성남시 분당구 수내동</td>
+                                        </tr>
+                                        <tr class="member-tr">
+                                            <td class="numbers">2</td>
+                                            <td class="titles">정세인</td>
+                                            <td class="writers">2000.01.01</td>
+                                            <td class="seen-counts">010-1234-1234</td>
+                                            <td class="region">경기도 성남시 분당구 수내동</td>
+
+                                        </tr>
+                                        <tr class="member-tr">
+                                            <td class="numbers">3</td>
+                                            <td class="titles">김세윤</td>
+                                            <td class="writers">2000.01.01</td>
+                                            <td class="seen-counts">010-1234-1234</td>
+                                            <td class="region">경기도 성남시 분당구 수내동</td>
+
+                                        </tr>
+                                        <tr class="member-tr">
+                                            <td class="numbers">4</td>
+                                            <td class="titles">김욱성</td>
+                                            <td class="writers">2000.01.01</td>
+                                            <td class="seen-counts">010-1234-1234</td>
+                                            <td class="region">경기도 성남시 분당구 수내동</td>
+
+                                        </tr>
+                                        <tr class="member-tr">
+                                            <td class="numbers">5</td>
+                                            <td class="titles">윤민우</td>
+                                            <td class="writers">2000.01.01</td>
+                                            <td class="seen-counts">010-1234-1234</td>
+                                            <td class="region">경기도 성남시 분당구 수내동</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- part1 끝 -->
+                    <!-- part2 시작 -->
+                    <div class="inner-box">
+                        <div class="inner-box-title">
+                            이벤트 게시판
+                        </div>
+                        <div class="inner-box-list-wrapper">
+                            <div class="inner-box-list">
+                                <table>
+                                    <thead>
+                                        <tr class="event-board">
+                                            <th class="number">번호</th>
+                                            <th class="title">제목</th>
+                                            <th class="writer">장소</th>
+                                            <th class="seen-count">작성자</th>
+                                            <th class="like-count">조회수</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="event-board">
+                                            <td class="numbers">1</td>
+                                            <td class="titles">이벤트게시판 제목1</td>
+                                            <td class="writers">서울특별시 강남구</td>
+                                            <td class="seen-counts">작성자1</td>
+                                            <td class="like-count">10</td>
+                                        </tr>
+                                        <tr class="event-board">
+                                            <td class="numbers">2</td>
+                                            <td class="titles">이벤트게시판 제목2</td>
+                                            <td class="writers">서울특별시 송파구</td>
+                                            <td class="seen-counts">작성자2</td>
+                                            <td class="like-count">25</td>
+                                        </tr>
+                                        <tr class="event-board">
+                                            <td class="numbers">3</td>
+                                            <td class="titles">이벤트게시판 제목3</td>
+                                            <td class="writers">서울특별시 강북구</td>
+                                            <td class="seen-counts">작성자3</td>
+                                            <td class="like-count">10</td>
+                                        </tr>
+                                        <tr class="event-board">
+                                            <td class="numbers">4</td>
+                                            <td class="titles">이벤트게시판 제목4</td>
+                                            <td class="writers">서울특별시 노원구</td>
+                                            <td class="seen-counts">작성자4</td>
+                                            <td class="like-count">100</td>
+                                        </tr>
+                                        <tr class="event-board">
+                                            <td class="numbers">5</td>
+                                            <td class="titles">이벤트게시판 제목5</td>
+                                            <td class="writers">서울특별시 동작구</td>
+                                            <td class="seen-counts">작성자5</td>
+                                            <td class="like-count">99</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- part2 끝 -->
+                    <!-- part3 시작 -->
+                    <div class="inner-box">
+                        <div class="inner-box-title">
+                            모집 게시판
+                        </div>
+                        <div class="inner-box-list-wrapper">
+                            <div class="inner-box-list">
+                                <table>
+                                    <thead>
+                                        <tr class="event-board">
+                                            <th class="number">번호</th>
+                                            <th class="title">제목</th>
+                                            <th class="writer">장소</th>
+                                            <th class="seen-count">작성자</th>
+                                            <th class="like-count">조회수</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="event-board">
+                                            <td class="numbers">1</td>
+                                            <td class="titles">모집게시판 제목1</td>
+                                            <td class="writers">서울특별시 강남구</td>
+                                            <td class="seen-counts">작성자1</td>
+                                            <td class="like-count">10</td>
+                                        </tr>
+                                        <tr class="event-board">
+                                            <td class="numbers">2</td>
+                                            <td class="titles">모집게시판 제목2</td>
+                                            <td class="writers">서울특별시 송파구</td>
+                                            <td class="seen-counts">작성자2</td>
+                                            <td class="like-count">25</td>
+                                        </tr>
+                                        <tr class="event-board">
+                                            <td class="numbers">3</td>
+                                            <td class="titles">모집게시판 제목3</td>
+                                            <td class="writers">서울특별시 강북구</td>
+                                            <td class="seen-counts">작성자3</td>
+                                            <td class="like-count">10</td>
+                                        </tr>
+                                        <tr class="event-board">
+                                            <td class="numbers">4</td>
+                                            <td class="titles">모집게시판 제목4</td>
+                                            <td class="writers">서울특별시 노원구</td>
+                                            <td class="seen-counts">작성자4</td>
+                                            <td class="like-count">100</td>
+                                        </tr>
+                                        <tr class="event-board">
+                                            <td class="numbers">5</td>
+                                            <td class="titles">모집게시판 제목5</td>
+                                            <td class="writers">서울특별시 동작구</td>
+                                            <td class="seen-counts">작성자5</td>
+                                            <td class="like-count">99</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- part3 끝 -->
+                    <!-- part4 시작 -->
+                    <div class="inner-box">
+                        <!-- <div class="inner-box-title-wrapper"> -->
+                            <div class="inner-box-title">
+                                배너신청 현황
+                            </div>
+                        <!-- </div> -->
+                        <div class="inner-box-list-wrapper">
+                            <div class="inner-box-list">
+                                <table>
+                                    <thead>
+                                        <tr class="banner">
+                                            <th class="number">번호</th>
+                                            <th class="title">신청자</th>
+                                            <th class="writer">신청일자</th>
+                                            <th class="seen-count">상태</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="banner">
+                                            <td class="numbers">1</td>
+                                            <td class="titles">신청자1</td>
+                                            <td class="writers">2023.04.23 15:21</td>
+                                            <td class="seen-counts">대기중</td>
+                                        </tr>
+                                        <tr class="banner">
+                                            <td class="numbers">2</td>
+                                            <td class="titles">신청자2</td>
+                                            <td class="writers">2023.04.22 10:24</td>
+                                            <td class="seen-counts">수락</td>
+                                        </tr>
+                                        <tr class="banner">
+                                            <td class="numbers">3</td>
+                                            <td class="titles">신청자3</td>
+                                            <td class="writers">2023.04.21 19:24</td>
+                                            <td class="seen-counts">대기중</td>
+                                        </tr>
+                                        <tr class="banner">
+                                            <td class="numbers">4</td>
+                                            <td class="titles">신청자4</td>
+                                            <td class="writers">2023.04.21 07:24</td>
+                                            <td class="seen-counts">대기중</td>
+                                        </tr>
+                                        <tr class="banner">
+                                            <td class="numbers">5</td>
+                                            <td class="titles">신청자5</td>
+                                            <td class="writers">2023.04.20 15:24</td>
+                                            <td class="seen-counts">수락</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- part4 끝 -->
+                </div>
             </div>
         </content>
         <!-- contents -->
