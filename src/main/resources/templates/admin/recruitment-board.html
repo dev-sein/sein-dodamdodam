@@ -1,61 +1,16 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>문화공간 목록</title>
+    <title>모집 게시글 목록</title>
     <link rel="stylesheet" href="../../static/css/admin/admin.css">
     <link rel="stylesheet" href="../../static/css/admin/user.css">
     <link rel="stylesheet" href="../../static/css/admin/board.css">
 </head>
 <body>
-<!-- 모달창 -->
-<div class="modal-whole">
-    <div class="modal">
-        <div class="modal-header">
-            <h2 class="modal-title">문화공간 정보</h2>
-            <span class="close" onclick="closeModal()">&times;</span>
-        </div>
-        <div class="modal-body">
-            <div class="member-profile">
-                <div class="profile-image">
-                    <img src="../../static/images/admin/user.png">
-                </div>
-                <div class="member-info">
-                    <div class="info-row">
-                        <div class="info-label">이름:</div>
-                        <div class="info-value">한동석</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-label">생년월일:</div>
-                        <div class="info-value">2000년 1월 1일</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-label">핸드폰번호:</div>
-                        <div class="info-value">010-1234-5678</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-label">이메일:</div>
-                        <div class="info-value">hds1234@gmail.com</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-label">주소:</div>
-                        <div class="info-value">경기도 남양주시</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-label">뱃지:</div>
-                        <div class="info-value">
-                            <span class="badge gold">Gold</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- 모달창 -->
 <!-- 헤더 -->
 <header>
     <div class="logo-wrapper">
@@ -122,7 +77,7 @@
         <!-- 검색 창 -->
         <div class="inner-wrapper">
             <div class="title-wrapper">
-                <div class="page-title">문화공간 목록</div>
+                <div class="page-title">모집 게시글</div>
                 <div class="delete-button">삭제하기</div>
             </div>
             <table>
@@ -139,17 +94,16 @@
                         <!-- 체크박스 -->
                         <!-- <input type="checkbox" id="select-all" class="substituted"> -->
                     </th>
-                    <th>번호</th>
-                    <th>분류명</th>
-                    <th>이름</th>
-                    <th>지역</th>
-                    <th>전화번호</th>
-                    <th>상태</th>
+                    <th class="number">번호</th>
+                    <th class="title">제목</th>
+                    <th class="writer">작성자</th>
+                    <th class="views">조회 수</th>
+                    <th class="like-count">모집 현황</th>
+                    <th class="register-time">모집장소</th>
                     <th class="detail-top">상세보기</th>
                 </tr>
                 </thead>
                 <tbody>
-                <!-- 목록 하나 시작 -->
                 <tr>
                     <td>
                         <!-- 체크박스 -->
@@ -162,15 +116,14 @@
                         <!-- 체크박스 -->
                     </td>
                     <td class="numbers">1</td>
-                    <td>체육시설</td>
-                    <td>다목적구장-응봉공원</td>
-                    <td>서울시 성동구</td>
-                    <td>02-2293-7646</td>
-                    <td>접수중</td>
+                    <td class="board-titles">모집 게시글</td>
+                    <td>작성자</td>
+                    <td>85<span>회</span></td>
+                    <td>1 / 15</td>
+                    <td>서울특별시 강남구 코리아 IT 아카데미</td>
                     <td><button class="show-detail" onclick="showModal()">상세보기</button></td>
                 </tr>
-                <!-- 목록 하나 끝 -->
-                <!-- 목록 하나 시작 -->
+                <!-- 회원 -->
                 <tr>
                     <td>
                         <!-- 체크박스 -->
@@ -183,15 +136,14 @@
                         <!-- 체크박스 -->
                     </td>
                     <td class="numbers">2</td>
-                    <td>체육시설</td>
-                    <td>다목적구장-응봉공원</td>
-                    <td>서울시 성동구</td>
-                    <td>02-2293-7646</td>
-                    <td>접수중</td>
+                    <td>모집 게시글</td>
+                    <td>작성자</td>
+                    <td>230<span>회</span></td>
+                    <td>5 / 15</td>
+                    <td>서울특별시 강남구 코리아 IT 아카데미</td>
                     <td><button class="show-detail" onclick="showModal()">상세보기</button></td>
                 </tr>
-                <!-- 목록 하나 끝 -->
-                <!-- 목록 하나 시작 -->
+                <!-- 회원 -->
                 <tr>
                     <td>
                         <!-- 체크박스 -->
@@ -204,15 +156,14 @@
                         <!-- 체크박스 -->
                     </td>
                     <td class="numbers">3</td>
-                    <td>체육시설</td>
-                    <td>목동다목적경기장 평일(주간)</td>
-                    <td>서울시 양천구</td>
-                    <td>02-2640-3818</td>
-                    <td>예약마감</td>
+                    <td>모집 게시글</td>
+                    <td>작성자</td>
+                    <td>45<span>회</span></td>
+                    <td>3 / 20</td>
+                    <td>서울특별시 강남구 코리아 IT 아카데미</td>
                     <td><button class="show-detail" onclick="showModal()">상세보기</button></td>
                 </tr>
-                <!-- 목록 하나 끝 -->
-                <!-- 목록 하나 시작 -->
+                <!-- 회원 -->
                 <tr>
                     <td>
                         <!-- 체크박스 -->
@@ -225,15 +176,14 @@
                         <!-- 체크박스 -->
                     </td>
                     <td class="numbers">4</td>
-                    <td>체육시설</td>
-                    <td>다목적구장-응봉공원</td>
-                    <td>서울시 성동구</td>
-                    <td>02-2293-7646</td>
-                    <td>접수중</td>
+                    <td>모집 게시글</td>
+                    <td>작성자</td>
+                    <td>85<span>회</span></td>
+                    <td>3 / 20</td>
+                    <td>서울특별시 강남구 코리아 IT 아카데미</td>
                     <td><button class="show-detail" onclick="showModal()">상세보기</button></td>
                 </tr>
-                <!-- 목록 하나 끝 -->
-                <!-- 목록 하나 시작 -->
+                <!-- 회원 -->
                 <tr>
                     <td>
                         <!-- 체크박스 -->
@@ -246,15 +196,14 @@
                         <!-- 체크박스 -->
                     </td>
                     <td class="numbers">5</td>
-                    <td>체육시설</td>
-                    <td>목동다목적경기장 평일(주간)</td>
-                    <td>서울시 양천구</td>
-                    <td>02-2640-3818</td>
-                    <td>접수종료</td>
+                    <td>모집 게시글</td>
+                    <td>작성자</td>
+                    <td>85<span>회</span></td>
+                    <td>3 / 20</td>
+                    <td>서울특별시 강남구 코리아 IT 아카데미</td>
                     <td><button class="show-detail" onclick="showModal()">상세보기</button></td>
                 </tr>
-                <!-- 목록 하나 끝 -->
-                <!-- 목록 하나 시작 -->
+                <!-- 회원 -->
                 <tr>
                     <td>
                         <!-- 체크박스 -->
@@ -267,15 +216,14 @@
                         <!-- 체크박스 -->
                     </td>
                     <td class="numbers">6</td>
-                    <td>체육시설</td>
-                    <td>잠실제1풋살경기장</td>
-                    <td>서울시 송파구</td>
-                    <td>02-2240-8782</td>
-                    <td>접수중</td>
+                    <td>모집 게시글</td>
+                    <td>작성자</td>
+                    <td>85<span>회</span></td>
+                    <td>3 / 20</td>
+                    <td>서울특별시 강남구 코리아 IT 아카데미</td>
                     <td><button class="show-detail" onclick="showModal()">상세보기</button></td>
                 </tr>
-                <!-- 목록 하나 끝 -->
-                <!-- 목록 하나 시작 -->
+                <!-- 회원 -->
                 <tr>
                     <td>
                         <!-- 체크박스 -->
@@ -288,15 +236,14 @@
                         <!-- 체크박스 -->
                     </td>
                     <td class="numbers">7</td>
-                    <td>체육시설</td>
-                    <td>목동다목적경기장 평일(주간)</td>
-                    <td>서울시 양천구</td>
-                    <td>02-2640-3818</td>
-                    <td>접수종료</td>
+                    <td>모집 게시글</td>
+                    <td>작성자</td>
+                    <td>85<span>회</span></td>
+                    <td>3 / 20</td>
+                    <td>서울특별시 강남구 코리아 IT 아카데미</td>
                     <td><button class="show-detail" onclick="showModal()">상세보기</button></td>
                 </tr>
-                <!-- 목록 하나 끝 -->
-                <!-- 목록 하나 시작 -->
+                <!-- 회원 -->
                 <tr>
                     <td>
                         <!-- 체크박스 -->
@@ -309,15 +256,14 @@
                         <!-- 체크박스 -->
                     </td>
                     <td class="numbers">8</td>
-                    <td>체육시설</td>
-                    <td>잠실제1풋살경기장</td>
-                    <td>서울시 송파구</td>
-                    <td>02-2240-8782</td>
-                    <td>접수중</td>
+                    <td>모집 게시글</td>
+                    <td>작성자</td>
+                    <td>85<span>회</span></td>
+                    <td>3 / 20</td>
+                    <td>서울특별시 강남구 코리아 IT 아카데미</td>
                     <td><button class="show-detail" onclick="showModal()">상세보기</button></td>
                 </tr>
-                <!-- 목록 하나 끝 -->
-                <!-- 목록 하나 시작 -->
+                <!-- 회원 -->
                 <tr>
                     <td>
                         <!-- 체크박스 -->
@@ -330,15 +276,14 @@
                         <!-- 체크박스 -->
                     </td>
                     <td class="numbers">9</td>
-                    <td>체육시설</td>
-                    <td>다목적구장-응봉공원</td>
-                    <td>서울시 성동구</td>
-                    <td>02-2293-7646</td>
-                    <td>접수종료</td>
+                    <td>모집 게시글</td>
+                    <td>작성자</td>
+                    <td>85<span>회</span></td>
+                    <td>3 / 20</td>
+                    <td>서울특별시 강남구 코리아 IT 아카데미</td>
                     <td><button class="show-detail" onclick="showModal()">상세보기</button></td>
                 </tr>
-                <!-- 목록 하나 끝 -->
-                <!-- 목록 하나 시작 -->
+                <!-- 회원 -->
                 <tr>
                     <td>
                         <!-- 체크박스 -->
@@ -351,14 +296,14 @@
                         <!-- 체크박스 -->
                     </td>
                     <td class="numbers">10</td>
-                    <td>체육시설</td>
-                    <td>다목적구장-응봉공원</td>
-                    <td>서울시 성동구</td>
-                    <td>02-2293-7646</td>
-                    <td>예약마감</td>
+                    <td>모집 게시글</td>
+                    <td>작성자</td>
+                    <td>85<span>회</span></td>
+                    <td>3 / 20</td>
+                    <td>서울특별시 강남구 코리아 IT 아카데미</td>
                     <td><button class="show-detail" onclick="showModal()">상세보기</button></td>
                 </tr>
-                <!-- 목록 하나 끝 -->
+                <!-- 회원 -->
                 </tbody>
             </table>
             <div class="pages-wrapper">
