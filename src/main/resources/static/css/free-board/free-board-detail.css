@@ -190,12 +190,47 @@ p.info em.like-count {
 }
 
 .btn-share button.facebook {
-    background-image: url('	https://www.wadiz.kr/resources/static/img/common/icon_gray_facebook.png');
+    background-image: url('https://www.wadiz.kr/resources/static/img/common/icon_gray_facebook.png');
 }
 
 .btn-share button.twitter {
-    background-image: url('	https://www.wadiz.kr/resources/static/img/common/icon_gray_twitter.png');
+    background-image: url('https://www.wadiz.kr/resources/static/img/common/icon_gray_twitter.png');
 }
+
+.comment-box {
+    padding: 20px 10px;
+    border-top: 1px solid #e4e4e4;
+}
+
+.message-box {
+    margin-top: 0;
+}
+
+.comment-count {
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.comment-count em {
+    color: #3B5998;
+}
+
+.main-comment textarea {
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    font-size: 13px;
+    line-height: 18px;
+    border: 1px solid #e4e4e4;
+    background: #fff;
+    box-sizing: border-box !important;
+    overflow-y: hidden;
+    resize: none;
+}
+
+
 
 
 @media screen and (min-width: 960px){
