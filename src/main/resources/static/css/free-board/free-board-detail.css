@@ -31,6 +31,7 @@ body, h1, h2, h3, h4, h5, h6, p, em, div {
     border: 0;
 }
 
+
 button {
     background: none;
     color: inherit;
@@ -68,7 +69,16 @@ textarea {
 }
 
 input, optgroup, select, textarea {
+    colorbtn-comment: inherit;
+}
+
+a, a:active, a:hover, a:visited {
+    text-decoration: none;
     color: inherit;
+}
+
+body a {
+    color: rgba(0,0,0,.84);
 }
 
 button:not(:disabled) {
@@ -76,8 +86,18 @@ button:not(:disabled) {
 }
 
 .main-wrap {
+    color: #4a4a4a;
+    padding-bottom: 160px;
+}
+
+.board-detail {
     width: 100%;
     padding: 30px 0 0;
+}
+
+.wcommunity-wrap {
+    color: #4a4a4a;
+    padding-bottom: 160px;
 }
 
 .section1 {
@@ -173,8 +193,8 @@ p.info em.like-count {
 }
 
 .like-share-area .btn-like {
-    float: left;
     display: inline-block;
+    float: left;
     padding: 0 15px 0 35px;
     height: 30px;
     line-height: 30px;
@@ -325,15 +345,244 @@ p.info em.like-count {
     border: none;
 }
 
+/* 수정/삭제 */
+.comment-util {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0;
+    display: inline-block;
+    width: 11px;
+    height: 7px;
+    background: url('	https://www.wadiz.kr/resources/static/img/common/icon_grey_open.png') no-repeat 0 0;
+    background-size: cover;
+    border: none;
+    z-index: 9;
+}
+
+.comment-util-list {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 10px;
+    width: 50px;
+    padding: 10px;
+    border: 1px solid #e4e4e4;
+    background: #fff;
+    z-index: 10;
+}
+
+.comment-util-list li a {
+    display: block;
+    height: 22px;
+    font-size: 12px;
+    line-height: 22px;
+}
+
+.comment-wrap textarea {
+    overflow-y: hidden;
+    resize: none;
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    font-size: 13px;
+    line-height: 18px;
+    border: 1px solid #e4e4e4;
+    background: #F4F4F4;
+    box-sizing: border-box !important;
+}
+
+.btn-place {
+    text-align: center;
+}
+
+button.btn-comment {
+    display: inline-block;
+    padding: 0 15px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    color: #4a4a4a;
+    background: transparent;
+    border: 1px solid #e4e4e4;
+    cursor: pointer;
+}
+
+/* 카테고리 별 다른글 */
+.free-board-other {
+    padding: 30px 0;
+    border-top: 1px solid #3B5998;
+}
+
+.free-board-other h4 {
+    padding: 0 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.free-board-other h4 em {
+    color: #3B5998;
+}
+
+.other-list ul {
+    width: 100%;
+    border-top: 1px solid rgba(0,0,0,.06);
+}
+
+.other-story {
+    height: 374px;
+    border: 1px solid #e4e4e4;
+    background: #fff;
+    position: relative;
+    padding: 10px;
+    height: auto;
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,.06);
+}
+
+.story-info {
+    height: 114px;
+    padding: 15px 12px;
+    float: left;
+    width: 55%;
+    height: auto;
+    padding: 10px 0 10px 10px;
+}
+
+.story-info em.category {
+    display: inline-block;
+    margin-bottom: 8px;
+    margin-right: 5px;
+    padding: 0 6px;
+    height: 24px;
+    line-height: 24px;
+    font-size: 13px;
+    font-weight: 400;
+    background: none !important;
+    color: #90949c !important;
+    border: 1px solid #babdc0;
+}
+
+p.other-content {
+    display: none;
+}
+
+p.info em {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 0;
+    font-size: 12px;
+    height: 12px;
+    line-height: 12px;
+    color: #65696B;
+}
+
+p.info em.like-count {
+    padding-left: 15px;
+    background: url('https://www.wadiz.kr/resources/static/img/common/icon_red_heart.png') no-repeat 0 center;
+    background-size: 11px 10px;
+}
+
+.img-wrap {
+    float: right;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 35%;
+}
+
+.img-wrap img {
+    width: 100%;
+    height: 110px;
+    background: no-repeat center center #ddd;
+    background-size: cover;
+}
+
+.free-board-other .btn-place {
+    padding-top: 30px;
+    text-align: center;
+}
+
+button.btn-category {
+    display: inline-block;
+    padding: 0 15px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    color: #4a4a4a;
+    background: transparent;
+    border: 1px solid #e4e4e4;
+    cursor: pointer;
+}
+
+/* section2 */
+.section2 {
+    padding: 0 10px;
+    margin: 0 auto;
+}
+
+.best-list {
+    padding: 20px 0;
+    border-top: 1px solid #3B5998;
+}
+
+.best-list.detail {
+    display: none;
+}
+
+.main-wrap h4 {
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.best-list ol li {
+    display: table;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.best-list ol li em {
+    display: table-cell;
+    padding: 0;
+    width: 30px;
+    height: 40px;
+    font-size: 24px;
+    color: #3B5998;
+}
+
+.best-list ol li .title {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 0;
+}
+
+.best-list ol li .title a {
+    height: 40px;
+    font-size: 14px;
+    line-height: 20px;
+    padding-top: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+}
+
+
+
 
 @media screen and (min-width: 960px){
-    .main-wrap:after {
+    .board-detail:after {
         content: "";
         clear: both;
         display: block;
     }
 
-    .main-wrap {
+    .board-detail {
         width: 960px;
         margin: 0 auto;
         padding: 50px 0;
@@ -361,5 +610,77 @@ p.info em.like-count {
 
     .board-comment {
         width: 650px;
+    }
+
+    .free-board-other {
+        width: 650px;
+    }
+
+    .other-list ul {
+        width: 630px;
+    }
+
+    .other-story {
+        position: relative;
+        padding: 0;
+        min-height: 160px;
+    }
+
+    .story-info {
+        position: relative;
+        width: 430px;
+        height: auto;
+        padding: 15px 0 15px 15px;
+    }
+    
+    .story-info em.category {
+        display: inline-block;
+        margin-bottom: 8px;
+        margin-right: 5px;
+        padding: 0 6px;
+        height: 24px;
+        line-height: 24px;
+        font-size: 13px;
+        color: #fff;
+        background: #3B5998;
+    }
+
+    p.other-content {
+        display: block;
+        margin-bottom: 20px;
+        font-size: 13px;
+        line-height: 18px;
+        color: #7c8288;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        word-wrap: break-word;
+    }
+    
+    .img-wrap {
+        width: 156px;
+    }
+
+    .img-wrap img {
+        width: 100%;
+        height: 108px;
+        background: no-repeat center center #ddd;
+        background-size: cover;
+    }
+
+    .section2 {
+        float: right;
+        width: 290px;
+        padding: 0;
+        padding-top: 38px;
+        margin: 0;
+        padding-left: 19px;
+        border-left: 1px solid #e4e4e4;
+    }
+
+    .best-list.detail {
+        display: block;
     }
 }
