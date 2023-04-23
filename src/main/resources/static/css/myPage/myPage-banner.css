@@ -1,0 +1,4684 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;700&display=swap');
+@font-face {
+    font-family: wadizicon;
+    font-weight: 400;
+    font-style: normal;
+    src: url(https://static.wadiz.kr/static/web/media/wadizicon.1de1502a.eot#iefix) format("embedded-opentype"),url(https://static.wadiz.kr/static/web/media/wadizicon.f5cdf486.woff2) format("woff2"),url(https://static.wadiz.kr/static/web/media/wadizicon.9eb6b0a9.woff) format("woff"),url(https://static.wadiz.kr/static/web/media/wadizicon.e5379495.ttf) format("truetype"),url(https://static.wadiz.kr/static/web/media/wadizicon.077f5804.svg#wadizicon) format("svg")
+}
+
+div {
+    font-family: wadizicon;
+}
+
+.Wrapper{
+    pointer-events: auto!important;
+    height: inherit;
+    overflow: initial;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: auto;
+    -webkit-appearance: none;
+    border: 0;
+    display: block;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+/*     background-color: rgba(0,0,0,.54); */
+}
+
+
+.body1{
+    position: absolute;
+    opacity: 0;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    display: block;
+    pointer-events: auto!important;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+ #root{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: auto;
+    border: 0;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    border: 0;
+    display: block;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+} 
+
+ .Layout{
+    position: static;
+    overflow-y: auto;
+    height: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    -vh: 7.46px;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    display: block;
+    pointer-events: auto!important;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+    -webkit-appearance: none;
+} 
+
+.Layout_main{
+    display: flex;
+    overflow-x: hidden;
+    height: 100%;
+    padding-top: 56px;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}  
+
+#sidebar{
+    position: relative;
+    transform: none;
+    transition: none;
+    z-index: 0;
+    box-shadow: 1px 0 0 0 rgb(0 0 0 / 6%);
+    height: 100%;
+    width: 240px;
+    display: flex;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    flex-flow: column;
+    background-color: #fff;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+} 
+
+.AppSidebarRewardProjectInfo_container__2Ykhp_AppSidebarRewardProjectInfo_defaultBackgroundImage__1rWVS{
+    background-image: linear-gradient(118deg,#75d184,#65bfce);
+    display: block;
+    position: relative;
+    cursor: pointer;
+    padding: 73px 24px 16px;
+    overflow: hidden;
+    color: #fff;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+/*     background-color: rgba(0,0,0,.54); */
+}   
+
+.AppSidebarRewardProjectInfo_projectFlagGroup__2GdB4{
+    display: flex;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    color: #fff;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+} 
+
+.AppSidebarRewardProjectInfo_flag__2Ctnr{
+    letter-spacing: 0;
+    font-size: 10px;
+    font-weight: 400;
+    font-style: normal;
+    margin-right: 8px;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    padding: 2px 4px;
+    overflow: hidden;
+    line-height: normal;
+    font-family: inherit;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    cursor: pointer;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+    --vh: 7.46px;
+    -webkit-appearance: none;
+}
+
+.AppSidebarRewardProjectInfo_projectName__1Hf5o{
+    line-height: 28px;
+    letter-spacing: -.6px;
+    font-size: 18px;
+    font-weight: 700;
+    font-style: normal;
+    display: block;
+    margin: 8px 0;
+    cursor: pointer;
+    color: #fff;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.Button_button__1e2A2_Button_info__Nu98q_Button_text__3KyLl_Button_md__1FRMG_Button_endIcon__3ZOY3_AppSidebarRewardProjectInfo_projectNumberButton__1izF_{
+    padding-right: 10px;
+    border-color: transparent;
+    position: relative;
+    padding: 0;
+    width: 192px;
+    height: 20px;
+    overflow: hidden;
+    text-align: left;
+    color: #fff;
+    line-height: 1.45;
+    font-size: 14px;
+    transition-property: background-color,border-color,color,opacity;
+    transition-duration: .15s;
+  /*   border: 1px solid #cdd3d8; */ /* css에 있긴한데 해제하면 보더라인 나옴  */
+    border-radius: 3px;
+    background-color: transparent;
+    cursor: pointer;
+    vertical-align: middle;
+    text-decoration: none;
+    white-space: nowrap;
+    font-weight: 500;
+    box-sizing: border-box!important;
+    -webkit-appearance: none;
+    -webkit-font-smoothing: antialiased;
+    font-family: inherit;
+    margin: 0;
+}
+
+.Button_children__q9VCZ{
+    display: inline-block;
+    width: 158px;
+    overflow: hidden;
+    vertical-align: top;
+    font-family: inherit;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    text-align: left;
+    color: #fff;
+    line-height: 1.45;
+    font-size: 14px;
+    white-space: nowrap;
+    cursor: pointer;
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
+    writing-mode: horizontal-tb !important;
+
+}
+
+.withIcon_icon__3lrgp_Button_icon__1qsE3_AppSidebarRewardProjectInfo_expandIcon__2oHiN{
+    width: 20px;
+    height: 20px;
+    margin-left: 6px;
+    display: block;
+    position: absolute;
+    top: 6%;
+    right: 0;
+    transform: scale(1);
+    transition: transform .3s ease-out;
+    fill: currentColor;
+    box-sizing: border-box;
+    overflow-clip-margin: content-box;
+    overflow: hidden;
+    font-family: inherit;
+    text-align: left;
+    color: #fff;
+    line-height: 1.45;
+    font-size: 14px;
+    --vh: 7.46px;
+    overflow-wrap: break-word;
+    word-break: keep-all;
+    pointer-events: auto!important;
+}
+
+path{
+    box-sizing: border-box;
+    d: path("M 16 22.4 L 5.6 12 l 1.12 -1.12 L 16 20.16 l 9.28 -9.28 L 26.4 12 L 16 22.4 Z");
+    transform-origin: 0px 0px;
+    fill: currentColor;
+    font-family: inherit;
+    text-align: left;
+    color: #fff;
+    line-height: 1.45;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.AppSidebarMenuList_container__199gJ{
+    height: auto;
+    overflow-y: auto;
+    flex: 1 1;
+    padding-bottom: 120px;
+    display: block;
+    box-sizing: border-box;
+    pointer-events: auto!important;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.AppSidebarMenuList_margin__3qjoc{
+    height: 8px;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    display: block;
+    pointer-events: auto!important;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+}
+
+ul{
+    box-sizing: border-box;
+    list-style: none;
+    margin: 0;
+    -webkit-appearance: none;
+    border: 0;
+    padding: 0;
+    margin-block-start: 0em;
+    margin-block-end: 1em;
+    margin-inline-start: -20px;
+    margin-inline-end: 0px;
+    padding-inline-start: 20px;
+    pointer-events: auto!important;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+ul.li{
+    box-sizing: border-box;
+    list-style: none;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    display: list-item;
+    text-align: -webkit-match-parent;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    pointer-events: auto!important;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.AppSidebarMenuList_navLink__1FytL_AppSidebarMenuList_active__tbFuL{
+    color: #00a2a2;
+    display: block;
+    position: relative;
+    cursor: pointer;
+    padding: 16px 24px;
+    font-size: 13px;
+    font-weight: 700;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    text-align: -webkit-match-parent;
+    pointer-events: auto!important;
+    line-height: 1.3;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.icon-chevron-left_AppSidebarMenuList_chevronIcon__2YV-z_AppSidebarMenuList_open__bjhTR{
+    transform: rotate(90deg);
+    position: absolute;
+    top: 50%;
+    right: 24px;
+    margin-top: -11px;
+    font-size: 24px;
+    box-sizing: border-box;
+    font-style: italic;
+    color: #00a2a2;
+    cursor: pointer;
+    font-weight: 700;
+    list-style: none;
+    text-align: -webkit-match-parent;
+    pointer-events: auto!important;
+    line-height: 1.3;
+    word-break: keep-all;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.icon-chevron-left_AppSidebarMenuList_chevronIcon__2YV-z_AppSidebarMenuList_open__bjhTR::before{
+    display: inline-block;
+    vertical-align: middle;
+    text-transform: none;
+    font-family: "wadizicon"!important;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-feature-settings: normal;
+    font-variant: normal;
+    content: "";
+    font-size: 24px;
+    color: #00a2a2;
+    cursor: pointer;
+    text-align: -webkit-match-parent;
+    line-height: 1.3;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+}
+
+.AppSidebarRewardSubList_container__2zCmr{
+    background-color: rgba(186,189,192,.1);
+    box-sizing: border-box;
+    list-style: none;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    display: block;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+    text-align: -webkit-match-parent;
+    pointer-events: auto!important;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.AppSidebarMenuList_navLink__1FytL_AppSidebarRewardSubList_subMenu__iqWsa{
+    display: block;
+    position: relative;
+    cursor: pointer;
+    padding: 16px 24px;
+    color: #1d2129;
+    font-size: 13px;
+    font-weight: 700;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    text-align: -webkit-match-parent;
+    line-height: 1.3;
+    word-break: keep-all;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.AppSidebarMenuList_navLink__1FytL_AppSidebarRewardSubList_subMenu__iqWsa_select{
+    color: #00a2a2;
+    pointer-events: none;
+    display: block;
+    position: relative;
+    cursor: pointer;
+    padding: 16px 24px;
+    font-size: 13px;
+    font-weight: 700;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    text-align: -webkit-match-parent;
+    line-height: 1.3;
+    word-break: keep-all;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+    color: #00a2a2;
+}
+
+.AppSidebarMenuList_navLink__1FytL_AppSidebarMenuList_disabled__3yitR{
+    color: rgba(0,0,0,.54);
+    display: block;
+    position: relative;
+    cursor: pointer;
+    padding: 16px 24px;
+    font-size: 13px;
+    font-weight: 700;
+    box-sizing: border-box;
+    list-style: none;
+    text-align: -webkit-match-parent;
+}
+
+.icon-lock-o_AppSidebarMenuList_lockIcon__3H-rC{
+    position: absolute;
+    right: 0;
+    margin-right: 30px;
+    box-sizing: border-box;
+    font-style: italic;
+    color: rgba(0,0,0,.54);
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 700;
+    list-style: none;
+    text-align: -webkit-match-parent;
+}
+
+.icon-lock-o_AppSidebarMenuList_lockIcon__3H-rC::before{
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    text-transform: none;
+    font-family: "wadizicon"!important;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-feature-settings: normal;
+    font-variant: normal;
+    color: rgba(0,0,0,.54);
+    cursor: pointer;
+    font-size: 13px;
+    text-align: -webkit-match-parent;
+    list-style: none;
+    line-height: 1.3;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+}
+
+.AppSidebarMenuList_helpFloating__3uu8D{
+    display:none;
+/*     display: block; */
+    color: -webkit-link;
+    cursor: pointer;
+    text-align: -webkit-match-parent;
+    list-style: none;
+    list-style: none;
+    pointer-events: auto!important;
+    line-height: 1.3;
+    word-break: keep-all;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.AppSidebarMenuList_navLink__1FytL{
+    display: block;
+    position: relative;
+    cursor: pointer;
+    padding: 16px 24px;
+    color: #1d2129;
+    font-size: 13px;
+    font-weight: 700;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    text-align: -webkit-match-parent;
+    line-height: 1.3;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+    --vh: 7.46px;
+
+}
+
+#AppLayout_Contents{
+    position: relative;
+    flex: 1 1;
+    overflow-x: auto;
+    overflow-y: auto;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    display: block;
+    pointer-events: auto!important;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+#container{
+    padding: 40px 66px;
+    position: relative;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+    --vh: 7.46px;
+    width: 40%;
+    margin: 0 auto;
+}
+
+.MyPage{
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    display: block;
+    pointer-events: auto!important;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.MyPage_container{
+    line-height: 20px;
+    letter-spacing: 0;
+    font-size: 14px;
+    font-weight: 400;
+    font-style: normal;
+    margin-bottom: 32px;
+    box-sizing: border-box;
+    list-style: none;
+    -webkit-appearance: none;
+/*     margin: 0; */
+    border: 0;
+    padding: 0;
+    pointer-events: auto!important;
+    margin-block-start: 4em;
+    margin-block-end: 1em;
+    margin-inline-start: -35px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+    margin-top: 10px;
+}
+
+.MyPage_sub{
+    display: inline-block;
+    color: #868e96;
+    font-size: 13px;
+    box-sizing: border-box;
+    list-style: none;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    text-align: -webkit-match-parent;
+    line-height: 20px;
+    letter-spacing: 0;
+    font-weight: 400;
+    font-style: normal;
+    word-break: keep-all;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+
+}
+
+.MyPage_sub::after{
+    display: inline-block;
+    margin: 0 2px;
+    vertical-align: bottom;
+    font-family: "wadizicon"!important;
+    content: "\E937";
+    color: #868e96;
+    font-size: 13px;
+    list-style: none;
+    text-align: -webkit-match-parent;
+    line-height: 20px;
+    letter-spacing: 0;
+    font-weight: 400;
+    font-style: normal;
+    pointer-events: auto!important;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.MyPage_sub:last-child {
+    display: inline-block;
+    color: #212529;
+    font-size: 13px;
+    box-sizing: border-box;
+    list-style: none;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    text-align: -webkit-match-parent;
+    line-height: 20px;
+    letter-spacing: 0;
+    font-weight: 400;
+    font-style: normal;
+    pointer-events: auto!important;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.DetailNavbar_container__3SkEf{
+    box-shadow: 0 1px 0 0 rgb(10 22 70 / 6%);
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 2;
+    background-color: #fff;
+    padding: 0 24px;
+    min-height: 56px;
+    box-sizing: border-box;
+    pointer-events: auto!important;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.AppNavbar_container__5uOnI{
+	position: relative;
+    box-shadow: 0 1px 0 0 rgb(10 22 70 / 6%);
+    display: flex;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 2;
+    background-color: #fff;
+    padding: 0 24px;
+    min-height: 56px;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+    pointer-events: auto!important;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+ .make{
+   /* background: url(https://static.wadiz.kr/studio/funding/static/media/wadiz-logo.549edcd7.svg) 50% center / contain no-repeat; */
+    width: 129px;
+    height: 48px;
+    cursor: pointer; 
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    display: block;
+    pointer-events: auto!important;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+} 
+
+.AppNavbar_maker__2WVfm{
+    display: flex;
+    position: absolute;
+    align-items: center;
+    transform: translateX(-50%);
+    grid-gap: 8px;
+    gap: 8px;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    pointer-events: auto!important;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+    left: 50%;
+}
+
+.Avatar_avatar__2DI5d_Avatar_xs__i50kh{
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    position: relative;
+    outline: none;
+    border: none;
+    border-radius: 100%;
+    background: url(https://static.wadiz.kr/studio/funding/static/media/default-zingugi.de76a099.svg) no-repeat 50%/cover;
+    padding: 0;
+    -webkit-appearance: none;
+    margin: 0;
+    box-sizing: border-box;
+    vertical-align: middle;
+    pointer-events: auto!important;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.Avatarspan{
+    display: block;
+    position: absolute;
+    opacity: 1;
+    border-radius: 100%;
+    background: inherit;
+    width: 100%;
+    height: 100%;
+    font-family: inherit;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    pointer-events: auto!important;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+	-webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+    --vh: 7.46px;
+}
+
+.name{
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    display: block;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 9.61px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.AppNavbar_buttonGroup__UcLfm{
+	position: absolute;
+    flex: initial;
+    grid-gap: 8px;
+    gap: 8px;
+    display: flex;
+    align-items: center;
+    text-align: right;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    pointer-events: auto!important;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+    left: 80%;
+}
+
+#formsubmit:hover{
+	background-color: #00b2b2;
+}
+
+
+.PreviewButton_container__1P-_4{
+    display: inline;
+    position: relative;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    text-align: right;
+	pointer-events: auto!important;
+	line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+	--vh: 7.46px;
+	-webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.Button_button__1e2A2_Button_primary__PxOJr_Button_md__1FRMG_Button_circular__3NpOv{
+    padding: 9px 16px;
+    line-height: 1.45;
+    font-size: 14px;
+    border-color: #00c4c4;
+    color: #00a2a2;
+    border-radius: 999em;
+    position: relative;
+    transition-property: background-color,border-color,color,opacity;
+    transition-duration: .15s;
+    border: 1px solid #cdd3d8;
+    background-color: transparent;
+    cursor: pointer;
+    vertical-align: middle;
+    text-decoration: none;
+    white-space: nowrap;
+    font-weight: 500;
+    box-sizing: border-box!important;
+    -webkit-appearance: none;
+    -webkit-font-smoothing: antialiased;
+    font-family: inherit;
+    background: none;
+    margin: 0;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-text-size-adjust: none;
+}
+
+.preview{
+	display: inline-flex;
+    align-items: center;
+    vertical-align: top;
+    font-family: inherit;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    line-height: 1.45;
+    font-size: 14px;
+    color: #00a2a2;
+    cursor: pointer;
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
+    white-space: nowrap;
+    writing-mode: horizontal-tb !important;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-rendering: auto;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    text-align: center;
+    word-break: keep-all;
+    --vh: 9.61px;
+    overflow-wrap: break-word;
+    -webkit-text-size-adjust: none;
+}
+
+.Button_button__1e2A2_Button_primary__PxOJr_Button_contained__TTXSM_Button_md__1FRMG_Button_circular__3NpOv{
+    padding: 9px 16px;
+    line-height: 1.45;
+    font-size: 14px;
+    position: relative;
+    transition-property: background-color,border-color,color,opacity;
+    transition-duration: .15s;
+    border: 1px solid #00c4c4;
+    cursor: pointer;
+    vertical-align: middle;
+    text-decoration: none;
+    white-space: nowrap;
+    font-weight: 500;
+    box-sizing: border-box!important;
+    -webkit-appearance: none;
+    -webkit-font-smoothing: antialiased;
+    font-family: inherit;
+    background: none;
+    margin: 0;
+    --vh: 7.46px;
+	border-radius: 999em;
+	background-color: #00c4c4;
+	width: 88.61px; /* 별도로 크기 지정함 */
+}
+
+.save_span{
+    display: inline-flex;
+    align-items: center;
+    vertical-align: top;
+    font-family: inherit;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    color: #fff;
+    line-height: 1.45;
+    font-size: 14px;
+    cursor: pointer;
+    white-space: nowrap;
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+}
+
+.Button_children__q9VCZ{
+    vertical-align: top;
+    display: inline-flex;
+        align-items: center;
+        font-family: inherit;
+        box-sizing: border-box;
+        -webkit-appearance: none;
+        margin: 0;
+        border: 0;
+        padding: 0;
+        color: #fff;
+        line-height: 1.45;
+        font-size: 14px;
+        cursor: pointer;
+        font-weight: 500;
+        white-space: nowrap;
+        -webkit-font-smoothing: antialiased;
+        writing-mode: horizontal-tb !important;
+        text-rendering: auto;
+        letter-spacing: normal;
+        word-spacing: normal;
+        text-transform: none;
+        text-indent: 0px;
+        text-shadow: none;
+        text-align: center;
+        pointer-events: auto!important;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+        --vh: 7.46px;
+        -webkit-text-size-adjust: none;    
+}
+
+.AnnouncementButton_container__1p1gr{
+    display: flex;
+    position: relative;
+    transition: background-color .3s;
+    border-radius: 8px;
+    cursor: pointer;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    text-align: right;
+    pointer-events: auto!important;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.AnnouncementButton_icon__29AtY{
+    padding: 16px;
+    width: 56px;
+    height: 56px;
+    box-sizing: border-box;
+    overflow-clip-margin: content-box;
+    overflow: clip;
+    cursor: pointer;
+    text-align: right;
+    pointer-events: auto!important;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.Badge_container__3mdFR_AnnouncementButton_badge__2Jq25{
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-family: inherit;
+    flex-shrink: 0;
+    vertical-align: middle;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    text-align: right;
+    cursor: pointer;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+
+
+}
+
+.AnnouncementPopover_container__51hBA{
+    position: relative;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    display: block;
+    text-align: right;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.AnnouncementList_container__3Y83C_AnnouncementPopover_list__2F5OR{
+    position: absolute;
+    top: 48px;
+    right: 8px;
+    transition: opacity .6s,height .3s,max-height .3s ease-out;
+    opacity: 0;
+    border-radius: 16px;
+    box-shadow: 0 32px 40px -2px rgb(10 22 70 / 12%), 0 0 5px 0 rgb(10 22 70 / 6%);
+    padding: 12px 0;
+    width: 400px;
+    max-width: 80vw;
+    height: 0;
+    max-height: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    overflow: hidden;
+    text-align: left;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    cursor: pointer;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.AnnouncementList_title__3ydqj{
+    line-height: 28px;
+    letter-spacing: -.6px;
+    font-size: 18px;
+    font-weight: 700;
+    font-style: normal;
+    padding: 12px 24px;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    display: block;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    text-align: left;
+    cursor: pointer;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.AnnouncementList_list__SiNbg{
+    height: calc(100% - 50px);
+    position: relative;
+    overscroll-behavior: contain;
+    overflow-y: auto;
+    box-sizing: border-box;
+    list-style: none;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+    cursor: pointer;
+    text-align: left;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.AnnouncementListItem_container__1RcK9{
+    padding: 16px 24px;
+    display: flex;
+    transition: background-color .3s;
+    cursor: pointer;
+    width: 100%;
+    max-width: 400px;
+    grid-gap: 8px;
+    gap: 8px;
+    box-sizing: border-box;
+    list-style: none;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    
+    text-align: -webkit-match-parent;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.AnnouncementListItem_badgeArea__1SUhX{
+    min-width: 40px;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    display: block;
+    cursor: pointer;
+    text-align: -webkit-match-parent;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.Badge_container__3mdFR_Badge_visible__2c54z{
+    display: inline-flex;
+    position: relative;
+    font-family: inherit;
+    vertical-align: middle;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    list-style: none;
+    text-align: -webkit-match-parent;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.Badge_badge__zKi0D_Badge_label__2iNzD_Badge_md__YzReR_Badge_info__MW_1H_Badge_tertiary__-ciUe{
+    border: 1px solid #eff3fd;
+    background-color: #eff3fd;
+    color: #557cf2;
+    border-radius: 5px;
+    padding: 2px 6px;
+    height: 22px;
+    line-height: 1.5;
+    font-size: 12px;
+    letter-spacing: normal;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    box-sizing: border-box;
+    display: inline-flex;
+    font-family: inherit;
+    -webkit-appearance: none;
+    margin: 0;
+    cursor: pointer;
+    text-align: -webkit-match-parent;
+    list-style: none;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+
+.AnnouncementListItem_content__JdK0M{
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    display: block;
+    list-style: none;
+    text-align: -webkit-match-parent;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.AnnouncementListItem_info__3TWyQ{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    list-style: none;
+    text-align: -webkit-match-parent;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.exit_button{
+	 padding: 9px 16px;
+    line-height: 1.45;
+    font-size: 14px;
+    position: absolute;
+    transition-property: background-color,border-color,color,opacity;
+    transition-duration: .15s;
+border:none;
+    border-radius: 3px;
+    cursor: pointer;
+    vertical-align: middle;
+    text-decoration: none;
+    white-space: nowrap;
+    font-weight: 500;
+    box-sizing: border-box!important;
+    -webkit-appearance: none;
+    -webkit-font-smoothing: antialiased;
+    font-family: inherit;
+    background: none;
+    left: 90%;
+}
+.exit_span{
+	color: #495057;
+}
+
+.HeaderLayout{
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.HeaderLayout_contents{
+    flex: 1 1;
+    max-width: 850px;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    display: block;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.Container_title{
+    display: block;
+    max-width: 850px;
+    margin: 0 0 16px;
+    line-height: 1.22;
+    letter-spacing: -.7px;
+    color: rgba(0,0,0,.84);
+    font-size: 36px;
+    font-weight: 700;
+    -webkit-appearance: none;
+    border: 0;
+    padding: 0;
+    overflow-wrap: break-word;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.FundingStoryContainer_description__1sMTR{
+    display: block;
+    max-width: 850px;
+    box-sizing: border-box;
+    margin-bottom: 32px;
+    line-height: 1.41;
+    color: rgba(0,0,0,.84);
+    font-size: 17px;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    word-break: keep-all;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.HeaderLayout_guideWrapper__WXeX-{
+    display: block;
+    margin-left: 132px;
+    width: 300px;
+    position: relative;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.FundingLinkGuide_container__3eQXb{
+    position: relative;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    display: block;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.FundingLinkGuide_link__3D_Pv_FundingLinkGuide_webLink__3jiMO{
+    display: block;
+    background: url(https://static.wadiz.kr/studio/funding/static/media/guide_img.5023258d.svg) 50% 50% no-repeat;
+    cursor: pointer;
+    height: 107px;
+    position: relative;
+    outline: 0;
+    color: inherit;
+    width: 100%;
+    font-family: inherit;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    text-align: center;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.FundingLinkGuide_point__3TI2H{
+    position: absolute;
+    top: -10px;
+    left: 5%;
+    animation-name: FundingLinkGuide_tada__22Jxw;
+    animation-duration: 3s;
+    animation-delay: .1s;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    display: block;
+    cursor: pointer;
+    color: inherit;
+    font-family: inherit;
+    writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    text-align: center;
+    overflow-wrap: break-word;
+    word-break: keep-all;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.FundingLinkGuide_point__3TI2H img {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+
+.FormContents{
+    position: relative;
+    box-sizing: border-box;
+    display: block;
+    margin-top: 0em;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.Loader{
+    display: none;
+    position: absolute;
+    top: calc(50% - 16px);
+    left: calc(50% - 16px);
+    opacity: .8;
+    z-index: 100;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.Loader_loader__d9YUC::before {
+    display: block;
+    margin: 0 auto;
+    background: url(https://static.wadiz.kr/studio/funding/static/media/loader.a8376a6a.svg) 0 0 no-repeat;
+    width: 32px;
+    height: 32px;
+    content: "";
+}
+
+.Section_contents2{
+    position: relative;
+    box-sizing: border-box;
+    display: block;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.Section_header1{
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    z-index: 1;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.Section_title{
+    line-height: 28px;
+    letter-spacing: -.6px;
+    font-size: 18px;
+    font-weight: 700;
+    font-style: normal;
+    display: flex;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.Section_title::after {
+    line-height: 28px;
+    letter-spacing: -.3px;
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+    margin-left: 4px;
+    color: #f66;
+    content: "*";
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.Section_guide{
+    display: flex;
+    align-items: center;
+    grid-gap: 8px;
+    gap: 8px;
+    justify-content: end;
+    max-width: 50%;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.Section_description{
+    line-height: 20px;
+    letter-spacing: 0;
+    font-size: 14px;
+    font-weight: 400;
+    font-style: normal;
+    margin-top: 8px;
+    margin-bottom: 24px;
+    color: #868e96;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+    word-break: keep-all;
+    display: block;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.Section_content{
+    position: relative;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    display: block;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.ImageField{
+        max-width: 343px;
+        box-sizing: border-box;
+        -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    display: block;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.wz_Radio_radio__15She_radio{
+    display: block;
+    cursor: pointer;
+    padding: 12px 0;
+    box-sizing: border-box;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.wz_Radio_radio__15She_radio>input[type=radio] {
+    display: none;
+    position: absolute;
+    opacity: 0;
+    font-family: inherit;
+    box-sizing: border-box;
+    background: none;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    cursor: default;
+    writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: fieldtext;
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    text-align: start;
+    -webkit-rtl-ordering: logical;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.wz_Radio_radio__15She_radio>div {
+    position: relative;
+    padding-left: 36px;
+    color: #60656a;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    display: block;
+    cursor: pointer;
+    line-height: 1.3;
+    word-break: keep-all;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.wz_Radio_radio__15She_radio>input[type=radio]::before{
+    position: absolute;
+    top: 12px;
+    left: 0;
+    margin-top: -12.5px;
+    background-color: #fff;
+    width: 25px;
+    height: 25px;
+    content: "";
+    box-sizing: border-box;
+    display: inline-block;
+    transition-property: background-color,border-color,opacity,color;
+    transition-duration: .2s;
+    opacity: .4;
+    border: 1px solid rgba(0,0,0,.54);
+    border-radius: 50%;
+    padding: 3px;
+    vertical-align: middle;
+    text-transform: none;
+    line-height: 1;
+    color: rgba(0,0,0,.54);
+    font-family: wadizicon!important;
+    font-size: 18px;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-feature-settings: normal;
+    font-variant: normal;
+    overflow-wrap: break-word;
+    word-break: keep-all;
+    cursor: pointer;
+    --vh: 7.46px;
+    -webkit-text-size-adjust: none;
+}
+
+.Radio_radio__15She.wz.radio>input[type=radio]:checked+div:before {
+    border: 1px solid #00b2b2;
+    border-radius: 50%;
+    position: absolute;
+    top: 12px;
+    left: 0;
+    margin-top: -12.5px;
+    background-color: #fff;
+    width: 25px;
+    height: 25px;
+    content: "";
+    box-sizing: border-box;
+    display: inline-block;
+    transition-property: background-color,border-color,opacity,color;
+    transition-duration: .2s;
+    opacity: .4;
+    padding: 3px;
+    vertical-align: middle;
+    text-transform: none;
+    line-height: 1;
+    color: rgba(0,0,0,.54);
+    font-family: wadizicon!important;
+    font-size: 18px;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+}
+
+.Radio_radio__15She.wz.radio>input[type=radio]:checked+div:after {
+    display: block;
+    position: absolute;
+    top: 12px;
+    left: 5px;
+    margin-top: -7.5px;
+    border-radius: 50%;
+    background-color: #00b2b2;
+    width: 15px;
+    height: 15px;
+    content: "";
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    cursor: pointer;
+    color: #60656a;
+    line-height: 1.3;
+    word-break: keep-all;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.ImageField_Form{
+    margin-bottom: 40px;
+    margin: 24px 0;
+    max-width: 850px;
+    margin-top: 16px!important;
+    padding-left: 34px;
+    position: relative;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    border: 0;
+    padding: 0;
+    display: block;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.buttonWrapper{
+    display: inline-block;
+    margin-top: 8px;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    line-height: 1.3;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.ImageFileButton{
+    display: inline-block!important;
+    position: relative;
+    margin-bottom: 10px;
+    line-height: 28px;
+    letter-spacing: -.3px;
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+    cursor: default;
+    padding-bottom: 4px;
+    box-sizing: border-box;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.wz.form .field.required label::after{
+    display: inline-block;
+    margin-left: 4px;
+    color: #f66;
+    content: "*";
+    display: none!important;
+}
+
+
+.Button_gray{
+    background-color: #90949c;
+    color: #fff;
+    transition-property: background-color,border-color,color,opacity;
+    transition-duration: .2s;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 0 1.41176em;
+    height: 48px;
+    vertical-align: middle;
+    line-height: 1;
+    font-size: 17px;
+    font-weight: 400;
+    box-sizing: border-box!important;
+    -webkit-appearance: none;
+    display: inline-block;
+    padding-top: 0.07em;
+    text-decoration: none;
+    font-family: inherit;
+    ackground: none;
+    margin: 0;
+    writing-mode: horizontal-tb !important;
+    text-align: center;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+#photosubmit:hover{
+	background-color:#60656A;
+}
+
+.icon-camera-o{
+    margin-right: 4px;
+    box-sizing: border-box;
+    font-style: italic;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 400;
+    font-family: inherit;
+    word-break: keep-all;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    text-align: center;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+    overflow-wrap: break-word;
+}
+
+.icon.camera::before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    text-transform: none;
+    font-family: "wadizicon"!important;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-feature-settings: normal;
+    font-variant: normal;
+    color: #fff;
+    cursor: pointer;
+    line-height: 1;
+    font-size: 17px;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+}
+
+
+.Input_right{
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    display: block;
+    font-size: 17px;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    line-height: 28px;
+    letter-spacing: -.3px;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+    overflow-wrap: break-word;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+.Input_right input {
+    font-size: 17px;
+    transition-property: border-color,height,padding-right,color;
+    transition-duration: .2s,0s;
+    outline: none;
+    border: 1px solid rgba(0,0,0,.15);
+    background: #fff;
+    padding: 0 0.94118em;
+    width: 100%;
+    vertical-align: middle;
+    color: rgba(0,0,0,.84);
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-weight: 400;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    cursor: default;
+    text-overflow: ellipsis;
+    white-space: pre;
+    text-align: start !important;
+    padding: initial;
+    overflow: hidden !important;
+    writing-mode: horizontal-tb !important;
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    -webkit-rtl-ordering: logical;
+    --vh: 7.46px;
+    -webkit-text-size-adjust: none;
+}
+
+.Input_right input ::after {
+    display: inline-block;
+    vertical-align: middle;
+    text-transform: none;
+    line-height: 1;
+    font-family: "wadizicon"!important;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-feature-settings: normal;
+    font-variant: normal;
+    speak: none;
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: scale(0);
+    transition-property: transform,opacity;
+    transition-duration: .2s;
+    opacity: 0;
+    margin-top: 0;
+    width: auto;
+    height: auto;
+    box-sizing: border-box;
+    pointer-events: none;
+    color: #00c4c4;
+    font-size: 1.41176em;
+    letter-spacing: -.3px;
+    cursor: pointer;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-text-size-adjust: none;
+}
+
+.helper_error{
+    color: #f25555;
+    line-height: 18px;
+    font-size: 13px;
+    font-weight: 400;
+    display: block;
+    margin-top: 4px;
+    font-style: normal;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    word-break: keep-all;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.helper_ImageFormField{
+    line-height: 18px;
+    font-size: 13px;
+    font-weight: 400;
+    color: #90949c;
+    display: block;
+    margin-top: 4px;
+    font-style: normal;
+    box-sizing: border-box;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.Section_guideMessage__3XqrM{
+    line-height: 18px;
+    letter-spacing: 0;
+    font-size: 12px;
+    font-weight: 400;
+    font-style: normal;
+    position: absolute;
+    top: 0;
+    right: 0;
+    visibility: hidden;
+    border-radius: 4px;
+    background-color: #f2f4f6;
+    padding: 24px;
+    max-width: 240px;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    display: block;
+    --vh: 7.46px;
+    overflow-wrap: break-word;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.link{
+    transition: color .3s;
+    border-bottom: 1px solid #00c4c4;
+    cursor: pointer;
+    color: #00c4c4;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-weight: bold;
+    line-height: 18px;
+    letter-spacing: 0;
+    font-size: 12px;
+    font-style: normal;
+    visibility: hidden;
+    word-break: keep-all;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.Section_guideMessage__3XqrM p{
+    margin: 8px 0;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    border: 0;
+    padding: 0;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    line-height: 18px;
+    letter-spacing: 0;
+    font-size: 12px;
+    font-weight: 400;
+    font-style: normal;
+    visibility: hidden;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+h4{
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    display: block;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    line-height: 18px;
+    letter-spacing: 0;
+    font-size: 12px;
+    font-style: normal;
+    visibility: hidden;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.notice{
+    margin-bottom: 0;
+    margin: 8px 0;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    border: 0;
+    padding: 0;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    line-height: 18px;
+    letter-spacing: 0;
+    font-size: 12px;
+    font-weight: 400;
+    font-style: normal;
+    visibility: hidden;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.Section_description{
+    line-height: 20px;
+    letter-spacing: 0;
+    font-size: 14px;
+    font-weight: 400;
+    font-style: normal;
+    margin-top: 8px;
+    margin-bottom: 24px;
+    color: #868e96;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    display: block;
+    overflow-wrap: break-word;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    word-break: keep-all;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.SummaryField{
+    margin-top: 40px;
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    display: block;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.FieldTextarea{
+    margin-top: 0;
+    margin-bottom: 40px;
+    margin: 24px 0;
+    max-width: 850px;
+    box-sizing: border-box;
+    border: 0;
+    padding: 0;
+    -webkit-appearance: none;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.title-warning{
+	display:none;
+}
+
+.content-warning{
+	display:none;
+	font-size: 15px;
+    line-height: 3;
+}
+
+.wide_column1{
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.wide_column2{
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    display: block;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.wz-input{
+    display: block;
+    position: relative;
+    font-size: 17px;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.wz.input::after {
+    display: inline-block;
+    vertical-align: middle;
+    text-transform: none;
+    line-height: 1;
+    font-family: "wadizicon"!important;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-feature-settings: normal;
+    font-variant: normal;
+    speak: none;
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: scale(0);
+    transition-property: transform,opacity;
+    transition-duration: .2s;
+    opacity: 0;
+    margin-top: 0;
+    width: auto;
+    height: auto;
+    box-sizing: border-box;
+    pointer-events: none;
+    color: #00c4c4;
+    font-size: 1.41176em;
+}
+
+.wz.input textarea {
+    margin-top: 8px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    line-height: 1.6em;
+    font-size: 15px;
+    font-weight: 400;
+    resize: vertical;
+    transition-property: border-color,height,padding-right,color;
+    transition-duration: .2s,0s;
+    outline: none;
+    border: 1px solid rgba(0,0,0,.15);
+    background: #fff;
+    padding: 0 0.94118em;
+    width: 100%;
+    vertical-align: middle;
+    color: rgba(0,0,0,.84);
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    column-count: initial !important;
+    word-break: keep-all;
+    --vh: 7.46px;
+    padding: 12px 14.1177px; /* 따로 지정함  */
+    resize: none!important;
+}
+
+textarea:focus {
+    outline: none!important; 
+    border-color: #00c4c4!important;
+	}
+
+.wz.input.inline-block, .wz.input:after {
+    display: inline-block;
+    vertical-align: middle;
+    text-transform: none;
+    line-height: 1;
+    font-family: "wadizicon"!important;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-feature-settings: normal;
+    font-variant: normal;
+    speak: none;
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: scale(0);
+    transition-property: transform,opacity;
+    transition-duration: .2s;
+    opacity: 0;
+    margin-top: 0;
+    width: auto;
+    height: auto;
+    box-sizing: border-box;
+    pointer-events: none;
+    color: #00c4c4;
+    font-size: 1.41176em;
+    -webkit-text-size-adjust: none;
+    --vh: 7.46px;
+    overflow-wrap: break-word;
+    word-break: keep-all;
+    
+}
+
+
+.helper_FormFieldTextarea_helper__3-iK_{
+    line-height: 18px;
+    font-size: 13px;
+    font-weight: 400;
+    color: #90949c;
+    display: block;
+    margin-top: 4px;
+    font-style: normal;
+    overflow-wrap: break-word;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    word-break: keep-all;
+    box-sizing: border-box;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.Section_guideMessage__3XqrM{
+    line-height: 18px;
+    letter-spacing: 0;
+    font-size: 12px;
+    font-weight: 400;
+    font-style: normal;
+    position: absolute;
+    top: 0;
+    right: 0;
+    visibility: hidden;
+    border-radius: 4px;
+    background-color: #f2f4f6;
+    padding: 24px;
+    max-width: 240px;
+    display: block;
+    box-sizing: border-box;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.Section_guideMessage__3XqrM p{
+    margin-bottom: 0;
+    margin: 8px 0;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    border: 0;
+    padding: 0;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    
+}
+
+.Section_title{
+    line-height: 28px;
+    letter-spacing: -.6px;
+    font-size: 18px;
+    font-weight: 700;
+    font-style: normal;
+    display: flex;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.Section_title::after{
+    line-height: 28px;
+    letter-spacing: -.3px;
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+    margin-left: 4px;
+    color: #f66;
+    content: "*";
+    overflow-wrap: break-word;
+    word-break: keep-all;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.StoryMakerAgreementField_container__3GnYX{
+    margin-bottom: 40px;
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    display: block;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.StoryMakerAgreementInfo_container__PVGPV{
+    font-size: 12px;
+    display: block;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.StoryMakerAgreementInfo_linkList__zZ8jX{
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+    font-size: 12px;
+    list-style: none;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.li{
+    box-sizing: border-box;
+    list-style: none;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    display: list-item;
+    text-align: -webkit-match-parent;
+    font-size: 12px;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.guide-line{
+cursor: pointer;
+    line-height: 20px;
+    color: #00a2a2;
+    font-size: 15px;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    text-align: -webkit-match-parent;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    word-break: keep-all;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.wz_button_gray_StoryMakerAgreementInfo_agreeBtn__35dmv{
+    border-color: #60656a;
+    background-color: #60656a;
+     color: #fff; 
+    border-radius: 2px;
+    transition-property: background-color,border-color,color,opacity;
+    transition-duration: .2s;
+    border: 1px solid rgba(0,0,0,.15);
+    cursor: pointer;
+    padding: 0 1.41176em;
+    height: 48px;
+    vertical-align: middle;
+    line-height: 1;
+    font-size: 17px;
+    font-weight: 400;
+    box-sizing: border-box!important;
+    -webkit-appearance: none;
+    display: inline-block;
+    padding-top: 0.07em;
+    text-decoration: none;
+    font-family: inherit;
+    margin: 0;
+    writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.icon-check{
+    box-sizing: border-box;
+    font-style: italic;
+    color: #fff;
+    cursor: pointer;
+    line-height: 1;
+    font-size: 17px;
+    font-weight: 400;
+    font-family: inherit;
+    writing-mode: horizontal-tb !important;
+    overflow-wrap: break-word;
+    word-break: keep-all;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    text-align: center;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.check-out::before{
+    display: inline-block;
+    vertical-align: middle;
+    text-transform: none;
+    font-family: "wadizicon"!important;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-feature-settings: normal;
+    font-variant: normal;
+}
+
+.StoryMakerAgreementNoticeBox_container__3Klad_StoryMakerAgreementNoticeBox_disable__1IRzx{
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    width: 100%;
+    max-width: 850px;
+    box-sizing: border-box;
+    list-style: none;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    display: list-item;
+    text-align: -webkit-match-parent;
+    font-size: 12px;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.Section_title{
+    line-height: 28px;
+    letter-spacing: -.6px;
+    font-size: 18px;
+    font-weight: 700;
+    font-style: normal;
+    display: flex;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    overflow-wrap: break-word;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.Section_title::after{
+    line-height: 28px;
+    letter-spacing: -.3px;
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+    margin-left: 4px;
+    color: #f66;
+    content: "*";
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+}
+
+.StoryMakerAgreementNoticeBox_noticeBox__2m-JH{
+    position: absolute;
+    right: 14px;
+    z-index: 1;
+    border: 1px solid rgba(0,0,0,.15);
+    box-shadow: 1px 1px 1px 0 #e6eaed;
+    background: #fff;
+    padding: 19px;
+    line-height: 16px;
+    word-break: keep-all;
+    font-size: 12px;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    display: block;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+    top: 174px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.StoryMakerAgreementNoticeBox_noticeBox__2m-JH>p {
+    color: #60656a;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    line-height: 16px;
+    word-break: keep-all;
+    font-size: 12px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    --vh: 9.61px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.StoryMakerAgreementNoticeBox_noticeBox__2m-JH>em{
+    font-weight: 700;
+    font-style: inherit;
+    box-sizing: border-box;
+    color: #60656a;
+    line-height: 16px;
+    word-break: keep-all;
+    font-size: 12px;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    overflow-wrap: break-word;
+    --vh: 9.61px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.wz_button_less_StoryMakerAgreementNoticeBox_closeBtn__3lr1X{
+    background-color: transparent!important;
+    padding: 0;
+    border-width: 0;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    height: 14px;
+    font-size: 14px;
+    transition-property: background-color,border-color,color,opacity;
+    transition-duration: .2s;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 3px;
+    cursor: pointer;
+    vertical-align: middle;
+    line-height: 1;
+    color: rgba(0,0,0,.54);
+    font-weight: 400;
+    box-sizing: border-box!important;
+    -webkit-appearance: none;
+    display: inline-block;
+    text-decoration: none;
+    font-family: inherit;
+    background: none;
+    writing-mode: horizontal-tb !important;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    text-align: center;
+    overflow-wrap: break-word;
+    --vh: 9.61px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.icon-close{
+    box-sizing: border-box;
+    font-style: italic;
+    font-size: 14px;
+    cursor: pointer;
+    line-height: 1;
+    color: rgba(0,0,0,.54);
+    font-weight: 400;
+    font-family: inherit;
+    text-rendering: auto;
+    writing-mode: horizontal-tb !important;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    text-align: center;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    --vh: 9.61px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.icon-close::before{
+    display: inline-block;
+    vertical-align: middle;
+    text-transform: none;
+    font-family: "wadizicon"!important;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-feature-settings: normal;
+    font-variant: normal;
+    content: "";
+    font-size: 14px;
+    cursor: pointer;
+    color: rgba(0,0,0,.54);
+    letter-spacing: normal;
+    word-spacing: normal;
+    writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    text-indent: 0px;
+    text-shadow: none;
+    text-align: center;
+    word-break: keep-all;
+    -webkit-text-size-adjust: none;
+    --vh: 9.61px;
+    overflow-wrap: break-word;
+}
+
+.Section_contents{
+    max-width: 720px;
+    margin-top: 40px;
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+    display: block;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 9.61px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+    padding-right: 0;
+}
+
+.Section_title__ikPIm.Section_isRequired__F8rij::after{
+    line-height: 28px;
+    letter-spacing: -.3px;
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+    margin-left: 4px;
+    color: #f66;
+    content: "*";
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    --vh: 9.61px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.HelperMessage{
+    display: block;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 9.61px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.HelperMessage a{
+    line-height: 20px;
+    letter-spacing: 0;
+    font-size: 14px;
+    font-style: normal;
+    display: inline-block;
+    position: relative;
+    white-space: nowrap;
+    font-weight: 500;
+    margin-bottom: 0;
+    transition: color .3s;
+    border-bottom: 1px solid #00c4c4;
+    cursor: pointer;
+    color: #00c4c4;
+    box-sizing: border-box;
+    text-decoration: none;
+    word-break: keep-all;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    overflow-wrap: break-word;
+    --vh: 9.61px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.withIcon_icon__3lrgp_withIcon_inline__3A3d_icon{
+    margin-left: 4px;
+    display: inline;
+    transform: scale(1);
+    transition: transform .3s ease-out;
+    fill: currentColor;
+    box-sizing: border-box;
+    overflow-clip-margin: content-box;
+    overflow: hidden;
+    line-height: 20px;
+    letter-spacing: 0;
+    font-size: 14px;
+    font-style: normal;
+    white-space: nowrap;
+    font-weight: 500;
+    word-break: keep-all;
+    cursor: pointer;
+    color: #00c4c4;
+    overflow-wrap: break-word;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    --vh: 9.61px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.withIcon_icon__3lrgp_withIcon_inline__3A3d_icon_path{
+    box-sizing: border-box;
+    transform-origin: 0px 0px;
+    fill: currentColor;
+    line-height: 20px;
+    letter-spacing: 0;
+    font-size: 14px;
+    font-style: normal;
+    white-space: nowrap;
+    font-weight: 500;
+    cursor: pointer;
+    color: #00c4c4;
+    word-break: keep-all;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    overflow-wrap: break-word;
+    --vh: 9.61px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.MessageBox{
+    background-color: #f9fafb;
+    color: #495057;
+    box-sizing: border-box;
+    display: flex;
+    border-radius: 8px;
+    padding: 16px;
+    font-family: "Noto Sans KR";
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    line-height: 1.3;
+    word-break: keep-all;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 9.61px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.MessageBox_messageBox__3acWS_MessageBox_basic__2vbop_MessageBox_vertical__1mezf span{
+    font-family: inherit;
+    box-sizing: border-box;
+    color: #495057;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    line-height: 1.3;
+    word-break: keep-all;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 9.61px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.withIcon{
+    color: #868e96;
+    margin-top: 2px;
+    margin-right: 6px;
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    display: block;
+    transform: scale(1);
+    transition: transform .3s ease-out;
+    fill: currentColor;
+    box-sizing: border-box;
+    overflow-clip-margin: content-box;
+    overflow: hidden;
+    font-family: inherit;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    line-height: 1.3;
+    word-break: keep-all;
+    --vh: 9.61px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.withIcon_icon__1Oal1_MessageBox_icon__31KW path{
+    box-sizing: border-box;
+    fill: none;
+    transform-origin: 0px 0px;
+    color: #868e96;
+    font-size: 16px;
+    line-height: 1.3;
+    word-break: keep-all;
+    font-family: inherit;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 9.61px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.MessageBox_content{
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    display: block;
+    color: #495057;
+    font-family: "Noto Sans KR";
+    line-height: 1.3;
+    word-break: keep-all;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 9.61px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.MessageBox_title{
+    margin-bottom: 8px;
+    line-height: 8px;
+    letter-spacing: 0;
+    font-size: 14px;
+    font-weight: 700;
+    font-style: normal;
+    margin: 0 0 8px;
+    text-align: left;
+    border: 0;
+    padding: 0;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    color: #495057;
+    font-family: "Noto Sans KR";
+    overflow-wrap: break-word;
+    --vh: 9.61px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.MessageBox_description{
+    line-height: 18px;
+    letter-spacing: 0;
+    font-size: 12px;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0;
+    text-align: left;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    color: #495057;
+    -webkit-appearance: none;
+    border: 0;
+    padding: 0;
+    display: block;
+    font-family: "Noto Sans KR";
+    --vh: 9.61px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.MessageBox_description ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    border: 0;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;line-height: 18px;
+    letter-spacing: 0;
+    font-size: 12px;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0;
+    text-align: left;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    color: #495057;
+    font-family: "Noto Sans KR";
+    --vh: 9.61px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.imagenotice{
+    display: flex;
+    margin-bottom: 4px;    
+    box-sizing: border-box;
+    list-style: none;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    text-align: -webkit-match-parent;
+    line-height: 18px;
+    letter-spacing: 0;
+    font-size: 12px;
+    font-weight: 400;
+    font-style: normal;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    color: #495057;
+    font-family: "Noto Sans KR";
+    --vh: 9.61px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.imagenotice:before{
+    display: inline-block;
+    margin-right: 2px;
+    width: 7px;
+    text-align: center;
+    box-sizing: border-box;
+    content: "·";
+    padding: 0px 2px;
+    list-style: none;
+    line-height: 18px;
+    letter-spacing: 0;
+    font-size: 12px;
+    font-weight: 400;
+    font-style: normal;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    color: #495057;
+    --vh: 9.61px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.MessageBox_messageBox__3acWS_MessageBox_basic__2vbop_StoryEditorWrapperItemWeb_extraMessageBox__2Wmww_link2{
+    background-color: hsla(0,0%,100%,0);
+    color: #495057;
+    margin-bottom: 8px;
+    display: flex;
+    border-radius: 8px;
+    padding: 16px;
+    font-family: "Noto Sans KR";
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    line-height: 1.3;
+    word-break: keep-all;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 9.61px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.MessageBox_messageBox__3acWS_MessageBox_basic__2vbop_StoryEditorWrapperItemWeb_extraMessageBox__2Wmww_link2 span{
+    font-family: inherit;
+    box-sizing: border-box;    
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    color: #495057;
+    line-height: 1.3;
+    word-break: keep-all;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 9.61px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.withIcon_icon__1Oal1_MessageBox_icon__31KWI_MessageBox_withoutTitle__2S2r8{
+    margin-top: 1px;
+    color: #868e96;
+    margin-right: 6px;
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    display: block;
+    transform: scale(1);
+    transition: transform .3s ease-out;
+    fill: currentColor;
+    box-sizing: border-box;
+    overflow-clip-margin: content-box;
+    overflow: hidden;
+    font-family: inherit;
+    line-height: 1.3;
+    word-break: keep-all;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 9.61px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.WYSIWYGEditor_container__3MZO0_StoryEditorWrapperItemWeb_editor__3AvV7{
+    max-width: 100%;
+    margin-bottom: 80px;
+    position: relative;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    display: block;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.wz_button_less_WYSIWYGEditor_editButton__1MLjp{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 15px;
+    background-color: transparent!important;
+    padding: 0;
+    border-width: 0;
+    transition-property: background-color,border-color,color,opacity;
+    transition-duration: .2s;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 3px;
+    cursor: pointer;
+    height: 48px;
+    vertical-align: middle;
+    line-height: 1;
+    color: rgba(0,0,0,.54);
+    font-weight: 400;
+    box-sizing: border-box!important;
+    -webkit-appearance: none;
+    display: inline-block;
+    text-decoration: none;
+    font-family: inherit;
+    background: none;
+    margin: 0;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.WYSIWYGEditor_editor__V4Eam_WYSIWYGEditor_disabled__1KqRM{
+    position: relative;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    display: block;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 9.61px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+
+.WYSIWYGEditor_editor__V4Eam_WYSIWYGEditor_disabled__1KqRM::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    background-color: hsla(0,0%,100%,.5);
+    content: "";
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 9.61px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.wysiwyg-editor{
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    display: block;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.3;
+    --vh: 9.61px;
+    -webkit-text-size-adjust: none;
+}
+
+.fr-box_fr-basic_fr-top{
+    -webkit-border-radius: 10px;
+    background-clip: padding-box;
+    position: relative;
+    box-sizing: border-box;    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    display: block;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.3;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    -webkit-text-size-adjust: none;
+}
+
+.fr-toolbar_fr-desktop_fr-top_fr-basic{
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    top: inherit!important;
+    left: inherit!important;
+    background-clip: padding-box;
+    border-bottom: 0;
+    -webkit-border-radius: 10px 10px 0 0;
+    color: #222;
+    background: #fff;
+    position: relative;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    text-align: left;
+    border: 1px solid #ccc;
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.2;
+    padding-bottom: 0;
+    -webkit-transition: padding-bottom .5s;
+    -webkit-appearance: none;
+    margin: 0;
+    padding: 0;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    font-size: 16px;
+    font-weight: 400;
+    --vh: 9.61px;
+}
+
+.fr-btn-grp_fr-float-left{
+    margin: 0 2px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-color: #dde2e6;
+    display: inline-block;
+    float: left;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    border: 0;
+    padding: 0;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    color: #222;
+    text-align: left;
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.2;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    font-size: 16px;
+    font-weight: 400;
+    --vh: 9.61px;
+    -webkit-text-size-adjust: none;
+}
+
+#paragraphFormat-1{
+    background: transparent;
+    color: #333;
+    outline: none;
+    border: 0;
+    line-height: 1;
+    cursor: pointer;
+    text-align: left;
+    margin: 4px 2px;
+    padding: 0;
+    -webkit-transition: all .5s;
+    -webkit-border-radius: 4px;
+    background-clip: padding-box;
+    z-index: 2;
+    position: relative;
+    box-sizing: border-box;
+    text-decoration: none;
+    -webkit-user-select: none;
+    float: left;
+    height: 40px;
+    font-family: inherit;
+    -webkit-appearance: none;
+    writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    --vh: 9.61px;
+    -webkit-text-size-adjust: none;
+}
+
+#paragraphFormat-1 span{
+    width: 80px;
+    font-weight: 400;
+    margin-left: 3px;
+    margin-right: 11px;
+    font-size: 14px;
+    display: block;
+    line-height: 17px;
+    min-width: 30px;
+    float: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    height: 17px;
+    padding: 0 4px;
+    font-family: inherit;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    color: #333;
+    cursor: pointer;
+    text-align: left;
+    writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    --vh: 9.61px;
+    -webkit-text-size-adjust: none;
+}
+
+.fr-command_fr-btn_fr-dropdown_fr-selection::after{
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #333;
+    right: 2px;
+    top: 18px;
+    -webkit-transition: all .3s;
+    content: "";
+    color: #333;
+    line-height: 1;
+    cursor: pointer;
+    text-align: left;
+    -webkit-user-select: none;
+    font-family: inherit;
+    writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    -webkit-text-size-adjust: none;
+    --vh: 9.61px;
+}
+
+.fr-dropdown-menu{
+    background: #fff;
+    display: inline-block;
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    height: auto;
+    z-index: 4;
+    -webkit-border-radius: 4px;
+    background-clip: padding-box;
+    overflow: hidden;
+    zoom: 1;
+    box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+    box-sizing: border-box;    
+    color: #222;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;-webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    -webkit-user-select: none;
+    text-align: left;
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.2;    
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    font-size: 16px;
+    font-weight: 400;
+    -webkit-text-size-adjust: none;
+    --vh: 9.61px;
+}
+
+.fr-dropdown-wrapper{
+    padding: 0;
+    display: inline-block;
+    text-align: left;
+    position: relative;
+    box-sizing: border-box;
+    -webkit-transition: height .3s;
+    margin: 0 auto auto;
+    float: left;
+    height: 0;
+    margin-top: 0!important;
+    -webkit-appearance: none;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    color: #222;
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.2;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    -webkit-text-size-adjust: none;
+    font-size: 16px;
+    font-weight: 400;
+
+}
+
+.fr-dropdown-content{
+    position: relative;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    display: block;
+    text-align: left;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    color: #222;
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.2;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    font-size: 16px;
+    font-weight: 400;
+    --vh: 9.61px;
+    -webkit-text-size-adjust: none;
+}
+
+.fr-dropdown-list{
+    list-style-type: none;
+    margin: 0;
+    padding: 8px 0;
+    min-width: 72px;
+    box-sizing: border-box;
+    list-style: none;
+    -webkit-appearance: none;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+    text-align: left;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    color: #222;
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.2;
+    word-break: keep-all;
+    overflow-wrap: break-word;font-size: 16px;
+    font-weight: 400;
+    --vh: 9.61px;
+    -webkit-text-size-adjust: none;
+}
+
+.fr-dropdown-list li{
+    padding: 0;
+    margin: 0;
+    font-size: 15px;
+    text-align: center;
+    
+    list-style: none;
+    -webkit-appearance: none;
+    border: 0;
+    display: list-item;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    color: #222;
+    -webkit-user-select: none;
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.2;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    font-weight: 400;
+    -webkit-text-size-adjust: none;
+}
+
+.fr-dropdown-list h1{
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+    background-color: transparent !important;
+    font-weight: bold !important;
+    font-size: 2em !important;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    display: block;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    text-align: center;
+    list-style: none;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    color: #222;
+    -webkit-user-select: none;
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.2;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    --vh: 9.61px;
+    -webkit-text-size-adjust: none;
+}
+
+.fr-dropdown-list h2{
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+    background-color: transparent !important;
+    font-weight: bold !important;
+    font-size: 1.5em !important;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    display: block;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    text-align: center;
+    list-style: none;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    -webkit-user-select: none;
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.2;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    --vh: 9.61px;
+    -webkit-text-size-adjust: none;
+}
+
+.fr-dropdown-list h3{
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+    background-color: transparent !important;
+    font-weight: bold !important;
+    font-size: 1.17em !important;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    text-align: center;
+    list-style: none;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    color: #222;
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.2;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    -webkit-text-size-adjust: none;
+}
+
+.fr-dropdown-list h4{
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+    background-color: transparent !important;
+    font-weight: bold !important;
+    font-size: 15px !important;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    display: block;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    text-align: center;
+    list-style: none;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    -webkit-text-size-adjust: none;
+    color: #222;
+    text-align: center;
+    -webkit-user-select: none;
+    line-height: 1.2;
+    --vh: 9.61px;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+}
+
+.fr-dropdown-list p{
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+    background-color: transparent !important;
+    font-size: 15px;
+    box-sizing: border-box;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    -webkit-appearance: none;
+    text-align: center;
+    list-style: none;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    color: #222;
+    -webkit-user-select: none;
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.2;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    font-weight: 400;
+    --vh: 9.61px;
+    -webkit-text-size-adjust: none;
+}
+
+.fr-command{
+    padding: 0 20px;
+    line-height: 200%;
+    display: flex;
+    cursor: pointer;
+    white-space: nowrap;
+    color: inherit;
+    text-decoration: none;
+    -webkit-border-radius: 0;
+    background-clip: padding-box;
+    box-sizing: border-box;
+    font-size: 15px;
+    text-align: center;
+    list-style: none;
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing: antialiased;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    -webkit-user-select: none;
+    -webkit-text-size-adjust: none;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    --vh: 9.61px;
+}
+
+.fr-command_fr-btn{
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2px 1px;
+    cursor: pointer;
+    padding: 2px 8px;
+    min-width: 40px;
+    height: auto;
+    vertical-align: middle;
+    background: transparent;
+    color: #333;
+    outline: none;
+    border: 0;
+    line-height: 1;
+    text-align: left;
+    -webkit-transition: all .5s;
+    -webkit-border-radius: 4px;
+    background-clip: padding-box;
+    z-index: 2;
+    position: relative;
+    box-sizing: border-box;
+    text-decoration: none;
+    -webkit-user-select: none;
+    float: left;
+    font-family: inherit;
+    -webkit-appearance: none;
+    writing-mode: horizontal-tb !important;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    --vh: 9.61px;
+    -webkit-text-size-adjust: none;
+}
+
+.fr-command_fr-btn i{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    width: auto;
+    writing-mode: horizontal-tb !important;
+    text-align: center;
+    float: none;
+    box-sizing: border-box;
+    font-style: italic;
+    cursor: pointer;    
+    color: #333;
+    line-height: 1;
+    -webkit-user-select: none;
+    font-family: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    --vh: 9.61px;
+    -webkit-text-size-adjust: none;
+}
+
+.fr-command_fr-btn i svg{
+    display: block;
+    text-align: center;
+    float: none;
+    margin: auto auto 2px;
+    width: 24px;
+    box-sizing: border-box;
+    overflow-clip-margin: content-box;
+    overflow: hidden;
+    font-style: italic;
+    font-family: inherit;
+    cursor: pointer;
+    color: #333;
+    line-height: 1;
+    -webkit-user-select: none;
+    writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+    --vh: 9.61px;
+}
+
+.fr-command_fr-btn label{
+    line-height: 14px;
+    letter-spacing: 0;
+    font-size: 10px;
+    font-weight: 400;
+    font-style: normal;
+    cursor: pointer;
+    color: #212529;
+    box-sizing: border-box;
+    text-align: center;
+    font-family: inherit;
+    writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    -webkit-font-smoothing: antialiased;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    --vh: 9.61px;
+    -webkit-text-size-adjust: none;
+}
+
+.fr-sr-only{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+    -webkit-appearance: none;
+    font-size: 14px;
+    display: block;
+    line-height: 17px;
+    min-width: 30px;
+    float: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 700;
+    font-family: inherit;
+    box-sizing: border-box;
+    color: #333;
+    text-align: left;
+    -webkit-user-select: none;
+    writing-mode: horizontal-tb !important;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-rendering: auto;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    -webkit-font-smoothing: antialiased;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    --vh: 9.61px;
+    -webkit-text-size-adjust: none;
+}
+
+.FundingStoryContainer_btnWrapper__32tvJ{
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    display: block;
+   	line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.save_button{
+	width: 420px;
+    max-width: 100%;
+    border-color: #00c4c4;
+    background-color: #00c4c4;
+    color: #fff;
+    height: 48px;
+    padding: 14px 28px;
+    line-height: 1.4;
+    font-size: 18px;
+    position: relative;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+/*     transition-property: background-color,border-color,color,opacity;
+    transition-duration: .15s;
+    border: 1px solid #cdd3d8;
+    border-radius: 3px;
+    cursor: pointer;
+    vertical-align: middle;
+    text-decoration: none;
+    white-space: nowrap; */
+    font-weight: 500;
+/*     box-sizing: border-box!important;
+    -webkit-appearance: none;
+    -webkit-font-smoothing: antialiased;
+    font-family: inherit;
+    background: none;
+    margin: 0;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-rendering: auto;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block; */
+    text-align: center;
+    --vh: 7.46px;
+}
+
+/* .Button_children__q9VCZ{
+	
+} */
+
+/* 버튼 */
+
+#bottom-button{
+    font-family: roboto,Noto Sans KR,-apple-system,dotum,sans-serif;
+    box-sizing: border-box!important;
+    -webkit-font-smoothing: antialiased;
+    cursor: pointer;
+    padding: 9px 16px;
+    vertical-align: middle;
+    text-decoration: none;
+    /* position: relative; */
+    transition-property: background-color,border-color,color,opacity;
+    transition-duration: .15s;
+    border: 1px solid #cdd3d8;
+    border-radius: 6px;
+    /* border-radius: 4px; */
+    line-height: 25px;
+    /* line-height: 28px; */
+    letter-spacing: -.3px;
+    font-size: 16px;
+    width: 100%;
+    font-weight: 500;
+    border-color: #00c4c4;
+    background-color: #00c4c4;
+    color: #fff;
+    position: absolute;
+    right: 0px;
+    width: 25%;
+}
+
+#button-inner-text {
+    white-space: nowrap;
+    cursor: pointer;
+    letter-spacing: -.3px;
+    color: #fff;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    vertical-align: top;
+}
+
+#button-icon {
+    cursor: pointer;
+    letter-spacing: -.3px;
+    color: #fff;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    box-sizing: border-box;
+    vertical-align: top;
+    display: inline-flex;
+    align-items: center;
+}
+/* =========================================선택============================================== */
+
+.SelectMenu1 {
+    margin-bottom: 12px;
+    border: 1px solid #dde2e6;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.SelectMenu1.SelectMenu2 {
+    border: 1px solid #00c4c4;
+}
+
+.Select1 {
+    line-height: 20px;
+    letter-spacing: 0;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.Select1 .Select_title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+}
+
+.SelectMenu1 .DefaultValue {
+    line-height: 28px;
+    letter-spacing: -.3px;
+    font-size: 16px;
+    font-weight: 400;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.Select1 .MoreButton1 {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #adb5bd;
+}
+
+.withIcon_icon__20lDO {
+    display: block;
+    transform: scale(1);
+    transition: transform .3s ease-out;
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}
+
+.Select1 .MoreButton1 svg {
+    width: 20px;
+    height: 20px;
+}
+
+.Select1 .MoreButton2 svg {
+    transform: rotate(180deg);
+}
+
+.SelectMenu1 .content1 {
+    max-height: 446px;
+    overflow: auto;
+}
+
+.MenuItem {
+    border-top: 1px solid #dde2e6;
+    cursor: pointer;
+    padding: 16px 16px;;
+    word-break: break-all;
+    overflow-wrap: break-word;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.MenuItem .TitleWrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.MenuItem .TitleWrapper .ItemTitle {
+    margin-right: 16px;
+}
+
+.MenuItem .TitleWrapper .ItemTitle .ItemName {
+    line-height: 20px;
+    letter-spacing: 0;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 8px;
+    color: #212529;
+}
+
+.MenuItem .Itembottom {
+    display: flex;
+    align-items: center;
+    justify-content: normal;
+    color: #212529;
+    line-height: 28px;
+    letter-spacing: -.3px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+ .content1 {
+	display: none;
+}
+
+.Itembottom div {
+	text-decoration: line-through;
+    margin-right: 20px;
+}
+
+.Itembottom span {
+	color: red;
+}
+
+
+@media screen and (min-width: 769px) {
+.SelectMenu1 {
+    margin-bottom: 24px;
+}
+
+.SelectMenu1 .content1 {
+    max-height: 392px;
+}
+}
+
+
+
+
+
+
+
