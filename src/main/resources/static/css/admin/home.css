@@ -1,0 +1,215 @@
+.inner-wrapper{
+    width: calc(100% - 80px);
+    height: calc(100% - 40px);
+    /* background-color: beige; */
+    margin: 40px;
+    margin-top: 20px;
+    border-radius: 10px;
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+    /* box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px; */
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+    position: relative;
+    background-color: #fff;
+}
+
+.inner-box-wrapper{
+    width: calc(100% - 80px);
+    padding: 40px;
+    /* background-color: antiquewhite; */
+    /* 52px <- title 높이 80 <- padding 위 아래 높이 */
+    height: calc(100% - 52px - 80px);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.inner-box{
+    /* 40px <- padding */
+    width: calc(48% - 40px);
+    height: calc(48% - 40px);
+    position: relative;
+    /* background-color: aquamarine; */
+    border-radius: 5px;
+    padding: 20px;
+    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; */
+    cursor: pointer;
+}
+
+.inner-box:hover{
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+.inner-box-title{
+    /* 20px <- padding-left */
+    /* width: calc(100% - 10px); */
+    width: calc(100%);
+    margin-bottom: 20px;
+    font-family: "TheJamsil5Bold";
+    font-size: 20px;
+    /* padding-left: 10px; */
+    /* padding-top: 10px; */
+    height: 28px;
+    /* 총 height 28px + 20px = 48px */
+}
+
+.inner-box-list-wrapper{
+    width: 100%;
+    /* .inner-box-title 총 height = 58px */
+    height: calc(100% - 48px);
+    /* background-color: blueviolet; */
+}
+
+.inner-box-list{
+    width: 100%;
+    height: 100%;
+}
+
+table{
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    table-layout: fixed;
+    font-family: NanumGothicExtraBold;
+    border-collapse : collapse;
+    background-color: #fff;
+    color: #000000b8;
+}
+
+th{
+    padding-left: 10px;
+}
+
+td{
+    padding-left: 10px;
+    border: 1px solid #cad7d552;
+    text-overflow: ellipsis; 
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+
+thead{
+    width: 100%;
+    background-color: #f3f3f3ad;
+}
+
+
+/* 테이블 길이 조절 */
+/* member-tr 시작 */
+.member-tr > th:first-child{
+    width: 7%;
+}
+
+.member-tr > td:first-child{
+    width: 7%;
+}
+
+.member-tr > th:nth-child(2){
+    width: 15%;
+}
+
+.member-tr > td:nth-child(2){
+    width: 15%;
+}
+
+.member-tr > th:nth-child(3){
+    width: 18%;
+}
+
+.member-tr > td:nth-child(3){
+    width: 18%;
+}
+
+.member-tr > th:nth-child(4){
+    width: 25%;
+}
+
+.member-tr > td:nth-child(4){
+    width: 25%;
+}
+
+.member-tr > th:nth-child(5){
+    width: 35%;
+}
+
+.member-tr > td:nth-child(5){
+    width: 35%;
+}
+/* member-tr 끝*/
+
+/* event-board 시작*/
+.event-board > th:nth-child(1){
+    width: 7%;
+}
+
+.event-board > td:nth-child(1){
+    width: 7%;
+}
+
+.event-board > th:nth-child(2){
+    width: 38%;
+}
+
+.event-board > td:nth-child(2){
+    width: 38%;
+}
+
+.event-board > th:nth-child(3){
+    width: 30%;
+}
+
+.event-board > td:nth-child(3){
+    width: 30%;
+}
+
+.event-board > th:nth-child(4){
+    width: 15%;
+}
+
+.event-board > td:nth-child(4){
+    width: 15%;
+}
+
+.event-board > th:nth-child(5){
+    width: 10%;
+}
+
+.event-board > td:nth-child(5){
+    width: 10%;
+}
+/* event-board 끝*/
+
+/* banner 시작*/
+.banner > th:nth-child(1){
+    width: 7%;
+}
+
+.banner > td:nth-child(1){
+    width: 7%;
+}
+
+.banner > th:nth-child(2){
+    width: 20%;
+}
+
+.banner > td:nth-child(2){
+    width: 20%;
+}
+
+.banner > th:nth-child(3){
+    width: 45%;
+}
+
+.banner > td:nth-child(3){
+    width: 45%;
+}
+
+.banner > th:nth-child(4){
+    width: 28%;
+}
+
+.banner > td:nth-child(4){
+    width: 28%;
+}
+
+/* banner 끝*/
