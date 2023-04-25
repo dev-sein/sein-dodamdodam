@@ -1,19 +1,18 @@
 let $content = $('#main-content');
-console.log("연결됨?");
-
-$('#request[ticket_form_id]').text($("select[name='request[ticket_form_id]']").find($("option").prop('selected', true)).text());
-
-
-
+let $issueType = $('#request_issue_type_select');
 // select[name=request[ticket_form_id]]에서 선택된 값 selected 추가
-$("select[name='request[ticket_form_id]']").change(function() {
-    $("select[name='request[ticket_form_id]']").find($("option").prop('selected', true)).prop('selected', false);
-    console.log($(this));
-    $(this).prop('selected', true);
-    $('.nesty-input').text($(this).text()); 
-});
+// $("select[name='request[ticket_form_id]']").change(function() {
+//     $("select[name='request[ticket_form_id]']").find($("option").prop('selected', true)).prop('selected', false);
+//     console.log($(this));
+//     $(this).prop('selected', true);
+//     $('.nesty-input').text($(this).text()); 
+// });
 
-
+$issueType.change(function(e) {
+    var selectedText = $(this).find("option:selected").text();
+    console.log(selectedText);
+    $('#request_ticket_form_id').text(selectedText);
+})
 
 
 const $text = $content.find('.nesty-input').text()

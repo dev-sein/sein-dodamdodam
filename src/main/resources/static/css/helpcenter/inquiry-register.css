@@ -52,7 +52,7 @@ input:not([type="checkbox"]) {
 select {
     -webkit-appearance: none;
     /* -moz-appearance: none; */
-    background: url(data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23CCC' d='M0 0h10L5 6 0 0z'/%3E%3C/svg%3E%0A) no-repeat #fff;
+    /* background: url(data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23CCC' d='M0 0h10L5 6 0 0z'/%3E%3C/svg%3E%0A) no-repeat #fff; */
     background-position: right 10px center;
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -413,13 +413,16 @@ img {
     right: 10px;
     top: 25%;
 }
+.select-div {
+    height: 67px;
+}
 
-#request_issue_type_select {
-    position: absolute;
-    z-index: 2;
+#request_issue_type_select, #request_custom_fields_help_type {
+    position: relative;
+    z-index: 10;
     opacity: 0;
     left: 0;
-    top: 0px;
+    top: -41px;
     height: 40px;
 }
 
@@ -460,3 +463,129 @@ option {
     border-radius: 3px;
 }
 
+.form-field p {
+    color: #666;
+    font-size: 12px;
+    margin: 5px 0;
+}
+
+
+textarea {
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    resize: vertical;
+    width: 97%;
+    outline: none;
+    padding: 10px;
+}
+
+.form-field textarea {
+    vertical-align: middle;
+}
+
+.request-form textarea {
+    min-height: 120px;
+}
+
+.form-field input[type="checkbox"] {
+    width: auto;
+}
+
+.form-field .optional {
+    color: #666;
+    margin-left: 4px;
+}
+.upload-dropzone {
+    border: 1px solid #ddd;
+    font-size: 12px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+}
+.upload-dropzone {
+    background-color: #fff;
+    border-radius: 3px;
+}
+
+
+.upload-dropzone span {
+    color: #666;
+    display: inline-block;
+    line-height: 24px;
+    padding: 10px;
+}
+
+.upload-dropzone a {
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.notification {
+    border: 1px solid;
+    display: table;
+    font-family: sans-serif;
+    font-size: 12px;
+    padding: 13px 15px;
+    transition: height .2s;
+    width: 100%;
+    color: #555;
+}
+.notification-error {
+    background: #ffeded;
+    border-color: #f7cbcb;
+}
+.notification-inline {
+    border-radius: 4px;
+    line-height: 14px;
+    margin-top: 5px;
+    padding: 5px;
+    position: relative;
+    text-align: left;
+    vertical-align: middle;
+}
+.notification-inline.notification-error {
+    background-color: #fff0f1;
+    border: 1px solid #e35b66;
+    color: #cc3340;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.upload-pool {
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+}
+
+.form footer {
+    margin-top: 0;
+    padding-top: 30px;
+    text-align: right;
+}
+
+input[type="submit"] {
+    cursor: pointer;
+    background-color: rgba(0, 204, 204, 1);
+    border: 0;
+    border-radius: 4px;
+    color: rgba(255, 255, 255, 1);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 2.72;
+    min-width: 190px;
+    padding: 0 1.9286em;
+    width: auto;
+}
+
+.upload-dropzone input[type=file] {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+}

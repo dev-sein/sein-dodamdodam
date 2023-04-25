@@ -81,28 +81,95 @@
             <div id="main-content" class="form">
                 <form id="new_request" class="request-form" data-form="" data-form-type="request" action="/hc/ko/requests" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓" autocomplete="off">
                     <input name="utf8" type="hidden" value="✓" autocomplete="off">
-                    <div class="form-field select optional request_ticket_form_id">
+                    <div class="select-div form-field select optional request_ticket_form_id">
                         <label for="request_issue_type_select">문의 접수하실 내용을 선택해주세요:)</label>
-                        <a class="nesty-input" style="max-width: 96%;" id="request[ticket_form_id]">
-                            <select name="request[ticket_form_id]" id="request_issue_type_select" aria-label="문의 접수하실 내용을 선택해주세요:)" autofocus="autofocus" >
-                                <option value="-">-</option>
-                                <option value="펀딩 서비스 문의하기">펀딩 서비스 문의하기</option>
-                                <option value="스토어 서비스 문의하기">스토어 서비스 문의하기</option>
-                                <option value="파이낸스 서비스 문의하기">파이낸스 서비스 문의하기</option>
-                            </select>
+                        <a class="nesty-input" style="max-width: 96%;" id="request_ticket_form_id">
+                            -
                         </a>
+                        <select name="request[ticket_form_id]" id="request_issue_type_select" >
+                            <option value="-" selected>-</option>
+                            <option value="펀딩 서비스 문의하기">펀딩 서비스 문의하기</option>
+                            <option value="스토어 서비스 문의하기">스토어 서비스 문의하기</option>
+                            <option value="파이낸스 서비스 문의하기">파이낸스 서비스 문의하기</option>
+                        </select>
                     </div>
                     <div class="form-field string required request_anonymous_requester_email">
                         <label for="request_anonymous_requester_email">이메일 주소</label>
                         <input type="text" name="request[anonymous_requester_email]" id="request_anonymous_requester_email" aria-required="true">
                     </div>
-                    <div class="form-field string  required  request_custom_fields_help_type">
+                    <div class="select-div form-field string  required  request_custom_fields_help_type">
                         <label for="request_custom_fields_help_type" id="request_custom_fields_help_type_label">
                             문의자 유형
                         </label>
-                        <input type="hidden" name="request[custom_fields][help_type]" id="request_custom_fields_help_type" autocomplete="off" data-tagger="[{&quot;label&quot;:&quot;-&quot;,&quot;value&quot;:&quot;&quot;},{&quot;label&quot;:&quot;프로젝트를 개설한 메이커입니다.&quot;,&quot;value&quot;:&quot;펀딩메이커&quot;},{&quot;label&quot;:&quot;프로젝트에 참여한 서포터입니다.&quot;,&quot;value&quot;:&quot;펀딩서포터&quot;}]" aria-required="true" aria-labelledby="request_custom_fields_help_type_label" value="펀딩메이커">
-                        <a class="nesty-input" tabindex="0" aria-haspopup="true" aria-expanded="false" aria-controls="_k1cvr0w65" aria-required="true" aria-labelledby="request_custom_fields_help_type_label" style="max-width: 100%;">-</a>
+                        <input type="hidden" name="request[custom_fields][help_type]" id="request_custom_fields_help_type" autocomplete="off">
+                        <a class="nesty-input" style="max-width: 96%;">
+                            -
+                        </a>
+                        <select name="request[ticket_form_id]" id="request_custom_fields_help_type">
+                            <option value="-" selected>-</option>
+                            <option value="프로젝트를 개설한 메이커 입니다.">프로젝트를 개설한 메이커 입니다.</option>
+                            <option value="프로젝트에 참여한 서포터 입니다.">프로젝트에 참여한 서포터 입니다.</option>
+                        </select>
                     </div>
+                    <div class="form-field string request_custom_fields_id required">
+                        <label id="request_custom_fields_id_label" for="request_custom_fields_id">와디즈 계정</label>
+                        <input type="text" name="request[custom_fields][id]" id="request_custom_fields_id">
+                        <p id="request_custom_fields_id_hint">와디즈 로그인 시 사용하시는 이메일 주소 (와디즈계정)을 알려주세요.</p>
+                    </div>
+                    <div class="form-field string request_custom_fields_phone required">
+                        <label id="request_custom_fields_phone_label" for="request_custom_fields_phone">연락처</label>
+                        <input type="number" name="request[custom_fields][phone]" id="request_custom_fields_phone">
+                        <p id="request_custom_fields_phone_hint">필요 시 상담 받으실 수 있는 연락처를 입력해주세요.</p>
+                    </div>
+                    <div class="form-field string optional request_custom_fields_project_number">
+                        <label id="request_custom_fields_project_number_label" for="request_custom_fields_project_number">
+                            프로젝트 번호 <span class="optional">(선택 사항)</span>
+                        </label>
+                        <input type="text" name="request[custom_fields][project_number]" id="request_custom_fields_project_number">
+                        <p id="request_custom_fields_project_number_hint">
+                            프로젝트 번호 또는 제목을 입력해주세요.
+                            ⚡프로젝트 번호 확인 방법 : 마이와디즈 &gt; 메이커스튜디오 &gt; 화면 왼쪽 상단 아래 숫자 5~6자리
+                        </p>
+                    </div>
+                    <div class="form-field text  required  request_description">
+                        <label id="request_description_label" for="request_description">문의사항을 알려주세요.</label>
+                        <textarea name="request[description]" id="request_description"></textarea>
+                        <input type="hidden" name="request[description_mimetype]" id="request_description_mimetype" value="text/plain" style="display: none;" autocomplete="off">
+                        <p id="request_description_hint">궁금하신 내용을 상세하게 설명해주세요.
+                        </p>
+                    </div>
+                    <div class="form-field boolean request_custom_fields_checkbox required">
+                        <label id="request_custom_fields_checkbox_label" for="request_custom_fields_checkbox"> 개인정보의 수집 및 이용 동의 확인했습니다.</label>
+                        <input name="request[custom_fields][checkbox]" type="hidden" value="off" autocomplete="off">
+                        <input type="checkbox" value="on" name="request[custom_fields][checkbox]" id="request_custom_fields_checkbox">
+                        <p id="request_custom_fields_checkbox_hint">
+                            정보를 입력해주시면 답변 알림 및 신속하고 정확한 상담이 가능합니다. 아래의 개인정보 수집 및 이용 정책을 확인하셨다면 체크 박스에 체크해주세요.
+                  
+                            ✨수집항목: (필수) 이메일 주소 / (선택) 와디즈 계정, 연락처
+                            ✨수집목적: 답변 알림 및 [상담]
+                            ✨보유기간: [정보 수집으로부터 3년 후 파기] 
+                            
+                            개인정보 수집 동의를 거부할 수 있으나, 거부할 경우 연락 수단의 부재로 답변 알림 및 상담이 제한될 수 있습니다.
+                        </p>
+                    </div>
+                    <div class="form-field">
+                        <label for="request-attachments">
+                          첨부 파일<span class="optional">(선택 사항)</span>
+                        </label>
+                        <div id="upload-dropzone" class="upload-dropzone" data-hc-focus="false">
+                            <input type="file" multiple="true" id="request-attachments" data-fileupload="true" data-dropzone="upload-dropzone" data-error="upload-error" data-create-url="/hc/ko/request_uploads" data-name="request[attachments][]" data-pool="request-attachments-pool" data-delete-confirm-msg="" aria-describedby="upload-error">
+                            <span>
+                                <a>파일 추가</a> 또는 파일을 여기로 드래그
+                            </span>
+                        </div>
+                        <div id="upload-error" class="notification notification-error notification-inline" style="display: none;">
+                            <span data-upload-error-message=""></span>
+                        </div>
+                        <ul id="request-attachments-pool" class="upload-pool" data-template="upload-template"></ul>
+                    </div>
+                    <footer>
+                        <input type="submit" name="commit" value="제출">
+                    </footer>
                 </form>
             </div>
         </div>
