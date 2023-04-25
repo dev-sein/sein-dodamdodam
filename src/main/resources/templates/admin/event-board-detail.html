@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>이벤트 게시글 상세페이지</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/admin/admin.css">
+    <link rel="stylesheet" href="../../static/css/admin/home.css">
+    <link rel="stylesheet" href="../../static/css/admin/board-detail.css">
+</head>
+<body>
+    <!-- 헤더 -->
+    <header>
+        <div class="logo-wrapper">
+            <div class="logo">도담 도담</div>
+        </div>
+        <div class="time-wrapper">
+            <div class="time-left">현재 시간 : </div>
+            <!-- 현재 시간 js로 들어감 -->
+            <div class="time"></div>
+        </div>
+    </header>
+    <main>
+        <!-- 사이드 바 메뉴 -->
+        <nav>
+            <div class="menu-bar">
+                <ul>
+                    <li class="menu">
+                        <a class="menus" href="#">홈</a>
+                    </li>
+                    <li class="menu">
+                        <a class="menus" href="#">회원 목록</a>
+                    </li>
+                    <li class="menu">
+                        <a class="menus" href="#">이벤트 게시글</a>
+                    </li>
+                    <li class="menu">
+                        <a class="menus" href="#">모집 게시글</a>
+                    </li>
+                    <li class="menu">
+                        <a class="menus" href="#">판매 게시글</a>
+                    </li>
+                    <li class="menu">
+                        <a class="menus" href="#">자유 게시글</a>
+                    </li>
+                    <li class="menu">
+                        <a class="menus" href="#">관리 게시글</a>
+                    </li>
+                    <li class="menu">
+                        <a class="menus" href="#">문화공간 목록</a>
+                    </li>
+                    <li class="menu">
+                        <a class="menus" href="#">배너신청 현황</a>
+                    </li>
+                    <li class="menu">
+                        <a class="menus" href="#">배너관리</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- 사이드 바 메뉴 -->
+        <!-- contents -->
+        <content>
+            <div class="inner-wrapper">
+                <div class="page-title">이벤트 게시글</div>
+                <button type="submit" class="delete-button" id="delete-button">삭제하기</button> 
+                <div class="inner-box-wrapper">
+                    <div class="inner-left-wrapper">
+                        <div class="inner-right-title">첨부된 이미지</div>
+                        <!-- 이미지 첨부 슬라이드 배너 -->
+                        <div class="image-wrapper">
+                            <div class="slider">
+                                <div class="slider__container">
+                                  <div class="slider__item">
+                                    <!-- <img src="../../static/images/admin/1.png" > -->
+                                    <img src="https://cdn.wadiz.kr/wwwwadiz/green001/2023/0413/20230413131422920_203505.jpg/wadiz/resize/800/format/jpg/quality/85/" >
+                                  </div>
+                                  <div class="slider__item">
+                                    <img src="https://cdn.wadiz.kr/wwwwadiz/green001/2023/0412/20230412152211561_203297.jpeg/wadiz/resize/800/format/jpg/quality/85/">
+                                  </div>
+                                  <div class="slider__item">
+                                    <img src="https://cdn.wadiz.kr/wwwwadiz/green001/2023/0414/20230414024524570_200258.jpg/wadiz/resize/800/format/jpg/quality/85/">
+                                    <!-- <img src="../../static/images/admin/3.png"> -->
+                                  </div>
+                                  <div class="slider__item">
+                                    <img src="https://cdn.wadiz.kr/wwwwadiz/green001/2023/0131/20230131100656640_179579.jpg/wadiz/resize/800/format/jpg/quality/85/">
+                                    <!-- <img src="../../static/images/admin/4.png"> -->
+                                  </div>
+                                  <div class="slider__item">
+                                    <img src="../../static/images/admin/gorani.jpg">
+                                    <!-- <img src="../../static/images/admin/5.png"> -->
+                                  </div>
+                                </div>
+                                <button class="slider__arrow slider__arrow--left">&lt;</button>
+                                <button class="slider__arrow slider__arrow--right">&gt;</button>
+                            </div>
+                        </div>
+                        <!-- 이미지 첨부 슬라이드 배너 -->
+                        <div class="page-wrapper">
+                            <span class="now-page">1</span>
+                            <span> / </span>
+                            <span class="total-page">3</span>
+                        </div>
+                    </div>
+                    <div class="inner-right-wrapper">
+                        <div class="inner-right-title">게시글 정보</div>
+                        <div class="right-info-wrapper">
+                            <div class="classification-wrapper">
+                                <div class="classification">이벤트명</div>
+                                <div class="event-title info">기린 탑승 체험</div>
+                            </div>
+                            <div class="classification-wrapper">
+                                <div class="classification">개최자</div>
+                                <div class="writer info">김욱성</div>
+                            </div>
+                            <div class="classification-wrapper">
+                                <div class="classification">이벤트 장소</div>
+                                <div class="date info">서울특별시 강남구 테헤란로 146 현익빌딩 4층</div>
+                            </div>
+                            <div class="classification-wrapper">
+                                <div class="classification">사업자 번호</div>
+                                <div class="recruit-numbers info">000-123-45678</div>
+                            </div>
+                            <div class="classification-wrapper">
+                                <div class="classification">연락처</div>
+                                <div class="recruit-numbers info">010-1234-5678</div>
+                            </div>
+                            <div class="classification-wrapper">
+                                <div class="classification">모집마감</div>
+                                <div class="date info">2023년 05월 12일</div>
+                            </div>
+                            <div class="classification-wrapper">
+                                <div class="classification">이벤트 소개</div>
+                                <div class="contents">
+                                    <div class="contents-inner">
+                                        2023년 05월 13일(토)에 역삼역에서 오후 1시에 모여서 할리스로 이동할 계획입니다.
+                                        2023년 05월 13일(토)에 역삼역에서 오후 1시에 모여서 할리스로 이동할 계획입니다.
+                                        2023년 05월 13일(토)에 역삼역에서 오후 1시에 모여서 할리스로 이동할 계획입니다.
+                                        2023년 05월 13일(토)에 역삼역에서 오후 1시에 모여서 할리스로 이동할 계획입니다.
+                                        2023년 05월 13일(토)에 역삼역에서 오후 1시에 모여서 할리스로 이동할 계획입니다.
+                                        2023년 05월 13일(토)에 역삼역에서 오후 1시에 모여서 할리스로 이동할 계획입니다.
+                                        2023년 05월 13일(토)에 역삼역에서 오후 1시에 모여서 할리스로 이동할 계획입니다.
+                                        2023년 05월 13일(토)에 역삼역에서 오후 1시에 모여서 할리스로 이동할 계획입니다.
+                                        2023년 05월 13일(토)에 역삼역에서 오후 1시에 모여서 할리스로 이동할 계획입니다.
+                                        2023년 05월 13일(토)에 역삼역에서 오후 1시에 모여서 할리스로 이동할 계획입니다.
+                                        2023년 05월 13일(토)에 역삼역에서 오후 1시에 모여서 할리스로 이동할 계획입니다.
+                                        2023년 05월 13일(토)에 역삼역에서 오후 1시에 모여서 할리스로 이동할 계획입니다.
+                                        2023년 05월 13일(토)에 역삼역에서 오후 1시에 모여서 할리스로 이동할 계획입니다.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </content>
+        <!-- contents -->
+    </main>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="../../static/js/admin/admin.js"></script>
+<script src="../../static/js/admin/board-detail.js"></script>
+</html>

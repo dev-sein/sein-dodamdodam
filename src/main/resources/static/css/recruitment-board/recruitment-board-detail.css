@@ -37,7 +37,7 @@ body{
 
 #container{
     z-index: 10;
-    height: 100%;
+    height: fit-content;
 }
 
 #recruitment-container{
@@ -77,7 +77,6 @@ body{
 .recruitment-info{
     width: 100%;
     height: 100%;
-    margin-bottom: 28px;
 }
 
 .info-img{
@@ -129,6 +128,7 @@ body{
     line-height: 3;
 }
 
+
 dd span{
     color: #00c4c4;   
 }
@@ -137,6 +137,10 @@ dd span{
     content: "";
     clear: both;
     display: block;
+}
+
+.center{
+    text-align: center;
 }
 
 .recruitment-status{
@@ -154,10 +158,10 @@ dd span{
     bottom: 0;
 }
 
-.recruitment-btn-apply button{
+.submit-btn{
 width: 347px;
 height: 58px;
-line-height: 58px;
+line-height: 50px;
 text-align: center;
 font-size: 18px;
 font-weight: 500;
@@ -172,14 +176,17 @@ font-family: inherit;
 .sns-share{
     margin-bottom: 35px;
     text-align: right;
+    display: inline-block;
+    margin-top: 12px;
 }
 
 .sns-share span {
     font-size: 14px;
-    padding-right: 15px;
+    padding-right: 5px;
+    padding-left: 470px;
 }
 
-.recruitment-detail{
+.contents-detail{
     margin-bottom: 50px;
     border: 1px solid #e4e4e4;
     background: #fff;
@@ -199,4 +206,213 @@ font-family: inherit;
     text-align: center;
     border: none;
     cursor: pointer;
+}
+
+.info-sum:after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.sns-share{
+    margin-bottom: 35px;
+    text-align: right;
+}
+
+.share-sns span{
+    font-size: 14px;
+    padding-right: 15px;
+}
+
+[class^=icon_sns] {
+    width: 31px;
+    height: 31px;
+    margin-right: 5px;
+    background: url(https://www.wadiz.kr/resources/equity/img/icon_sns.png);
+}
+
+[class^=icon_] {
+    display: inline-block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    font-size: 0;
+    line-height: 0;
+    text-decoration: none;
+    vertical-align: middle;
+    text-indent: -1000em;
+}
+
+.icon_sns_fb{
+    width: 18px;
+    height: 18px;
+    background: url(../../images/recruitment-board/facebook-icon.png);
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin-right: 10px;
+}
+
+.icon_sns_tw{
+    width: 20px;
+    height: 20px;
+    background: url(../../images/recruitment-board/twitter-icon.png);
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.icon_sns_share{
+    width: 20px;
+    height: 20px;
+    background: url(../../images/recruitment-board/share-icon.png);
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin-left: 8px;
+}
+
+input{
+    position: absolute;
+    top: 0;
+    box-sizing: border-box;
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+.submit-btn{
+    cursor: pointer;
+}
+
+.icon_sns_share {
+    background-position: 100% 0;
+    cursor: pointer;
+}
+
+.modal-bg {
+    display:none;
+    width:100%;
+    height:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index:999;
+}
+
+.modal-wrap {
+    display:none;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:250px;
+    height:150px;
+    background:#fff;
+    z-index:1000;
+    text-align: center;
+    font-size: 16px;
+    padding: 20px;
+    padding: 50px 15px 16px;
+}
+
+.modal-copy {
+    display:none;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:250px;
+    height:150px;
+    background:#fff;
+    z-index:1000;
+    text-align: center;
+    font-size: 16px;
+    padding: 20px;
+    padding: 50px 15px 16px;
+}
+
+
+.modal{
+    margin-top:80px;
+    margin-left:2px;
+    width:245px;
+}
+
+.d-day{
+    position: relative;
+    line-height: 25px;
+    left: 219px;
+    bottom: 16px;
+}
+
+/* 찜하기 버튼 */
+.wish-button-box {
+    position: absolute;
+    display: flex;
+}
+
+.wish-button{
+    cursor: pointer;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    justify-content: center;
+    border: 1px solid lightgray;
+    margin-left: 20px;
+    position: relative;
+    bottom: 6px;
+    background-color: transparent;
+    border-radius: 4px;
+}
+
+button[class*=Button_button] {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+.wish-button span{
+    display: inline-flex;
+    align-items: center;
+    vertical-align: top;
+}
+
+.wish-button-children{
+    pointer-events: none;
+    vertical-align: top;
+}
+
+.withIcon-icon{
+    width: 24px;
+    height: 24px;
+    display: block;
+    transform: scale(1);
+    will-change: transform;
+    transition: transform .3s ease-out;
+    margin: 0 auto;
+    font-size: 24px;
+    fill: currentColor;
+}
+
+.withIcon-icon path{
+    fill: #868e96;
+}
+
+[aria-pressed=true] path{
+    fill: #f66;
+}
+
+svg:not(:root) {
+    overflow-clip-margin: content-box;
+    overflow: hidden;
 }
