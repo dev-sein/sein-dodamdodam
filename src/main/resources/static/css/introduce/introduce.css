@@ -1,0 +1,200 @@
+body, body button, body input, body select, body textarea {
+    font-family: roboto,Noto Sans KR,-apple-system,dotum,sans-serif;
+}
+
+a, address, article, aside, audio, b, body, button, canvas, caption, dd, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, html, i, img, input, label, legend, li, nav, ol, p, pre, section, small, span, strong, summary, table, tbody, td, th, thead, time, tr, ul, video {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+    font: inherit;
+    box-sizing: border-box;
+}
+
+#page-container {
+    transform-origin: 50% 0;
+    transition-property: opacity,transform;
+    transition-duration: 80ms;
+    transition-timing-function: ease-out;
+}
+
+#wadiz-about-landing .header {
+    position: absolute;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    height: 56px;
+}
+
+#wadiz-about-landing .header .inner {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    justify-content: space-between;
+    transform: translate(-50%);
+    z-index: 500;
+    padding: 0;
+    width: 100%;
+    max-width: 1000px;
+    box-sizing: border-box;
+}
+
+#wadiz-about-landing .header .inner .logo {
+    width: 85px;
+    height: 56px;
+}
+#wadiz-about-landing .header .inner .logo a {
+    display: block;
+    height: 100%;
+    line-height: 56px;
+}
+a, a:active, a:hover, a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+#wadiz-about-landing .header .inner .logo a svg {
+    height: 100%;
+}
+
+body li, body ol, body ul {
+    list-style: none;
+}
+
+body, body button, body input, body li, body ol, body select, body textarea, body ul {
+    box-sizing: border-box;
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+#wadiz-about-landing .header .inner .lnb .lnbItem {
+    position: relative;
+    float: left;
+    width: 41px;
+    text-align: center;
+}
+
+#wadiz-about-landing .header .inner .lnb .lnbItem:first-child {
+    margin-right: 24px;
+}
+
+#wadiz-about-landing .header .inner .lnb .lnbItem>a {
+    display: inline-block;
+    position: relative;
+    line-height: 56px;
+    color: #fff;
+    font-size: 15px;
+}
+
+#wadiz-about-landing .header .inner .lnb .lnbItem.active>a {
+    font-weight: 700;
+}
+
+#wadiz-about-landing .header .inner .lnb .lnbItem.active>a:after {
+    display: block;
+    position: absolute;
+    bottom: 15px;
+    border-bottom: 2px solid #fff;
+    width: 100%;
+    content: "";
+}
+
+#wadiz-about-landing .header .inner .lnb .lnbItem {
+    position: relative;
+    float: left;
+    width: 41px;
+    text-align: center;
+}
+
+#wadiz-about-landing .header .inner .lnb .lnbItem+.lnbItem {
+    margin-left: 10px;
+}
+
+#wadiz-about-landing .header .inner .lnb .lnbItem+.lnbItem:before {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: -10px;
+    transform: translateY(-50%);
+    border-left: 1px solid rgba(255,255,255,.3);
+    height: 10px;
+    content: "";
+}
+
+#wadiz-about-landing .header .inner .lnb .lnbItem>a {
+    display: inline-block;
+    position: relative;
+    line-height: 56px;
+    color: #fff;
+    font-size: 15px;
+}
+
+#wadiz-about-landing .header+.background {
+    display: block;
+    position: fixed;
+    top: 0;
+    transition: background-color .15s linear;
+    background-color: #0000;
+    width: 100%;
+    height: 56px;
+}
+
+#wadiz-about-landing .visualContainer {
+    position: relative;
+    background: url('https://static.wadiz.kr/assets/about/brand-bg.jpg') no-repeat 54%/cover;
+    background-color: #0000004d;
+}
+
+#wadiz-about-landing .visualContainer .content {
+    position: relative;
+    z-index: 1;
+    margin: 0 auto;
+    padding: 340px 0 110px;
+    max-width: 1000px;
+}
+
+#wadiz-about-landing .visualContainer .content .title {
+    line-height: 56px;
+    letter-spacing: -1px;
+    font-size: 48px;
+    font-weight: 700;
+    color: #fff;
+}
+#wadiz-about-landing .mobileOnly {
+    display: none;
+}
+
+#wadiz-about-landing .visualContainer .content .desc {
+    line-height: 24px;
+    font-size: 17px;
+    margin-top: 24px;
+    word-break: keep-all;
+    color: #fff;
+    font-weight: 400;
+}
+
+#wadiz-about-landing .desktopOnly {
+    display: block;
+}
+
+#wadiz-about-landing .visualContainer:after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #00000026;
+    content: "";
+}
+
+#wadiz-about-landing .valueContainer {
+    margin-top: 0;
+}
+
+#wadiz-about-landing .section .inner {
+    margin: 0 auto;
+    padding: 120px 0;
+    max-width: 1000px;
+}
