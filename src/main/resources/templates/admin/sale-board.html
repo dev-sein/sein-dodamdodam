@@ -5,10 +5,10 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>자유 게시글 목록</title>
+    <title>판매 게시글 목록</title>
     <link rel="stylesheet" href="../../static/css/admin/admin.css">
     <link rel="stylesheet" href="../../static/css/admin/user.css">
-    <link rel="stylesheet" href="../../static/css/admin/board.css">
+    <link rel="stylesheet" href="../../static/css/admin/sale-board.css">
 </head>
 <body>
 <!-- 헤더 -->
@@ -77,7 +77,7 @@
         <!-- 검색 창 -->
         <div class="inner-wrapper">
             <div class="title-wrapper">
-                <div class="page-title">자유 게시글</div>
+                <div class="page-title">판매 게시글</div>
                 <div class="delete-button">삭제하기</div>
             </div>
             <table>
@@ -96,9 +96,9 @@
                     </th>
                     <th class="number">번호</th>
                     <th class="title">제목</th>
-                    <th class="writer">작성자</th>
-                    <th class="views">조회 수</th>
-                    <th class="like-count">좋아요 수</th>
+                    <th class="writer">판매자</th>
+                    <th class="views">판매품목</th>
+                    <th class="like-count">금액</th>
                     <th class="register-time">작성시간</th>
                     <th class="detail-top">상세보기</th>
                 </tr>
@@ -116,10 +116,10 @@
                         <!-- 체크박스 -->
                     </td>
                     <td class="numbers">1</td>
-                    <td class="board-titles" style="text-overflow: ellipsis; overflow: hidden;">제에에에에에에에에에에모오오오오오오오오오오오오오오오오오오오옥</td>
-                    <td>작성자</td>
-                    <td>85<span>회</span></td>
-                    <td>12</td>
+                    <td>제목1</td>
+                    <td>판매자1</td>
+                    <td>판매품목1</td>
+                    <td>10000원</td>
                     <td>2000.01.01 21:05:04</td>
                     <td><button class="show-detail" onclick="showModal()">상세보기</button></td>
                 </tr>
@@ -137,9 +137,9 @@
                     </td>
                     <td class="numbers">2</td>
                     <td>제목2</td>
-                    <td>작성자</td>
-                    <td>230<span>회</span></td>
-                    <td>0</td>
+                    <td>판매자2</td>
+                    <td>판매품목2</td>
+                    <td>15000원</td>
                     <td>2022.01.01 21:05:04</td>
                     <td><button class="show-detail" onclick="showModal()">상세보기</button></td>
                 </tr>
@@ -157,9 +157,9 @@
                     </td>
                     <td class="numbers">3</td>
                     <td>제목3</td>
-                    <td>작성자</td>
-                    <td>45<span>회</span></td>
-                    <td>5</td>
+                    <td>판매자3</td>
+                    <td>판매품목3</td>
+                    <td>20000원</td>
                     <td>2023.01.01 21:05:04</td>
                     <td><button class="show-detail" onclick="showModal()">상세보기</button></td>
                 </tr>
@@ -177,9 +177,9 @@
                     </td>
                     <td class="numbers">4</td>
                     <td>제목4</td>
-                    <td>작성자</td>
-                    <td>85<span>회</span></td>
-                    <td>12</td>
+                    <td>판매자4</td>
+                    <td>판매품목4</td>
+                    <td>10000원</td>
                     <td>2023.04.01 21:05:04</td>
                     <td><button class="show-detail" onclick="showModal()">상세보기</button></td>
                 </tr>
@@ -197,9 +197,9 @@
                     </td>
                     <td class="numbers">5</td>
                     <td>제목5</td>
-                    <td>작성자</td>
-                    <td>85<span>회</span></td>
-                    <td>12</td>
+                    <td>판매자5</td>
+                    <td>판매품목5</td>
+                    <td>50000원</td>
                     <td>2023.04.01 21:05:04</td>
                     <td><button class="show-detail" onclick="showModal()">상세보기</button></td>
                 </tr>
@@ -217,9 +217,9 @@
                     </td>
                     <td class="numbers">6</td>
                     <td>제목6</td>
-                    <td>작성자</td>
-                    <td>85<span>회</span></td>
-                    <td>12</td>
+                    <td>판매자6</td>
+                    <td>판매품목6</td>
+                    <td>5000원</td>
                     <td>2023.04.01 21:05:04</td>
                     <td><button class="show-detail" onclick="showModal()">상세보기</button></td>
                 </tr>
@@ -237,9 +237,9 @@
                     </td>
                     <td class="numbers">7</td>
                     <td>제목7</td>
-                    <td>작성자</td>
-                    <td>85<span>회</span></td>
-                    <td>12</td>
+                    <td>판매자7</td>
+                    <td>판매품목7</td>
+                    <td>17500원</td>
                     <td>2023.04.01 21:05:04</td>
                     <td><button class="show-detail" onclick="showModal()">상세보기</button></td>
                 </tr>
@@ -257,9 +257,9 @@
                     </td>
                     <td class="numbers">8</td>
                     <td>제목8</td>
-                    <td>작성자</td>
-                    <td>85<span>회</span></td>
-                    <td>12</td>
+                    <td>판매자8</td>
+                    <td>판매품목8</td>
+                    <td>80000원</td>
                     <td>2023.04.01 21:05:04</td>
                     <td><button class="show-detail" onclick="showModal()">상세보기</button></td>
                 </tr>
@@ -277,9 +277,9 @@
                     </td>
                     <td class="numbers">9</td>
                     <td>제목9</td>
-                    <td>작성자</td>
-                    <td>85<span>회</span></td>
-                    <td>12</td>
+                    <td>판매자9</td>
+                    <td>판매품목9</td>
+                    <td>10000원</td>
                     <td>2023.04.01 21:05:04</td>
                     <td><button class="show-detail" onclick="showModal()">상세보기</button></td>
                 </tr>
@@ -297,9 +297,9 @@
                     </td>
                     <td class="numbers">10</td>
                     <td>제목10</td>
-                    <td>작성자</td>
-                    <td>85<span>회</span></td>
-                    <td>12</td>
+                    <td>판매자10</td>
+                    <td>판매품목10</td>
+                    <td>100000원</td>
                     <td>2023.04.01 21:05:04</td>
                     <td><button class="show-detail" onclick="showModal()">상세보기</button></td>
                 </tr>
