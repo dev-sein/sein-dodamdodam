@@ -46,5 +46,68 @@
             <li><a href="#">이벤트 개설하기</a></li>
         </ul>
     </nav>
+    <main role="main">
+        <section class="breadcrumbs__block">
+            <div class="container">
+                <nav class="sub-nav">
+                    <ol class="breadcrumbs">
+                        <li title="도움말 센터">
+                            <a href="/templates/helpcenter/inquiry-home.html">도움말 센터</a>
+                        </li>
+                        <li title="문의 등록">
+                            문의 등록
+                        </li>
+                    </ol>
+                    <div class="search-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon">
+                            <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"></circle>
+                            <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"></path>
+                        </svg>
+                        <form role="search" class="search" action="" accept-charset="UTF-8" method="get">
+                            <input name="utf8" type="hidden" value="✓" autocomplete="off">
+                            <input type="search" name="query" id="query" placeholder="검색" aria-label="검색">
+                        </form>
+                    </div>
+                </nav>
+            </div>
+        </section>
+        <div class="container">
+            <h1 class="new-request-title">
+                문의 등록
+                <span class="follow-up-hint">
+                </span>
+            </h1>
+
+            <div id="main-content" class="form">
+                <form id="new_request" class="request-form" data-form="" data-form-type="request" action="/hc/ko/requests" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓" autocomplete="off">
+                    <input name="utf8" type="hidden" value="✓" autocomplete="off">
+                    <div class="form-field select optional request_ticket_form_id">
+                        <label for="request_issue_type_select">문의 접수하실 내용을 선택해주세요:)</label>
+                        <a class="nesty-input" style="max-width: 96%;" id="request[ticket_form_id]">
+                            <select name="request[ticket_form_id]" id="request_issue_type_select" aria-label="문의 접수하실 내용을 선택해주세요:)" autofocus="autofocus" >
+                                <option value="-">-</option>
+                                <option value="펀딩 서비스 문의하기">펀딩 서비스 문의하기</option>
+                                <option value="스토어 서비스 문의하기">스토어 서비스 문의하기</option>
+                                <option value="파이낸스 서비스 문의하기">파이낸스 서비스 문의하기</option>
+                            </select>
+                        </a>
+                    </div>
+                    <div class="form-field string required request_anonymous_requester_email">
+                        <label for="request_anonymous_requester_email">이메일 주소</label>
+                        <input type="text" name="request[anonymous_requester_email]" id="request_anonymous_requester_email" aria-required="true">
+                    </div>
+                    <div class="form-field string  required  request_custom_fields_help_type">
+                        <label for="request_custom_fields_help_type" id="request_custom_fields_help_type_label">
+                            문의자 유형
+                        </label>
+                        <input type="hidden" name="request[custom_fields][help_type]" id="request_custom_fields_help_type" autocomplete="off" data-tagger="[{&quot;label&quot;:&quot;-&quot;,&quot;value&quot;:&quot;&quot;},{&quot;label&quot;:&quot;프로젝트를 개설한 메이커입니다.&quot;,&quot;value&quot;:&quot;펀딩메이커&quot;},{&quot;label&quot;:&quot;프로젝트에 참여한 서포터입니다.&quot;,&quot;value&quot;:&quot;펀딩서포터&quot;}]" aria-required="true" aria-labelledby="request_custom_fields_help_type_label" value="펀딩메이커">
+                        <a class="nesty-input" tabindex="0" aria-haspopup="true" aria-expanded="false" aria-controls="_k1cvr0w65" aria-required="true" aria-labelledby="request_custom_fields_help_type_label" style="max-width: 100%;">-</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="/static/js/helpcenter/inquiry-register.js"></script>
 </html>
