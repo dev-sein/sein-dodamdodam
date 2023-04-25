@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>모집 게시판 상세</title>
+    <title>이벤트 정보 게시판 상세</title>
     <link rel="stylesheet" href="../../static/css/recruitment-board/recruitment-board-detail.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,8 +16,7 @@
         <div id="recruitment-container">
             <div class="container-form">
                 <div class="recruitment-title">
-                    <h3>LG트윈스VS삼성라이온즈 잠실 경기 보러가실 분</h3>
-                    <p class="sub-text">소제목 칸입니다 외쳐라 무적엘지</p>
+                    <h3>2023 대한민국 채용박람회</h3>
                 </div>
                 <div class="recruitment-info">
                     <div class="info-img">
@@ -25,22 +24,24 @@
                     <div class="info-sum">
                         <dl>
                             <dt>모집인</dt>
-                            <dd>정세인</dd>
+                            <dd>고용노동부</dd>
                         </dl>
                         <dl>
                             <dt>이벤트 날짜</dt>
-                            <dd>2023-06-12</dd>
+                            <dd><span>2023-04-24 ~ 2023-04-25</span></dd>
                         </dl>
                         <dl>
                             <dt>이벤트 장소</dt>
-                            <dd>종합운동장역 6번 출구</dd>
+                            <dd>aT센터 제1전시장</dd>
                         </dl>
                         <dl>
-                            <dt>모집/제한 인원</dt>
-                            <dd><span>6명</span> / 10명</dd>
+                            <dt>문의 번호</dt>
+                            <dd>02-2186-9043</dd>
                         </dl>
-         
-
+                        <dl>
+                            <dt>문의 이메일</dt>
+                            <dd>job@korea.kr</dd>
+                        </dl>
                         <div class="wish-button-box">
                             <button type="button" class="wish-button"  aria-pressed="false">
                                 <span>
@@ -51,17 +52,14 @@
                                         </div>
                                         </span>
                                     </span></button>
+                                    <p class="recruitment-status d-day"><strong>D-50</strong></p>
                         </div>
-                        <p class="recruitment-status"><strong>모집중</strong></p>
-                        <div class="recruitment-btn-apply">
-                            <button type="button" class="submit-btn" onClick="javascript:popOpen();">신청하기</button></div>
-
                     </div>
                     <div class="sns-share">
                         <span>주변 분들과 함께 참가하고 싶으신가요? 페이지를 공유해보세요!</span>
-                        <a class="icon_sns_fb" target="_blank" href="https://www.facebook.com/sharer/sharer.php?app_id=190622721088710&amp;u=http://127.0.0.1:5500/templates/recruitment-board/recruitment-board-detail.html" title="facebook">facebook</a>
-                        <a class="icon_sns_tw" target="_blank" href="https://twitter.com/intent/tweet?text=글제목글제목%20https://127.0.0.1:5500/templates/recruitment-board/recruitment-board-detail.html title="twitter">twitter</a>
-                        <a href="#" onclick="clip(); return false;"><button class="icon_sns_share" id="urlCopyBtn" data-clipboard-target="#shareLink" title="공유하기"  onClick="javascript:popCopyOpen();">공유하기</button>
+                        <a class="icon_sns_fb" target="_blank" href="https://www.facebook.com/sharer/sharer.php?app_id=190622721088710&amp;u=http://127.0.0.1:5500/templates/event-board/event-board-detail.html" title="facebook">facebook</a>
+                        <a class="icon_sns_tw" target="_blank" href="https://twitter.com/intent/tweet?text=글제목글제목%20https://127.0.0.1:5500/templates/event-board/event-board-detail.html title="twitter">twitter</a>
+                        <a href="#" onclick="clip(); return false;"><button class="icon_sns_share" id="urlCopyBtn" data-clipboard-target="#shareLink" title="공유하기" onClick="javascript:popCopyOpen();">공유하기</button>
                         </a>
                     </div>
 
@@ -72,24 +70,14 @@
                 </div>
                 </div>
 
-
-        <!-- 신청완료  modal 영역 -->
-  <div class="modal-bg" onClick="javascript:popClose();"></div>
-  <div class="modal-wrap">
-    <span>신청이 완료되었습니다</span>
-    <button type="button" class="modal-close submit-btn modal" onClick="javascript:popClose();">닫기</button>
-        </div>
-        <!-- //modal 영역 -->
-
-
-        
         <!-- 복사완료  modal 영역 -->
-  <div class="modal-bg" onClick="javascript:popCopyClose();"></div>
-  <div class="modal-copy">
-    <span>복사 완료되었습니다</span>
-    <button type="button" class="modal-close submit-btn modal" onClick="javascript:popCopyClose();">닫기</button>
-        </div>
-        <!-- //modal 영역 -->
+        <div class="modal-bg" onClick="javascript:popCopyClose();"></div>
+        <div class="modal-copy">
+          <span>복사 완료되었습니다</span>
+          <button type="button" class="modal-close submit-btn modal" onClick="javascript:popCopyClose();">닫기</button>
+              </div>
+              <!-- //modal 영역 -->
+      
 
 
         </div>
@@ -101,7 +89,6 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
 
-/* 좋아요 */
 $(function(){
     $('.wish-button').click(function(e){
         if($('.wish-button').attr('aria-pressed') == 'false'){
@@ -113,20 +100,18 @@ $(function(){
     });
 });
 
+/* url 복사 */
+function clip(){
+var url = '';
+var textarea = document.createElement("textarea");
+    document.body.appendChild(textarea);
+    url = window.document.location.href;
+    textarea.value = url;
+    textarea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textarea);
+}
 
-/* 신청 완료 모달 */
-function popOpen() {
-var modalPop = $('.modal-wrap');
-var modalBg = $('.modal-bg'); 
-    $(modalPop).show();
-    $(modalBg).show();
-}
-function popClose() {
-var modalPop = $('.modal-wrap');
-var modalBg = $('.modal-bg');
-    $(modalPop).hide();
-    $(modalBg).hide();
-}
 
 /* 복사 완료 모달 */
 function popCopyOpen() {
@@ -144,18 +129,6 @@ var modalBg = $('.modal-bg');
 
 
 
-/* url 복사 */
-function clip(){
-var url = '';
-var textarea = document.createElement("textarea");
-document.body.appendChild(textarea);
-url = window.document.location.href;
-textarea.value = url;
-textarea.select();
-document.execCommand("copy");
-document.body.removeChild(textarea);
-alert("URL이 복사되었습니다.")
-}
 
 </script>
 </html>

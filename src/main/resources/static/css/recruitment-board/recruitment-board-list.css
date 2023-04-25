@@ -259,7 +259,7 @@ body {
     height: 12px;
 }
 
-button:not(:disabled) {
+.wish-button:not(:disabled) {
     cursor: pointer;
     background-color: transparent;
     border: none;
@@ -287,21 +287,20 @@ button:not(:disabled) {
     fill: currentColor;
 }
 
-path{
+.wish-button-svg path{
     stroke: #f2f4f6;
     stroke-width: 2px;
     fill: #21252966;
     transition: fill .25s ease-in-out;
 }
 
+[aria-pressed=true] path{
+    fill: #f25555;
+}
+
 svg:not(:root) {
     overflow-clip-margin: content-box;
     overflow: hidden;
-}
-
-.path :visited {
-    background-color: #f25555;
-    fill: #f25555;
 }
 
 .badge{
@@ -333,7 +332,7 @@ svg:not(:root) {
 }
 
 .loca-status-container{
-    position:absolute;
+    /* position:absolute; */
 }
 
 .inline-flex{
@@ -343,8 +342,9 @@ svg:not(:root) {
 .status-community{
     background-color: #f2f4f6;
     position: relative;
-    margin-left: 210px;
+    margin-left: 214px;
     margin-top: -24px;
+    border-radius: 7px;
 }
 
 .second-confirm{
@@ -352,7 +352,7 @@ svg:not(:root) {
     width: 16px;
     height: 12px;
     display: inline-block;
-    margin-bottom: -2px;
+    margin-bottom: -1px;
     
 }
 
@@ -364,6 +364,77 @@ svg:not(:root) {
     line-height: 1px;
 }
 
+.wish-button-svg[aria-pressed=true] path {
+    fill: #f25555;
+}
+
+html.scroll-top.scroll-apex .top-btn {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.top-btn-container{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: fixed;
+    right: 16px;
+    bottom: 20px;
+    transition-property: transform,scale;
+    transition-duration: .25s;
+    z-index: 1200;
+}
+
+
+.top-btn{
+    display: block;
+    position: relative;
+    border-radius: 50%;
+    background: rgba(255,255,255,.8);
+    padding: 0 0 env(safe-area-inset-bottom);
+    color: #babdc0;
+    box-sizing: border-box;
+    border: 1px solid #babdc0;
+}
+
+
+button:not(:disabled) {
+    cursor: pointer;
+}
+
+html.scroll-top .top-btn-container {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.like-modal-container{
+    margin-left: 1550px;
+    display: none;
+    padding: 25px;
+    text-align: center;
+    width: 240px;
+    height: 30px;
+    background-color: #000;
+    color: #fff;
+    font-family: 'Noto Sans KR';
+    font-weight: 400;
+    border-radius: 10px;
+    top: 90%;
+    position: fixed;
+    z-index: 999;
+}
+
+
+.top-btn svg{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition: transform .3s ease-out;
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}
 
 @media screen and (min-width: 1097px){
 .main-wrapper-content {
@@ -398,5 +469,13 @@ svg:not(:root) {
     display: inline-flex;
     flex-direction: row;
     justify-content: space-between;
+}
+}
+
+@media screen and (min-width: 1097px){
+.top-btn {
+    width: 60px;
+    height: 60px;
+    font-size: 32px;
 }
 }
