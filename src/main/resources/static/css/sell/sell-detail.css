@@ -2128,7 +2128,7 @@ strong {
 
     .DetailTab_container__1NVYg ul {
         padding-left: 37px;
-        max-width: 68.01%;
+        max-width: 100%;
     }
 
     .storeTabContentsWrapper {
@@ -2136,6 +2136,7 @@ strong {
         margin: 0 auto 40px;
         padding: 0 80px;
         max-width: 1440px;
+        justify-content: center;
     }
 
     .storeTabContents {
