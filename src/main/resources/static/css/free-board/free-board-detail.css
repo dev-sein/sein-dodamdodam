@@ -541,7 +541,7 @@ button.btn-category {
 .best-list ol li {
     display: table;
     width: 100%;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
 }
 
 .best-list ol li em {
