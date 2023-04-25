@@ -1,0 +1,269 @@
+@charset "UTF-8";
+body {
+    line-height: 1.33;
+    font-family: 'Noto Sans KR' !important;
+}
+
+body {
+    overflow-y: scroll;
+    line-height: 1.5em;
+    letter-spacing: -.02em;
+    color: rgba(0,0,0,.84);
+    font-size: 15px;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+}
+
+
+a, address, article, aside, audio, b, body, button, canvas, caption, dd, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, html, i, img, input, label, legend, li, nav, ol, p, pre, section, small, span, strong, summary, table, tbody, td, th, thead, time, tr, ul, video {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+    font: inherit;
+    box-sizing: border-box;
+}
+
+article, blockquote, body, dd, div, dl, dt, h1, h2, h3, h4, html, li, main, ol, p, section, table, tbody, td, th, thead, tr, ul {
+    margin: 0;
+    padding: 0;
+}
+
+body, body button, body input, body li, body ol, body select, body textarea, body ul {
+    box-sizing: border-box;
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+li, ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a, a:active, a:hover, a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+body a {
+    color: rgba(0,0,0,.84);
+}
+
+.login-header {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 99;
+}
+
+.web-header {
+    position: relative;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    transition: top .25s;
+    z-index: 99;
+    width: 100%;
+}
+
+.web-header-large {
+    display: none;
+}
+
+.header-wrapper {
+    position: relative;
+    top: 0;
+    z-index: 9998;
+    background-color: #fff;
+    width: 100%;
+    height: 56px;
+    text-align: center;
+}
+
+.web-header .web-header-simple {
+    display: block;
+    position: relative;
+    text-align: cdenter;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0 16px;
+    max-width: 1440px;
+    height: 100%;
+}
+
+.dodam-logo {
+    display: inline-block;
+    position: static;
+    top: 0;
+    left: 16px;
+    margin: 0;
+    line-height: 22px;
+    font-size: 32px;
+}
+
+.web-header .web-header-simple .dodam-logo {
+    display: inline-block;
+    position: static;
+}
+
+.label {
+    display: block;
+    position: absolute;
+    left: -9999px;
+    visibility: none;
+    height: 1px;
+}
+
+.web-header .dodam-logo>a {
+    display: block;
+    padding: 11px 0 13px;
+}
+
+.dodam-logo img {
+    width: 90px;
+    height: 30px;
+}
+
+img.icon-logo {
+    width: 25px;
+    height: 25px;
+    margin-right: -5px;
+}
+
+.header-right {
+    display: flex;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    justify-content: space-between;
+    z-index: 1;
+    margin-left: 0;
+    box-shadow: 0 0 10px 2px rgba(0,0,0,.15);
+    padding: 0;
+    width: 100%;
+    list-style: none;
+    vertical-align: top;
+}
+
+.web-header .web-header-simple .header-container
+.header-right {
+    display: none;
+    position: absolute;
+    right: 80px;
+    left: auto;
+    color: #495057;
+}
+
+.header-right li {
+    width: 100%;
+}
+
+.item {
+    display: block;
+    padding-top: 7px;
+    padding-bottom: 2px;
+    text-align: center;
+    text-decoration: none;
+    color: #495057;
+}
+
+.header-right .item {
+    margin-left: 16px;
+    padding: 0;
+}
+
+.item span {
+    display: block;
+    line-height: 16px;
+}
+
+.header-right .item span {
+    font-size: 15px;
+    font-weight: 400;
+}
+
+
+
+
+@media screen and (min-width: 1097px) {
+    .login-header {
+        position: static;
+    }
+
+    .web-header {
+        position: static;
+    }
+
+    .web-header-large {
+        display: block;
+    }
+    
+    .header-wrapper {
+        position: relative;
+        border-bottom: 1px solid #f2f4f6;
+        padding: 0;
+        height: 56px;
+        text-align: left;
+    }
+
+    .header-container {
+        padding: 0 80px;
+    }
+
+    .dodam-logo {
+        position: static;
+    }
+
+    .web-header .header-right {
+        display: block;
+        position: relative;
+        position: -webkit-sticky;
+        position: static;
+        margin-left: 24px;
+        box-shadow: none;
+        width: auto;
+    }
+
+    .web-header .web-header-simple .header-container
+    .header-right {
+        display: block;
+    }
+
+    .header-right li {
+        float: left;
+        width: auto;
+    }
+
+    .item {
+        padding: 0 16px;
+    }
+
+    .item span {
+        padding-top: 1px;
+        line-height: 55px;
+        color: #000;
+        font-size: 19px;
+        font-weight: 700;
+    }
+
+    .web-header .dodam-logo>a {
+        padding: 14px 0 18px;
+    }
+}
+
+
+@media (hover: hover) {
+    .input-email>input:hover {
+        border-color: rgba(0,0,0,.54);
+    }
+
+
+}
