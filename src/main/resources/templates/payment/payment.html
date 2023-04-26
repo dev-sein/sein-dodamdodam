@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>포인트 충전</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gugi&display=swap">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../../static/css/payment/payment.css">
+</head>
+
+<body>
+    <div>
+        <!-- 헤더 넣는곳 -->
+        <div id="header"></div>
+
+        <div class="content-wrap">
+            <div class="banner-wrap">
+                <a href="javascript:void(0)" class="home-a">
+                    <img src="../../static/images/payment/left_icon.png" class="home-icon">
+                    <span>스토리로 돌아가기</span>
+                </a>
+                <h2>
+                    [앵콜_값비싼 전용필터 NO!] 자동차 필터 호환으로 필터비 걱정 끝!~
+                    <span class="banner-info">
+                        <img class="banner-info-image"
+                            src="https://cdn.wadiz.kr/wwwwadiz/green001/2023/0407/20230407150348652_204740.jpg/wadiz/resize/600/format/jpg/quality/80/optimize">
+                        (주)아이와나테크
+                    </span>
+                </h2>
+            </div>
+            <div class="payment-wrap">
+                <div class="payment-order-box">
+                    <ol>
+                        <li>
+                            <em>
+                                리워드 <br> 선택
+                            </em>
+                        </li>
+                        <li class="active">
+                            <em>충전 하기</em>
+                        </li>
+                        <li>
+                            <em>충전 완료</em>
+                        </li>
+                    </ol>
+                </div>
+                <form action="#"> <!-- 폼태그 잇어야 할지 말지 모르겟어서 일단 집어넣엇습니다. -->
+                    <div class="payment-content-wrap">
+                        <div class="payment-content-container">
+                            <div class="payment-content-title">
+                                <h3>충전 하기</h3>
+                                <h5 class="payment-sub-title">충전금액을 입력하고 충전방법을 선택해주세요.</h5>
+                            </div>
+                            <div class="payment-box">
+                                <div class="input-box">
+                                    <div class="input-layout">
+                                        <h4 class="input-title">충전 금액</h4>
+                                        <div class="text-box">
+                                            <input type="text" class="common-input" placeholder="충전 금액을 입력해주세요.">
+                                        </div>
+                                        <div class="limit-money-box">
+                                            <!-- 나중에 정하시면 될듯 싶네요. -->
+                                            <span class="limit-money">
+                                                (충전 가능 금액: 500,000 P)
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="payment-box">
+                                <div class="input-box">
+                                    <div class="input-layout">
+                                        <!-- 뭘 놔야하는 지 몰라서 일단 잇는거 다 넣어두긴 햇습니다. -->
+                                        <h4 class="input-title">충전 방법</h4>
+                                        <div class="radio-box">
+                                            <label class="radio-label">
+                                                <div style="display:flex; align-items: center;">
+                                                    <div style="margin-bottom:3px">
+                                                        <input type="radio" class="common-radio" checked>
+                                                        <span class="radio-icon"></span>
+                                                    </div>
+                                                    <div>
+                                                        <p class="radio-title">간편결제(신용카드/계좌)</p>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                            <label class="radio-label">
+                                                <div style="display:flex; align-items: center;">
+                                                    <div style="margin-bottom:3px">
+                                                        <input type="radio" class="common-radio">
+                                                        <span class="radio-icon"></span>
+                                                    </div>
+                                                    <div>
+                                                        <p class="radio-title">신용카드</p>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                            <label class="radio-label">
+                                                <div style="display:flex; align-items: center;">
+                                                    <div style="margin-bottom:3px">
+                                                        <input type="radio" class="common-radio">
+                                                        <span class="radio-icon"></span>
+                                                    </div>
+                                                    <div>
+                                                        <p class="radio-title">카카오페이</p>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                            <label class="radio-label">
+                                                <div style="display:flex; align-items: center;">
+                                                    <div style="margin-bottom:3px">
+                                                        <input type="radio" class="common-radio">
+                                                        <span class="radio-icon"></span>
+                                                    </div>
+                                                    <div>
+                                                        <p class="radio-title">네이버페이</p>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="payment-box">
+                                <div class="charge-button-box">
+                                    <!-- 충전 버튼 입니다. submit 되잇고 form태그로 감싸져 잇으니까 참고하셔요~ -->
+                                    <button class="charge-button">충전</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pay-info-box">
+                            <div class="pay-info-layout">
+                                <h3 class="pay-info-title">충전 시 유의사항</h3>
+                                <h5 class="pay-info-sub-title">서비스 안내</h5>
+                                <div class="pay-info-content-box">
+                                    <ul class="pay-info-ul">
+                                        <li class="pay-info-li">충전 포인트의 유효기간은 충전 일로부터 5년입니다.</li>
+                                        <li class="pay-info-li">충전 포인트의 보유 한도는 50만 P이며, 충전한도는 월 500만 P입니다. 충전한도는 매월 1일
+                                            갱신됩니다.</li>
+                                        <li class="pay-info-li">
+                                            충전 포인트 사용 시 현금영수증 발행이 가능합니다.
+                                            <ul>
+                                                <li>온라인 결제 : APP 내 현금영수증 발행정보 등록 시, 포인트 사용분 현금영수증 자동 발행</li>
+                                                <li>오프라인 결제 : 매장 결제 시 현금영수증 발급을 요청</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <h5 class="pay-info-sub-title">유의사항</h5>
+                                <div class="pay-info-content-box">
+                                    <ul class="pay-info-ul">
+                                        <li class="pay-info-li">충전 포인트는 선물하기, 타제휴사포인트로의 전환 및 현대백화점 상품권으로 교환이 불가합니다.</li>
+                                        <li class="pay-info-li">H.Point 사용금액은 현대백화점카드 마일리지 적립이 불가합니다.</li>
+                                        <li class="pay-info-li">충전 취소/잔액 환불은 H.Point APP에서 진행할 수 있습니다. (APP 메뉴>충전>우측 하단
+                                            ‘충전 취소/환불’)</li>
+                                        <li class="pay-info-li">결제 충전으로 충전한 포인트에 한하여 충전일 포함 7일 이내에 취소 가능합니다.</li>
+                                        <li class="pay-info-li">
+                                            결제 충전, 모바일 상품권, 잔돈 적립으로 충전된 포인트에 한하여 환불 가능합니다.
+                                            <ul>
+                                                <li>단, 복지몰에서 구매한 모바일 상품권은 복지사 정책에 따라 환불 불가합니다.</li>
+                                            </ul>
+                                        </li>
+                                        <li class="pay-info-li">
+                                            총 충전포인트의 60% 이상 사용 시 잔여 충전 포인트 환불이 가능합니다.
+                                            <ul>
+                                                <li>단, 충전 포인트 잔액이 1만P 이하인 경우, 80% 이상 사용 시 환불 가능합니다.</li>
+                                                <li>환불은 신청일로부터 영업일 기준 5~7일 내 지정한 계좌로 입금됩니다.</li>
+                                            </ul>
+                                        </li>
+                                        <li class="pay-info-li">추가적인 안내 및 문의사항은 H.Point APP 내 충전 메뉴, 자주 묻는 질문, 1:1문의를
+                                            참고해주시기 바랍니다.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- 푸터 넣는 곳 -->
+        <div id="footer"></div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script>
+    const $radioButton = $("input[type=radio]");
+
+    $radioButton.each((i, e) => {
+        $(e).click(() => {
+            $radioButton.prop("checked", false);
+            $(e).prop("checked", true);
+        });
+    });
+
+</script>
+
+</html>
