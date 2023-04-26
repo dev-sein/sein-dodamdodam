@@ -202,6 +202,7 @@ strong {
     font-weight: 500;
 }
 
+
 .bar-button .type-culture>em {
     background: #2e51ef;
 }
@@ -315,14 +316,14 @@ strong {
 }
 
 .detail-number {
-    position: absolute;
+    /* position: absolute; */
     top: 135px;
     right: 20px;
     text-align: right;
     font-size: 12px;
 }
 
-.detail-number em {
+.detail-number em.detail-text {
     padding-right: 10px;
     color: #c04646;
     font-weight: 500;
@@ -333,6 +334,16 @@ strong {
     font-size: 16px;
     font-weight: 500;
 }
+
+em.like-count {
+    float: left;
+    line-height: 27px;
+    padding-left: 15px;
+    background: url('https://www.wadiz.kr/resources/static/img/common/icon_red_heart.png') no-repeat 0 center;
+    background-size: 11px 10px;
+}
+
+
 
 /* side */
 
