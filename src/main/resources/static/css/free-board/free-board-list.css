@@ -374,8 +374,15 @@ button:not(:disabled) {
 }
 
 .best-list {
+    position: relative;
     padding: 20px 0;
-    border-top: 1px solid #3B5998;
+    border-top: 1px solid #006633;
+}
+
+.best-list img {
+    position: absolute;
+    width: 25px;
+    height: 25px;
 }
 
 .best-list.detail {
@@ -383,8 +390,10 @@ button:not(:disabled) {
 }
 
 .main-content h4 {
+    margin-left: 30px;
     margin-bottom: 20px;
     font-size: 16px;
+    font-weight: 600;
 }
 
 .best-list ol li {
@@ -399,7 +408,7 @@ button:not(:disabled) {
     width: 30px;
     height: 40px;
     font-size: 24px;
-    color: #3B5998;
+    color: #006633;
 }
 
 .best-list ol li .title {
@@ -444,7 +453,7 @@ button:not(:disabled) {
 
 .page-list ul li.active button {
     font-weight: 500;
-    color: #3B5998;
+    color: #006633;
 }
 
 
