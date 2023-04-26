@@ -112,7 +112,7 @@ button:not(:disabled) {
 p.board {
     margin-bottom: 10px;
     font-size: 13px;
-    color: #3B5998;
+    color: #006633;
 }
 
 em.type {
@@ -123,7 +123,7 @@ em.type {
     line-height: 24px;
     font-size: 13px;
     color: #fff;
-    background: #3B5998;
+    background: #006633;
 }
 
 p.title {
@@ -246,7 +246,7 @@ p.info em.like-count {
 }
 
 .comment-count em {
-    color: #3B5998;
+    color: #006633;
 }
 
 .main-comment textarea {
@@ -274,7 +274,7 @@ p.info em.like-count {
     height: 33px;
     line-height: 33px;
     font-size: 14px;
-    background: #3B5998;
+    background: #006633;
     color: #fff;
     border: none;
     cursor: pointer;
@@ -340,7 +340,7 @@ p.info em.like-count {
     font-size: 12px;
     vertical-align: middle;
     line-height: 12px;
-    color: #3B5998;
+    color: #006633;
     background: none;
     border: none;
 }
@@ -413,7 +413,7 @@ button.btn-comment {
 /* 카테고리 별 다른글 */
 .free-board-other {
     padding: 30px 0;
-    border-top: 1px solid #3B5998;
+    border-top: 1px solid #006633;
 }
 
 .free-board-other h4 {
@@ -423,7 +423,7 @@ button.btn-comment {
 }
 
 .free-board-other h4 em {
-    color: #3B5998;
+    color: #006633;
 }
 
 .other-list ul {
@@ -525,8 +525,15 @@ button.btn-category {
 }
 
 .best-list {
+    position: relative;
     padding: 20px 0;
-    border-top: 1px solid #3B5998;
+    border-top: 1px solid #006633;
+}
+
+.best-list img {
+    position: absolute;
+    width: 25px;
+    height: 25px;
 }
 
 .best-list.detail {
@@ -534,8 +541,10 @@ button.btn-category {
 }
 
 .main-wrap h4 {
+    margin-left: 30px;
     margin-bottom: 20px;
     font-size: 16px;
+    font-weight: 600;
 }
 
 .best-list ol li {
@@ -550,7 +559,7 @@ button.btn-category {
     width: 30px;
     height: 40px;
     font-size: 24px;
-    color: #3B5998;
+    color: #006633;
 }
 
 .best-list ol li .title {
@@ -642,7 +651,7 @@ button.btn-category {
         line-height: 24px;
         font-size: 13px;
         color: #fff;
-        background: #3B5998;
+        background: #006633;
     }
 
     p.other-content {
