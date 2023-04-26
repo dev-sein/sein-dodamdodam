@@ -13,6 +13,7 @@
   rel="stylesheet"
 />
 <link rel="stylesheet" href="../../static/css/sell/sell-detail.css" >
+<link rel="stylesheet" href="../../static/css/sell/sell-detail-second.css" >
   </head>
   <body>
     <div class="MainWrapper_content__GZkTa">
@@ -663,20 +664,26 @@
               <nav class="DetailTab_container__1NVYg">
                 <ul>
                   <li class="DetailTab_isActive__2Amuh">
-                    <a href="/web/store/detail/105/story" aria-current="page" class="active"
-                      ><span>스토리</span></a
-                    >
+                    <a aria-current="page" class="active">
+                      <span>스토리</span>
+                    </a>
                   </li>
                   <li class="">
-                    <a href="/web/store/detail/105/satisfaction"
-                      ><span>만족도<span class="DetailTab_badge__2oSI4">554</span></span></a
-                    >
+                    <a>
+                      <span>만족도
+                        <span class="DetailTab_badge__2oSI4">554</span>
+                      </span>
+                    </a>
                   </li>
                   <li class="">
-                    <a href="/web/store/detail/105/refund"><span>반품・교환</span></a>
+                    <a>
+                      <span>반품・교환</span>
+                    </a>
                   </li>
                 </ul>
               </nav>
+<!-- 스토리 -->
+
               <div class="storeTabContentsWrapper">
                 <div class="storeTabContents">
                   <div class="DetailStory_container__2f685">
@@ -769,8 +776,261 @@
               </div>
             </div>
           </div>
+
+<!-- 만족도 -->          
+
+          <div class="satisfaction_wrap" style="display: none;">
+            <div class="satisfaction_wrap_div">
+              <div class="container">
+                <div class="first_container">
+                  <span class="first_container_span">만족도</span>
+                </div>
+                <div class="second_container">
+                  <div class="star">
+                    <h4 class="star_h4">스토어</h4>
+                    <div class="star_first_div">
+                      <div class="one_star real_star"></div>
+                      <span class="score">5.0</span>
+                      <span class="total_score">5.0</span>
+                    </div>
+                    <div class="star_second_div">
+                      <div class="product_score">
+                        <div style="align-items: center; display: inline-flex">
+                          <span class="first_text">상품</span>
+                          <div class="robo_flex">
+                            <div class="real_star second_star"></div>
+                            <span class="second_text">5.0</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="product_score">
+                        <div style="align-items: center; display: inline-flex">
+                          <span class="first_text">배송</span>
+                          <div class="robo_flex">
+                            <div class="real_star second_star"></div>
+                            <span class="second_text">5.0</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="hei_line"></div>
+                  <div class="star">
+                    <h4 class="star_h4">펀딩</h4>
+                    <div class="star_first_div">
+                      <div class="one_star real_star"></div>
+                      <span class="score">4.5</span>
+                      <span class="total_score">5.0</span>
+                    </div>
+                    <div class="star_second_div">
+                      <div class="product_score">
+                        <div style="align-items: center; display: inline-flex">
+                          <span class="first_text">리워드</span>
+                          <div class="robo_flex">
+                            <div class="real_star second_star"></div>
+                            <span class="second_text">5.0</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="product_score">
+                        <div style="align-items: center; display: inline-flex">
+                          <span class="first_text">메이커</span>
+                          <div class="robo_flex">
+                            <div class="real_star second_star"></div>
+                            <span class="second_text">5.0</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="fourth_container">
+                  <div class="reply">
+                    <div class="reply_first_div">
+                      <div>
+                        <div class="newest">
+                          최신순
+                          <i aria-hidden="true"></i>
+                          <select name="sortBy" id="sortBy">
+                            <option value="score_newest">최신순</option>
+                            <option value="score_desc">높은 평점순</option>
+                            <option value="score_asc">낮은 평점순</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="reply_second_div">
+                      <div class="container_content">
+                        <div class="container_content_first"></div>
+                        <div class="container_content_second">
+                          <div>
+                            <div class="avatar">
+                              <span class="avatar_span" style="background-image: url(&quot;https://cdn.wadiz.kr/wwwwadiz/green001/2022/0402/20220402020222272_773156.jpg/wadiz/resize/600/format/jpg/quality/80/optimize&quot;), url(&quot;data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8ZGVmcz4KICAgICAgICA8cGF0aCBpZD0iYzl1cmF3eHIyYSIgZD0iTTAgMGg4MHY4MEgweiIvPgogICAgPC9kZWZzPgogICAgPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8Zz4KICAgICAgICAgICAgPG1hc2sgaWQ9IjZ2emt3OXN5NWIiIGZpbGw9IiNmZmYiPgogICAgICAgICAgICAgICAgPHVzZSB4bGluazpocmVmPSIjYzl1cmF3eHIyYSIvPgogICAgICAgICAgICA8L21hc2s+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik04MCA0MGMwIDIyLjA5Mi0xNy45MDkgNDAtNDAgNDBTMCA2Mi4wOTIgMCA0MCAxNy45MDkgMCA0MCAwczQwIDE3LjkwOCA0MCA0MCIgZmlsbD0iI0U5RUNFRiIgbWFzaz0idXJsKCM2dnprdzlzeTViKSIvPgogICAgICAgIDwvZz4KICAgICAgICA8cGF0aCBkPSJtMjIuMzA1IDI2LjkxNC4yMyAyLjEyMWMtLjAxLjI5LjA0OS41NTkuMTgxLjgwNy4wODUuMjYxLjIyOC40ODUuNDMzLjY3Ni4xOS4yMDMuNDEzLjM0OC42NzQuNDMyLjI0OS4xMzIuNTE5LjE5MS44MDYuMThsLjU1Ny0uMDc1Yy4zNTUtLjA5OS42NjMtLjI3OS45MjQtLjUzN2wuMzI4LS40MjVjLjE5LS4zMjYuMjg1LS42OC4yODctMS4wNTgtLjA3OC0uNzA2LS4xNTQtMS40MTUtLjIzLTIuMTIxLjAxLS4yOS0uMDUtLjU1OS0uMTgtLjgwN2ExLjU3IDEuNTcgMCAwIDAtLjQzNC0uNjc1IDEuNTUzIDEuNTUzIDAgMCAwLS42NzQtLjQzMyAxLjU4NCAxLjU4NCAwIDAgMC0uODA3LS4xOGMtLjE4NS4wMjYtLjM3Mi4wNS0uNTU3LjA3NWEyLjA4MyAyLjA4MyAwIDAgMC0uOTI1LjUzOGwtLjMyNi40MjRjLS4xOS4zMjctLjI4NS42NzktLjI4NyAxLjA1OE01My44ODIgMjcuMzI4djIuNTIyYzAgLjUzOC4yMzMgMS4xMDIuNjEzIDEuNDgyLjE5LjIwMy40MTQuMzQ4LjY3NC40MzMuMjUuMTMuNTE4LjE5LjgwNy4xOC41NDItLjAyNCAxLjEwNC0uMjAyIDEuNDgxLS42MTMuMzc2LS40MS42MTQtLjkxNC42MTQtMS40ODJ2LTIuNTIyYzAtLjUzNi0uMjM0LTEuMS0uNjE0LTEuNDhhMS41NzYgMS41NzYgMCAwIDAtLjY3NC0uNDM0IDEuNTczIDEuNTczIDAgMCAwLS44MDctLjE4Yy0uNTQyLjAyNC0xLjEwNC4yMDItMS40ODEuNjE0LS4zNzYuNDA5LS42MTMuOTEzLS42MTMgMS40OE0zNi4yOTcgMjUuOTQ1Yy0uNzQzIDQuMzM1LTEuNDg0IDguNjczLTIuMjI1IDEzLjAxLS4xODQgMS4wNzUuMjg1IDIuMzA3IDEuNDYzIDIuNTc2IDEuMDE0LjIzIDIuMzc4LS4zMDkgMi41NzYtMS40NjJsMi4yMjUtMTMuMDExYy4xODQtMS4wNzUtLjI4NS0yLjMwOC0xLjQ2My0yLjU3Ny0xLjAxNS0uMjMtMi4zOC4zMDgtMi41NzYgMS40NjRNNDUuMTU4IDUwLjM4NmMtLjE2LS4zMy0uMTAxLS40NzctLjA0NS0uODA2LS4xMTEuMTc1LS4xMjUuMjAxLS4wNDIuMDc3YS4zNy4zNyAwIDAgMSAuMjAzLS4xNzhjLS4yMi4xMTctLjIzNS4xMzgtLjA0Ny4wNjRhMy40MyAzLjQzIDAgMCAxLS4zOTMuMTE2Yy0uMDgyLjAyLS42NTkuMS0uMjY1LjA1Ny0xLjExNS4xMjQtMi4yNC4xOS0zLjM2LjI4NWwtNi44NzcuNTc3Yy0xLjA4OS4wOTItMi4xNDguODk3LTIuMDk1IDIuMDk0LjA0OCAxLjA1Ni45MjYgMi4xOTIgMi4wOTUgMi4wOTNsOC44NC0uNzRjMS40NS0uMTIzIDMuMDQxLS4xMyA0LjI4Ny0uOTggMS42LTEuMDkzIDIuMTYzLTMuMDI4IDEuMzE2LTQuNzcyLS40OC0uOTktMS45NjYtMS4zMzMtMi44NjYtLjc1Mi0xLjAxMy42NTQtMS4yNjMgMS44MDctLjc1IDIuODY1IiBmaWxsPSIjQ0REM0Q4Ii8+CiAgICA8L2c+Cjwvc3ZnPgo=&quot;); border: 1px solid rgb(221, 226, 230);"></span>
+                            </div>
+                          </div>
+                          <div class="nickname">
+                            <div class="nickname_div">
+                              <span class="nickname_div_span">뭉치초롱맘</span>
+                              <div style="display: flex;">
+                                <div class="date">
+                                  <span class="date_span">2023.04.12</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="nickname_div">
+                              <div class="nickname_div_first">
+                                <div class="real_star evaluation"></div>
+                                <span class="evaluation_span">5.0</span>
+                              </div>
+                              <div style="display: inline-flex;">
+                                <span class="purchase">1회 구매</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="container_content_third">
+                          <div class="review_content">
+베란다밖이랑안이랑 온도차가 10도이상나구요 집안온도가 일정하게 유지가되는걸보고 만족합니다 밖의날씨가 더워도, 추워도 집안은 항상 22도를 유지하는거보니 열차단, 냉기차단이 잘되는거같아요
+                          </div>
+                          <div class="purchase_list">
+                            <span class="purchase_list_span">다마거시트9090 / 10m</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div></div>
+                  </div>
+                </div>
+                <div class="fifth_container">
+                  <strong class="fifth_container_strong">프로젝트에 문제가 있나요?</strong>
+                  <div style="flex-basis: 24%; text-align: right">
+                    <button class="declaration">
+                      신고하기
+                      <svg viewBox="0 0 40 40" focusable="false" role="presentation" class="declaration_svg" aria-hidden="true">
+                        <path d="M28 20L15 33l-1.4-1.4L25.2 20 13.6 8.4 15 7l13 13z"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 반품 . 교환 -->
+          <div class="store_wrapper" style="display: none;">
+            <div class="store_tab">
+              <div class="store_tab_div">
+                <div style="margin: 0 0 40px;">
+                  <h3 class="address">반품 보내실 주소</h3>
+                  <div class="address_div">(10256) 경기 고양시 일산동구 지영로148번길 93 로페코</div>
+                </div>
+                <div style="margin: 0 0 40px;">
+                  <h3 class="address">교환/환불 정책</h3>
+                  <div class="address_div">
+                    <ul class="address_ul">
+                      <li>서포터 단순 변심에 의한 교환/반품은 상품 수령 후 7일 이내에 신청할 수 있습니다.(반품 배송비 서포터 부담)</li>
+                      <li>상품의 내용이 표시∙광고 내용과 다르거나 계약내용과 다르게 이행된 경우에는 해당 상품 등을 수령한 날부터 3개월 이내, 그 사실을 안 날 또는 알 수 있었던 날부터 30일 이내에 교환/반품을 신청할 수 있습니다.(반품 배송비 메이커 부담)</li>
+                      <li>다음의 경우에는 교환/반품을 신청할 수 없습니다.
+                        <ul style="margin-left: 16px; text-indent: -16px">
+                          <li>서포터의 책임 있는 사유로 상품 등이 멸실 또는 훼손된 경우(다만, 상품 등의 내용을 확인하기 위하여 포장 등을 훼손한 경우는 제외함)</li><li>서포터의 사용 또는 일부 소비로 인하여 상품 등의 가치가 현저히 감소한 경우</li><li>시간의 경과에 의하여 재판매가 곤란할 정도로 상품 등의 가치가 현저히 감소한 경우</li><li>복제 가능한 상품 등의 포장을 훼손한 경우</li><li>용역 또는 “문화산업진흥 기본법” 제2조 제5호의 디지털콘텐츠의 제공이 개시된 경우(다만, 가분적 용역 또는 가분적 디지털콘텐츠로 구성된 계약의 경우에는 제공이 개시되지 아니한 부분에 대하여는 제외함)</li><li>주문에 따라 개별적으로 생산되는 상품 등 그에 대하여 청약철회 등을 인정할 경우 메이커에게 회복할 수 없는 중대한 피해가 예상되는 경우로서, 사전에 해당 거래에 대하여 별도로 그 사실을 고지하고 서포터의 서면(전자문서를 포함)에 의한 동의를 받은 경우</li><li>그 밖에 관련 법령에 따른 반품 제한 사유에 해당되는 경우</li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
     </div>
   </body>
+<script>
+
+  <!-- 스토리, 만족도, 교환반품 클릭시 css 변경 -->
+  function switchTab(tabIndex) {
+    const activeClass = 'DetailTab_isActive__2Amuh';
+    const tabs = document.querySelectorAll('.DetailTab_container__1NVYg li');
+    const activeTab = document.querySelector(`.${activeClass}`);
+  
+    if (activeTab) {
+      activeTab.classList.remove(activeClass);
+    }
+  
+    tabs[tabIndex].classList.add(activeClass);
+  }
+  
+  const tabs = document.querySelectorAll('.DetailTab_container__1NVYg li');
+  
+  tabs[0].addEventListener('click', () => {
+    switchTab(0);
+  });
+  
+  tabs[1].addEventListener('click', () => {
+    switchTab(1);
+  });
+  
+  tabs[2].addEventListener('click', () => {
+    switchTab(2);
+  });
+  
+<!-- 스토리, 만족도, 교환반품 클릭시 내부 내용 변경 -->
+  const storyWrapper = document.querySelector('.storeTabContentsWrapper');
+  const satisfactionWrapper = document.querySelector('.satisfaction_wrap');
+  const returnExchangeWrapper = document.querySelector('.store_wrapper');
+  const storyTab = document.querySelector('.DetailTab_container__1NVYg li:nth-child(1)');
+  const satisfactionTab = document.querySelector('.DetailTab_container__1NVYg li:nth-child(2)');
+  const returnExchangeTab = document.querySelector('.DetailTab_container__1NVYg li:nth-child(3)');
+  const tabElements = document.querySelectorAll('.DetailTab_container__1NVYg li');
+  
+  function switchTab(tabIndex, activeElement) {
+    for (const tab of tabElements) {
+      tab.classList.remove('DetailTab_isActive__2Amuh');
+    }
+  
+    activeElement.classList.add('DetailTab_isActive__2Amuh');
+  
+    switch (tabIndex) {
+      case 0:
+        storyWrapper.style.display = 'block';
+        satisfactionWrapper.style.display = 'none';
+        returnExchangeWrapper.style.display = 'none';
+        break;
+      case 1:
+        storyWrapper.style.display = 'none';
+        satisfactionWrapper.style.display = 'block';
+        returnExchangeWrapper.style.display = 'none';
+        break;
+      case 2:
+        storyWrapper.style.display = 'none';
+        satisfactionWrapper.style.display = 'none';
+        returnExchangeWrapper.style.display = 'block';
+        break;
+      default:
+        break;
+    }
+  }
+  
+  storyTab.addEventListener('click', () => {
+    switchTab(0, storyTab);
+  });
+  
+  satisfactionTab.addEventListener('click', () => {
+    switchTab(1, satisfactionTab);
+  });
+  
+  returnExchangeTab.addEventListener('click', () => {
+    switchTab(2, returnExchangeTab);
+  });
+  
+<!-- 셀렉트 박스 내용 변경 -->
+
+
+
+
+
+  
+
+</script>
 </html>
