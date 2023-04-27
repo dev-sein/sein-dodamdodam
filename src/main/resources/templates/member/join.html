@@ -154,8 +154,7 @@
                         </div>
                         <!-- test -->
                         <em class="recheck-password-error error-message">비밀번호가 일치하지 않습니다.</em>
-                        
-                        <div class="email-field-container" id="nickName-title">
+                        <!-- <div class="email-field-container" id="nickName-title">
                             <label class="EmailAuthField">닉네임</label>
                             <div class="email-field-input-continer">
                                 <div class="EmailAuthField_inputField">
@@ -163,7 +162,7 @@
                                 </div>
                             </div>
                             <em class="nickname-error error-message">최소 2자입니다.</em>
-                        </div>
+                        </div> -->
                         <div class="email-field-container">
                             <label class="EmailAuthField">이메일</label>
                             <div class="email-field-input-continer">
@@ -186,6 +185,16 @@
                         </div>
                         <em class="phone-error error-message">핸드폰 번호를 입력해주세요.</em>
                     </div>
+                    <div class="form-group">
+                        <label for="address-btu" class="address-label" onclick="sample6_execDaumPostcode()">주소</label>
+                        <div class="address-div" id="" >
+                            <input type="text" id="sample6_postcode"  onclick="sample6_execDaumPostcode()" placeholder="우편번호">
+                            <input type="button" name="address-btu" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+                        </div>
+                        <input type="text" id="sample6_address"  onclick="sample6_execDaumPostcode()" placeholder="주소"><br>
+                        <input type="text" id="sample6_detailAddress" placeholder="상세주소1">
+                        <input type="text" id="sample6_extraAddress" placeholder="상세주소2">
+                    </div>
                     <!-- 회원 약관 동의 -->
                     <div class="SignUpAllCheckTermsCheckbox">
                         <label for="termsUpdateRequestCheckBox" class="termscheckbox" id="termscheckbox">
@@ -201,8 +210,8 @@
                             <span class="Checkbox_content__1uyi7"></span>
                         </label>
                         <label for="termsUpdateRequestCheckBox" class="SignUpAllCheckTermsCheckbox_termsAllCheckLabel__3TxCG">
-                            <p class="checkbox-content-label-text">전체동의</p>
-                            <p class="checkboxDescription">회원·서비스(필수), 투자 서비스 (선택), 스타트업찾기 서비스 (선택), 이벤트·혜택알림 동의(선택), 만 14세 이상(필수)</p>
+                            <p class="checkbox-content-label-text">동의</p>
+                            <p class="checkboxDescription">회원·서비스(필수), 만 14세 이상(필수)</p>
                         </label>
                         <button class="Button_button" type="button">
                             <span>

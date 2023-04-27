@@ -204,19 +204,23 @@ strong {
 
 
 .bar-button .type-culture>em {
-    background: #2e51ef;
+    background: #c04646;
 }
 
 .bar-button .type-event>em {
-    background: #9f8673;
+    background: #ffb000;
 }
 
 .bar-button .type-recruitment>em {
-    background: #705f53;
+    background: #fdf62c;
+}
+
+.bar-button .type-sell>em {
+    background: #0bad4c;
 }
 
 .bar-button .type-free>em {
-    background: #90949c;
+    background: #3f76e5;
 }
 
 .free-board-form {
