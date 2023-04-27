@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>모집 게시글 작성</title>
+    <title>모집 게시글 수정</title>
     <link rel="stylesheet" href="../../static/css/event-board/event-board-write.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -87,10 +87,9 @@
                             </div>
                             <div class="input-container">
                                 <div class="waffle input">
-                                    <input class="people-count" placeholder="모집 인원수를 적어주세요" maxlength="5">
+                                    <input placeholder="모집 인원수를 적어주세요" maxlength="5">
                                 </div>
-                                <div class="waffle helper mb0">인원수를 숫자로 입력해주세요</div>
-                                <div class="people-count-error error">숫자만 입력 가능합니다</div>
+                                <div class="waffle helper mb"></div>
                             </div>
                         </div>
 
@@ -100,10 +99,9 @@
                             </div>
                             <div class="input-container">
                                 <div class="waffle input">
-                                    <input class="recruitment-price" placeholder="참가비를 적어주세요(ex. 티켓값, 클래스비용 등)">
+                                    <input placeholder="참가비를 적어주세요(ex. 티켓값, 클래스비용 등)">
                                 </div>
-                                <div class="waffle helper mb0">금액을 숫자로 입력해주세요</div>
-                                <div class="price-error error">숫자만 입력 가능합니다</div>
+                                <div class="waffle helper mb">금액을 숫자로 입력해주세요</div>
                             </div>
                         </div>
 
@@ -118,33 +116,7 @@
 
                             <div class="waffle helper mb"></div>
                         </div>
-                    </div>       
-                    
-                    <div class="waffle field">
-                        <div class="waffle label">
-                            <label>오픈채팅</label>
-                        </div>
-                        <div class="input-container">
-                            <div class="waffle input">
-                                <input class="open-kakao" placeholder="오픈채팅 링크를 적어주세요">
-                            </div>
-                            <div class="waffle helper mb0">이벤트 참여자들과 함께하는 오픈채팅 링크를 기입해주세요</div>
-                            <div class="open-kakao-error error">한글은 입력 불가능합니다</div>
-                        </div>
-                    </div>
-
-                    <div class="waffle field">
-                        <div class="waffle label">
-                            <label>오픈채팅 비밀번호</label>
-                        </div>
-                        <div class="input-container">
-                            <div class="waffle input">
-                                <input class="open-kakao-password" placeholder="오픈채팅 비밀번호를 입력해주세요">
-                            </div>
-                            <div class="waffle helper mb0">금액을 숫자로 입력해주세요</div>
-                            <div class="open-password-error error">숫자만 입력 가능합니다</div>
-                        </div>
-                    </div>
+                    </div>                  
 
                     <!-- 이벤트 장소  -->
                     <div class="waffle field">
@@ -154,7 +126,6 @@
                     <button class="file-button" type="button">
                         <span>
                             <span class="button-children">
-                                <input type='file' onChange={(e) => {onFileUpload(e)} />
                                 <input class="file-input" type="file" name="" accept="application/pdf,image/jpg,image/jpeg,image/png">등록</span>
                             </span>
                         </span>
@@ -162,7 +133,8 @@
                 </div>                  
                 <div class="waffle helper mb">10MB 이내 pdf, jpeg, png 파일을 등록하세요.</div>
                 <div class="submit-container">
-                <button class="submit-btn btn" type="button" multiple="multiple" name="fileNames1[]" disabled>등록하기</button>
+                <button class="submit-btn btn back-btn" type="button">돌아가기</button>
+                <button class="submit-btn btn update-btn" type="button">수정하기</button>
                 <p class="submit-notice"></p>
             </div>
                 </section>
@@ -175,6 +147,6 @@
 
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="../../static/js/recruitment-board/recruitment-board-write.js"></script>
+<script src="../../static/js/event-board/event-board.js"></script>
 </html>
 

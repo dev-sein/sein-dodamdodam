@@ -409,10 +409,48 @@ button[class*=Button_button] {
 }
 
 [aria-pressed=true] path{
-    fill: #f66;
+    fill: transparent;
+}
+
+[aria-pressed=true]{
+    background-color: #f66;
 }
 
 svg:not(:root) {
     overflow-clip-margin: content-box;
     overflow: hidden;
+}
+
+.top-btn-container{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: fixed;
+    right: 16px;
+    bottom: 20px;
+    transition-property: transform,scale;
+    transition-duration: .25s;
+    z-index: 1200;
+}
+
+
+.top-btn{
+    display: block;
+    position: relative;
+    border-radius: 50%;
+    background: rgba(255,255,255,.8);
+    padding: 0 0 env(safe-area-inset-bottom);
+    color: #babdc0;
+    box-sizing: border-box;
+    border: 1px solid #babdc0;
+}
+
+
+button:not(:disabled) {
+    cursor: pointer;
+}
+
+html.scroll-top .top-btn-container {
+    opacity: 1;
+    transform: translateY(0) scale(1);
 }
