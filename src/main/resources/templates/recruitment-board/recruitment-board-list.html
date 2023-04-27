@@ -9,9 +9,30 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">  
+    <link rel="shortcut icon" href="/static/images/components/dodam-favicon.png">
 </head>
 <body>
     <div id="page-container">
+        <!-- 헤더 -->
+        <div id="header-apply">
+            <div id="open-apply">
+                <div id="open-apply-side">
+                <div id="open-apply-inner">
+                    <p id="apply-text">
+                        <span class="minute" style="color: rgb(255, 255, 255);">1분이면 등록 완료!</span>
+                        <span class="apply"><strong>모집 등록 신청하기</strong></span>
+                    </p>
+                </div>
+            </div>
+    
+        <button id="apply-exit-btn" class="btn" type="button">
+            <svg class="exit-svg" focusable="false" aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+            </svg>
+        </button>
+            </div>
+        </div><!-- header=apply -->
+
         <main id="main-app">
             <div class="main-wrapper-content">
                 <!-- 모달창 -->
@@ -19,12 +40,12 @@
                     <span class="like-text" style="display:none;">찜 목록에 추가했습니다</span>
                     <span class="like-cancel-text"style="display:none;">찜 목록에서 제외했습니다</span>
                    </div>
-                <div class="collection-container">
+                <!-- 모달끝 -->   
+                   <div class="collection-container">
+                    <button type="button" class="write-btn button">모집하기</button>
 
                     <div class="collection-list">
                         <div class="collection-table">
-
-                        
                             <div role="presentation" class="instance">
                                 <a class="item" href="">
                                     <div class="thumbnail-container">
@@ -523,6 +544,17 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
+
+const $exit = $("#apply_exit_btn")
+    console.log($exit);
+
+$(document).ready(function () {
+  $('#apply-exit-btn').on("click", $exit, function () {
+    $('#header-apply').css("display","none");
+  });
+});
+
+
     /* 좋아요 버튼 */
     $(function(){
     $('.wish-button').click(function(e){
@@ -531,7 +563,7 @@
             $(target).attr('aria-pressed','true') //하트 색 채우기
             $('.like-cancel-text').hide(); //해제 문구
             $('#like-modal').css({right: '-30%'}); //오->왼 슬라이드 등장
-            $('#like-modal').animate({right:'30px'}, {duration: 500}); //오->왼 슬라이드 등장
+            $('#like-modal').animate({right:'30px'}, {duration: 700}); //오->왼 슬라이드 등장
             $('#like-modal').show(); //슬라이드 보이기
             $('.like-text').show(); //찜 추가 문구
             $('#like-modal').fadeOut(); //사라지기
@@ -539,7 +571,7 @@
             $(target).attr('aria-pressed','false') //색 비우기
             $('.like-text').hide();  //찜 추가 문구
             $('#like-modal').css({right: '-30%'}); //오->왼 슬라이드 등장
-            $('#like-modal').animate({right:'30px'}, {duration: 500}); //오->왼 슬라이드 등장
+            $('#like-modal').animate({right:'30px'}, {duration: 700}); //오->왼 슬라이드 등장
             $('#like-modal').show(); //슬라이드 보이기
             $('.like-cancel-text').show(); //찜 해제 문구
             $('#like-modal').fadeOut(); //사라지기

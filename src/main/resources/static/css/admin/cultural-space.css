@@ -1,0 +1,38 @@
+.number{
+    width: 4% !important;
+}
+
+.type{
+    width: 10% !important;
+}
+
+.name{
+    width: 25% !important;
+}
+
+.region{
+    width: 20% !important;
+}
+
+.phone-number{
+    width: 15% !important;
+}
+
+.status{
+    width: 10% !important;
+}
+
+/* .detail-top{
+    width: var(20% - 20px) !important;
+} */
+
+.numbers{
+    width: 5% !important;
+}
+
+
+td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
