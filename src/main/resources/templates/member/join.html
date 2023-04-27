@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gugi&display=swap">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="../../static/css/member/join.css">
+    <link rel="stylesheet" href="/static/css/member/join.css">
+    <link rel="shortcut icon" href="/static/images/components/dodam-favicon.png">
 </head>
 <body>
     <!-- header 시작 -->
@@ -153,8 +154,7 @@
                         </div>
                         <!-- test -->
                         <em class="recheck-password-error error-message">비밀번호가 일치하지 않습니다.</em>
-                        
-                        <div class="email-field-container" id="nickName-title">
+                        <!-- <div class="email-field-container" id="nickName-title">
                             <label class="EmailAuthField">닉네임</label>
                             <div class="email-field-input-continer">
                                 <div class="EmailAuthField_inputField">
@@ -162,7 +162,7 @@
                                 </div>
                             </div>
                             <em class="nickname-error error-message">최소 2자입니다.</em>
-                        </div>
+                        </div> -->
                         <div class="email-field-container">
                             <label class="EmailAuthField">이메일</label>
                             <div class="email-field-input-continer">
@@ -185,6 +185,23 @@
                         </div>
                         <em class="phone-error error-message">핸드폰 번호를 입력해주세요.</em>
                     </div>
+                    <div class="waffle field">
+                        <div class="waffle label">
+                            <label>주소</label>
+                        </div>
+                        <div class="action-input">
+                            <div class="input-container mb13">
+                                <input name="eventAddress" id="address" class="address" placeholder="주소검색" required>
+                                <button class="address-btn" id="detailAddress" type="button" onclick="searchAddress()">주소검색</button>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="input-container">
+                            <div class="waffle input">
+                                <input class="address-detail-input" name="eventAddressDetail" placeholder="상세주소">
+                            </div>
+                        <div class="waffle helper mb"></div>
+                    </div>   
                     <!-- 회원 약관 동의 -->
                     <div class="SignUpAllCheckTermsCheckbox">
                         <label for="termsUpdateRequestCheckBox" class="termscheckbox" id="termscheckbox">
@@ -200,8 +217,8 @@
                             <span class="Checkbox_content__1uyi7"></span>
                         </label>
                         <label for="termsUpdateRequestCheckBox" class="SignUpAllCheckTermsCheckbox_termsAllCheckLabel__3TxCG">
-                            <p class="checkbox-content-label-text">전체동의</p>
-                            <p class="checkboxDescription">회원·서비스(필수), 투자 서비스 (선택), 스타트업찾기 서비스 (선택), 이벤트·혜택알림 동의(선택), 만 14세 이상(필수)</p>
+                            <p class="checkbox-content-label-text">동의</p>
+                            <p class="checkboxDescription">회원·서비스(필수), 만 14세 이상(필수)</p>
                         </label>
                         <button class="Button_button" type="button">
                             <span>
@@ -234,6 +251,7 @@
         </main>
     </div>
 </body>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script src="../../static/js/member/join.js"></script>
 </html>

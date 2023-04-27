@@ -9,10 +9,41 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gugi&display=swap">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="../../static/css/member/find-id.css">
+    <link rel="stylesheet" href="/static/css/member/find-id-password.css">
+    <link rel="stylesheet" href="/static/css/member/dodam-header.css">
+    <link rel="shortcut icon" href="/static/images/components/dodam-favicon.png">
 </head>
 <body>
     <!-- header 시작 -->
+    <div class="login-header">
+        <div class="web-header">
+            <div class="web-header-large">
+                <header class="header-wrapper web-header-simple">
+                    <div class="header-container">
+                        <h1 class="dodam-logo">
+                            <a href="#">
+                                <span class="label">도담도담</span>
+                                <img class="icon-logo" src="/static/images/components/dodam-favicon.png">
+                                <img src="/static/images/components/dodamdodam-logo-black.png">
+                            </a>
+                        </h1>
+                        <ul class="header-right">
+                            <li class="login">
+                                <a href="#" class="item">
+                                    <span>로그인</span>
+                                </a>
+                            </li>
+                            <li class="join">
+                                <a href="#" class="item">
+                                    <span>회원가입</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </header>
+            </div>
+        </div>
+    </div>
     <!-- header 끝 -->
     <div id="page-container">
         <form id="forwardForm" method="get">
@@ -20,41 +51,43 @@
         </form>
         <div class="account-find">
             <div class="page-header">
-                <h2 class="wz-text-display1">아이디∙비밀번호 찾기</h2>
+                <h2 class="find-title">아이디∙비밀번호 찾기</h2>
                 <div class="tab-list">
                     <ul>
                         <li class="active">
-                            <a href="">아이디 찾기</a>
+                            <a href="#">아이디 찾기</a>
                         </li>
-                        <li class="password">
-                            <a href="">비밀번호 찾기</a>
+                        <li>
+                            <a href="#">비밀번호 찾기</a>
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="page-body">
-                <div class="wz-containder-id-check" style="min-height:calc(100vh - 187px);">
-                <p class="wz-text-body1">
-                    소유하고 계신 이메일을 적어주세요.
-                    <br>
-                    <br>
-                    가입여부를 확인해드립니다.
-                </p>
-                <form action=""name="login" method="post" class="wz-form" id="form-findId" onsubmit="checkEmail(); return false;">
-                    <div class="label-hidden field">
-                        <label class="text-hidden" for="userName">이메일</label>
-                        <div class="wz-input">
-                            <input id="userName" class="input-text" type="email" name="userName" placeholder="이메일" onkeydown="hitEnterkey(event);">
+                <div class="common password-check">
+                    <p class="check-text">
+                        소유하고 계신 이메일을 적어주세요.
+                        <br>
+                        가입여부를 확인해드립니다.
+                    </p>
+                    <form action=""name="login" method="post" class="wz-form" id="form-findId" onsubmit="checkEmail(); return false;">
+                        <div class="label-hidden field">
+                            <label class="text-hidden" for="userName">이메일 계정</label>
+                            <div class="input-email">
+                                <input id="userName" class="input-text" type="email" name="userName" value="" placeholder="이메일 계정" onkeydown="hitEnterkey(event);">
+                            </div>
                         </div>
-                    </div>
-                    <p class="helper-error"></p>
-                    <button id="btnIsJoinedEmail" class="wz-primary-block-button" type="button" onclick="checkEmail()">
-                        <span id="ok-button">확인하기</span>
-                    </button>
-                </form>
+                        <p class="helper-error"></p>
+                        <button id="" class="primary block button" type="button" onclick="showModal()">
+                            확인하기
+                        </button>
+                        <!-- <button id="btnIsJoinedEmail" class="wz-primary-block-button" type="button" onclick="checkEmail()">
+                            <span id="ok-button">확인하기</span>
+                        </button> -->
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
     <!-- footer 시작 -->
     <!-- footer 끝 -->
 </body>
