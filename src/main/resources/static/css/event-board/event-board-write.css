@@ -105,8 +105,8 @@ p{
     padding: 9px 24px;
     line-height: 1.75;
     font-size: 16px;
-    border-color: #00c4c4;
-    color: #00c4c4;
+    border-color: #006633;
+    color: #006633;
     width: calc(50% - 4px);
 }
 
@@ -175,7 +175,7 @@ p{
 }
 
 .waffle.input :hover{
-    border-color:#00c4c4;
+    border-color:#006633;
 }
 
 .waffle.input>input{
@@ -246,7 +246,7 @@ textarea::placeholder {
 }
 
 textarea :hover{
-    border-color:#00c4c4;
+    border-color:#006633;
 }
 
 button:not(:disabled) {
@@ -279,10 +279,10 @@ button:not(:disabled) {
 }
 
 .address-btn{
-    background-color: #00c4c4;
+    background-color: #006633;
     color: #fff;
     border-radius: 3px;
-    border: 1px solid #00c4c4;
+    border: 1px solid #006633;
     width: 116px;
     font-size: 15px;
     font-weight: 500;
@@ -375,8 +375,8 @@ input[name=address]::placeholder {
 }
 
 .submit-btn{
-    border-color: #00c4c4;
-    background-color: #00c4c4;
+    border-color: #006633;
+    background-color: #006633;
     color: #fff;
     padding: 14px 28px;
     line-height: 1.4;
