@@ -9,13 +9,14 @@ $(".modify-button").each((i, e) => {
     });
 });
 
-$(".modify-confirm").each((i, e) => {
+/* 취소버튼 - 원래 상태로 복구 */
+$(".modify-cancel").each((i, e) => {
     $(e).click(() => {
         $($(".modify-textarea")[i]).hide();//수정영역
         $('.comment-util-list').hide();//수정,삭제 모달 숨기기
-        $($(".comment-content")[i]).css("display","none");//기존영역 숨기기
-        $($(".comment-date")[i]).css("display","none");//날짜 숨기기
-        $($(".comment-bottom")[i]).css("display","block");//취소,수정완료 버튼
+        $($(".comment-content")[i]).css("display","block");//기존영역 숨기기
+        $($(".comment-date")[i]).css("display","block");//날짜 숨기기
+        $($(".comment-bottom")[i]).css("display","none");//취소,수정완료 버튼
     });
 });
 
