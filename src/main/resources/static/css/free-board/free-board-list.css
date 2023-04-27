@@ -343,6 +343,20 @@ em.like-count {
     background-size: 11px 10px;
 }
 
+/* 작성하기 버튼 */
+.btn-wrap .btn-write {
+    display: block;
+    width: 100%;
+    padding: 0;
+    height: 60px;
+    line-height: 60px;
+    font-size: 16px;
+    background: #006633;
+    color: #fff;
+    border: none;
+    text-align: center;
+}
+
 
 
 /* side */
@@ -386,6 +400,7 @@ button:not(:disabled) {
 
 .best-list {
     position: relative;
+    margin-top: 20px;
     padding: 20px 0;
     border-top: 1px solid #006633;
 }
@@ -439,6 +454,11 @@ button:not(:disabled) {
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     word-wrap: break-word;
+}
+
+/* 마우스오버 */
+li.bar-button a:hover {
+    background-color: #00663314;
 }
 
 /* page-list */
