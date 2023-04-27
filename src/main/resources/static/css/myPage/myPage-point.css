@@ -131,7 +131,7 @@ h2.mypage-top-title {
 }
 
 .module {
-    margin: 5px 0px 12px 18%;
+    margin: 1px 0px 8px 300px;
     border-radius: 10px;
     box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
 }
@@ -227,7 +227,15 @@ li {
     flex: 0.5;
 }
 
-.support__status {
+.support__status1 {
+    flex: 0.5;
+}
+
+.support__status2 {
+    flex: 0.5;
+}
+
+.support__status3 {
     flex: 0.5;
 }
 

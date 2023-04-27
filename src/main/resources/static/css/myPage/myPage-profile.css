@@ -278,7 +278,7 @@ a.ProfileSet:hover{
     width: 33.33333%;
 }
 
-.mypage-project .tab-list ul li a {
+.mypage-project .tab-list ul li button {
     display: block;
     width: 100%;
     height: 47px;
@@ -290,7 +290,7 @@ a.ProfileSet:hover{
     text-decoration: none;
 }
 
-.mypage-project .tab-list ul li.active a  {
+.mypage-project .tab-list ul li.active button  {
     color: #00c4c4;
     height: 47px;
 }
@@ -489,7 +489,8 @@ a.ProfileSet:hover{
     margin-right: 24px;
 }
 
-.mypage-project .tab-list ul li.active a {
+.mypage-project .tab-list ul li.active button {
+    background: #fff;
     font-weight: 700;
 }
 
