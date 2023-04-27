@@ -1,24 +1,84 @@
-/* 수정, 삭제 버튼  */
-const comment = document.querySelector(".comment-util");
-const commentList = document.querySelector(".comment-util-list");
-
-comment.addEventListener("click", e => {
-    e.preventDefault();
-    $(commentList).slideToggle();
+/* 수정버튼 눌렀을 때 */
+$(".modify-button").each((i, e) => {
+    $(e).click(() => {
+        $($(".modify-textarea")[i]).show();//수정영역
+        $('.comment-util-list').hide();//수정,삭제 모달 숨기기
+        $($(".comment-content")[i]).css("display","none");//기존영역 숨기기
+        $($(".comment-date")[i]).css("display","none");//날짜 숨기기
+        $($(".comment-bottom")[i]).css("display","block");//취소,수정완료 버튼
+    });
 });
 
-// function showModal(){
-//     $('.modal-whole').css('display', 'flex');
-// }
+$(".modify-confirm").each((i, e) => {
+    $(e).click(() => {
+        $($(".modify-textarea")[i]).hide();//수정영역
+        $('.comment-util-list').hide();//수정,삭제 모달 숨기기
+        $($(".comment-content")[i]).css("display","none");//기존영역 숨기기
+        $($(".comment-date")[i]).css("display","none");//날짜 숨기기
+        $($(".comment-bottom")[i]).css("display","block");//취소,수정완료 버튼
+    });
+});
 
-// function closeModal(){
-//     $('.modal-whole').css('display', 'none');
-// }
 
-.wcommunity-share-area .btn-symp.active {
-    color: #F98F9B;
-    border-color: #F98F9B;
-    background-image: url(/resources/static/img/common/icon_red_heart.png);
+/* 클릭 시 수정/삭제 버튼 창 */
+function showList(e){
+    if($(e).next().css('display') == 'none'){
+        $(e).next().show();
+    } else {
+        $(e).next().hide();
+    }
 }
 
+/* 클릭 했을 때 색 변경/취소 */
+$(".btn-like").click(() => {
+    if(!$(".btn-like").hasClass("active-heart-button")){
+        /* 여기에변경될 요소 */
+        $(".none-heart").hide();
+        $(".active-heart").show();
+        $(".btn-like").addClass("active-heart-button");
+    }else {
+        /* 원래 요소 */
+        $(".none-heart").show();
+        $(".active-heart").hide();
+        $(".btn-like").removeClass("active-heart-button");
+    }
+});
 
+/* 카카오톡 공유하기 API */
+function shareMessage() {
+Kakao.Share.sendDefault({
+    objectType: 'feed',
+    content: {
+    title: '리바운드 보러갈 사람?',
+    description: '#리바운드 #슬램덩크 #영화 #스포 #강백호 #농구',
+    imageUrl:
+        'http://127.0.0.1:5500/static/images/free-board/rebound.jpg',
+    link: {
+        // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
+        mobileWebUrl: 'http://127.0.0.1:5500',
+        webUrl: 'http://127.0.0.1:5500',
+    },
+    },
+    social: {
+    likeCount: 286,
+    commentCount: 45,
+    sharedCount: 845,
+    },
+    buttons: [
+    {
+        title: '웹으로 보기',
+        link: {
+        mobileWebUrl: 'https://developers.kakao.com',
+        webUrl: 'https://developers.kakao.com',
+        },
+    },
+    {
+        title: '앱으로 보기',
+        link: {
+        mobileWebUrl: 'https://developers.kakao.com',
+        webUrl: 'https://developers.kakao.com',
+        },
+    },
+    ],
+});
+}

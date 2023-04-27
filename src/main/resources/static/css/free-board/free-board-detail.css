@@ -146,12 +146,6 @@ p.info em {
     color: #65696B;
 }
 
-p.info em.like-count {
-    padding-left: 15px;
-    background: url('https://www.wadiz.kr/resources/static/img/common/icon_red_heart.png') no-repeat 0 center;
-    background-size: 11px 10px;
-}
-
 .detail-content {
     padding: 20px 0;
     word-break: keep-all;
@@ -193,23 +187,35 @@ p.info em.like-count {
 }
 
 .like-share-area .btn-like {
+    position: relative;
     display: inline-block;
     float: left;
-    padding: 0 15px 0 35px;
+    padding: 0 10px 0 35px;
     height: 30px;
     line-height: 30px;
     font-size: 13px;
     color: #e4e4e4;
     border: 1px solid #e4e4e4;
-    background: url('https://www.wadiz.kr/resources/static/img/common/icon_gray_heart.png') no-repeat 15px 8px;
-    background-size: 15px 13px;
+}
+
+.like-share-area .btn-like img {
+    position: absolute;
+    top: 8px;
+    left: 11px;
+    width: 15px;
+    height: 13px;
+}
+
+.btn-like.active-heart-button {
+    color: #F98F9B;
+    border-color: #F98F9B;
 }
 
 .like-share-area .btn-share {
     float: right;
 }
 
-.btn-share button {
+.btn-share img {
     display: inline-block;
     width: 30px;
     height: 30px;
@@ -217,18 +223,6 @@ p.info em.like-count {
     border: none;
     background: no-repeat 0 0;
     background-size: cover;
-}
-
-.btn-share button.kakao {
-    background-image: url('https://www.wadiz.kr/resources/static/img/common/icon_gray_kakao.png');
-}
-
-.btn-share button.facebook {
-    background-image: url('https://www.wadiz.kr/resources/static/img/common/icon_gray_facebook.png');
-}
-
-.btn-share button.twitter {
-    background-image: url('https://www.wadiz.kr/resources/static/img/common/icon_gray_twitter.png');
 }
 
 .comment-box {
@@ -327,7 +321,7 @@ p.info em.like-count {
     font-size: 13px;
 }
 
-.comment-bottom .date {
+.comment-date {
     display: inline-block;
     padding: 0 5px;
     font-size: 12px;
@@ -354,7 +348,7 @@ p.info em.like-count {
     display: inline-block;
     width: 11px;
     height: 7px;
-    background: url('	https://www.wadiz.kr/resources/static/img/common/icon_grey_open.png') no-repeat 0 0;
+    background: url('https://www.wadiz.kr/resources/static/img/common/icon_grey_open.png') no-repeat 0 0;
     background-size: cover;
     border: none;
     z-index: 9;
@@ -372,7 +366,7 @@ p.info em.like-count {
     z-index: 10;
 }
 
-.comment-util-list li a {
+.comment-util-list li button {
     display: block;
     height: 22px;
     font-size: 12px;
