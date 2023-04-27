@@ -45,7 +45,10 @@
     --main-sub2: #00663352;
     --main-sub3: #0066330d;
     /* #10837694 */
-    --banner-color: rgb(95, 173, 5);
+    --banner1-color: rgb(64, 64, 204);
+    --banner2-color: rgb(16, 62, 104);
+    --banner3-color: rgb(95, 173, 5);
+    
 }
 
 * {
@@ -997,6 +1000,7 @@
     position: relative;
     transition-property: transform,-webkit-transform;
     width: 100%;
+    width: 580px;
 }
 
 .main_banner_link {

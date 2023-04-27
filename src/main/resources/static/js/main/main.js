@@ -38,24 +38,33 @@ $reserveSelect.hide();
 $frequent.mouseover(function(){
     $frequent.css("width", "0%")
     $frequent.css("min-width", "0%")
+    $frequentSelect.show();
     $frequentSelect.css("width", "378px");
+    $frequentSelect.css("min-width", "378px");
 
     $useSelect.hide();
+    $use.hide();
     $use.css("width", "104px");
     $use.css("min-width", "104px");
+    $use.show();
+    $useSelect.hide();
     $useSelect.css("width", "0%");
     $useSelect.css("min-width", "0%");
 
     $reserveSelect.hide();
+    $reserve.hide();
     $reserve.css("width", "104px");
     $reserve.css("min-width", "104px");
+    $reserve.show();
     $reserveSelect.css("width", "0%");
     $reserveSelect.css("min-width", "0%");
 });
 $use.mouseover(function(){
-    $frequentSelect.show();
+    $frequentSelect.hide();
+    $frequent.hide();
     $frequent.css("width", "104px")
     $frequent.css("min-width", "104px")
+    $frequent.show();
     $frequentSelect.css("width", "0%");
     $frequentSelect.css("min-width", "0%");
 
@@ -66,23 +75,33 @@ $use.mouseover(function(){
     $useSelect.css("min-width", "378px");
 
     $reserveSelect.hide();
+    $reserve.hide();
     $reserve.css("width", "104px");
     $reserve.css("min-width", "104px");
+    $reserve.show();
     $reserveSelect.css("width", "0%");
     $reserveSelect.css("min-width", "0%");
 
 });
 $reserve.mouseover(function(){
+    $frequentSelect.hide();
+    $frequent.hide();
     $frequent.css("width", "104px")
     $frequent.css("min-width", "104px")
+    $frequent.show();
     $frequentSelect.css("width", "0%");
     $frequentSelect.css("min-width", "0%");
 
+    $useSelect.hide();
+    $use.hide();
     $use.css("width", "104px");
     $use.css("min-width", "104px");
+    $use.show();
+    $useSelect.hide();
     $useSelect.css("width", "0%");
     $useSelect.css("min-width", "0%");
 
+    $reserveSelect.show();
     $reserve.css("width", "0%");
     $reserve.css("min-width", "0%");
     $reserveSelect.css("width", "378px");
