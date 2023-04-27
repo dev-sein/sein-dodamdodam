@@ -2,38 +2,34 @@
     width: 4% !important;
 }
 
-.title{
-    width: 20% !important;
-}
-
-.writer{
+.type{
     width: 10% !important;
 }
 
-.views{
-    width: 10% !important;
+.name{
+    width: 25% !important;
 }
 
-.register-time{
-    /* width: 30% !important; */
+.region{
     width: 20% !important;
 }
 
 .phone-number{
-    width: 15%;
+    width: 15% !important;
 }
 
-.detail-top{
-    width: var(20% - 20px) !important;
+.status{
+    width: 10% !important;
 }
+
+/* .detail-top{
+    width: var(20% - 20px) !important;
+} */
 
 .numbers{
     width: 5% !important;
 }
 
-.status{
-    text-align: center;
-}
 
 td {
     white-space: nowrap;

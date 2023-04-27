@@ -22,12 +22,17 @@
     width: 20% !important;
 }
 
-.detail-top{
+/* .detail-top{
     width: var(20% - 20px) !important;
-}
+} */
 
 .numbers{
     width: 5% !important;
+}
+
+.status{
+    width: 10% !important;
+    text-align: center;
 }
 
 
