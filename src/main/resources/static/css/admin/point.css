@@ -7,31 +7,27 @@
 }
 
 .writer{
-    width: 10% !important;
+    width: 15% !important;
 }
 
 .views{
-    width: 10% !important;
-}
-
-.register-time{
-    /* width: 30% !important; */
     width: 20% !important;
 }
 
-.phone-number{
-    width: 15%;
+.register-time{
+    width: 25% !important;
 }
 
-.detail-top{
+/* .detail-top{
     width: var(20% - 20px) !important;
-}
+} */
 
 .numbers{
     width: 5% !important;
 }
 
 .status{
+    width: 10% !important;
     text-align: center;
 }
 
@@ -39,4 +35,8 @@ td {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
+}
+
+.delete-button{
+    display: none !important;
+}

@@ -12,6 +12,18 @@ $(document).ready(function() {
     })
 });
 
+// $('tbody tr').on('click', showModal);
+
+$('tbody tr').on('click', function(e){
+    console.log($(e.target));
+    if(!$(e.target).hasClass("select-member")){
+        showModal();
+    } else {
+        closeModal();
+    }
+});
+
+
 function showModal(){
     $('.modal-whole').css('display', 'flex');
 }
@@ -19,5 +31,7 @@ function showModal(){
 function closeModal(){
     $('.modal-whole').css('display', 'none');
 }
+
+
 
 
