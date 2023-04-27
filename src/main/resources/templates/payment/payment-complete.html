@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>포인트 충전 완료</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gugi&display=swap">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="/static/css/payment/payment.css">
+    <style>
+        .charge-complete-box {
+            border-radius: 8px;
+            background: #f9fafb;
+        }
+
+        .charge-complete-layout {
+            padding: 20px;
+        }
+
+        .flex-between {
+            display:flex; 
+            justify-content: space-between;
+        }
+
+        .charge-content-box {
+            font-size: 15px;
+            color: #495057;
+            line-height: 40px;
+            letter-spacing: 0;
+            font-weight: 400;
+        }
+
+        .charge-content-layout {
+            margin-bottom: 10px;
+        }
+
+        .border-style {
+            padding: 20px 0 0px 0;
+            border-top: 1px solid #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <!-- 헤더 넣는곳 -->
+        <div id="header"></div>
+
+        <div class="content-wrap">
+            <div class="banner-wrap">
+                <a href="javascript:void(0)" class="home-a">
+                    <img src="../../static/images/payment/left_icon.png" class="home-icon">
+                    <span>스토리로 돌아가기</span>
+                </a>
+                <h2>
+                    [앵콜_값비싼 전용필터 NO!] 자동차 필터 호환으로 필터비 걱정 끝!~
+                    <span class="banner-info">
+                        <img class="banner-info-image"
+                            src="https://cdn.wadiz.kr/wwwwadiz/green001/2023/0407/20230407150348652_204740.jpg/wadiz/resize/600/format/jpg/quality/80/optimize">
+                        (주)아이와나테크
+                    </span>
+                </h2>
+            </div>
+            <div class="payment-wrap">
+                <div class="payment-order-box">
+                    <ol>
+                        <li>
+                            <em>
+                                리워드 <br> 선택
+                            </em>
+                        </li>
+                        <li>
+                            <em>충전 하기</em>
+                        </li>
+                        <li class="active">
+                            <em>충전 완료</em>
+                        </li>
+                    </ol>
+                </div>
+                <div class="payment-content-wrap">
+                    <div class="payment-content-container">
+                        <div class="payment-content-title">
+                            <h3>충전 후 금액</h3>
+                        </div>
+                        <div class="payment-box">
+                            <div class="charge-complete-box">
+                                <div class="charge-complete-layout">
+                                    <div class="charge-content-box">
+                                        <div class="charge-content-layout">
+                                            <div class="flex-between">
+                                                <p class="point-title">기존 포인트</p>
+                                                <p class="point-money">0원</p>
+                                            </div>
+                                            <div class="flex-between">
+                                                <p class="point-title">충전 포인트</p>
+                                                <p class="point-money">0원</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex-between border-style">
+                                            <p class="point-title">현재 포인트</p>
+                                            <p class="point-money">0원</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 푸터 넣는 곳 -->
+            <div id="footer"></div>
+        </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script>
+    const $radioButton = $("input[type=radio]");
+
+    $radioButton.each((i, e) => {
+        $(e).click(() => {
+            $radioButton.prop("checked", false);
+            $(e).prop("checked", true);
+        });
+    });
+
+</script>
+
+</html>

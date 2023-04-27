@@ -9,10 +9,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">  
+    <link rel="shortcut icon" href="/static/images/components/dodam-favicon.png">
 </head>
 <body>
     <div id="wrap">
        <div id="container">
+              <!-- 모달창 -->
+              <div class="like-modal-container" id="like-modal" style="display:none;">
+                <span class="like-text" style="display:none;">찜 목록에 추가했습니다</span>
+                <span class="like-cancel-text"style="display:none;">찜 목록에서 제외했습니다</span>
+               </div>
         <div id="recruitment-container">
             <div class="container-form">
                 <div class="recruitment-title">
@@ -46,9 +52,10 @@
                             <button type="button" class="wish-button"  aria-pressed="false">
                                 <span>
                                     <span class="wish-button-children">
+                                        <img class="heart-icon" src ="../../static/images/recruitment-board/non-heart-icon.png">
                                         <div>
-                                            <svg viewBox="0 0 32 32" focusable="false" role="presentation" class="withIcon-icon" aria-hidden="true" style="width: 24px; height: 24px;">
-                                                <path d="M22.16 4h-.007a8.142 8.142 0 0 0-6.145 2.79A8.198 8.198 0 0 0 9.76 3.998a7.36 7.36 0 0 0-7.359 7.446c0 5.116 4.64 9.276 11.6 15.596l2 1.76 2-1.76c6.96-6.32 11.6-10.48 11.6-15.6v-.08A7.36 7.36 0 0 0 22.241 4h-.085zm-5.28 21.84l-.88.8-.88-.8h-.08C8.4 19.76 4 15.84 4 11.44l-.001-.082A5.76 5.76 0 0 1 9.928 5.6a6.542 6.542 0 0 1 4.865 2.232l.486.567h1.52l.48-.56a6.548 6.548 0 0 1 4.877-2.24l.084-.001a5.76 5.76 0 0 1 5.76 5.76l-.001.085c0 4.396-4.4 8.316-11.12 14.396z"></path></svg>
+                                            <!-- <svg viewBox="0 0 32 32" focusable="false" role="presentation" class="withIcon-icon" aria-hidden="true" style="width: 24px; height: 24px;"> -->
+                                                <!-- <path d="M22.16 4h-.007a8.142 8.142 0 0 0-6.145 2.79A8.198 8.198 0 0 0 9.76 3.998a7.36 7.36 0 0 0-7.359 7.446c0 5.116 4.64 9.276 11.6 15.596l2 1.76 2-1.76c6.96-6.32 11.6-10.48 11.6-15.6v-.08A7.36 7.36 0 0 0 22.241 4h-.085zm-5.28 21.84l-.88.8-.88-.8h-.08C8.4 19.76 4 15.84 4 11.44l-.001-.082A5.76 5.76 0 0 1 9.928 5.6a6.542 6.542 0 0 1 4.865 2.232l.486.567h1.52l.48-.56a6.548 6.548 0 0 1 4.877-2.24l.084-.001a5.76 5.76 0 0 1 5.76 5.76l-.001.085c0 4.396-4.4 8.316-11.12 14.396z"></path></svg> -->
                                         </div>
                                         </span>
                                     </span></button>
@@ -70,6 +77,15 @@
                 </div>
                 </div>
 
+                           <!-- top 버튼 -->
+                <div class="top-btn-container">
+                    <button type="button" class="top-btn">
+                        <svg viewBox="0 0 40 40" focusable="false" role="presentation" class="top-btn-svg" aria-hidden="true">
+                        <path d="M33 30l-1.4 1.4L20 19.8 8.4 31.4 7 30l13-13zm1-21H6v2h28z"></path></svg>
+                    </button>
+                </div>
+
+                        
         <!-- 복사완료  modal 영역 -->
         <div class="modal-bg" onClick="javascript:popCopyClose();"></div>
         <div class="modal-copy">
@@ -88,14 +104,28 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
-
+/* 좋아요 */
 $(function(){
     $('.wish-button').click(function(e){
         if($('.wish-button').attr('aria-pressed') == 'false'){
+            $(".heart-icon").attr("src", "../../static/images/recruitment-board/heart-background.png");
             $('.wish-button').attr('aria-pressed','true') //하트 색 채우기
+            $('.like-cancel-text').hide(); //해제 문구
+            $('#like-modal').css({right: '-30%'}); //오->왼 슬라이드 등장
+            $('#like-modal').animate({right:'30px'}, {duration: 700}); //오->왼 슬라이드 등장
+            $('#like-modal').show(); //슬라이드 보이기
+            $('.like-text').show(); //찜 추가 문구
+            $('#like-modal').fadeOut(); //사라지기
+        
         }else{
+            $(".heart-icon").attr("src", "../../static/images/recruitment-board/non-heart-icon.png");
             $('.wish-button').attr('aria-pressed','false') //색 비우기
-
+            $('.like-text').hide();  //찜 추가 문구
+            $('#like-modal').css({right: '-30%'}); //오->왼 슬라이드 등장
+            $('#like-modal').animate({right:'30px'}, {duration: 700}); //오->왼 슬라이드 등장
+            $('#like-modal').show(); //슬라이드 보이기
+            $('.like-cancel-text').show(); //찜 해제 문구
+            $('#like-modal').fadeOut(); //사라지기
         }
     });
 });
@@ -127,6 +157,25 @@ var modalBg = $('.modal-bg');
     $(modalBg).hide();
 }
 
+/* top 버튼  */
+var topEle = $('.top-btn');
+var delay = 400;
+
+/* top show-hide */
+$(window).scroll(function() {
+    if($(this).scrollTop() > 200 ) {
+        console.log(topEle);
+		$('.top-btn').fadeIn();
+	} else {
+		$('.top-btn').fadeOut();
+	}
+});
+
+/* top버튼- 위로 올리기 */
+$('.top-btn').click( function() {
+	$('html, body').animate({scrollTop:0}, delay );
+	return false;
+});
 
 
 

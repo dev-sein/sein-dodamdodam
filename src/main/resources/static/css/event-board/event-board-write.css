@@ -105,8 +105,8 @@ p{
     padding: 9px 24px;
     line-height: 1.75;
     font-size: 16px;
-    border-color: #00c4c4;
-    color: #00c4c4;
+    border-color: #006633;
+    color: #006633;
     width: calc(50% - 4px);
 }
 
@@ -175,7 +175,7 @@ p{
 }
 
 .waffle.input :hover{
-    border-color:#00c4c4;
+    border-color:#006633;
 }
 
 .waffle.input>input{
@@ -220,7 +220,7 @@ input::placeholder {
 }
 
 .mb{
-    margin-bottom: 35px;
+    margin-bottom: 45px;
 }
 
 .blank{
@@ -246,7 +246,7 @@ textarea::placeholder {
 }
 
 textarea :hover{
-    border-color:#00c4c4;
+    border-color:#006633;
 }
 
 button:not(:disabled) {
@@ -265,7 +265,7 @@ button:not(:disabled) {
 }
 
 .introduction{
-    margin-top: 85px;
+    margin-top: 115px;
 }
 
 .action-input {
@@ -279,10 +279,10 @@ button:not(:disabled) {
 }
 
 .address-btn{
-    background-color: #00c4c4;
+    background-color: #006633;
     color: #fff;
     border-radius: 3px;
-    border: 1px solid #00c4c4;
+    border: 1px solid #006633;
     width: 116px;
     font-size: 15px;
     font-weight: 500;
@@ -347,9 +347,9 @@ input[name=address]::placeholder {
     letter-spacing: -.3px;
   }
 
-#startDate{
+/* #startDate{
     margin-bottom: 7px;
-  }
+  } */
 
 .file-button{
     position: relative!important;
@@ -375,8 +375,8 @@ input[name=address]::placeholder {
 }
 
 .submit-btn{
-    border-color: #00c4c4;
-    background-color: #00c4c4;
+    border-color: #006633;
+    background-color: #006633;
     color: #fff;
     padding: 14px 28px;
     line-height: 1.4;
@@ -397,4 +397,58 @@ input[name=address]::placeholder {
     font-size: 12px;
     font-weight: 400;
     margin-top: 16px;
+}
+
+.back-btn{
+    width: 200px;
+    background: #fff;
+    color: gray;
+    border-color: lightgray;
+    margin-right: 5px;
+}
+
+.update-btn{
+    width: 200px;
+}
+
+
+/* 에러 메세지 */
+.error{
+    color: red;
+    font-size: 12px;
+}
+.error-msg{
+    color: red;
+}
+
+.people-count-error{
+    display: none;
+}
+
+.price-error{
+    display: none;
+}
+
+.mb0{
+    margin-bottom: 0;
+}
+
+.open-kakao-error{
+    display: none;
+}
+
+.open-password-error{
+    display: none;
+}
+
+.businessRegNumber-error-msg{
+    display: none;
+}
+
+.representive-tel-error-msg{
+    display: none;
+}
+
+.business-email-error-msg{
+    display: none;
 }

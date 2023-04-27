@@ -1,0 +1,38 @@
+.number{
+    width: 4% !important;
+}
+
+.title{
+    width: 20% !important;
+}
+
+.writer{
+    width: 10% !important;
+}
+
+.views{
+    width: 15% !important;
+}
+
+.like-count{
+    width: 15% !important;
+}
+
+.register-time{
+    width: 25% !important;
+}
+
+/* .detail-top{
+    width: var(20% - 20px) !important;
+} */
+
+.numbers{
+    width: 5% !important;
+}
+
+
+td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }

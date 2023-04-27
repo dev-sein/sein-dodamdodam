@@ -1,0 +1,428 @@
+@charset "utf-8";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Noto Sans KR !important;
+}
+
+input,
+button {
+    font-family: Noto Sans KR !important;
+}
+
+a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, .84);
+}
+
+ol,
+ul,
+li {
+    list-style: none;
+}
+
+em {
+    font-style: normal;
+}
+
+input {
+    outline: none;
+    border: none;
+}
+
+button {
+    border: none;
+    background: none;
+}
+
+.content-wrap {
+    color: #4a4a4a;
+}
+
+.banner-wrap {
+    position: relative;
+    width: 100%;
+    height: 46px;
+    background: #018055;
+}
+
+.home-a {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    display: inline-block;
+    font-size: 16px;
+    color: #fff;
+    height: 46px;
+    line-height: 46px;
+    display: none;
+}
+
+.home-icon {
+    width: 40px;
+    filter: invert(100%);
+    margin-right: 10px;
+}
+
+.home-a span {
+    display: none;
+    padding-left: 10px;
+    vertical-align: middle;
+}
+
+.banner-wrap h2 {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 14px;
+    line-height: 46px;
+    color: #fff;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 400;
+}
+
+.banner-info {
+    display: none;
+}
+
+.banner-info-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 10px;
+}
+
+.payment-wrap {
+    padding: 0 10px 50px
+}
+
+.payment-order-box {
+    padding: 30px 0 42px;
+    text-align: center;
+}
+
+.payment-order-box ol {
+    width: 250px;
+    margin: 0 auto;
+    background: url("https://www.wadiz.kr/resources/static/img/common/bg_gray_line.png") repeat-x 0 center;
+}
+
+.payment-order-box ol::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.payment-order-box ol li {
+    float: left;
+    display: block;
+    width: 60px;
+    padding: 0;
+}
+
+.payment-order-box ol li.active em {
+    width: 60px;
+    height: 60px;
+    color: #fff;
+    border: none;
+    background: #00c4c4;
+}
+
+.payment-order-box ol li:nth-child(2) {
+    padding: 0 35px;
+    box-sizing: content-box;
+}
+
+.payment-order-box ol li em {
+    display: table-cell;
+    vertical-align: middle;
+    width: 58px;
+    height: 58px;
+    font-size: 12px;
+    line-height: 16px;
+    background: #fff;
+    border: 1px dashed #979797;
+    border-radius: 50%;
+    font-weight: 500;
+}
+
+.payment-content-wrap {
+    width: 100%;
+    margin-bottom: 40px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.payment-content-container {
+    margin: 20px 15px;
+}
+
+.payment-sub-title {
+    margin-top: 3px;
+    color: #9B9B9B;
+    font-weight: 400;
+}
+
+.payment-box {
+    margin-top: 20px;
+}
+
+.input-layout {
+    display: flex;
+    align-items: center;
+}
+
+.input-title {
+    width: 19%;
+}
+
+.common-input {
+    width: 100%;
+    background: none;
+    height: 100%;
+}
+
+.limit-money-box {
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.limit-money {
+    color: red;
+    font-size: 13px;
+}
+
+.text-box {
+    display: flex;
+    align-items: center;
+    background-color: #f5f5f5;
+    width: 50%;
+    height: 20px;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.radio-box {
+    display: flex;
+}
+
+.common-radio {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.radio-title {
+    font-size: 13px;
+}
+
+.radio-label {
+    margin-right: 20px;
+}
+
+.radio-icon {
+    display: block;
+    position: relative;
+    transition-property: opacity, border-color, background-color;
+    transition-duration: .15s;
+    opacity: 1;
+    z-index: 1;
+    border: 1px solid #cdd3d8;
+    border-radius: 999em;
+    background-color: #fff;
+    width: 1em;
+    height: 1em;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+.radio-box .radio-icon {
+    line-height: 20px;
+    letter-spacing: 0;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.radio-box .radio-icon {
+    display: inline-block;
+    margin-right: 8px;
+    vertical-align: middle;
+    font-size: 16px;
+}
+
+.radio-icon::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition-property: background-color;
+    transition-duration: .15s;
+    border-radius: 999em;
+    background-color: #fff;
+    width: 0.5em;
+    height: 0.5em;
+    content: "";
+}
+
+.common-radio:checked+span.radio-icon::before {
+    background-color: #00c4c4;
+}
+
+.charge-button-box {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.charge-button {
+    width: 100px;
+    height: 30px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 8px;
+    background-color: #018055;
+}
+
+.pay-info-box {
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    margin: 40px 0;
+}
+
+.pay-info-layout {
+    padding: 20px;
+}
+
+.pay-info-sub-title {
+    margin: 20px 0;
+}
+
+.pay-info-ul li {
+    position: relative;
+    font-family: "Noto Sans KR";
+    font-weight: 400;
+    font-size: 13px;
+    color: #767676;
+    line-height: 1.5;
+    letter-spacing: -0.5px;
+    padding-left: 10px;
+    margin-top: 2px;
+}
+
+.pay-info-ul li ul li::before {
+    content: "-";
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.pay-info-ul li.pay-info-li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 4px;
+    height: 4px;
+    background: #999;
+    border-radius: 50%;
+}
+
+@media(max-width: 959px) {
+    .input-layout {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .text-box {
+        margin-top: 10px;
+        width: 95%;
+    }
+
+    .limit-money-box {
+        margin: 0;
+        margin-top: 5px;
+    }
+
+    .radio-box {
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 960px) {
+    .banner-wrap {
+        height: 67px;
+    }
+
+    .home-a {
+        height: 67px;
+        line-height: 67px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .home-a span {
+        display: inline;
+    }
+
+    .banner-wrap h2 {
+        font-size: 22px;
+        line-height: 67px;
+    }
+
+    .banner-info {
+        display: inline-block;
+        font-size: 14px;
+        font-weight: normal;
+    }
+
+    .payment-wrap {
+        width: 860px;
+        margin: 0 auto;
+        padding: 0 0 100px;
+    }
+
+    .payment-order-box ol {
+        width: 430px;
+        margin: 0 auto;
+    }
+
+    .payment-order-box ol li {
+        float: left;
+        display: block;
+        width: 90px;
+        padding: 0;
+    }
+
+    .payment-order-box ol li.active em {
+        width: 90px;
+        height: 90px;
+    }
+
+    .payment-order-box ol li em {
+        width: 88px;
+        height: 88px;
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    .payment-order-box ol li:nth-child(2) {
+        padding: 0 80px;
+    }
+
+    .payment-content-wrap {
+        width: 650px;
+        margin: 0 auto 40px;
+    }
+
+}

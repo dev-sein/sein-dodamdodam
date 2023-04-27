@@ -596,8 +596,8 @@ header{
 }
 
 .email-check-button{
-    border-color: #00c4c4;
-    background-color: #00c4c4;
+    border-color: #006633;
+    background-color: #006633;
     color: #fff;
     margin-left: 8px;
     min-width: 103px;
@@ -882,8 +882,8 @@ header{
 }
 
 .signup-submit-button{
-    border-color: #00c4c4;
-    background-color: #00c4c4;
+    border-color: #006633;
+    background-color: #006633;
     color: #fff;
     padding: 9px 29px;
     line-height: 1.75;
@@ -921,7 +921,7 @@ header{
 .login-page-link a{
     margin-left: 6px;
     text-decoration: underline;
-    color: #00b2b2;
+    color: #006633;
 }
 
 input::placeholder {
@@ -929,14 +929,14 @@ input::placeholder {
 }
 
 input:focus {
-	outline: 1px solid #00c4c4;
+	outline: 1px solid #006633;
 }
 
 #check-box {
 	fill: #fff;
 	position: absolute;
 	top: 0;
-	background-color: #00c4c4;
+	background-color: #006633;
     display: none;
 }
 
@@ -963,4 +963,156 @@ input:focus {
     display: none; /* 기본값 */
     margin-top: 4px;
     font-style: normal;
+}
+
+/* 주소 */
+.waffle{
+    margin-bottom: 20px;
+}
+
+.label{
+    margin-bottom: 4px;
+}
+
+.input-container{
+    margin-bottom: 0;
+    font-family: 'Noto Sans KR';
+}
+
+.waffle.input{
+    display: block;
+    position: relative;
+    height: 48px;
+    font-size: 15px;
+}
+
+.waffle.input :hover{
+    border-color:#006633;
+}
+
+input::placeholder {
+   font-weight: 400;
+}
+
+.waffle.helper{
+    display: block;
+    margin-top: -17px;
+    line-height: 20px;
+    color: #60656a;
+    font-size: 12px;
+}
+
+.waffle.input>input[readonly], .waffle.input>input[disabled] {
+    border-color: #00000026;
+    background-color: #0000000f;
+    cursor: default;
+    pointer-events: none;
+}
+
+.waffle.input>input[disabled] {
+    opacity: .45;
+}
+
+.mb{
+    margin-bottom: 45px;
+}
+
+
+.action-input {
+    position: relative;
+    outline: none;
+}
+
+.action-input .input-container {
+    flex: 1;
+}
+
+.address-btn{
+    background-color: #006633;
+    color: #fff;
+    border-radius: 3px;
+    border: 1px solid #006633;
+    width: 116px;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: inherit;
+}
+
+.waffle.button {
+    display: inline-block;
+    padding-top: 0.07em;
+    text-decoration: none;
+}
+
+.waffle.button{
+    transition-property: background-color,border-color,color,opacity;
+    transition-duration: .2s;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 0 1.41176em;
+    height: 48px;
+    vertical-align: middle;
+    font-size: 17px;
+    font-weight: 400;
+    box-sizing: border-box!important;
+    -webkit-appearance: none;
+}
+
+.mb13{
+    margin-bottom: -13px;
+    display: flex;
+}
+
+
+.address{
+    height: 44px;
+    line-height: 1.2em;
+    font-size: 15px;
+    display: block;
+    position: relative;
+    font-weight: 300;
+    width: 300px;
+    padding-left: 14px;
+    margin-right: 7px;
+    border: 1px solid #E8E8E8;
+    border-radius: 3px;
+    background-color: #F8F8F8;
+    cursor: default;
+    pointer-events: none;
+}
+
+input[name=address]::placeholder {
+    color: #C1C1C1;
+    font-weight: 500;
+    font-family: inherit;
+    letter-spacing: -.3px;
+  }
+
+.input-container .waffle.input input.address-detail-input {
+    height: 48px;
+    min-height: 44.67px;
+    display: block;
+    outline: none;
+    border: 1px solid #dde2e6;
+    border-radius: 3px;
+    padding-right: 140px;
+    padding-left: 16px;
+    height: auto;
+    line-height: 28px;
+    letter-spacing: -.3px;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Noto Sans KR';
+    border: 1px solid #dde2e6;
+}
+
+.label label {
+    position: relative;
+    width: 100%;
+    line-height: 28px;
+    letter-spacing: -.3px;
+    font-size: 16px;
+    font-weight: 400;
+    padding-bottom: 8px;
 }
