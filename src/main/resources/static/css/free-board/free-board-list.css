@@ -202,6 +202,7 @@ strong {
     font-weight: 500;
 }
 
+
 .bar-button .type-culture>em {
     background: #2e51ef;
 }
@@ -315,14 +316,14 @@ strong {
 }
 
 .detail-number {
-    position: absolute;
+    /* position: absolute; */
     top: 135px;
     right: 20px;
     text-align: right;
     font-size: 12px;
 }
 
-.detail-number em {
+.detail-number em.detail-text {
     padding-right: 10px;
     color: #c04646;
     font-weight: 500;
@@ -334,10 +335,137 @@ strong {
     font-weight: 500;
 }
 
+em.like-count {
+    float: left;
+    line-height: 27px;
+    padding-left: 15px;
+    background: url('https://www.wadiz.kr/resources/static/img/common/icon_red_heart.png') no-repeat 0 center;
+    background-size: 11px 10px;
+}
 
 
 
+/* side */
 
+.search-area {
+    position: relative;
+    margin-bottom: 20px;
+    height: 34px;
+    border: 1px solid #e4e4e4;
+}
+
+.search-area.sub-page {
+    display: none;
+    background: #fff;
+}
+
+.search-area input[type=text] {
+    width: 220px;
+    height: 32px;
+    padding: 0 10px;
+    line-height: 34px;
+    font-size: 13px;
+    border: none;
+}
+
+button:not(:disabled) {
+    cursor: pointer;
+}
+
+.btn-search {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0;
+    width: 30px;
+    height: 34px;
+    background: url('https://www.wadiz.kr/resources/static/img/common/icon_gray_search.png') no-repeat center center;
+    background-size: 14px 14px;
+    border: none;
+}
+
+.best-list {
+    position: relative;
+    padding: 20px 0;
+    border-top: 1px solid #006633;
+}
+
+.best-list img {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+}
+
+.best-list.detail {
+    display: none;
+}
+
+.main-content h4 {
+    margin-left: 30px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.best-list ol li {
+    display: table;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.best-list ol li em {
+    display: table-cell;
+    padding: 0;
+    width: 30px;
+    height: 40px;
+    font-size: 24px;
+    color: #006633;
+}
+
+.best-list ol li .title {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 0;
+}
+
+.best-list ol li .title a {
+    height: 40px;
+    font-size: 14px;
+    line-height: 20px;
+    padding-top: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+}
+
+/* page-list */
+.page-list {
+    width: 100%;
+}
+
+.page-list ul {
+    text-align: center;
+    padding: 30px 0 10px;
+}
+
+.page-list ul li {
+    display: inline-block;
+}
+
+.page-list ul li button {
+    padding: 0 10px;
+    font-size: 14px;
+    background: none;
+    border: none;
+}
+
+.page-list ul li.active button {
+    font-weight: 500;
+    color: #006633;
+}
 
 
 @media screen and (min-width: 769px) {
@@ -404,6 +532,22 @@ strong {
 
     .free-board-list {
         float: left;
+    }
+
+    .free-board-side {
+        float: right;
+        width: 290px;
+        padding: 0;
+        margin: 0;
+        margin-right: 20px;
+    }
+
+    .search-area.sub-page {
+        display: block;
+    }
+
+    .best-list.detail {
+        display: block;
     }
 }
 

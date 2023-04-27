@@ -14,3 +14,11 @@ comment.addEventListener("click", e => {
 // function closeModal(){
 //     $('.modal-whole').css('display', 'none');
 // }
+
+.wcommunity-share-area .btn-symp.active {
+    color: #F98F9B;
+    border-color: #F98F9B;
+    background-image: url(/resources/static/img/common/icon_red_heart.png);
+}
+
+
