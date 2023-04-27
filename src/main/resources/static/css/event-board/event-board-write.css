@@ -220,7 +220,7 @@ input::placeholder {
 }
 
 .mb{
-    margin-bottom: 35px;
+    margin-bottom: 45px;
 }
 
 .blank{
@@ -265,7 +265,7 @@ button:not(:disabled) {
 }
 
 .introduction{
-    margin-top: 85px;
+    margin-top: 115px;
 }
 
 .action-input {
@@ -347,9 +347,9 @@ input[name=address]::placeholder {
     letter-spacing: -.3px;
   }
 
-#startDate{
+/* #startDate{
     margin-bottom: 7px;
-  }
+  } */
 
 .file-button{
     position: relative!important;
@@ -415,6 +415,10 @@ input[name=address]::placeholder {
 /* 에러 메세지 */
 .error{
     color: red;
+    font-size: 12px;
+}
+.error-msg{
+    color: red;
 }
 
 .people-count-error{
@@ -434,5 +438,17 @@ input[name=address]::placeholder {
 }
 
 .open-password-error{
+    display: none;
+}
+
+.businessRegNumber-error-msg{
+    display: none;
+}
+
+.representive-tel-error-msg{
+    display: none;
+}
+
+.business-email-error-msg{
     display: none;
 }
