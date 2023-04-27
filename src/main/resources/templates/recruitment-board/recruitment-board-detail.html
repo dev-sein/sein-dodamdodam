@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">  
+    <link rel="shortcut icon" href="/static/images/components/dodam-favicon.png">
 </head>
 <body>
     <div id="wrap">
@@ -160,17 +161,16 @@ var textarea = document.createElement("textarea");
     textarea.select();
     document.execCommand("copy");
     document.body.removeChild(textarea);
-alert("URL이 복사되었습니다.")
 }
 
 /* top 버튼  */
 var topEle = $('.top-btn');
 var delay = 400;
-console.log(topEle);
 
 /* top show-hide */
 $(window).scroll(function() {
-	if($(this).scrollTop() > 200 ) {
+    if($(this).scrollTop() > 200 ) {
+        console.log(topEle);
 		$('.top-btn').fadeIn();
 	} else {
 		$('.top-btn').fadeOut();
