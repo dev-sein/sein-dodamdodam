@@ -5,10 +5,11 @@ $('#regist_btn').css("color", "rgb(196, 196, 196)").css("background-color", "rgb
 $('#content_textarea, #title_textarea').on('input', function() {
   var contentLength = $('#content_textarea').val().length;
   var titleLength = $('#title_textarea').val().length;
-  if (contentLength > 0 && titleLength > 0) {
-    $('#regist_btn').css("color", "white").css("background-color", "rgb(0, 196, 196)");
+  var btnType = $('.btn-type');
+  if (contentLength > 0 && titleLength > 0 && btnType.hasClass("active")) {
+    $('#regist_btn').css("color", "white").css("background-color", "#006633");
   } else {
-    $('#regist_btn').css("color", "white").css("background-color", " #006633");
+    $('#regist_btn').css("color", "rgb(196, 196, 196)").css("background-color", "rgb(242,244,247)");
   }
 });
 
