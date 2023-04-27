@@ -185,16 +185,23 @@
                         </div>
                         <em class="phone-error error-message">핸드폰 번호를 입력해주세요.</em>
                     </div>
-                    <div class="form-group">
-                        <label for="address-btu" class="address-label" onclick="sample6_execDaumPostcode()">주소</label>
-                        <div class="address-div" id="" >
-                            <input type="text" id="sample6_postcode"  onclick="sample6_execDaumPostcode()" placeholder="우편번호">
-                            <input type="button" name="address-btu" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+                    <div class="waffle field">
+                        <div class="waffle label">
+                            <label>주소</label>
                         </div>
-                        <input type="text" id="sample6_address"  onclick="sample6_execDaumPostcode()" placeholder="주소"><br>
-                        <input type="text" id="sample6_detailAddress" placeholder="상세주소1">
-                        <input type="text" id="sample6_extraAddress" placeholder="상세주소2">
-                    </div>
+                        <div class="action-input">
+                            <div class="input-container mb13">
+                                <input name="eventAddress" id="address" class="address" placeholder="주소검색" required>
+                                <button class="address-btn" id="detailAddress" type="button" onclick="searchAddress()">주소검색</button>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="input-container">
+                            <div class="waffle input">
+                                <input class="address-detail-input" name="eventAddressDetail" placeholder="상세주소">
+                            </div>
+                        <div class="waffle helper mb"></div>
+                    </div>   
                     <!-- 회원 약관 동의 -->
                     <div class="SignUpAllCheckTermsCheckbox">
                         <label for="termsUpdateRequestCheckBox" class="termscheckbox" id="termscheckbox">
@@ -244,6 +251,7 @@
         </main>
     </div>
 </body>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script src="../../static/js/member/join.js"></script>
 </html>
