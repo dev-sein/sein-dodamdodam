@@ -14,26 +14,22 @@
     width: 10% !important;
 }
 
+.like-count{
+    width: 25% !important;
+}
+
 .register-time{
-    /* width: 30% !important; */
     width: 20% !important;
 }
 
-.phone-number{
-    width: 15%;
-}
-
-.detail-top{
+/* .detail-top{
     width: var(20% - 20px) !important;
-}
+} */
 
 .numbers{
     width: 5% !important;
 }
 
-.status{
-    text-align: center;
-}
 
 td {
     white-space: nowrap;

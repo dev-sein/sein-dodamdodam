@@ -1,172 +1,174 @@
 /* 배너 목록 */
 
 article{
-    width: 85%;
-    margin: 0 auto;
-    height: calc(100% - 150px);
-    margin-bottom: 30px;
+  width: 85%;
+  margin: 0 auto;
+  height: calc(100% - 150px);
+  margin-bottom: 30px;
 }
 
 .module--banner {
-    margin-top: 30px;
-    padding-top: 15px;
-    /* padding: 15px 0; */
-    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
-    /* border: 1px solid #000; */
-    border-radius: 10px;
-  }
-  
-  .banner__wrapper {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-bottom: 20px;
-    visibility: hidden;
-    display: none;
-  }
-  
-  .banner__title {
-    font-size: 20px;
-    font-weight: bold;
-  }
-  
-  .banner__button-wrapper button {
-    margin-left: 10px;
-    padding: 10px 15px;
-    font-size: 16px;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .banner__add-button {
-    background-color: #3caea3;
-    color: #fff;
-  }
-  
-  .banner__delete-button {
-    background-color: #e74c3c;
-    color: #fff;
-  }
-  
-  .banner__list {
-    display: flex;
-    height: calc(100% - 62px);
-    overflow: auto;
-    overflow-y: scroll;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-  
-  .banner__item {
-    width: 47.5%;
-    /* margin-right: 1%; */
-    /* margin-bottom: 20px; */
-    position: relative;
-    margin-bottom: 30px;
-  }
-  
-  .banner__item:last-child {
-    margin-right: 0;
-  }
-  
-  .banner__checkbox {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    transform: scale(1.5);
-    z-index: 99;
-  }
-  
-  .banner__image {
-    width: 99%;
-    height: 310px;
-    overflow: hidden;
-    text-align: center;
-    border: 1px solid #5555554d;
-    position: relative;
-    /* flex-direction: column; */
-    /* background-color: antiquewhite; */
-  }
-  
-  .banner__image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+  margin-top: 30px;
+  padding-top: 15px;
+  /* padding: 15px 0; */
+  /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+  /* border: 1px solid #000; */
+  border-radius: 10px;
+}
 
-  .add-image{
-    margin: 0 auto;
-    width: 60px !important;
-    height: 60px !important;
-    position: relative;
-    top: 120px;
-  }
-  
-  .banner__info {
-    margin-top: 10px;
-  }
-  
-  .banner__title {
-    font-size: 16px;
-    font-family: 'THEJAMSIL5BOLD';
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .banner__description {
-    font-size: 14px;
-    color: #555;
-  }
-  
-  .inner-wrapper{
-    height: calc(100% - 40px);
-  }
+.banner__wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 20px;
+  visibility: hidden;
+  display: none;
+}
 
-  .submit-button{
-    width: 120px;
-    background-color: #fff;
-    color: #000000b8;
-    /* margin-top: 22px; */
-    text-align: center;
-    border-radius: 5px;
-    position: absolute;
-    right: 0;
-    top: -60px;
-    align-items: center;
-    font-size: 18px;
-    line-height: 18px;
-    padding: 9px 0;
-    border: 1px solid #00000029;
-    font-family: TheJamsil5Bold;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-    cursor: pointer;
-  }
+.banner__title {
+  font-size: 20px;
+  font-weight: bold;
+}
 
-  .module--banner{
-    position: relative;
-  }
+.banner__button-wrapper button {
+  margin-left: 10px;
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
-  /* 스크롤바 */
+.banner__add-button {
+  background-color: #3caea3;
+  color: #fff;
+}
+
+.banner__delete-button {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+.banner__list {
+  display: flex;
+  height: calc(100% - 62px);
+  overflow: auto;
+  overflow-y: scroll;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.banner__item {
+  width: 47.5%;
+  /* margin-right: 1%; */
+  /* margin-bottom: 20px; */
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.banner__item:last-child {
+  margin-right: 0;
+}
+
+.banner__checkbox {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  transform: scale(1.5);
+  z-index: 99;
+  display: none;
+}
+
+.banner__image {
+  width: 99%;
+  height: 310px;
+  overflow: hidden;
+  text-align: center;
+  border: 1px solid #5555554d;
+  position: relative;
+  /* flex-direction: column; */
+  /* background-color: antiquewhite; */
+}
+
+.banner__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.add-image{
+  margin: 0 auto;
+  width: 60px !important;
+  height: 60px !important;
+  position: relative;
+  top: 120px;
+}
+
+.banner__info {
+  margin-top: 10px;
+}
+
+.banner__title {
+  font-size: 16px;
+  font-family: 'THEJAMSIL5BOLD';
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.banner__description {
+  font-size: 14px;
+  color: #555;
+}
+
+.inner-wrapper{
+  height: calc(100% - 40px);
+}
+
+.submit-button{
+  width: 120px;
+  background-color: #fff;
+  color: #000000b8;
+  /* margin-top: 22px; */
+  text-align: center;
+  border-radius: 5px;
+  position: absolute;
+  right: 0;
+  top: -60px;
+  align-items: center;
+  font-size: 18px;
+  line-height: 18px;
+  padding: 9px 0;
+  border: 1px solid #00000029;
+  font-family: TheJamsil5Bold;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  cursor: pointer;
+}
+
+.module--banner{
+  position: relative;
+}
+
+
+/* 스크롤바 */
 /* 수직 스크롤바 스타일링 */
 ::-webkit-scrollbar {
-    width: 10px;
-  }
-  
-  /* 스크롤바의 배경 색상 */
-  ::-webkit-scrollbar-track {
-    background-color: #f1f1f1;
-  }
-  
-  /* 스크롤바의 색상 */
-  ::-webkit-scrollbar-thumb {
-    background-color: #1083761c;
-    border-radius: 10px;
-  }
-  
-  /* 마우스 오버 시 스크롤바의 색상 */
-  ::-webkit-scrollbar-thumb:hover {
-    background-color: var(--main-color);
-  }
-  /* 스크롤바 */
+  width: 10px;
+}
+
+/* 스크롤바의 배경 색상 */
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+/* 스크롤바의 색상 */
+::-webkit-scrollbar-thumb {
+  background-color: #1083761c;
+  border-radius: 10px;
+}
+
+/* 마우스 오버 시 스크롤바의 색상 */
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--main-color);
+}
+/* 스크롤바 */

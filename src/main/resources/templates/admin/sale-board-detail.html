@@ -15,6 +15,18 @@
     <link rel="stylesheet" href="../../static/css/admin/board-detail.css">
 </head>
 <body>
+    <!-- 모달 -->
+    <!-- 삭제 모달창 -->
+    <div id="delete-modal" class="delete-modal">
+        <div class="modal-content">
+        <p>정말로 삭제하시겠습니까?</p>
+        <div class="modal-buttons">
+            <button id="cancel-btn">취소</button>
+            <button id="confirm-btn">확인</button>
+        </div>
+        </div>
+    </div>
+    <!-- 모달 -->
     <!-- 헤더 -->
     <header>
         <div class="logo-wrapper">
@@ -75,6 +87,13 @@
                         <div class="inner-right-title">첨부된 이미지</div>
                         <!-- 이미지 첨부 슬라이드 배너 -->
                         <div class="image-wrapper">
+                            <!-- 페이지 표시 -->
+                            <div class="page-wrapper">
+                                <span class="now-page">1</span>
+                                <span> / </span>
+                                <span class="total-page">3</span>
+                            </div>
+                            <!-- 페이지 표시 -->
                             <div class="slider">
                                 <div class="slider__container">
                                   <div class="slider__item">
@@ -94,11 +113,6 @@
                             </div>
                         </div>
                         <!-- 이미지 첨부 슬라이드 배너 -->
-                        <div class="page-wrapper">
-                            <span class="now-page">1</span>
-                            <span> / </span>
-                            <span class="total-page">3</span>
-                        </div>
                     </div>
                     <div class="inner-right-wrapper">
                         <div class="inner-right-title">게시글 정보</div>

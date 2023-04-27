@@ -45,7 +45,13 @@
     --main-color: #212945cc;
     --main-color: #1a348b9e;
     --main-color: #2C3E50; */
-    --main-color: #1083765c;
+    /* 처음 기획 색 */
+    /* --main-color: #1083765c; */
+    /* 스타벅스 색 */
+    --main-color: #006633;
+    /* 스타벅스 살짝 투명도 준 색 */
+    --sub-color: #006633b3;
+    /* --main-color: #006633a3; */
     /* --main-color: #F7CAC9; */
     /* --main-color: #2980B9; */
     /* --main-color: #363b3e; */
@@ -71,8 +77,83 @@ body{
     position: relative;
     width: 100%;
     height: 100%;
-
 }
+
+/* 모달 창 */
+/* 모달창 스타일 */
+/* 전체 페이지 스타일 */
+  
+  /* 모달창 스타일 */
+  .delete-modal {
+    /* 모달창은 처음에는 보이지 않도록 설정 */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4); /* 배경은 반투명한 검은색으로 설정 */
+    align-items: center;
+    /* display: flex; */
+    top: 0px;
+    display: none;
+    font-family: 'TheJamsil5Bold';
+    z-index: 9999;
+ }
+ 
+ /* 모달창 내용 스타일 */
+ .modal-content {
+   background-color: #fff;
+   margin: 0 auto;
+   padding: 20px;
+   border-radius: 10px;
+   width: 20%;
+   height: 120px;
+   /* align-items: center; */
+   /* display: flex; */
+   position: relative;
+   top: -30px;
+   text-align: center;
+   box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+ }
+ 
+ .modal-content h2 {
+   margin-top: 0;
+   font-weight: bold;
+   font-size: 24px;
+ }
+ 
+ .modal-content p {
+   font-size: 18px;
+   margin-bottom: 30px;
+ }
+ 
+ /* 모달창 안의 버튼들 스타일 */
+ .modal-buttons {
+   display: flex;
+   justify-content: center;
+   gap: 15px;
+ }
+ 
+ .modal-buttons button {
+   background-color: #fff;
+   color: #444;
+   border: 1px solid #aaa;
+   padding: 10px 20px;
+   border-radius: 5px;
+   font-size: 16px;
+   cursor: pointer;
+   transition: background-color 0.2s ease, color 0.2s ease;
+   font-family: 'TheJamsil5Bold';
+ }
+ 
+ .modal-buttons button:hover {
+   background-color: #00663369;
+   color: #fff;
+   border: 0;
+ }
+/* 모달 창 */
 
 header{
     /* background-color: var(--main-color); */
@@ -80,13 +161,15 @@ header{
     width: 100%;
     height: 70px;
     color: #1083765c;
+    color: var(--main-color);
     /* color: #fff; */
     position: relative;
     font-size: 18px;
     display: flex;
     font-family: 'KOTRA_BOLD-Bold';
     font-weight: 400;
-    border-bottom: 1px solid #1083765c;
+    /* border-bottom: 1px solid #1083765c; */
+    border-bottom: 1px solid #00663326;
 }
 
 .logo-wrapper{
@@ -171,8 +254,9 @@ content{
     width: 100%;
     height: 100%;
     /* background: #10837614; */
-    background: #1083761c;
-
+    /* background: #1083761c; */
+    /* background: #00663326; */
+    background: #00663314;
 }
 
 .inner-wrapper{
@@ -258,9 +342,9 @@ content{
     color: #434343;
     border-radius: 16px;
     box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.1);
-    border: 1.5px solid #1083765c;
+    /* border: 1.5px solid #1083765c; */
+    border: 1.5px solid var(--main-color);
 }
-
 
 .search__searchbox__button {
     position: absolute;
