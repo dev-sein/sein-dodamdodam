@@ -398,3 +398,41 @@ input[name=address]::placeholder {
     font-weight: 400;
     margin-top: 16px;
 }
+
+.back-btn{
+    width: 200px;
+    background: #fff;
+    color: gray;
+    border-color: lightgray;
+    margin-right: 5px;
+}
+
+.update-btn{
+    width: 200px;
+}
+
+
+/* 에러 메세지 */
+.error{
+    color: red;
+}
+
+.people-count-error{
+    display: none;
+}
+
+.price-error{
+    display: none;
+}
+
+.mb0{
+    margin-bottom: 0;
+}
+
+.open-kakao-error{
+    display: none;
+}
+
+.open-password-error{
+    display: none;
+}

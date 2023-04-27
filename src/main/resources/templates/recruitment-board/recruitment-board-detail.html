@@ -71,31 +71,37 @@
                     <img src="https://www.wadiz.kr/ft/images/green001/2023/0313/20230313132659562_1164.png">
                 </div>
                 </div>
+                
+                <!-- top 버튼 -->
+                <div class="top-btn-container">
+                    <button type="button" class="top-btn">
+                    <svg viewBox="0 0 40 40" focusable="false" role="presentation" class="top-btn-svg" aria-hidden="true">
+                    <path d="M33 30l-1.4 1.4L20 19.8 8.4 31.4 7 30l13-13zm1-21H6v2h28z"></path></svg>
+                </button></div>
 
 
-        <!-- 신청완료  modal 영역 -->
-  <div class="modal-bg" onClick="javascript:popClose();"></div>
-  <div class="modal-wrap">
-    <span>신청이 완료되었습니다</span>
-    <button type="button" class="modal-close submit-btn modal" onClick="javascript:popClose();">닫기</button>
-        </div>
-        <!-- //modal 영역 -->
+                    <!-- 신청완료  modal 영역 -->
+            <div class="modal-bg" onClick="javascript:popClose();"></div>
+            <div class="modal-wrap">
+                <span>신청이 완료되었습니다</span>
+                <button type="button" class="modal-close submit-btn modal" onClick="javascript:popClose();">닫기</button>
+                    </div>
+                    <!-- //modal 영역 -->
 
-
-        
-        <!-- 복사완료  modal 영역 -->
-  <div class="modal-bg" onClick="javascript:popCopyClose();"></div>
-  <div class="modal-copy">
-    <span>복사 완료되었습니다</span>
-    <button type="button" class="modal-close submit-btn modal" onClick="javascript:popCopyClose();">닫기</button>
-        </div>
-        <!-- //modal 영역 -->
+                    
+                    <!-- 복사완료  modal 영역 -->
+            <div class="modal-bg" onClick="javascript:popCopyClose();"></div>
+            <div class="modal-copy">
+                <span>복사 완료되었습니다</span>
+                <button type="button" class="modal-close submit-btn modal" onClick="javascript:popCopyClose();">닫기</button>
+                    </div>
+                    <!-- //modal 영역 -->
 
 
         </div>
     </div> <!--wrap -->
 </div>
-<textarea>
+<textarea style="display:none;">
 </textarea>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -148,14 +154,35 @@ var modalBg = $('.modal-bg');
 function clip(){
 var url = '';
 var textarea = document.createElement("textarea");
-document.body.appendChild(textarea);
-url = window.document.location.href;
-textarea.value = url;
-textarea.select();
-document.execCommand("copy");
-document.body.removeChild(textarea);
+    document.body.appendChild(textarea);
+    url = window.document.location.href;
+    textarea.value = url;
+    textarea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textarea);
 alert("URL이 복사되었습니다.")
 }
+
+/* top 버튼  */
+var topEle = $('.top-btn');
+var delay = 400;
+console.log(topEle);
+
+/* top show-hide */
+$(window).scroll(function() {
+	if($(this).scrollTop() > 200 ) {
+		$('.top-btn').fadeIn();
+	} else {
+		$('.top-btn').fadeOut();
+	}
+});
+
+/* top버튼- 위로 올리기 */
+$('.top-btn').click( function() {
+	$('html, body').animate({scrollTop:0}, delay );
+	return false;
+});
+
 
 </script>
 </html>
