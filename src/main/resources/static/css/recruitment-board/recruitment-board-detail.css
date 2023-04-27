@@ -130,7 +130,7 @@ body{
 
 
 dd span{
-    color: #00c4c4;   
+    color: #006633;   
 }
 
 .info-sum dl:after {
@@ -149,7 +149,7 @@ dd span{
     padding-right: 20px;
     height: 50px;
     line-height: 35px;
-    color: #00c4c4;
+    color: #006633;
 }
 
 .recruitment-btn-apply{
@@ -166,7 +166,7 @@ text-align: center;
 font-size: 18px;
 font-weight: 500;
 color: #fff;
-background: #00c4c4;
+background: #006633;
 border: none;
 border-radius: 3px;
 border-top: 1px solid #e4e4e4;
@@ -348,6 +348,25 @@ input{
     width:245px;
 }
 
+
+.like-modal-container{
+    margin-left: 1550px;
+    display: none;
+    padding: 25px;
+    text-align: center;
+    width: 240px;
+    height: 30px;
+    background-color: #000;
+    color: #fff;
+    font-family: 'Noto Sans KR';
+    font-weight: 400;
+    border-radius: 10px;
+    top: 90%;
+    position: fixed;
+    z-index: 999;
+}
+
+
 .d-day{
     position: relative;
     line-height: 25px;
@@ -409,16 +428,25 @@ button[class*=Button_button] {
 }
 
 [aria-pressed=true] path{
-    fill: transparent;
+    fill: #f66;
 }
 
 [aria-pressed=true]{
-    background-color: #f66;
+    fill: #f66;
+}
+
+.heart-icon{
+    border-radius: 4px;
 }
 
 svg:not(:root) {
     overflow-clip-margin: content-box;
     overflow: hidden;
+}
+
+html.scroll-top.scroll-apex .top-btn {
+    opacity: 0;
+    pointer-events: none;
 }
 
 .top-btn-container{
@@ -453,4 +481,23 @@ button:not(:disabled) {
 html.scroll-top .top-btn-container {
     opacity: 1;
     transform: translateY(0) scale(1);
+}
+
+.top-btn svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition: transform .3s ease-out;
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}
+
+@media screen and (min-width: 1097px){
+.top-btn {
+    width: 60px;
+    height: 60px;
+    font-size: 32px;
+}
 }
