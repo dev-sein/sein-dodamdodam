@@ -24,7 +24,7 @@ body {
     font-size: 15px;
     font-weight: 400;
     display: block;
-    overflow: auto;
+    overflow-x: hidden;
 }
 
 #page-container {
@@ -33,6 +33,142 @@ body {
     transition-duration: 80ms;
     transition-timing-function: ease-out;
 }
+
+/* 헤더 영역 */
+#header-apply{
+    white-space: nowrap;
+    position: relative;
+    font-family: 'Noto Sans KR';
+}
+
+#open-apply{
+    position: relative;
+    z-index: 101;
+    background-color: rgb(33, 37, 41);
+    width: 100%;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    padding-right: 10px;
+    white-space: nowrap;
+}
+
+#open-apply-side{
+    display: flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    -webkit-box-pack: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: 40px;
+    width: 100%;
+    overflow: hidden;
+}
+
+#open-apply-inner{
+    word-wrap: break-word;
+    background-size: 30%;
+    color: #343a40;
+    width: 100%;
+    word-break: keep-all;
+}
+
+
+#apply-text{
+        text-align: center;
+        color: #495057;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        letter-spacing: -.3px;
+        line-height: 28px;
+        margin-bottom: 12px;
+        margin-top: 12px;
+        border: 0;
+        margin: 0;
+        padding: 0;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+#apply-text span{
+    -webkit-appearance: none;
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.apply{
+    color: rgb(139, 228, 228);
+        font-weight: 700!important;
+}
+
+.btn{
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    position: relative;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    background-color: transparent;
+    outline: 0px;
+    border: 0px;
+    margin: 0px;
+    cursor: pointer;
+    user-select: none;
+    vertical-align: middle;
+    appearance: none;
+    text-decoration: none;
+    text-align: center;
+    flex: 0 0 auto;
+    font-size: 1.5rem;
+    padding: 8px;
+    border-radius: 50%;
+    overflow: visible;
+    color: rgba(0, 0, 0, 0.54);
+    transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.exit-svg{
+    user-select: none;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    fill: currentcolor;
+    flex-shrink: 0;
+    transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    font-size: 1.5rem;
+    color: white;
+    pointer-events: none;
+}
+
+button {
+    writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+}
+
+svg:not(:root) {
+    overflow-clip-margin: content-box;
+    overflow: hidden;
+}
+
+
 
 #main-app{
     display: block;
@@ -45,6 +181,32 @@ body {
 .collection-container{
     margin: 0 auto;
     max-width: 1140px;
+}
+
+.write-btn{
+    border: 1px solid #00c4c4;
+    background-color: #00c4c4;
+    color: #fff;
+    padding: 14px 28px;
+    line-height: 1.4;
+    font-size: 18px;
+    font-family: 'Noto Sans KR';
+    width: 260px;
+    border-radius: 4px;
+    outline: none;
+    margin-left: 842px;
+}
+
+
+.button{
+    writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
 }
 
 .collection-list{
@@ -259,7 +421,7 @@ body {
     height: 12px;
 }
 
-button:not(:disabled) {
+.wish-button:not(:disabled) {
     cursor: pointer;
     background-color: transparent;
     border: none;
@@ -287,21 +449,20 @@ button:not(:disabled) {
     fill: currentColor;
 }
 
-path{
+.wish-button-svg path{
     stroke: #f2f4f6;
     stroke-width: 2px;
     fill: #21252966;
     transition: fill .25s ease-in-out;
 }
 
+[aria-pressed=true] path{
+    fill: #f25555;
+}
+
 svg:not(:root) {
     overflow-clip-margin: content-box;
     overflow: hidden;
-}
-
-.path :visited {
-    background-color: #f25555;
-    fill: #f25555;
 }
 
 .badge{
@@ -333,7 +494,7 @@ svg:not(:root) {
 }
 
 .loca-status-container{
-    position:absolute;
+    /* position:absolute; */
 }
 
 .inline-flex{
@@ -343,8 +504,9 @@ svg:not(:root) {
 .status-community{
     background-color: #f2f4f6;
     position: relative;
-    margin-left: 210px;
+    margin-left: 214px;
     margin-top: -24px;
+    border-radius: 7px;
 }
 
 .second-confirm{
@@ -352,7 +514,7 @@ svg:not(:root) {
     width: 16px;
     height: 12px;
     display: inline-block;
-    margin-bottom: -2px;
+    margin-bottom: -1px;
     
 }
 
@@ -364,6 +526,77 @@ svg:not(:root) {
     line-height: 1px;
 }
 
+.wish-button-svg[aria-pressed=true] path {
+    fill: #f25555;
+}
+
+html.scroll-top.scroll-apex .top-btn {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.top-btn-container{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: fixed;
+    right: 16px;
+    bottom: 20px;
+    transition-property: transform,scale;
+    transition-duration: .25s;
+    z-index: 1200;
+}
+
+
+.top-btn{
+    display: block;
+    position: relative;
+    border-radius: 50%;
+    background: rgba(255,255,255,.8);
+    padding: 0 0 env(safe-area-inset-bottom);
+    color: #babdc0;
+    box-sizing: border-box;
+    border: 1px solid #babdc0;
+}
+
+
+button:not(:disabled) {
+    cursor: pointer;
+}
+
+html.scroll-top .top-btn-container {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.like-modal-container{
+    margin-left: 1550px;
+    display: none;
+    padding: 25px;
+    text-align: center;
+    width: 240px;
+    height: 30px;
+    background-color: #000;
+    color: #fff;
+    font-family: 'Noto Sans KR';
+    font-weight: 400;
+    border-radius: 10px;
+    top: 90%;
+    position: fixed;
+    z-index: 999;
+}
+
+
+.top-btn svg{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition: transform .3s ease-out;
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}
 
 @media screen and (min-width: 1097px){
 .main-wrapper-content {
@@ -400,3 +633,19 @@ svg:not(:root) {
     justify-content: space-between;
 }
 }
+
+@media screen and (min-width: 1097px){
+.top-btn {
+    width: 60px;
+    height: 60px;
+    font-size: 32px;
+}
+}
+
+
+@media (min-width: 1300px){
+    #open-apply {
+        height: 55px;
+    }
+    }
+    

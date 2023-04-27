@@ -1,0 +1,302 @@
+article, blockquote, body, dd, div, dl, dt, h1, h2, h3, h4, html, li, main, ol, p, section, table, tbody, td, th, thead, tr, ul {
+    margin: 0;
+    padding: 0;
+}
+
+
+#mypageWrap, #mypageWrap * {
+    -webkit-font-smoothing: antialiased;
+}
+
+
+#mypageWrap {
+    width: 100%;
+}
+
+a, address, article, aside, audio, b, body, button, canvas, caption, dd, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, html, i, img, input, label, legend, li, nav, ol, p, pre, section, small, span, strong, summary, table, tbody, td, th, thead, time, tr, ul, video {
+    border: 0;
+    vertical-align: baseline;
+    font: inherit;
+    box-sizing: border-box;
+}
+
+div {
+    display: block;
+}
+
+body, html {
+    -webkit-text-size-adjust: none;
+}
+
+body {
+    overflow-y: scroll;
+    letter-spacing: -.02em;
+    color: rgba(0,0,0,.84);
+}
+
+.mypage-project .point-guide {
+    color: #44484b;
+    padding: 0 16px;
+}
+
+.mypage-project .usable-point {
+    position: relative;
+    margin: 0 auto;
+    background: #fff;
+}
+
+.mypage-project .usable-point p {
+    height: 48px;
+    font-size: 19px;
+    font-weight: 500;
+    line-height: 48px;
+    letter-spacing: -.02em;
+    color: #4a4a4a; 
+}
+
+#emptyProjectText {
+    padding: 80px 0;
+    line-height: 24px;
+    font-size: 17px;
+    color: #44484B;
+}
+
+.bottom-notice {
+    padding: 24px 0;
+}
+
+.bottom-notice h4 {
+    margin-bottom: 8px;
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: -.02em;
+    line-height: 28px;
+    color: #44484B;
+}
+
+.bottom-notice p {
+    max-width: 700px;
+    font-size: 13px;
+    color: #7C8288;
+    line-height: 20px;
+    letter-spacing: -.02em;
+}
+
+.bottom-notice p a {
+    text-decoration: underline;
+}
+
+.wz.container, body a {
+    color: rgba(0,0,0,.84);
+}
+
+[class*=icon-]:before, i.icon:before, i.wadizicon {
+    display: inline-block;
+    margin-top: -0.2em;
+    vertical-align: middle;
+    text-transform: none;
+    line-height: 1;
+    font-family: wadizicon!important;
+    font-weight: 400;
+    font-style: normal;
+    font-variant: normal;
+    speak: none;
+}
+
+
+h2.mypage-top-title.short {
+    max-width: 1032px;
+    box-sizing: border-box;
+    font-weight: 700;
+}
+
+h2.mypage-top-title {
+    letter-spacing: -0.3px;
+    color: rgba(0, 0, 0, .84);
+}
+
+.module--support-list {
+    text-align: center;
+    left: 50px;
+    width: 60%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 2em;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background-color: #fff;
+    justify-content: space-evenly;
+}
+
+.module {
+    margin: 5px 0px 12px 18%;
+    border-radius: 10px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+*, ::before, ::after {
+    box-sizing: border-box;
+}
+
+.support-list__title-container {
+    position: relative;
+    width: 100%;
+}
+
+.support-list__title-unit {
+    width: 100%;
+    display: flex;
+    font-weight: 600;
+    border-bottom: 1px solid;
+}
+
+.support-list__title {
+    width: 100%;
+    display: inline-flex;
+    flex-direction: row;
+    margin: 0.6em 0 0.4em;
+}
+
+dl, ol, ul, menu {
+    list-style: none;
+}
+
+.title__id {
+    flex: 0.3;
+}
+
+.title__user-id {
+    flex: 0.5;
+}
+
+.title__money {
+    flex: 0.5;
+}
+
+.title__status {
+    flex: 0.5;
+}
+
+.title__date-post {
+    flex: 0.5;
+}
+
+#scroll {
+    overflow: auto;
+    width: 100%;
+    margin: 1px 0px 0px 0px;
+}
+
+.support-list__info-container {
+    width: 100%;
+    margin-top: 0.2em;
+}
+
+.support-list__info-unit {
+    width: 100%;
+    display: flex;
+}
+
+.support__checkbox--label {
+    width: 100%;
+    margin: 0.6em 0;
+}
+
+.support-list__info {
+    width: 100%;
+    display: inline-flex;
+    flex-direction: row;
+}
+
+.support__id {
+    flex: 0.3;
+}
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+.support__user-id {
+    flex: 0.5;
+}
+
+.support__money {
+    flex: 0.5;
+}
+
+.support__status {
+    flex: 0.5;
+}
+
+.support__date-post {
+    flex: 0.5;
+}
+
+
+
+
+/* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ미디어쿼리 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+@media screen and (min-width: 497px){
+    .mypage-project .point-guide {
+        margin-top: 0;
+    }
+
+    .mypage-project .point-guide {
+        width: 960px;
+        margin: 24px auto;
+        text-align: left;
+    }
+
+    .mypage-project .usable-point {
+        padding: 0 24px;
+    }
+
+    .mypage-project.short .usable-point p {
+        width: 960px;
+        margin: 0 auto;
+        text-align: left;
+    }
+
+    .mypage-project .usable-point p em {
+        padding-left: 4px;
+        color: #557CF2;
+        font-weight: 500;
+    }
+
+    .mypage-project.short .point-list {
+        margin: 0 auto;
+        padding: 24px 24px 64px;
+        background: #fff;
+    }
+
+    .mybenefit-wrap #emptyProjectText {
+        width: 960px;
+        margin: 0 auto;
+        text-align: left;
+    }
+
+    .bottom-notice {
+        width: 960px;
+        margin: 0 auto;
+    }
+
+    h2.mypage-top-title.short {
+        display: block;
+    }
+
+    h2.mypage-top-title.short {
+        font-size: 32px;
+        padding: 56px 16px 24px;
+    }
+
+    h2.mypage-top-title {
+        width: 960px;
+        margin: 0 auto;
+        line-height: 44px;
+        text-align: left;
+    }
+
+}

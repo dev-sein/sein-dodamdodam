@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 정보 게시판 상세</title>
+    <link rel="stylesheet" href="../../static/css/recruitment-board/recruitment-board-detail.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">  
+</head>
+<body>
+    <div id="wrap">
+       <div id="container">
+        <div id="recruitment-container">
+            <div class="container-form">
+                <div class="recruitment-title">
+                    <h3>2023 대한민국 채용박람회</h3>
+                </div>
+                <div class="recruitment-info">
+                    <div class="info-img">
+                        <img src="https://www.wadiz.kr/ft/images/green001/2023/0313/20230313132913160_null.png"></div>
+                    <div class="info-sum">
+                        <dl>
+                            <dt>모집인</dt>
+                            <dd>고용노동부</dd>
+                        </dl>
+                        <dl>
+                            <dt>이벤트 날짜</dt>
+                            <dd><span>2023-04-24 ~ 2023-04-25</span></dd>
+                        </dl>
+                        <dl>
+                            <dt>이벤트 장소</dt>
+                            <dd>aT센터 제1전시장</dd>
+                        </dl>
+                        <dl>
+                            <dt>문의 번호</dt>
+                            <dd>02-2186-9043</dd>
+                        </dl>
+                        <dl>
+                            <dt>문의 이메일</dt>
+                            <dd>job@korea.kr</dd>
+                        </dl>
+                        <div class="wish-button-box">
+                            <button type="button" class="wish-button"  aria-pressed="false">
+                                <span>
+                                    <span class="wish-button-children">
+                                        <div>
+                                            <svg viewBox="0 0 32 32" focusable="false" role="presentation" class="withIcon-icon" aria-hidden="true" style="width: 24px; height: 24px;">
+                                                <path d="M22.16 4h-.007a8.142 8.142 0 0 0-6.145 2.79A8.198 8.198 0 0 0 9.76 3.998a7.36 7.36 0 0 0-7.359 7.446c0 5.116 4.64 9.276 11.6 15.596l2 1.76 2-1.76c6.96-6.32 11.6-10.48 11.6-15.6v-.08A7.36 7.36 0 0 0 22.241 4h-.085zm-5.28 21.84l-.88.8-.88-.8h-.08C8.4 19.76 4 15.84 4 11.44l-.001-.082A5.76 5.76 0 0 1 9.928 5.6a6.542 6.542 0 0 1 4.865 2.232l.486.567h1.52l.48-.56a6.548 6.548 0 0 1 4.877-2.24l.084-.001a5.76 5.76 0 0 1 5.76 5.76l-.001.085c0 4.396-4.4 8.316-11.12 14.396z"></path></svg>
+                                        </div>
+                                        </span>
+                                    </span></button>
+                                    <p class="recruitment-status d-day"><strong>D-50</strong></p>
+                        </div>
+                    </div>
+                    <div class="sns-share">
+                        <span>주변 분들과 함께 참가하고 싶으신가요? 페이지를 공유해보세요!</span>
+                        <a class="icon_sns_fb" target="_blank" href="https://www.facebook.com/sharer/sharer.php?app_id=190622721088710&amp;u=http://127.0.0.1:5500/templates/event-board/event-board-detail.html" title="facebook">facebook</a>
+                        <a class="icon_sns_tw" target="_blank" href="https://twitter.com/intent/tweet?text=글제목글제목%20https://127.0.0.1:5500/templates/event-board/event-board-detail.html title="twitter">twitter</a>
+                        <a href="#" onclick="clip(); return false;"><button class="icon_sns_share" id="urlCopyBtn" data-clipboard-target="#shareLink" title="공유하기" onClick="javascript:popCopyOpen();">공유하기</button>
+                        </a>
+                    </div>
+
+                </div>
+                <div class="contents-detail">
+                    <div class="recruitment-detail-container">
+                    <img src="https://www.wadiz.kr/ft/images/green001/2023/0313/20230313132659562_1164.png">
+                </div>
+                </div>
+
+        <!-- 복사완료  modal 영역 -->
+        <div class="modal-bg" onClick="javascript:popCopyClose();"></div>
+        <div class="modal-copy">
+          <span>복사 완료되었습니다</span>
+          <button type="button" class="modal-close submit-btn modal" onClick="javascript:popCopyClose();">닫기</button>
+              </div>
+              <!-- //modal 영역 -->
+      
+
+
+        </div>
+    </div> <!--wrap -->
+</div>
+<textarea>
+</textarea>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+
+$(function(){
+    $('.wish-button').click(function(e){
+        if($('.wish-button').attr('aria-pressed') == 'false'){
+            $('.wish-button').attr('aria-pressed','true') //하트 색 채우기
+        }else{
+            $('.wish-button').attr('aria-pressed','false') //색 비우기
+
+        }
+    });
+});
+
+/* url 복사 */
+function clip(){
+var url = '';
+var textarea = document.createElement("textarea");
+    document.body.appendChild(textarea);
+    url = window.document.location.href;
+    textarea.value = url;
+    textarea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textarea);
+}
+
+
+/* 복사 완료 모달 */
+function popCopyOpen() {
+var modalPop = $('.modal-copy');
+var modalBg = $('.modal-bg'); 
+    $(modalPop).show();
+    $(modalBg).show();
+}
+function popCopyClose() {
+var modalPop = $('.modal-copy');
+var modalBg = $('.modal-bg');
+    $(modalPop).hide();
+    $(modalBg).hide();
+}
+
+
+
+
+</script>
+</html>

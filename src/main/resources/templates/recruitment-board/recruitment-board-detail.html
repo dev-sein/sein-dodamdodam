@@ -17,12 +17,16 @@
             <div class="container-form">
                 <div class="recruitment-title">
                     <h3>LG트윈스VS삼성라이온즈 잠실 경기 보러가실 분</h3>
-                    <p class="sub-text">외쳐라 무적엘지</p>
+                    <p class="sub-text">소제목 칸입니다 외쳐라 무적엘지</p>
                 </div>
                 <div class="recruitment-info">
                     <div class="info-img">
                         <img src="https://www.wadiz.kr/ft/images/green001/2023/0313/20230313132913160_null.png"></div>
                     <div class="info-sum">
+                        <dl>
+                            <dt>모집인</dt>
+                            <dd>정세인</dd>
+                        </dl>
                         <dl>
                             <dt>이벤트 날짜</dt>
                             <dd>2023-06-12</dd>
@@ -33,35 +37,152 @@
                         </dl>
                         <dl>
                             <dt>모집/제한 인원</dt>
-                            <dd><span>3명</span> / 10명</dd>
+                            <dd><span>6명</span> / 10명</dd>
                         </dl>
-                        <dl>
-                            <dt>참가비</dt>
-                            <dd>없음</dd>
-                        </dl>
+         
 
+                        <div class="wish-button-box">
+                            <button type="button" class="wish-button"  aria-pressed="false">
+                                <span>
+                                    <span class="wish-button-children">
+                                        <div>
+                                            <svg viewBox="0 0 32 32" focusable="false" role="presentation" class="withIcon-icon" aria-hidden="true" style="width: 24px; height: 24px;">
+                                                <path d="M22.16 4h-.007a8.142 8.142 0 0 0-6.145 2.79A8.198 8.198 0 0 0 9.76 3.998a7.36 7.36 0 0 0-7.359 7.446c0 5.116 4.64 9.276 11.6 15.596l2 1.76 2-1.76c6.96-6.32 11.6-10.48 11.6-15.6v-.08A7.36 7.36 0 0 0 22.241 4h-.085zm-5.28 21.84l-.88.8-.88-.8h-.08C8.4 19.76 4 15.84 4 11.44l-.001-.082A5.76 5.76 0 0 1 9.928 5.6a6.542 6.542 0 0 1 4.865 2.232l.486.567h1.52l.48-.56a6.548 6.548 0 0 1 4.877-2.24l.084-.001a5.76 5.76 0 0 1 5.76 5.76l-.001.085c0 4.396-4.4 8.316-11.12 14.396z"></path></svg>
+                                        </div>
+                                        </span>
+                                    </span></button>
+                        </div>
                         <p class="recruitment-status"><strong>모집중</strong></p>
                         <div class="recruitment-btn-apply">
-                            <button type="button">신청하기</button></div>
+                            <button type="button" class="submit-btn" onClick="javascript:popOpen();">신청하기</button></div>
 
                     </div>
-                    <!-- <div class="recruitment-detail"> -->
+                    <div class="sns-share">
+                        <span>주변 분들과 함께 참가하고 싶으신가요? 페이지를 공유해보세요!</span>
+                        <a class="icon_sns_fb" target="_blank" href="https://www.facebook.com/sharer/sharer.php?app_id=190622721088710&amp;u=http://127.0.0.1:5500/templates/recruitment-board/recruitment-board-detail.html" title="facebook">facebook</a>
+                        <a class="icon_sns_tw" target="_blank" href="https://twitter.com/intent/tweet?text=글제목글제목%20https://127.0.0.1:5500/templates/recruitment-board/recruitment-board-detail.html title="twitter">twitter</a>
+                        <a href="#" onclick="clip(); return false;"><button class="icon_sns_share" id="urlCopyBtn" data-clipboard-target="#shareLink" title="공유하기"  onClick="javascript:popCopyOpen();">공유하기</button>
+                        </a>
+                    </div>
+
+                </div>
+                <div class="contents-detail">
                     <div class="recruitment-detail-container">
-                        <img src="https://www.wadiz.kr/ft/images/green001/2023/0313/20230313132659562_1164.png">
-                    <!-- </div> -->
+                    <img src="https://www.wadiz.kr/ft/images/green001/2023/0313/20230313132659562_1164.png">
                 </div>
                 </div>
+                
+                <!-- top 버튼 -->
+                <div class="top-btn-container">
+                    <button type="button" class="top-btn">
+                    <svg viewBox="0 0 40 40" focusable="false" role="presentation" class="top-btn-svg" aria-hidden="true">
+                    <path d="M33 30l-1.4 1.4L20 19.8 8.4 31.4 7 30l13-13zm1-21H6v2h28z"></path></svg>
+                </button></div>
 
-             
 
-            </div>
-      
+                    <!-- 신청완료  modal 영역 -->
+            <div class="modal-bg" onClick="javascript:popClose();"></div>
+            <div class="modal-wrap">
+                <span>신청이 완료되었습니다</span>
+                <button type="button" class="modal-close submit-btn modal" onClick="javascript:popClose();">닫기</button>
+                    </div>
+                    <!-- //modal 영역 -->
+
+                    
+                    <!-- 복사완료  modal 영역 -->
+            <div class="modal-bg" onClick="javascript:popCopyClose();"></div>
+            <div class="modal-copy">
+                <span>복사 완료되었습니다</span>
+                <button type="button" class="modal-close submit-btn modal" onClick="javascript:popCopyClose();">닫기</button>
+                    </div>
+                    <!-- //modal 영역 -->
+
+
         </div>
     </div> <!--wrap -->
 </div>
+<textarea style="display:none;">
+</textarea>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
+
+/* 좋아요 */
+$(function(){
+    $('.wish-button').click(function(e){
+        if($('.wish-button').attr('aria-pressed') == 'false'){
+            $('.wish-button').attr('aria-pressed','true') //하트 색 채우기
+        }else{
+            $('.wish-button').attr('aria-pressed','false') //색 비우기
+
+        }
+    });
+});
+
+
+/* 신청 완료 모달 */
+function popOpen() {
+var modalPop = $('.modal-wrap');
+var modalBg = $('.modal-bg'); 
+    $(modalPop).show();
+    $(modalBg).show();
+}
+function popClose() {
+var modalPop = $('.modal-wrap');
+var modalBg = $('.modal-bg');
+    $(modalPop).hide();
+    $(modalBg).hide();
+}
+
+/* 복사 완료 모달 */
+function popCopyOpen() {
+var modalPop = $('.modal-copy');
+var modalBg = $('.modal-bg'); 
+    $(modalPop).show();
+    $(modalBg).show();
+}
+function popCopyClose() {
+var modalPop = $('.modal-copy');
+var modalBg = $('.modal-bg');
+    $(modalPop).hide();
+    $(modalBg).hide();
+}
+
+
+
+/* url 복사 */
+function clip(){
+var url = '';
+var textarea = document.createElement("textarea");
+    document.body.appendChild(textarea);
+    url = window.document.location.href;
+    textarea.value = url;
+    textarea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textarea);
+alert("URL이 복사되었습니다.")
+}
+
+/* top 버튼  */
+var topEle = $('.top-btn');
+var delay = 400;
+console.log(topEle);
+
+/* top show-hide */
+$(window).scroll(function() {
+	if($(this).scrollTop() > 200 ) {
+		$('.top-btn').fadeIn();
+	} else {
+		$('.top-btn').fadeOut();
+	}
+});
+
+/* top버튼- 위로 올리기 */
+$('.top-btn').click( function() {
+	$('html, body').animate({scrollTop:0}, delay );
+	return false;
+});
+
 
 </script>
 </html>
