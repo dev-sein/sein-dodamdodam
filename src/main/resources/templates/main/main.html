@@ -6,12 +6,11 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>도담도담</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gugi&display=swap">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/components/header.css">
     <link rel="stylesheet" href="/static/css/main/main.css">
+    <link rel="shortcut icon" href="/static/images/components/dodam-favicon.png">
 </head>
 <body>
     <header>
@@ -48,7 +47,7 @@
                         </ul>
                         <div class="web-header-utils">
                             <div class="header-search-div">
-                                <form>
+                                <!-- <form>
                                     <div class="header-search-index-div" tabindex="-1">
                                         <div class="header-search-empty-div"></div>
                                         <div class="header-search-input-div">
@@ -66,18 +65,18 @@
                                             </svg>
                                         </button>
                                     </div>
-                                </form>
+                                </form> -->
                             </div>
-                            <c:if
-                                test="${not empty sessionScope.memberId || not empty cookie.memberIdentification }">
+                            <!-- <c:if
+                                test="${not empty sessionScope.memberId || not empty cookie.memberIdentification }"> -->
                                 <!-- 로그아웃 버튼! -->
                                 <div class="buttonWrap headerButton">
                                     <button class="listButton logoutButton"
-                                        onclick="location.href = '${pageContext.request.contextPath}/user/loging.user'">
+                                        onclick="location.href = ''">
                                     </button>
                                 </div>
                                 <!-- // 로그아웃 버튼! -->
-                            </c:if>
+                            <!-- </c:if> -->
                             <div class="header-user-div">
                                 <!-- <div class="header-user-container">
                                     <button type="button" class="header-user-button" onclick="location.href='${pageContext.request.contextPath}/user/logout.user'">로그아웃</button>
@@ -85,18 +84,16 @@
                                 </div> -->
                                 <div class="header-user-container">
                                     <button type="button" class="header-user-button">로그인</button>
-                                    <button data-event="iam.signup" class="header-user-button" onclick="location.href='${pageContext.request.contextPath}/user/signUp.user'">회원가입</button>
+                                    <button data-event="iam.signup" class="header-user-button">회원가입</button>
                                 </div>
                             </div>
                             <div class="web-header-funding-open funding-open">
                                 <div>
                                     <div>
-                                        <button aria-label="기부 참여하기"
-                                            class="header-make-button header-make-button2 header-make-button3 funding-open-button"
-                                            type="button">
+                                        <button class="header-make-button header-make-button2 header-make-button3 funding-open-button" type="button">
                                             <span> 
                                                 <span class="header-make-project-span">
-                                                    프로젝트 만들기
+                                                    이벤트 모집하기
                                                 </span>
                                             </span>
                                         </button>
@@ -119,7 +116,7 @@
                         와디즈 메이커센터입니다.
                     </div>
                     <div class="search_form">
-                        <input class="search_banner" value=""/>
+                        <input class="search_banner" value="" disabled/>
                         <div class="search_button">
                             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M14.5 25C20.299 25 25 20.299 25 14.5C25 8.70101 20.299 4 14.5 4C8.70101 4 4 8.70101 4 14.5C4 20.299 8.70101 25 14.5 25Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -129,29 +126,29 @@
                         <div class="search_result">
                             <div class="typewriter">
                                 <span class="typewriter_wrapper">
-
+                                    모집
                                 </span>
                                 <span class="typewriter_cursor">
-                                    |
+                                    
                                 </span>
                             </div>
                         </div>
                     </div>
                     <div class="search_tag_container">
                         <div class="search_tag_box">
-                            <div class="search_tag">#프리오더</div>
+                            <div class="search_tag">#모집</div>
                         </div>
                         <div class="search_tag_box">
-                            <div class="search_tag">#광고</div>
+                            <div class="search_tag">#이벤트</div>
                         </div>
                         <div class="search_tag_box">
                             <div class="search_tag">#기획전</div>
                         </div>
                         <div class="search_tag_box">
-                            <div class="search_tag">#심사</div>
+                            <div class="search_tag">#전시관</div>
                         </div>
                         <div class="search_tag_box">
-                            <div class="search_tag">#와디즈 스토어</div>
+                            <div class="search_tag">#행사관</div>
                         </div>
                     </div>
                 </div>
@@ -159,6 +156,34 @@
                     <div class="main_show_banner">
                         <div class="main_banner_swiper_container">
                             <div class="main_banner_all">
+                                <!-- 배너 하나 시작 -->
+                                <div class="main_banner_box" style="width: 580px;">
+                                    <a class="main_banner_link" href="">
+                                        <div class="main_banner"></div>
+                                    </a>
+                                </div>
+                                <!-- 배너 하나 끝 -->
+                                <!-- 배너 하나 시작 -->
+                                <div class="main_banner_box" style="width: 580px;">
+                                    <a class="main_banner_link" href="">
+                                        <div class="main_banner"></div>
+                                    </a>
+                                </div>
+                                <!-- 배너 하나 끝 -->
+                                <!-- 배너 하나 시작 -->
+                                <div class="main_banner_box" style="width: 580px;">
+                                    <a class="main_banner_link" href="">
+                                        <div class="main_banner"></div>
+                                    </a>
+                                </div>
+                                <!-- 배너 하나 끝 -->
+                                <!-- 배너 하나 시작 -->
+                                <div class="main_banner_box" style="width: 580px;">
+                                    <a class="main_banner_link" href="">
+                                        <div class="main_banner"></div>
+                                    </a>
+                                </div>
+                                <!-- 배너 하나 끝 -->
                                 <!-- 배너 하나 시작 -->
                                 <div class="main_banner_box" style="width: 580px;">
                                     <a class="main_banner_link" href="">
@@ -205,8 +230,8 @@
                 <div class="quick-menu-list">
                     <a href="" target="_blank" class="quick-menu">
                         <svg width="54" height="36" viewBox="0 0 57 38" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 5px;">
-                            <path d="M49.5962 1H6.90385C5.44423 1 4.25 2.05 4.25 3.33333V31H52.25V3.33333C52.25 2.05 51.0558 1 49.5962 1Z" fill="white" stroke="#212529" stroke-width="2" stroke-miterlimit="10"></path><path d="M9.25 26V6H47.25V26H9.25Z" fill="#00C4C4" stroke="#212529" stroke-width="2"></path>
-                            <path d="M1.25 31C1.25 34.3075 3.39049 36.985 7.0611 36.985L18.6611 37H35.8389L49.4389 36.985C53.1095 36.985 55.25 34.3075 55.25 31H1.25Z" fill="#C5E8E8" stroke="#212529" stroke-width="2" stroke-miterlimit="10"></path><path d="M24.25 34H32.25" stroke="#212529" stroke-width="2" stroke-miterlimit="10"></path>
+                            <path d="M49.5962 1H6.90385C5.44423 1 4.25 2.05 4.25 3.33333V31H52.25V3.33333C52.25 2.05 51.0558 1 49.5962 1Z" fill="white" stroke="#212529" stroke-width="2" stroke-miterlimit="10"></path><path d="M9.25 26V6H47.25V26H9.25Z" fill="var(--main-sub2)" stroke="#212529" stroke-width="2"></path>
+                            <path d="M1.25 31C1.25 34.3075 3.39049 36.985 7.0611 36.985L18.6611 37H35.8389L49.4389 36.985C53.1095 36.985 55.25 34.3075 55.25 31H1.25Z" fill="var(--main-sub3)" stroke="#212529" stroke-width="2" stroke-miterlimit="10"></path><path d="M24.25 34H32.25" stroke="#212529" stroke-width="2" stroke-miterlimit="10"></path>
                             <path d="M34.0704 12C33.8833 12 33.7039 12.0753 33.5716 12.2092C33.4394 12.3432 33.365 12.5249 33.365 12.7144V15.1102C32.983 14.7491 32.5077 14.505 31.9943 14.4063C31.4809 14.3076 30.9504 14.3582 30.4642 14.5524C29.9781 14.7466 29.5563 15.0763 29.2476 15.5034C28.939 15.9304 28.7562 16.4373 28.7204 16.9653C28.6925 17.4021 28.7681 17.8394 28.941 18.2405C29.1138 18.6417 29.3789 18.9952 29.7141 19.2716C30.2707 19.7239 30.9584 19.9788 31.6718 19.9973C32.3852 20.0158 33.0849 19.7969 33.6636 19.374C33.7074 19.4981 33.7879 19.6055 33.8942 19.6816C34.0006 19.7576 34.1275 19.7985 34.2576 19.7988H34.8303V12H34.0704ZM31.7915 18.8196C30.9574 18.8196 30.282 18.0789 30.282 17.1653C30.282 16.2518 30.9574 15.5118 31.7915 15.5118C32.6257 15.5118 33.3011 16.2518 33.3011 17.1653C33.3011 18.0789 32.6249 18.8196 31.7915 18.8196Z" fill="#1D2129"></path>
                             <path d="M28.1137 19.7995V14.4558H27.3507C27.1736 14.4558 27.0029 14.5233 26.8727 14.6448C26.7425 14.7663 26.6621 14.933 26.6476 15.1118C26.2656 14.7509 25.7904 14.507 25.2771 14.4084C24.7638 14.3098 24.2334 14.3605 23.7474 14.5547C23.2614 14.7488 22.8397 15.0784 22.5311 15.5054C22.2225 15.9323 22.0397 16.439 22.0038 16.9668C21.9757 17.4036 22.0512 17.8408 22.2239 18.242C22.3966 18.6432 22.6616 18.9967 22.9967 19.2731C23.5533 19.7254 24.241 19.9804 24.9544 19.9989C25.6678 20.0174 26.3675 19.7984 26.9462 19.3755C26.99 19.4997 27.0705 19.6071 27.1768 19.6831C27.2832 19.7591 27.4101 19.8001 27.5402 19.8003L28.1137 19.7995ZM25.0741 18.8203C24.24 18.8203 23.5646 18.0796 23.5646 17.166C23.5646 16.2525 24.24 15.5125 25.0741 15.5125C25.9083 15.5125 26.5837 16.2525 26.5837 17.166C26.5837 18.0796 25.9083 18.8203 25.0741 18.8203Z" fill="#1D2129"></path>
                             <path d="M43.1069 14.4565H39.2901C39.103 14.4565 38.9236 14.5318 38.7913 14.6658C38.659 14.7997 38.5847 14.9814 38.5847 15.1709V15.7109H40.9789L38.4188 19.0347V19.8026H43.1069V18.5475H40.5516L43.1069 15.2309V14.4565Z" fill="#1D2129"></path>
@@ -219,8 +244,8 @@
                     </a>
                     <a href="" target="_blank" class="quick-menu">
                         <svg width="52" height="44" viewBox="0 0 33 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M29.4667 0.800049H3.8667C3.31441 0.800049 2.8667 1.24776 2.8667 1.80005V19C2.8667 19.5523 3.31442 20 3.8667 20H29.4667C30.019 20 30.4667 19.5523 30.4667 19V1.80005C30.4667 1.24776 30.019 0.800049 29.4667 0.800049Z" fill="#00C4C4" stroke="#212529"></path>
-                            <path d="M31.2667 18.8H2.06671C1.51443 18.8 1.06671 19.2478 1.06671 19.8V20.8C1.06671 21.3523 1.51443 21.8 2.06671 21.8H31.2667C31.819 21.8 32.2667 21.3523 32.2667 20.8V19.8C32.2667 19.2478 31.819 18.8 31.2667 18.8Z" fill="#C5E8E8" stroke="#212529"></path>
+                            <path d="M29.4667 0.800049H3.8667C3.31441 0.800049 2.8667 1.24776 2.8667 1.80005V19C2.8667 19.5523 3.31442 20 3.8667 20H29.4667C30.019 20 30.4667 19.5523 30.4667 19V1.80005C30.4667 1.24776 30.019 0.800049 29.4667 0.800049Z" fill="var(--main-sub2)" stroke="#212529"></path>
+                            <path d="M31.2667 18.8H2.06671C1.51443 18.8 1.06671 19.2478 1.06671 19.8V20.8C1.06671 21.3523 1.51443 21.8 2.06671 21.8H31.2667C31.819 21.8 32.2667 21.3523 32.2667 20.8V19.8C32.2667 19.2478 31.819 18.8 31.2667 18.8Z" fill="var(--main-sub3)" stroke="#212529"></path>
                             <line x1="17.7667" y1="9.90015" x2="26.3667" y2="9.90015" stroke="#212529" stroke-linecap="round"></line>
                             <line x1="17.7667" y1="13.5" x2="26.3667" y2="13.5" stroke="#212529" stroke-linecap="round"></line>
                             <line x1="17.7667" y1="6.30005" x2="26.3667" y2="6.30005" stroke="#212529" stroke-linecap="round"></line>
@@ -236,16 +261,16 @@
                     </a>
                     <a href="" target="_blank" class="quick-menu">
                         <svg width="50" height="44" viewBox="0 0 54 47" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M32.5833 6.83333C32.5833 9.125 30.7083 11 28.4167 11C26.125 11 24.25 9.125 24.25 6.83333V5.16667C24.25 2.875 26.125 1 28.4167 1C30.7083 1 32.5833 2.875 32.5833 5.16667V6.83333Z" fill="#00C4C4" stroke="#212529" stroke-width="2" stroke-miterlimit="10"></path>
-                            <path d="M37.3766 27H39.1117C39.7151 27 40.1811 26.4696 40.1034 25.8712L39.2437 19.2518C38.7724 16.8208 36.1622 15 33.1622 15H23.3378C20.3378 15 17.7277 16.8208 17.2564 19.2518L16.3966 25.8712C16.3189 26.4696 16.7849 27 17.3883 27H37.3766Z" fill="#00C4C4" stroke="#212529" stroke-width="2"></path>
-                            <path d="M14.5086 45L2.25 32.2678L7.9569 26.3392L20.2155 39.0714L14.5086 45Z" fill="#C5E8E8" stroke="#212529" stroke-width="2"></path>
+                            <path d="M32.5833 6.83333C32.5833 9.125 30.7083 11 28.4167 11C26.125 11 24.25 9.125 24.25 6.83333V5.16667C24.25 2.875 26.125 1 28.4167 1C30.7083 1 32.5833 2.875 32.5833 5.16667V6.83333Z" fill="var(--main-sub2)" stroke="#212529" stroke-width="2" stroke-miterlimit="10"></path>
+                            <path d="M37.3766 27H39.1117C39.7151 27 40.1811 26.4696 40.1034 25.8712L39.2437 19.2518C38.7724 16.8208 36.1622 15 33.1622 15H23.3378C20.3378 15 17.7277 16.8208 17.2564 19.2518L16.3966 25.8712C16.3189 26.4696 16.7849 27 17.3883 27H37.3766Z" fill="var(--main-sub2)" stroke="#212529" stroke-width="2"></path>
+                            <path d="M14.5086 45L2.25 32.2678L7.9569 26.3392L20.2155 39.0714L14.5086 45Z" fill="var(--main-sub3)" stroke="#212529" stroke-width="2"></path>
                             <path d="M52.2457 22.9464C52.2467 22.9486 52.25 22.9478 52.25 22.9454C52.2446 21.3161 50.919 20 49.2758 20C48.3793 20 47.5948 20.4018 47.0431 21.0179L39.9289 28.0871C39.7224 28.2922 39.3707 28.1572 39.3707 27.8661C39.3707 26.2321 38.0431 24.9107 36.3965 24.9107H28.9859C28.5649 24.9107 28.202 24.6368 27.9706 24.2851C27.4391 23.4771 26.5268 22.9375 25.4913 22.9375H17.5689C16.7586 22.9375 16.0172 23.2679 15.4741 23.8036L11.0798 28.1546C10.6913 28.5393 10.6837 29.1646 11.0628 29.5586L17.5153 36.2648C17.7038 36.4607 17.964 36.5714 18.2359 36.5714H38.5948C39.4913 36.5714 40.2845 36.1697 40.8276 35.5447L51.3534 25.0357C51.8943 24.5022 52.2386 23.7649 52.2413 22.9474C52.2413 22.945 52.2446 22.9443 52.2457 22.9464Z" fill="white" stroke="#212529" stroke-width="2"></path>
                             <path d="M39.3965 27.9106C39.3965 29.5446 38.0603 30.866 36.4224 30.866H27.1552" fill="white"></path>
                             <path d="M39.3965 27.9106C39.3965 29.5446 38.0603 30.866 36.4224 30.866H27.1552" stroke="#212529" stroke-width="2" stroke-miterlimit="10"></path><path d="M8.5 31.9107C8.5 32.4822 8.05172 32.9554 7.5 32.9554C6.94828 32.9554 6.5 32.4911 6.5 31.9107C6.5 31.3304 6.94828 30.8661 7.5 30.8661C8.05172 30.8661 8.5 31.3304 8.5 31.9107Z" fill="#212529"></path></svg><div class="MuiBox-root css-10kr861" data-gtm-vis-first-on-screen-97083289_157="4660" data-gtm-vis-total-visible-time-97083289_157="2000" data-gtm-vis-recent-on-screen-97083289_157="2507680" data-gtm-vis-has-fired-97083289_157="1">파트너 서비스</div></a>
                     <a href="" target="_blank" class="quick-menu">
                         <svg width="47" height="36" viewBox="0 0 49 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 5px;">
-                            <rect x="12.1131" y="26.4901" width="5.15639" height="12.3753" rx="2.5782" transform="rotate(-12.7707 12.1131 26.4901)" fill="#C5E8E8" stroke="#212529" stroke-width="2"></rect>
-                            <path d="M5.45883 14.76C4.34508 15.0428 3.36003 15.6947 2.66441 16.6093C2.25931 17.232 1.9824 17.9292 1.84982 18.6601C1.71724 19.3911 1.73167 20.1411 1.89227 20.8664L3.46507 27.8056C3.72987 29.0093 4.40314 30.0842 5.37056 30.8478C5.92845 31.2577 6.56668 31.5451 7.24338 31.691C7.92009 31.837 8.61999 31.8383 9.29724 31.6949L22.1595 28.7796L18.4147 12.2577L5.45883 14.76Z" fill="#00C4C4" stroke="#212529" stroke-width="2"></path><path d="M18.3209 11.8447L22.1593 28.7796L37.2426 32.4828L30.3335 2.00002L18.3209 11.8447Z" fill="white" stroke="#212529" stroke-width="2"></path>
+                            <rect x="12.1131" y="26.4901" width="5.15639" height="12.3753" rx="2.5782" transform="rotate(-12.7707 12.1131 26.4901)" fill="var(--main-sub3)" stroke="#212529" stroke-width="2"></rect>
+                            <path d="M5.45883 14.76C4.34508 15.0428 3.36003 15.6947 2.66441 16.6093C2.25931 17.232 1.9824 17.9292 1.84982 18.6601C1.71724 19.3911 1.73167 20.1411 1.89227 20.8664L3.46507 27.8056C3.72987 29.0093 4.40314 30.0842 5.37056 30.8478C5.92845 31.2577 6.56668 31.5451 7.24338 31.691C7.92009 31.837 8.61999 31.8383 9.29724 31.6949L22.1595 28.7796L18.4147 12.2577L5.45883 14.76Z" fill="var(--main-sub2)" stroke="#212529" stroke-width="2"></path><path d="M18.3209 11.8447L22.1593 28.7796L37.2426 32.4828L30.3335 2.00002L18.3209 11.8447Z" fill="white" stroke="#212529" stroke-width="2"></path>
                             <path d="M12.0811 25.8181L10.7279 26.0621L9.94944 21.7455C9.90132 21.4786 9.74737 21.2422 9.52147 21.0881C9.29558 20.934 9.01624 20.8749 8.74489 20.9239C8.47355 20.9728 8.23242 21.1257 8.07458 21.349C7.91674 21.5723 7.8551 21.8477 7.90323 22.1145L8.68172 26.4311L7.3286 26.6752L6.5501 22.3586C6.43833 21.7388 6.58149 21.0993 6.94809 20.5806C7.31468 20.062 7.87469 19.7068 8.50491 19.5932C9.13512 19.4795 9.78391 19.6167 10.3086 19.9746C10.8332 20.3325 11.1908 20.8817 11.3026 21.5015L12.0811 25.8181Z" fill="#212529"></path>
                             <path d="M11.4781 22.4751L6.75866 23.3263L6.99864 24.6569L11.7181 23.8058L11.4781 22.4751Z" fill="#212529"></path><path d="M15.1909 25.2571L13.0315 25.6466L11.8316 18.9931L13.8581 18.6276C14.5805 18.4973 15.3232 18.6487 15.9228 19.0485C16.5224 19.4483 16.9297 20.0637 17.0552 20.7593L17.2917 22.0708C17.4433 22.7564 17.3077 23.4757 16.9143 24.0723C16.521 24.6689 15.9016 25.0946 15.1909 25.2571ZM14.2899 24.0654L14.9543 23.9456C15.3156 23.8805 15.6371 23.6798 15.8482 23.3878C16.0592 23.0958 16.1426 22.7363 16.0798 22.3885L15.8433 21.077C15.7806 20.7292 15.5769 20.4215 15.2771 20.2216C14.9773 20.0217 14.606 19.946 14.2448 20.0111L13.5803 20.131L14.2899 24.0654Z" fill="#212529"></path><path d="M47.249 13.3079L41.274 15.0028" stroke="#212529" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"></path>
                             <path d="M41.3071 22.1339L47.75 23.9406" stroke="#212529" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"></path><path d="M38.2541 8.19183L43.4326 3.09746" stroke="#212529" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"></path>
@@ -261,7 +286,7 @@
                     와디즈 알아보기
                 </div>
                 <div class="guide-menu-list">
-                    <div class="guide-frequent-select">
+                    <div class="guide-frequent-select guide-menu-li">
                         <div class="guide-frequent-container">
                             <div class="frequent-title-bar">
                                 <div class="frequent-title">자주 묻는 질문</div>
@@ -284,21 +309,21 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="guide-frequent">
+                    <div class="guide-frequent guide-menu-li">
                         <div class="container-noselect">
                             <div class="title-bar-noselect">
                                 자주<br>묻는 질문
                             </div>
                             <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M34.047 13.6H19.7528C19.1288 13.6 18.5303 13.8479 18.0891 14.2891C17.6478 14.7304 17.3999 15.3289 17.3999 15.9529V27.7176C17.3999 28.3417 17.6478 28.9401 18.0891 29.3814C18.5303 29.8227 19.1288 30.0706 19.7528 30.0706H28.1646L32.2823 33.7764H32.8705V30.0706H34.047C34.671 30.0706 35.2695 29.8227 35.7107 29.3814C36.152 28.9401 36.3999 28.3417 36.3999 27.7176V15.9529C36.3999 15.3289 36.152 14.7304 35.7107 14.2891C35.2695 13.8479 34.671 13.6 34.047 13.6Z" fill="#C5E8E8" stroke="#212529" stroke-width="1.2" stroke-linejoin="round"></path>
+                                <path d="M34.047 13.6H19.7528C19.1288 13.6 18.5303 13.8479 18.0891 14.2891C17.6478 14.7304 17.3999 15.3289 17.3999 15.9529V27.7176C17.3999 28.3417 17.6478 28.9401 18.0891 29.3814C18.5303 29.8227 19.1288 30.0706 19.7528 30.0706H28.1646L32.2823 33.7764H32.8705V30.0706H34.047C34.671 30.0706 35.2695 29.8227 35.7107 29.3814C36.152 28.9401 36.3999 28.3417 36.3999 27.7176V15.9529C36.3999 15.3289 36.152 14.7304 35.7107 14.2891C35.2695 13.8479 34.671 13.6 34.047 13.6Z" fill="var(--main-sub3)" stroke="#212529" stroke-width="1.2" stroke-linejoin="round"></path>
                                 <path d="M30 27V20.7143C30 20.2596 29.8025 19.8236 29.4508 19.5021C29.0992 19.1806 28.6223 19 28.125 19H26.875C26.3777 19 25.9008 19.1806 25.5492 19.5021C25.1975 19.8236 25 20.2596 25 20.7143V27" stroke="#212529" stroke-width="2" stroke-miterlimit="10"></path>
-                                <path d="M25 24H30" stroke="#212529" stroke-width="2" stroke-miterlimit="10"></path><path d="M5.95304 6.59998H20.2472C20.8712 6.59998 21.4697 6.84787 21.9109 7.28913C22.3522 7.7304 22.6001 8.32888 22.6001 8.95292V20.7176C22.6001 21.3417 22.3522 21.9401 21.9109 22.3814C21.4697 22.8227 20.8712 23.0706 20.2472 23.0706H11.8354L7.71774 26.7764H7.12951V23.0706H5.95304C5.329 23.0706 4.73052 22.8227 4.28926 22.3814C3.848 21.9401 3.6001 21.3417 3.6001 20.7176V8.95292C3.6001 8.32888 3.848 7.7304 4.28926 7.28913C4.73052 6.84787 5.329 6.59998 5.95304 6.59998Z" fill="#00C4C4" stroke="#212529" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M25 24H30" stroke="#212529" stroke-width="2" stroke-miterlimit="10"></path><path d="M5.95304 6.59998H20.2472C20.8712 6.59998 21.4697 6.84787 21.9109 7.28913C22.3522 7.7304 22.6001 8.32888 22.6001 8.95292V20.7176C22.6001 21.3417 22.3522 21.9401 21.9109 22.3814C21.4697 22.8227 20.8712 23.0706 20.2472 23.0706H11.8354L7.71774 26.7764H7.12951V23.0706H5.95304C5.329 23.0706 4.73052 22.8227 4.28926 22.3814C3.848 21.9401 3.6001 21.3417 3.6001 20.7176V8.95292C3.6001 8.32888 3.848 7.7304 4.28926 7.28913C4.73052 6.84787 5.329 6.59998 5.95304 6.59998Z" fill="var(--main-sub2)" stroke="#212529" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
                                 <path d="M13.125 11H11.875C10.8395 11 10 11.7675 10 12.7143V17.2857C10 18.2325 10.8395 19 11.875 19H13.125C14.1605 19 15 18.2325 15 17.2857V12.7143C15 11.7675 14.1605 11 13.125 11Z" stroke="white" stroke-width="2" stroke-miterlimit="10"></path>
                                 <path d="M13 17L15 20" stroke="white" stroke-width="2" stroke-miterlimit="10"></path>
                             </svg>
                         </div>
-                    </div> -->
-                    <!-- <div class="guide-use-select">
+                    </div>
+                    <div class="guide-use-select guide-menu-li">
                         <div class="guide-use-container">
                             <div class="use-title-bar">
                                 <div class="use-title">이용 가이드</div>
@@ -318,15 +343,15 @@
                                 </div>
                             </div>
                         </div>
-                    </div> -->
-                    <div class="guide-use">
+                    </div>
+                    <div class="guide-use guide-menu-li">
                         <div class="container-noselect">
                             <div class="title-bar-noselect">
                                 이용<br>가이드
                             </div>
                             <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M20 28H3L4.65723 9H18.3428C18.7823 9 19.2038 9.16817 19.5146 9.46752C19.8254 9.76687 20 10.1729 20 10.5962V28Z" fill="#C5E8E8" stroke="#212529" stroke-width="1.2"></path>
-                                <path d="M37 28H20V10.5962C19.9999 10.1773 20.1709 9.77514 20.4759 9.47653C20.7809 9.17791 21.1956 9.00676 21.6305 9H35.4497L37 28Z" fill="#C5E8E8" stroke="#212529" stroke-width="1.2"></path>
+                                <path d="M20 28H3L4.65723 9H18.3428C18.7823 9 19.2038 9.16817 19.5146 9.46752C19.8254 9.76687 20 10.1729 20 10.5962V28Z" fill="var(--main-sub3)" stroke="#212529" stroke-width="1.2"></path>
+                                <path d="M37 28H20V10.5962C19.9999 10.1773 20.1709 9.77514 20.4759 9.47653C20.7809 9.17791 21.1956 9.00676 21.6305 9H35.4497L37 28Z" fill="var(--main-sub3)" stroke="#212529" stroke-width="1.2"></path>
                                 <line x1="8.6" y1="14.4" x2="15.4" y2="14.4" stroke="#212529" stroke-width="1.2" stroke-linecap="round"></line>
                                 <line x1="8.1" y1="18.4" x2="15.4" y2="18.4" stroke="#212529" stroke-width="1.2" stroke-linecap="round"></line>
                                 <line x1="7.6" y1="22.4" x2="15.4" y2="22.4" stroke="#212529" stroke-width="1.2" stroke-linecap="round"></line>
@@ -337,7 +362,7 @@
                             </svg>
                         </div>
                     </div>
-                    <!-- <div class="guide-reserve-select">
+                    <div class="guide-reserve-select guide-menu-li">
                         <div class="guide-reserve-container">
                             <div class="reserve-title-bar">
                                 <div class="reserve-title">백wa사전</div>
@@ -361,8 +386,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div> -->
-                    <div class="guide-reserve">
+                    </div>
+                    <div class="guide-reserve guide-menu-li">
                         <div class="container-noselect">
                             <div class="title-bar-noselect">
                                 백wa<br>사전
@@ -372,11 +397,11 @@
                                 <path d="M20.8567 32H6.85435C6.36255 32 5.89089 31.8223 5.54313 31.506C5.19537 31.1896 5 30.7606 5 30.3133V10.6867C5 10.2394 5.19537 9.81035 5.54313 9.49403C5.89089 9.17771 6.36255 9 6.85435 9H22" stroke="#212529" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
                                 <path d="M19 9H33.2165C33.689 9.00136 34.1418 9.1795 34.476 9.49553C34.8101 9.81156 34.9985 10.2398 34.9999 10.6867V30.2926C35.0021 30.5156 34.9576 30.7369 34.869 30.9436C34.7804 31.1503 34.6495 31.3385 34.4837 31.4971C34.318 31.6558 34.1207 31.7819 33.9032 31.8682C33.6857 31.9545 33.4523 31.9993 33.2165 32H19.7495" fill="white"></path>
                                 <path d="M19 9H33.2165C33.689 9.00136 34.1418 9.1795 34.476 9.49553C34.8101 9.81156 34.9985 10.2398 34.9999 10.6867V30.2926C35.0021 30.5156 34.9576 30.7369 34.869 30.9436C34.7804 31.1503 34.6495 31.3385 34.4837 31.4971C34.318 31.6558 34.1207 31.782 33.9032 31.8683C33.6857 31.9545 33.4523 31.9993 33.2165 32H19.7495" stroke="#212529" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                <path d="M20 28.8605H17.9327V33.1173L19.9977 32.5105" fill="#00C4C4"></path>
-                                <path d="M20 28.8605H22.0673V33.1173L19.9977 32.5105" fill="#00C4C4"></path>
+                                <path d="M20 28.8605H17.9327V33.1173L19.9977 32.5105" fill="var(--main-sub2)"></path>
+                                <path d="M20 28.8605H22.0673V33.1173L19.9977 32.5105" fill="var(--main-sub2)"></path>
                                 <path d="M20 28.8605H17.9327V33.1173L19.9977 32.5105L22.0673 33.1173V28.8605H20Z" stroke="#212529" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                <path d="M32 27.301C32 27.7507 31.8202 28.182 31.5 28.5005C31.1798 28.819 30.7453 28.9986 30.2917 29H9.7083C9.25475 28.9986 8.82025 28.819 8.50003 28.5005C8.17981 28.182 8 27.7507 8 27.301V8.69383C8 8.2446 8.17998 7.81376 8.50035 7.49611C8.82072 7.17846 9.25523 7 9.7083 7L20.0419 8.03916L30.2917 7C30.7448 7 31.1793 7.17846 31.4997 7.49611C31.82 7.81376 32 8.2446 32 8.69383V27.301Z" fill="#C5E8E8" stroke="#212529" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                <path d="M25.8894 13H14.1106C13.4972 13 13 13.505 13 14.1279V21.8721C13 22.495 13.4972 23 14.1106 23H25.8894C26.5028 23 27 22.495 27 21.8721V14.1279C27 13.505 26.5028 13 25.8894 13Z" fill="#00C4C4"></path><path d="M19 16L22 18.0015L19 20V16Z" fill="white"></path>
+                                <path d="M32 27.301C32 27.7507 31.8202 28.182 31.5 28.5005C31.1798 28.819 30.7453 28.9986 30.2917 29H9.7083C9.25475 28.9986 8.82025 28.819 8.50003 28.5005C8.17981 28.182 8 27.7507 8 27.301V8.69383C8 8.2446 8.17998 7.81376 8.50035 7.49611C8.82072 7.17846 9.25523 7 9.7083 7L20.0419 8.03916L30.2917 7C30.7448 7 31.1793 7.17846 31.4997 7.49611C31.82 7.81376 32 8.2446 32 8.69383V27.301Z" fill="#0066335e" stroke="#212529" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M25.8894 13H14.1106C13.4972 13 13 13.505 13 14.1279V21.8721C13 22.495 13.4972 23 14.1106 23H25.8894C26.5028 23 27 22.495 27 21.8721V14.1279C27 13.505 26.5028 13 25.8894 13Z" fill="var(--main-sub2)"></path><path d="M19 16L22 18.0015L19 20V16Z" fill="white"></path>
                             </svg>
                         </div>
                     </div>
@@ -387,7 +412,7 @@
             <div class="board-bar">
                 <div class="board-title-bar">
                     <div class="board-title">
-                        공지사항
+                        모집
                     </div>
                     <div class="plus-menu">
                         <div class="plus">
@@ -440,7 +465,7 @@
             <div class="board-bar">
                 <div class="board-title-bar">
                     <div class="board-title">
-                        공지사항
+                        이벤트
                     </div>
                     <div class="plus-menu">
                         <div class="plus">
@@ -876,4 +901,7 @@
 
     </footer>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="/static/js/main/main.js"></script>
+<script src="/static/js/main/banner.js"></script>
 </html>

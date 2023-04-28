@@ -5,10 +5,13 @@
     <meta name="viewport"
             content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/components/header.css">
     <title>header</title>
 </head>
 <body>
+    <!-- main-header(logout) -->
     <header>
         <div class="web-header">
             <div class="web-header-large">
@@ -48,7 +51,7 @@
                                         <div class="header-search-empty-div"></div>
                                         <div class="header-search-input-div">
                                             <input type="search" placeholder="새로운 것을 찾으시나요?"
-                                                aria-label="검색" value="" style="">
+                                                aria-label="검색" value="">
                                         </div>
                                         <button type="submit" class="header-search-button"
                                             aria-label="검색">
@@ -63,16 +66,15 @@
                                     </div>
                                 </form>
                             </div>
-                            <c:if
-                                test="${not empty sessionScope.memberId || not empty cookie.memberIdentification }">
+                            <!-- <c:if
+                                test="${not empty sessionScope.memberId || not empty cookie.memberIdentification }"> -->
                                 <!-- 로그아웃 버튼! -->
                                 <div class="buttonWrap headerButton">
-                                    <button class="listButton logoutButton"
-                                        onclick="location.href = '${pageContext.request.contextPath}/user/loging.user'">
+                                    <button class="listButton logoutButton">
                                     </button>
                                 </div>
                                 <!-- // 로그아웃 버튼! -->
-                            </c:if>
+                            <!-- </c:if> -->
                             <div class="header-user-div">
                                 <!-- <div class="header-user-container">
                                     <button type="button" class="header-user-button" onclick="location.href='${pageContext.request.contextPath}/user/logout.user'">로그아웃</button>
@@ -80,18 +82,16 @@
                                 </div> -->
                                 <div class="header-user-container">
                                     <button type="button" class="header-user-button">로그인</button>
-                                    <button data-event="iam.signup" class="header-user-button" onclick="location.href='${pageContext.request.contextPath}/user/signUp.user'">회원가입</button>
+                                    <button data-event="iam.signup" class="header-user-button" onclick="location.href='/templates/member/join.html'">회원가입</button>
                                 </div>
                             </div>
                             <div class="web-header-funding-open funding-open">
                                 <div>
                                     <div>
-                                        <button aria-label="기부 참여하기"
-                                            class="header-make-button header-make-button2 header-make-button3 funding-open-button"
-                                            type="button">
+                                        <button class="header-make-button header-make-button2 header-make-button3 funding-open-button" type="button">
                                             <span> 
                                                 <span class="header-make-project-span">
-                                                    프로젝트 만들기
+                                                    이벤트 참여하기
                                                 </span>
                                             </span>
                                         </button>
