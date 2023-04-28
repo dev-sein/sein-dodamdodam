@@ -152,8 +152,10 @@ body{
 }
 
 #p-in-a-1{
-    border-bottom: 2px solid rgb(0, 178, 178);
-    color: rgb(0, 178, 178);
+    border-bottom: 2px solid #006633;
+    color: #006633;
+    /* border-bottom: 2px solid rgb(0, 178, 178);
+    color: rgb(0, 178, 178); */
 }
 
 #middle {
