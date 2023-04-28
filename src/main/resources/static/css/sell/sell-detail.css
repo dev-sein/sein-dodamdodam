@@ -2132,10 +2132,10 @@ strong {
     }
 
     .storeTabContentsWrapper {
-        display: flex;
-        max-width: 1440px;
-        justify-content: center;
-        padding-left: 500px;
+        margin: 0 auto 40px;
+    padding: 0 80px;
+    max-width: 1440px;
+    padding-left: 27em;
     }
 
     .storeTabContents {
