@@ -131,9 +131,11 @@ h2.mypage-top-title {
 }
 
 .module {
-    margin: 1px 0px 8px 300px;
+    z-index: 200;
+    margin: 0px 0px 8px 15em;
     border-radius: 10px;
     box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+    position: absolute;
 }
 
 *, ::before, ::after {
@@ -167,10 +169,6 @@ dl, ol, ul, menu {
     flex: 0.3;
 }
 
-.title__title {
-    flex: 0.3;
-}
-
 .title__user-id {
     flex: 0.5;
 }
@@ -180,7 +178,7 @@ dl, ol, ul, menu {
 }
 
 .title__status {
-    flex: 0.3;
+    flex: 0.5;
 }
 
 .title__date-post {
@@ -218,10 +216,6 @@ dl, ol, ul, menu {
     flex: 0.3;
 }
 
-.support__title {
-    flex: 0.3;
-}
-
 li {
     display: list-item;
     text-align: -webkit-match-parent;
@@ -236,15 +230,15 @@ li {
 }
 
 .support__status1 {
-    flex: 0.3;
+    flex: 0.5;
 }
 
 .support__status2 {
-    flex: 0.3;
+    flex: 0.5;
 }
 
 .support__status3 {
-    flex: 0.3;
+    flex: 0.5;
 }
 
 .support__date-post {
@@ -274,6 +268,7 @@ li {
         width: 960px;
         margin: 0 auto;
         text-align: left;
+        position: relative;
     }
 
     .mypage-project .usable-point p em {
@@ -283,9 +278,10 @@ li {
     }
 
     .mypage-project.short .point-list {
-        margin: 0 auto;
+        margin: 19em 0px 0px 0px;
         padding: 24px 24px 64px;
         background: #fff;
+        position: relative;
     }
 
     .mybenefit-wrap #emptyProjectText {
