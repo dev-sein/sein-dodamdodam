@@ -1,5 +1,14 @@
 @charset "UTF-8";
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;700&display=swap');
+@font-face {
+    font-family: wadizicon;
+    font-weight: 400;
+    font-style: normal;
+    src: url(https://static.wadiz.kr/static/web/media/wadizicon.1de1502a.eot#iefix) format("embedded-opentype"),url(https://static.wadiz.kr/static/web/media/wadizicon.f5cdf486.woff2) format("woff2"),url(https://static.wadiz.kr/static/web/media/wadizicon.9eb6b0a9.woff) format("woff"),url(https://static.wadiz.kr/static/web/media/wadizicon.e5379495.ttf) format("truetype"),url(https://static.wadiz.kr/static/web/media/wadizicon.077f5804.svg#wadizicon) format("svg")
+}
+body {
+    line-height: 1.33;
+    font-family: Roboto,Noto Sans KR,-apple-system,Dotum,sans-serif
+}
 @font-face {
     font-family: Noto Sans KR;
     font-weight: 300;
@@ -33,6 +42,70 @@
 }
 
 @font-face {
+    font-family: "Noto Serif KR";
+    font-weight: 300;
+    font-style: normal;
+    src: url(https://static.wadiz.kr/assets/fonts/notoserif/NotoSerifKR-Light.woff2) format("woff2"),url(https://static.wadiz.kr/assets/fonts/notoserif/NotoSerifKR-Light.woff) format("woff"),url(https://static.wadiz.kr/assets/fonts/notoserif/NotoSerifKR-Light.otf) format("opentype");
+    unicode-range: u+0020-u+007e,u+1100-u+11f9,u+3131-u+318e,u+327f-u+327f,u+ac00-u+d7a3,u+ff01-u+ff60
+}
+
+@font-face {
+    font-family: "Noto Serif KR";
+    font-weight: 400;
+    font-style: normal;
+    src: url(https://static.wadiz.kr/assets/fonts/notoserif/NotoSerifKR-Regular.woff2) format("woff2"),url(https://static.wadiz.kr/assets/fonts/notoserif/NotoSerifKR-Regular.woff) format("woff"),url(https://static.wadiz.kr/assets/fonts/notoserif/NotoSerifKR-Regular.otf) format("opentype");
+    unicode-range: u+0020-u+007e,u+1100-u+11f9,u+3131-u+318e,u+327f-u+327f,u+ac00-u+d7a3,u+ff01-u+ff60
+}
+
+@font-face {
+    font-family: "Noto Serif KR";
+    font-weight: 500;
+    font-style: normal;
+    src: url(https://static.wadiz.kr/assets/fonts/notoserif/NotoSerifKR-Medium.woff2) format("woff2"),url(https://static.wadiz.kr/assets/fonts/notoserif/NotoSerifKR-Medium.woff) format("woff"),url(https://static.wadiz.kr/assets/fonts/notoserif/NotoSerifKR-Medium.otf) format("opentype");
+    unicode-range: u+0020-u+007e,u+1100-u+11f9,u+3131-u+318e,u+327f-u+327f,u+ac00-u+d7a3,u+ff01-u+ff60
+}
+
+@font-face {
+    font-family: "Noto Serif KR";
+    font-weight: 700;
+    font-style: normal;
+    src: url(https://static.wadiz.kr/assets/fonts/notoserif/NotoSerifKR-Bold.woff2) format("woff2"),url(https://static.wadiz.kr/assets/fonts/notoserif/NotoSerifKR-Bold.woff) format("woff"),url(https://static.wadiz.kr/assets/fonts/notoserif/NotoSerifKR-Bold.otf) format("opentype");
+    unicode-range: u+0020-u+007e,u+1100-u+11f9,u+3131-u+318e,u+327f-u+327f,u+ac00-u+d7a3,u+ff01-u+ff60
+}
+
+@font-face {
+    font-family: Roboto;
+    font-weight: 300;
+    font-style: normal;
+    src: local("Roboto Light"),url(https://static.wadiz.kr/assets/fonts/roboto/Roboto-Light.woff2) format("woff2"),url(https://static.wadiz.kr/assets/fonts/roboto/Roboto-Light.woff) format("woff"),url(https://static.wadiz.kr/assets/fonts/roboto/Roboto-Light.ttf) format("truetype");
+    unicode-range: u+000-5ff
+}
+
+@font-face {
+    font-family: Roboto;
+    font-weight: 400;
+    font-style: normal;
+    src: local("Roboto"),local("Roboto-Regular"),url(https://static.wadiz.kr/assets/fonts/roboto/Roboto-Regular.woff2) format("woff2"),url(https://static.wadiz.kr/assets/fonts/roboto/Roboto-Regular.woff) format("woff"),url(https://static.wadiz.kr/assets/fonts/roboto/Roboto-Regular.ttf) format("truetype");
+    unicode-range: u+000-5ff
+}
+
+@font-face {
+    font-family: Roboto;
+    font-weight: 500;
+    font-style: normal;
+    src: local("Roboto Medium"),url(https://static.wadiz.kr/assets/fonts/roboto/Roboto-Medium.woff2) format("woff2"),url(https://static.wadiz.kr/assets/fonts/roboto/Roboto-Medium.woff) format("woff"),url(https://static.wadiz.kr/assets/fonts/roboto/Roboto-Medium.ttf) format("truetype");
+    unicode-range: u+000-5ff
+}
+
+@font-face {
+    font-family: Roboto;
+    font-weight: 700;
+    font-style: normal;
+    src: local("Roboto Bold"),url(https://static.wadiz.kr/assets/fonts/roboto/Roboto-Bold.woff2) format("woff2"),url(https://static.wadiz.kr/assets/fonts/roboto/Roboto-Bold.woff) format("woff"),url(https://static.wadiz.kr/assets/fonts/roboto/Roboto-Bold.ttf) format("truetype");
+    unicode-range: u+000-5ff
+}
+
+@font-face {
     font-family: wadizicon;
     font-weight: 400;
     font-style: normal;
@@ -41,6 +114,16 @@
 
 body, body button, body input, body select, body textarea {
     font-family: roboto,Noto Sans KR,-apple-system,dotum,sans-serif;
+}
+
+
+a, address, article, aside, audio, b, body, button, canvas, caption, dd, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, html, i, img, input, label, legend, li, nav, ol, p, pre, section, small, span, strong, summary, table, tbody, td, th, thead, time, tr, ul, video {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+    font: inherit;
+    box-sizing: border-box;
 }
 
 a, address, article, aside, audio, b, body, button, canvas, caption, dd, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, html, i, img, input, label, legend, li, nav, ol, p, pre, section, small, span, strong, summary, table, tbody, td, th, thead, time, tr, ul, video {
@@ -133,15 +216,6 @@ body, body button, body input, body li, body ol, body select, body textarea, bod
     font-weight: 700;
 }
 
-#wadiz-about-landing .header .inner .lnb .lnbItem.active>a:after {
-    display: block;
-    position: absolute;
-    bottom: 15px;
-    border-bottom: 2px solid #fff;
-    width: 100%;
-    content: "";
-}
-
 #wadiz-about-landing .header .inner .lnb .lnbItem {
     position: relative;
     float: left;
@@ -172,6 +246,18 @@ body, body button, body input, body li, body ol, body select, body textarea, bod
     font-size: 15px;
 }
 
+/* 헤더 이쯤 */
+#wadiz-about-landing .header {
+    position: absolute;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    height: 56px;
+
+    background-color: black;
+    position: fixed;
+}
+
 #wadiz-about-landing .header+.background {
     display: block;
     position: fixed;
@@ -179,7 +265,15 @@ body, body button, body input, body li, body ol, body select, body textarea, bod
     transition: background-color .15s linear;
     background-color: #0000;
     width: 100%;
-    height: 56px;
+    height: 56px
+}
+
+html.scroll-half-screen #wadiz-about-landing .header {
+    position: fixed
+}
+
+html.scroll-half-screen #wadiz-about-landing .header+.background {
+    background-color: #212529
 }
 
 #wadiz-about-landing .visualContainer {
@@ -257,6 +351,11 @@ body, body button, body input, body li, body ol, body select, body textarea, bod
 #wadiz-about-landing .section .inner .title {
     word-break: keep-all;
     font-weight: 700;
+    line-height: 32px;
+    font-size: 24px;
+}
+
+#wadiz-about-landing .valueContainer .titleWrapper .title {
     line-height: 40px;
     font-size: 32px;
 }
@@ -322,4 +421,69 @@ body, body button, body input, body li, body ol, body select, body textarea, bod
 #wadiz-about-landing .section .inner .titleWrapper {
     float: left;
     width: 410px;
+}
+
+#wadiz-about-landing .visionContainer {
+    border-top: 1px solid #e9ecef;
+}
+
+#wadiz-about-landing .principleContainer {
+    border-top: 1px solid #e9ecef;
+}
+
+#wadiz-about-landing .principleContainer .principleList {
+    padding-top: 120px;
+    clear: both;
+}
+
+#wadiz-about-landing .principleContainer .principleItem {
+    position: relative;
+    z-index: -1;
+    font-weight: 700;
+
+    float: left;
+    margin-top: 0;
+    width: 20%;
+    height: 118px;
+}
+
+#wadiz-about-landing .principleContainer .principleItem:first-child {
+    border-left: none;
+    padding: 30px 14px 0 0;
+}
+
+#wadiz-about-landing .principleContainer .principleItem {
+    border-left: 1px solid #dde2e6;
+    padding: 30px 14px 0;
+}
+
+#wadiz-about-landing .principleContainer .principleItem .num {
+    position: absolute;
+    top: 2.5px;
+    left: 0;
+    font-size: 15px;
+}
+
+#wadiz-about-landing .principleContainer .principleItem .num {
+    top: 0;
+    left: 14px;
+    font-size: 19px;
+}
+
+#wadiz-about-landing .principleContainer .principleItem:first-child .num {
+    left: 0;
+}
+
+#wadiz-about-landing .principleContainer .principleItem .desc {
+    display: inline-block;
+    margin: 0;
+    padding-left: 0;
+    line-height: 30px;
+    font-size: 19px;
+}
+
+#wadiz-about-landing .principleContainer .principleItem .num {
+    top: 0;
+    left: 14px;
+    font-size: 19px;
 }
