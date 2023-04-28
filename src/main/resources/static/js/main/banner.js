@@ -11,6 +11,7 @@ const bannerPercentage = (100 / (imageDiv.length - 2)); // 배너 바 매번 증
 // const lastImageDiv = document.querySelector("div.main_banner_all div.main_banner[0]");
 // const firstImageDiv = document.querySelector("div.main_banner_all div.main_banner[parseInt(imageDiv.length)]");
 const $mainColor = $(".banner_container");
+const $currentPage = $('.current_page');
 
 
 let checkArrow = false;
@@ -62,6 +63,7 @@ function changeButtonStyle() {
     temp = buttons[count - 1];
     $bannerActive.css("width", `${bannerPercentage * count}%`); /* 배너 바 현재 퍼센트 */
     $mainColor.css("background-color", `var(--banner${count}-color)`); // 메인 컬러 변경
+    $currentPage.text(count);
 }
 
 function autoSlide(){
