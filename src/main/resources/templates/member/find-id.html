@@ -64,31 +64,52 @@
                 </div>
             </div>
             <div class="page-body">
-                <div class="common password-check">
+                <div class="common password-check" style="display: block;">
                     <p class="check-text">
                         소유하고 계신 이메일을 적어주세요.
                         <br>
                         가입여부를 확인해드립니다.
                     </p>
-                    <form action=""name="login" method="post" class="wz-form" id="form-findId" onsubmit="checkEmail(); return false;">
+                    <form action=""name="login" method="post" class="" id="form-findId" onsubmit="checkEmail(); return false;">
                         <div class="label-hidden field">
                             <label class="text-hidden" for="userName">이메일 계정</label>
                             <div class="input-email">
                                 <input id="userName" class="input-text" type="email" name="userName" value="" placeholder="이메일 계정" onkeydown="hitEnterkey(event);">
                             </div>
+                            <p class="helper error"></p>
                         </div>
-                        <p class="helper-error"></p>
-                        <button id="" class="primary block button" type="button" onclick="showModal()">
+                        <button id="" class="primary block button check" type="button" onclick="showPage()">
                             확인하기
                         </button>
-                        <!-- <button id="btnIsJoinedEmail" class="wz-primary-block-button" type="button" onclick="checkEmail()">
-                            <span id="ok-button">확인하기</span>
-                        </button> -->
+                        <button id="" class="primary block button re-check" type="button" onclick="showPage()" style="display: none;">
+                            다시 확인
+                        </button>
                     </form>
                 </div>
+                <!-- 확인하기 버튼 후 페이지 시작 -->
+                <div class="common id-result" style="display: none;">
+                    <div class="email-wrap">
+                        <p class="headline">pdy0722@gmail.com</p>
+                        <p class="result-text">
+                            회원으로 등록된 이메일 아이디입니다.
+                            <br>
+                            해당 이메일로 로그인하고 와디즈를 이용하세요!
+                        </p>
+                        <p class="" style="display: none;">는 와디즈에 등록되어 있지 않은 계정입니다.</p>
+                        <div class="inner-container">
+                            <button type="button" class="primary block button" style="display: none;">회원가입하러 가기</button>
+                            <button type="button" class="primary block button">로그인</button>
+                            <button type="button" class="block button" onclick="showRePage()">다시 확인</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 확인하기 버튼 후 페이지 끝 -->
             </div>
         </div>
+    </div>
     <!-- footer 시작 -->
     <!-- footer 끝 -->
 </body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="/static/js/member/find-id.js"></script>
 </html>
