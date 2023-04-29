@@ -338,6 +338,8 @@ button:not(:disabled) {
     background-color: #F8F8F8;
     cursor: default;
     pointer-events: none;
+    font-family: 'Noto Sans KR';
+    font-weight: 300;
 }
 
 input[name=address]::placeholder {

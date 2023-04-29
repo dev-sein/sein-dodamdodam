@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">  
+    <link rel="shortcut icon" href="/static/images/components/dodam-favicon.png">
 </head>
 <body>
     <div id="page-container">
@@ -32,44 +33,69 @@
                                           <div class="slider__item">
                                             <div class="photo-instance" aria-pressed="false">
                                                 <img src="https://static.wadiz.kr/main/media/bg-success-story-hyundai-01.9e04d8a1.png"></div> <!-- photo-instance -->
+                                                <div class="space-info">
                                                     <div class="space-name"><strong>세종대왕기념관</strong></div>
                                                     <div class="space-address">서울시 동대문구 청량리동 1-157</div>
                                                     <div class="space-tel">02-969-8851</div>
                                                     <div class="space-introduction">고세종대왕의 성덕과 위업을 추모하고 보존하기 위해 1970년 세종대왕기념사업회에서 준공하였다.</div>
-                                          </div> <!-- slider-item -->
+                                                </div><!-- space-info -->
+                                                </div> <!-- slider-item -->
+                                          <div class="slider__item">
+                                            <div id="map" class="map-loca"></div>
+                                          </div> <!-- slider-item 2  -->
+                                        </div> <!-- slider - container -->
+                                        <button class="slider__arrow slider__arrow--left">&lt;</button>
+                                        <div class="slider__arrow slider__arrow--right">
+                                            <img src="../../static/images/culture-space/map-icon1.png">
+                                        <!-- <img class="slider__arrow slider__arrow--right" src="../../static/images/culture-space/map-icon1.png"> -->
+                                    </div>
+                                    </div> <!-- slider -->
+                                </div> <!-- image-wrapper -->
+
+                                <div class="image-wrapper">
+                                    <div class="slider culture-space-photo-container">
+                                        <div class="slider__container">
+                                          <div class="slider__item">
+                                            <div class="photo-instance" aria-pressed="false">
+                                                <img src="https://static.wadiz.kr/main/media/bg-success-story-hyundai-01.9e04d8a1.png"></div> <!-- photo-instance -->
+                                                <div class="space-info">
+                                                    <div class="space-name"><strong>세종대왕기념관</strong></div>
+                                                    <div class="space-address">서울시 동대문구 청량리동 1-157</div>
+                                                    <div class="space-tel">02-969-8851</div>
+                                                    <div class="space-introduction">고세종대왕의 성덕과 위업을 추모하고 보존하기 위해 1970년 세종대왕기념사업회에서 준공하였다.</div>
+                                                </div><!-- space-info -->
+                                                </div> <!-- slider-item -->
                                           <div class="slider__item">
                                             <div id="map" class="map-loca"></div>
                                           </div> <!-- slider-item 2  -->
                                         </div> <!-- slider - container -->
                                         <button class="slider__arrow slider__arrow--left">&lt;</button>
                                         <img class="slider__arrow slider__arrow--right" src="../../static/images/culture-space/map-icon1.png">
-                                    </div>
+                                    </div> <!-- slider -->
                                 </div> <!-- image-wrapper -->
 
+                            
                                 </div> <!-- image-container-->
-
-
 
                                 <div id="map2" class="map-loca"></div>
                                 <div id="map3" class="map-loca"></div>
                                 <div id="map4" class="map-loca"></div>
                                 <div id="map5" class="map-loca"></div>
                                 <div id="map6" class="map-loca"></div>
-                        </div> <!-- culture-space-container -->
-                    </div>
-                    </div><!-- culture-inner -->
-                </section>
+                            </div> <!-- culture-space-container -->
+                        </div> <!-- culture-inner -->
+                    </section>
                 </div> <!-- culture-space-container -->
-            </div> <!-- main-wrapper-content 가 되어야 함 -->
             </div> <!-- main-wrapper-content 가 되어야 함 -->
         </main>
     </div> <!-- page container -->
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="../../static/js/culture-space/culture-space.js"></script>
+<script src="../../static/js/culture-space/culture-space-backup.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3366aee711925269dca27f42bfb64ad1"></script>
 <script>
     
+
 /* 동대문역사문화공원 */    
     //지도 설정
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
