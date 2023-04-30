@@ -10,7 +10,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="/static/css/member/login.css">
-    <link rel="stylesheet" href="/static/css/member/login-modal.css">
     <link rel="shortcut icon" href="/static/images/components/dodam-favicon.png">
 </head>
 <body>
@@ -21,13 +20,13 @@
         <div class="login-container">
             <div class="login-member-container">
                 <h2 class="login-title">로그인</h2>
-                <form action="" name="login" method="post">
+                <form action="" name="login" method="">
                     <div class="field">
                         <div class="info-container info-container-first">
                             <span>
                                 <input type="text" id="id" name="memberIdentification" placeholder="아이디 입력" autocomplete="off" title="아이디 입력">
                             </span>
-                            <p class="help"></p>
+                            <p class="help id-error"></p>
                         </div>
                     </div>
                     <div class="field">
@@ -35,7 +34,7 @@
                             <span>
                                 <input type="password" id="password" name="memberPassword" maxlength="20" placeholder="비밀번호 입력" title="비밀번호 입력">
                             </span>
-                            <p class="help"></p>
+                            <p class="help pwd-error"></p>
                         </div>
                     </div>
                     <div class="login-action"></div>
@@ -46,7 +45,10 @@
                         <a href="">로그인 정보를 잊으셨나요?</a>
                     </p>
                     <!-- <button type="submit" class="login" >로그인</button> -->
-                    <button type="button" class="login" onclick="send()">로그인</button>
+                    <button type="button" class="login" onclick="send()">
+                        <img class="message-icon" src="/static/images/member/message_icon.png">
+                        로그인
+                    </button>
                     <!-- login button -->
                 </form>
                 <div class="iam-account-app">
@@ -82,14 +84,6 @@
             </div>
         </div>
     </main>
-    <!-- login -->
-    <!-- 모달 시작-->
-    <div class="modal">
-        <div class="warn-modal">
-            <div id="content-wrap"></div>
-        </div>
-    </div>
-    <!-- 모달 끝-->
 </body>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script src="../../static/js/member/login.js"></script>
