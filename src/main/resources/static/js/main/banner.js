@@ -3,8 +3,9 @@ const banners = document.querySelector("div.main_banner_all"); // 배너들을 �
 const imageDiv = document.querySelectorAll("div.main_banner_all div.main_banner"); // 각각의 이미지가 담기는 배너 리스트
 // const lastImageDiv = document.createElement("div"); // 마지막 이미지를 담을 div 생성
 // const firstImageDiv = document.createElement("div"); // 첫번째 이미지를 담을 div 생성
-const next = document.querySelector(".main_banner_left_button"); // 다음 버튼
-const prev = document.querySelector(".main_banner_right_button"); // 이전 버튼
+const next = document.querySelector(".main_banner_right_button");
+// 다음 버튼
+const prev = document.querySelector(".main_banner_left_button "); // 이전 버튼
 const buttons = document.querySelectorAll(".main_banner_button button"); // 버튼 2개 모두의 리스트
 const $bannerActive = $(".main_banner_current_bar"); // 움직이는 배너 바
 const bannerPercentage = (100 / (imageDiv.length - 2)); // 배너 바 매번 증가해야하는 수치
@@ -24,16 +25,16 @@ HTMLCollection.prototype.map = Array.prototype.map;
 
 
 
-buttons.forEach(button => {
-    button.addEventListener("click", () => {
-        clearInterval(auto);
-        count = parseInt(button.innerHTML);
-        changeButtonStyle();
-        banners.style.transition = "transform 0.3s";
-        banners.style.transform = `translate(${-580 * count}px)`;
-        auto = setInterval(autoSlide, 2000);
-    });
-});
+// buttons.forEach(button => {
+//     button.addEventListener("click", () => {
+//         clearInterval(auto);
+//         count = parseInt(button.innerHTML);
+//         changeButtonStyle();
+//         banners.style.transition = "transform 0.3s";
+//         banners.style.transform = `translate(${-580 * count}px)`;
+//         auto = setInterval(autoSlide, 2000);
+//     });
+// });
 // imageDiv.forEach((div, i) => div.style.backgroundImage = `url(/images/main/00${i+1}.jpg)`); // 배너 리스트 안에 각 배너들에 이미지를 style을 줌.
 imageDiv.forEach((div, i) => div.style.backgroundImage = `url(/static/images/main/00${i+1}.jpg)`); // 배너 리스트 안에 각 배너들에 이미지를 style을 줌.
 // imageDiv[0].style.backgroundImage = `url(/images/main/00${imageDiv.length}.jpg)`;
@@ -69,7 +70,6 @@ function changeButtonStyle() {
 function autoSlide(){
     banners.style.transition = "transform 0.3s"; // 0.3초동안 이동하는 애니메이션 효과
     banners.style.transform = `translate(${-580 * ++count}px)`;
-    // console.log(count);
 
     if(count == 4) { /* 6->7로 넘어가게 되면*/
         count = 1; /* count는 다시 1 */
