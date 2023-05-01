@@ -125,6 +125,11 @@ $(function() {
             sel_files.splice(i, 1);      
           }
         }
+
+        if($('#att_zone').children().length > 5){
+          $(".file-button").hide();
+            return;
+        }
         
         dt = new DataTransfer();
         for(f in sel_files) {

@@ -62,10 +62,10 @@
                         <a class="menus" href="#">자유 게시글</a>
                     </li>
                     <li class="menu">
-                        <a class="menus" href="#">문의관리</a>
+                        <a class="menus" href="#">문의사항 관리</a>
                     </li>
                     <li class="menu">
-                        <a class="menus" href="#">문화공간 목록</a>
+                        <a class="menus" href="#">포인트 내역</a>
                     </li>
                     <li class="menu">
                         <a class="menus" href="#">배너신청 현황</a>
@@ -99,12 +99,17 @@
                                 <div class="writer info">hds1234@gmail.com</div>
                             </div>
                             <div class="classification-wrapper">
+                                <div class="classification">휴대폰 번호</div>
+                                <div class="writer info">010-1234-5678</div>
+                            </div>
+                            <div class="classification-wrapper">
                                 <div class="classification">문의 내용</div>
                                 <div class="contents">
                                     <div class="contents-inner">
-                                        저는 이 서비스를 이용하는 데 불편함을 느끼고 있습니다. 
-                                        <br>예를 들어, 원하는 정보를 찾기 어렵다는 점이나, 로딩 속도가 느리다는 점 등이 있습니다. 
-                                        이를 개선해주시면 좋을 것 같습니다.
+                                        문의 내용 문의 내용 문의 내용 문의 내용 문의 내용 문의 내용 
+                                        문의 내용 문의 내용 문의 내용 문의 내용 문의 내용 문의 내용 
+                                        문의 내용 문의 내용 문의 내용 문의 내용 문의 내용 문의 내용 
+                                        문의 내용 문의 내용 문의 내용 문의 내용 문의 내용 문의 내용 
                                     </div>
                                 </div>
                             </div>
@@ -114,11 +119,20 @@
                         <div class="inner-right-title">답변</div>
                         <div class="right-info-wrapper answer-wrapper">
                             <div class="classification-wrapper">
-                                <div class="classification">문의 답변</div>
-                                <div class="answer-box">
-                                    <textarea name="answer" id="answer"></textarea>
-                                </div>
-                                <button type="submit" class="ok-button" id="ok-button">답변 전송하기</button> 
+                                <form action="" name="" style="width: 100%; height: fit-content;">
+                                    <div class="answer-header">
+                                        <div class="classification">문의 답변</div>
+                                        <div class="button-wrapper">
+                                            <button class="answer-button">
+                                                <img class="airplane" src="../../static/images/admin/paper-plane.png">
+                                                <!-- <div class="button-inner-text">답변완료</div> -->
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="answer-box">
+                                        <textarea name="answer" id="answer"></textarea>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -130,5 +144,5 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="../../static/js/admin/admin.js"></script>
-<script src="../../static/js/admin/board-detail.js"></script>
+<script src="../../static/js/admin/management-board-detail.js"></script>
 </html>

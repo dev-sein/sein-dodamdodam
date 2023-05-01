@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/components/header.css">
+    <link rel="stylesheet" href="/static/css/components/footer.css">
     <link rel="stylesheet" href="/static/css/main/main.css">
     <link rel="shortcut icon" href="/static/images/components/dodam-favicon.png">
 </head>
@@ -18,12 +19,6 @@
             <div class="web-header-large">
                 <header class="header-wrapper">
                     <div class="header-container">
-                        <!-- <h1 class="wadiz-logo">
-                            <a href="/templates/main/main.html" style="width: 100px;">
-                                <span class="label">도담도담</span>
-                                <img alt="" src="" style="width: 88%;">
-                            </a>
-                        </h1> -->
                         <ul class="header-menu-category-ul">
                             <li class="header-menu-category-li"><a
                                 class="header-menu-category-a" href="/templates/main/main.html">
@@ -36,56 +31,34 @@
                                     <span>사업소개</span>
                             </a></li>
                             <li class="header-menu-category-li"><a
-                                class="header-menu-category-a" href=""> <span>오픈예정</span>
+                                class="header-menu-category-a" href=""> <span>문화공간</span>
                             </a></li>
                             <li class="header-menu-category-li"><a
-                                class="header-menu-category-a" href=""> <span>홍보하기</span>
+                                class="header-menu-category-a" href=""> <span>이벤트 정보</span>
+                            </a></li>
+                            <li class="header-menu-category-li"><a
+                                class="header-menu-category-a" href=""> <span>도담게시판</span>
+                            </a></li>
+                            <li class="header-menu-category-li"><a
+                                class="header-menu-category-a" href=""> <span>자유게시판</span>
+                            </a></li>
+                            <li class="header-menu-category-li"><a
+                                class="header-menu-category-a" href=""> <span>판매게시판</span>
                             </a></li>
                             <li class="header-menu-category-li"><a
                                 class="header-menu-category-a" href=""> <span>고객센터</span>
                             </a></li>
                         </ul>
                         <div class="web-header-utils">
-                            <div class="header-search-div">
-                                <!-- <form>
-                                    <div class="header-search-index-div" tabindex="-1">
-                                        <div class="header-search-empty-div"></div>
-                                        <div class="header-search-input-div">
-                                            <input type="search" placeholder="새로운 것을 찾으시나요?"
-                                                aria-label="검색" value="" style="">
-                                        </div>
-                                        <button type="submit" class="header-search-button"
-                                            aria-label="검색">
-                                            <svg viewBox="0 0 40 40" focusable="false" role="presentation"
-                                                class="withIcon_icon__20lDO" aria-hidden="true"
-                                                style="width: 24px; height: 24px;">
-                                                <path fill="none" d="M0 0h40v40H0z"></path>
-                                                <path
-                                                    d="M29.2 27.91a14.38 14.38 0 1 0-1.42 1.4l7.16 7.15.07.08 1.41-1.41zM18.45 6a12.36 12.36 0 0 1 8.35 3.23 12.24 12.24 0 0 1 4 8.59A12.39 12.39 0 1 1 17.88 6z"></path>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </form> -->
+                            <div class="buttonWrap headerButton">
+                                <button class="listButton logoutButton">
+                                </button>
                             </div>
-                            <!-- <c:if
-                                test="${not empty sessionScope.memberId || not empty cookie.memberIdentification }"> -->
-                                <!-- 로그아웃 버튼! -->
-                                <div class="buttonWrap headerButton">
-                                    <button class="listButton logoutButton"
-                                        onclick="location.href = ''">
-                                    </button>
-                                </div>
-                                <!-- // 로그아웃 버튼! -->
-                            <!-- </c:if> -->
                             <div class="header-user-div">
-                                <!-- <div class="header-user-container">
-                                    <button type="button" class="header-user-button" onclick="location.href='${pageContext.request.contextPath}/user/logout.user'">로그아웃</button>
-                                    <button data-event="iam.signup" class="header-user-button" onclick="location.href='${pageContext.request.contextPath}/dhouse/user/mypage.user'">마이페이지</button>
-                                </div> -->
-                                <div class="header-user-container">
-                                    <button type="button" class="header-user-button">로그인</button>
-                                    <button data-event="iam.signup" class="header-user-button">회원가입</button>
-                                </div>
+                            <div class="header-user-container">
+                                <button type="button" class="header-user-button">로그인</button>
+                                <button data-event="iam.signup" class="header-user-button" onclick="location.href='/templates/member/join.html'">회원가입</button>
+                            </div>
                             </div>
                             <div class="web-header-funding-open funding-open">
                                 <div>
@@ -93,7 +66,7 @@
                                         <button class="header-make-button header-make-button2 header-make-button3 funding-open-button" type="button">
                                             <span> 
                                                 <span class="header-make-project-span">
-                                                    이벤트 모집하기
+                                                    이벤트 참여하기
                                                 </span>
                                             </span>
                                         </button>
@@ -139,16 +112,16 @@
                             <div class="search_tag">#모집</div>
                         </div>
                         <div class="search_tag_box">
-                            <div class="search_tag">#이벤트</div>
+                            <div class="search_tag">#행사정보</div>
                         </div>
                         <div class="search_tag_box">
-                            <div class="search_tag">#기획전</div>
+                            <div class="search_tag">#문화공간</div>
                         </div>
                         <div class="search_tag_box">
-                            <div class="search_tag">#전시관</div>
+                            <div class="search_tag">#취미공간</div>
                         </div>
                         <div class="search_tag_box">
-                            <div class="search_tag">#행사관</div>
+                            <div class="search_tag">#청년</div>
                         </div>
                     </div>
                 </div>
@@ -239,7 +212,7 @@
                             <path d="M36.016 19.8018H37.486V14.4565H36.7214C36.5343 14.4565 36.3549 14.5318 36.2226 14.6658C36.0903 14.7997 36.016 14.9814 36.016 15.1709V19.8018Z" fill="#1D2129"></path>
                         </svg>
                         <div class="quick-name">
-                            와디즈
+                            문화공간
                         </div>
                     </a>
                     <a href="" target="_blank" class="quick-menu">
@@ -256,7 +229,7 @@
                             <path d="M13.0667 22.0117V27.4117" stroke="#212529" stroke-miterlimit="10"></path>
                         </svg>
                         <div class="quick-name">
-                            도담도담 스쿨
+                            이벤트정보
                         </div>
                     </a>
                     <a href="" target="_blank" class="quick-menu">
@@ -266,7 +239,13 @@
                             <path d="M14.5086 45L2.25 32.2678L7.9569 26.3392L20.2155 39.0714L14.5086 45Z" fill="var(--main-sub3)" stroke="#212529" stroke-width="2"></path>
                             <path d="M52.2457 22.9464C52.2467 22.9486 52.25 22.9478 52.25 22.9454C52.2446 21.3161 50.919 20 49.2758 20C48.3793 20 47.5948 20.4018 47.0431 21.0179L39.9289 28.0871C39.7224 28.2922 39.3707 28.1572 39.3707 27.8661C39.3707 26.2321 38.0431 24.9107 36.3965 24.9107H28.9859C28.5649 24.9107 28.202 24.6368 27.9706 24.2851C27.4391 23.4771 26.5268 22.9375 25.4913 22.9375H17.5689C16.7586 22.9375 16.0172 23.2679 15.4741 23.8036L11.0798 28.1546C10.6913 28.5393 10.6837 29.1646 11.0628 29.5586L17.5153 36.2648C17.7038 36.4607 17.964 36.5714 18.2359 36.5714H38.5948C39.4913 36.5714 40.2845 36.1697 40.8276 35.5447L51.3534 25.0357C51.8943 24.5022 52.2386 23.7649 52.2413 22.9474C52.2413 22.945 52.2446 22.9443 52.2457 22.9464Z" fill="white" stroke="#212529" stroke-width="2"></path>
                             <path d="M39.3965 27.9106C39.3965 29.5446 38.0603 30.866 36.4224 30.866H27.1552" fill="white"></path>
-                            <path d="M39.3965 27.9106C39.3965 29.5446 38.0603 30.866 36.4224 30.866H27.1552" stroke="#212529" stroke-width="2" stroke-miterlimit="10"></path><path d="M8.5 31.9107C8.5 32.4822 8.05172 32.9554 7.5 32.9554C6.94828 32.9554 6.5 32.4911 6.5 31.9107C6.5 31.3304 6.94828 30.8661 7.5 30.8661C8.05172 30.8661 8.5 31.3304 8.5 31.9107Z" fill="#212529"></path></svg><div class="MuiBox-root css-10kr861" data-gtm-vis-first-on-screen-97083289_157="4660" data-gtm-vis-total-visible-time-97083289_157="2000" data-gtm-vis-recent-on-screen-97083289_157="2507680" data-gtm-vis-has-fired-97083289_157="1">파트너 서비스</div></a>
+                            <path d="M39.3965 27.9106C39.3965 29.5446 38.0603 30.866 36.4224 30.866H27.1552" stroke="#212529" stroke-width="2" stroke-miterlimit="10"></path>
+                            <path d="M8.5 31.9107C8.5 32.4822 8.05172 32.9554 7.5 32.9554C6.94828 32.9554 6.5 32.4911 6.5 31.9107C6.5 31.3304 6.94828 30.8661 7.5 30.8661C8.05172 30.8661 8.5 31.3304 8.5 31.9107Z" fill="#212529"></path>
+                        </svg>
+                        <div class="MuiBox-root css-10kr861" data-gtm-vis-first-on-screen-97083289_157="4660" data-gtm-vis-total-visible-time-97083289_157="2000" data-gtm-vis-recent-on-screen-97083289_157="2507680" data-gtm-vis-has-fired-97083289_157="1">
+                            도담게시판
+                        </div>
+                    </a>
                     <a href="" target="_blank" class="quick-menu">
                         <svg width="47" height="36" viewBox="0 0 49 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 5px;">
                             <rect x="12.1131" y="26.4901" width="5.15639" height="12.3753" rx="2.5782" transform="rotate(-12.7707 12.1131 26.4901)" fill="var(--main-sub3)" stroke="#212529" stroke-width="2"></rect>
@@ -276,14 +255,14 @@
                             <path d="M41.3071 22.1339L47.75 23.9406" stroke="#212529" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"></path><path d="M38.2541 8.19183L43.4326 3.09746" stroke="#212529" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"></path>
                         </svg>
                         <div class="quick-name">
-                            광고센터
+                            판매게시판
                         </div>
                     </a>
                 </div>
             </div>
             <div class="guide-bar">
                 <div class="menu-title">
-                    와디즈 알아보기
+                    도담도담 알아보기
                 </div>
                 <div class="guide-menu-list">
                     <div class="guide-frequent-select guide-menu-li">
@@ -412,7 +391,7 @@
             <div class="board-bar">
                 <div class="board-title-bar">
                     <div class="board-title">
-                        모집
+                        자유게시판
                     </div>
                     <div class="plus-menu">
                         <div class="plus">
@@ -465,7 +444,7 @@
             <div class="board-bar">
                 <div class="board-title-bar">
                     <div class="board-title">
-                        이벤트
+                        이벤트 정보
                     </div>
                     <div class="plus-menu">
                         <div class="plus">
@@ -516,24 +495,24 @@
                 </div>
             </div>
         </div>
-        <div class="events-bar">
-            <div class="event-container">
-                <button type="button" class="arrow-icon-left">
+        <div class="events-bar sell-bar">
+            <div class="event-container sell-container">
+                <button type="button" class="arrow-icon-left sell-prev">
                     <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="40" height="40" rx="20" fill="#F2F4F6"></rect>
                         <path d="M22 25L17 20L22 15" stroke="#495057" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                     </svg>
                 </button>
-                <button type="button" class="arrow-icon-right">
+                <button type="button" class="arrow-icon-right sell-next">
                     <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="40" height="40" rx="20" transform="matrix(-1 0 0 1 40 0)" fill="#F2F4F6"></rect>
                         <path d="M18 25L23 20L18 15" stroke="#495057" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                     </svg>
                 </button>
-                <div class="event-banner">
-                    <div class="event-title">
-                        <div class="event-title-container">
-                            이벤트·혜택
+                <div class="event-banner sell-banner">
+                    <div class="event-title sell-title">
+                        <div class="event-title-container sell-title-conatainer">
+                            판매게시판
                         </div>
                         <div class="plus-menu">
                             <div class="plus">
@@ -544,11 +523,11 @@
                             </svg>
                         </div>
                     </div>
-                    <div class="event-swiper-container">
+                    <div class="event-swiper-container sell-swiper-container">
                         <div class="swiper-wrapper">
                             <!-- 이벤트 박스 1개 시작 -->
-                            <div class="event-swiper-box">
-                                <div class="event-swiper-container">
+                            <div class="event-swiper-box sell-swiper-box">
+                                <div class="event-swiper-container sell-swiper-image-container">
                                     <div class="event-swiper-image"></div>
                                     <div class="event-status">
                                         <div></div>
@@ -667,6 +646,28 @@
                 </div>
             </div>
         </div>
+        <div class="static-banner-container">
+            <div class="static-banner">
+                <div class="static-banner-context">
+                    <div class="static-banner-date">
+                        격주 목요일 오전 8시!
+                    </div>
+                    <div class="satic-banner-title">
+                        메이커님의 시작과 성장을 위한
+                        <br>
+                        펀딩 정보를 보내드릴게요
+                    </div>
+                </div>
+                <a href="" class="apply-form">
+                    <svg width="22" height="16" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.5 9.41545L0.5 6.10352e-05H22.5L11.5 9.41545ZM0.5 1.60012V16.0001H22.5V1.60012L11.5 11.0155L0.5 1.60012Z" fill="white"></path>
+                    </svg>
+                    <div class="a-context">
+                        뉴스레터 신청하기
+                    </div>
+                </a>
+            </div>
+        </div>
         <div class="recruits-bar">
             <div class="recruit-container">
                 <button type="button" class="arrow-icon-left">
@@ -684,7 +685,7 @@
                 <div class="recruit-title">
                     <div class="recruit-title-container">
                         <div class="recruit-title-context">
-                            메이커 성공사례
+                            도담 모집
                         </div>
                         <div class="plus-menu">
                             <div class="plus">
@@ -796,7 +797,7 @@
                 <div class="event-banner">
                     <div class="event-title">
                         <div class="event-title-container">
-                            와디즈 아카데미
+                            문화공간
                         </div>
                         <div class="plus-menu">
                             <div class="plus">
@@ -869,39 +870,221 @@
                                 </div>
                             </div>
                             <!-- 이벤트 박스 1개 끝 -->
+                            <!-- 이벤트 박스 1개 시작 -->
+                            <div class="event-swiper-box">
+                                <div class="event-swiper-container">
+                                    <div class="event-swiper-image" style="background-image: url('	https://static.makercenter.wadiz.kr/board/image/97cad177-ca22-4da8-9ad6-be00ac99c599.jpg');"></div>
+                                    <div class="event-box-title-container">
+                                        <div class="event-box-title">
+                                            카테고리성공비법서 : 출판·클래스 상편
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 이벤트 박스 1개 끝 -->
+                            <!-- 이벤트 박스 1개 시작 -->
+                            <div class="event-swiper-box">
+                                <div class="event-swiper-container">
+                                    <div class="event-swiper-image" style="background-image: url('	https://static.makercenter.wadiz.kr/board/image/97cad177-ca22-4da8-9ad6-be00ac99c599.jpg');"></div>
+                                    <div class="event-box-title-container">
+                                        <div class="event-box-title">
+                                            카테고리성공비법서 : 출판·클래스 상편
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 이벤트 박스 1개 끝 -->
+                            <!-- 이벤트 박스 1개 시작 -->
+                            <div class="event-swiper-box">
+                                <div class="event-swiper-container">
+                                    <div class="event-swiper-image" style="background-image: url('	https://static.makercenter.wadiz.kr/board/image/97cad177-ca22-4da8-9ad6-be00ac99c599.jpg');"></div>
+                                    <div class="event-box-title-container">
+                                        <div class="event-box-title">
+                                            카테고리성공비법서 : 출판·클래스 상편
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 이벤트 박스 1개 끝 -->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="static-banner-container">
-            <div class="static-banner">
-                <div class="static-banner-context">
-                    <div class="static-banner-date">
-                        격주 목요일 오전 8시!
+        
+    </main>
+    <div id="footer">
+        <div class="channel_chat_container">
+            <button type="button" onclick="openChant()">
+
+            </button>
+        </div>
+        <footer id="footer" class="web-footer inner-utils">
+            <div class="footer-container">
+                <!-- 정책약관, 개인정보처리방침 바 -->
+                <div class="footer-menu-bar">
+                    <div class="footer-menu-bar-left-div">
+                        <div class="footer-onemenu footer-link-button">
+                            정책 · 약관
+                            <i class="icon chevron-right footer-link-button-i" aria-hidden="true"></i>
+                        </div>
+                        <div class="footer-onemenu footer-menu-bold footer-link-button">
+                            개인정보처리방침
+                            <i class="icon chevron-right footer-link-button-i" aria-hidden="true"></i>
+                        </div>
                     </div>
-                    <div class="satic-banner-title">
-                        메이커님의 시작과 성장을 위한
-                        <br>
-                        펀딩 정보를 보내드릴게요
+                    <div class="footer-menu-bar-right-div">
+                        <div class="footer-onemenu footer-link-button">
+                            제휴문의
+                            <i class="icon chevron-right footer-link-button-i" aria-hidden="true"></i>
+                        </div>
+                        <a href="https://www.wadiz.kr/web/wboard/newsBoardList" class="footer-onemenu" target="_blank" rel="noopener noreferrer">
+                            공지사항
+                            <svg viewBox="0 0 40 40" focusable="false" role="presentation" class="footer-arrow-icon footer-link-arrow-icon" aria-hidden="true">
+                                <path d="M31.42 35.84h-27V8.4h14.76v-2H2.42v31.44h31V22.55h-2v13.29z"></path>
+                                <path d="M37.32 15.41l-.01-13-12.99.01v2l9.72-.01-18.19 19.42 1.46 1.37 18-19.22.01 9.43h2z"></path>
+                            </svg>
+                        </a>
+                        <a href="https://www.job.wadiz.kr/" class="footer-onemenu" target="_blank" rel="noopener noreferrer">
+                            인재채용
+                            <svg viewBox="0 0 40 40" focusable="false" role="presentation" class="footer-arrow-icon footer-link-arrow-icon" aria-hidden="true">
+                                <path d="M31.42 35.84h-27V8.4h14.76v-2H2.42v31.44h31V22.55h-2v13.29z"></path>
+                                <path d="M37.32 15.41l-.01-13-12.99.01v2l9.72-.01-18.19 19.42 1.46 1.37 18-19.22.01 9.43h2z"></path>
+                            </svg>
+                        </a>
+                        <div class="footer-onemenu footer-link-button">
+                            SNS
+                            <i class="icon chevron-right footer-link-button-i" aria-hidden="true">
+                            </i>
+                        </div>
+                        <div class="footer-onemenu footer-link-button">
+                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjEiIGhlaWdodD0iMTMiIHZpZXdCb3g9IjAgMCA2MSAxMyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxnIGZpbGw9IiM0OTUwNTciIGZpbGwtcnVsZT0ibm9uemVybyI+CiAgICAgICAgPHBhdGggZD0iTTEuOTA0IDguNjJoNC41MTlWMTBILjE3NVYuMDQ3aDEuNzN6TTEyLjAwOCAxMGMtLjA3My0uMTQxLS4xMzctLjM3MS0uMTkyLS42OWEyLjU4NiAyLjU4NiAwIDAgMS0xLjk0MS44MjdjLS43NDMgMC0xLjM0OS0uMjEyLTEuODE4LS42MzZhMi4wMzQgMi4wMzQgMCAwIDEtLjcwNC0xLjU3MmMwLS43ODkuMjkyLTEuMzk0Ljg3OC0xLjgxNS41ODYtLjQyMiAxLjQyMy0uNjMzIDIuNTEyLS42MzNoMS4wMTl2LS40ODVjMC0uMzgzLS4xMDctLjY5LS4zMjItLjkyLS4yMTQtLjIzLS41NC0uMzQ1LS45NzctLjM0NS0uMzc4IDAtLjY4OC4wOTUtLjkzLjI4NGEuODc4Ljg3OCAwIDAgMC0uMzYyLjcyMUg3LjUxYzAtLjQwNS4xMzQtLjc4NS40MDMtMS4xMzguMjY5LS4zNTMuNjM1LS42MyAxLjA5Ny0uODMuNDYzLS4yLjk3OS0uMzAxIDEuNTQ5LS4zMDEuODY1IDAgMS41NTYuMjE3IDIuMDcuNjUzLjUxNi40MzUuNzggMS4wNDcuNzk0IDEuODM1djMuMzM2YzAgLjY2NS4wOTMgMS4xOTYuMjggMS41OTNWMTBoLTEuNjk1em0tMS44MjUtMS4xOTZjLjMyOCAwIC42MzYtLjA4LjkyNi0uMjQuMjktLjE2LjUwNy0uMzczLjY1My0uNjQyVjYuNTI3aC0uODk2Yy0uNjE1IDAtMS4wNzguMTA3LTEuMzg3LjMyMi0uMzEuMjE0LS40NjUuNTE3LS40NjUuOTA5IDAgLjMxOS4xMDYuNTczLjMxOC43NjIuMjExLjE5LjQ5NS4yODQuODUuMjg0ek0xNi43MDQgMi42MDRsLjA0OC44NTRjLjU0Ny0uNjYgMS4yNjUtLjk5MSAyLjE1My0uOTkxIDEuNTQgMCAyLjMyNC44ODIgMi4zNTIgMi42NDVWMTBoLTEuNjYxVjUuMjA4YzAtLjQ3LS4xMDItLjgxNy0uMzA0LTEuMDQyLS4yMDMtLjIyNi0uNTM1LS4zMzktLjk5NS0uMzM5LS42NyAwLTEuMTcuMzAzLTEuNDk3LjkxVjEwaC0xLjY2MVYyLjYwNGgxLjU2NXpNMjIuNjU4IDYuMjQ3YzAtMS4xNDguMjctMi4wNjYuODEtMi43NTEuNTQtLjY4NiAxLjI1Ny0xLjAzIDIuMTUtMS4wMy44NDMgMCAxLjUwNi4yOTUgMS45OS44ODNsLjA3NS0uNzQ1aDEuNDk3djcuMTdjMCAuOTcxLS4zMDIgMS43MzctLjkwNiAyLjI5Ny0uNjA0LjU2LTEuNDE5Ljg0MS0yLjQ0NC44NDFhMy45MzkgMy45MzkgMCAwIDEtMS41OS0uMzM4Yy0uNTE3LS4yMjYtLjkxLS41Mi0xLjE3OC0uODg2bC43ODYtLjk5OGMuNTEuNjA3IDEuMTM5LjkxIDEuODg2LjkxLjU1MiAwIC45ODctLjE1IDEuMzA2LS40NDguMzE5LS4yOTkuNDc5LS43MzcuNDc5LTEuMzE2di0uNWMtLjQ3OS41MzQtMS4xMTcuOC0xLjkxNS44LS44NjUgMC0xLjU3My0uMzQzLTIuMTIyLTEuMDMyLS41NS0uNjg4LS44MjQtMS42NC0uODI0LTIuODU3em0xLjY1NS4xNDRjMCAuNzQyLjE1MSAxLjMyNy40NTQgMS43NTMuMzAzLjQyNi43MjQuNjQgMS4yNjEuNjQuNjcgMCAxLjE2Ny0uMjg4IDEuNDktLjg2MlY0LjY2OGMtLjMxNC0uNTYtLjgwNi0uODQtMS40NzYtLjg0LS41NDcgMC0uOTcyLjIxNi0xLjI3NS42NDktLjMwMy40MzMtLjQ1NCAxLjA3LS40NTQgMS45MTR6TTM1LjM2NiA5LjI3NWMtLjQ4Ny41NzUtMS4xOC44NjItMi4wNzguODYyLS44MDIgMC0xLjQxLS4yMzUtMS44MjItLjcwNC0uNDEyLS40Ny0uNjE4LTEuMTQ5LS42MTgtMi4wMzdWMi42MDRoMS42NnY0Ljc3MWMwIC45MzkuMzkgMS40MDggMS4xNyAxLjQwOC44MDYgMCAxLjM1MS0uMjkgMS42MzQtLjg2OFYyLjYwNGgxLjY2VjEwaC0xLjU2NWwtLjA0LS43MjV6TTQzLjA4NCAxMGMtLjA3My0uMTQxLS4xMzctLjM3MS0uMTkxLS42OWEyLjU4NiAyLjU4NiAwIDAgMS0xLjk0Mi44MjdjLS43NDMgMC0xLjM0OS0uMjEyLTEuODE4LS42MzZhMi4wMzQgMi4wMzQgMCAwIDEtLjcwNC0xLjU3MmMwLS43ODkuMjkzLTEuMzk0Ljg3OC0xLjgxNS41ODYtLjQyMiAxLjQyMy0uNjMzIDIuNTEyLS42MzNoMS4wMTl2LS40ODVjMC0uMzgzLS4xMDctLjY5LS4zMjEtLjkyLS4yMTUtLjIzLS41NC0uMzQ1LS45NzgtLjM0NS0uMzc4IDAtLjY4OC4wOTUtLjkzLjI4NGEuODc4Ljg3OCAwIDAgMC0uMzYyLjcyMWgtMS42NjFjMC0uNDA1LjEzNC0uNzg1LjQwMy0xLjEzOC4yNy0uMzUzLjYzNS0uNjMgMS4wOTctLjgzLjQ2My0uMi45OC0uMzAxIDEuNTQ5LS4zMDEuODY2IDAgMS41NTYuMjE3IDIuMDcxLjY1My41MTUuNDM1Ljc4IDEuMDQ3Ljc5MyAxLjgzNXYzLjMzNmMwIC42NjUuMDkzIDEuMTk2LjI4IDEuNTkzVjEwaC0xLjY5NXptLTEuODI1LTEuMTk2Yy4zMjggMCAuNjM3LS4wOC45MjYtLjI0LjI5LS4xNi41MDctLjM3My42NTMtLjY0MlY2LjUyN2gtLjg5NmMtLjYxNSAwLTEuMDc3LjEwNy0xLjM4Ny4zMjItLjMxLjIxNC0uNDY1LjUxNy0uNDY1LjkwOSAwIC4zMTkuMTA2LjU3My4zMTguNzYyLjIxMi4xOS40OTUuMjg0Ljg1LjI4NHpNNDUuOTQ4IDYuMjQ3YzAtMS4xNDguMjctMi4wNjYuODEtMi43NTEuNTQtLjY4NiAxLjI1Ny0xLjAzIDIuMTUtMS4wMy44NDMgMCAxLjUwNi4yOTUgMS45OS44ODNsLjA3NS0uNzQ1aDEuNDk3djcuMTdjMCAuOTcxLS4zMDIgMS43MzctLjkwNiAyLjI5Ny0uNjA0LjU2LTEuNDE4Ljg0MS0yLjQ0NC44NDFhMy45MzkgMy45MzkgMCAwIDEtMS41OS0uMzM4Yy0uNTE2LS4yMjYtLjkxLS41Mi0xLjE3OC0uODg2bC43ODYtLjk5OGMuNTEuNjA3IDEuMTM5LjkxIDEuODg2LjkxLjU1MiAwIC45ODctLjE1IDEuMzA2LS40NDguMzItLjI5OS40NzktLjczNy40NzktMS4zMTZ2LS41Yy0uNDc5LjUzNC0xLjExNy44LTEuOTE0LjgtLjg2NiAwLTEuNTc0LS4zNDMtMi4xMjMtMS4wMzItLjU1LS42ODgtLjgyNC0xLjY0LS44MjQtMi44NTd6bTEuNjU1LjE0NGMwIC43NDIuMTUxIDEuMzI3LjQ1NCAxLjc1My4zMDMuNDI2LjcyNC42NCAxLjI2MS42NC42NyAwIDEuMTY3LS4yODggMS40OS0uODYyVjQuNjY4Yy0uMzE0LS41Ni0uODA2LS44NC0xLjQ3Ni0uODQtLjU0NyAwLS45NzIuMjE2LTEuMjc1LjY0OS0uMzAzLjQzMy0uNDU0IDEuMDctLjQ1NCAxLjkxNHpNNTcuNDMzIDEwLjEzN2MtMS4wNTMgMC0xLjkwNi0uMzMyLTIuNTYtLjk5NS0uNjU0LS42NjMtLjk4MS0xLjU0Ni0uOTgxLTIuNjQ5di0uMjA1YzAtLjczOC4xNDItMS4zOTguNDI3LTEuOTc5YTMuMjUyIDMuMjUyIDAgMCAxIDEuMi0xLjM1NyAzLjE3MiAzLjE3MiAwIDAgMSAxLjcyMi0uNDg1YzEuMDA3IDAgMS43ODYuMzIxIDIuMzM1Ljk2NC41NDkuNjQyLjgyMyAxLjU1MS44MjMgMi43Mjd2LjY3aC00LjgzM2MuMDUuNjEuMjU0IDEuMDk0LjYxMiAxLjQ1LjM1OC4zNTUuODA4LjUzMyAxLjM1LjUzMy43NjEgMCAxLjM4MS0uMzA4IDEuODYtLjkyM2wuODk1Ljg1NGEyLjk5IDIuOTkgMCAwIDEtMS4xODYgMS4wMjkgMy43MTMgMy43MTMgMCAwIDEtMS42NjQuMzY2ek01Ny4yMzQgMy44Yy0uNDU1IDAtLjgyMy4xNi0xLjEwNC40NzgtLjI4LjMyLS40NTkuNzY0LS41MzYgMS4zMzNoMy4xNjV2LS4xMjNjLS4wMzctLjU1Ni0uMTg1LS45NzYtLjQ0NS0xLjI2LS4yNi0uMjg2LS42Mi0uNDI4LTEuMDgtLjQyOHoiLz4KICAgIDwvZz4KPC9zdmc+Cg==" alt="번역 아이콘">
+                            <i class="icon chevron-right footer-link-button-i" aria-hidden="true">
+                            </i>
+                        </div>
                     </div>
                 </div>
-                <a href="" class="apply-form">
-                    <svg width="22" height="16" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.5 9.41545L0.5 6.10352e-05H22.5L11.5 9.41545ZM0.5 1.60012V16.0001H22.5V1.60012L11.5 11.0155L0.5 1.60012Z" fill="white"></path>
-                    </svg>
-                    <div class="a-context">
-                        뉴스레터 신청하기
-                    </div>
-                </a>
             </div>
-        </div>
-    </main>
-    <footer>
-
-    </footer>
+            <div class="footer-container-container">
+                <div class="footer-container-inner">
+                    <section class="footer-container-left-section">
+                            <strong class="footer-container-title">
+                                도담도담 고객센터
+                            </strong>
+                            <div class="footer-container-button-div">
+                                <button type="button" class="footer-container-direct-button">
+                                    인사말
+                                    <i class="icon chevron-right" aria-hidden="true"></i>
+                                </button>
+                                <a href="https://helpcenter.wadiz.kr/hc/ko/requests/new" class="footer-container-direct-button" target="_blank" rel="noreferrer">
+                                    공지사항
+                                    <i class="icon chevron-right" aria-hidden="true"></i>
+                                </a>
+                                <a href="https://helpcenter.wadiz.kr/hc/ko" class="footer-container-direct-button footer-container-center-button" target="_blank" rel="noreferrer">
+                                    자주 묻는 질문 바로가기
+                                    <i class="icon chevron-right" aria-hidden="true">
+                                    </i>
+                                </a>
+                            </div>
+                            <dl class="footer-container-enable-time">
+                                <dt>상담 가능 시간</dt>
+                                <dd>평일 오전 9시 ~ 오후 6시 (주말, 공휴일 제외)</dd>
+                            </dl>
+                        </section>
+                        <section class="footer-container-right-section">
+                            <address>
+                                <ul class="footer-info-ul">
+                                    <li>도담도담</li>
+                                    <li>대표이사 박다예</li>
+                                    <li>사업자등록번호 123-45-67899</li>
+                                    <li>서울특별시 강남구 테헤란로 146</li>
+                                </ul>
+                                <div class="footer-contactinfo-wrap">
+                                    <ul class="footer-info-ul footer-contact-info">
+                                        <li>
+                                            <a href="https://helpcenter.wadiz.kr/hc/ko/requests/new" target="_blank" rel="noreferrer">이메일 상담 dodamdodam@gmail.com</a>
+                                        </li>
+                                        <li>
+                                            유선 상담
+                                            <a href="tel:1661-9056">1234-1234</a>
+                                        </li>
+                                    </ul>
+                                    <span class='footer-info-copyright'>© dodamdodam Co., Ltd.</span>
+                                </div>
+                                </address>
+                                <div class="footer-container-info-notice">
+                                    <p>도담도담은 사회안정망 기능을 수행하며 적극적인 기부형 참여를 통해 더불어 사는 세상을 함께 만들어갑니다.</p>
+                                </div>
+                                <div class="footer-container-appstore-section">
+                                    <a href="https://play.google.com/store/apps/details?id=com.markmount.wadiz&pli=1" target="_blank" class="icon-google-play" rel="noopener noreferrer">
+                                        Android앱
+                                    </a>
+                                    <a href="https://apps.apple.com/kr/app/wadijeu/id1107828621" target="_blank"  class="icon-apple" rel="noopener noreferrer">
+                                        iOS앱
+                                    </a>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                <div class="externals">
+                <div class="externals-wrap">
+                    <ul>
+                        <li>
+                            <span title="카카오톡 옐로아이디">
+                                <i class="icon-kakao" aria-hidden="true"></i>
+                            </span>
+                            <ul>
+                                <li>
+                                    <a href="http://pf.kakao.com/_MGxgmxl" target="_blank" rel="noopener noreferrer">투자</a>
+                                </li>
+                                <li>
+                                    <a href="http://pf.kakao.com/_pEeEl" target="_blank" rel="noopener noreferrer">펀딩</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span title="페이스북">
+                                <i class="icon-facebook" aria-hidden="true"></i>
+                            </span>
+                            <ul>
+                                <li>
+                                    <a href="https://www.wadiz.kr/link/fb_invest" target="_blank" rel="noopener noreferrer">투자</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.wadiz.kr/link/fb_reward" target="_blank" rel="noopener noreferrer">펀딩</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <a href="https://brunch.co.kr/@wadiz" target="_blank" title="브런치" rel="noopener noreferrer">
+                                <i class="icon-brunch" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/wadiz_official/" target="_blank" title="인스타그램" rel="noopener noreferrer">
+                                <i class="icon-instagram" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://blog.naver.com/wadiz_crowdfunding" target="_blank" title="네이버 블로그" rel="noopener noreferrer">
+                                <i class="icon-naver-blog" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/channel/UCF1_fHSt6Efemgy5wToafNw/featured" target="_blank" title="유튜브" rel="noopener noreferrer">
+                                <i class="icon-youtube-play" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/static/js/main/main.js"></script>
 <script src="/static/js/main/banner.js"></script>
+<script src="/static/js/components/chat_modal.js"></script>
 </html>
