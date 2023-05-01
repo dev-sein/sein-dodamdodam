@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>테스트 문화 공간</title>
+    <link rel="stylesheet" href="../../static/css/culture-space/culture-space.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">  
+    <link rel="shortcut icon" href="/static/images/components/dodam-favicon.png">
+</head>
+<style>
+
+     .img {
+      position: absolute;
+      -webkit-transition: opacity 1s ease-in-out;
+      -moz-transition: opacity 1s ease-in-out;
+      -o-transition: opacity 1s ease-in-out;
+      transition: opacity 1s ease-in-out;
+      opacity: 0;
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+      filter: alpha(opacity=0);
+    }
+
+    .img:first-child {
+      /* display: block; */
+      opacity: 1;
+    }
+
+    #wrap {
+      padding: 20px;
+    }
+
+    div {
+      margin: 5px 0px
+    }
+
+      
+  .arrow-btn {
+    position: absolute;
+    top: 42%;
+    transform: translateY(-50%);
+    z-index: 1;
+    cursor: pointer;
+    font-size: 30px;
+    color: #fff;
+    /* padding: 10px; */
+    border-radius: 50%;
+    border: 0;
+    width: 38px;
+    height: 38px;
+    margin: 0 auto;
+  }
+  
+
+  .next-btn {
+    right: 25px;
+  }
+
+  .space-info:hover{
+    z-index: 9999;
+}
+
+.space-info{
+    position: absolute;
+    top: 30%;
+    margin-left: 20px;
+    text-align: left;
+    font-size:12px;
+    display: none;
+    -webkit-backface-visibility: hidden;
+    z-index: 9999;
+    opacity: 1;
+}
+
+</style>
+<body>
+
+<div id=wrap>
+  <div>
+    <!-- 버튼을 실행시 이전, 다음으로 움직이다 -->
+    <!-- <button class="prev"> 이전</button>
+    <img class="arrow-btn next-btn" src="../../static/images/culture-space/map-icon1.png"> -->
+  </div>
+  <!-- 움직일 이미지들 -->
+  <div class=imgBox style="width:438;height:288px;">
+    <!-- free url 사진 -->
+    <div class="img photo-instance on">
+    <img src="https://images.unsplash.com/photo-1556034910-07855ebf6606?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="">
+      </div>
+      <div class="space-info">
+        <div class="space-name"><strong>세종대왕기념관</strong></div>
+        <div class="space-address">서울시 동대문구 청량리동 1-157</div>
+        <div class="space-tel">02-969-8851</div>
+        <div class="space-introduction">고세종대왕의 성덕과 위업을 추모하고 보존하기 위해 1970년 세종대왕기념사업회에서 준공하였다.</div>
+        <button class="prev">이전</button>
+        <img class="arrow-btn next-btn" src="../../static/images/culture-space/map-icon1.png">
+      </div><!-- space-info -->
+      <div class="img">
+    <div id="map2" class="map-loca"></div></div>
+  </div>
+</div> <!-- wrap -->
+
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3366aee711925269dca27f42bfb64ad1"></script>
+<script>
+$(function() {
+$('.imgBox').mouseover(function(e){
+      $(this).find(".photo-instance").css("opacity", "0.1"); //사진 투명도 조절
+      $(this).find('.next-btn').show(); //우측 지도 버튼
+      $(this).find('.prev').show(); //좌측 화살표
+      $(this).find('.space-info').css({left: '-30%'}); //공간 정보 노출 애니메이션
+      $(this).find('.space-info').animate({left:'0px'}, {duration: 700});
+      $(this).find('.space-info').css("opacity", "1");
+      $(this).find('.space-info').show();
+  });
+
+  $('.imgBox').mouseout(function(e){
+      $(this).find('.photo-instance').css("opacity", "1");
+      $(this).find('.next-btn').hide();
+      $(this).find('.prev').hide();
+      $(this).find('.space-info').css({left: '-20%'});
+      $(this).find('.space-info').hide();
+  });
+
+$(".prev").on("click", function (e) {
+      e.preventDefault();
+
+      // 이미지 현재의 위치
+      var imgOn = $(".imgBox").find(".on").index(); //지도 인덱스 
+      // 이미지 총 개수 
+      var imgLen = $(".imgBox .img").length;
+      console.log(imgOn) //지도 인덱스
+      
+      // imgBox안의 img 중 imgOn 번째의 on 클래스 삭제 
+      $(".imgBox .img").eq(imgOn).removeClass("on");
+      console.log("지도 div 클래스에 on 삭제 ")
+      // imgBox안의 img 중 imgOn 번째 숨기기 
+      $(".imgBox .img").eq(imgOn).css("opacity", 0);
+      console.log("opacity 조정")
+      //  이전의 위치로 돌아가야함으로
+      imgOn = imgOn -1;
+      console.log(imgOn);
+
+      if( imgOn < 0 ){
+        // 돌아가 위치가 -1일 경우 
+        // 이미지의 마지막으로 돌아간다
+        $(".imgBox .img").eq(imgLen -1).css("opacity", 1);
+        $(".imgBox .img").eq(imgLen -1).addClass("on");
+      }else{
+        // 돌아갈 위치가 -1이 아닌 경우
+        $(".imgBox .img").eq(imgOn).css("opacity", 1);
+        $(".imgBox .img").eq(imgOn).addClass("on");
+      }
+
+    });
+
+    $(".next-btn").on("click", function (e) {
+      e.preventDefault();
+      // 위에 동일 
+      var imgOn = $(".imgBox").find(".on").index(); //1번 인덱스
+      var imgLen = $(".imgBox .img").length; //2개 
+
+      // 위에 동일
+      $(".imgBox .img").eq(imgOn).removeClass("on"); //1번 인덱스 삭제
+      $(".imgBox .img").eq(imgOn).css("opacity", 0); //1번 투명도 
+      
+      // 다음의 위치로 알아야 되기 때문에 
+      imgOn = imgOn + 1; //2번 
+      
+      if( imgOn === imgLen ){ //2 === 2 
+        // 다음의 위치가 총 개수보다 클 경우
+        // 처음의 위치로 돌아간다
+        $(".imgBox .img").eq(0).css("opacity", 1);
+        $(".imgBox .img").eq(0).addClass("on");
+      }else{
+        // 다음 위치가 있는 경우 
+        $(".imgBox .img").eq(imgOn).css("opacity", 1);
+        $(".imgBox .img").eq(imgOn).addClass("on");
+      }
+    });
+  });
+
+// /* 세종대왕박물관 */
+var mapContainer2 = document.getElementById('map2'), // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(37.5909928893989, 127.042703170101), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };
+
+// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+var map2 = new kakao.maps.Map(mapContainer2, mapOption); 
+var markerPosition2  = new kakao.maps.LatLng(37.5909928893989, 127.042703170101); 
+var marker2 = new kakao.maps.Marker({
+    position: markerPosition2
+});
+marker2.setMap(map2);
+
+var mapContainer3 = document.getElementById('map3'), // 지도를 표시할 div 
+    mapOption3 = { 
+        center: new kakao.maps.LatLng(37.5507568507373, 126.982753574242), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };
+
+    var mapContainer3 = document.getElementById('map3'), // 지도를 표시할 div 
+    mapOption3 = { 
+        center: new kakao.maps.LatLng(37.5507568507373, 126.982753574242), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };
+
+var map3 = new kakao.maps.Map(mapContainer3, mapOption3); // 지도를 생성합니다
+
+// 마커가 표시될 위치입니다 
+var markerPosition3  = new kakao.maps.LatLng(37.5507568507373,126.982753574242); 
+
+// 마커를 생성합니다
+var marker3 = new kakao.maps.Marker({
+    position: markerPosition3
+});
+
+// 마커가 지도 위에 표시되도록 설정합니다
+marker3.setMap(map3);
+
+var mapContainer4 = document.getElementById('map4'), // 지도를 표시할 div 
+    mapOption4 = { 
+        center: new kakao.maps.LatLng(37.5165626106649,127.1139342193), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };
+
+var map4 = new kakao.maps.Map(mapContainer4, mapOption4); // 지도를 생성합니다
+
+// 마커가 표시될 위치입니다 
+var markerPosition4  = new kakao.maps.LatLng(37.5165626106649,127.1139342193); 
+
+// 마커를 생성합니다
+var marker4 = new kakao.maps.Marker({
+    position: markerPosition4
+});
+</script>
+</html>

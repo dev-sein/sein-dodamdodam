@@ -196,7 +196,7 @@ h3 {
     border-radius: 5px;
   }
   
-  .slider__arrow {
+  .arrow-btn {
     position: absolute;
     top: 42%;
     transform: translateY(-50%);
@@ -212,12 +212,12 @@ h3 {
     margin: 0 auto;
   }
   
-  .slider__arrow--left {
+  .prev-btn {
     left: 5px;
     display:none;
   }
   
-  .slider__arrow--right {
+  .next-btn {
     right: 25px;
     background-image: url(../../static/images/culture-space/map-icon1.png);
   }

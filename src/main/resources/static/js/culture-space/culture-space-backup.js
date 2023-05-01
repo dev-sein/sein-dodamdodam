@@ -16,35 +16,121 @@ $(function() {
       $(this).find('.space-info').css({left: '-20%'});
       $(this).find('.space-info').hide();
   });
+});
+
+$(".prev").on("click", function (e) {
+  e.preventDefault();
+
+  // 이미지 현재의 위치
+  var imgOn = $(".imgBox").find(".on").index();
+  // 이미지 총 개수 
+  var imgLen = $(".imgBox .img").length;
+  console.log(imgOn)
+  
+  // imgBox안의 img 중 imgOn 번째의 on 클래스 삭제 
+  $(".imgBox .img").eq(imgOn).removeClass("on");
+  // imgBox안의 img 중 imgOn 번째 숨기기 
+  $(".imgBox .img").eq(imgOn).css("opacity", 0);
+  
+  //  이전의 위치로 돌아가야함으로
+  imgOn = imgOn -1;
+
+  if( imgOn < 0 ){
+    // 돌아가 위치가 -1일 경우 
+    // 이미지의 마지막으로 돌아간다
+    $(".imgBox .img").eq(imgLen -1).css("opacity", 1);
+    $(".imgBox .img").eq(imgLen -1).addClass("on");
+  }else{
+    // 돌아갈 위치가 -1이 아닌 경우
+    $(".imgBox .img").eq(imgOn).css("opacity", 1);
+    $(".imgBox .img").eq(imgOn).addClass("on");
+  }
+
+});
+
+$(".slider__arrow--right").on("click", function (e) {
+  e.preventDefault();
+  // 위에 동일 
+  var imgOn = $(".imgBox").find(".on").index();
+  var imgLen = $(".imgBox .img").length;
+
+  // 위에 동일
+  $(".imgBox .img").eq(imgOn).removeClass("on");
+  $(".imgBox .img").eq(imgOn).css("opacity", 0);
+  
+  // 다음의 위치로 알아야 되기 때문에 
+  imgOn = imgOn + 1;
+  
+  if( imgOn === imgLen ){
+    // 다음의 위치가 총 개수보다 클 경우
+    // 처음의 위치로 돌아간다
+    $(".imgBox .img").eq(0).css("opacity", 1);
+    $(".imgBox .img").eq(0).addClass("on");
+  }else{
+    // 다음 위치가 있는 경우 
+    $(".imgBox .img").eq(imgOn).css("opacity", 1);
+    $(".imgBox .img").eq(imgOn).addClass("on");
+  }
+}); 
+
+// $(document).ready(function() {
+//   var slider = $('.slider__container');
+//   var sliderItemWidth = $('.slider__item').outerWidth(true);
+//   var sliderWrapperWidth = sliderItemWidth * $('.slider__item').length;
+//   slider.css('width', sliderWrapperWidth);
+
+//   $('.slider__arrow--left').on('click', function() {
+//     var leftPos = slider.position().left + sliderItemWidth;
+//     if(leftPos > 0){
+//       leftPos = -sliderWrapperWidth + sliderItemWidth;
+//     }
+//     slider.animate({
+//       'left': leftPos
+//     });
+//   });
+
+//   // $('.slider__arrow--right').on('click',  function() {
+//   $(document).on('click','slider__arrow--right', function() {
+//     console.log("지도 버튼 들어옴");
+//     var leftPos = slider.position().left - sliderItemWidth;
+//     if(leftPos < -sliderWrapperWidth + sliderItemWidth){
+//       leftPos = 0;
+//       console.log("지도 if문 버튼 들어옴");
+//     }
+//     slider.animate({
+//       'left': leftPos
+//     });
+//   });
+// });
 
   // 좌우 화살표 클릭시 슬라이드 이동
-  $('.slider__arrow--left').click(function(){
-      var $sliderContainer = $(this).siblings('.slider__container');
-      var $sliderItem = $sliderContainer.find('.slider__item');
-      var currentMarginLeft = parseInt($sliderContainer.css('margin-left'));
-      var newMarginLeft = currentMarginLeft + $sliderItem.width();
-      if (newMarginLeft <= 0) {
-          $sliderContainer.css('margin-left', newMarginLeft + 'px');
-      } else {
-          $sliderContainer.css('margin-left', '0px');
-      }
-  });
+//   $('.slider__arrow--left').click(function(){
+//       var $sliderContainer = $(this).siblings('.slider__container');
+//       var $sliderItem = $sliderContainer.find('.slider__item');
+//       var currentMarginLeft = parseInt($sliderContainer.css('margin-left'));
+//       var newMarginLeft = currentMarginLeft + $sliderItem.width();
+//       if (newMarginLeft <= 0) {
+//           $sliderContainer.css('margin-left', newMarginLeft + 'px');
+//       } else {
+//           $sliderContainer.css('margin-left', '0px');
+//       }
+//   });
   
-  // $('.slider__arrow--right').on("click",function(){
-  $(document).on("click",'slider__arrow--right',function(){
-    console.log("오른쪽");
-      var $sliderContainer = $(this).siblings('.slider__container');
-      var $sliderItem = $sliderContainer.find('.slider__item');
-      var currentMarginLeft = parseInt($sliderContainer.css('margin-left'));
-      var newMarginLeft = currentMarginLeft - $sliderItem.width();
-      var maxMarginLeft = -($sliderItem.width() * ($sliderItem.length - 1));
-      if (newMarginLeft >= maxMarginLeft) {
-          $sliderContainer.css('margin-left', newMarginLeft + 'px');
-      } else {
-          $sliderContainer.css('margin-left', maxMarginLeft + 'px');
-      }
-  });
-});    
+//   // $('.slider__arrow--right').on("click",function(){
+//   $(document).on("click",'slider__arrow--right',function(){
+//     console.log("오른쪽");
+//       var $sliderContainer = $(this).siblings('.slider__container');
+//       var $sliderItem = $sliderContainer.find('.slider__item');
+//       var currentMarginLeft = parseInt($sliderContainer.css('margin-left'));
+//       var newMarginLeft = currentMarginLeft - $sliderItem.width();
+//       var maxMarginLeft = -($sliderItem.width() * ($sliderItem.length - 1));
+//       if (newMarginLeft >= maxMarginLeft) {
+//           $sliderContainer.css('margin-left', newMarginLeft + 'px');
+//       } else {
+//           $sliderContainer.css('margin-left', maxMarginLeft + 'px');
+//       }
+//   });
+// });    
     
     
     // /* 마우스오버 - 문화 공간 정보 노출 */
@@ -224,8 +310,6 @@ $(function() {
 //     // 화살표 요소에 클릭 이벤트를 등록합니다.
 //     leftArrow.addEventListener('click', handleArrowClick);
 //     rightArrow.addEventListener('click', handleArrowClick);
-    
-    
     
     
     
