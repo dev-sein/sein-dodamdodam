@@ -1,6 +1,8 @@
 @charset "UTF-8";
-
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;700&display=swap');
+body {
+    line-height: 1.33;
+    font-family: 'Noto Sans KR' !important;
+}
 
 @font-face {
     font-family: wadizicon;
@@ -9,10 +11,6 @@
     src: url(https://static.wadiz.kr/static/web/media/wadizicon.1de1502a.eot#iefix) format("embedded-opentype"),url(https://static.wadiz.kr/static/web/media/wadizicon.f5cdf486.woff2) format("woff2"),url(https://static.wadiz.kr/static/web/media/wadizicon.9eb6b0a9.woff) format("woff"),url(https://static.wadiz.kr/static/web/media/wadizicon.e5379495.ttf) format("truetype"),url(https://static.wadiz.kr/static/web/media/wadizicon.077f5804.svg#wadizicon) format("svg")
 }
 
-body {
-    line-height: 1.33;
-    font-family: Noto Sans KR;
-}
 
 body {
     overflow-y: scroll;
