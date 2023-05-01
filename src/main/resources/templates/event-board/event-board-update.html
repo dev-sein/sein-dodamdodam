@@ -36,8 +36,7 @@
                 <section class="info-register">
                     <div class="business-container">
                     <h3 class="h3-text">기업 정보 입력하기</h3>
-                    <p class="description-content">개인과 기업 중<br>
-                  선택해주세요</p>
+                    <p class="description-content">개인과 기업 중 선택해주세요</p>
 
                  
                     <!-- 사업자 등록 번호 -->
@@ -116,24 +115,26 @@
                         </div>
                     </div>
                     
-                    <!-- 이벤트 장소  -->
-                    <div class="waffle field">
-                       <div class="waffle label">
-                           <label>이벤트 장소</label>
+                      <!-- 이벤트 장소  -->
+                   <div class="waffle field">
+                    <div class="waffle label">
+                        <label>이벤트 장소</label>
+                    </div>
+                    <div class="action-input">
+                        <div class="input-container mb13">
+                            <input name="eventAddress" id="address" class="address" placeholder="주소검색" required>
+                            <button class="address-btn" id="detailAddress" type="button" onclick="searchAddress()">주소검색</button>
+                            </div>
                        </div>
-                       <div class="action-input">
-                           <div class="input-container mb13">
-                               <input name="eventAddress" id="address" class="address" placeholder="주소검색" required>
-                               <button class="address-btn" id="detailAddress" type="button" onclick="searchAddress()">주소검색</button>
-                               </div>
-                          </div>
-                       </div>
-                       <div class="input-container">
-                           <div class="waffle input">
-                               <input name="eventAddressDetail" placeholder="상세주소">
-                           </div>
-                           <div class="waffle helper mb"></div>
-                        </div>   
+                    </div>
+                    <div class="input-container">
+                        <div class="waffle input address-input">
+                            <input name="eventAddressDetail" placeholder="상세주소">
+                        </div>
+                        <label id="address-error" class="error" for="address">필수 항목입니다.</label>
+                        <div class="waffle helper mb"></div>
+                </div>   
+
 
     
 
@@ -164,19 +165,16 @@
                         </div>
                     </div>                  
 
-                    <!-- 파일 첨부 -->
-                <div id="plus_picture">
+                 <!-- 파일 첨부 -->
+                 <div id="plus_picture">
                     <div class="waffle field">
                         <div class="waffle label">
                             <label>파일 첨부
                         </div>
                     <button class="file-button" type="button">
-                        <span>
-                            <span class="button-children">
-                                <input class="file-input" id='btnAtt' type="file" multiple="multiple" name="fileNames" accept="application/pdf,image/jpg,image/jpeg,image/png" required>등록</span>
-                            </span>
-                        </span>
+                        <input class="file-input" id='btnAtt' type="file" multiple="multiple" name="fileNames" accept="application/pdf,image/jpg,image/jpeg,image/png" required>등록
                     </button>
+                    <label id="btnAtt-error" class="error" for="btnAtt">필수 항목입니다.</label>
                     <div id='att_zone'></div></label>   
                 </div>                  
                 <div class="waffle helper mb">10MB 이내 pdf, jpeg, png 파일을 등록하세요.</div>

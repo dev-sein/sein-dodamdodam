@@ -48,8 +48,8 @@
                     </div>
 
                     
-                    <!-- 이벤트 장소  -->
-                    <div class="waffle field">
+                     <!-- 이벤트 장소  -->
+                     <div class="waffle field">
                         <div class="waffle label">
                             <label>이벤트 장소</label>
                         </div>
@@ -61,11 +61,13 @@
                            </div>
                         </div>
                         <div class="input-container">
-                            <div class="waffle input">
+                            <div class="waffle input address-input">
                                 <input name="eventAddressDetail" placeholder="상세주소">
                             </div>
+                            <label id="address-error" class="error" for="address">필수 항목입니다.</label>
                             <div class="waffle helper mb"></div>
                     </div>   
+    
 
                      <!-- 모집 날짜  -->
                     <div class="waffle field">
@@ -143,15 +145,13 @@
                             <label>파일 첨부
                         </div>
                     <button class="file-button" type="button">
-                        <span>
-                            <span class="button-children">
-                                <input class="file-input" id='btnAtt' type="file" multiple="multiple" name="fileNames" accept="application/pdf,image/jpg,image/jpeg,image/png" required>등록</span>
-                            </span>
-                        </span>
+                        <input class="file-input" id='btnAtt' type="file" multiple="multiple" name="fileNames" accept="application/pdf,image/jpg,image/jpeg,image/png" required>등록
                     </button>
+                    <label id="btnAtt-error" class="error" for="btnAtt">필수 항목입니다.</label>
                     <div id='att_zone'></div></label>   
                 </div>                  
                 <div class="waffle helper mb">10MB 이내 pdf, jpeg, png 파일을 등록하세요.</div>
+          
                 <div class="submit-container">
                 <input class="submit-btn btn" type="submit"></button>
                 <p class="submit-notice"></p>
