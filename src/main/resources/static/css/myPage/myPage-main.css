@@ -1,3 +1,9 @@
+@charset "UTF-8";
+body {
+    line-height: 1.33;
+    font-family: 'Noto Sans KR' !important;
+}
+
 a, em, div {
     -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
@@ -86,7 +92,7 @@ body {
     width: 100%;
     overflow: hidden;
     z-index: 99;
-    background: #00c4c4;
+    background: #006633;
 }
 
 .MyWadizHeader_wadizHeader__8fJ9f .MyWadizHeader_switch__2WQSt {
@@ -393,7 +399,7 @@ h3 {
         position: absolute;
         top: 0;
         left: 0;
-        background: #00c4c4;
+        background: #006633;
         width: 100%;
         height: 220px;
     }
@@ -403,7 +409,7 @@ h3 {
         position: absolute;
         top: 0;
         left: 0;
-        background: #00c4c4;
+        background: #006633;
         width: 100%;
         height: 220px;
         content: "";
@@ -730,7 +736,7 @@ body a {
 
 .MyWadizSupporterAccumulate_info__2_7Is .MyWadizSupporterAccumulate_value__1oBSj {
     word-break: break-all;
-    color: #00c4c4;
+    color: #006633;
 }
 
 .MyWadizSupporterProject_container__2uWcZ .MyWadizSupporterProject_title__1IOfu .MyWadizSupporterProject_accumulate__1nyx5 .MyWadizSupporterProject_value__7aQ4B .MyWadizSupporterProject_accumulateDivider__1qDCv {
@@ -830,7 +836,7 @@ hr {
 
 .MyWadizSupporterAccumulate_info__2_7Is .MyWadizSupporterAccumulate_value__1oBSj {
     word-break: break-all;
-    color: #00c4c4;
+    color: #006633;
 }
 
 .MyWadizSupporterProjectInfo_container__3MC9F {
@@ -1003,7 +1009,7 @@ strong {
     display: flex;
     align-items: center;
     height: 18px;
-    color: #00c4c4;
+    color: #006633;
     line-height: 18px;
     letter-spacing: 0;
     font-size: 12px;

@@ -1,10 +1,7 @@
 @charset "UTF-8";
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;700&display=swap');
-@font-face {
-    font-family: wadizicon;
-    font-weight: 400;
-    font-style: normal;
-    src: url(https://static.wadiz.kr/static/web/media/wadizicon.1de1502a.eot#iefix) format("embedded-opentype"),url(https://static.wadiz.kr/static/web/media/wadizicon.f5cdf486.woff2) format("woff2"),url(https://static.wadiz.kr/static/web/media/wadizicon.9eb6b0a9.woff) format("woff"),url(https://static.wadiz.kr/static/web/media/wadizicon.e5379495.ttf) format("truetype"),url(https://static.wadiz.kr/static/web/media/wadizicon.077f5804.svg#wadizicon) format("svg")
+body {
+    line-height: 1.33;
+    font-family: 'Noto Sans KR' !important;
 }
 
 div {
@@ -4505,8 +4502,8 @@ cursor: pointer;
     font-size: 16px;
     width: 100%;
     font-weight: 500;
-    border-color: #00c4c4;
-    background-color: #00c4c4;
+    border-color: #006633;
+    background-color: #006633;
     color: #fff;
     position: absolute;
     right: 0px;
