@@ -1,5 +1,7 @@
-article, main, section {
-    display: block;
+@charset "UTF-8";
+body {
+    line-height: 1.33;
+    font-family: 'Noto Sans KR' !important;
 }
 
 article, blockquote, body, dd, div, dl, dt, h1, h2, h3, h4, html, li, main, ol, p, section, table, tbody, td, th, thead, tr, ul {
@@ -7,29 +9,25 @@ article, blockquote, body, dd, div, dl, dt, h1, h2, h3, h4, html, li, main, ol, 
     padding: 0;
 }
 
-article, aside, figcaption, figure, footer, header, nav, section {
-    display: block;
+
+#mypageWrap, #mypageWrap * {
+    -webkit-font-smoothing: antialiased;
+}
+
+
+#mypageWrap {
+    margin: 0 auto;
 }
 
 a, address, article, aside, audio, b, body, button, canvas, caption, dd, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, html, i, img, input, label, legend, li, nav, ol, p, pre, section, small, span, strong, summary, table, tbody, td, th, thead, time, tr, ul, video {
-    margin: 0;
     border: 0;
-    padding: 0;
     vertical-align: baseline;
     font: inherit;
     box-sizing: border-box;
 }
 
-section {
+div {
     display: block;
-}
-
-a, em, div {
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-}
-
-body {
-    -webkit-font-smoothing: antialiased;
 }
 
 body, html {
@@ -38,323 +36,290 @@ body, html {
 
 body {
     overflow-y: scroll;
+    letter-spacing: -.02em;
+    color: rgba(0,0,0,.84);
 }
 
-h2 {
-    margin-block-start: 0.83em;
-    margin-block-end: 0.83em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
+.mypage-project .point-guide {
+    color: #44484b;
+    padding: 0 16px;
 }
 
-body, body button, body input, body li, body ol, body select, body textarea, body ul {
-    box-sizing: border-box;
-    margin: 0;
-    border: 0;
-    padding: 0;
-}
-
-input, optgroup, select, textarea {
-    color: inherit;
-}
-
-input[type="hidden" i] {
-    appearance: none;
-    background-color: initial;
-    cursor: default;
-    display: none !important;
-}
-
-input {
-    writing-mode: horizontal-tb !important;
-    text-rendering: auto;
-    letter-spacing: normal;
-    word-spacing: normal;
-    text-transform: none;
-    text-indent: 0px;
-    text-shadow: none;
-    text-align: start;
-    -webkit-rtl-ordering: logical;
-}
-
-
-.MyFundingListContainer_container__j04bM {
+.mypage-project .usable-point {
+    position: relative;
     margin: 0 auto;
-    width: 100%;
-    color: #212529;
-    box-sizing: border-box;
+    background: #fff;
 }
 
-.MyFundingListContainer_container__j04bM .MyFundingListContainer_title__3_i7M {
-    padding: 56px 0 24px;
+.mypage-project .usable-point p {
+    height: 48px;
+    font-size: 19px;
+    font-weight: 500;
+    line-height: 48px;
+    letter-spacing: -.02em;
+    color: #4a4a4a; 
 }
 
-.MyFundingListContainer_topArea__1wIi6 .MyFundingListContainer_selectBox__333wz {
-    position: absolute;
-    top: 3px;
-    left: 16px;
-    width: 150px;
-    height: 40px;
-    border: 0;
+#emptyProjectText {
+    padding: 80px 0;
+    line-height: 24px;
+    font-size: 17px;
+    color: #44484B;
 }
 
-.select-menu {
-    word-break: keep-all;
-    overflow-wrap: break-word;
+.bottom-notice {
+    padding: 24px 0;
 }
 
-.css-2b097c-container {
-    position: relative;
-    box-sizing: border-box;
+.bottom-notice h4 {
+    margin-bottom: 8px;
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: -.02em;
+    line-height: 28px;
+    color: #44484B;
 }
 
-.css-7pg0cj-a11yText {
-    z-index: 9999;
-    border: 0px;
-    clip: rect(1px, 1px, 1px, 1px);
-    height: 1px;
-    width: 1px;
-    position: absolute;
-    overflow: hidden;
-    padding: 0px;
-    white-space: nowrap;
-}
-
-.small .select-menu__control {
+.bottom-notice p {
+    max-width: 700px;
+    font-size: 13px;
+    color: #7C8288;
     line-height: 20px;
-    letter-spacing: 0;
-    font-size: 14px;
+    letter-spacing: -.02em;
+}
+
+.bottom-notice p a {
+    text-decoration: underline;
+}
+
+.wz.container, body a {
+    color: rgba(0,0,0,.84);
+}
+
+[class*=icon-]:before, i.icon:before, i.wadizicon {
+    display: inline-block;
+    margin-top: -0.2em;
+    vertical-align: middle;
+    text-transform: none;
+    line-height: 1;
+    font-family: wadizicon!important;
     font-weight: 400;
-    height: 40px;
-    min-height: 40px;
+    font-style: normal;
+    font-variant: normal;
+    speak: none;
 }
 
-.css-yk16xz-control {
-    -webkit-box-align: center;
-    align-items: center;
-    background-color: rgb(255, 255, 255);
-    border-color: rgb(204, 204, 204);
-    border-radius: 4px;
-    border-style: solid;
-    border-width: 1px;
-    cursor: default;
+
+h2.mypage-top-title.short {
+    max-width: 1032px;
+    box-sizing: border-box;
+    font-weight: 700;
+}
+
+h2.mypage-top-title {
+    letter-spacing: -0.3px;
+    color: rgba(0, 0, 0, .84);
+}
+
+.module--support-list {
+    text-align: center;
+    left: -1em;
+    width: 57em;
+    height: auto;
     display: flex;
-    flex-wrap: wrap;
-    -webkit-box-pack: justify;
-    justify-content: space-between;
-    position: relative;
-    transition: all 100ms ease 0s;
-    box-sizing: border-box;
-    outline: 0px !important;
-}
-
-.select-menu__control {
-    border: 1px solid #dde2e6;
-    box-shadow: none;
-}
-
-.css-1hwfws3 {
-    -webkit-box-align: center;
-    align-items: center;
-    display: flex;
-    flex: 1 1 0%;
-    flex-wrap: wrap;
-    padding: 2px 8px;
-    position: relative;
-    overflow: hidden;
-    box-sizing: border-box;
-}
-
-.css-1uccc91-singleValue {
-    color: rgb(51, 51, 51);
-    margin-left: 2px;
-    margin-right: 2px;
-    max-width: calc(100% - 8px);
-    overflow: hidden;
-    position: absolute;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    top: 50%;
-    transform: translateY(-50%);
-    box-sizing: border-box;
-}
-
-.css-62g3xt-dummyInput {
-    background: 0px center;
-    border: 0px;
-    font-size: inherit;
-    outline: 0px;
-    padding: 0px;
-    width: 1px;
-    color: transparent;
-    left: -100px;
-    opacity: 0;
-    position: relative;
-    transform: scale(0);
-}
-
-.css-1wy0on6 {
-    -webkit-box-align: center;
-    align-items: center;
-    align-self: stretch;
-    display: flex;
-    flex-shrink: 0;
-    box-sizing: border-box;
-}
-
-.css-tlfecz-indicatorContainer {
-    color: rgb(204, 204, 204);
-    display: flex;
-    padding: 8px;
-    transition: color 150ms ease 0s;
-    box-sizing: border-box;
-}
-
-.select-menu__indicator {
-    font-size: 24px;
-}
-
-.select-menu__indicator {
-    pointer-events: none;
-}
-
-.withIcon_icon__3VTbq {
-    display: block;
-    transform: scale(1);
-    transition: transform .3s ease-out;
-    width: 1em;
-    height: 1em;
-    fill: currentColor;
-}
-
-svg:not(:root) {
-    overflow-clip-margin: content-box;
-    overflow: hidden;
-}
-
-:not(svg) {
-    transform-origin: 0px 0px;
-}
-
-
-/* selectbox */
-
-
-.select {
-    display:flex;
     flex-direction: column;
-    position:relative;
-    width:250px;
-    height:40px;
-  }
-  
-  .option {
-    padding:0 30px 0 10px;
-    min-height:40px;
-    display:flex;
-    align-items:center;
-    border-top:#222 solid 1px;
-    position:absolute;
-    top:0;
+    align-items: center;
+    line-height: 2em;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background-color: #fff;
+    justify-content: space-evenly;
+    margin: 0 auto;
+}
+
+.module {
+    z-index: 200;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+*, ::before, ::after {
+    box-sizing: border-box;
+}
+
+.support-list__title-container {
+    position: relative;
+    width: 57em;
+}
+
+.support-list__title-unit {
+    width: 57em;
+    display: flex;
+    font-weight: 600;
+    border-bottom: 1px solid;
+}
+
+.support-list__title {
+    width: 57em;
+    display: inline-flex;
+    flex-direction: row;
+    margin: 0.6em 0 0.4em;
+}
+
+dl, ol, ul, menu {
+    list-style: none;
+}
+
+.title__id {
+    flex: 0.3;
+}
+
+.title__title {
+    flex: 0.3;
+}
+
+.title__user-id {
+    flex: 0.5;
+}
+
+.title__money {
+    flex: 0.5;
+}
+
+.title__status {
+    flex: 0.5;
+}
+
+.title__date-post {
+    flex: 0.5;
+}
+
+#scroll {
+    overflow: auto;
     width: 100%;
-    pointer-events:none;
-    order:2;
-    z-index:1;
-    transition:background .4s ease-in-out;
-    box-sizing:border-box;
-    overflow:hidden;
-    white-space:nowrap;
-    
-  }
-  
-  .option:hover {
-    background:#666;
-  }
-  
-  .select:focus .option {
-    position:relative;
-    pointer-events:all;
-  }
-  
-  input {
-    opacity:0;
-    position:absolute;
-    left:-99999px;
-  }
-  
-  input:checked + label {
-    order: 1;
-    z-index:2;
-    background:#666;
-    border-top:none;
-    position:relative;
-  }
-  
-  input:checked + label:after {
-    content:'';
-    width: 0; 
-      height: 0; 
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-top: 5px solid white;
-    position:absolute;
-    right:10px;
-    top:calc(50% - 2.5px);
-    pointer-events:none;
-    z-index:3;
-  }
-  
-  input:checked + label:before {
-    position:absolute;
-    right:0;
-    height: 40px;
-    width: 40px;
-    content: '';
-    background:#666;
-  }
+    margin: 1px 0px 0px 0px;
+}
+
+.support-list__info-container {
+    width: 100%;
+    margin-top: 0.2em;
+}
+
+.support-list__info-unit {
+    width: 100%;
+    display: flex;
+}
+
+.support__checkbox--label {
+    width: 100%;
+    margin: 0.6em 0;
+}
+
+.support-list__info {
+    width: 100%;
+    display: inline-flex;
+    flex-direction: row;
+}
+
+.support__id {
+    flex: 0.3;
+}
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+.support__user-id {
+    flex: 0.5;
+}
+
+.support__money {
+    flex: 0.5;
+}
+
+.support__status1 {
+    flex: 0.5;
+}
+
+.support__status2 {
+    flex: 0.5;
+}
+
+.support__status3 {
+    flex: 0.5;
+}
+
+.support__date-post {
+    flex: 0.5;
+}
 
 
 
-/* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ미디어 쿼리 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
 
-
-@media screen and (min-width: 769px){
-    .MyFundingListContainer_container__j04bM {
-        padding: 0 0 138px;
+/* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ미디어쿼리 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+@media screen and (min-width: 497px){
+    .mypage-project .point-guide {
+        margin-top: 0;
     }
 
-    .MyFundingListContainer_container__j04bM .MyFundingListContainer_title__3_i7M {
-        line-height: 44px;
-        letter-spacing: -.6px;
-        font-size: 32px;
-        font-weight: 700;
-        margin: 0 auto;
-        padding-right: 16px;
-        padding-left: 16px;
-        max-width: 1032px;
+    .mypage-project .point-guide {
+        width: 960px;
+        margin: 24px auto;
         text-align: left;
-        box-sizing: border-box;
+    }
+
+    .mypage-project .usable-point {
+        padding: 0 24px;
+    }
+
+    .mypage-project.short .usable-point p {
+        width: 960px;
+        margin: 0 auto;
+        text-align: left;
+        position: relative;
+    }
+
+    .mypage-project .usable-point p em {
+        padding-left: 4px;
+        color: #557CF2;
+        font-weight: 500;
+    }
+
+    .mypage-project.short .point-list {
+        margin: 0 auto;
+        padding: 0;
+        background: #fff;
+        position: relative;
+    }
+
+    .mybenefit-wrap #emptyProjectText {
+        width: 960px;
+        margin: 0 auto;
+        text-align: left;
+    }
+
+    .bottom-notice {
+        width: 960px;
+        margin: 0 auto;
+    }
+
+    h2.mypage-top-title.short {
         display: block;
     }
 
-    .MyFundingListContainer_topArea__1wIi6 {
-        padding: 16px 16px 35px;
-        max-width: 1032px;
+    h2.mypage-top-title.short {
+        font-size: 32px;
+        padding: 56px 16px 24px;
     }
 
-    .MyFundingListContainer_topArea__1wIi6 {
-        box-sizing: border-box;
-        position: relative;
-        margin: 24px auto 0;
-        width: 100%;
+    h2.mypage-top-title {
+        width: 960px;
+        margin: 0 auto;
+        line-height: 44px;
+        text-align: left;
     }
-
-    .MyFundingListContainer_topArea__1wIi6 .MyFundingListContainer_selectBox__333wz {
-        right: 24px;
-    }
-
-    
-
-
 
 }

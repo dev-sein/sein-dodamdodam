@@ -105,8 +105,8 @@ p{
     padding: 9px 24px;
     line-height: 1.75;
     font-size: 16px;
-    border-color: #00c4c4;
-    color: #00c4c4;
+    border-color: #006633;
+    color: #006633;
     width: calc(50% - 4px);
 }
 
@@ -175,7 +175,7 @@ p{
 }
 
 .waffle.input :hover{
-    border-color:#00c4c4;
+    border-color:#006633;
 }
 
 .waffle.input>input{
@@ -220,7 +220,7 @@ input::placeholder {
 }
 
 .mb{
-    margin-bottom: 35px;
+    margin-bottom: 45px;
 }
 
 .blank{
@@ -246,7 +246,7 @@ textarea::placeholder {
 }
 
 textarea :hover{
-    border-color:#00c4c4;
+    border-color:#006633;
 }
 
 button:not(:disabled) {
@@ -265,7 +265,7 @@ button:not(:disabled) {
 }
 
 .introduction{
-    margin-top: 85px;
+    margin-top: 115px;
 }
 
 .action-input {
@@ -279,10 +279,10 @@ button:not(:disabled) {
 }
 
 .address-btn{
-    background-color: #00c4c4;
+    background-color: #006633;
     color: #fff;
     border-radius: 3px;
-    border: 1px solid #00c4c4;
+    border: 1px solid #006633;
     width: 116px;
     font-size: 15px;
     font-weight: 500;
@@ -338,6 +338,8 @@ button:not(:disabled) {
     background-color: #F8F8F8;
     cursor: default;
     pointer-events: none;
+    font-family: 'Noto Sans KR';
+    font-weight: 300;
 }
 
 input[name=address]::placeholder {
@@ -347,9 +349,9 @@ input[name=address]::placeholder {
     letter-spacing: -.3px;
   }
 
-#startDate{
+/* #startDate{
     margin-bottom: 7px;
-  }
+  } */
 
 .file-button{
     position: relative!important;
@@ -375,8 +377,8 @@ input[name=address]::placeholder {
 }
 
 .submit-btn{
-    border-color: #00c4c4;
-    background-color: #00c4c4;
+    border-color: #006633;
+    background-color: #006633;
     color: #fff;
     padding: 14px 28px;
     line-height: 1.4;
@@ -415,6 +417,10 @@ input[name=address]::placeholder {
 /* 에러 메세지 */
 .error{
     color: red;
+    font-size: 12px;
+}
+.error-msg{
+    color: red;
 }
 
 .people-count-error{
@@ -435,4 +441,90 @@ input[name=address]::placeholder {
 
 .open-password-error{
     display: none;
+}
+
+.businessRegNumber-error-msg{
+    display: none;
+}
+
+.representive-tel-error-msg{
+    display: none;
+}
+
+.business-email-error-msg{
+    display: none;
+}
+
+/* 모달 */
+.modal-bg {
+    display:none;
+    width:100%;
+    height:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index:999;
+}
+
+.modify-modal-bg {
+    display:none;
+    width:100%;
+    height:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index:999;
+}
+
+
+.modal-wrap {
+    display:none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%,-50%);
+    width:300px;
+    height:150px;
+    background:#fff;
+    z-index:1000;
+    text-align: center;
+    font-size: 16px;
+    padding: 20px;
+    padding: 50px 15px 16px;
+    overflow: hidden;
+}
+
+.modal-copy {
+    display:none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%,-50%);
+    width:300px;
+    height:150px;
+    background:#fff;
+    z-index:1000;
+    text-align: center;
+    font-size: 16px;
+    padding: 20px;
+    padding: 50px 15px 16px;
+    overflow: hidden;
+}
+
+
+.modal{
+    margin-left:2px;
+    margin-top: 54px;
+    width: 142px;
+}
+
+
+.white-btn{
+    background-color: #fff;
+    color:#006633;
+    border: 1px solid #006633;
 }

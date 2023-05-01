@@ -1,11 +1,7 @@
 @charset "UTF-8";
-
-
-@font-face {
-    font-family: wadizicon;
-    font-weight: 400;
-    font-style: normal;
-    src: url(https://static.wadiz.kr/static/web/media/wadizicon.1de1502a.eot#iefix) format("embedded-opentype"),url(https://static.wadiz.kr/static/web/media/wadizicon.f5cdf486.woff2) format("woff2"),url(https://static.wadiz.kr/static/web/media/wadizicon.9eb6b0a9.woff) format("woff"),url(https://static.wadiz.kr/static/web/media/wadizicon.e5379495.ttf) format("truetype"),url(https://static.wadiz.kr/static/web/media/wadizicon.077f5804.svg#wadizicon) format("svg")
+body {
+    line-height: 1.33;
+    font-family: 'Noto Sans KR' !important;
 }
 
 body {
@@ -117,6 +113,11 @@ body>#root, #wadizTopBanner, #page-container {
     box-sizing: border-box;
     display: block;
 }
+
+.my-info:hover {
+    background-color: #e4e4e4
+  }
+  
 
 .my-info-text {
     width: 90%;

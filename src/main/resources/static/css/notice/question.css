@@ -152,8 +152,10 @@ body{
 }
 
 #p-in-a-1{
-    border-bottom: 2px solid rgb(0, 178, 178);
-    color: rgb(0, 178, 178);
+    border-bottom: 2px solid #006633;
+    color: #006633;
+    /* border-bottom: 2px solid rgb(0, 178, 178);
+    color: rgb(0, 178, 178); */
 }
 
 #middle {
@@ -422,7 +424,9 @@ td{
 	font-weight: 500;
     font-size: 14px;
     line-height: 20px;
-    color: rgb(173, 181, 189);
+    /* color: rgb(173, 181, 189); */
+    color: rgb(149 161 172);
+    /* color: rgb(125 137 147); */
     display: flex;
     -webkit-box-align: center;
     align-items: center;
@@ -439,3 +443,4 @@ td{
     align-items: center;
     margin-top: 8px;
 } */
+

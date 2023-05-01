@@ -1,0 +1,196 @@
+@charset "UTF-8";
+body {
+    line-height: 1.33;
+    font-family: 'Noto Sans KR' !important;
+}
+
+/* 공통요소 ===================================== */
+body, button, div, h1, h2, h3, h4, h5, html, input, li, ol, p, span, textarea, ul {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 6px;
+    height: 6px
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    background-color: rgba(0,0,0,.54)
+}
+
+/* 기본 layout =================================== */
+
+.layout-container {
+    padding: 40px 66px;
+}
+
+.goodsContainer-title {
+    margin: 0 0 16px;
+    line-height: 1.22;
+    letter-spacing: -.7px;
+    color: #000;
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.goodsContainer-description {
+    margin-bottom: 32px;
+    line-height: 1.41;
+    color: #000;
+    font-size: 17px;
+}
+
+.section-title {
+    line-height: 28px;
+    letter-spacing: -.6px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.section-title::after {
+    line-height: 28px;
+    letter-spacing: -.3px;
+    font-size: 16px;
+    font-weight: 400;
+    margin-left: 4px;
+    color: #f66;
+    content: "*";
+}
+
+.section-description {
+    margin-top: 8px;
+    margin-bottom: 24px;
+    color: #868e96;
+    line-height: 20px;
+    font-size: 14px;
+}
+
+/* 파일 첨부용 ========================== */
+
+.content-section {
+    margin-bottom: 40px;
+}
+  
+.file-box-wrap {
+display: flex;
+align-items: center;
+flex-direction: row;
+gap: 6px;
+}
+
+.div-attach-thumb {
+position: relative;
+display: inline-block;
+vertical-align: top;
+width: 70px;
+height: 70px;
+}
+
+.btn-attach-thumb {
+display: inline-flex;
+justify-content: center;
+align-items: center;
+width: 68px;
+height: 68px;
+background-color: #fff;
+border: 1px solid #f1f1f1;
+border-radius: 3px;
+cursor: pointer;
+}
+
+.btn-attach-thumb img {
+width: 100%;
+height: 100%;
+vertical-align: top;
+}
+
+.ico-plus-xlg {
+height: 26px;
+}
+
+.text-guide-md {
+font-size: 13px;
+color: #868e96;
+}
+
+/*  입력 폼 ======================================  */
+
+.input-content {
+    width: 500px;
+    height: 48px;
+    padding: 0px 16px;
+    outline: none;
+    transition-duration: .2s,0s;
+    border: 1px solid #dde2e6;
+    border-radius: 3px;
+    font-size: 13px;
+    font-family: inherit;
+    color: #868e96;
+}
+
+.price-margin {
+    padding-right: 30px;
+}
+
+.text-field {
+    position: relative;
+    left: -30px;
+    color: #868e96;
+    font-size: 14px;
+}
+
+.content-textarea {
+    line-height: 1.6em;
+    font-size: 13px;
+    font-weight: 400;
+    font-family: inherit;
+    color: #868e96;
+    transition-duration: .2s,0s;
+    outline: none;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 5px;
+    background: #fff;
+    padding: 8px 0.94118em;
+    width: 500px;
+    height: 600px;
+    resize: none;
+    vertical-align: middle;
+}
+
+input:focus, textarea:focus {
+    border-color: #95d9c2;
+}
+
+/* 버튼 css ============================ */
+
+.button-wrapper {
+    margin-top: 50px;
+}
+
+.button-button {
+    width: 420px;
+    border-color: #00c4c4;
+    background-color: #00c4c4;
+    transition-duration: .15s;
+    color: #fff;
+    cursor: pointer;
+    padding: 9px 24px;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+.button-button:hover {
+    background-color: #00a8a8;
+}
+
+.button-text {
+    font-family: 'Noto Sans KR';
+    line-height: 1.75;
+    font-weight: 500;
+}

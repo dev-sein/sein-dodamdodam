@@ -1,6 +1,8 @@
 @charset "UTF-8";
-
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;700&display=swap');
+body {
+    line-height: 1.33;
+    font-family: 'Noto Sans KR' !important;
+}
 
 @font-face {
     font-family: wadizicon;
@@ -9,10 +11,6 @@
     src: url(https://static.wadiz.kr/static/web/media/wadizicon.1de1502a.eot#iefix) format("embedded-opentype"),url(https://static.wadiz.kr/static/web/media/wadizicon.f5cdf486.woff2) format("woff2"),url(https://static.wadiz.kr/static/web/media/wadizicon.9eb6b0a9.woff) format("woff"),url(https://static.wadiz.kr/static/web/media/wadizicon.e5379495.ttf) format("truetype"),url(https://static.wadiz.kr/static/web/media/wadizicon.077f5804.svg#wadizicon) format("svg")
 }
 
-body {
-    line-height: 1.33;
-    font-family: Noto Sans KR;
-}
 
 body {
     overflow-y: scroll;
@@ -232,10 +230,22 @@ a.ProfileSet {
     vertical-align: top;
 }
 
+.management{
+    background-color: #fff;
+    font-size: 13px;
+    position: absolute;
+    right: 23px;
+}
+
+.management:hover {
+    cursor: pointer;
+    background-color: #959595dd;
+  }
+
 /* 배너신청하기 버튼 : 색지정 */
 a.Mint {
-	border-color: #00c4c4;
-	background-color: #00c4c4;
+	border-color: #006633;
+	background-color: #006633;
     color: #fff !important;
 }
 
@@ -278,7 +288,7 @@ a.ProfileSet:hover{
     width: 33.33333%;
 }
 
-.mypage-project .tab-list ul li a {
+.mypage-project .tab-list ul li button {
     display: block;
     width: 100%;
     height: 47px;
@@ -290,8 +300,8 @@ a.ProfileSet:hover{
     text-decoration: none;
 }
 
-.mypage-project .tab-list ul li.active a  {
-    color: #00c4c4;
+.mypage-project .tab-list ul li.active button  {
+    color: #006633;
     height: 47px;
 }
 
@@ -378,7 +388,7 @@ a.ProfileSet:hover{
 }
 
 .project-card .card-img-section .project-type.reward {
-    background: #00c4c4;
+    background: #006633;
 }
 
 /* 가상요소 */
@@ -459,7 +469,7 @@ a.ProfileSet:hover{
     width: 48%;
     text-align: right;
     font-size: 11px;
-    color: #00c4c4;
+    color: #006633;
     letter-spacing: -1px;
     box-sizing: border-box!important;
 }
@@ -489,7 +499,8 @@ a.ProfileSet:hover{
     margin-right: 24px;
 }
 
-.mypage-project .tab-list ul li.active a {
+.mypage-project .tab-list ul li.active button {
+    background: #fff;
     font-weight: 700;
 }
 

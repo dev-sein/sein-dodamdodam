@@ -9,17 +9,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">  
+    <link rel="shortcut icon" href="/static/images/components/dodam-favicon.png">
 </head>
 <body>
     <div id="page-container">
         <main id="container">
-            <form class="event-register">
+            <form id="submit-btn" class="event-register" method="">
                 <!-- 회원 유형 선택 -->
                 <section class="member-type">
                     <h3 class="h3-text">신청 유형 선택</h3>
-                    <p class="description-content">사업자 등록 없이 개인으로 메이커 페이지를<br>
+                    <!-- <p class="description-content">사업자 등록 없이 개인으로 메이커 페이지를<br>
                     만들 수 있어요. 사업자 번호가 있다면<br>
-                    사업자로 만들기를 선택해주세요.</p>
+                    사업자로 만들기를 선택해주세요.</p> -->
                     <div class="member-type-btn">
                         <button class="business-type-btn btn" id="business-btn" type="button">
                             <span>
@@ -35,8 +36,8 @@
                 <section class="info-register">
                     <div class="business-container">
                     <h3 class="h3-text">기업 정보 입력하기</h3>
-                    <p class="description-content">사업자 등록번호를 입력하면<br>
-                   입력창이 활성화 됩니다</p>
+                    <p class="description-content">개인과 기업 중<br>
+                  선택해주세요</p>
 
                  
                     <!-- 사업자 등록 번호 -->
@@ -46,9 +47,10 @@
                         </div>
                         <div class="input-container">
                             <div class="waffle input">
-                                <input name="businessRegNumber" placeholder="사업자 등록번호 10자리 입력" maxlength="10">
+                                <input class="businessRegNumber number" name="businessRegNumber" placeholder="사업자 등록번호 10자리 입력" maxlength="10" required>
                             </div>
-                            <div class="waffle helper">10자리 숫자를 (-) 없이 정확히 입력하세요.</div>
+                            <div class="waffle helper mb"></div>
+                            <div class="businessRegNumber-error-msg erro-msg"></div>
                         </div>
                     </div>
 
@@ -59,7 +61,7 @@
                         </div>
                         <div class="input-container">
                             <div class="waffle input">
-                                <input placeholder="상호/법인명 입력">
+                                <input name="businessRegName" placeholder="상호/법인명 입력" required>
                             </div>
                             <div class="waffle helper mb"></div>
                         </div>
@@ -73,9 +75,10 @@
                         </div>
                         <div class="input-container">
                             <div class="waffle input">
-                                <input placeholder="회사의 대표번호를 입력해주세요">
+                                <input class="representive-tel number" name="businessNumber" placeholder="회사의 대표번호를 입력해주세요" required>
                             </div>
                             <div class="waffle helpe mb"></div>
+                            <div class="representive-tel-error-msg error-msg"></div>
                         </div>
                     </div>
 
@@ -87,9 +90,10 @@
                         </div>
                         <div class="input-container">
                             <div class="waffle input">
-                                <input placeholder="대표 이메일을 적어주세요">
+                                <input class="business-email email" name="businessEmail" placeholder="대표 이메일을 적어주세요" required>
                             </div>
                             <div class="waffle helper mb"></div>
+                            <div class="business-email-error-msg error-msg"></div>
                         </div>
                     </div>
                     <div class="blank"></div>
@@ -106,7 +110,7 @@
                         </div>
                         <div class="input-container">
                             <div class="waffle input">
-                                <input placeholder="이벤트명을 적어주세요">
+                                <input name="eventTitle" placeholder="이벤트명을 적어주세요" required>
                             </div>
                             <div class="waffle helper mb"></div>
                         </div>
@@ -114,38 +118,38 @@
                     
                     <!-- 이벤트 장소  -->
                     <div class="waffle field">
-                        <div class="waffle label">
-                            <label>이벤트 장소</label>
-                        </div>
-                        <div class="action-input">
-                            <div class="input-container mb13">
-                                <input name="address" class="address" placeholder="주소검색">
-                                <button class="address-btn" type="button">주소검색</button>
-                                </div>
+                       <div class="waffle label">
+                           <label>이벤트 장소</label>
+                       </div>
+                       <div class="action-input">
+                           <div class="input-container mb13">
+                               <input name="eventAddress" id="address" class="address" placeholder="주소검색" required>
+                               <button class="address-btn" id="detailAddress" type="button" onclick="searchAddress()">주소검색</button>
+                               </div>
+                          </div>
+                       </div>
+                       <div class="input-container">
+                           <div class="waffle input">
+                               <input name="eventAddressDetail" placeholder="상세주소">
                            </div>
-                        </div>
-                        <div class="input-container">
+                           <div class="waffle helper mb"></div>
+                        </div>   
 
-                            <div class="waffle input">
-                            
-                                <input placeholder="상세주소" disabled>
-                            </div>
-                            <div class="waffle helper mb"></div>
-                    </div>   
+    
 
-                             <!-- 이벤트 장소  -->
+                             <!-- 이벤트 기간  -->
                     <div class="waffle field">
                         <div class="waffle label">
                             <label>이벤트 기간</label>
                         </div>
                         <div class="input-container">
                             <div class="waffle input">
-                                <input type="date" name="startDate" id="startDate">
-                                <input type="date" name="endDate" id="endDate">
+                                <input type="date" name="startDate" id="startDate" required>
+                                <input type="date" name="endDate" id="endDate" required>
                             </div>
                             <div class="waffle helper mb"></div>
                         </div>
-                        </div>
+                    </div>
 
 
                     <!-- 이벤트 소개  -->
@@ -154,32 +158,55 @@
                             <label>이벤트 소개</label>
                         </div>
                         <div class="input-container">
-                                <textarea rows="5"placeholder="이벤트 소개를 적어주세요"></textarea>
+                                <textarea rows="5"placeholder="이벤트 소개를 적어주세요" name="event-introduction" required></textarea>
 
                             <div class="waffle helper mb"></div>
                         </div>
                     </div>                  
 
-                    <!-- 이벤트 장소  -->
+                    <!-- 파일 첨부 -->
+                <div id="plus_picture">
                     <div class="waffle field">
                         <div class="waffle label">
-                            <label>파일 첨부</label>
+                            <label>파일 첨부
                         </div>
                     <button class="file-button" type="button">
                         <span>
                             <span class="button-children">
-                                <input class="file-input" type="file" name="" accept="application/pdf,image/jpg,image/jpeg,image/png">등록</span>
+                                <input class="file-input" id='btnAtt' type="file" multiple="multiple" name="fileNames" accept="application/pdf,image/jpg,image/jpeg,image/png" required>등록</span>
                             </span>
                         </span>
                     </button>
+                    <div id='att_zone'></div></label>   
                 </div>                  
                 <div class="waffle helper mb">10MB 이내 pdf, jpeg, png 파일을 등록하세요.</div>
                 <div class="submit-container">
-                    <button class="submit-btn btn back-btn" type="button">돌아가기</button>
-                    <button class="submit-btn btn update-btn" type="button">수정하기</button>
-                <p class="submit-notice">* 잘못된 정보를 등록하시면 요청이 반려될 수 있습니다.</p>
+                <button class="submit-btn btn back-btn" type="button" onClick="javascript:backmodal();">돌아가기</button>
+                <input class="submit-btn btn update-btn" type="submit" value="수정하기" onClick="javascript:modifymodal();">
+                <p class="submit-notice"></p>
             </div>
-                </section>
+
+             <!-- 이전으로 돌아가기  modal 영역 -->
+             <div class="modal-bg" onClick="javascript:popCopyClose();"></div>
+             <div class="modal-copy">
+               <span>이전화면으로 돌아가시겠습니까?<br>
+                     작성한 내용은 저장되지 않습니다</span>
+               <button type="button" class="modal-close submit-btn modal white-btn" onClick="javascript:popCopyClose();">이전</button>
+               <button type="button" class="modal-close submit-btn modal" onClick="javascript:popCopyClose();">닫기</button>
+                   </div>
+                   <!-- //modal 영역 -->
+     
+                 <!-- 수정완료 modal 영역 -->
+             <div class="modify-modal-bg" onClick="javascript:popClose();"></div>
+             <div class="modal-wrap">
+               <span><br>작성한 내용으로 수정하시겠습니까?</span>
+               <button type="button" class="modal-close submit-btn modal white-btn" onClick="javascript:popClose();">이전</button>
+                 <button type="button" class="modal-close submit-btn modal" onClick="javascript:popClose();">수정</button>
+                   </div>
+                   <!-- //modal 영역 -->
+                
+     
+                     </section>
 
 
             </form>
@@ -190,5 +217,39 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="../../static/js/event-board/event-board.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+    /* 이전으로 돌아가기 모달 */
+    function backmodal() {
+var modalPop = $('.modal-copy');
+
+var modalBg = $('.modal-bg'); 
+    $(modalPop).show();
+    $(modalBg).show();
+}
+function popCopyClose() {
+var modalPop = $('.modal-copy');
+var modalBg = $('.modal-bg');
+    $(modalPop).hide();
+    $(modalBg).hide();
+    console.log("modalbg hide 들어옴")
+}
+
+    /* 수정 확인 모달 */
+function modifymodal() {
+var modalPop = $('.modal-wrap');
+var modalBg = $('.modify-modal-bg'); 
+    $(modalPop).show();
+    $(modalBg).show();
+}
+function popClose() {
+var modalBg = $('.modify-modal-bg');
+var modalPop = $('.modal-wrap');
+    $(modalPop).hide();
+    $(modalBg).hide();
+}
+</script>
 </html>
+
 

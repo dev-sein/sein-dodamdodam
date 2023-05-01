@@ -518,9 +518,25 @@ button.btn-category {
     margin: 0 auto;
 }
 
+/* 작성하기 버튼 */
+.btn-wrap .btn-write {
+    display: block;
+    width: 100%;
+    padding: 0;
+    height: 60px;
+    line-height: 60px;
+    font-size: 16px;
+    background: #006633;
+    color: #fff;
+    border: none;
+    text-align: center;
+}
+
+
 .best-list {
     position: relative;
     padding: 20px 0;
+    margin-top: 20px;
     border-top: 1px solid #006633;
 }
 
@@ -677,7 +693,6 @@ button.btn-category {
         float: right;
         width: 290px;
         padding: 0;
-        padding-top: 38px;
         margin: 0;
         padding-left: 19px;
         border-left: 1px solid #e4e4e4;

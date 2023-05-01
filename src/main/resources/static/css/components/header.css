@@ -416,8 +416,10 @@ svg:not(:root) {
     -webkit-font-smoothing: antialiased;
 }
 .header-make-button.header-make-button2 { /* 프로젝트 만들기 버튼 */
-    border-color: #00c4c4;
-    color: #00a2a2;
+    /* border-color: #00c4c4; */
+    border-color: #006633;
+    /* color: #00a2a2; */
+    color: #006633de;
 }
 .header-make-button.header-make-button3 { /* 프로젝트 만들기 버튼 */
     padding: 9px 16px;

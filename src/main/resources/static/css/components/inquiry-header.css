@@ -1,0 +1,159 @@
+/* 헤더 */
+header {
+    background: rgba(255, 255, 255, 1);
+    z-index: 9;
+    position: relative;
+}
+
+.header-container {
+    padding: 0;
+    width: 90%;
+
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 5%;
+    position: relative;
+    align-items: center;
+    display: flex;
+    height: 71px;
+    justify-content: space-between;
+}
+
+a {
+    color: rgba(0, 0, 0, 1);
+    text-decoration: none;
+    background-color: transparent;
+    transition: all 0.3s ease;
+}
+
+.header-logo img {
+    max-height: 32px;
+}
+
+img {
+    border-style: none;
+}
+
+.user-nav {
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+
+.nav-trigger-icon::before , .nav-trigger-icon::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgba(10, 10, 10, 1);
+    right: 0;
+    -webkit-transition: -webkit-transform .3s, top .3s, background-color 0s;
+    -moz-transition: -moz-transform .3s, top .3s, background-color 0s;
+    transition: transform .3s, top .3s, background-color 0s;
+}
+
+.header-nav {
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+}
+.header-nav a {
+    border: 0;
+    color: rgba(10, 10, 10, 1);
+    font-size: 14px;
+    padding: 0 10px 0 10px;
+    width: auto;
+}
+.submit-inquiry {
+    display: inline-block;
+}
+
+.nav-trigger {
+    padding-right: 0;
+    margin-right: -10px;
+    display: inline-block;
+    background-color: transparent;
+}
+.nav-trigger-text {
+    display: inline-block;
+    color: rgba(10, 10, 10, 1);
+}
+
+.nav-trigger-icon {
+    left: auto;
+    right: 1em;
+    display: inline-block;
+    width: 18px;
+    height: 2px;
+    background-color: rgba(10, 10, 10, 1);
+    transform: translateX(0) translateY(-50%);
+    transition: background-color 0.3s;
+
+    position: relative;
+    top: -3px;
+    margin-left: 23px;
+}
+
+.nav-trigger-icon::before {
+    top: -5px;
+}
+
+.nav-trigger-icon::after {
+    top: 5px;
+}
+
+/* 헤더 네비 선택됐을 때 */
+.is-clicked {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.is-clicked::before {
+    top: 0;
+    transform: rotate(135deg);
+    background-color: rgba(10, 10, 10, 1);
+}
+.is-clicked::after {
+    top: 0;
+    transform: rotate(225deg);
+    background-color: rgba(10, 10, 10, 1);
+}
+
+.menu-trigger.active {
+	-webkit-transform : rotate (360deg);
+	transform : rotate (360deg);
+}
+.nav-trigger-ul {
+    padding: 80px 0;
+    
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.83);
+    z-index: 2;
+    text-align: center;
+    backface-visibility: hidden;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform: translateY(-100%);
+    transition-property: transform;
+    transition-duration: 0.4s;
+}
+
+.nav-trigger-ul li {
+    font-size: 1.875rem;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    margin: 0.2em 0;
+}
+
+.nav-trigger-ul a {
+    display: block;
+    padding: 0.2em 1em;
+    transition: background 0.2s;
+    color: #FFFFFF;
+}

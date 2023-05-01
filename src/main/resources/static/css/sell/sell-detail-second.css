@@ -1,3 +1,8 @@
+@charset "UTF-8";
+body {
+    line-height: 1.33;
+    font-family: 'Noto Sans KR' !important;
+}
 
 
 body {
@@ -15,13 +20,13 @@ button{
 body li, body ol, body ul {
     list-style: none;
 }
-.satisfaction_wrap{
-    display: flex;
+.satisfaction_wrap {
     margin: 0 auto 40px;
     padding: 0 80px;
     max-width: 1440px;
-    padding-left: 500px;
+    padding-left: 27em;
 }
+
 .satisfaction_wrap_div{
     flex: 0 0 66.9%;
     padding-left: 37px;
@@ -397,17 +402,11 @@ body li, body ol, body ul {
     transition: transform .3s ease-out;
     fill: currentColor;
 }
-:not(svg) {
-    transform-origin: 0px 0px;
-}
-path {
-    d: path("M 28 20 L 15 33 l -1.4 -1.4 L 25.2 20 L 13.6 8.4 L 15 7 l 13 13 Z");
-}
 .store_wrapper{
-    display: flex;
-    margin: 0;
-    padding: 0 16px;
-    padding-left: 500px;
+    margin: 0 auto 40px;
+    padding: 0 80px;
+    max-width: 1440px;
+    padding-left: 34em;
 }
 .store_tab{
     flex: 0 0 56.55%;

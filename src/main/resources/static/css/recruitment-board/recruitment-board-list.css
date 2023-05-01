@@ -107,7 +107,7 @@ p {
 }
 
 .apply{
-    color: rgb(139, 228, 228);
+    color:#006633;
         font-weight: 700!important;
 }
 
@@ -168,8 +168,6 @@ svg:not(:root) {
     overflow: hidden;
 }
 
-
-
 #main-app{
     display: block;
 }
@@ -181,20 +179,6 @@ svg:not(:root) {
 .collection-container{
     margin: 0 auto;
     max-width: 1140px;
-}
-
-.write-btn{
-    border: 1px solid #00c4c4;
-    background-color: #00c4c4;
-    color: #fff;
-    padding: 14px 28px;
-    line-height: 1.4;
-    font-size: 18px;
-    font-family: 'Noto Sans KR';
-    width: 260px;
-    border-radius: 4px;
-    outline: none;
-    margin-left: 842px;
 }
 
 
@@ -214,6 +198,31 @@ svg:not(:root) {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.recruit-title{
+    margin-top: 70px;
+    font-size: 32px;
+    font-family: 'Noto Sans KR';
+    font-weight: 700;
+}
+
+.recruit-introduction{
+    font-size: 18px;
+    font-family: 'Noto Sans KR';
+    color: #495057;
+    font-weight: 400;
+}
+
+.write{
+    border-radius: 0px;
+    border: 1px solid #006633;
+    color: #006633;
+    font-family: 'Noto Sans KR';
+    width: 500px;
+    margin-top: 50px;
+    font-weight: 500;
+    font-size: 20px;
 }
 
 .collection-table{
@@ -339,7 +348,7 @@ svg:not(:root) {
     font-weight: 700;
     margin-right: 2px;
     line-height: 24px;
-    color: #00b2b2;
+    color: #006633;
     font-family: inherit;
 }
 
@@ -510,9 +519,9 @@ svg:not(:root) {
 }
 
 .second-confirm{
-    background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzYiIGhlaWdodD0iMjgiIHZpZXdCb3g9IjAgMCAzNiAyOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8ZGVmcz4KICAgICAgICA8cGF0aCBpZD0icmp4a3cxZjBxYSIgZD0iTTAgMGgyNi41djI0LjE3M0gweiIvPgogICAgPC9kZWZzPgogICAgPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg5LjUpIj4KICAgICAgICAgICAgPG1hc2sgaWQ9IjVqMnE1dTNlaWIiIGZpbGw9IiNmZmYiPgogICAgICAgICAgICAgICAgPHVzZSB4bGluazpocmVmPSIjcmp4a3cxZjBxYSIvPgogICAgICAgICAgICA8L21hc2s+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0yNi41IDQuMDI5djE2LjExNWMwIDIuMjI1LTEuNzkgNC4wMjktNCA0LjAyOUgwVjQuMDI5QzAgMS44MDQgMS43OSAwIDQgMGgxOC41YzIuMjEgMCA0IDEuODA0IDQgNC4wMjkiIGZpbGw9IiMwQ0MiIG1hc2s9InVybCgjNWoycTV1M2VpYikiLz4KICAgICAgICA8L2c+CiAgICAgICAgPHBhdGggZD0iTTI3LjYwNSAxNC40OTNjLS45NzUgMC0xLjc2Ni0uODYyLTEuNzY2LTEuOTI1IDAtMS4wNjMuNzkxLTEuOTI0IDEuNzY2LTEuOTI0Ljk3NiAwIDEuNzY3Ljg2MSAxLjc2NyAxLjkyNHMtLjc5MSAxLjkyNS0xLjc2NyAxLjkyNXptMy41NTcgMS4xNHYtNi4yMmgtLjg5M2EuODI3LjgyNyAwIDAgMC0uODIyLjc2NXYtLjAwMWEzLjIxNiAzLjIxNiAwIDAgMC0yLjM1Ni0uODY4IDMuMjY0IDMuMjY0IDAgMCAwLTIuOTEgMi4xOTRjLS40NSAxLjMyLS4wMDggMi42OC45OTQgMy41MTZhMy43NDMgMy43NDMgMCAwIDAgMi4zODguODQ3Yy44NDYgMCAxLjYyNi0uMjc1IDIuMjM3LS43MjhhLjczOS43MzkgMCAwIDAgLjY5NS40OTVoLjY2N3pNMjIuMzU5IDkuNDE2bC0xLjI0OCAzLjg3Mi0xLjI1OC0zLjg3MmgtMS4yM2EuODI2LjgyNiAwIDAgMC0uNzgzLjU3MmwtMS4wNzIgMy4zLTEuMjQ4LTMuODcyaC0xLjc0OWwyLjA1NCA2LjIxOGgxLjc1NWwxLjM2LTMuOTkgMS4zNTkgMy45OWgxLjc1NmwyLjA1My02LjIxOGgtMS43NXoiIGZpbGw9IiNGRkYiLz4KICAgICAgICA8cGF0aCBkPSJNOS41IDguMDU4SDYuODkxYy0yLjIwOCAwLTQgMS44MDMtNCA0LjAyOHYzLjQ5MkgyYy0xLjEwNSAwLTIgLjkwMi0yIDIuMDE0djQuNTY2YzAgMS4xMTMuODk1IDIuMDE1IDIgMi4wMTVoNy41VjguMDU4eiIgZmlsbD0iIzA4OUNBMCIvPgogICAgICAgIDxwYXRoIGQ9Ik01LjcgMjQuMTczYzAtMi4xMTQgMS43MDEtMy44MjggMy44LTMuODI4IDIuMDk5IDAgMy44IDEuNzE0IDMuOCAzLjgyOFMxMS41OTkgMjggOS41IDI4Yy0yLjA5OSAwLTMuOC0xLjcxMy0zLjgtMy44MjdNMjYuMzUzIDI0LjE3M2MwLTIuMTE0IDEuNzAxLTMuODI4IDMuOC0zLjgyOCAyLjA5OSAwIDMuOCAxLjcxNCAzLjggMy44MjhTMzIuMjUyIDI4IDMwLjE1MyAyOGMtMi4wOTkgMC0zLjgtMS43MTMtMy44LTMuODI3IiBmaWxsPSIjNDk1MDU3Ii8+CiAgICA8L2c+Cjwvc3ZnPgo=) no-repeat 100% center/contain;
+    background: url(../../images/recruitment-board/people.png) no-repeat 100% center/contain;
     width: 16px;
-    height: 12px;
+    height: 15px;
     display: inline-block;
     margin-bottom: -1px;
     
@@ -541,7 +550,7 @@ html.scroll-top.scroll-apex .top-btn {
     gap: 12px;
     position: fixed;
     right: 16px;
-    bottom: 20px;
+    bottom: 64px;
     transition-property: transform,scale;
     transition-duration: .25s;
     z-index: 1200;
@@ -598,12 +607,33 @@ html.scroll-top .top-btn-container {
     fill: currentColor;
 }
 
+.write-btn{
+    position: fixed;
+    bottom: 3px;
+    right: 16px;
+    cursor: pointer;
+}
+
+.write-btn img{
+    width: 60px;
+    height: 60px;
+}
+
+
 @media screen and (min-width: 1097px){
 .main-wrapper-content {
     padding-top: 0;
     padding-bottom: 0;
 }
 }
+
+@media screen and (min-width: 1097px){
+    .write-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 32px;
+    }
+    }
 
 @media screen and (min-width: 1097px){
     .collection-container{
