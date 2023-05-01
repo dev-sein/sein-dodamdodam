@@ -59,21 +59,6 @@
                                     </div>
                                 </div><!-- total search -->
 
-                                <div class="total-search">
-                                    <div class="total-form">
-                                        <div class="total-inner">제목</div>
-                                        <input aria-hidden="true" tabindex="-1" class="search-select" value="">
-                                        <svg class="search-sign" focusable="false" aria-hidden="true" viewBox="0 0 24 24">
-                                            <path d="M7 10l5 5 5-5z"></path>
-                                        </svg>
-                                        <fieldset aria-hidden="true" class="total-input">
-                                            <legend class="search-legend">
-                                                <span class="notranslate"></span>
-                                            </legend>
-                                        </fieldset>
-                                    </div>
-                                </div> <!-- title search -->
-                                
                                 <form class="input-keyword">
                                     <div class="form-border">
                                         <div class="form-input">
@@ -158,7 +143,7 @@
 
                             <li class="event-instance">
                                 <div class="instance">
-                                    <img class="thumbnail" src="	https://static.makercenter.wadiz.kr/board/image/9b201cef-1d29-412c-b5b6-cc57b2c1ae7a.jpg">
+                                    <img class="thumbnail" src="https://static.makercenter.wadiz.kr/board/image/9b201cef-1d29-412c-b5b6-cc57b2c1ae7a.jpg">
                                 <div class="instance-detail">
                                     <div class="detail-header">
                                         <div class="detail-hedaer-left-center"></div>
@@ -206,7 +191,7 @@
 
                             <li class="event-instance">
                                 <div class="instance">
-                                    <img class="thumbnail" src="	https://static.makercenter.wadiz.kr/board/image/26f031b9-3a0c-4a83-a7b2-503be2cdf517.jpg">
+                                    <img class="thumbnail" src="https://static.makercenter.wadiz.kr/board/image/26f031b9-3a0c-4a83-a7b2-503be2cdf517.jpg">
                                 <div class="instance-detail">
                                     <div class="detail-header">
                                         <div class="detail-hedaer-left-center"></div>
@@ -222,7 +207,7 @@
 
                             <li class="event-instance">
                                 <div class="instance">
-                                    <img class="thumbnail" src="	https://static.makercenter.wadiz.kr/board/image/2b886fad-290c-41cf-9d71-69bfbcfd4c03.png">
+                                    <img class="thumbnail" src="https://static.makercenter.wadiz.kr/board/image/2b886fad-290c-41cf-9d71-69bfbcfd4c03.png">
                                 <div class="instance-detail">
                                     <div class="detail-header">
                                         <div class="detail-hedaer-left-center"></div>
@@ -500,6 +485,18 @@
                 <div class="footer-blank"></div>
             </div>
         </div>
+
+             <!-- top 버튼 -->
+             <div class="top-btn-container">
+                <button type="button" class="top-btn">
+                <svg viewBox="0 0 40 40" focusable="false" role="presentation" class="top-btn-svg" aria-hidden="true">
+                <path d="M33 30l-1.4 1.4L20 19.8 8.4 31.4 7 30l13-13zm1-21H6v2h28z"></path></svg>
+            </button></div>
+            <div class="write-btn">
+                <img src="../../static/images/recruitment-board/write.png">
+            </div>
+
+
     </div> <!-- gaia -->
 
 </div>
@@ -515,6 +512,26 @@ $(document).ready(function () {
   $('#apply-exit-btn').on("click", $exit, function () {
     $('#header-apply').css("display","none");
   });
+});
+
+/* top 버튼  */
+var topEle = $('.top-btn');
+var delay = 400;
+
+/* top show-hide */
+$(window).scroll(function() {
+    if($(this).scrollTop() > 200 ) {
+        console.log(topEle);
+		$('.top-btn').fadeIn();
+	} else {
+		$('.top-btn').fadeOut();
+	}
+});
+
+/* top버튼- 위로 올리기 */
+$('.top-btn').click( function() {
+	$('html, body').animate({scrollTop:0}, delay );
+	return false;
 });
 
 </script>

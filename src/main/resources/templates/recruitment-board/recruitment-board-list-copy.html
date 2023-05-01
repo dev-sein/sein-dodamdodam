@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모집 게시판</title>
     <link rel="stylesheet" href="../../static/css/recruitment-board/recruitment-board-list.css">
+    <link rel="stylesheet" href="../../static/css/recruitment-board/like-button.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">  
@@ -34,8 +35,6 @@
         </div><!-- header=apply -->
 
         <main id="main-app">
-        
-
             <div class="main-wrapper-content">
                 <!-- 모달창 -->
                 <div class="like-modal-container" id="like-modal" style="display:none;">
@@ -45,18 +44,9 @@
                 <!-- 모달끝 -->   
                    <div class="collection-container">
 
-                    <section>
-                        <p class="recruit-title">모집 등록</h1>
-                        <p class="recruit-introduction">혼자라는 이유로 쉽게 도전하지 못 했던 취미 생활을
-                            도담도담의 회원들과 함께 참여해보세요.<br>
-                            함께여서 더욱 즐거운 취미 생활!<br>
-                            아주 사소한 계획이라도 누구든지 등록 가능
-                        </p>
-                        <button class="btn write">모집하러 가기</button>
-                    </section>
-
                     <div class="collection-list">
                         <div class="collection-table">
+             
                             <div role="presentation" class="instance">
                                 <a class="item" href="">
                                     <div class="thumbnail-container">
@@ -90,12 +80,300 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <input type="checkbox" id="checkbox" class="wish-button">
+                                    <label for="checkbox">
+                                      <svg id="heart-svg" viewBox="467 392 58 57" xmlns="http://www.w3.org/2000/svg">
+                                        <g id="Group" fill="none" fill-rule="evenodd" transform="translate(467 392)">
+                                          <path d="M29.144 20.773c-.063-.13-4.227-8.67-11.44-2.59C7.63 28.795 28.94 43.256 29.143 43.394c.204-.138 21.513-14.6 11.44-25.213-7.214-6.08-11.377 2.46-11.44 2.59z" id="heart" fill="#AAB8C2"/>
+                                          <circle id="main-circ" fill="#E2264D" opacity="0" cx="29.5" cy="29.5" r="1.5"/>
+                                
+                                          <g id="grp7" opacity="0" transform="translate(7 6)">
+                                            <circle id="oval1" fill="#9CD8C3" cx="2" cy="6" r="2"/>
+                                            <circle id="oval2" fill="#8CE8C3" cx="5" cy="2" r="2"/>
+                                          </g>
+                                
+                                          <g id="grp6" opacity="0" transform="translate(0 28)">
+                                            <circle id="oval1" fill="#CC8EF5" cx="2" cy="7" r="2"/>
+                                            <circle id="oval2" fill="#91D2FA" cx="3" cy="2" r="2"/>
+                                          </g>
+                                
+                                          <g id="grp3" opacity="0" transform="translate(52 28)">
+                                            <circle id="oval2" fill="#9CD8C3" cx="2" cy="7" r="2"/>
+                                            <circle id="oval1" fill="#8CE8C3" cx="4" cy="2" r="2"/>
+                                          </g>
+                                
+                                          <g id="grp2" opacity="0" transform="translate(44 6)">
+                                            <circle id="oval2" fill="#CC8EF5" cx="5" cy="6" r="2"/>
+                                            <circle id="oval1" fill="#CC8EF5" cx="2" cy="2" r="2"/>
+                                          </g>
+                                
+                                          <g id="grp5" opacity="0" transform="translate(14 50)">
+                                            <circle id="oval1" fill="#91D2FA" cx="6" cy="5" r="2"/>
+                                            <circle id="oval2" fill="#91D2FA" cx="2" cy="2" r="2"/>
+                                          </g>
+                                
+                                          <g id="grp4" opacity="0" transform="translate(35 50)">
+                                            <circle id="oval1" fill="#F48EA7" cx="6" cy="5" r="2"/>
+                                            <circle id="oval2" fill="#F48EA7" cx="2" cy="2" r="2"/>
+                                          </g>
+                                
+                                          <g id="grp1" opacity="0" transform="translate(24)">
+                                            <circle id="oval1" fill="#9FC7FA" cx="2.5" cy="3" r="2"/>
+                                            <circle id="oval2" fill="#9FC7FA" cx="7.5" cy="2" r="2"/>
+                                          </g>
+                                        </g>
+                                      </svg>
+                                    </label>
+                                </div>
                                 </a>
-                                <button type="button" class="wish-button" aria-pressed="false">
-                                    <svg viewBox="0 0 32 32" focusable="false" role="presentation" class="wish-button-svg" aria-hidden="true">
-                                        <path d="M22.16 4h-.007a8.142 8.142 0 0 0-6.145 2.79A8.198 8.198 0 0 0 9.76 3.998a7.36 7.36 0 0 0-7.359 7.446c0 5.116 4.64 9.276 11.6 15.596l2 1.76 2-1.76c6.96-6.32 11.6-10.48 11.6-15.6v-.08A7.36 7.36 0 0 0 22.241 4h-.085z"></path></svg>
-                                </button>
-                            </div>
+                                </div>
+
+
+                                <div role="presentation" class="instance">
+                                    <a class="item" href="">
+                                        <div class="thumbnail-container">
+                                            <div class="thumbnail-list">
+                                                <div class="photo-thumbnail"></div> <!-- 사진 div -->
+                                                <input type="checkbox" id="checkbox" class="wish-button">
+                                                <label for="checkbox">
+                                                  <svg id="heart-svg" viewBox="467 392 58 57" xmlns="http://www.w3.org/2000/svg">
+                                                    <g id="Group" fill="none" fill-rule="evenodd" transform="translate(467 392)">
+                                                      <path d="M29.144 20.773c-.063-.13-4.227-8.67-11.44-2.59C7.63 28.795 28.94 43.256 29.143 43.394c.204-.138 21.513-14.6 11.44-25.213-7.214-6.08-11.377 2.46-11.44 2.59z" id="heart" fill="#AAB8C2"/>
+                                                      <circle id="main-circ" fill="#E2264D" opacity="0" cx="29.5" cy="29.5" r="1.5"/>
+                                            
+                                                      <g id="grp7" opacity="0" transform="translate(7 6)">
+                                                        <circle id="oval1" fill="#9CD8C3" cx="2" cy="6" r="2"/>
+                                                        <circle id="oval2" fill="#8CE8C3" cx="5" cy="2" r="2"/>
+                                                      </g>
+                                            
+                                                      <g id="grp6" opacity="0" transform="translate(0 28)">
+                                                        <circle id="oval1" fill="#CC8EF5" cx="2" cy="7" r="2"/>
+                                                        <circle id="oval2" fill="#91D2FA" cx="3" cy="2" r="2"/>
+                                                      </g>
+                                            
+                                                      <g id="grp3" opacity="0" transform="translate(52 28)">
+                                                        <circle id="oval2" fill="#9CD8C3" cx="2" cy="7" r="2"/>
+                                                        <circle id="oval1" fill="#8CE8C3" cx="4" cy="2" r="2"/>
+                                                      </g>
+                                            
+                                                      <g id="grp2" opacity="0" transform="translate(44 6)">
+                                                        <circle id="oval2" fill="#CC8EF5" cx="5" cy="6" r="2"/>
+                                                        <circle id="oval1" fill="#CC8EF5" cx="2" cy="2" r="2"/>
+                                                      </g>
+                                            
+                                                      <g id="grp5" opacity="0" transform="translate(14 50)">
+                                                        <circle id="oval1" fill="#91D2FA" cx="6" cy="5" r="2"/>
+                                                        <circle id="oval2" fill="#91D2FA" cx="2" cy="2" r="2"/>
+                                                      </g>
+                                            
+                                                      <g id="grp4" opacity="0" transform="translate(35 50)">
+                                                        <circle id="oval1" fill="#F48EA7" cx="6" cy="5" r="2"/>
+                                                        <circle id="oval2" fill="#F48EA7" cx="2" cy="2" r="2"/>
+                                                      </g>
+                                            
+                                                      <g id="grp1" opacity="0" transform="translate(24)">
+                                                        <circle id="oval1" fill="#9FC7FA" cx="2.5" cy="3" r="2"/>
+                                                        <circle id="oval2" fill="#9FC7FA" cx="7.5" cy="2" r="2"/>
+                                                      </g>
+                                                    </g>
+                                                  </svg>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="list-content">
+                                            <div class="list-title">
+                                                장항준 감독 영화 리바운드 재밌다던데 같이 보러 가실 분
+                                            </div>
+                                            <div class="list-writer">정세인</div>
+                                            <div clsas="list-footer">
+                                                <div class="list-footer-container">
+                                                    <div class="list-date-container">
+                                                        <span class="print-data">2023/04/20</span>
+                                                        <div class="like-container count-people">
+                                                            <div class="like-count-container">
+                                                                <div class="people-icon"></div>
+                                                                <span class="like-count">10</span><span>명 참여</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="loca-status-container">
+                                                    <span class="deadline location">역삼역 4번 출구</span>
+                                                    <div class="status-community">
+                                                    <i class="second-confirm"></i>
+                                                    <span class="ing">모집중&nbsp;&nbsp;
+                                                    </span>
+                                                    </div></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </a>
+                                    </div>
+
+                  
+                                <div role="presentation" class="instance">
+                                    <a class="item" href="">
+                                        <div class="thumbnail-container">
+                                            <div class="thumbnail-list">
+                                                <div class="photo-thumbnail"></div> <!-- 사진 div -->
+                                            </div>
+                                        </div>
+                                        <div class="list-content">
+                                            <div class="list-title">
+                                                장항준 감독 영화 리바운드 재밌다던데 같이 보러 가실 분
+                                            </div>
+                                            <div class="list-writer">정세인</div>
+                                            <div clsas="list-footer">
+                                                <div class="list-footer-container">
+                                                    <div class="list-date-container">
+                                                        <span class="print-data">2023/04/20</span>
+                                                        <div class="like-container count-people">
+                                                            <div class="like-count-container">
+                                                                <div class="people-icon"></div>
+                                                                <span class="like-count">10</span><span>명 참여</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="loca-status-container">
+                                                    <span class="deadline location">역삼역 4번 출구</span>
+                                                    <div class="status-community">
+                                                    <i class="second-confirm"></i>
+                                                    <span class="ing">모집중&nbsp;&nbsp;
+                                                    </span>
+                                                    </div></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input type="checkbox" id="checkbox" class="wish-button">
+                                        <label for="checkbox">
+                                          <svg id="heart-svg" viewBox="467 392 58 57" xmlns="http://www.w3.org/2000/svg">
+                                            <g id="Group" fill="none" fill-rule="evenodd" transform="translate(467 392)">
+                                              <path d="M29.144 20.773c-.063-.13-4.227-8.67-11.44-2.59C7.63 28.795 28.94 43.256 29.143 43.394c.204-.138 21.513-14.6 11.44-25.213-7.214-6.08-11.377 2.46-11.44 2.59z" id="heart" fill="#AAB8C2"/>
+                                              <circle id="main-circ" fill="#E2264D" opacity="0" cx="29.5" cy="29.5" r="1.5"/>
+                                    
+                                              <g id="grp7" opacity="0" transform="translate(7 6)">
+                                                <circle id="oval1" fill="#9CD8C3" cx="2" cy="6" r="2"/>
+                                                <circle id="oval2" fill="#8CE8C3" cx="5" cy="2" r="2"/>
+                                              </g>
+                                    
+                                              <g id="grp6" opacity="0" transform="translate(0 28)">
+                                                <circle id="oval1" fill="#CC8EF5" cx="2" cy="7" r="2"/>
+                                                <circle id="oval2" fill="#91D2FA" cx="3" cy="2" r="2"/>
+                                              </g>
+                                    
+                                              <g id="grp3" opacity="0" transform="translate(52 28)">
+                                                <circle id="oval2" fill="#9CD8C3" cx="2" cy="7" r="2"/>
+                                                <circle id="oval1" fill="#8CE8C3" cx="4" cy="2" r="2"/>
+                                              </g>
+                                    
+                                              <g id="grp2" opacity="0" transform="translate(44 6)">
+                                                <circle id="oval2" fill="#CC8EF5" cx="5" cy="6" r="2"/>
+                                                <circle id="oval1" fill="#CC8EF5" cx="2" cy="2" r="2"/>
+                                              </g>
+                                    
+                                              <g id="grp5" opacity="0" transform="translate(14 50)">
+                                                <circle id="oval1" fill="#91D2FA" cx="6" cy="5" r="2"/>
+                                                <circle id="oval2" fill="#91D2FA" cx="2" cy="2" r="2"/>
+                                              </g>
+                                    
+                                              <g id="grp4" opacity="0" transform="translate(35 50)">
+                                                <circle id="oval1" fill="#F48EA7" cx="6" cy="5" r="2"/>
+                                                <circle id="oval2" fill="#F48EA7" cx="2" cy="2" r="2"/>
+                                              </g>
+                                    
+                                              <g id="grp1" opacity="0" transform="translate(24)">
+                                                <circle id="oval1" fill="#9FC7FA" cx="2.5" cy="3" r="2"/>
+                                                <circle id="oval2" fill="#9FC7FA" cx="7.5" cy="2" r="2"/>
+                                              </g>
+                                            </g>
+                                          </svg>
+                                        </label>
+                                    </div>
+                                    </a>
+
+                                    <div role="presentation" class="instance">
+                                        <a class="item" href="">
+                                            <div class="thumbnail-container">
+                                                <div class="thumbnail-list">
+                                                    <div class="photo-thumbnail"></div> <!-- 사진 div -->
+                                                </div>
+                                            </div>
+                                            <div class="list-content">
+                                                <div class="list-title">
+                                                    장항준 감독 영화 리바운드 재밌다던데 같이 보러 가실 분
+                                                </div>
+                                                <div class="list-writer">정세인</div>
+                                                <div clsas="list-footer">
+                                                    <div class="list-footer-container">
+                                                        <div class="list-date-container">
+                                                            <span class="print-data">2023/04/20</span>
+                                                            <div class="like-container count-people">
+                                                                <div class="like-count-container">
+                                                                    <div class="people-icon"></div>
+                                                                    <span class="like-count">10</span><span>명 참여</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="loca-status-container">
+                                                        <span class="deadline location">역삼역 4번 출구</span>
+                                                        <div class="status-community">
+                                                        <i class="second-confirm"></i>
+                                                        <span class="ing">모집중&nbsp;&nbsp;
+                                                        </span>
+                                                        </div></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <input type="checkbox" id="checkbox" class="wish-button">
+                                            <label for="checkbox">
+                                              <svg id="heart-svg" viewBox="467 392 58 57" xmlns="http://www.w3.org/2000/svg">
+                                                <g id="Group" fill="none" fill-rule="evenodd" transform="translate(467 392)">
+                                                  <path d="M29.144 20.773c-.063-.13-4.227-8.67-11.44-2.59C7.63 28.795 28.94 43.256 29.143 43.394c.204-.138 21.513-14.6 11.44-25.213-7.214-6.08-11.377 2.46-11.44 2.59z" id="heart" fill="#AAB8C2"/>
+                                                  <circle id="main-circ" fill="#E2264D" opacity="0" cx="29.5" cy="29.5" r="1.5"/>
+                                        
+                                                  <g id="grp7" opacity="0" transform="translate(7 6)">
+                                                    <circle id="oval1" fill="#9CD8C3" cx="2" cy="6" r="2"/>
+                                                    <circle id="oval2" fill="#8CE8C3" cx="5" cy="2" r="2"/>
+                                                  </g>
+                                        
+                                                  <g id="grp6" opacity="0" transform="translate(0 28)">
+                                                    <circle id="oval1" fill="#CC8EF5" cx="2" cy="7" r="2"/>
+                                                    <circle id="oval2" fill="#91D2FA" cx="3" cy="2" r="2"/>
+                                                  </g>
+                                        
+                                                  <g id="grp3" opacity="0" transform="translate(52 28)">
+                                                    <circle id="oval2" fill="#9CD8C3" cx="2" cy="7" r="2"/>
+                                                    <circle id="oval1" fill="#8CE8C3" cx="4" cy="2" r="2"/>
+                                                  </g>
+                                        
+                                                  <g id="grp2" opacity="0" transform="translate(44 6)">
+                                                    <circle id="oval2" fill="#CC8EF5" cx="5" cy="6" r="2"/>
+                                                    <circle id="oval1" fill="#CC8EF5" cx="2" cy="2" r="2"/>
+                                                  </g>
+                                        
+                                                  <g id="grp5" opacity="0" transform="translate(14 50)">
+                                                    <circle id="oval1" fill="#91D2FA" cx="6" cy="5" r="2"/>
+                                                    <circle id="oval2" fill="#91D2FA" cx="2" cy="2" r="2"/>
+                                                  </g>
+                                        
+                                                  <g id="grp4" opacity="0" transform="translate(35 50)">
+                                                    <circle id="oval1" fill="#F48EA7" cx="6" cy="5" r="2"/>
+                                                    <circle id="oval2" fill="#F48EA7" cx="2" cy="2" r="2"/>
+                                                  </g>
+                                        
+                                                  <g id="grp1" opacity="0" transform="translate(24)">
+                                                    <circle id="oval1" fill="#9FC7FA" cx="2.5" cy="3" r="2"/>
+                                                    <circle id="oval2" fill="#9FC7FA" cx="7.5" cy="2" r="2"/>
+                                                  </g>
+                                                </g>
+                                              </svg>
+                                            </label>
+                                        </div>
+                                        </a>
+
+
+
+
 
                             <div role="presentation" class="instance">
                                 <a class="item" href="">
