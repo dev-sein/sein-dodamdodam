@@ -14,6 +14,9 @@
 <!--    <link rel="stylesheet" href="/css/myPage/myPage-main.css" />-->
   </head>
   <body>
+<!-- 모달창 -->
+<!-- 모달 끝 -->
+
     <div class="MainWrapper_content__GZkTa">
       <div class="MyWadizPage_myWadizPage__wOTdS">
         <div class="MyWadizPage_profileBackground__T_LTr" aria-hidden="true"></div>
@@ -32,12 +35,13 @@
               aria-labelledby="myWadizTab_supporter"
             >
               <div class="MyWadizSupporterProfile_profileContainer__1q7eh">
-                <div style="position: relative;
-                top: -40px;
-                left: -12px;">
-                  나의 등급 <img src="https://cdn3.iconfinder.com/data/icons/ranking-2/500/nim1393_15_ranking_bronze_coin-128.png" style=" width: 24px;
+                <div style="position: relative; top: -40px; left: -12px;" id="rankModalButton">
+                  현재나의 등급 <img src="https://cdn3.iconfinder.com/data/icons/ranking-2/500/nim1393_15_ranking_bronze_coin-128.png" style=" width: 24px;
                   position: absolute;
-                  left: 60px;"> 
+                  left: 88px;"> 
+                  <button >
+                    <img src="/static/images/myPage/moreThan.png" style="width: 17px; position: absolute; left: 198px; top: 2px;">
+                  </button>
                 </div>
                 <h3 class="BlindText_textHidden__ovQb4">나의 프로필</h3>
                 <div class="MyWadizSupporterProfile_profileImage__1eEvS">
@@ -106,7 +110,7 @@
                               <dt class="MyWadizSupporterAccumulate_title__3CiIs">
                                 <span class="MyWadizSupporterAccumulate_name__1mWXC">결제 내역</span>
                               </dt>
-                              <dd class="MyWadizSupporterAccumulate_value__1oBSj">6개</dd>
+                              <dd class="MyWadizSupporterAccumulate_value__1oBSj">6건</dd>
                             </dl>
                           </a>
                         </div>
@@ -165,7 +169,7 @@
                         <a href="/web/wish/main"
                           ><span class="MyWadizMenu_icon__1sqne" aria-hidden="true"
                             ><img class="follower-icon" src="/static/images/myPage/heart.png" ></span
-                          ><span class="MyWadizMenu_text__9ryGW">참여한</span
+                          ><span class="MyWadizMenu_text__9ryGW">내가 모집한 글</span
                           ><span class="arrowImg2" ><img src="/static/images/myPage/moreThan.png" style="width: 22px;"></span
                         ></a>
                       </li>
@@ -173,7 +177,7 @@
                         <a href="/web/wmypage/myfunding/investfundinglist"
                           ><span class="MyWadizMenu_icon__1sqne" aria-hidden="true"
                             ><i class="invest-icon"></i></span
-                          ><span class="MyWadizMenu_text__9ryGW">투자 관리</span
+                          ><span class="MyWadizMenu_text__9ryGW">내가 참여한 글</span
                           ><span class="arrowImg2" ><img src="/static/images/myPage/moreThan.png" style="width: 22px;"></span
                         ></a>
                       </li>
