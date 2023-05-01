@@ -688,7 +688,7 @@ header{
     outline: none;
 }
 
-.Button_TextField_icon{
+.Button_TextField_icon, .Button_TextField_icon1{
     right: 0;
     text-align: left;
     position: absolute;
@@ -1115,4 +1115,19 @@ input[name=address]::placeholder {
     font-size: 16px;
     font-weight: 400;
     padding-bottom: 8px;
+}
+
+svg.eye-icon {
+    width: 23px;
+    top: 12px;
+    left: 16px;
+    fill: #adb5bd;
+}
+
+svg.eye-icon1 {
+    width: 23px;
+    top: 12px;
+    left: 16px;
+    fill: #adb5bd;
+    margin-top: 4px;
 }

@@ -29,6 +29,19 @@ $(".btn-type").on("click", function() {
     }
 });
 
+/* 취소버튼 눌렀을 때 - 모달 */
+function showModal(){
+    $('.modal-copy').css('display', 'block');
+    $('.modal-bg').css('display', 'block');
+    $('body').css('overflow', 'hidden');
+}
+
+function closeModal(){
+    $('.modal-copy').css('display', 'none');
+    $('.modal-bg').css('display', 'none');
+    $('body').css('overflow', 'visible');
+}
+
 /* 파일 썸네일 */
 /* 파일인풋 */
 const file = document.querySelector('input[type=file]');
