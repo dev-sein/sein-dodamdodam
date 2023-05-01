@@ -333,10 +333,9 @@ button:not(:disabled) {
     width: 300px;
     padding-left: 14px;
     margin-right: 7px;
-    border: 1px solid #E8E8E8;
     border-radius: 3px;
-    background-color: #F8F8F8;
     cursor: default;
+    border: 1px solid rgba(0,0,0,.15);
     pointer-events: none;
     font-family: 'Noto Sans KR';
     font-weight: 300;
@@ -455,6 +454,18 @@ input[name=address]::placeholder {
     display: none;
 }
 
+#btnAtt-error{
+    display:none;
+}
+
+#address-error{
+    display:none;
+}
+
+.address-input{
+    margin-bottom: 5px;
+}
+
 /* 모달 */
 .modal-bg {
     display:none;
@@ -520,6 +531,7 @@ input[name=address]::placeholder {
     margin-left:2px;
     margin-top: 54px;
     width: 142px;
+    border: 1px solid #006633;
 }
 
 
