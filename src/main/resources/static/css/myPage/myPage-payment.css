@@ -10,7 +10,7 @@ article, blockquote, body, dd, div, dl, dt, h1, h2, h3, h4, html, li, main, ol, 
 
 
 #mypageWrap {
-    width: 100%;
+    margin: 0 auto;
 }
 
 a, address, article, aside, audio, b, body, button, canvas, caption, dd, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, html, i, img, input, label, legend, li, nav, ol, p, pre, section, small, span, strong, summary, table, tbody, td, th, thead, time, tr, ul, video {
@@ -117,8 +117,8 @@ h2.mypage-top-title {
 
 .module--support-list {
     text-align: center;
-    left: 50px;
-    width: 60%;
+    left: -1em;
+    width: 57em;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -128,12 +128,15 @@ h2.mypage-top-title {
     text-overflow: ellipsis;
     background-color: #fff;
     justify-content: space-evenly;
+    margin: 0 auto;
 }
 
 .module {
-    margin: 1px 0px 8px 300px;
+    z-index: 200;
+    margin: 0 auto;
     border-radius: 10px;
     box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
 }
 
 *, ::before, ::after {
@@ -142,18 +145,18 @@ h2.mypage-top-title {
 
 .support-list__title-container {
     position: relative;
-    width: 100%;
+    width: 57em;
 }
 
 .support-list__title-unit {
-    width: 100%;
+    width: 57em;
     display: flex;
     font-weight: 600;
     border-bottom: 1px solid;
 }
 
 .support-list__title {
-    width: 100%;
+    width: 57em;
     display: inline-flex;
     flex-direction: row;
     margin: 0.6em 0 0.4em;
@@ -180,7 +183,7 @@ dl, ol, ul, menu {
 }
 
 .title__status {
-    flex: 0.3;
+    flex: 0.5;
 }
 
 .title__date-post {
@@ -218,10 +221,6 @@ dl, ol, ul, menu {
     flex: 0.3;
 }
 
-.support__title {
-    flex: 0.3;
-}
-
 li {
     display: list-item;
     text-align: -webkit-match-parent;
@@ -236,15 +235,15 @@ li {
 }
 
 .support__status1 {
-    flex: 0.3;
+    flex: 0.5;
 }
 
 .support__status2 {
-    flex: 0.3;
+    flex: 0.5;
 }
 
 .support__status3 {
-    flex: 0.3;
+    flex: 0.5;
 }
 
 .support__date-post {
@@ -274,6 +273,7 @@ li {
         width: 960px;
         margin: 0 auto;
         text-align: left;
+        position: relative;
     }
 
     .mypage-project .usable-point p em {
@@ -284,8 +284,9 @@ li {
 
     .mypage-project.short .point-list {
         margin: 0 auto;
-        padding: 24px 24px 64px;
+        padding: 0;
         background: #fff;
+        position: relative;
     }
 
     .mybenefit-wrap #emptyProjectText {
