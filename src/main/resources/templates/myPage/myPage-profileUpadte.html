@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>프로필 정보 설정</title>
     <!-- link 적용 -->
+    <link rel="stylesheet" href="../../static/css/event-board/event-board-write.css">
+    <link rel="stylesheet" href="../../static/css/myPage/myPage-profileUpdate.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/css/myPage/myPage-profileUpdate.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">  
+    <link rel="shortcut icon" href="/static/images/components/dodam-favicon.png">
 </head>
 <body>
       <!-- 프로필 정보 설정 -->
@@ -20,13 +22,16 @@
                    <div id="tabContent1" class="tab-content">
                       <h5>프로필 사진</h5>
                       <div class="profileimg-wrap">
-                         <button type="file" id="resultProfileImg" class="profileimg" onclick="setThumbnail">
-                           <em id="image_container" style="background-image: url('https://static.wadiz.kr/assets/icon/profile-icon-6.png');"></em></button>
+                        <button type="button" id="resultProfileImg" class="profileimg" onclick="triggerInputFile()">
+                           <em id="image_container" style="background-image: url('https://static.wadiz.kr/assets/icon/profile-icon-6.png');"></em>
+                       </button>
+                       <input type="file" id="inputProfileImg" accept="image/*" style="display:none;" onchange="previewImage(event)">
                          <p class="setting-profileimg">
-                            <button type="button" onclick="$('#uploadProfileImg').click()" id="btn_updatePhoto">
-                               <span id="img">바꾸기</span>
-                            </button>
-                            <button type="button" onclick="deletePhoto()" id="btn_deletePhoto">삭제</button>
+                           <button type="button" id="btn_updatePhoto">
+                              <span id="img">바꾸기</span>
+                          </button>
+                          <button type="button" id="btn_deletePhoto">삭제</button>
+                          <input type="file" id="inputProfileImg" accept="image/*" style="display:none;" onchange="previewImage(event)">
                          </p>
                       </div>
                       <h5>직업 / 직책</h5>
@@ -35,10 +40,20 @@
                          <li><input type="text" class="input-text" maxlength="50" id="position" placeholder="직책" value=""></li>
                       </ul>
                       <h5>주소 변경</h5>
-                         <form id="shippingDetailForm">
-                            <input type="text" id="location1" name="address" value="주소를 입력해주세요" class="input-text" onclick="Wpost(); $('#location1')[0].blur();">
-                            <input type="text" id="location2" maxlength="96" name="addressDetails" value="상세주소를 입력해주세요" class="input-text">
-                         </form>
+                      <div class="waffle field">
+                        <div class="action-input">
+                            <div class="input-container mb13">
+                                <input name="eventAddress" id="address" class="address" placeholder="주소검색" required>
+                                <button class="address-btn" id="detailAddress" type="button" onclick="searchAddress()" style="width:93px">주소검색</button>
+                                </div>
+                           </div>
+                        </div>
+                        <div class="input-container">
+                            <div class="waffle input">
+                                <input name="eventAddressDetail" placeholder="상세주소">
+                            </div>
+                            <div class="waffle helper mb"></div>
+                    </div>   
                       <h5>자신을 소개를 해주세요.</h5>
                   <div class="textarea-wrap">
                          <textarea id="introduceme" maxlength="80"></textarea>
@@ -46,10 +61,10 @@
                       <div class="btn-bottom">
                          <ul class="btn-div2">
                             <li>
-                               <button type="button" class="wz button gray btn-darkgray" onclick="cancelModify()" id="mint">취소</button>
+                               <button type="button" class="wz button gray btn-darkgray"  id="mint">취소</button>
                             </li>
                             <li>
-                               <button type="button" class="wz button primary btn-mint" onclick="modify()" id="gray">확인</button>
+                               <button type="button" class="wz button primary btn-mint" id="gray">확인</button>
                             </li>
                          </ul>
                       </div>
@@ -59,5 +74,7 @@
       </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-<script src="/static/js/myPage/myPage-profileUpdate.js"></script>
+<script src="../../static/js/myPage/myPage-profileUpdate.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </html>

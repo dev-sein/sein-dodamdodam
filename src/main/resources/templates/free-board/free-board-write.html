@@ -18,10 +18,10 @@
         <div id="header">
             <div id="header_div">
                 <div id="header_btn">
-                    <button id="cancel_btn">
-                        <span id="btn_span">취소하기</span>
+                    <button type="button" id="cancel_btn">
+                        <span id="btn_span" onclick="showModal()">취소하기</span>
                     </button>
-                    <button id="regist_btn">
+                    <button type="button" id="regist_btn">
                         <span id="btn_span">등록하기</span>
                     </button>
                 </div>
@@ -92,6 +92,20 @@
             <input class="imageFileInput" id="photo-picker" type="file" accept="image/jpg, image/jpeg, image/png, image/bmp" style="display: none;">
         </label>
     </div>
+    <!-- 취소 버튼 클릭 모달 시작 -->
+    <div class="modal-wrap">
+        <div class="modal-bg" onclick="closeModal()"></div>
+        <div class="modal-copy">
+            <div>
+                지금까지 작성한 내용은 저장되지 않습니다.
+                <br>
+                취소하시겠습니까?
+            </div>
+            <button type="button" class="modal-close submit-btn modal white-btn" onclick="closeModal()"">취소</button>
+            <button type="button" class="modal-close submit-btn modal" onclick="closeModal()">확인</button>
+        </div>
+    </div>
+    <!-- 취소 버튼 클릭 모달 시작 -->
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script src="/static/js/free-board/free-board-write.js"></script>
