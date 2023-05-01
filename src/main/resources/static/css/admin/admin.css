@@ -346,6 +346,10 @@ content{
     border: 1.5px solid var(--main-color);
 }
 
+#searchbox:focus{
+    outline: 1px solid var(--sub-color);
+}
+
 .search__searchbox__button {
     position: absolute;
     top: 1.0em;

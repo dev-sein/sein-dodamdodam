@@ -79,3 +79,19 @@ $(document).ready(function(){
 })
 /* 이미지 개수 표시 */
 
+
+/* 이미지 클릭시 모달창  */
+$(function() {
+  $('.slider__item img').click(function() {
+    var imgSrc = $(this).attr('src');
+    $('#modal-image').attr('src', imgSrc);
+    // $('#image-modal').show();
+    $('#image-modal').css('display', 'flex');
+  });
+  
+  $('#close-btn').click(function() {
+    $('#image-modal').hide();
+  });
+});
+
+/* 이미지 클릭시 모달창  */
