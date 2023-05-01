@@ -38,6 +38,8 @@ body{
     height: 100%;
     padding: 10px;
     border-radius: 5px;
+    height: fit-content;
+    padding-bottom: 50px;
 }
 
 .inner-right-title{
@@ -122,6 +124,42 @@ font-family: 'NanumSquareRoundExtraBold'; */
   .slider__container {
     display: flex;
     transition: transform 0.5s ease-out;
+  }
+
+  .airplane{
+    width: 35px;
+  }
+
+  .button-wrapper{
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+  }
+
+  .answer-button:hover{
+    /* background-color: #00663336;
+    color: #fff;
+    border: 1px solid #00663336; */
+  }
+
+  .answer-button{
+    background-color: #fff;
+    font-size: 20px;
+    font-family: 'TheJamsil5Bold';
+    line-height: 20px;
+    text-align: center;
+    align-items: center;
+    position: relative;
+    display: flex;
+    position: relative;
+    cursor: pointer;
+    bottom: 4px;
+    border: 0;
+    border-radius: 5px;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    border: 1px solid #00000029;
+    padding: 5px 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   }
   
   .slider__item {
@@ -222,6 +260,12 @@ font-family: 'NanumSquareRoundExtraBold'; */
     font-family: TheJamsil5Bold;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     cursor: pointer;
+}
+
+.answer-header{
+  width: calc(100% - 20px);
+  display: flex;
+  justify-content: space-between;
 }
 
 .answer-wrapper{
