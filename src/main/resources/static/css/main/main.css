@@ -381,7 +381,7 @@
     font-size: 16px;
 }
 
-.events-bar{
+.events-bar, .sell-bar{
     position: relative;
     width: 100%;
     height: 100%;
@@ -389,14 +389,14 @@
     padding-left: 0px;
     padding-right: 0px;
 }
-.event-container{
+.event-container, .sell-container{
     max-width: 1420px;
     width: 98%;
     position: relative;
     margin: 0px auto 20px;
 }
 
-.arrow-icon-left{
+.arrow-icon-left, .sell-prev{
     position: absolute;
     top: 40%;
     left: 5px;
@@ -485,7 +485,7 @@
     align-items: center;
 }
 
-.event-swiper-container{
+.event-swiper-container, .sell-swiper-container{
     touch-action: pan-y;
     list-style: none;
     margin-left: auto;
@@ -512,7 +512,7 @@
     width: 302px;
     margin-right: 24px;
 }
-.event-swiper-container{
+.event-swiper-container, .sell-swiper-image-container{
     position: relative;
     height: 311px;
 }

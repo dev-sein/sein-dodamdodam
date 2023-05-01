@@ -7,6 +7,7 @@ body {
     font-size: 15px;
     font-weight: 400;
     line-height: 1.5;
+    margin: 0;
 
 }
 
@@ -56,19 +57,21 @@ h2 {
     margin-bottom: 60px;
 }
 
+.hero {
+    background-color: rgba(255, 255, 255, 1);
+    height: 400px;
+    padding: 0 20px;
+    text-align: center;
+    /* width: 100%; */
+}
+
 .hero_show {
     background-image: url('https://theme.zdassets.com/theme_assets/13612819/ce50aeb00da862eb39d6acc202ba4ad7711f769a.jpg');
     background-position: center;
     background-size: cover;
 }
 
-.hero {
-    background-color: rgba(255, 255, 255, 1);
-    height: 400px;
-    padding: 0 20px;
-    text-align: center;
-    width: 100%;
-}
+
 
 .hero-inner {
     position: relative;
@@ -256,6 +259,9 @@ input, textarea {
     justify-content: flex-start;
     list-style: none;
     padding: 0;
+
+    width: 70%;
+    margin: 0 auto;
 }
 
 .quick-articles section {
