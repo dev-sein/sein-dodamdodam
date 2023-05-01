@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문화공간 0501 ver.</title>
+    <link rel="stylesheet" href="../../static/css/culture-space/culture-space.css">
+    <style>
+        .background{
+            opacity: 0.2;
+            width: 438px;
+            height: 228px;
+            border-radius: 10px;
+        }
+
+        .instance{
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+        }
+
+    .space-name{
+    position: absolute;
+    top: 13%;
+    left: 3%;
+    text-align: center;
+    font-size: 24px;
+    font-family: 'Noto Sans KR';
+    font-weight: 700;
+    }
+
+    .mouseover{
+        position: absolute;
+        font-size: 14px;
+    }
+    </style>
+</head>
+<body>
+    <div id="page-container">
+        <main id="main-app">
+            <div class="main-wrapper-content">
+                <div class="culture-space-container">
+                    <section>
+                        <div class="culture-inner">
+                            <div>
+                                <h3 class="culture-space-title">문화공간 소개</h3>
+                            </div>
+                            <div class="culture-space-content-container">
+                                <strong class="culture-space-content">
+                                    <span>누구나 이용 가능한 서울의 문화공간을 소개합니다.</span>
+                                    <!-- <div id="map" class="location-map" style="width:100%;height:350px;"></div> -->
+                                </strong>
+                            <div class="instance">
+                            <div class="culture-space">
+                                <img class="background" src="https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=04ae3506f18f4fb39a8553095364f973&thumb=Y">
+                                <div class="space-name"><span>DDP(동대문디자인플라자)</span></div>
+                                <div class="mouseover">마우스오버하여 자세히 알아보기</div>
+                            </div>
+                            
+                            <div class="culture-space">
+                                <img class="background" src="https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=04ae3506f18f4fb39a8553095364f973&thumb=Y">
+
+                            </div>
+                            </div><!-- instance -->
+                        </div><!-- culture-inner -->
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div> <!-- page container -->
+</body>
+</html>
