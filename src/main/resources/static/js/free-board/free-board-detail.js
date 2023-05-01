@@ -1,3 +1,12 @@
+/* 클릭 시 수정/삭제 버튼 창 */
+function showList(e){
+    if($(e).next().css('display') == 'none'){
+        $(e).next().show();
+    } else {
+        $(e).next().hide();
+    }
+}
+
 /* 수정버튼 눌렀을 때 */
 $(".modify-button").each((i, e) => {
     $(e).click(() => {
@@ -8,6 +17,20 @@ $(".modify-button").each((i, e) => {
         $($(".comment-bottom")[i]).css("display","block");//취소,수정완료 버튼
     });
 });
+
+/* 삭제버튼 눌렀을 때 - 모달 */
+function deleteModal() {
+    var modalPop = $('.modal-wrap');
+    var modalBg = $('.modal-bg'); 
+        $(modalPop).show();
+        $(modalBg).show();
+}
+function popClose() {
+    var modalPop = $('.modal-wrap');
+    var modalBg = $('.modal-bg');
+        $(modalPop).hide();
+        $(modalBg).hide();
+}
 
 /* 취소버튼 - 원래 상태로 복구 */
 $(".modify-cancel").each((i, e) => {
@@ -21,14 +44,6 @@ $(".modify-cancel").each((i, e) => {
 });
 
 
-/* 클릭 시 수정/삭제 버튼 창 */
-function showList(e){
-    if($(e).next().css('display') == 'none'){
-        $(e).next().show();
-    } else {
-        $(e).next().hide();
-    }
-}
 
 /* 클릭 했을 때 색 변경/취소 */
 $(".btn-like").click(() => {
