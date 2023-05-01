@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;600;700;900&display=swap');
+
+html{
+    --scrollbar-width: 0;
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans KR';
+}
+
+body{
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    overflow-y: scroll;
+    line-height: 1.5em;
+    letter-spacing: -.02em;
+    color: rgba(0,0,0,.84);
+    font-size: 15px;
+    font-weight: 400;
+}
+
+#page-container{
+    transform-origin: 50% 0;
+    transition-property: opacity,transform;
+    transition-duration: 80ms;
+    transition-timing-function: ease-out;
+}
+
+#main-app{
+    display: block;
+    font-family: inherit;
+}
+
+.main-wrapper-content{
+    transition: padding-top .25s;
+}
+
+.culture-space-container{
+    text-align: center;
+    word-break: keep-all;
+    word-wrap: break-word;
+}
+
+.culture-inner{
+    margin: 0 auto;
+    padding: 80px 16px;
+    box-sizing: content-box;
+    max-width: 900px;
+}
+
+.culture-space-title{
+    margin-bottom: 24px;
+    text-align: center;
+    word-break: keep-all;
+    word-wrap: break-word;
+}
+
+h3 {
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+.culture-space-content{
+    margin-bottom: 32px;
+    line-height: 28px;
+    letter-spacing: -.3px;
+    font-size: 16px;
+    font-weight: 700;
+    display: block;
+}
+
+.culture-space-content:before {
+    display: block;
+    margin: 0 auto 8px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+    height: 40px;
+    content: "";
+}
