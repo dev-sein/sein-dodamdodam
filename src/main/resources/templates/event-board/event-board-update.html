@@ -186,24 +186,27 @@
                 <p class="submit-notice"></p>
             </div>
 
-            <!-- 복사완료  modal 영역 -->
-        <div class="modal-bg" onClick="javascript:popClose();"></div>
-        <div class="modal-wrap">
-          <span><br>작성한 내용으로 수정하시겠습니까?</span>
-          <button type="button" class="modal-close submit-btn modal white-btn" onClick="javascript:popClose();">이전</button>
-            <button type="button" class="modal-close submit-btn modal" onClick="javascript:popClose();">수정</button>
-              </div>
-              <!-- //modal 영역 -->
-            <!-- 복사완료  modal 영역 -->
-        <div class="modal-bg" onClick="javascript:popCopyClose();"></div>
-        <div class="modal-copy">
-          <span>이전화면으로 돌아가시겠습니까?<br>
-                작성한 내용은 저장되지 않습니다</span>
-          <button type="button" class="modal-close submit-btn modal white-btn" onClick="javascript:popCopyClose();">이전</button>
-          <button type="button" class="modal-close submit-btn modal" onClick="javascript:popCopyClose();">닫기</button>
-              </div>
-              <!-- //modal 영역 -->
-                </section>
+             <!-- 이전으로 돌아가기  modal 영역 -->
+             <div class="modal-bg" onClick="javascript:popCopyClose();"></div>
+             <div class="modal-copy">
+               <span>이전화면으로 돌아가시겠습니까?<br>
+                     작성한 내용은 저장되지 않습니다</span>
+               <button type="button" class="modal-close submit-btn modal white-btn" onClick="javascript:popCopyClose();">이전</button>
+               <button type="button" class="modal-close submit-btn modal" onClick="javascript:popCopyClose();">닫기</button>
+                   </div>
+                   <!-- //modal 영역 -->
+     
+                 <!-- 수정완료 modal 영역 -->
+             <div class="modify-modal-bg" onClick="javascript:popClose();"></div>
+             <div class="modal-wrap">
+               <span><br>작성한 내용으로 수정하시겠습니까?</span>
+               <button type="button" class="modal-close submit-btn modal white-btn" onClick="javascript:popClose();">이전</button>
+                 <button type="button" class="modal-close submit-btn modal" onClick="javascript:popClose();">수정</button>
+                   </div>
+                   <!-- //modal 영역 -->
+                
+     
+                     </section>
 
 
             </form>
@@ -217,33 +220,32 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-       /* 이전으로 돌아가기 모달 */
-function backmodal() {
+    /* 이전으로 돌아가기 모달 */
+    function backmodal() {
 var modalPop = $('.modal-copy');
-console.log("copy 들어옴")
+
 var modalBg = $('.modal-bg'); 
     $(modalPop).show();
     $(modalBg).show();
-    $('.modal-button').show();
 }
 function popCopyClose() {
 var modalPop = $('.modal-copy');
 var modalBg = $('.modal-bg');
     $(modalPop).hide();
     $(modalBg).hide();
-    $('.modal-button').hide();
+    console.log("modalbg hide 들어옴")
 }
 
     /* 수정 확인 모달 */
 function modifymodal() {
 var modalPop = $('.modal-wrap');
-var modalBg = $('.modal-bg'); 
+var modalBg = $('.modify-modal-bg'); 
     $(modalPop).show();
     $(modalBg).show();
 }
 function popClose() {
+var modalBg = $('.modify-modal-bg');
 var modalPop = $('.modal-wrap');
-var modalBg = $('.modal-bg');
     $(modalPop).hide();
     $(modalBg).hide();
 }
