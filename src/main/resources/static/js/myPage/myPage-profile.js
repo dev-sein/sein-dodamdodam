@@ -1,51 +1,92 @@
-const fundingTab = document.querySelector('.list1');
-const wishTab = document.querySelector('.list2');
-const boardTab = document.querySelector('.list3');
+const writeTab = document.querySelector('.list1');
+const collectTab = document.querySelector('.list2');
+const sellTab = document.querySelector('.list3');
+const joinTab = document.querySelector('.list4');
 
 const projectList1 = document.querySelector('.project-list1');
 const projectList2 = document.querySelector('.project-list2');
 const projectList3 = document.querySelector('.project-list3');
+const projectList4 = document.querySelector('.project-list4');
 
 function hideAllLists() {
   projectList1.style.display = 'none';
   projectList2.style.display = 'none';
   projectList3.style.display = 'none';
+  projectList4.style.display = 'none';
 }
 
-// 색상 변경 함수 추가
 function resetTabColors() {
-  fundingTab.style.color = '#90949c';
-  wishTab.style.color = '#90949c';
-  boardTab.style.color = '#90949c';
+  writeTab.style.color = '#90949c';
+  collectTab.style.color = '#90949c';
+  sellTab.style.color = '#90949c';
+  joinTab.style.color = '#90949c';
 }
 
-function handleFundingTabClick() {
+function handlewriteTabClick() {
   hideAllLists();
   resetTabColors();
   projectList1.style.display = 'block';
-  fundingTab.style.color = '#00c4c4';
+  writeTab.style.color = '#006633;';
 }
 
-function handleWishTabClick() {
+function handlecollectTabClick() {
   hideAllLists();
   resetTabColors();
   projectList2.style.display = 'block';
-  wishTab.style.color = '#00c4c4';
+  collectTab.style.color = '#006633;';
 }
 
-function handleBoardTabClick() {
+function handlesellTabClick() {
   hideAllLists();
   resetTabColors();
   projectList3.style.display = 'block';
-  boardTab.style.color = '#00c4c4';
+  sellTab.style.color = '#006633;';
 }
 
-fundingTab.addEventListener('click', handleFundingTabClick);
-wishTab.addEventListener('click', handleWishTabClick);
-boardTab.addEventListener('click', handleBoardTabClick);
+function handlejoinTabClick() {
+  hideAllLists();
+  resetTabColors();
+  projectList4.style.display = 'block';
+  joinTab.style.color = '#006633;';
+}
+
+writeTab.addEventListener('click', handlewriteTabClick);
+collectTab.addEventListener('click', handlecollectTabClick);
+sellTab.addEventListener('click', handlesellTabClick);
+joinTab.addEventListener('click', handlejoinTabClick);
 
 hideAllLists();
 projectList1.style.display = 'block';
-fundingTab.style.color = '#00c4c4';
-wishTab.style.color='#90949c';
-boardTab.style.color='#90949c';
+writeTab.style.color = '#006633;';
+collectTab.style.color='#90949c';
+sellTab.style.color='#90949c';
+joinTab.style.color='#90949c';
+
+// 각 리스트 클릭 시 색상 변경 함수 추가
+writeTab.addEventListener('click', function() {
+  writeTab.style.color = '#006633';
+  collectTab.style.color = '#90949c';
+  sellTab.style.color = '#90949c';
+  joinTab.style.color = '#90949c';
+});
+
+collectTab.addEventListener('click', function() {
+  writeTab.style.color = '#90949c';
+  collectTab.style.color = '#006633';
+  sellTab.style.color = '#90949c';
+  joinTab.style.color = '#90949c';
+});
+
+sellTab.addEventListener('click', function() {
+  writeTab.style.color = '#90949c';
+  collectTab.style.color = '#90949c';
+  sellTab.style.color = '#006633';
+  joinTab.style.color = '#90949c';
+});
+
+joinTab.addEventListener('click', function() {
+  writeTab.style.color = '#90949c';
+  collectTab.style.color = '#90949c';
+  sellTab.style.color = '#90949c';
+  joinTab.style.color = '#006633';
+});

@@ -114,6 +114,11 @@ body>#root, #wadizTopBanner, #page-container {
     display: block;
 }
 
+.my-info:hover {
+    background-color: #e4e4e4
+  }
+  
+
 .my-info-text {
     width: 90%;
     height: 56px;
