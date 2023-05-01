@@ -67,7 +67,7 @@
                             <div class="waffle helper mb"></div>
                     </div>   
 
-                             <!-- 모집 날짜  -->
+                     <!-- 모집 날짜  -->
                     <div class="waffle field">
                         <div class="waffle label">
                             <label>모집 날짜</label>
@@ -136,7 +136,7 @@
                         </div>
                     </div>
 
-                    <!-- 이벤트 장소  -->
+                    <!-- 파일 첨부 -->
                     <div id="plus_picture">
                     <div class="waffle field">
                         <div class="waffle label">
@@ -145,14 +145,13 @@
                     <button class="file-button" type="button">
                         <span>
                             <span class="button-children">
-                                <input class="file-input" type="file" multiple="multiple" name="fileNames" accept="application/pdf,image/jpg,image/jpeg,image/png" required>등록</span>
+                                <input class="file-input" id='btnAtt' type="file" multiple="multiple" name="fileNames" accept="application/pdf,image/jpg,image/jpeg,image/png" required>등록</span>
                             </span>
                         </span>
-                    </button></label>   
+                    </button>
+                    <div id='att_zone'></div></label>   
                 </div>                  
                 <div class="waffle helper mb">10MB 이내 pdf, jpeg, png 파일을 등록하세요.</div>
-                <div id="thumbnail-list" style="display: flex;">
-                    </div>
                 <div class="submit-container">
                 <input class="submit-btn btn" type="submit"></button>
                 <p class="submit-notice"></p>
@@ -171,63 +170,5 @@
 <script src="../../static/js/recruitment-board/recruitment-board-write.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script>
-
-// const file = document.querySelector('input[type=file]');
-// const imgButton = document.querySelector(".file-button");
-// console.log(imgButton);
-
-// function handleFiles(files) {
-//     /* 썸네일 담을 div의 부모 */
-//     const thumbnailList = document.getElementById("thumbnail-list");
-
-//     for (let i = 0; i < files.length; i++) {
-
-//         /* 파일절대경로얻기 */  
-//         const file = files[i];
-//         const reader = new FileReader();
-//         /* reader가 onload 할때 */
-//         reader.onload = function(event) {
-//             /* 썸네일 담을 div와 그 자식의 span 선언 */   
-//             const thumbnail = document.createElement("div");
-//             const thumbnailSpan = document.createElement("span");
-
-
-//             let result = event.target.result;
-
-//             /* 썸네일 담을 div와 그 자식의 span에 썸네일 css와 x버튼 css 추가*/
-//             thumbnail.classList.add("imageThumbnail");
-//             thumbnailSpan.classList.add("closeImgButton");
-
-//             /* 썸네일 담을 div에 절대경로 넣어주기 */
-//             thumbnail.style.backgroundImage = `url('${result}')`;
-
-//             /* 썸네일 담을 div와 그 자식의 span 추가해주기 */
-//             thumbnailList.prepend(thumbnail);
-//             thumbnail.appendChild(thumbnailSpan);
-
-//             /* x버튼 선언 */
-//             const closeButton = document.querySelector(".closeImgButton");
-
-//             /* x버튼 누를 시 x버튼과 backgroundImage 지워주기 */
-//             closeButton.addEventListener('click', function (e) {
-//                 e.preventDefault();
-//                 file.value = "";
-//                 this.style.display = 'none';
-//                 thumbnail.style.backgroundImage = `url('')`;
-//                 thumbnail.remove(thumbnail);
-//                 $("#plus_picture").show();
-//             });
-
-//            }
-            
-//         };
-//         /* result 속성(attribute)에 담기 */
-//         reader.readAsDataURL(file);
-           
-//     }
-
-
-</script>
 </html>
 

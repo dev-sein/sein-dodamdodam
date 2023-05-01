@@ -118,22 +118,22 @@
                     
                     <!-- 이벤트 장소  -->
                     <div class="waffle field">
-                        <div class="waffle label">
-                            <label>이벤트 장소</label>
-                        </div>
-                        <div class="action-input">
-                            <div class="input-container mb13">
-                                <input name="eventAddress" id="address" class="address" placeholder="주소검색" required>
-                                <button class="address-btn" id="detailAddress" type="button" onclick="searchAddress()">주소검색</button>
-                                </div>
+                       <div class="waffle label">
+                           <label>이벤트 장소</label>
+                       </div>
+                       <div class="action-input">
+                           <div class="input-container mb13">
+                               <input name="eventAddress" id="address" class="address" placeholder="주소검색" required>
+                               <button class="address-btn" id="detailAddress" type="button" onclick="searchAddress()">주소검색</button>
+                               </div>
+                          </div>
+                       </div>
+                       <div class="input-container">
+                           <div class="waffle input">
+                               <input name="eventAddressDetail" placeholder="상세주소">
                            </div>
-                        </div>
-                        <div class="input-container">
-                            <div class="waffle input">
-                                <input name="eventAddressDetail" placeholder="상세주소">
-                            </div>
-                            <div class="waffle helper mb"></div>
-                    </div>   
+                           <div class="waffle helper mb"></div>
+                        </div>   
 
     
 
@@ -149,7 +149,7 @@
                             </div>
                             <div class="waffle helper mb"></div>
                         </div>
-                        </div>
+                    </div>
 
 
                     <!-- 이벤트 소개  -->
@@ -164,7 +164,8 @@
                         </div>
                     </div>                  
 
-                    <!-- 이벤트 장소  -->
+                    <!-- 파일 첨부 -->
+                <div id="plus_picture">
                     <div class="waffle field">
                         <div class="waffle label">
                             <label>파일 첨부
@@ -172,22 +173,20 @@
                     <button class="file-button" type="button">
                         <span>
                             <span class="button-children">
-                                <input class="file-input" type="file" name="file" accept="application/pdf,image/jpg,image/jpeg,image/png" required>등록</span>
+                                <input class="file-input" id='btnAtt' type="file" multiple="multiple" name="fileNames" accept="application/pdf,image/jpg,image/jpeg,image/png" required>등록</span>
                             </span>
                         </span>
-                    </button></label>
+                    </button>
+                    <div id='att_zone'></div></label>   
                 </div>                  
                 <div class="waffle helper mb">10MB 이내 pdf, jpeg, png 파일을 등록하세요.</div>
                 
                 <div class="submit-container">
                 <input class="submit-btn btn" type="submit"></button>
                 <p class="submit-notice">* 잘못된 정보를 등록하시면 요청이 반려될 수 있습니다.</p>
-            </div>
+                </div>
                 </section>
-
-
             </form>
-
         </main>
     </div><!-- page container -->
 

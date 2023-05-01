@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">  
+    <link rel="shortcut icon" href="/static/images/components/dodam-favicon.png">
 </head>
 <body>
     <div id="page-container">
@@ -25,51 +26,150 @@
                                     <span>누구나 이용 가능한 서울의 문화공간을 소개합니다.</span>
                                 </strong>
 
-                                <div class="image-container">
-                                <div class="image-wrapper">
-                                    <div class="slider culture-space-photo-container">
-                                        <div class="slider__container">
-                                          <div class="slider__item">
-                                            <div class="photo-instance" aria-pressed="false">
-                                                <img src="https://static.wadiz.kr/main/media/bg-success-story-hyundai-01.9e04d8a1.png"></div> <!-- photo-instance -->
-                                                    <div class="space-name"><strong>세종대왕기념관</strong></div>
-                                                    <div class="space-address">서울시 동대문구 청량리동 1-157</div>
-                                                    <div class="space-tel">02-969-8851</div>
-                                                    <div class="space-introduction">고세종대왕의 성덕과 위업을 추모하고 보존하기 위해 1970년 세종대왕기념사업회에서 준공하였다.</div>
-                                          </div> <!-- slider-item -->
-                                          <div class="slider__item">
-                                            <div id="map" class="map-loca"></div>
-                                          </div> <!-- slider-item 2  -->
-                                        </div> <!-- slider - container -->
-                                        <button class="slider__arrow slider__arrow--left">&lt;</button>
-                                        <img class="slider__arrow slider__arrow--right" src="../../static/images/culture-space/map-icon1.png">
-                                    </div>
-                                </div> <!-- image-wrapper -->
-
-                                </div> <!-- image-container-->
-
-
+                                    <div id=wrap>
+                                        <div>
+                                          <!-- 버튼을 실행시 이전, 다음으로 움직이다 -->
+                                          <!-- <button class="arrow-btn prev-btn">이전</button> -->
+                                          <button class="prev">이전</button>
+                                          <img class="arrow-btn next-btn" src="../../static/images/culture-space/map-icon1.png">
+                                          <!-- <button class="slider__arrow slider__arrow--right"> 다음</button> -->
+                                        </div>
+                                        <!-- 움직일 이미지들 -->
+                                        <div class="culture-space-photo-container" style="width:438px;height:228px;">
+                                          <!-- free url 사진 -->
+                                          <img class="img photo-instance" src="https://static.wadiz.kr/main/media/bg-success-story-hyundai-01.9e04d8a1.png" alt="">
+                                          <div class="space-info">
+                                            <div class="space-name"><strong>세종대왕기념관</strong></div>
+                                            <div class="space-address">서울시 동대문구 청량리동 1-157</div>
+                                            <div class="space-tel">02-969-8851</div>
+                                            <div class="space-introduction">고세종대왕의 성덕과 위업을 추모하고 보존하기 위해 1970년 세종대왕기념사업회에서 준공하였다.</div>
+                                        </div><!-- space-info -->
+                                          <div id="map2" class="map-loca img"></div>
+                                        </div>
+                                      </div>
 
                                 <div id="map2" class="map-loca"></div>
                                 <div id="map3" class="map-loca"></div>
                                 <div id="map4" class="map-loca"></div>
                                 <div id="map5" class="map-loca"></div>
                                 <div id="map6" class="map-loca"></div>
-                        </div> <!-- culture-space-container -->
-                    </div>
-                    </div><!-- culture-inner -->
-                </section>
+                            </div> <!-- culture-space-container -->
+                        </div> <!-- culture-inner -->
+                    </section>
                 </div> <!-- culture-space-container -->
-            </div> <!-- main-wrapper-content 가 되어야 함 -->
             </div> <!-- main-wrapper-content 가 되어야 함 -->
         </main>
     </div> <!-- page container -->
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="../../static/js/culture-space/culture-space.js"></script>
+<!-- <script src="../../static/js/culture-space/culture-space-backup.js"></script> -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3366aee711925269dca27f42bfb64ad1"></script>
 <script>
+
+$(function() {
+$('.culture-space-photo-container').mouseover(function(e){
+    $(this).find(".photo-instance").css("opacity", "0.1"); //사진 투명도 조절
+    $(this).find('.next-btn').show(); //우측 지도 버튼
+    $(this).find('.prev').show(); //좌측 화살표
+    $(this).find('.space-info').css({left: '-30%'}); //공간 정보 노출 애니메이션
+    $(this).find('.space-info').animate({left:'0px'}, {duration: 700});
+    $(this).find('.space-info').css("opacity", "1");
+    $(this).find('.space-info').show();
+});
+
+$('.culture-space-photo-container').mouseout(function(e){
+    $(this).find('.photo-instance').css("opacity", "1");
+    $(this).find('.next-btn').hide();
+    $(this).find('.prev').hide();
+    $(this).find('.space-info').css({left: '-20%'});
+    $(this).find('.space-info').hide();
+});
+
+// /* 세종대왕박물관 */
+var mapContainer2 = document.getElementById('map2'), // 지도를 표시할 div 
+  mapOption = { 
+      center: new kakao.maps.LatLng(37.5909928893989, 127.042703170101), // 지도의 중심좌표
+      level: 3 // 지도의 확대 레벨
+  };
+
+// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+var map2 = new kakao.maps.Map(mapContainer2, mapOption); 
+var markerPosition2  = new kakao.maps.LatLng(37.5909928893989, 127.042703170101); 
+var marker2 = new kakao.maps.Marker({
+  position: markerPosition2
+});
+marker2.setMap(map2);
+
+var mapContainer3 = document.getElementById('map3'), // 지도를 표시할 div 
+  mapOption3 = { 
+      center: new kakao.maps.LatLng(37.5507568507373, 126.982753574242), // 지도의 중심좌표
+      level: 3 // 지도의 확대 레벨
+  };
+
+  $(document).ready(function(){
+	$('button').click(function(){
+   		$('.blind').animate({width:"toggle"},400);
+	});
+});
+
+$(".prev").on("click", function (e) {
+  console.log("들어옴");
+    e.preventDefault();
+
+    // 이미지 현재의 위치
+    var imgOn = $(".imgBox").find(".on").index();
+    // 이미지 총 개수 
+    var imgLen = $(".imgBox .img").length;
+    console.log(imgOn)
     
+    // imgBox안의 img 중 imgOn 번째의 on 클래스 삭제 
+    $(".culture-space-photo-container .img").eq(imgOn).removeClass("on");
+    // imgBox안의 img 중 imgOn 번째 숨기기 
+    $(".culture-space-photo-container .img").eq(imgOn).css("opacity", 0);
+    
+    //  이전의 위치로 돌아가야함으로
+    imgOn = imgOn -1;
+
+    if( imgOn < 0 ){
+      // 돌아가 위치가 -1일 경우 
+      // 이미지의 마지막으로 돌아간다
+      $("culture-space-photo-container .img").eq(imgLen -1).css("opacity", 1);
+      $(".culture-space-photo-container .img").eq(imgLen -1).addClass("on");
+    }else{
+      // 돌아갈 위치가 -1이 아닌 경우
+      $(".culture-space-photo-container .img").eq(imgOn).css("opacity", 1);
+      $(".culture-space-photo-container .img").eq(imgOn).addClass("on");
+    }
+
+  });
+
+  $(".next-btn").on("click", function (e) {
+      console.log("오른쪽 들어옴");
+    e.preventDefault();
+    // 위에 동일 
+    var imgOn = $(".culture-space-photo-container").find(".on").index();
+    var imgLen = $(".culture-space-photo-container .img").length;
+
+    // 위에 동일
+    $(".culture-space-photo-container .img").eq(imgOn).removeClass("on");
+    $(".culture-space-photo-container .img").eq(imgOn).css("opacity", 0);
+    
+    // 다음의 위치로 알아야 되기 때문에 
+    imgOn = imgOn + 1;
+    
+    if( imgOn === imgLen ){
+      // 다음의 위치가 총 개수보다 클 경우
+      // 처음의 위치로 돌아간다
+      $(".culture-space-photo-container .img").eq(0).css("opacity", 1);
+      $(".culture-space-photo-container .img").eq(0).addClass("on");
+    }else{
+      // 다음 위치가 있는 경우 
+      $(".culture-space-photo-container .img").eq(imgOn).css("opacity", 1);
+      $(".culture-space-photo-container .img").eq(imgOn).addClass("on");
+    }
+  });
+});
+
 /* 동대문역사문화공원 */    
     //지도 설정
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -182,6 +282,7 @@ var marker6 = new kakao.maps.Marker({
 });
 
 marker6.setMap(map6);
+
 </script>
 </html>
 

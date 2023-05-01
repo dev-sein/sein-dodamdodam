@@ -168,8 +168,6 @@ svg:not(:root) {
     overflow: hidden;
 }
 
-
-
 #main-app{
     display: block;
 }
@@ -181,20 +179,6 @@ svg:not(:root) {
 .collection-container{
     margin: 0 auto;
     max-width: 1140px;
-}
-
-.write-btn{
-    border: 1px solid #006633;
-    background-color: #006633;
-    color: #fff;
-    padding: 14px 28px;
-    line-height: 1.4;
-    font-size: 18px;
-    font-family: 'Noto Sans KR';
-    width: 260px;
-    border-radius: 4px;
-    outline: none;
-    margin-left: 842px;
 }
 
 
@@ -214,6 +198,31 @@ svg:not(:root) {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.recruit-title{
+    margin-top: 70px;
+    font-size: 32px;
+    font-family: 'Noto Sans KR';
+    font-weight: 700;
+}
+
+.recruit-introduction{
+    font-size: 18px;
+    font-family: 'Noto Sans KR';
+    color: #495057;
+    font-weight: 400;
+}
+
+.write{
+    border-radius: 0px;
+    border: 1px solid #006633;
+    color: #006633;
+    font-family: 'Noto Sans KR';
+    width: 500px;
+    margin-top: 50px;
+    font-weight: 500;
+    font-size: 20px;
 }
 
 .collection-table{
@@ -541,7 +550,7 @@ html.scroll-top.scroll-apex .top-btn {
     gap: 12px;
     position: fixed;
     right: 16px;
-    bottom: 20px;
+    bottom: 64px;
     transition-property: transform,scale;
     transition-duration: .25s;
     z-index: 1200;
@@ -598,12 +607,33 @@ html.scroll-top .top-btn-container {
     fill: currentColor;
 }
 
+.write-btn{
+    position: fixed;
+    bottom: 3px;
+    right: 16px;
+    cursor: pointer;
+}
+
+.write-btn img{
+    width: 60px;
+    height: 60px;
+}
+
+
 @media screen and (min-width: 1097px){
 .main-wrapper-content {
     padding-top: 0;
     padding-bottom: 0;
 }
 }
+
+@media screen and (min-width: 1097px){
+    .write-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 32px;
+    }
+    }
 
 @media screen and (min-width: 1097px){
     .collection-container{

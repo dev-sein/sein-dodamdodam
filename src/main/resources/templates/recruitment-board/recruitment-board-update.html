@@ -14,7 +14,7 @@
 <body>
     <div id="page-container">
         <main id="container">
-            <form class="event-register">
+            <form id="submit-btn" class="event-register">
                 <!-- 회원 유형 선택 -->                
                 <section class="info-register">
 
@@ -29,7 +29,7 @@
                         </div>
                         <div class="input-container">
                             <div class="waffle input">
-                                <input placeholder="모집 게시글 제목을 적어주세요">
+                                <input placeholder="모집 게시글 제목을 적어주세요" required>
                             </div>
                             <div class="waffle helper mb"></div>
                         </div>
@@ -41,103 +41,143 @@
                         </div>
                         <div class="input-container">
                             <div class="waffle input">
-                                <input placeholder="모집 게시글 소제목을 적어주세요">
+                                <input placeholder="모집 게시글 소제목을 적어주세요" required>
                             </div>
                             <div class="waffle helper mb"></div>
                         </div>
                     </div>
 
                     
-                    <!-- 이벤트 장소  -->
+                   <!-- 이벤트 장소  -->
+                   <div class="waffle field">
+                    <div class="waffle label">
+                        <label>이벤트 장소</label>
+                    </div>
+                    <div class="action-input">
+                        <div class="input-container mb13">
+                            <input name="eventAddress" id="address" class="address" placeholder="주소검색" required>
+                            <button class="address-btn" id="detailAddress" type="button" onclick="searchAddress()">주소검색</button>
+                            </div>
+                       </div>
+                    </div>
+                    <div class="input-container">
+                        <div class="waffle input">
+                            <input name="eventAddressDetail" placeholder="상세주소">
+                        </div>
+                        <div class="waffle helper mb"></div>
+                </div>   
+
+                 <!-- 모집 날짜  -->
+                <div class="waffle field">
+                    <div class="waffle label">
+                        <label>모집 날짜</label>
+                    </div>
+                    <div class="input-container">
+                        <div class="waffle input">
+                            <input type="date" name="startDate" id="startDate" required>
+                        </div>
+                        <div class="waffle helper mb"></div>
+                    </div>
+                    </div>
+                    
+
+                    <!-- 모집 인원 -->
                     <div class="waffle field">
                         <div class="waffle label">
-                            <label>모집 장소</label>
-                        </div>
-                        <div class="action-input">
-                            <div class="input-container mb13">
-                                <input name="address" class="address" placeholder="주소검색">
-                                <button class="address-btn" type="button">주소검색</button>
-                                </div>
-                           </div>
+                            <label>모집 인원</label>
                         </div>
                         <div class="input-container">
-
-                            <div class="waffle input">
-                            
-                                <input placeholder="상세주소" disabled>
+                            <div class="waffle input nu">
+                                <input class="people-count number" placeholder="모집 인원수를 적어주세요" maxlength="5" name="people-count" required>
                             </div>
                             <div class="waffle helper mb"></div>
-                    </div>   
+                            <div class="people-count-error error"></div>
+                        </div>
+                    </div>
 
-                             <!-- 이벤트 장소  -->
-                    <div class="waffle field">
-                        <div class="waffle label">
-                            <label>모집 날짜</label>
-                        </div>
-                        <div class="input-container">
-                            <div class="waffle input">
-                                <input type="date" name="startDate" id="startDate">
-                            </div>
-                            <div class="waffle helper mb"></div>
-                        </div>
-                        </div>
+                <!-- 이벤트 소개  -->
+                <div class="waffle field">
+                    <div class="waffle label">
+                        <label>모집글 소개</label>
+                    </div>
+                    <div class="input-container">
+                            <textarea rows="5"placeholder="모집글 소개를 적어주세요" name="recruitment-introduction" required></textarea>
 
-                        <div class="waffle field">
-                            <div class="waffle label">
-                                <label>모집 인원</label>
-                            </div>
-                            <div class="input-container">
-                                <div class="waffle input">
-                                    <input placeholder="모집 인원수를 적어주세요" maxlength="5">
-                                </div>
-                                <div class="waffle helper mb"></div>
-                            </div>
+                        <div class="waffle helper mb"></div>
+                    </div>
+                </div>       
+                
+                <!-- 오픈 채팅 -->
+                <div class="waffle field">
+                    <div class="waffle label">
+                        <label>오픈채팅</label>
+                    </div>
+                    <div class="input-container">
+                        <div class="waffle input">
+                            <input class="open-kakao url" placeholder="오픈채팅 링크를 적어주세요" name="openKakao" required>
                         </div>
-
-                        <div class="waffle field">
-                            <div class="waffle label">
-                                <label>참가비</label>
-                            </div>
-                            <div class="input-container">
-                                <div class="waffle input">
-                                    <input placeholder="참가비를 적어주세요(ex. 티켓값, 클래스비용 등)">
-                                </div>
-                                <div class="waffle helper mb">금액을 숫자로 입력해주세요</div>
-                            </div>
-                        </div>
+                        <div class="waffle helper mb"></div>
+                        <div class="open-kakao-error error"> </div>
+                    </div>
+                </div>
 
 
-                    <!-- 이벤트 소개  -->
-                    <div class="waffle field">
-                        <div class="waffle label">
-                            <label>모집글 소개</label>
+                <!-- 오픈채팅 비밀번호 -->
+                <div class="waffle field">
+                    <div class="waffle label">
+                        <label>오픈채팅 비밀번호</label>
+                    </div>
+                    <div class="input-container">
+                        <div class="waffle input">
+                            <input class="open-kakao-password number" placeholder="오픈채팅 비밀번호를 입력해주세요" name="openKakaoPassword" required>
                         </div>
-                        <div class="input-container">
-                                <textarea rows="5"placeholder="모집글 소개를 적어주세요"></textarea>
+                        <div class="waffle helper mb"></div>
+                        <div class="open-password-error error"></div>
+                    </div>
+                </div>
 
-                            <div class="waffle helper mb"></div>
-                        </div>
-                    </div>                  
-
-                    <!-- 이벤트 장소  -->
-                    <div class="waffle field">
-                        <div class="waffle label">
-                            <label>파일 첨부</label>
-                        </div>
-                    <button class="file-button" type="button">
-                        <span>
-                            <span class="button-children">
-                                <input class="file-input" type="file" name="" accept="application/pdf,image/jpg,image/jpeg,image/png">등록</span>
-                            </span>
+                <!-- 파일 첨부 -->
+                <div id="plus_picture">
+                <div class="waffle field">
+                    <div class="waffle label">
+                        <label>파일 첨부
+                    </div>
+                <button class="file-button" type="button">
+                    <span>
+                        <span class="button-children">
+                            <input class="file-input" id='btnAtt' type="file" multiple="multiple" name="fileNames" accept="application/pdf,image/jpg,image/jpeg,image/png" required>등록</span>
                         </span>
-                    </button>
-                </div>                  
-                <div class="waffle helper mb">10MB 이내 pdf, jpeg, png 파일을 등록하세요.</div>
+                    </span>
+                </button>
+                <div id='att_zone'></div></label>   
+            </div>                  
+            <div class="waffle helper mb">10MB 이내 pdf, jpeg, png 파일을 등록하세요.</div>
                 <div class="submit-container">
-                <button class="submit-btn btn back-btn" type="button">돌아가기</button>
-                <button class="submit-btn btn update-btn" type="button">수정하기</button>
+                <button class="submit-btn btn back-btn" type="button" onClick="javascript:backmodal();">돌아가기</button>
+                <input class="submit-btn btn update-btn" type="submit" value="수정하기" onClick="javascript:modifymodal();">
                 <p class="submit-notice"></p>
             </div>
+
+             <!-- 이전으로 돌아가기  modal 영역 -->
+        <div class="modal-bg" onClick="javascript:popCopyClose();"></div>
+        <div class="modal-copy">
+          <span>이전화면으로 돌아가시겠습니까?<br>
+                작성한 내용은 저장되지 않습니다</span>
+          <button type="button" class="modal-close submit-btn modal white-btn" onClick="javascript:popCopyClose();">이전</button>
+          <button type="button" class="modal-close submit-btn modal" onClick="javascript:popCopyClose();">닫기</button>
+              </div>
+              <!-- //modal 영역 -->
+
+            <!-- 수정완료 modal 영역 -->
+        <div class="modify-modal-bg" onClick="javascript:popClose();"></div>
+        <div class="modal-wrap">
+          <span><br>작성한 내용으로 수정하시겠습니까?</span>
+          <button type="button" class="modal-close submit-btn modal white-btn" onClick="javascript:popClose();">이전</button>
+            <button type="button" class="modal-close submit-btn modal" onClick="javascript:popClose();">수정</button>
+              </div>
+              <!-- //modal 영역 -->
+           
+
                 </section>
 
 
@@ -148,6 +188,39 @@
 
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="../../static/js/event-board/event-board.js"></script>
+<script src="../../static/js/recruitment-board/recruitment-board-write.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+    /* 이전으로 돌아가기 모달 */
+function backmodal() {
+var modalPop = $('.modal-copy');
+
+var modalBg = $('.modal-bg'); 
+    $(modalPop).show();
+    $(modalBg).show();
+}
+function popCopyClose() {
+var modalPop = $('.modal-copy');
+var modalBg = $('.modal-bg');
+    $(modalPop).hide();
+    $(modalBg).hide();
+    console.log("modalbg hide 들어옴")
+}
+
+    /* 수정 확인 모달 */
+function modifymodal() {
+var modalPop = $('.modal-wrap');
+var modalBg = $('.modify-modal-bg'); 
+    $(modalPop).show();
+    $(modalBg).show();
+}
+function popClose() {
+var modalBg = $('.modify-modal-bg');
+var modalPop = $('.modal-wrap');
+    $(modalPop).hide();
+    $(modalBg).hide();
+}
+</script>
 </html>
 
