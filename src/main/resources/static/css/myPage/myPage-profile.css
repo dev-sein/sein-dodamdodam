@@ -250,8 +250,8 @@ a.Mint {
 }
 
 #apply:hover {
-	border-color: #00b2b2;
-	background-color: #00b2b2;
+	border-color: #006633;
+	background-color: #006633ca;
 }
 
 a.ProfileSet:hover{
@@ -587,4 +587,5 @@ a.ProfileSet:hover{
 .ProfileSet {
     margin: auto 0 0 auto;
     max-width: 327px;
+}
 }
