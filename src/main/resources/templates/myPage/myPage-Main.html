@@ -14,6 +14,9 @@
 <!--    <link rel="stylesheet" href="/css/myPage/myPage-main.css" />-->
   </head>
   <body>
+<!-- 모달창 -->
+<!-- 모달 끝 -->
+
     <div class="MainWrapper_content__GZkTa">
       <div class="MyWadizPage_myWadizPage__wOTdS">
         <div class="MyWadizPage_profileBackground__T_LTr" aria-hidden="true"></div>
@@ -21,32 +24,9 @@
         <div class="MyWadizPage_inner__1oq9M">
           <div class="MyWadizPage_popperBox__113hj">
             <div class="MyWadizHeader_wadizHeader__8fJ9f">
-              <div
-                class="MyWadizUserTypeSwitch_container__8B_kv MyWadizHeader_switch__2WQSt"
-                role="tablist"
-              >
-                <button
-                  role="tab"
-                  id="myWadizTab_supporter"
-                  aria-controls="myWadizPanel_supporter"
-                  aria-selected="true"
-                  aria-label="supporter"
-                  data-event="supporter_mode"
-                  class="MyWadizUserTypeSwitch_button__BYDWf MyWadizUserTypeSwitch_supporter__1yivJ MyWadizUserTypeSwitch_active__dwn-k"
-                ></button>
-                <button
-                  role="tab"
-                  id="myWadizTab_maker"
-                  aria-controls="myWadizPanel_maker"
-                  aria-selected="false"
-                  aria-label="maker"
-                  data-event="maker_mode"
-                  class="MyWadizUserTypeSwitch_button__BYDWf MyWadizUserTypeSwitch_maker__3C77T"
-                ></button>
-              </div>
-              <!-- 여기까지 작업 했음 -->
             </div>
           </div>
+          <!-- 여기까지 작업 했음 -->
           <div class="MyWadizPage_contentsWrapper__1dzMJ">
             <div
               class="MyWadizSupporter_supporterMode__2XDQZ"
@@ -55,6 +35,14 @@
               aria-labelledby="myWadizTab_supporter"
             >
               <div class="MyWadizSupporterProfile_profileContainer__1q7eh">
+                <div style="position: relative; top: -40px; left: -12px;" id="rankModalButton">
+                  현재나의 등급 <img src="https://cdn3.iconfinder.com/data/icons/ranking-2/500/nim1393_15_ranking_bronze_coin-128.png" style=" width: 24px;
+                  position: absolute;
+                  left: 88px;"> 
+                  <button >
+                    <img src="/static/images/myPage/moreThan.png" style="width: 17px; position: absolute; left: 198px; top: 2px;">
+                  </button>
+                </div>
                 <h3 class="BlindText_textHidden__ovQb4">나의 프로필</h3>
                 <div class="MyWadizSupporterProfile_profileImage__1eEvS">
                   <button
@@ -72,6 +60,7 @@
                   ></button>
                 </div>
                 <div class="MyWadizSupporterProfile_profileUser__a_r1P">
+                  
                   <button data-event="profile">
                     <b class="MyWadizSupporterProfile_userName__3hSE4"
                       >린먕<span aria-label="프로필 상세 보기">님</span>
@@ -80,11 +69,8 @@
                 </button>
                   <dl class="MyWadizSupporterProfile_profileUserLabel__1fiU3">
                     <dt class="BlindText_textHidden__ovQb4">내 회원 정보</dt>
-                    <dd>나의현재 등급</dd>
-                    <button id="rankBtn">
-                      <img src="https://cdn3.iconfinder.com/data/icons/ranking-2/500/nim1393_15_ranking_bronze_coin-128.png" style="width:
-                    50px">
-                    </button>
+                    <dd><button id="rankBtn">
+                    </button></dd>
                   </dl>
                 </div>
                 <div class="MyWadizSupporterProfile_setting__n8-M7">
@@ -122,9 +108,9 @@
                           >
                             <dl class="MyWadizSupporterAccumulate_info__2_7Is">
                               <dt class="MyWadizSupporterAccumulate_title__3CiIs">
-                                <span class="MyWadizSupporterAccumulate_name__1mWXC">쿠폰</span>
+                                <span class="MyWadizSupporterAccumulate_name__1mWXC">결제 내역</span>
                               </dt>
-                              <dd class="MyWadizSupporterAccumulate_value__1oBSj">6 장</dd>
+                              <dd class="MyWadizSupporterAccumulate_value__1oBSj">6건</dd>
                             </dl>
                           </a>
                         </div>
@@ -165,55 +151,6 @@
                         </div>
                       </div>
                     </div>
-                    <a
-                      class="MyWadizSupporterClubLinkButton_container__2WhpH MyWadizSupporterProject_supporterClubLinkButton__24tWw"
-                      href="/web/supporter-club/intro"
-                      ><strong class="MyWadizSupporterClubLinkButton_title__1EUEL"
-                        >서포터클럽</strong
-                      >
-                      <div class="MyWadizSupporterClubLinkButton_message__3xRb-">
-                        <p>
-                          <span class="MyWadizSupporterClubLinkButton_highlight__dK7Qz"
-                            >배송비 3,000원 무제한 할인</span
-                          >과
-                          <span class="MyWadizSupporterClubLinkButton_highlight__dK7Qz">쿠폰팩</span
-                          >을 만나보세요.
-                        </p>
-                      </div>
-                      <div class="MyWadizSupporterClubLinkButton_arrow__1uymK"></div>
-                    </a>
-                  </div>
-                </div>
-                <div class="MyWadizEventBanner_pare__2jf7V">
-                  <div
-                    class="banner_eventBanner__cLcyF MyWadizEventBanner_banner__2PC1U MyWadizEventBanner_banner__2PC1U"
-                    style="background-color: rgb(165, 229, 230)"
-                  >
-                    <a
-                      href="https://ad.wadiz.kr?_refer_section_st=MY3_0"
-                      class="banner_link__11Ogl"
-                      data-promo-id="https://ad.wadiz.kr?_refer_section_st=MY3_0"
-                      data-promo-name="프로젝트 홍보를 시작하세요!"
-                      data-promo-position="MY3"
-                      data-gtm-vis-first-on-screen-11319722_2047="230190"
-                      data-gtm-vis-recent-on-screen-11319722_2047="237478"
-                      data-gtm-vis-total-visible-time-11319722_2047="2000"
-                      data-gtm-vis-has-fired-11319722_2047="1"
-                    >
-                      <div class="banner_inner__1Pn-n">
-                        <div
-                          class="banner_contents__1rLTm"
-                          style="
-                            background-image: url('https://static.wadiz.kr/main/media/group-23@3x.1afee7f0.png');
-                          "
-                        >
-                          <div class="banner_text__ROckl">
-                            <p>와디즈 광고센터에서</p>
-                            <strong>프로젝트 홍보를 시작하세요!</strong>
-                          </div>
-                        </div>
-                      </div>
-                    </a>
                   </div>
                 </div>
                 <div class="MyWadizSection_section__3FCv1">
@@ -224,7 +161,7 @@
                         <a href="/web/social/followingmaker"
                           ><span
                           class="MyWadizMenu_icon__1sqne" aria-hidden="true"><img class="follower-icon" src="/static/images/myPage/follower.png" >
-                        </span><span class="MyWadizMenu_text__9ryGW">팔로잉</span
+                        </span><span class="MyWadizMenu_text__9ryGW">내가 쓴 글</span
                           ><span class="arrowImg2" ><img src="/static/images/myPage/moreThan.png" style="width: 22px;"></span
                         ></a>
                       </li>
@@ -232,7 +169,7 @@
                         <a href="/web/wish/main"
                           ><span class="MyWadizMenu_icon__1sqne" aria-hidden="true"
                             ><img class="follower-icon" src="/static/images/myPage/heart.png" ></span
-                          ><span class="MyWadizMenu_text__9ryGW">찜하기</span
+                          ><span class="MyWadizMenu_text__9ryGW">내가 모집한 글</span
                           ><span class="arrowImg2" ><img src="/static/images/myPage/moreThan.png" style="width: 22px;"></span
                         ></a>
                       </li>
@@ -240,7 +177,7 @@
                         <a href="/web/wmypage/myfunding/investfundinglist"
                           ><span class="MyWadizMenu_icon__1sqne" aria-hidden="true"
                             ><i class="invest-icon"></i></span
-                          ><span class="MyWadizMenu_text__9ryGW">투자 관리</span
+                          ><span class="MyWadizMenu_text__9ryGW">내가 참여한 글</span
                           ><span class="arrowImg2" ><img src="/static/images/myPage/moreThan.png" style="width: 22px;"></span
                         ></a>
                       </li>

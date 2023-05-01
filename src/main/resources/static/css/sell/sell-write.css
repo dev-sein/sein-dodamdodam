@@ -1,4 +1,8 @@
 @charset "UTF-8";
+body {
+    line-height: 1.33;
+    font-family: 'Noto Sans KR' !important;
+}
 
 /* 공통요소 ===================================== */
 body, button, div, h1, h2, h3, h4, h5, html, input, li, ol, p, span, textarea, ul {
@@ -8,9 +12,6 @@ body, button, div, h1, h2, h3, h4, h5, html, input, li, ol, p, span, textarea, u
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Noto Sans KR';
-}
 
 ::-webkit-scrollbar {
     -webkit-appearance: none;
