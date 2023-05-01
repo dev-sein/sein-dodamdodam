@@ -129,7 +129,7 @@
                                                 <button type="button" class="modify-button">수정</button>
                                             </li>
                                             <li>
-                                                <button>삭제</button>
+                                                <button onclick="deleteModal()">삭제</button>
                                             </li>
                                         </ul>
                                     </div>
@@ -238,6 +238,16 @@
         </div>
         <!-- 댓글 끝 -->
     </div>
+    <!-- 삭제 버튼 클릭 모달 시작 -->
+    <div class="modal-bg" onclick="popCopyClose()"></div>
+        <div class="modal-copy">
+        <span>
+            댓글을 삭제하시겠습니까?
+        </span>
+        <button type="button" class="modal-close submit-btn modal white-btn" onClick="javascript:popCopyClose();">취소</button>
+        <button type="button" class="modal-close submit-btn modal" onClick="javascript:popCopyClose();">확인</button>
+    </div>
+    <!-- 삭제 버튼 클릭 모달 시작 -->
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/static/js/free-board/free-board-detail.js"></script>
