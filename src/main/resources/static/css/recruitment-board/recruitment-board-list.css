@@ -172,15 +172,18 @@ svg:not(:root) {
     opacity: 0.2;
     width: 100%;
     position: relative;
+    height: 500px;
 }
 
 .recruitment-main-description{
     position: absolute;
-    top: 50%;
+    top: 15%;
     z-index: 9999;
     opacity: 1;
-    left:29%;
+    margin: 0 auto;
+    left: 32%;
     text-align: center;
+    /* color: #fff; */
 }
 
 #main-app{
@@ -232,11 +235,12 @@ svg:not(:root) {
 
 .write{
     border-radius: 0px;
+    background-color: #006633;
     border: 1px solid #006633;
-    color: #006633;
+    color: #fff;
     font-family: 'Noto Sans KR';
     width: 500px;
-    margin-top: 50px;
+    margin-top: 20px;
     font-weight: 500;
     font-size: 20px;
     margin-left: 15px;
@@ -530,7 +534,7 @@ svg:not(:root) {
 .status-community{
     background-color: #f2f4f6;
     position: relative;
-    margin-left: 218px;
+    margin-left: 214px;
     margin-top: -24px;
     border-radius: 7px;
 }
