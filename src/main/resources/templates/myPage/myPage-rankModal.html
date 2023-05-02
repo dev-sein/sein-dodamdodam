@@ -18,7 +18,7 @@
     <section class="modal">
 		<div class="modal-shape">
 			<div class="modal-header">
-				<h3>내 배지</h3>
+				<h3>내 등급</h3>
 				<a class="modal-close">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -32,43 +32,49 @@
 				</a>
 			</div>
             <div class="content-container">
-                <h4 class="detail-title">배지 정보</h4>
+                <h4 class="detail-title">등급 정보</h4>
                 <!-- 뱃지 정보들이 담길 테이블 -->
                 <div class="content-wrap">
                     <table class="table">
                         <thead>
                             <tr>
                                 <th>항목</th>
-                                <th>순위</th>
-                                <th>활동포인트</th>
+                                <th>등급</th>
+                                <th>참여도</th>
+                                <th>혜택</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <!-- 배지 이미지 들어가는 곳 -->
-                                <th><img src="https://cdn3.iconfinder.com/data/icons/ranking-2/500/nim1393_15_ranking_bronze_coin-128.png" style="width: 20px;" alt=""></th>
-                                <th>800등</th>
-                                <th>100p</th>
+                                <th><img src="../../static/images/myPage/seed.png" style="width: 15px;" alt=""></th>
+                                <th>씨앗</th>
+                                <th>참여,모집횟수 1~5회</th>
+                                <th>-</th>
                             </tr>
                             <tr>
-                                <th><img src="https://cdn3.iconfinder.com/data/icons/ranking-2/500/nim1393_16_ranking_silver_coin-128.png" style="width: 20px;" alt=""></th>
-                                <th>600등</th>
-                                <th>300p</th>
+                                <th><img src="../../static/images/myPage/seedling.png" style="width: 15px;" alt=""></th>
+                                <th>새싹</th>
+                                <th>참여,모집횟수 6~10회</th>
+                                <th>-</th>
                             </tr>
                             <tr>
-                                <th><img src="https://cdn3.iconfinder.com/data/icons/ranking-2/500/nim1393_17_ranking_gold_coin_silver-128.png" style="width: 20px;" alt=""></th>
-                                <th>10등</th>
-                                <th>500p</th>
+                                <th><img src="../../static/images/myPage/plant.png" style="width: 15px;" alt=""></th>
+                                <th>묘목</th>
+                                <th>참여,모집횟수 11~15회</th>
+                                <th>배너 등록시 10%</th>
                             </tr>
                             <tr>
-                                <th><img src="https://cdn3.iconfinder.com/data/icons/ranking-2/500/nim1393_17_ranking_gold_coin_silver-128.png" style="width: 20px;" alt=""></th>
-                                <th>10등</th>
-                                <th>500p</th>
+                                <th><img src="../../static/images/myPage/tree.png" style="width: 15px;" alt=""></th>
+                                <th>나무</th>
+                                <th>참여,모집횟수 16~20회</th>
+                                <th>배너 등록시 20%</th>
                             </tr>
                             <tr>
-                                <th><img src="https://cdn3.iconfinder.com/data/icons/ranking-2/500/nim1393_17_ranking_gold_coin_silver-128.png" style="width: 20px;" alt=""></th>
-                                <th>10등</th>
-                                <th>500p</th>
+                                <th><img src="../../static/images/myPage/dodam.png" style="width: 15px;" alt=""></th>
+                                <th>도담</th>
+                                <th>참여,모집횟수 21회 이상</th>
+                                <th>배너 이용시 30%</th>
                             </tr>
                         </tbody>
                     </table>
@@ -76,14 +82,21 @@
             </div>
             <!-- 사용자의 배지 정보가 나오는 곳 -->
             <div class="content-container">
-                <h4 class="detail-title">나의 배지</h4>
+                <h4 class="detail-title">나의 등급</h4>
                 <div class="content-wrap">
                     <div class="user-info">
-                        <span>당신의 배지는 현재 "브론즈" 등급 입니다.</span>
                         <div>
-                            <img src="https://cdn3.iconfinder.com/data/icons/ranking-2/500/nim1393_15_ranking_bronze_coin-128.png" alt="">
+                            <span>당신의 등급는 현재 "씨앗" 등급 입니다.</span>
+                            <div>
+                                <img src="../../static/images/myPage/bigseed.png" style="width: 80px;
+                                position: relative;
+                                top: 14px;" alt="">
+                            </div>
+                            <br>
+                            <span style="position: relative;
+                            top: 7px;">다음 등급까지 참여,모집 3회 남았습니다.</span>
                         </div>
-                        <span>다음 배지까지 활동이 00회 남았습니다.</span>
+                        <br>
                     </div>
                 </div>
             </div>
@@ -91,10 +104,4 @@
 		</div>
 	</section>
 </body>
-<script>
-    function closeModal() {
-      const moreThanModal = document.getElementById("moreThanModal");
-      moreThanModal.style.display = "none";
-    }
-  </script>
 </html>

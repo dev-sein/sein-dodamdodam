@@ -168,6 +168,24 @@ svg:not(:root) {
     overflow: hidden;
 }
 
+.list-photo{
+    opacity: 0.2;
+    width: 100%;
+    position: relative;
+    height: 500px;
+}
+
+.recruitment-main-description{
+    position: absolute;
+    top: 15%;
+    z-index: 9999;
+    opacity: 1;
+    margin: 0 auto;
+    left: 32%;
+    text-align: center;
+    /* color: #fff; */
+}
+
 #main-app{
     display: block;
 }
@@ -205,6 +223,7 @@ svg:not(:root) {
     font-size: 32px;
     font-family: 'Noto Sans KR';
     font-weight: 700;
+    text-align: center;
 }
 
 .recruit-introduction{
@@ -216,13 +235,15 @@ svg:not(:root) {
 
 .write{
     border-radius: 0px;
+    background-color: #006633;
     border: 1px solid #006633;
-    color: #006633;
+    color: #fff;
     font-family: 'Noto Sans KR';
     width: 500px;
-    margin-top: 50px;
+    margin-top: 20px;
     font-weight: 500;
     font-size: 20px;
+    margin-left: 15px;
 }
 
 .collection-table{
@@ -519,8 +540,7 @@ svg:not(:root) {
 }
 
 .second-confirm{
-    background: url(../../images/recruitment-board/people.png) no-repeat 100% center/contain;
-    width: 16px;
+    width: 8px;
     height: 15px;
     display: inline-block;
     margin-bottom: -1px;
@@ -532,7 +552,13 @@ svg:not(:root) {
     font-family:inherit;
     color: #495057;
     font-weight: 600;
-    line-height: 1px;
+    text-align: center;
+    margin-left: 10px;
+}
+
+.finish{
+    cursor: default;
+    opacity: 0.8;
 }
 
 .wish-button-svg[aria-pressed=true] path {

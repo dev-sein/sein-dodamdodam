@@ -1,13 +1,36 @@
+/* 클릭 시 수정/삭제 버튼 창 */
+function showList(e){
+    if($(e).next().css('display') == 'none'){
+        $(e).next().show();
+    } else {
+        $(e).next().hide();
+    }
+}
+
 /* 수정버튼 눌렀을 때 */
 $(".modify-button").each((i, e) => {
     $(e).click(() => {
         $($(".modify-textarea")[i]).show();//수정영역
         $('.comment-util-list').hide();//수정,삭제 모달 숨기기
+        $($('.comment-util')[i]).attr("disabled",true);//수정,삭제 버튼 비활성화
         $($(".comment-content")[i]).css("display","none");//기존영역 숨기기
         $($(".comment-date")[i]).css("display","none");//날짜 숨기기
         $($(".comment-bottom")[i]).css("display","block");//취소,수정완료 버튼
     });
 });
+
+/* 삭제버튼 눌렀을 때 - 모달 */
+function showModal(){
+    $('.modal-copy').css('display', 'block');
+    $('.modal-bg').css('display', 'block');
+    $('body').css('overflow', 'hidden');
+}
+
+function closeModal(){
+    $('.modal-copy').css('display', 'none');
+    $('.modal-bg').css('display', 'none');
+    $('body').css('overflow', 'visible');
+}
 
 /* 취소버튼 - 원래 상태로 복구 */
 $(".modify-cancel").each((i, e) => {
@@ -21,14 +44,6 @@ $(".modify-cancel").each((i, e) => {
 });
 
 
-/* 클릭 시 수정/삭제 버튼 창 */
-function showList(e){
-    if($(e).next().css('display') == 'none'){
-        $(e).next().show();
-    } else {
-        $(e).next().hide();
-    }
-}
 
 /* 클릭 했을 때 색 변경/취소 */
 $(".btn-like").click(() => {

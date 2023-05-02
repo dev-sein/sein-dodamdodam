@@ -89,14 +89,6 @@ strong {
     content: "";
 }
 
-.free-board-top .free-board-title {
-    float: left;
-    margin-bottom: 24px;
-    /* background: #2c3d50; */
-    background: #006633;
-    width: 100%;
-    height: 100px;
-}
 
 .free-board-top .free-board-title:after {
     display: block;
@@ -140,14 +132,6 @@ strong {
     word-break: break-word;
     color: #fff;
     font-size: 17px;
-}
-
-.title-bar-text span {
-    display: block;
-    margin-top: 2px;
-    /* color: #a6afde; */
-    color: #aad3be;
-    font-size: 13px;
 }
 
 .free-board-type {
@@ -259,13 +243,15 @@ strong {
     height: 100%;
 }
 
-.free-board-image {
-    background-image: url("https://cdn.wadiz.kr/ft/images/green001/2023/0313/20230313132913160_null.png/wadiz/thumbnail/252/format/jpg/quality/95/");
-}
-
 .free-board-image.image-detail {
     transform: scale(1);
     opacity: 1;
+}
+
+/* 이미지 사이즈 */
+.free-board-image.image-detail img {
+    width: 252px;
+    height: 171px;
 }
 
 .free-board-detail a {
@@ -309,16 +295,18 @@ strong {
     font-weight: 500;
 }
 
-.detail-content {
-    margin-bottom: 10px;
+.detail-write {
+    margin-bottom: 5px;
     line-height: 18px;
     font-size: 12px;
 }
 
-.detail-info {
-    margin-bottom: 5px;
+.detail-content {
+    margin-bottom: 10px;
     line-height: 18px;
     font-size: 12px;
+    height: 40px;
+    overflow: hidden;
 }
 
 .detail-number {
@@ -331,52 +319,23 @@ strong {
 
 .detail-number em.detail-text {
     padding-right: 10px;
-    color: #c04646;
     font-weight: 500;
 }
 
-.detail-number strong {
-    color: #929292;
-    font-size: 16px;
+.detail-number em.detail-date {
+    padding-right: 10px;
     font-weight: 500;
+    color: #767676;
 }
 
 em.like-count {
     float: left;
-    line-height: 27px;
     padding-left: 15px;
-    background: url('https://www.wadiz.kr/resources/static/img/common/icon_red_heart.png') no-repeat 0 center;
+    background: url('/static/images/free-board/icon_red_heart.png') no-repeat 0 center;
     background-size: 11px 10px;
 }
 
-/* 작성하기 버튼 */
-/* .btn-wrap .btn-write {
-    display: block;
-    width: 100%;
-    padding: 0;
-    height: 60px;
-    line-height: 60px;
-    font-size: 16px;
-    background: #006633;
-    color: #fff;
-    border: none;
-    text-align: center;
-} */
 
-.btn-wrap .btn-write {
-    display: block;
-    width: 100%;
-    padding: 0;
-    height: 60px;
-    line-height: 60px;
-    font-size: 16px;
-    background: #fff;
-    color: #006633;
-    border: 1px solid #006633;
-    /* border-radius: 4px; */
-    text-align: center;
-    font-weight: 600;
-}
 
 
 
@@ -506,6 +465,68 @@ li.bar-button a:hover {
 .page-list ul li.active button {
     font-weight: 500;
     color: #006633;
+}
+
+/* 헤더 타이틀 색상 변경 */
+/* .free-board-top .free-board-title {
+    float: left;
+    margin-bottom: 24px;
+    background: #2c3d50;
+    width: 100%;
+    height: 100px;
+} */
+
+.free-board-top .free-board-title {
+    float: left;
+    margin-bottom: 24px;
+    /* background: #2c3d50; */
+    background: #006633;
+    width: 100%;
+    height: 100px;
+}
+
+/* .title-bar-text span {
+    display: block;
+    margin-top: 2px;
+    color: #a6afde;
+    font-size: 13px;
+} */
+
+.title-bar-text span {
+    display: block;
+    margin-top: 2px;
+    /* color: #a6afde; */
+    color: #aad3be;
+    font-size: 13px;
+}
+
+/* 작성하기 버튼 */
+/* .btn-wrap .btn-write {
+    display: block;
+    width: 100%;
+    padding: 0;
+    height: 60px;
+    line-height: 60px;
+    font-size: 16px;
+    background: #006633;
+    color: #fff;
+    border: none;
+    text-align: center;
+} */
+
+.btn-wrap .btn-write {
+    display: block;
+    width: 100%;
+    padding: 0;
+    height: 60px;
+    line-height: 60px;
+    font-size: 16px;
+    background: #fff;
+    color: #006633;
+    border: 1px solid #006633;
+    /* border-radius: 4px; */
+    text-align: center;
+    font-weight: 600;
 }
 
 
