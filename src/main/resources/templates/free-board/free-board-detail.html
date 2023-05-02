@@ -111,7 +111,7 @@
                         <em>3</em>개의 댓글이 달려있습니다.
                     </p>
                     <div class="main-comment">
-                        <textarea name="" id="" placeholder="댓글을 입력하세요."></textarea>
+                        <textarea name="" id="" class="reply-place" placeholder="댓글을 입력하세요."></textarea>
                         <div class="btn-complete">
                             <button class="btn-color">댓글달기</button>
                         </div>
@@ -129,7 +129,7 @@
                                                 <button type="button" class="modify-button">수정</button>
                                             </li>
                                             <li>
-                                                <button>삭제</button>
+                                                <button onclick="showModal()">삭제</button>
                                             </li>
                                         </ul>
                                     </div>
@@ -144,58 +144,6 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="top" style="display: list-item;">
-                                <div class="comment-wrap">
-                                    <div class="comment-info">
-                                        <img src="/static/images/badge/medal_gold_winner_badge_reward_icon.png">
-                                        <span class="name">김욱성</span>
-                                        <button class="comment-util" onclick="showList(this)"></button>
-                                        <ul class="comment-util-list">
-                                            <li>
-                                                <button type="button" class="modify-button">수정</button>
-                                            </li>
-                                            <li>
-                                                <button>삭제</button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <p class="comment-content">둘 다 재밌음 [스포]</p>
-                                    <textarea id="" class="modify-textarea" style="display: none;">둘 다 재밌음 [스포]</textarea>
-                                    <div class="comment-date">
-                                        2023.04.23 23:56
-                                    </div>
-                                    <div class="comment-bottom" style="display:none;">
-                                        <button type="button">취소</button>
-                                        <button type="button">수정완료</button>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="top" style="display: list-item;">
-                                <div class="comment-wrap">
-                                    <div class="comment-info">
-                                        <img src="/static/images/badge/medal_gold_winner_badge_reward_icon.png">
-                                        <span class="name">김욱성</span>
-                                        <button class="comment-util" onclick="showList(this)"></button>
-                                        <ul class="comment-util-list">
-                                            <li>
-                                                <button type="button" class="modify-button">수정</button>
-                                            </li>
-                                            <li>
-                                                <button>삭제</button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <p class="comment-content">둘 다 재밌음 [스포]</p>
-                                    <textarea id="" class="modify-textarea" style="display: none;">둘 다 재밌음 [스포]</textarea>
-                                    <div class="comment-date">
-                                        2023.04.23 23:56
-                                    </div>
-                                    <div class="comment-bottom" style="display:none;">
-                                        <button type="button">취소</button>
-                                        <button type="button">수정완료</button>
-                                    </div>
-                                </div>
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -207,7 +155,7 @@
             <div class="free-board-other">
                 <h4>
                     <em>수다</em>
-                    카테고리의 다른글
+                    카테고리의 최신글
                 </h4>
                 <div class="other-list">
                     <ul>
@@ -219,6 +167,26 @@
                                         <p class="other-title">[4팀 점심메뉴] 네모 오징어</p>
                                         <p class="other-content">여기 볶음밥 맛있데요. 가보신 분??</p>
                                         <p class="info">
+                                            <em class="write">박다예</em>
+                                            <em class="date">23.04.24</em>
+                                            <em class="like-count">25</em>
+                                        </p>
+                                    </div>
+                                    <div class="img-wrap">
+                                        <img src="/static/images/free-board/nemo.jpg">
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="other-story">
+                                    <div class="story-info">
+                                        <em class="category">수다</em>
+                                        <p class="other-title">[4팀 점심메뉴] 네모 오징어</p>
+                                        <p class="other-content">여기 볶음밥 맛있데요. 가보신 분??</p>
+                                        <p class="info">
+                                            <em class="write">박다예</em>
                                             <em class="date">23.04.24</em>
                                             <em class="like-count">25</em>
                                         </p>
@@ -231,13 +199,25 @@
                         </li>
                     </ul>
                 </div>
-                <div class="btn-place">
+                <!-- <div class="btn-place">
                     <button class="btn-category">카테고리 더 보기</button>
-                </div>
+                </div> -->
             </div>
         </div>
         <!-- 댓글 끝 -->
     </div>
+    <!-- 삭제 버튼 클릭 모달 시작 -->
+    <div class="modal-wrap">
+        <div class="modal-bg" onclick="closeModal()"></div>
+        <div class="modal-copy">
+            <span>
+                댓글을 삭제하시겠습니까?
+            </span>
+            <button type="button" class="modal-close submit-btn modal white-btn" onclick="closeModal()"">취소</button>
+            <button type="button" class="modal-close submit-btn modal" onclick="closeModal()">확인</button>
+        </div>
+    </div>
+    <!-- 삭제 버튼 클릭 모달 시작 -->
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/static/js/free-board/free-board-detail.js"></script>

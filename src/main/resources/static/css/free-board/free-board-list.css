@@ -257,13 +257,15 @@ strong {
     height: 100%;
 }
 
-.free-board-image {
-    background-image: url("https://cdn.wadiz.kr/ft/images/green001/2023/0313/20230313132913160_null.png/wadiz/thumbnail/252/format/jpg/quality/95/");
-}
-
 .free-board-image.image-detail {
     transform: scale(1);
     opacity: 1;
+}
+
+/* 이미지 사이즈 */
+.free-board-image.image-detail img {
+    width: 252px;
+    height: 171px;
 }
 
 .free-board-detail a {
@@ -278,24 +280,11 @@ strong {
     float: left;
     padding: 15px 20px;
     width: 390px;
+    height: 171px;
     max-width: 60%;
 }
 
-.detail-type {
-    text-align: right;
-    font-size: 12px;
-}
 
-.detail-type i {
-    display: inline-block;
-    margin-right: 8px;
-    width: 10px;
-    height: 10px;
-}
-
-.type-category {
-    background: #705f53;
-}
 
 .detail-title {
     margin-bottom: 5px;
@@ -307,16 +296,18 @@ strong {
     font-weight: 500;
 }
 
-.detail-content {
-    margin-bottom: 10px;
+.detail-write {
+    margin-bottom: 5px;
     line-height: 18px;
     font-size: 12px;
 }
 
-.detail-info {
+.detail-content {
     margin-bottom: 5px;
     line-height: 18px;
     font-size: 12px;
+    height: 40px;
+    overflow: hidden;
 }
 
 .detail-number {
@@ -329,21 +320,19 @@ strong {
 
 .detail-number em.detail-text {
     padding-right: 10px;
-    color: #c04646;
     font-weight: 500;
 }
 
-.detail-number strong {
-    color: #929292;
-    font-size: 16px;
+.detail-number em.detail-date {
+    padding-right: 10px;
     font-weight: 500;
+    color: #767676;
 }
 
 em.like-count {
     float: left;
-    line-height: 27px;
     padding-left: 15px;
-    background: url('https://www.wadiz.kr/resources/static/img/common/icon_red_heart.png') no-repeat 0 center;
+    background: url('/static/images/free-board/icon_red_heart.png') no-repeat 0 center;
     background-size: 11px 10px;
 }
 
@@ -491,6 +480,17 @@ li.bar-button a:hover {
     color: #006633;
 }
 
+em.type  {
+    display: inline-block;
+    margin-bottom: 3px;
+    padding: 0 6px;
+    line-height: 18px;
+    font-size: 12px;
+    font-weight: 400;
+    background: none !important;
+    color: #90949c !important;
+    border: 1px solid #babdc0;
+}
 
 @media screen and (min-width: 769px) {
     .free-board-container {

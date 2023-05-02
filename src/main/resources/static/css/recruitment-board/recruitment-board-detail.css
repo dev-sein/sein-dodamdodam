@@ -350,7 +350,7 @@ input{
 
 
 .like-modal-container{
-    margin-left: 1023px;
+    margin-left: 1235px;
     display: none;
     padding: 25px;
     text-align: center;
@@ -366,8 +366,18 @@ input{
     z-index: 999;
     font-size: 12px;
     line-height: 0;
+    top: 45%;
 }
 
+.event-like{
+    top: 47%;
+    margin-left: 1235px;
+}
+
+.recruit-like{
+    margin-left: 1235px;
+    top: 45%;
+}
 
 .d-day{
     position: relative;
