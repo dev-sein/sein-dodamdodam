@@ -10,13 +10,6 @@ body {
 }
 
 
-.modal {
-    /* display: none; */
-    position: absolute;
-    left: 31%;
-    top: 16%;
-  }
-
   .modal-shape {
     width: 540px;
     padding: 12px;
@@ -26,20 +19,6 @@ body {
     animation: fade-in 0.4s ease-in-out forwards;
   }
 
-  /* 스크롤바  */
-  .modal-shape::-webkit-scrollbar {
-    width: 10px;  /* 스크롤바의 너비 */
-  }
-  .modal-shape::-webkit-scrollbar-thumb {
-    height: 10%; /* 스크롤바의 길이 */
-    background: #ea9bb642; /* 스크롤바의 색상 */
-    border-radius: 3px;
-  }
-  
-  .modal-shape::-webkit-scrollbar-track {
-    background: #fafafa;  /*스크롤바 뒷 배경 색상*/
-    border-radius: 10px;
-  }
 
 
   .modal-header {
