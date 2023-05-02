@@ -123,12 +123,12 @@ body a {
 
 .web-header .dodam-logo>a {
     display: block;
-    padding: 8px 0 8px;
+    padding: 6px 0 6px;
 }
 
 .dodam-logo img {
-    width: 90px;
-    height: 40px;
+    width: 100px;
+    height: 45px;
 }
 
 img.icon-logo {
