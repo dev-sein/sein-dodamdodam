@@ -27,6 +27,18 @@
         </div>
     </div>
     <!-- 모달 -->
+    <!-- 모달 -->
+    <!-- 전송 확인 모달창 -->
+    <div id="send-modal" class="delete-modal">
+        <div class="modal-content">
+        <p>답변을 전송하시겠습니까?</p>
+        <div class="modal-buttons">
+            <button id="cancel-btn2">취소</button>
+            <button id="confirm-btn2">확인</button>
+        </div>
+        </div>
+    </div>
+    <!-- 모달 -->
     <!-- 헤더 -->
     <header>
         <div class="logo-wrapper">
@@ -81,7 +93,7 @@
         <content>
             <div class="inner-wrapper">
                 <div class="page-title">문의 관리</div>
-                <button type="submit" class="delete-button" id="delete-button">삭제하기</button> 
+                <button type="button" class="delete-button" id="delete-button">삭제하기</button> 
                 <div class="inner-box-wrapper">
                     <div class="inner-left-wrapper">
                         <div class="inner-right-title">문의사항</div>
@@ -123,7 +135,7 @@
                                     <div class="answer-header">
                                         <div class="classification">문의 답변</div>
                                         <div class="button-wrapper">
-                                            <button class="answer-button">
+                                            <button type="button" class="answer-button">
                                                 <img class="airplane" src="../../static/images/admin/paper-plane.png">
                                                 <!-- <div class="button-inner-text">답변완료</div> -->
                                             </button>

@@ -22,9 +22,9 @@ clock();
 setInterval(clock, 1000); // 1초마다 실행
 
 /* modal */
-$('.delete-button').on('click', function(){
+$('#delete-button').on('click', function(){
     console.log("들어옴");
-    $('.delete-modal').css('display','flex');
+    $('#delete-modal').css('display','flex');
 })
 
 $('#cancel-btn').on('click', function(){
