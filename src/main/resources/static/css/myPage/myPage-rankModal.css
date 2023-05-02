@@ -19,9 +19,7 @@ body {
 
   .modal-shape {
     width: 540px;
-    height: 510px;
     padding: 12px;
-    overflow-y: scroll;
     background-color: #fff;
     border: 1px solid #8080806e;
     border-radius: 2px;
@@ -86,13 +84,12 @@ body {
   }
 
   tbody tr th {
-    font-size: 15px;
-    font-weight: 500;
+    font-size: 14px;
+    font-weight: 400;
   }
 
   .user-info {
     width: 95%;
-    height: 210px;
     border: 1px solid #f1f1f1;
     padding: 3px 12px;
     text-align: center;
