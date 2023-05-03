@@ -1,4 +1,4 @@
-package com.app.dodamdodam.entity;
+package com.app.dodamdodam.entity.apply;
 
 import lombok.*;
 
@@ -9,13 +9,13 @@ import javax.persistence.Table;
 
 @Entity
 @Getter
-@Table(name = "TBL_RECRUITMENTLIKE")
 @ToString
+@Table(name = "TBL_APPLY")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class RecruitmentLike {
-    @Id
-    @GeneratedValue
+public class Apply {
+    @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
+    private String applyStatus;
 
 }

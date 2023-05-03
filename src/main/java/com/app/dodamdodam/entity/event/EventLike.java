@@ -1,6 +1,5 @@
-package com.app.dodamdodam.entity;
+package com.app.dodamdodam.entity.event;
 
-import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -9,14 +8,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "TBL_GRADE")
-@Getter @ToString
+@Getter
+@ToString
+@Table(name = "TBL_APPLY")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Grade {
+public class EventLike {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
-    @NotNull private String gradeTitle;
-    @NotNull private int gradeStartNumber;
-    @NotNull private int gradeEndNumber;
+
 }

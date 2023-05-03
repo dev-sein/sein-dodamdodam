@@ -1,5 +1,6 @@
-package com.app.dodamdodam.entity;
+package com.app.dodamdodam.entity.free;
 
+import com.app.dodamdodam.entity.board.Board;
 import com.sun.istack.NotNull;
 import lombok.*;
 
@@ -10,12 +11,10 @@ import java.time.LocalDateTime;
 @Table(name = "TBL_FREE_BOARD")
 @Getter @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class FreeBoard {
+public class FreeBoard extends Board {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
-    @NotNull private String freeTitle;
-    @NotNull private String freeContent;
 //    @Enumerated
     @NotNull private String freeCategory;
 //    @NotNull private LocalDateTime freeRegisterDate;

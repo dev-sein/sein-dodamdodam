@@ -1,4 +1,4 @@
-package com.app.dodamdodam.entity;
+package com.app.dodamdodam.entity.free;
 
 import com.sun.istack.NotNull;
 import lombok.*;
@@ -7,17 +7,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "TBL_FREE_BOARD_FILE")
+@Table(name = "TBL_FREE_BOARD_LIKE")
 @Getter @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class FreeBoardFile {
+public class FreeReply {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
-    @NotNull private String freeFileOriginalName;
-    @NotNull private String freeFileUuid;
-    @NotNull private String freeFilePath;
-    @NotNull private String freeFileSize;
+    @NotNull private String replyContent;
+//    private LocalDateTime replyRegisterDate;
+//    private LocalDateTime replyUpdateDate;
+
 }

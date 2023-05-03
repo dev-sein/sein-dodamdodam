@@ -1,5 +1,6 @@
-package com.app.dodamdodam.entity;
+package com.app.dodamdodam.entity.member;
 
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -8,11 +9,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "TBL_FREE_BOARD_LIKE")
+@Table(name = "TBL_GRADE")
 @Getter @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class FreeBoardLike {
+public class Grade {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
+    @NotNull private String gradeTitle;
+    @NotNull private int gradeStartNumber;
+    @NotNull private int gradeEndNumber;
 }
