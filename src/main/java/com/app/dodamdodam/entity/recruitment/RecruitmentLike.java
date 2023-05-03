@@ -3,10 +3,7 @@ package com.app.dodamdodam.entity.recruitment;
 import com.app.dodamdodam.audit.Period;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -19,4 +16,7 @@ public class RecruitmentLike extends Period {
     @EqualsAndHashCode.Include
     private Long id;
 
+    @OneToOne
+    @JoinColumn(name = "RECRUITMENT_BOARD_ID")
+    private RecruitmentBoard recruitmentBoard;
 }

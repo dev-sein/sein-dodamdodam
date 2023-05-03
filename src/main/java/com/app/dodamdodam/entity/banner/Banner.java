@@ -21,4 +21,5 @@ public class Banner extends Period {
     private LocalDate bannerPeriod;
     private String bannerStatus;
 
+
 }

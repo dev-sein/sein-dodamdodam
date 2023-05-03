@@ -4,6 +4,8 @@ import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter @Table(name = "TBL_ROOM")
@@ -19,8 +21,8 @@ public class Room {
     private int havingId;
 
     @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "chatting_id")
-    private Chatting chatting;
+    @JoinColumn(name = "CHATTING_ID")
+    private List<Chatting> chattings = new ArrayList<>();
 
 
 

@@ -19,7 +19,7 @@ spring:
       #create-drop: DROP 후 CREATE 후 DROP, DML을 사용하지 않는 다면 DROP되지 않음
       #update: Entity와 DB 스키마 비교 후 수정 사항 반영(컬럼 추가)
       #validate: Entity와 DB 스키마 비교(다르면 예외 발생)
-      ddl-auto: validate
+      ddl-auto: update
 
     #jpa format
     properties:
