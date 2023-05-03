@@ -123,3 +123,174 @@ next.addEventListener("click", function(){
 
 
 
+
+
+/* 판매 배너 */
+const sellBanner = document.querySelector('.sell-swiper-container .swiper-wrapper');
+const sellImageDiv = document.querySelectorAll('.swiper-wrapper div .sell-swiper-image');
+const sellPrev = document.querySelector('.sell-prev');
+const sellNext = document.querySelector('.sell-next');
+
+
+let sellCheckArrow = false;
+let sellCount = 0;
+
+sellImageDiv.forEach((div, i) => {
+  div.style.backgroundImage = `url(/static/images/main/sell-00${i + 1}.jpg)`;
+});
+
+const clonedsellBanners = document.querySelectorAll('.sell-swiper-container .swiper-wrapper > div').values();
+
+// for (const clonedBanner of clonedsellBanners) {
+//   sellBanner.appendChild(clonedBanner.cloneNode(true));
+// }
+const clonedsellBanner1 = $('.sell-swiper1').clone()[0];
+sellBanner.appendChild(clonedsellBanner1); 
+
+const clonedsellBanner2 = $('.sell-swiper2').clone()[0];
+sellBanner.appendChild(clonedsellBanner2);
+
+const clonedsellBanner3 = $('.sell-swiper3').clone()[0];
+sellBanner.appendChild(clonedsellBanner3);
+
+const clonedsellBanner4 = $('.sell-swiper4').clone()[0];
+sellBanner.appendChild(clonedsellBanner4);
+
+
+
+
+const clonedsellBanner5 = $('.sell-swiper5').clone()[0];
+sellBanner.insertBefore(clonedsellBanner5, document.querySelector('div.swiper-wrapper .sell-swiper1'));
+
+eventBanner.style.transform = `translate(-326px)`;
+
+sellPrev.addEventListener('click', function() {
+  if (sellCheckArrow) {
+    return;
+  }
+  sellCheckArrow = true;
+  sellCount--;
+  console.log("prev: " + sellCount);
+  if (sellCount < 0) {
+    sellBanner.style.transition = 'transform 0s';
+    sellBanner.style.transform = `translateX(${-324 * (sellImageDiv.length + 1)}px)`;
+    setTimeout(() => {
+      sellCount = sellImageDiv.length;
+      sellBanner.style.transition = 'transform 0.3s';
+      sellBanner.style.transform = `translateX(${-324 * sellCount}px)`;
+      sellCheckArrow = false;
+    }, 10);
+  } else {
+    sellBanner.style.transition = 'transform 0.3s';
+    sellBanner.style.transform = `translateX(${-324 * sellCount}px)`;
+    setTimeout(() => {
+      sellCheckArrow = false;
+    }, 300);
+  }
+});
+
+sellNext.addEventListener('click', function() {
+  if (sellCheckArrow) {
+    return;
+  }
+  sellCheckArrow = true;
+  sellCount++;
+  console.log("next: " + sellCount);
+  sellBanner.style.transition = 'transform 0.3s';
+  sellBanner.style.transform = `translateX(${-324 * sellCount}px)`;
+  if (sellCount === sellImageDiv.length + 1) {
+    sellCount = 1;
+    setTimeout(function() {
+      sellBanner.style.transition = 'transform 0s';
+      sellBanner.style.transform = 'translateX(-324px)';
+    }, 300);
+  }
+  setTimeout(() => {
+    sellBanner.style.transition = 'transform 0s';
+    sellBanner.style.transform = `translateX(${-324 * sellCount}px)`;
+    sellCheckArrow = false;
+  }, 300);
+});
+
+/* 문화공간 배너 */
+HTMLCollection.prototype.forEach = Array.prototype.forEach;
+const thirdBanner = document.querySelector('div.third-banner');
+const thirdImageDiv = document.querySelectorAll('div.third-banner div .third-banner-image');
+const thirdFirstImageDiv = document.createElement('div');
+const thirdNext = document.querySelector('div.third-next');
+const thirdPrev = document.querySelector('div.third-prev');
+const thirdButtons = document.querySelectorAll('.third-buttons button');
+
+let thirdCheckArrow = false;
+let thirdCount = 1;
+const thirdPageNow = document.querySelector('#third-page-now');
+
+
+thirdImageDiv.forEach(
+  (div, i) => (div.style.backgroundImage = `url(../../static/css/main/images/third-00${i + 1}.jpg)`)
+);
+
+const clonedThirdBanner1 = $('.third-banner1').clone()[0];
+thirdBanner.appendChild(clonedThirdBanner1); 
+
+const clonedThirdBanner2 = $('.third-banner2').clone()[0];
+thirdBanner.appendChild(clonedThirdBanner2);
+
+const clonedThirdBanner3 = $('.third-banner3').clone()[0];
+thirdBanner.appendChild(clonedThirdBanner3);
+
+const clonedThirdBanner4 = $('.third-banner4').clone()[0];
+thirdBanner.appendChild(clonedThirdBanner4);
+
+
+
+const clonedThirdBanner5 = $('.third-banner5').clone()[0];
+thirdBanner.insertBefore(clonedThirdBanner5, document.querySelector('div.third-banner .third-banner1'));
+
+thirdBanner.style.transform = `translate(-326px)`;
+
+thirdPrev.addEventListener('click', function () {
+  if (thirdCheckArrow) {
+    return;
+  }
+  thirdCheckArrow = true;
+  thirdCount--;
+  if (thirdCount === 0) {
+    thirdBanner.style.transition = 'transform 0s';
+    thirdBanner.style.transform = `translate(${-326 * (thirdImageDiv.length + 1)}px)`;
+    setTimeout(() => {
+      thirdCount = thirdImageDiv.length;
+      thirdBanner.style.transition = 'transform 0.3s';
+      thirdBanner.style.transform = `translate(${-326 * thirdCount}px)`;
+      thirdCheckArrow = false;
+    }, 10);
+  } else {
+    thirdBanner.style.transition = 'transform 0.3s';
+    thirdBanner.style.transform = `translate(${-326 * thirdCount}px)`;
+    setTimeout(() => {
+      thirdCheckArrow = false;
+    }, 300);
+  }
+});
+
+thirdNext.addEventListener('click', function () {
+  if (thirdCheckArrow) {
+    return;
+  }
+  thirdCheckArrow = true;
+  thirdCount++;
+  thirdBanner.style.transition = 'transform 0.3s';
+  thirdBanner.style.transform = `translate(${-326 * thirdCount}px)`;
+  if (thirdCount == thirdImageDiv.length + 1) {
+    thirdCount = 1;
+    setTimeout(function () {
+            thirdBanner.style.transition = 'transform 0s';
+            thirdBanner.style.transform = 'translate(-326px)';
+        }, 300);
+  }
+  setTimeout(() => {
+    thirdBanner.style.transition = 'transform 0s';
+    thirdBanner.style.transform = `translate(${-326 * thirdCount}px)`;
+    thirdCheckArrow = false;
+  }, 300);
+});
