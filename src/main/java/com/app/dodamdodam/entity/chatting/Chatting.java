@@ -1,6 +1,5 @@
 package com.app.dodamdodam.entity.chatting;
 
-import com.app.dodamdodam.entity.member.Member;
 import lombok.*;
 
 import javax.persistence.*;
@@ -16,8 +15,8 @@ public class Chatting {
     private Long id;
     private String chattingContent;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "MEMBER_ID")
+    @ManyToOne
+    @JoinColumn(name = "member_id")
     private Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
