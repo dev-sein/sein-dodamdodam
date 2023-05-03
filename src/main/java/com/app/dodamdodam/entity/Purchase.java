@@ -1,5 +1,6 @@
 package com.app.dodamdodam.entity;
 
+import com.app.dodamdodam.audit.Period;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -12,7 +13,7 @@ import javax.persistence.Table;
 @ToString
 @Table(name = "TBL_PURCHASE")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Purchase {
+public class Purchase extends Period {
     @Id
     @GeneratedValue
     @EqualsAndHashCode.Include

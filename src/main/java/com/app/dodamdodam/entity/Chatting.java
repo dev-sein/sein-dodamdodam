@@ -1,12 +1,11 @@
 package com.app.dodamdodam.entity;
 
 import com.app.dodamdodam.audit.Period;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
@@ -14,7 +13,10 @@ import javax.persistence.Table;
 @ToString
 @Table(name = "TBL_APPLY")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class EventBoard extends Period {
-
+public class Chatting extends Period {
+    @Id @GeneratedValue
+    @EqualsAndHashCode.Include
+    private Long id;
+    private String chattingContent;
 
 }

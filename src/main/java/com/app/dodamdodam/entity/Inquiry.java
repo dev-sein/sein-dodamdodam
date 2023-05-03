@@ -1,5 +1,6 @@
 package com.app.dodamdodam.entity;
 
+import com.app.dodamdodam.audit.Period;
 import com.sun.istack.NotNull;
 import lombok.*;
 
@@ -12,7 +13,7 @@ import javax.persistence.Table;
 @Table(name = "TBL_INQUIRY")
 @Getter @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Inquiry {
+public class Inquiry extends Period {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
