@@ -12,7 +12,7 @@ spring:
 
   #jpa
   jpa:
-    database-platform: org.hibernate.dialect.OracleDialect
+    database-platform: org.hibernate.dialect.Oracle10gDialect
     hibernate:
       #jpa ddl-auto
       #create: DROP 후 CREATE
@@ -31,4 +31,3 @@ spring:
   output:
     ansi:
       enabled: always
-
