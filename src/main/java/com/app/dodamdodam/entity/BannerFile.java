@@ -8,14 +8,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Getter
-@ToString
-@Table(name = "TBL_APPLY")
+@Getter @ToString
+@Table(name = "TBL_BANNER_FILE")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Chatting {
+public class BannerFile {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
-    private String chattingContent;
+
+
 
 }
