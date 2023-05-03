@@ -4,10 +4,7 @@ import com.app.dodamdodam.audit.Period;
 import com.sun.istack.NotNull;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -20,5 +17,9 @@ public class Point extends Period {
     private Long id;
     @NotNull private Integer pointAmount;
     @NotNull private String pointStatus;
+
+    @ManyToOne
+    @JoinColumn(name = "MEMBER_ID")
+    private Member member;
 
 }

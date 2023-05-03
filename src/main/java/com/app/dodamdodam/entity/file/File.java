@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Getter @ToString
-@Table(name = "TBL_APPLY")
+@Table(name = "TBL_FILE")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class File {
     @Id @GeneratedValue

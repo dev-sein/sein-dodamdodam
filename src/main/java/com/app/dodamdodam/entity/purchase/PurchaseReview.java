@@ -4,6 +4,8 @@ import com.app.dodamdodam.entity.board.Reply;
 import lombok.*;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,5 +15,9 @@ import javax.persistence.Table;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class PurchaseReview extends Reply {
     private Integer reviewGrade;
+
+    @ManyToOne
+    @JoinColumn(name = "PURCHASE_BOARD_ID")
+    private PurchaseBoard purchaseBoard;
 
 }
