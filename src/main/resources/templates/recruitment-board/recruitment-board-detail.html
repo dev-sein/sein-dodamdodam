@@ -78,9 +78,67 @@
                 </div>
                 </div>
                 <div class="my-board">
+                    <button class="btn list"><a href="">목록</a></button>
                     <button class="btn"><a href="">수정</a></button>
-                    <button class="btn delete"><a href="">삭제</a></button>
+                    <button class="btn delete"><a class="delete-a" href="">삭제</a></button>
                 </div>
+
+                <div class="board-detail-bottom-container">
+                    <div class="board-comment-detail">
+                        <div class="comment-box">
+                            <div class="message-box">
+                                <p>
+                                    도담도담의 건전한 운영을 위하여 운영기준상 문제의 소지가 있거나 게시물에 관련이 없는 악의적인 댓글은 임의로 삭제될 수 있습니다.
+                                </p>
+                            </div>
+                            <p class="comment-count">
+                                <em>3</em>개의 댓글이 달려있습니다.
+                            </p>
+                            <div class="main-comment">
+                                <textarea name="" id="" placeholder="댓글을 입력하세요."></textarea>
+                                <div class="btn-complete">
+                                    <button class="btn-color">댓글달기</button>
+                                </div>
+                            </div>
+                            <div class="comment-list">
+                                <ul id="comment-list-detail">
+                                    <li class="top" style="display: list-item;">
+                                        <div class="comment-wrap">
+                                            <div class="comment-info">
+                                                <img src="/static/images/badge/medal_gold_winner_badge_reward_icon.png">
+                                                <span class="name">김욱성</span>
+                                                <button class="comment-util" onclick="showList(this)"></button>
+                                                <ul class="comment-util-list">
+                                                    <li>
+                                                        <button type="button" class="modify-button">수정</button>
+                                                    </li>
+                                                    <li>
+                                                        <button>삭제</button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <p class="comment-content">둘 다 재밌음 [스포]</p>
+                                            <textarea id="" class="modify-textarea" style="display: none;">둘 다 재밌음 [스포]</textarea>
+                                            <div class="comment-date">
+                                                2023.04.23 23:56
+                                            </div>
+                                            <div class="comment-bottom" style="display:none;">
+                                                <button type="button" class="modify-cancel">취소</button>
+                                                <button type="button" class="modify-confirm">수정완료</button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="btn-place">
+                            <button class="btn-comment">댓글 더 보기</button>
+                            <button class="btn-comment" style="display: none;">댓글 닫기</button>
+                        </div>
+                    </div>
+                </div>
+
+
                 <!-- top 버튼 -->
                 <div class="top-btn-container">
                     <button type="button" class="top-btn">
@@ -114,6 +172,13 @@
 </textarea>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="/static/js/recruitment-board/recruitment-board-detail.js"></script>
+<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.min.js"
+  integrity="sha384-dpu02ieKC6NUeKFoGMOKz6102CLEWi9+5RQjWSV0ikYSFFd8M3Wp2reIcquJOemx" crossorigin="anonymous">
+</script>
+<script>
+  Kakao.init('e21d13e33dbb10932785f7663d4603f1'); // 사용하려는 앱의 JavaScript 키 입력
+</script>
 <script>
 
 /* 좋아요 */
