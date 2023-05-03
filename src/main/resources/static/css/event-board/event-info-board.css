@@ -777,9 +777,10 @@ html.scroll-top .top-btn-container {
     height: 1em;
     fill: currentColor;
 }
+
 .write-btn{
     position: fixed;
-    bottom: 3px;
+    top: 14%;
     right: 16px;
     cursor: pointer;
 }

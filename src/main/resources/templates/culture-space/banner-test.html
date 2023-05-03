@@ -7,28 +7,25 @@
     <title>배너 수정 ver.</title>
     <link rel="stylesheet" href="../../static/css/culture-space/culture-space-new.css">
     <style>
-        .background{
-            opacity: 0.2;
-            width: 438px;
-            height: 228px;
-            border-radius: 10px;
-        }
-
-        .culture-space-instance{
-            height: 228px;
-            float: left;
-            margin-right: 10px;
-        
-        }
-
-        .instance{
-            display: flex;
-            justify-content: space-between;
-            position: relative;
-            width: 438px;
-            height: 228px;
-            margin-bottom: 10px;
-        }
+    .background{
+        opacity: 0.2;
+        width: 350px;
+        height: 350px;
+        border-radius: 10px;
+    }
+    .culture-space-instance{
+        float: left;
+        margin-right: 10px;
+    
+    }
+    .instance{
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        width: 350px;
+        height: 350px;
+        margin-bottom: 10px;
+    }
 
     .space-name{
     position: absolute;
@@ -54,9 +51,8 @@
 
     .space-info{
         position: absolute;
-        top: 30%;
+        top: 35%;
         left: 6%;
-        display:none;
     }
 
     .space-text-info{
@@ -83,8 +79,7 @@
     }
 
     .next{
-        margin-left: 350px;
-        display: none;
+        margin-left: 270px;
         top: 35%;
     }
 
@@ -121,8 +116,6 @@
                             <div class="instance imgBox">
                             <div class="culture-space img on">
                                 <img class="background" src="https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=04ae3506f18f4fb39a8553095364f973&thumb=Y">
-                                <div class="space-name"><span>DDP(동대문디자인플라자)</span></div>
-                                <div class="mouseover">마우스오버하여 자세히 알아보기</div>
                                 <div class="space-info">
                                     <img class="photo-img" src="https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=04ae3506f18f4fb39a8553095364f973&thumb=Y">
                                     <div class="space-text-info">
@@ -148,8 +141,6 @@
                                 <div class="instance imgBox">
                                 <div class="culture-space img on">
                                     <img class="background" src="https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=04ae3506f18f4fb39a8553095364f973&thumb=Y">
-                                    <div class="space-name"><span>DDP(동대문디자인플라자)</span></div>
-                                    <div class="mouseover">마우스오버하여 자세히 알아보기</div>
                                     <div class="space-info">
                                         <img class="photo-img" src="https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=04ae3506f18f4fb39a8553095364f973&thumb=Y">
                                         <div class="space-text-info">
@@ -175,8 +166,6 @@
                                     <div class="instance imgBox">
                                     <div class="culture-space img on">
                                         <img class="background" src="https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=04ae3506f18f4fb39a8553095364f973&thumb=Y">
-                                        <div class="space-name"><span>DDP(동대문디자인플라자)</span></div>
-                                        <div class="mouseover">마우스오버하여 자세히 알아보기</div>
                                         <div class="space-info">
                                             <img class="photo-img" src="https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=04ae3506f18f4fb39a8553095364f973&thumb=Y">
                                             <div class="space-text-info">
@@ -202,8 +191,6 @@
                                         <div class="instance imgBox">
                                         <div class="culture-space img on">
                                             <img class="background" src="https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=04ae3506f18f4fb39a8553095364f973&thumb=Y">
-                                            <div class="space-name"><span>DDP(동대문디자인플라자)</span></div>
-                                            <div class="mouseover">마우스오버하여 자세히 알아보기</div>
                                             <div class="space-info">
                                                 <img class="photo-img" src="https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=04ae3506f18f4fb39a8553095364f973&thumb=Y">
                                                 <div class="space-text-info">
@@ -244,12 +231,6 @@
   $(function(){
   $('.culture-space').mouseover(function(e){
     $(this).find('.next').show(); //우측 지도 버튼 
-    $(this).find('.space-name').hide(); 
-    $(this).find('.mouseover').hide(); 
-    $(this).find('.space-info').css({left: '-30%'}); //공간 정보 노출 애니메이션
-    $(this).find('.space-info').animate({left:'6%'}, {duration: 800});
-    $(this).find('.space-info').css("opacity", "1");
-    $(this).find('.space-info').show();
   });
   });
   /* 마우스 아웃 */
@@ -257,10 +238,7 @@
   $(this).find('.photo-instance').css("opacity", "1");
   $(this).find('.space-name').show(); 
   $(this).find('.mouseover').show(); 
-  $(this).find('.next').hide();
-  $(this).find('.prev').hide();
-  $(this).find('.space-info').css({left: '-20%'});
-  $(this).find('.space-info').hide();
+//   $(this).find('.next').hide();
   });  
   
   $(".prev").on("click", function (e) {
