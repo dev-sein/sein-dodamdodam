@@ -1,4 +1,4 @@
-package com.app.dodamdodam.entity;
+package com.app.dodamdodam.entity.member;
 
 import com.app.dodamdodam.audit.Period;
 import com.sun.istack.NotNull;
@@ -10,17 +10,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "TBL_INQUIRY")
+@Table(name = "TBL_GRADE")
 @Getter @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Inquiry extends Period {
+public class Grade {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
-    @NotNull private String inquiryType;
-    @NotNull private String inquiryEmail;
-    @NotNull private String memberIdentification;
-    @NotNull private String inquiryPhoneNumber;
-    @NotNull private String inquiryContent;
-    @NotNull private String inquiryAnswer;
+    @NotNull private String gradeTitle;
+    @NotNull private int gradeStartNumber;
+    @NotNull private int gradeEndNumber;
 }

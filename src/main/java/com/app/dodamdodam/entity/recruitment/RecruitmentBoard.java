@@ -1,6 +1,6 @@
-package com.app.dodamdodam.entity;
+package com.app.dodamdodam.entity.recruitment;
 
-import com.app.dodamdodam.audit.Period;
+import com.app.dodamdodam.entity.board.Board;
 import com.sun.istack.NotNull;
 import lombok.*;
 
@@ -15,21 +15,21 @@ import java.time.LocalDate;
 @Table(name = "TBL_RECRUITMENT_BOARD")
 @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class RecruitmentBoard extends Period {
+public class RecruitmentBoard extends Board {
     @Id
     @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
-    @NotNull
-    private String recruitmentTitle;
+//    @NotNull
+//    private String recruitmentTitle;
     @NotNull
     private String recruitmentSubtitle;
     @NotNull
     private LocalDate recruitmentDate;
     @NotNull
     private int recruitmentPeopleCount;
-    @NotNull
-    private String recruitmentContent;
+//    @NotNull
+//    private String recruitmentContent;
     @NotNull
     private String recruitmentOpenChatting;
     @NotNull

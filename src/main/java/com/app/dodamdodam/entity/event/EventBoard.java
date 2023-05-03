@@ -1,6 +1,6 @@
-package com.app.dodamdodam.entity;
+package com.app.dodamdodam.entity.event;
 
-import com.app.dodamdodam.audit.Period;
+import com.app.dodamdodam.entity.board.Board;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +12,9 @@ import javax.persistence.Table;
 @Entity
 @Getter
 @ToString
-@Table(name = "TBL_EVENT_FILE")
+@Table(name = "TBL_EVENT_BOARD")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class EventFile extends Period {
+public class EventBoard extends Board {
+
+
 }

@@ -1,4 +1,4 @@
-package com.app.dodamdodam.entity;
+package com.app.dodamdodam.entity.member;
 
 import com.app.dodamdodam.audit.Period;
 import com.sun.istack.NotNull;
@@ -10,15 +10,17 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "TBL_FREE_BOARD_FILE")
+@Table(name = "TBL_INQUIRY")
 @Getter @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class FreeFile extends Period {
+public class Inquiry extends Period {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
-    @NotNull private String freeFileOriginalName;
-    @NotNull private String freeFileUuid;
-    @NotNull private String freeFilePath;
-    @NotNull private String freeFileSize;
+    @NotNull private String inquiryType;
+    @NotNull private String inquiryEmail;
+    @NotNull private String memberIdentification;
+    @NotNull private String inquiryPhoneNumber;
+    @NotNull private String inquiryContent;
+    @NotNull private String inquiryAnswer;
 }

@@ -1,6 +1,5 @@
-package com.app.dodamdodam.entity;
+package com.app.dodamdodam.entity.event;
 
-import com.app.dodamdodam.audit.Period;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -11,13 +10,11 @@ import javax.persistence.Table;
 @Entity
 @Getter
 @ToString
-@Table(name = "TBL_PURCHASE_REVIEW")
+@Table(name = "TBL_APPLY")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class PurchaseReview extends Period {
+public class EventLike {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
-    private String reviewContents;
-    private Integer reviewGrade;
 
 }

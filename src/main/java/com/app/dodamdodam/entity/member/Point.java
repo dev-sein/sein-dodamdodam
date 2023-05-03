@@ -1,4 +1,4 @@
-package com.app.dodamdodam.entity;
+package com.app.dodamdodam.entity.member;
 
 import com.app.dodamdodam.audit.Period;
 import com.sun.istack.NotNull;
@@ -8,18 +8,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "TBL_FREE_BOARD_REPLY")
-@Getter @ToString
+@Getter
+@ToString
+@Table(name = "TBL_POINT")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class FreeReply extends Period {
+public class Point extends Period {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
-    @NotNull private String replyContent;
-//    private LocalDateTime replyRegisterDate;
-//    private LocalDateTime replyUpdateDate;
+    @NotNull private Integer pointAmount;
+    @NotNull private String pointStatus;
 
 }

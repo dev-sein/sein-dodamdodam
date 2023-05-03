@@ -1,4 +1,4 @@
-package com.app.dodamdodam.entity;
+package com.app.dodamdodam.entity.apply;
 
 import com.app.dodamdodam.audit.Period;
 import lombok.*;
