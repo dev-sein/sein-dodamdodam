@@ -1,5 +1,6 @@
 package com.app.dodamdodam.entity;
 
+import com.app.dodamdodam.audit.Period;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,5 +14,5 @@ import javax.persistence.Table;
 @ToString
 @Table(name = "TBL_APPLY")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class EventFile {
+public class EventFile extends Period {
 }

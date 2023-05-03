@@ -1,6 +1,7 @@
 package com.app.dodamdodam.entity;
 
 
+import com.app.dodamdodam.audit.Period;
 import com.sun.istack.NotNull;
 import lombok.*;
 
@@ -13,7 +14,7 @@ import javax.persistence.Table;
 @Getter @ToString
 @Table(name = "TBL_PURCHASE_FILE")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class PurchaseFile {
+public class PurchaseFile extends Period {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;

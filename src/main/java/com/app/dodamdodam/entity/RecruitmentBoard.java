@@ -1,5 +1,6 @@
 package com.app.dodamdodam.entity;
 
+import com.app.dodamdodam.audit.Period;
 import com.sun.istack.NotNull;
 import lombok.*;
 
@@ -14,7 +15,7 @@ import java.time.LocalDate;
 @Table(name = "TBL_RECRUITMENTFILE")
 @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class RecruitmentBoard {
+public class RecruitmentBoard extends Period {
     @Id
     @GeneratedValue
     @EqualsAndHashCode.Include
