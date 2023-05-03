@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -23,7 +24,7 @@ public class RecruitmentBoard {
     @NotNull
     private String recruitmentSubtitle;
     @NotNull
-    private String recruitmentDate;
+    private LocalDate recruitmentDate;
     @NotNull
     private int recruitmentPeopleCount;
     @NotNull
