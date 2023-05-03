@@ -1,5 +1,6 @@
 package com.app.dodamdodam.entity;
 
+import com.app.dodamdodam.audit.Period;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -13,7 +14,7 @@ import java.time.LocalDate;
 @ToString
 @Table(name = "TBL_BANNER")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Banner {
+public class Banner extends Period {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;

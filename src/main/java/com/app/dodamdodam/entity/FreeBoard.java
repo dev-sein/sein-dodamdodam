@@ -1,5 +1,6 @@
 package com.app.dodamdodam.entity;
 
+import com.app.dodamdodam.audit.Period;
 import com.sun.istack.NotNull;
 import lombok.*;
 
@@ -10,7 +11,7 @@ import java.time.LocalDateTime;
 @Table(name = "TBL_FREE_BOARD")
 @Getter @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class FreeBoard {
+public class FreeBoard extends Period {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;

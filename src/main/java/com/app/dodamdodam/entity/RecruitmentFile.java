@@ -1,5 +1,6 @@
 package com.app.dodamdodam.entity;
 
+import com.app.dodamdodam.audit.Period;
 import com.sun.istack.NotNull;
 import lombok.*;
 
@@ -13,7 +14,7 @@ import javax.persistence.Table;
 @Table(name = "TBL_RECRUITMENTFILE")
 @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class RecruitmentFile {
+public class RecruitmentFile extends Period {
     @Id
     @GeneratedValue
     @EqualsAndHashCode.Include
