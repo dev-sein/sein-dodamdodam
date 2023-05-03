@@ -5,10 +5,7 @@ import com.app.dodamdodam.entity.board.Reply;
 import com.sun.istack.NotNull;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -16,4 +13,8 @@ import java.time.LocalDateTime;
 @Getter @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class FreeReply extends Reply {
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "FREE_BOARD_ID")
+    private FreeBoard freeBoard;
 }

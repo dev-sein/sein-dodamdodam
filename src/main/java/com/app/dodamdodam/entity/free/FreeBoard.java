@@ -14,4 +14,10 @@ import java.time.LocalDateTime;
 public class FreeBoard extends Board {
 //    @Enumerated
     @NotNull private String freeCategory;
+
+
+    @OneToOne
+    private FreeLike freeLike;
+
+
 }

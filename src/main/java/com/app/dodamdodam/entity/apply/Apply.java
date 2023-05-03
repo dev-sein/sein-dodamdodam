@@ -1,12 +1,10 @@
 package com.app.dodamdodam.entity.apply;
 
 import com.app.dodamdodam.audit.Period;
+import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -18,5 +16,9 @@ public class Apply extends Period {
     @EqualsAndHashCode.Include
     private Long id;
     private String applyStatus;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private RecruitmentBoard recruitmentBoard;
+
 
 }
