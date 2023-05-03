@@ -1,5 +1,6 @@
 package com.app.dodamdodam.entity;
 
+import com.app.dodamdodam.audit.Period;
 import com.sun.istack.NotNull;
 import lombok.*;
 
@@ -13,7 +14,7 @@ import javax.persistence.Table;
 @ToString
 @Table(name = "TBL_POINT")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Point {
+public class Point extends Period {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;

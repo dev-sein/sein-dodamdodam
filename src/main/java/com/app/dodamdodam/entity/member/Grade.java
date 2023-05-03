@@ -1,5 +1,6 @@
 package com.app.dodamdodam.entity.member;
 
+import com.app.dodamdodam.audit.Period;
 import com.sun.istack.NotNull;
 import lombok.*;
 
