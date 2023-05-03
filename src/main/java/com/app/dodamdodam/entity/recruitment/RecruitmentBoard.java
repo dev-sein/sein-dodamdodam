@@ -12,7 +12,7 @@ import java.time.LocalDate;
 
 @Entity
 @Getter
-@Table(name = "TBL_RECRUITMENTFILE")
+@Table(name = "TBL_RECRUITMENT_BOARD")
 @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class RecruitmentBoard extends Board {

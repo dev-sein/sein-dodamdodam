@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @Entity
 @Getter
 @ToString
-@Table(name = "TBL_BOARD")
+@Table(name = "TBL_EVENT_BOARD")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class EventBoard extends Board {
 
