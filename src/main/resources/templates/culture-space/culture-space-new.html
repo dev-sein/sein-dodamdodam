@@ -7,66 +7,45 @@
     <title>문화공간 0501 ver.</title>
     <link rel="stylesheet" href="../../static/css/culture-space/culture-space-new.css">
     <style>
-        .background{
-            opacity: 0.2;
-            width: 438px;
-            height: 228px;
-            border-radius: 10px;
-        }
 
-        .culture-space-instance{
-            height: 228px;
-            float: left;
-            margin-right: 10px;
-        
-        }
-
-        .instance{
-            display: flex;
-            justify-content: space-between;
-            position: relative;
-            width: 438px;
-            height: 228px;
-            margin-bottom: 10px;
-        }
-
-    .space-name{
-    position: absolute;
-    top: 13%;
-    left: 3%;
-    text-align: center;
-    font-size: 24px;
-    font-family: 'Noto Sans KR';
-    font-weight: 700;
+    .background{
+        opacity: 0.2;
+        width: 280px;
+        height: 280px;
     }
 
-    .mouseover{
-    position: absolute;
-    font-size: 14px;
-    top: 83%;
-    left: 3%;
+    .culture-space-instance{
+        float: left;
+        margin-right: 10px;
+    }
+
+    .instance{
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        width: 280px;
+        height: 280px;
+        margin-bottom: 10px;
     }
 
     .photo-img{
         width: 100px;
-        height: 80px;
+        height: 100px;
     }
 
     .space-info{
         position: absolute;
-        top: 30%;
+        top: 15%;
         left: 6%;
-        display:none;
     }
 
     .space-text-info{
-    display: inline-block;
-    text-align: left;
-    margin-left: 20px;
-    left:0%;
-    font-size:12px;
+        display: inline-block;
+        text-align: left;
+        margin-left: 20px;
+        left:0%;
+        font-size:12px;
     }
-
     
     .arrow-button{
         cursor: pointer;
@@ -83,14 +62,17 @@
     }
 
     .next{
-        margin-left: 350px;
+        margin-left: 210px;
         display: none;
         top: 35%;
+        cursor:pointer;
     }
 
     .img{
         position: absolute;
         opacity: 0;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+      filter: alpha(opacity=0);
     }
 
     
@@ -110,19 +92,17 @@
                     <section>
                         <div class="culture-inner">
                             <div>
-                                <h3 class="culture-space-title">문화공간 소개</h3>
+                                <!-- <h3 class="culture-space-title">문화공간 소개</h3> -->
                             </div>
                             <div class="culture-space-content-container">
-                                <strong class="culture-space-content">
+                                <!-- <strong class="culture-space-content">
                                     <span>누구나 이용 가능한 서울의 문화공간을 소개합니다.</span>
-                                </strong>
+                                </strong> -->
 
                             <div class="culture-space-instance">
                             <div class="instance imgBox">
                             <div class="culture-space img on">
                                 <img class="background" src="https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=04ae3506f18f4fb39a8553095364f973&thumb=Y">
-                                <div class="space-name"><span>DDP(동대문디자인플라자)</span></div>
-                                <div class="mouseover">마우스오버하여 자세히 알아보기</div>
                                 <div class="space-info">
                                     <img class="photo-img" src="https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=04ae3506f18f4fb39a8553095364f973&thumb=Y">
                                     <div class="space-text-info">
@@ -131,105 +111,22 @@
                                     <div class="space-address"><span>서울특별시 중구 을지로 281</span></div>
                                     <div class="space-tel"><span>02-2153-0000</span></div>
                                     <div class="space-web"><span>http://www.ddp.or.kr/main</span></div></div>
-                                    <div class="arrow-button">
                                         
-                                        <img class="next" src="../../static/images/culture-space/map-icon1.png">
-                                    </div>
+                                    <img class="next" src="../../static/images/culture-space/map-icon1.png">
                                 </div><!-- space info -->
                             </div>
                         
-                            <div class="img">
-                                <img class="prev" src="../../static/images/culture-space/left-arrow.png">
-                                <img src="../../static/images/recruitment-board/write.png">   </div>
+                            <img class="prev" src="../../static/images/culture-space/left-arrow.png">
+                            <img class="img" src="../../static/images/recruitment-board/write.png">
                             </div><!-- instance -->
                             </div>
 
-                            <div class="culture-space-instance">
-                                <div class="instance imgBox">
-                                <div class="culture-space img on">
-                                    <img class="background" src="https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=04ae3506f18f4fb39a8553095364f973&thumb=Y">
-                                    <div class="space-name"><span>DDP(동대문디자인플라자)</span></div>
-                                    <div class="mouseover">마우스오버하여 자세히 알아보기</div>
-                                    <div class="space-info">
-                                        <img class="photo-img" src="https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=04ae3506f18f4fb39a8553095364f973&thumb=Y">
-                                        <div class="space-text-info">
-                                        <div class="space-name-small"><span><strong>DDP(동대문디자인플라자)</strong></span></div>
-                                        <div class="space-name-category"><span></span></div>
-                                        <div class="space-address"><span>서울특별시 중구 을지로 281</span></div>
-                                        <div class="space-tel"><span>02-2153-0000</span></div>
-                                        <div class="space-web"><span>http://www.ddp.or.kr/main</span></div></div>
-                                        <div class="arrow-button">
-                                            
-                                            <img class="next" src="../../static/images/culture-space/map-icon1.png">
-                                        </div>
-                                    </div><!-- space info -->
-                                </div>
-                            
-                                <div class="img">
-                                    <img class="prev" src="../../static/images/culture-space/left-arrow.png">
-                                    <img src="../../static/images/recruitment-board/write.png">   </div>
-                                </div><!-- instance -->
-                                </div>
-
-                                <div class="culture-space-instance">
-                                    <div class="instance imgBox">
-                                    <div class="culture-space img on">
-                                        <img class="background" src="https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=04ae3506f18f4fb39a8553095364f973&thumb=Y">
-                                        <div class="space-name"><span>DDP(동대문디자인플라자)</span></div>
-                                        <div class="mouseover">마우스오버하여 자세히 알아보기</div>
-                                        <div class="space-info">
-                                            <img class="photo-img" src="https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=04ae3506f18f4fb39a8553095364f973&thumb=Y">
-                                            <div class="space-text-info">
-                                            <div class="space-name-small"><span><strong>DDP(동대문디자인플라자)</strong></span></div>
-                                            <div class="space-name-category"><span></span></div>
-                                            <div class="space-address"><span>서울특별시 중구 을지로 281</span></div>
-                                            <div class="space-tel"><span>02-2153-0000</span></div>
-                                            <div class="space-web"><span>http://www.ddp.or.kr/main</span></div></div>
-                                            <div class="arrow-button">
-                                                
-                                                <img class="next" src="../../static/images/culture-space/map-icon1.png">
-                                            </div>
-                                        </div><!-- space info -->
-                                    </div>
-                                
-                                    <div class="img">
-                                        <img class="prev" src="../../static/images/culture-space/left-arrow.png">
-                                        <img src="../../static/images/recruitment-board/write.png">   </div>
-                                    </div><!-- instance -->
-                                    </div>
-
-                                    <div class="culture-space-instance">
-                                        <div class="instance imgBox">
-                                        <div class="culture-space img on">
-                                            <img class="background" src="https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=04ae3506f18f4fb39a8553095364f973&thumb=Y">
-                                            <div class="space-name"><span>DDP(동대문디자인플라자)</span></div>
-                                            <div class="mouseover">마우스오버하여 자세히 알아보기</div>
-                                            <div class="space-info">
-                                                <img class="photo-img" src="https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=04ae3506f18f4fb39a8553095364f973&thumb=Y">
-                                                <div class="space-text-info">
-                                                <div class="space-name-small"><span><strong>DDP(동대문디자인플라자)</strong></span></div>
-                                                <div class="space-name-category"><span></span></div>
-                                                <div class="space-address"><span>서울특별시 중구 을지로 281</span></div>
-                                                <div class="space-tel"><span>02-2153-0000</span></div>
-                                                <div class="space-web"><span>http://www.ddp.or.kr/main</span></div></div>
-                                                <div class="arrow-button">
-                                                    <img class="next" src="../../static/images/culture-space/map-icon1.png">
-                                                </div>
-                                            </div><!-- space info -->
-                                        </div>
-                                    
-                                        <div class="img">
-                                            <img class="prev" src="../../static/images/culture-space/left-arrow.png">
-                                            <img src="../../static/images/recruitment-board/write.png">   </div>
-                                        </div><!-- instance -->
-                                        </div>
-
                            
-
-                            <!-- <div id="map2" style="width:100%;height:228px;"></div> -->
+                            <div class="map-class">
+                            <div id="map2" style="width:100%;height:228px;"></div>
                             <div id="map3" style="width:100%;height:228px;"></div>
                             <div id="map4" style="width:100%;height:228px;"></div>
-
+                        </div>
                         </div><!-- culture-inner -->
                     </section>
                 </div>
@@ -244,26 +141,14 @@
 $(function(){
 $('.culture-space').mouseover(function(e){
   $(this).find('.next').show(); //우측 지도 버튼 
-  $(this).find('.space-name').hide(); 
-  $(this).find('.mouseover').hide(); 
-  $(this).find('.space-info').css({left: '-30%'}); //공간 정보 노출 애니메이션
-  $(this).find('.space-info').animate({left:'6%'}, {duration: 800});
-  $(this).find('.space-info').css("opacity", "1");
   $(this).find('.space-info').show();
 });
 });
 /* 마우스 아웃 */
 $('.culture-space').mouseout(function(e){
-$(this).find('.photo-instance').css("opacity", "1");
-$(this).find('.space-name').show(); 
-$(this).find('.mouseover').show(); 
 $(this).find('.next').hide();
 $(this).find('.prev').hide();
-$(this).find('.space-info').css({left: '-20%'});
-$(this).find('.space-info').hide();
 });  
-
-
 
 $(".prev").on("click", function (e) {
       e.preventDefault();
@@ -288,12 +173,12 @@ $(".prev").on("click", function (e) {
       if( imgOn < 0 ){
         // 돌아가 위치가 -1일 경우 
         // 이미지의 마지막으로 돌아간다
-        $(".imgBox .img").eq(imgLen -1).css("opacity", 1);
-        $(".imgBox .img").eq(imgLen -1).addClass("on");
+        $(this).closest(".imgBox .img").eq(imgLen -1).css("opacity", 1);
+        $(this).closest(".imgBox .img").eq(imgLen -1).addClass("on");
       }else{
         // 돌아갈 위치가 -1이 아닌 경우
-        $(".imgBox .img").eq(imgOn).css("opacity", 1);
-        $(".imgBox .img").eq(imgOn).addClass("on");
+        $(this).closest(".imgBox .img").eq(imgOn).css("opacity", 1);
+        $(this).closest(".imgBox .img").eq(imgOn).addClass("on");
       }
 
     });
@@ -302,7 +187,7 @@ $(".prev").on("click", function (e) {
       e.preventDefault();
       // 위에 동일 
       console.log('클릭');
-      var imgOn = $(this).closest(".imgBox").find(".on").index(); //1번 인덱스
+      var imgOn = $(this).children(".imgBox").find(".on").index(); //1번 인덱스
       var imgLen = $(this).closest(".imgBox .img").length; //2개 
 
       console.log(imgOn);
@@ -312,8 +197,8 @@ $(".prev").on("click", function (e) {
       $(this).closest(".imgBox .img").eq(imgOn).removeClass("on"); //1번 인덱스 삭제
       $(this).closest(".imgBox .img").eq(imgOn).css("opacity", 0); //1번 투명도 
       console.log('슬라이드 이동');
-      $('.prev').show();
-      $('.next').hide();
+    //   $('.prev').show();
+    //   $('.next').hide();
       
       // 다음의 위치로 알아야 되기 때문에
       imgOn = imgOn + 1; //2번 
@@ -321,12 +206,12 @@ $(".prev").on("click", function (e) {
       if( imgOn === imgLen ){ //2 === 2 
         // 다음의 위치가 총 개수보다 클 경우
         // 처음의 위치로 돌아간다
-        $(".imgBox .img").eq(0).css("opacity", 1);
-        $(".imgBox .img").eq(0).addClass("on");
+        $(this).closest(".imgBox .img").eq(0).css("opacity", 1);
+        $(this).closest(".imgBox .img").eq(0).addClass("on");
       }else{
         // 다음 위치가 있는 경우 
-        $(".imgBox .img").eq(imgOn).css("opacity", 1);
-        $(".imgBox .img").eq(imgOn).addClass("on");
+        $(this).closest(".imgBox .img").eq(imgOn).css("opacity", 1);
+        $(this).closest(".imgBox .img").eq(imgOn).addClass("on");
       }
     });
 

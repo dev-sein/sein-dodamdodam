@@ -1,5 +1,6 @@
 package com.app.dodamdodam.entity;
 
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -8,15 +9,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Getter
-@Table(name = "TBL_RECRUITMENTFILE")
-@ToString
+@Getter @ToString
+@Table(name = "TBL_RANDOM_KEY")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class RandomKey {
-    @Id
-    @GeneratedValue
+    @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
+    @NotNull
+    private Long randomKey;
 
-    private int randomkey;
 }
