@@ -17,7 +17,7 @@ public class Chatting {
     private String chattingContent;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "MEBMER_ID")
+    @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
