@@ -1,7 +1,5 @@
 package com.app.dodamdodam.entity;
 
-import com.app.dodamdodam.audit.Period;
-import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -10,15 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "TBL_FREE_BOARD_FILE")
+@Table(name = "TBL_FREE_BOARD_LIKE")
 @Getter @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class FreeBoardFile extends Period {
+public class FreeLike {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
-    @NotNull private String freeFileOriginalName;
-    @NotNull private String freeFileUuid;
-    @NotNull private String freeFilePath;
-    @NotNull private String freeFileSize;
 }

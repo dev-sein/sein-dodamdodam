@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Entity
 @Getter
 @ToString
-@Table(name = "TBL_APPLY")
+@Table(name = "TBL_CHATTING")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Chatting extends Period {
     @Id @GeneratedValue

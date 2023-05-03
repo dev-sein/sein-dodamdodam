@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Getter
-@Table(name = "TBL_RECRUITMENTLIKE")
+@Table(name = "TBL_RECRUITMENT_LIKE")
 @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class RecruitmentLike extends Period {

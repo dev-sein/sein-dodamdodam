@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Getter
-@Table(name = "TBL_RECRUITMENTFILE")
+@Table(name = "TBL_RECRUITMENT_FILE")
 @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class RecruitmentFile extends Period {
