@@ -9,8 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Getter
-@ToString
+@Getter @ToString
 @Table(name = "TBL_RANDOM_KEY")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class RandomKey {
@@ -19,4 +18,5 @@ public class RandomKey {
     private Long id;
     @NotNull
     private Long randomKey;
+
 }
