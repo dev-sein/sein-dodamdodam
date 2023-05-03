@@ -1,6 +1,5 @@
 package com.app.dodamdodam.entity;
 
-import com.app.dodamdodam.audit.Period;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -9,14 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Getter
-@Table(name = "TBL_RECRUITMENT_LIKE")
-@ToString
+@Table(name = "TBL_FREE_BOARD_LIKE")
+@Getter @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class RecruitmentLike extends Period {
-    @Id
-    @GeneratedValue
+public class FreeLike {
+    @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
-
 }

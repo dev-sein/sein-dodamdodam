@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @Entity
 @Getter
 @ToString
-@Table(name = "TBL_APPLY")
+@Table(name = "TBL_EVENT_FILE")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class EventFile extends Period {
 }

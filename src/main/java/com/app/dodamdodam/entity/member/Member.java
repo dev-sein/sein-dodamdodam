@@ -1,5 +1,6 @@
-package com.app.dodamdodam.entity;
+package com.app.dodamdodam.entity.member;
 
+import com.app.dodamdodam.audit.Period;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -8,11 +9,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "TBL_FREE_BOARD_LIKE")
-@Getter @ToString
+@Getter
+@ToString
+@Table(name = "TBL_MEMBER")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class FreeBoardLike {
+public class Member extends Period {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
+    private String memberName;
 }

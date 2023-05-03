@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Table(name = "TBL_FREE_BOARD_FILE")
 @Getter @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class FreeBoardFile extends Period {
+public class FreeFile extends Period {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
