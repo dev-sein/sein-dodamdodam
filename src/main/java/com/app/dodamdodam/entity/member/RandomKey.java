@@ -1,7 +1,5 @@
-package com.app.dodamdodam.entity.free;
+package com.app.dodamdodam.entity.member;
 
-import com.app.dodamdodam.audit.Period;
-import com.app.dodamdodam.entity.board.Reply;
 import com.sun.istack.NotNull;
 import lombok.*;
 
@@ -9,11 +7,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "TBL_FREE_BOARD_LIKE")
 @Getter @ToString
+@Table(name = "TBL_RANDOM_KEY")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class FreeReply extends Reply {
+public class RandomKey {
+    @Id @GeneratedValue
+    @EqualsAndHashCode.Include
+    private Long id;
+    @NotNull
+    private Long randomKey;
+
 }

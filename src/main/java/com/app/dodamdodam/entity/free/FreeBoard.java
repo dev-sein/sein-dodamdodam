@@ -12,11 +12,6 @@ import java.time.LocalDateTime;
 @Getter @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class FreeBoard extends Board {
-    @Id @GeneratedValue
-    @EqualsAndHashCode.Include
-    private Long id;
 //    @Enumerated
     @NotNull private String freeCategory;
-//    @NotNull private LocalDateTime freeRegisterDate;
-//    @NotNull private LocalDateTime freeUpdateDate;
 }
