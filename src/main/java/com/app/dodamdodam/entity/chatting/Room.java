@@ -1,12 +1,9 @@
-package com.app.dodamdodam.entity;
+package com.app.dodamdodam.entity.chatting;
 
 import com.sun.istack.NotNull;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Getter @Table(name = "TBL_ROOM")
@@ -20,4 +17,12 @@ public class Room {
     private int hostId;
     @NotNull
     private int havingId;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "chatting_id")
+    private Chatting chatting;
+
+
+
+
 }
