@@ -111,7 +111,7 @@
                         <em>3</em>개의 댓글이 달려있습니다.
                     </p>
                     <div class="main-comment">
-                        <textarea name="" id="" class="reply-place" placeholder="댓글을 입력하세요."></textarea>
+                        <textarea name="" id="" placeholder="댓글을 입력하세요."></textarea>
                         <div class="btn-complete">
                             <button class="btn-color">댓글달기</button>
                         </div>
@@ -129,7 +129,7 @@
                                                 <button type="button" class="modify-button">수정</button>
                                             </li>
                                             <li>
-                                                <button onclick="showModal()">삭제</button>
+                                                <button>삭제</button>
                                             </li>
                                         </ul>
                                     </div>
@@ -167,7 +167,6 @@
                                         <p class="other-title">[4팀 점심메뉴] 네모 오징어</p>
                                         <p class="other-content">여기 볶음밥 맛있데요. 가보신 분??</p>
                                         <p class="info">
-                                            <em class="write">박다예</em>
                                             <em class="date">23.04.24</em>
                                             <em class="like-count">25</em>
                                         </p>
@@ -186,7 +185,6 @@
                                         <p class="other-title">[4팀 점심메뉴] 네모 오징어</p>
                                         <p class="other-content">여기 볶음밥 맛있데요. 가보신 분??</p>
                                         <p class="info">
-                                            <em class="write">박다예</em>
                                             <em class="date">23.04.24</em>
                                             <em class="like-count">25</em>
                                         </p>
@@ -206,18 +204,6 @@
         </div>
         <!-- 댓글 끝 -->
     </div>
-    <!-- 삭제 버튼 클릭 모달 시작 -->
-    <div class="modal-wrap">
-        <div class="modal-bg" onclick="closeModal()"></div>
-        <div class="modal-copy">
-            <span>
-                댓글을 삭제하시겠습니까?
-            </span>
-            <button type="button" class="modal-close submit-btn modal white-btn" onclick="closeModal()"">취소</button>
-            <button type="button" class="modal-close submit-btn modal" onclick="closeModal()">확인</button>
-        </div>
-    </div>
-    <!-- 삭제 버튼 클릭 모달 시작 -->
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/static/js/free-board/free-board-detail.js"></script>
