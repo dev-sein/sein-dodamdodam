@@ -92,7 +92,7 @@ strong {
 .free-board-top .free-board-title {
     float: left;
     margin-bottom: 24px;
-    background: #2c3d50;
+    background: #fff;
     width: 100%;
     height: 100px;
 }
@@ -118,12 +118,12 @@ strong {
     float: left;
     margin-top: 15px;
     margin-left: 10px;
-    background: #e4e4e4;
+    background: #2c3d50;
     padding: 7px 0;
     width: 70px;
     text-align: center;
     line-height: initial;
-    color: #2c3d50;
+    color: #fff;
     font-size: 14px;
 }
 
@@ -137,8 +137,9 @@ strong {
     width: 65%;
     line-height: 1.25;
     word-break: break-word;
-    color: #fff;
+    color: #2c3d50;
     font-size: 17px;
+    font-weight: 500;
 }
 
 .title-bar-text span {
@@ -265,7 +266,7 @@ strong {
 /* 이미지 사이즈 */
 .free-board-image.image-detail img {
     width: 252px;
-    height: 171px;
+    height: 170px;
 }
 
 .free-board-detail a {
@@ -395,7 +396,11 @@ button:not(:disabled) {
     position: relative;
     margin-top: 20px;
     padding: 20px 0;
-    border-top: 1px solid #006633;
+    /* border-top: 1px solid #006633; */
+    background: #E3E5E4;
+    /* margin-left: -1px; */
+    padding-left: 25px;
+    padding-bottom: 1px;
 }
 
 .best-list img {
