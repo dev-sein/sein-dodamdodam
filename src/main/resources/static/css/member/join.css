@@ -1021,7 +1021,6 @@ input::placeholder {
 .action-input {
     position: relative;
     outline: none;
-    width: calc(100% + 16px);
 }
 
 .action-input .input-container {
