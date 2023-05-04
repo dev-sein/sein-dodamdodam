@@ -2,10 +2,7 @@ package com.app.dodamdodam.entity.event;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -17,4 +14,7 @@ public class EventLike {
     @EqualsAndHashCode.Include
     private Long id;
 
+    @OneToOne
+    @JoinColumn(name = "EVENT_BOARD_ID")
+    private EventBoard eventBoard;
 }

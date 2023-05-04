@@ -4,10 +4,7 @@ import com.app.dodamdodam.entity.board.Board;
 import com.sun.istack.NotNull;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -31,4 +28,7 @@ public class EventBoard extends Board {
     private String eventBusinessName;
     private String eventBusinessTel;
     private String eventBusinessEmail;
+
+    @OneToOne
+    private EventLike eventLike;
 }
