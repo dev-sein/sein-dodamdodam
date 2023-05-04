@@ -12,14 +12,14 @@ spring:
 
   #jpa
   jpa:
-    database-platform: org.hibernate.dialect.OracleDialect
+    database-platform: org.hibernate.dialect.Oracle10gDialect
     hibernate:
       #jpa ddl-auto
       #create: DROP 후 CREATE
       #create-drop: DROP 후 CREATE 후 DROP, DML을 사용하지 않는 다면 DROP되지 않음
       #update: Entity와 DB 스키마 비교 후 수정 사항 반영(컬럼 추가)
       #validate: Entity와 DB 스키마 비교(다르면 예외 발생)
-      ddl-auto: validate
+      ddl-auto: create
 
     #jpa format
     properties:
@@ -31,4 +31,3 @@ spring:
   output:
     ansi:
       enabled: always
-
