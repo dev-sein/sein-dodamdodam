@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "TBL_FREE_BOARD_LIKE")
+@Table(name = "TBL_FREE_BOARD_REPLY")
 @Getter @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class FreeReply extends Reply {

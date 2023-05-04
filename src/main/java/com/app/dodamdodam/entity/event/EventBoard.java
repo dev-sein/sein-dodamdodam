@@ -15,9 +15,9 @@ import java.time.LocalTime;
 @Table(name = "TBL_EVENT_BOARD")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class EventBoard extends Board {
-    @Id @GeneratedValue
-    @EqualsAndHashCode.Include
-    private Long id;
+//    @Id @GeneratedValue
+//    @EqualsAndHashCode.Include
+//    private Long id;
     @NotNull private String eventAddress;
     @NotNull private String eventAddressDetail;
     @NotNull private LocalDate eventStartDate;
@@ -29,6 +29,6 @@ public class EventBoard extends Board {
     private String eventBusinessTel;
     private String eventBusinessEmail;
 
-    @OneToOne
-    private EventLike eventLike;
+//    @OneToOne
+//    private EventLike eventLike;
 }

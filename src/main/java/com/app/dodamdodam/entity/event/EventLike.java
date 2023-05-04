@@ -17,5 +17,4 @@ public class EventLike {
     @OneToOne
     @JoinColumn(name = "EVENT_BOARD_ID")
     private EventBoard eventBoard;
-
 }
