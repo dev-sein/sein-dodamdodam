@@ -5,10 +5,7 @@ import com.app.dodamdodam.entity.board.Board;
 import com.sun.istack.NotNull;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -20,8 +17,9 @@ public class PurchaseBoard extends Board {
 //    @GeneratedValue
 //    @EqualsAndHashCode.Include
 //    private Long id;
-    private Integer purchasePrice;
+//    private Integer purchasePrice;
 //    @NotNull private Integer purchaseCount;
 
-
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "purchaseBoard")
+    private Product product;
 }
