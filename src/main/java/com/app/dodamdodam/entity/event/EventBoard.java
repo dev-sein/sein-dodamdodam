@@ -3,6 +3,9 @@ package com.app.dodamdodam.entity.event;
 import com.app.dodamdodam.entity.board.Board;
 import com.sun.istack.NotNull;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -11,9 +14,11 @@ import java.time.LocalTime;
 
 @Entity
 @Getter
-@ToString
+@ToString(callSuper = true)
 @Table(name = "TBL_EVENT_BOARD")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@DynamicInsert
+@DynamicUpdate
 public class EventBoard extends Board {
 //    @Id @GeneratedValue
 //    @EqualsAndHashCode.Include
@@ -23,7 +28,10 @@ public class EventBoard extends Board {
     @NotNull private LocalDate eventStartDate;
     @NotNull private LocalDate eventEndDate;
     @NotNull private String eventIntroduction;
-    @NotNull private String eventStatus;
+    //    수락대기, 수락, 수락거절
+    @ColumnDefault("'APPLYING'")
+    @Enumerated(EnumType.STRING)
+    @NotNull private EventType eventStatus;
     private String eventBusinessNumber;
     private String eventBusinessName;
     private String eventBusinessTel;
