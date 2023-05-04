@@ -1,24 +1,21 @@
 package com.app.dodamdodam.entity.recruitment;
 
-import com.app.dodamdodam.entity.reply.Reply;
-import lombok.*;
+import com.app.dodamdodam.entity.file.BoardFile;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
-@ToString
-@Table(name = "TBL_RECRUITMENT_REPLY")
+@ToString(callSuper = true)
+@Table(name = "TBL_RECRUITMENT_FILE")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class RecruitmentReply extends Reply {
-    @Id @GeneratedValue
-    @EqualsAndHashCode.Include
-    private Long id;
-    private String replyContent;
-
+public class RecruitmentFile extends BoardFile {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "RECRUITMENT_BOARD_ID")
     private RecruitmentBoard recruitmentBoard;
-
 }

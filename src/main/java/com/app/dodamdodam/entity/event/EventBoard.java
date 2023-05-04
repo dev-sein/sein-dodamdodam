@@ -1,6 +1,8 @@
 package com.app.dodamdodam.entity.event;
 
 import com.app.dodamdodam.entity.board.Board;
+import com.app.dodamdodam.entity.member.Member;
+import com.app.dodamdodam.type.EventType;
 import com.sun.istack.NotNull;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
@@ -9,8 +11,7 @@ import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -37,6 +38,13 @@ public class EventBoard extends Board {
     private String eventBusinessTel;
     private String eventBusinessEmail;
 
-//    @OneToOne
-//    private EventLike eventLike;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "eventBoard")
+    private List<EventFile> eventFiles;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "eventBoard")
+    private List<EventReply> eventReplies;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MEMBER_ID")
+    private Member member;
 }
