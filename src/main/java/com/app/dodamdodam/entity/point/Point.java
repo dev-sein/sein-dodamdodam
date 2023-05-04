@@ -1,9 +1,10 @@
-package com.app.dodamdodam.entity.member;
+package com.app.dodamdodam.entity.point;
 
 import com.app.dodamdodam.audit.Period;
+import com.app.dodamdodam.entity.member.Member;
+import com.app.dodamdodam.type.PointStatus;
 import com.sun.istack.NotNull;
 import lombok.*;
-import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 

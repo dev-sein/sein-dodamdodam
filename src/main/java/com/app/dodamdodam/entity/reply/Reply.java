@@ -1,18 +1,20 @@
-package com.app.dodamdodam.entity.board;
+package com.app.dodamdodam.entity.reply;
 
 import com.app.dodamdodam.audit.Period;
+import com.app.dodamdodam.entity.board.Board;
 import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
-@Getter @ToString
-@Inheritance(strategy = InheritanceType.JOINED)
+@Getter
+@ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Board extends Period {
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Reply extends Period {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
-    private String boardTitle;
-    private String boardContent;
+    private String replyContent;
+
 }

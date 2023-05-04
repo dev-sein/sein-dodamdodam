@@ -1,8 +1,11 @@
-package com.app.dodamdodam.entity.member;
+package com.app.dodamdodam.entity.inquiry;
 
 import com.app.dodamdodam.audit.Period;
+import com.app.dodamdodam.type.InquiryStatus;
+import com.app.dodamdodam.type.InquiryType;
 import com.sun.istack.NotNull;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 
@@ -21,6 +24,8 @@ public class Inquiry extends Period {
     @NotNull private String inquiryPhoneNumber;
     @NotNull private String inquiryContent;
     @NotNull private String inquiryAnswer;
+    @ColumnDefault("'APPLYING'")
+    @Enumerated(EnumType.STRING)
+    @NotNull private InquiryStatus inquiryStatus;
 
-    //status 필요한가요?
 }

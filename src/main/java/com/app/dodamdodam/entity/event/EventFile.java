@@ -1,20 +1,16 @@
 package com.app.dodamdodam.entity.event;
 
-import com.app.dodamdodam.entity.reply.Reply;
+import com.app.dodamdodam.entity.file.BoardFile;
 import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
-@ToString
-@Table(name = "TBL_EVENT_BOARD_REPLY")
+@ToString(callSuper = true)
+@Table(name = "TBL_EVENT_FILE")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class EventReply extends Reply {
-    @Id @GeneratedValue
-    @EqualsAndHashCode.Include
-    private Long id;
-    private String replyContent;
+public class EventFile extends BoardFile {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "EVENT_BOARD_ID")
