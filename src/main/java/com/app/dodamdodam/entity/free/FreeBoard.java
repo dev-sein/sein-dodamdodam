@@ -16,8 +16,8 @@ public class FreeBoard extends Board {
     @NotNull private String freeCategory;
 
 
-    @OneToOne
-    private FreeLike freeLike;
+//    @OneToOne
+//    private FreeLike freeLike;
 
 
 }

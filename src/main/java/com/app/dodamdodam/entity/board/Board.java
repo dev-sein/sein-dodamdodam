@@ -20,9 +20,4 @@ public class Board extends Period {
     private String boardTitle;
     private String boardContent;
 
-    @OneToMany(mappedBy = "board")
-    private List<File> files = new ArrayList<>();
-
-//    @OneToMany(mappedBy = "board")
-//    private List<Reply> replies = new ArrayList<>();
 }
