@@ -1,3 +1,9 @@
+@charset "UTF-8";
+
+body {
+    line-height: 1.33;
+    font-family: 'Noto Sans KR' !important;
+}
 
 a, address, article, aside, audio, b, body, button, canvas, caption, dd, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, html, i, img, input, label, legend, li, nav, ol, p, pre, section, small, span, strong, summary, table, tbody, td, th, thead, time, tr, ul, video {
     margin: 0;
@@ -6,6 +12,10 @@ a, address, article, aside, audio, b, body, button, canvas, caption, dd, div, dl
     vertical-align: baseline;
     font: inherit;
     box-sizing: border-box;
+}
+
+html{
+    background-color: #fff;
 }
 
 li {
@@ -1977,6 +1987,31 @@ strong {
 }
 
 
+.review-submit {
+    background-color: #006633;
+    padding: 6px 12px;
+    line-height: 1.5;
+    font-size: 12px;
+    border-color: #006633;
+    color: #fff;
+    position: relative;
+    top: -8.6em;
+    left: 46.6em;
+    border-radius: 3px;
+}
+
+.review-submit span{
+    display: inline-flex;
+    align-items: center;
+    vertical-align: top;
+}
+
+.review-span{
+    vertical-align: top;
+    display: inline-flex;
+    align-items: center;
+}
+
 
 /* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ미디어 쿼리ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
 @media screen and (min-width: 1097px){
@@ -2132,10 +2167,10 @@ strong {
     }
 
     .storeTabContentsWrapper {
+        padding: 0 80px;
         margin: 0 auto 40px;
-    padding: 0 80px;
-    max-width: 1440px;
-    padding-left: 27em;
+        max-width: 1440px;
+        padding-left: 23em;
     }
 
     .storeTabContents {
@@ -2145,8 +2180,9 @@ strong {
     }
 
     .storeTabContents {
-        margin: 0;
-        min-height: 560px;
+        left: 4em;
+    position: relative;
+    min-height: 560px;
     }
 
     .MessageBox_messageBox__2WX5N .MessageBox_description__2Fyxq {

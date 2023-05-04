@@ -27,6 +27,9 @@ body, button, div, h1, h2, h3, h4, h5, html, input, li, ol, p, span, textarea, u
 /* 기본 layout =================================== */
 
 .layout-container {
+    margin: 0 auto 40px;
+    max-width: 1440px;
+    padding-left: 29em;
     padding: 40px 66px;
 }
 
