@@ -3,6 +3,9 @@ package com.app.dodamdodam.entity.member;
 import com.app.dodamdodam.audit.Period;
 import com.sun.istack.NotNull;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 
@@ -11,6 +14,8 @@ import javax.persistence.*;
 @ToString
 @Table(name = "TBL_MEMBER")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@DynamicInsert
+@DynamicUpdate
 public class Member extends Period {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
@@ -22,8 +27,12 @@ public class Member extends Period {
     @NotNull private String memberPhone;
     @NotNull private String memberAddress;
     @NotNull private String memberAddressDetail;
-    private String memberStatus;
-    private Integer memberPoint;
-    private Integer participationCount;
+    @ColumnDefault("'general'")
+    @Enumerated(EnumType.STRING)
+    private MemberStatus memberStatus;
+    @ColumnDefault("0")
+    private int memberPoint;
+    @ColumnDefault("0")
+    private int participationCount;
 
 }
