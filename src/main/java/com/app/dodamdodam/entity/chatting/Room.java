@@ -1,5 +1,6 @@
 package com.app.dodamdodam.entity.chatting;
 
+import com.app.dodamdodam.entity.member.Member;
 import com.sun.istack.NotNull;
 import lombok.*;
 
@@ -11,7 +12,7 @@ import java.util.List;
 @Getter @Table(name = "TBL_ROOM")
 @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Room {
+public class Room{
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
@@ -20,9 +21,13 @@ public class Room {
     @NotNull
     private int havingId;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "CHATTING_ID")
-    private List<Chatting> chattings = new ArrayList<>();
+//    @OneToMany(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "CHATTING_ID")
+//    private List<Chatting> chattings = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "MEMBER_ID")
+    private Member member;
 
 
 
