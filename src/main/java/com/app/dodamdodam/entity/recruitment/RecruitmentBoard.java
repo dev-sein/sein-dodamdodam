@@ -1,6 +1,8 @@
 package com.app.dodamdodam.entity.recruitment;
 
 import com.app.dodamdodam.entity.board.Board;
+import com.app.dodamdodam.entity.member.Member;
+import com.app.dodamdodam.type.RecruitmentType;
 import com.sun.istack.NotNull;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
@@ -9,6 +11,7 @@ import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Getter
@@ -44,7 +47,13 @@ public class RecruitmentBoard extends Board {
     @NotNull
     private String recruitmentAddressDetail;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "recruitmentBoard")
+    private List<RecruitmentFile> recruitmentFiles;
 
-    @OneToOne
-    private RecruitmentLike recruitmentLike;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "recruitmentBoard")
+    private List<RecruitmentReply> recruitmentReplies;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MEMBER_ID")
+    private Member member;
 }

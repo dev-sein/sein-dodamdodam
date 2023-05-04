@@ -1,6 +1,7 @@
-package com.app.dodamdodam.entity.board;
+package com.app.dodamdodam.entity.reply;
 
 import com.app.dodamdodam.audit.Period;
+import com.app.dodamdodam.entity.board.Board;
 import lombok.*;
 
 import javax.persistence.*;
@@ -15,9 +16,5 @@ public class Reply extends Period {
     @EqualsAndHashCode.Include
     private Long id;
     private String replyContent;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "BOARD_ID")
-    private Board board;
 
 }

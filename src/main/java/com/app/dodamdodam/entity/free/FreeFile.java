@@ -1,20 +1,19 @@
 package com.app.dodamdodam.entity.free;
 
-import com.app.dodamdodam.entity.reply.Reply;
-import lombok.*;
+import com.app.dodamdodam.entity.file.BoardFile;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
 @ToString
-@Table(name = "TBL_FREE_BOARD_REPLY")
+@Table(name = "TBL_FREE_FILE")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class FreeReply extends Reply {
-    @Id @GeneratedValue
-    @EqualsAndHashCode.Include
-    private Long id;
-    private String replyContent;
+public class FreeFile extends BoardFile {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "FREE_BOARD_ID")
