@@ -1,24 +1,28 @@
 package com.app.dodamdodam.entity.purchase;
 
-import com.app.dodamdodam.entity.reply.Reply;
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
 
-
 @Entity
 @Getter
 @ToString
-@Table(name = "TBL_PURCHASE_REVIEW")
+@Table(name = "TBL_PRODUCT")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class PurchaseReview extends Reply {
+public class Product {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
-    private String reviewContent;
-    private Integer reviewGrade;
+    @NotNull private String productName;
+//    상품가격
+    @NotNull private Integer productPrice;
+//    상품개수
+    @NotNull private Long productCount;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+
+
+    @OneToOne
     @JoinColumn(name = "PURCHASE_BOARD_ID")
     private PurchaseBoard purchaseBoard;
 

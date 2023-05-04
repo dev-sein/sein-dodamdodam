@@ -12,10 +12,13 @@ import javax.persistence.*;
 @Table(name = "TBL_PURCHASE")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Purchase extends Period {
-    @Id
-    @GeneratedValue
+    @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
+
+
+    @OneToOne
+    private Product product;
 
     @ManyToOne
     @JoinColumn(name = "MEMBER_ID")
