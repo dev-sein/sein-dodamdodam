@@ -13,10 +13,10 @@ import java.time.LocalDate;
 @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class RecruitmentBoard extends Board {
-    @Id
-    @GeneratedValue
-    @EqualsAndHashCode.Include
-    private Long id;
+//    @Id
+//    @GeneratedValue
+//    @EqualsAndHashCode.Include
+//    private Long id;
 //    @NotNull
 //    private String recruitmentTitle;
     @NotNull
