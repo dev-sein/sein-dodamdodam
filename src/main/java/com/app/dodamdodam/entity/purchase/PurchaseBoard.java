@@ -16,10 +16,10 @@ import javax.persistence.Table;
 @Table(name = "TBL_PURCHASE_BOARD")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class PurchaseBoard extends Board {
-    @Id
-    @GeneratedValue
-    @EqualsAndHashCode.Include
-    private Long id;
+//    @Id
+//    @GeneratedValue
+//    @EqualsAndHashCode.Include
+//    private Long id;
     private Integer purchasePrice;
 //    @NotNull private Integer purchaseCount;
 
