@@ -14,8 +14,7 @@ public class Product {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
-//    상품명
-    private String productName;
+    @NotNull private String productName;
 //    상품가격
     @NotNull private Integer productPrice;
 //    상품개수
