@@ -1,7 +1,6 @@
-package com.app.dodamdodam.entity.free;
+package com.app.dodamdodam.entity.event;
 
 import com.app.dodamdodam.audit.Period;
-import com.app.dodamdodam.entity.event.EventBoard;
 import lombok.*;
 
 import javax.persistence.*;
@@ -9,16 +8,16 @@ import javax.persistence.*;
 @Entity
 @Getter
 @ToString
-@Table(name = "TBL_FREE_BOARD_REPLY")
+@Table(name = "TBL_EVENT_BOARD_REPLY")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class FreeReply extends Period{
+public class EventReply extends Period {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
     private String replyContent;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "FREE_BOARD_ID")
-    private FreeBoard freeBoard;
+    @JoinColumn(name = "EVENT_BOARD_ID")
+    private EventBoard eventBoard;
 
 }
