@@ -1,6 +1,7 @@
 package com.app.dodamdodam.entity.purchase;
 
 import com.app.dodamdodam.audit.Period;
+import com.app.dodamdodam.entity.member.Member;
 import lombok.*;
 
 import javax.persistence.*;

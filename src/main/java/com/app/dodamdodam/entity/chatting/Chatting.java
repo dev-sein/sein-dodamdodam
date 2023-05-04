@@ -1,9 +1,6 @@
 package com.app.dodamdodam.entity.chatting;
 
-<<<<<<< HEAD
-=======
 import com.app.dodamdodam.audit.Period;
->>>>>>> f0b71dec637feb384754940dc9f342c0d4f17a6a
 import lombok.*;
 
 import javax.persistence.*;
