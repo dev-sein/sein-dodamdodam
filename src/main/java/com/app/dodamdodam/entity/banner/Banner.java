@@ -1,6 +1,7 @@
 package com.app.dodamdodam.entity.banner;
 
 import com.app.dodamdodam.audit.Period;
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -18,6 +19,7 @@ public class Banner extends Period {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
+    @NotNull private String bannerOriginalName;
     private LocalDate bannerPeriod;
     private String bannerStatus;
 
