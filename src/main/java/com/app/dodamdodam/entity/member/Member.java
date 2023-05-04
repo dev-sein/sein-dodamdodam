@@ -30,9 +30,9 @@ public class Member extends Period {
     @ColumnDefault("'general'")
     @Enumerated(EnumType.STRING)
     private MemberStatus memberStatus;
+    @ColumnDefault("'0'")
+    private Integer memberPoint;
     @ColumnDefault("0")
-    private int memberPoint;
-    @ColumnDefault("0")
-    private int participationCount;
+    private Integer participationCount;
 
 }
