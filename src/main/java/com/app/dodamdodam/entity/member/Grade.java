@@ -4,10 +4,7 @@ import com.app.dodamdodam.audit.Period;
 import com.sun.istack.NotNull;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "TBL_GRADE")
@@ -20,4 +17,5 @@ public class Grade {
     @NotNull private String gradeTitle;
     @NotNull private int gradeStartNumber;
     @NotNull private int gradeEndNumber;
+
 }

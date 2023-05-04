@@ -1,9 +1,6 @@
-package com.app.dodamdodam.entity.chatting;
+package com.app.dodamdodam.entity.event;
 
-<<<<<<< HEAD
-=======
 import com.app.dodamdodam.audit.Period;
->>>>>>> f0b71dec637feb384754940dc9f342c0d4f17a6a
 import lombok.*;
 
 import javax.persistence.*;
@@ -11,17 +8,16 @@ import javax.persistence.*;
 @Entity
 @Getter
 @ToString
-@Table(name = "TBL_CHATTING")
+@Table(name = "TBL_EVENT_BOARD_REPLY")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Chatting extends Period {
+public class EventReply extends Period {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
-    private String chattingContent;
+    private String replyContent;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ROOM_ID")
-    private Room room;
-
+    @JoinColumn(name = "EVENT_BOARD_ID")
+    private EventBoard eventBoard;
 
 }
