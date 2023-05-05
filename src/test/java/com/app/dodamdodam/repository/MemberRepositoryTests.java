@@ -39,26 +39,26 @@ public class MemberRepositoryTests {
 
     @Test
     public void saveTest(){
-//        for (int i=1; i<=100; i++){
-////            회원 정보 입력
-//
-////            Member member = new Member("test" + i,"1234","테스트" + i, "test" + i + "@test.com", "010-1234-5678", "서울시 강남구", "역삼동");
-////            memberRepository.save(member);
-//
-////            모집 게시글 입력
-////            2번 회원이 모집게시글 100개 작성
-////            RecruitmentBoard recruitmentBoard = new RecruitmentBoard("모집 게시글 제목" + i, LocalDate.now(),10 + i, "www.naver.com", "1234", "경기도 성남시", "분당구 수내동");
-////            memberRepository.findById(2L).ifPresent(member -> recruitmentBoard.setMember(member));
-////            recruitmentBoardRepository.save(recruitmentBoard);
-//
-////            포인트 내역 입력(없어서 목록 불러오기 위해 임의로 넣어놓음)
-//            Point point = new Point(10000 * i, pointStatuses.get((i % 3)));
-//            memberRepository.findById(2L).ifPresent(member -> point.setMember(member));
-//            pointRepository.save(point);
-//        }
-        Point point = new Point(10000, pointStatuses.get(1));
-        memberRepository.findById(1L).ifPresent(member -> point.setMember(member));
-        pointRepository.save(point);
+        for (int i=1; i<=100; i++){
+//            회원 정보 입력
+
+//            Member member = new Member("test" + i,"1234","테스트" + i, "test" + i + "@test.com", "010-1234-5678", "서울시 강남구", "역삼동");
+//            memberRepository.save(member);
+
+//            모집 게시글 입력
+//            2번 회원이 모집게시글 100개 작성
+//            RecruitmentBoard recruitmentBoard = new RecruitmentBoard("모집 게시글 제목" + i, LocalDate.now(),10 + i, "www.naver.com", "1234", "경기도 성남시", "분당구 수내동");
+//            memberRepository.findById(2L).ifPresent(member -> recruitmentBoard.setMember(member));
+//            recruitmentBoardRepository.save(recruitmentBoard);
+
+//            포인트 내역 입력(없어서 목록 불러오기 위해 임의로 넣어놓음)
+            Point point = new Point(10000 * i, pointStatuses.get((i % 3)));
+            memberRepository.findById(2L).ifPresent(member -> point.setMember(member));
+            pointRepository.save(point);
+        }
+//        Point point = new Point(10000, pointStatuses.get(1));
+//        memberRepository.findById(1L).ifPresent(member -> point.setMember(member));
+//        pointRepository.save(point);
     }
 
 //    세션에 담긴 id 값으로 회원정보 가져오기
