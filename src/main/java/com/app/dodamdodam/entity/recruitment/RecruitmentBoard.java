@@ -56,4 +56,18 @@ public class RecruitmentBoard extends Board {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
+
+    public RecruitmentBoard(String recruitmentSubtitle, LocalDate recruitmentDate, int recruitmentPeopleCount, String recruitmentOpenChatting, String recruitmentPassword, String recruitmentAddress, String recruitmentAddressDetail) {
+        this.recruitmentSubtitle = recruitmentSubtitle;
+        this.recruitmentDate = recruitmentDate;
+        this.recruitmentPeopleCount = recruitmentPeopleCount;
+        this.recruitmentOpenChatting = recruitmentOpenChatting;
+        this.recruitmentPassword = recruitmentPassword;
+        this.recruitmentAddress = recruitmentAddress;
+        this.recruitmentAddressDetail = recruitmentAddressDetail;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
 }
