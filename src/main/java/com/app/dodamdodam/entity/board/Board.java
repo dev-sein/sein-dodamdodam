@@ -15,4 +15,9 @@ public class Board extends Period {
     private Long id;
     private String boardTitle;
     private String boardContent;
+
+    public Board(String boardTitle, String boardContent) {
+        this.boardTitle = boardTitle;
+        this.boardContent = boardContent;
+    }
 }

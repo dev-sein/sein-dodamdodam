@@ -1,6 +1,7 @@
 package com.app.dodamdodam.entity.member;
 
 import com.app.dodamdodam.audit.Period;
+import com.app.dodamdodam.entity.recruitment.Recruitment;
 import com.app.dodamdodam.type.MemberStatus;
 import com.sun.istack.NotNull;
 import lombok.*;
@@ -9,6 +10,8 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -35,6 +38,9 @@ public class Member extends Period {
     private Integer memberPoint;
     @ColumnDefault("0")
     private Integer participationCount;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "member")
+    private List<Recruitment> recruitments = new ArrayList<>();
 
     public Member(String memberId, String memberPassword, String memberName, String memberEmail, String memberPhone, String memberAddress, String memberAddressDetail) {
         this.memberId = memberId;

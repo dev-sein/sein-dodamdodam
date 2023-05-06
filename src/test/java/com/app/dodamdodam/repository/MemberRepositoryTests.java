@@ -11,6 +11,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -76,13 +79,16 @@ public class MemberRepositoryTests {
 //    마이페이지 내가 작성한 모집글 목록 조회
     @Test
     public void findRecruitBoardByMemberIdTest(){
-        memberRepository.findRecruitmentBoardByMemberId(2L).stream().map(recruitmentBoard -> recruitmentBoard.toString()).forEach(log::info);
+        Pageable pageable = PageRequest.of(1, 10);
+        recruitmentBoardRepository.findRecruitmentBoardListByMemberId(pageable,2L).stream().map(recruitmentBoard -> recruitmentBoard.toString()).forEach(log::info);
     }
 
 //    포인트 사용, 적립, 충전 내역 조회
     @Test
     public void findPointByMemberIdTest(){
-        memberRepository.findPointByMemberId(1L).stream().map(point -> point.toString()).forEach(log::info);
+        /*수정해야함*/
+
+//        recruitmentBoardRepository.findPointByMemberId(1L).stream().map(point -> point.toString()).forEach(log::info);
     }
 
 //    비밀번호 변경

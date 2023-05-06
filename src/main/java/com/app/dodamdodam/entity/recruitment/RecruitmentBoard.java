@@ -11,6 +11,7 @@ import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,20 +22,12 @@ import java.util.List;
 @DynamicInsert
 @DynamicUpdate
 public class RecruitmentBoard extends Board {
-//    @Id
-//    @GeneratedValue
-//    @EqualsAndHashCode.Include
-//    private Long id;
-//    @NotNull
-//    private String recruitmentTitle;
     @NotNull
     private String recruitmentSubtitle;
     @NotNull
     private LocalDate recruitmentDate;
     @NotNull
     private int recruitmentPeopleCount;
-//    @NotNull
-//    private String recruitmentContent;
     @NotNull
     private String recruitmentOpenChatting;
     @NotNull
@@ -56,6 +49,11 @@ public class RecruitmentBoard extends Board {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
+
+//    @OneToMany(fetch = FetchType.LAZY)
+//    private List<Member> recruitmentedMembers = new ArrayList<Member>();
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "recruitmentBoard")
+    private List<Recruitment> recruitments = new ArrayList<Recruitment>();
 
     public RecruitmentBoard(String recruitmentSubtitle, LocalDate recruitmentDate, int recruitmentPeopleCount, String recruitmentOpenChatting, String recruitmentPassword, String recruitmentAddress, String recruitmentAddressDetail) {
         this.recruitmentSubtitle = recruitmentSubtitle;
