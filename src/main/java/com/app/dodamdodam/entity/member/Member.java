@@ -49,4 +49,8 @@ public class Member extends Period {
     public void setMemberPoint(Integer memberPoint) {
         this.memberPoint = memberPoint;
     }
+
+    public void setMemberPassword(String memberPassword) {
+        this.memberPassword = memberPassword;
+    }
 }

@@ -75,15 +75,29 @@ public class MemberRepositoryTests {
 
 //    마이페이지 내가 작성한 모집글 목록 조회
     @Test
-    public void findRecruitBoardByMemberId(){
+    public void findRecruitBoardByMemberIdTest(){
         memberRepository.findRecruitmentBoardByMemberId(2L).stream().map(recruitmentBoard -> recruitmentBoard.toString()).forEach(log::info);
     }
 
 //    포인트 사용, 적립, 충전 내역 조회
     @Test
-    public void findPointByMemberId(){
+    public void findPointByMemberIdTest(){
         memberRepository.findPointByMemberId(1L).stream().map(point -> point.toString()).forEach(log::info);
     }
+
+//    비밀번호 변경
+    @Test
+    public void setMemberPasswordByIdTest(){
+        memberRepository.findById(2L).ifPresent( member -> member.setMemberPassword("4321"));
+    }
+
+//    회원 탈퇴
+    @Test
+    public void deleteMemberByIdTest(){
+        memberRepository.findById(3L).ifPresent(member -> memberRepository.delete(member));
+    }
+
+
 
 
 
