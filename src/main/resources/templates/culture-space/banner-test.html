@@ -13,18 +13,20 @@
         height: 350px;
         border-radius: 10px;
     }
+
     .culture-space-instance{
-        float: left;
         margin-right: 10px;
+        width:800px;
+        height: 100%;
     
     }
     .instance{
-        display: flex;
-        justify-content: space-between;
+        display: -webkit-inline-box;
         position: relative;
         width: 350px;
         height: 350px;
         margin-bottom: 10px;
+        margin-right: 10px;
     }
 
     .space-name{
@@ -89,6 +91,7 @@
         margin-left: 270px;
         top: 35%;
         z-index:9999;
+        display: none;
     }
 
     .img{
@@ -170,9 +173,9 @@
 
                                     <div class="instance imgBox">
                                     <div class="culture-space img on">
-                                        <img class="background" src="https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=04ae3506f18f4fb39a8553095364f973&thumb=Y">
+                                        <img class="background" src="https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=ATH_SPC_000000000000000000101447&thumb=Y">
                                         <div class="space-info">
-                                            <img class="photo-img" src="https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=04ae3506f18f4fb39a8553095364f973&thumb=Y">
+                                            <img class="photo-img" src="https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=ATH_SPC_000000000000000000101447&thumb=Y">
                                             <div class="space-text-info">
                                             <div class="space-name-small"><span><strong>서울시립미술관 SeMA창고</strong></span></div>
                                             <div class="space-name-category"><span></span></div>
@@ -193,15 +196,15 @@
 
                                         <div class="instance imgBox">
                                         <div class="culture-space img on">
-                                            <img class="background" src="https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=04ae3506f18f4fb39a8553095364f973&thumb=Y">
+                                            <img class="background" src="https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=ATH_SPC_000000000000000000101449&thumb=Y">
                                             <div class="space-info">
-                                                <img class="photo-img" src="https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=04ae3506f18f4fb39a8553095364f973&thumb=Y">
+                                                <img class="photo-img" src="https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=ATH_SPC_000000000000000000101449&thumb=Y">
                                                 <div class="space-text-info">
-                                                <div class="space-name-small"><span><strong>DDP(동대문디자인플라자)</strong></span></div>
+                                                <div class="space-name-small"><span><strong>동숭무대</strong></span></div>
                                                 <div class="space-name-category"><span></span></div>
-                                                <div class="space-address"><span>서울특별시 중구 을지로 281</span></div>
-                                                <div class="space-tel"><span>02-2153-0000</span></div>
-                                                <div class="space-web"><span>http://www.ddp.or.kr/main</span></div></div>
+                                                <div class="space-address"><span>서울특별시 종로구 혜화로 35</span></div>
+                                                <div class="space-tel"><span>010-8923-1512</span></div>
+                                                <div class="space-web"><span>http://cafe.naver.com/dsstage</span></div></div>
                                                 <div class="arrow-button">
                                                     <img class="next" src="../../static/images/culture-space/map-icon1.png">
                                                 </div>
@@ -210,22 +213,9 @@
                                     
                                         <div class="img left-arrow-class">
                                             <img class="prev" src="../../static/images/culture-space/left-arrow.png">
-                                            <img src="../../static/images/recruitment-board/write.png">   </div>
+                                            <!-- <div id="map5" style="width:350px;height:350px;"></div>    </div> -->
                                         </div><!-- instance -->
-
-
                             </div><!-- instance -->
-                            
-
-
-                               
-
-                           
-
-                            <div id="map2" style="width:350px;height:350px;z-index:9999;"></div>
-                            <!-- <div id="map3" style="width:100%;height:228px;"></div> -->
-                            <div id="map4" style="width:100%;height:228px;"></div>
-
                             </div>
                         </div><!-- culture-inner -->
                     </section>
@@ -239,12 +229,13 @@
 <script>
     /* 마우스오버 - 문화 공간 정보 노출 */
     $(function () {
-        $('.culture-space').mouseover(function (e) {
+        $('.instance').mouseover(function (e) {
             $(this).find('.next').show(); //우측 지도 버튼 
+            $(this).find('.next').css('display','block');
         });
     });
     /* 마우스 아웃 */
-    $('.culture-space').mouseout(function (e) {
+    $('.instance').mouseout(function (e) {
         $(this).find('.next').hide();
     });
 
@@ -337,6 +328,27 @@
     var marker4 = new kakao.maps.Marker({
         position: markerPosition4
     });
+
+
+
+    /* 지도4 */
+    var mapContainer5 = document.getElementById('map5'), // 지도를 표시할 div 
+        mapOption5 = {
+            center: new kakao.maps.LatLng(37.58868965585108, 126.99917120271677), // 지도의 중심좌표
+            level: 3 // 지도의 확대 레벨
+        };
+
+    var map5 = new kakao.maps.Map(mapContainer4, mapOption4); // 지도를 생성합니다
+
+    // 마커가 표시될 위치입니다 
+    var markerPosition5 = new kakao.maps.LatLng(37.58868965585108, 126.99917120271677);
+
+    // 마커를 생성합니다
+    var marker5 = new kakao.maps.Marker({
+        position: markerPosition4
+    });
+
+
 
 </script>
 </html>
