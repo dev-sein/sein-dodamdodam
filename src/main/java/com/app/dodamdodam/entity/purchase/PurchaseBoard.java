@@ -33,4 +33,13 @@ public class PurchaseBoard extends Board {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
+
+    public PurchaseBoard(Product product, Integer purchasePrice) {
+        this.product = product;
+        this.purchasePrice = purchasePrice;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
 }
