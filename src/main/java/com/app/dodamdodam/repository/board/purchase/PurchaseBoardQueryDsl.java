@@ -5,6 +5,7 @@ import com.app.dodamdodam.entity.purchase.PurchaseBoardDTO;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface PurchaseBoardQueryDsl {
@@ -12,4 +13,7 @@ public interface PurchaseBoardQueryDsl {
     Slice<PurchaseBoard> findAllPurchaseBoard(Pageable pageable);
 //    판매게시글 각각
     Optional<PurchaseBoard> findPurchaseBoardById(Long id);
+
+//    세션에 담긴 id 값 받아와서 내가 작성한 자유 게시글 리스트 가져오기
+    public List<PurchaseBoard> findPurchaseBoardListByMemberId(Pageable pageable, Long memberId);
 }

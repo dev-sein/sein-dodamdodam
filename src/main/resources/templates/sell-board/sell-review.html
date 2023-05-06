@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>후기 작성</title>
+    <link rel="stylesheet" href="../../static/css/sell/sell-review.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+  rel="stylesheet"
+/>
+<link rel="shortcut icon" href="/static/images/components/dodam-favicon.png">
+</head>
+<body>
+<!-- 모달 창 -->
+<div class="modal-wrapper">
+    <div class="modal-content">
+        <!-- <h2 class="modal-title">경고</h2> -->
+        <p class="modal-message">제목과 내용을 입력해주세요.</p>
+        <button class="modal-close-btn">확인</button>
+    </div>
+</div>
+<!-- 모달 창 -->
+<div id="header"></div>
+<div class="SectionWrapper">
+    <div class="makeSection_wrapper">
+        <div class="makeSection_header">
+            <span style="font-weight: 700;">후기 작성</span>
+        </div>
+        <div class="SectionMaker_Wrapper">
+            <div class="SectionMaker_contentWrapper">
+                <form action="#" th:action="@{review/review-save}" method="post" th:object="${reviewDTO}"
+                      name="reviewForm"
+                      enctype="multipart/form-data">
+                    <div class="formSection_contentContainer">
+                        <div class="formTitle_wrapper">
+                            <div class="formTitle" style="align-items: center !important;">
+                                <legend class="formTitle_legend">
+                                    <span>만족도</span>
+                                </legend>
+                                <!-- 별점  -->
+                                <div class="rating">
+                                    <input type="radio" id="star5" name="reviewGrade" value="5"
+                                           th:field="${reviewDTO.reviewGrade}"/>
+                                    <label for="star5" id="label5"></label>
+                                    <input type="radio" id="star4" name="reviewGrade" value="4"
+                                           th:field="${reviewDTO.reviewGrade}"/>
+                                    <label for="star4" id="label4"></label>
+                                    <input type="radio" id="star3" name="reviewGrade" value="3"
+                                           th:field="${reviewDTO.reviewGrade}"/>
+                                    <label for="star3" id="label3"></label>
+                                    <input type="radio" id="star2" name="reviewGrade" value="2"
+                                           th:field="${reviewDTO.reviewGrade}"/>
+                                    <label for="star2" id="label2"></label>
+                                    <input type="radio" id="star1" name="reviewGrade" value="1"
+                                           th:field="${reviewDTO.reviewGrade}"/>
+                                    <label for="star1" id="label1"></label>
+                                </div>
+                                <!-- <div class="score">0점</div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="formSection_contentContainer">
+                        <div class="formTitle_wrapper">
+                            <div class="formTitle">
+                                <legend class="formTitle_legend">
+                                    <span>내용</span>
+                                </legend>
+                                <textarea id="input-content" class="detailText_text" placeholder="함께한 경험을 작성해주세요."
+                                          th:field="*{reviewContent}"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottomButton_wrapper">
+                        <button type="button" class="cancelButton_button" onclick="cancelWriteReview()"
+                                style="margin-right: 10px; background-color: #A1A6AD;">작성취소
+                        </button>
+                        <button type="button" class="registButton_button" id="submit-btn">작성완료</button>
+                        <!--                            <button type="submit" class="registButton_button" id="submit-btn">작성완료</button>-->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</html>

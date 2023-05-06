@@ -11,6 +11,10 @@ import org.springframework.data.domain.*;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Pageable;
+
+import java.util.List;
+
 import static com.app.dodamdodam.entity.purchase.QPurchaseBoard.purchaseBoard;
 
 public class PurchaseBoardQueryDslImpl implements PurchaseBoardQueryDsl {
@@ -50,5 +54,10 @@ public class PurchaseBoardQueryDslImpl implements PurchaseBoardQueryDsl {
                         .where(QPurchaseBoard.purchaseBoard.id.eq(id))
                         .fetchOne()
         );
+    }
+
+    @Override
+    public List<PurchaseBoard> findPurchaseBoardListByMemberId(Pageable pageable, Long memberId) {
+        return query.select(purchaseBoard).from(purchaseBoard).where(purchaseBoard.member.id.eq(memberId)).orderBy(purchaseBoard.id.desc()).offset(pageable.getOffset()).limit(pageable.getPageSize()).fetch();
     }
 }

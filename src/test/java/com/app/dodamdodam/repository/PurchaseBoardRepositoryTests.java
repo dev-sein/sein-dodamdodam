@@ -23,8 +23,10 @@ public class PurchaseBoardRepositoryTests {
 
     @Test
     public void saveTest(){
-//        Product product = new Product("");
-//        PurchaseBoard purchaseBoard = new PurchaseBoard("");
+        Product product = new Product();
+        for (int i = 0; i < 10; i++) {
+            PurchaseBoard purchaseBoard = new PurchaseBoard("테스트제목" + i, "테스트내용" + i);
+        }
 
     }
 

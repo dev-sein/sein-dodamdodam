@@ -1,0 +1,431 @@
+@charset "UTF-8";
+
+body {
+    line-height: 1.33;
+    font-family: 'Noto Sans KR' !important;
+}
+
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;700&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    line-height: 1rem;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    background-color: #eceff1;
+}
+
+.SectionWrapper {
+    display: flex;
+    place-content: center;
+}
+
+.makeSection_wrapper {
+    width: 750px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    /* margin-top: 20px;
+    margin-bottom: 20px; */
+    box-shadow: none;
+    border: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border-radius: 0.6rem;
+    
+}
+
+.makeSection_header {
+    border-radius: calc(0.6rem - 1px) calc(0.6rem - 1px) 0 0;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 0;
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0,0,0,.05);
+}
+
+.SectionMaker_Wrapper {
+    margin-bottom: 16px;
+}
+
+.SectionMaker_contentWrapper {
+    padding-top: 1rem!important;
+    position: relative;
+    left: -2em;
+    width: 42.8em;
+}
+
+.SectionMaker_contentHeader {
+    padding-left: 1.5rem!important;
+    padding-bottom: 0.5rem!important;
+}
+
+.SectionMaker_contentHeader > h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0;
+}
+
+.formSection_contentContainer {
+    padding-left: 1rem!important;
+    padding-right: 1rem!important;
+}
+
+.form_image {
+    display: flex;
+}
+
+.formTitle {
+    display: flex;
+    padding-left: 1rem!important;
+    margin-top: 1rem!important;
+    position: relative;
+}
+
+.formTitle_legend {
+    flex: 0 0 13.66667%;
+    padding-top: calc(0.9rem + 1px);
+    padding-bottom: calc(0.9rem + 1px);
+    margin-bottom: 0;
+    font-size: inherit;
+    line-height: 1.5;
+
+}
+
+.form_meetEndTime {
+    margin-left: 25px;
+}
+
+.formTime {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 4px;
+    width: 117px;
+}
+
+.image_legend {
+    flex: none;
+    padding-right: 32px;
+}
+
+#image_container{
+    display: flex;
+    text-align: center;
+    place-content: center;
+}
+
+.formInputBox {
+    border: 1px solid #ddd;
+    padding-left: 13px;
+    border-radius: 5px;
+    width: 85%;
+}
+
+.text_detail {
+    font-size: 13px;
+    color:  #296d2b !important;
+}
+
+.space {
+    border: 0;
+    border-top: 1px solid rgba(0,0,0,.1);
+    margin-top: 1.5em!important;
+    margin-bottom: 1.5em!important;
+}
+
+.addMainImage_wrapper {
+    flex: 0 0 80%;
+    max-width: 80%;
+    margin-top: 30px;
+    /* margin-top: 16px; */
+}
+
+.MainImage_wrapper {
+    display: flex;
+    place-content: center;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    padding-bottom: 20px;
+}
+
+.container_imageInput {
+    width: 250px;
+    height: 250px;
+    background-color: transparent;
+    border: 1px dashed #bfbfbf;
+    position: relative;
+    align-items: center;
+    /* min-height: 15rem; */
+    cursor: pointer;
+}
+
+.container_imageInput:hover {
+    border-color: #2099bb;
+    color: #2099bb;
+}
+
+.imgText_container {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.detailText_text {
+    width: 85%;
+    padding: 10px;
+    resize: none;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding-top: 12px;
+}
+
+.bottomButton_wrapper {
+    text-align: right;
+    padding-top: 15px;
+}
+
+.registButton_button {
+    border: 1px solid;
+    width: 90px;
+    height: 40px;
+    margin-right: 24px;
+    border-radius: 5px;
+    background-color: #2099bb;
+    /* background-color: rgb(67, 136, 32); */
+    color: white;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.cancelButton_button {
+    border: 1px solid;
+    width: 90px;
+    height: 40px;
+    margin-right: 24px;
+    border-radius: 5px;
+    background-color: #2099bb;
+    /* background-color: rgb(67, 136, 32); */
+    color: white;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.registButton_button:hover {
+    background-color: #2099bb;
+}
+
+/* 카테고리 */
+
+
+.ButtonItem_list {
+    display: flex;
+}
+
+.ButtonItem {
+    width: 115px;
+    height: 46px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 47px;
+    color: #757575;
+}
+
+.summaryButtton {
+    margin-right: 7.9px;
+    width: 114px;
+}
+
+.ButtonItem:hover {
+    color: #2099bb;
+    border-color: #2099bb;
+}
+
+#space-on-label{
+    height: 20px;
+    width: 100%;
+}
+
+/* 별점 테스트 */
+.rating {
+    display: inline-block;
+    position: relative;
+    height: 1em;
+    /* height: 1.5em; */
+    line-height: 1.5em;
+    font-size: 1.5em;
+  }
+  
+  .rating input {
+    display: none;
+  }
+  
+  .rating label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1.5em;
+    width: 1.5em;
+    cursor: pointer;
+  }
+  
+  /* .rating label:before {
+    content: "\2605";
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 1.5em;
+    color: #ddd;
+  } */
+
+  #label1:before {
+    content: "\2605";
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #ddd;
+    height: 1.5em;
+  }
+  
+  #label2:before {
+    content: "\2605";
+    position: absolute;
+    top: 0;
+    left: 1em;
+    /* left: calc(1.5em + 10px); */
+    color: #ddd;
+    height: 1.5em;
+  }
+  
+  #label3:before {
+    content: "\2605";
+    position: absolute;
+    top: 0;
+    left: 2em;
+    color: #ddd;
+    height: 1.5em;
+  }
+  
+  #label4:before {
+    content: "\2605";
+    position: absolute;
+    top: 0;
+    left: 3em;
+    color: #ddd;
+    height: 1.5em;
+  }
+  
+  #label5:before {
+    content: "\2605";
+    position: absolute;
+    top: 0;
+    left: 4em;
+    color: #ddd;
+    height: 1.5em;
+  }
+  
+  .rating input:checked ~ label:before {
+    color: #ffcc00 !important;
+  }
+  
+  .rating .score {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    font-size: 0.8em;
+    color: #999;
+    display: none;
+  }
+  
+  .score {
+    position: relative;
+    top: -1px;
+    line-height: 20px;
+    left: 10em;
+    font-size: 1em;
+    display: block;
+    font-size: 20px;
+    color: black;
+    /* position: absolute;
+    top: 100%;
+    right: 0 !important;
+    font-size: 1em;
+    display: block;
+    color: black; */
+  }
+  
+  .rating input:checked ~ .score {
+    display: block;
+  }
+  
+/* 별점 테스트 */
+
+/* 모달 창 */
+.modal-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: none;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    position: relative;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    width: 400px;
+    text-align: center;
+    margin: 0 auto;
+    top: 40%;
+  }
+  
+  .modal-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .modal-message {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .modal-close-btn {
+    background-color: #ddd;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .modal-close-btn:hover {
+    background-color: #ccc;
+  }
+  
+/* 번호에 맞는 이미지 css*/
+.review-photo{
+    margin: 0px;
+    width: 260px;
+    height: 260px;
+    margin-bottom: 20px;
+    right: 5px;
+    top: 15px;
+    position: relative;
+}
