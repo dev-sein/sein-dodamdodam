@@ -26,4 +26,12 @@ public class Point extends Period {
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
+    public Point(Integer pointAmount, PointStatus pointStatus) {
+        this.pointAmount = pointAmount;
+        this.pointStatus = pointStatus;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
 }

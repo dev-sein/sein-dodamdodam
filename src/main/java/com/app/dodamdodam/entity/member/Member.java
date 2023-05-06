@@ -28,7 +28,7 @@ public class Member extends Period {
     @NotNull private String memberPhone;
     @NotNull private String memberAddress;
     @NotNull private String memberAddressDetail;
-    @ColumnDefault("'general'")
+    @ColumnDefault("'GENERAL'")
     @Enumerated(EnumType.STRING)
     private MemberStatus memberStatus;
     @ColumnDefault("'0'")
@@ -36,4 +36,21 @@ public class Member extends Period {
     @ColumnDefault("0")
     private Integer participationCount;
 
+    public Member(String memberId, String memberPassword, String memberName, String memberEmail, String memberPhone, String memberAddress, String memberAddressDetail) {
+        this.memberId = memberId;
+        this.memberPassword = memberPassword;
+        this.memberName = memberName;
+        this.memberEmail = memberEmail;
+        this.memberPhone = memberPhone;
+        this.memberAddress = memberAddress;
+        this.memberAddressDetail = memberAddressDetail;
+    }
+
+    public void setMemberPoint(Integer memberPoint) {
+        this.memberPoint = memberPoint;
+    }
+
+    public void setMemberPassword(String memberPassword) {
+        this.memberPassword = memberPassword;
+    }
 }
