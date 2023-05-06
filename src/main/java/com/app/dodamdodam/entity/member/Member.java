@@ -1,6 +1,8 @@
 package com.app.dodamdodam.entity.member;
 
 import com.app.dodamdodam.audit.Period;
+import com.app.dodamdodam.entity.recruitment.Recruitment;
+import com.app.dodamdodam.type.MemberStatus;
 import com.sun.istack.NotNull;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
@@ -8,6 +10,8 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -27,12 +31,32 @@ public class Member extends Period {
     @NotNull private String memberPhone;
     @NotNull private String memberAddress;
     @NotNull private String memberAddressDetail;
-    @ColumnDefault("'general'")
+    @ColumnDefault("'GENERAL'")
     @Enumerated(EnumType.STRING)
     private MemberStatus memberStatus;
+    @ColumnDefault("'0'")
+    private Integer memberPoint;
     @ColumnDefault("0")
-    private int memberPoint;
-    @ColumnDefault("0")
-    private int participationCount;
+    private Integer participationCount;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "member")
+    private List<Recruitment> recruitments = new ArrayList<>();
+
+    public Member(String memberId, String memberPassword, String memberName, String memberEmail, String memberPhone, String memberAddress, String memberAddressDetail) {
+        this.memberId = memberId;
+        this.memberPassword = memberPassword;
+        this.memberName = memberName;
+        this.memberEmail = memberEmail;
+        this.memberPhone = memberPhone;
+        this.memberAddress = memberAddress;
+        this.memberAddressDetail = memberAddressDetail;
+    }
+
+    public void setMemberPoint(Integer memberPoint) {
+        this.memberPoint = memberPoint;
+    }
+
+    public void setMemberPassword(String memberPassword) {
+        this.memberPassword = memberPassword;
+    }
 }

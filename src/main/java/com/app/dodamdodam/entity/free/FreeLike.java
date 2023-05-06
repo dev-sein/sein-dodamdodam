@@ -15,7 +15,7 @@ public class FreeLike {
 
 
     @OneToOne
-    @JoinColumn(name = "FreeBoard")
+    @JoinColumn(name = "FREE_BOARD_ID")
     private FreeBoard freeBoard;
 
 }

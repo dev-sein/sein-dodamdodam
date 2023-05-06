@@ -1,14 +1,11 @@
 package com.app.dodamdodam.entity.purchase;
 
-import com.app.dodamdodam.audit.Period;
 import com.app.dodamdodam.entity.board.Board;
-import com.sun.istack.NotNull;
+import com.app.dodamdodam.entity.member.Member;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -20,8 +17,31 @@ public class PurchaseBoard extends Board {
 //    @GeneratedValue
 //    @EqualsAndHashCode.Include
 //    private Long id;
-    private Integer purchasePrice;
+//    private Integer purchasePrice;
 //    @NotNull private Integer purchaseCount;
 
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "purchaseBoard", cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
+    private Product product;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "purchaseBoard")
+    private List<PurchaseFile> purchaseFiles;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "purchaseBoard")
+    private List<PurchaseReview> purchaseReviews;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MEMBER_ID")
+    private Member member;
+
+    public PurchaseBoard(String boardTitle, String boardContent) {
+        super(boardTitle, boardContent);
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
 }

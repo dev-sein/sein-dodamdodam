@@ -2,6 +2,7 @@ package com.app.dodamdodam.entity.apply;
 
 import com.app.dodamdodam.audit.Period;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
+import com.app.dodamdodam.type.ApplyType;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;

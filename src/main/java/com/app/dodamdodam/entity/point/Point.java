@@ -1,9 +1,10 @@
-package com.app.dodamdodam.entity.member;
+package com.app.dodamdodam.entity.point;
 
 import com.app.dodamdodam.audit.Period;
+import com.app.dodamdodam.entity.member.Member;
+import com.app.dodamdodam.type.PointStatus;
 import com.sun.istack.NotNull;
 import lombok.*;
-import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 
@@ -25,4 +26,12 @@ public class Point extends Period {
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
+    public Point(Integer pointAmount, PointStatus pointStatus) {
+        this.pointAmount = pointAmount;
+        this.pointStatus = pointStatus;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
 }
