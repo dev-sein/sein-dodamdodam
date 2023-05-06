@@ -24,12 +24,11 @@ body, button, div, h1, h2, h3, h4, h5, html, input, li, ol, p, span, textarea, u
     background-color: rgba(0,0,0,.54)
 }
 
+
+
 /* 기본 layout =================================== */
 
 .layout-container {
-    margin: 0 auto 40px;
-    max-width: 1440px;
-    padding-left: 29em;
     padding: 40px 66px;
 }
 
@@ -75,6 +74,15 @@ body, button, div, h1, h2, h3, h4, h5, html, input, li, ol, p, span, textarea, u
 }
 
 /* 파일 첨부용 ========================== */
+
+.btn-attach-thumb {
+    display: inline-block;
+    position: relative;
+    width: 26px;
+    height: 26px;
+    overflow: hidden;
+}
+
 
 .content-section {
     margin-bottom: 40px;
@@ -124,7 +132,7 @@ color: #868e96;
 
 /*  입력 폼 ======================================  */
 
-.input-content {
+.input-content, .input-title, .input-count {
     width: 500px;
     height: 48px;
     padding: 0px 16px;
@@ -136,6 +144,8 @@ color: #868e96;
     font-family: inherit;
     color: #868e96;
 }
+
+
 
 .price-margin {
     padding-right: 30px;
@@ -178,18 +188,20 @@ input:focus, textarea:focus {
 
 .button-button {
     width: 420px;
-    border-color: #00c4c4;
-    background-color: #00c4c4;
+    border-color: #006633;
+    background-color: #006633;
     transition-duration: .15s;
     color: #fff;
     cursor: pointer;
     padding: 9px 24px;
     font-size: 16px;
     border-radius: 4px;
+    position: relative;
+    left: 2.5em;
 }
 
 .button-button:hover {
-    background-color: #00a8a8;
+    background-color: #006633e6;
 }
 
 .button-text {
@@ -197,3 +209,32 @@ input:focus, textarea:focus {
     line-height: 1.75;
     font-weight: 500;
 }
+
+/* 모달 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 1em;
+    text-align: center;
+    margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+ 
+  
+  
