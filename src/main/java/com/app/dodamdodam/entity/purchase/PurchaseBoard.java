@@ -22,7 +22,7 @@ public class PurchaseBoard extends Board {
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "purchaseBoard")
     private Product product;
-    private Integer purchasePrice;
+//    private Integer purchasePrice;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "purchaseBoard")
     private List<PurchaseFile> purchaseFiles;
@@ -34,12 +34,17 @@ public class PurchaseBoard extends Board {
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
-    public PurchaseBoard(Product product, Integer purchasePrice) {
+    public PurchaseBoard(Product product) {
         this.product = product;
-        this.purchasePrice = purchasePrice;
     }
 
     public void setMember(Member member) {
+        this.member = member;
+    }
+
+    public PurchaseBoard(Product product, List<PurchaseFile> purchaseFiles, Member member) {
+        this.product = product;
+        this.purchaseFiles = purchaseFiles;
         this.member = member;
     }
 }

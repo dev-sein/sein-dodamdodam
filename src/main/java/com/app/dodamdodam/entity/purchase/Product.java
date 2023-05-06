@@ -22,8 +22,16 @@ public class Product {
 
 
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PURCHASE_BOARD_ID")
     private PurchaseBoard purchaseBoard;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    private Purchase purchase;
+
+    public Product(String productName, Integer productPrice, Long productCount) {
+        this.productName = productName;
+        this.productPrice = productPrice;
+        this.productCount = productCount;
+    }
 }
