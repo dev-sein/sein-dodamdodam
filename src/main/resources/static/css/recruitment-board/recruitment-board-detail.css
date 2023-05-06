@@ -297,6 +297,15 @@ input{
     cursor: pointer;
 }
 
+.comment-util-list li button {
+    display: block;
+    height: 22px;
+    font-size: 12px;
+    line-height: 22px;
+    border: none;
+    background-color: transparent;
+}
+
 .modal-bg {
     display:none;
     width:100%;
