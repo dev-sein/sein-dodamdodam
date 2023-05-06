@@ -5,105 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>문화 공간</title>
-    <link rel="stylesheet" href="../../static/css/culture-space/culture-space-new.css">
+    <link rel="stylesheet" href="../../static/css/culture-space/culture-space.css">
     <style>
-    .background{
-        opacity: 0.2;
-        width: 350px;
-        height: 350px;
-        border-radius: 10px;
-    }
-
-    .culture-space-instance{
-        margin-right: 10px;
-        width:800px;
-        height: 100%;
-    
-    }
-    .instance{
-        display: -webkit-inline-box;
-        position: relative;
-        width: 350px;
-        height: 350px;
-        margin-bottom: 10px;
-        margin-right: 10px;
-    }
-
-    .space-name{
-    position: absolute;
-    top: 13%;
-    left: 3%;
-    text-align: center;
-    font-size: 24px;
-    font-family: 'Noto Sans KR';
-    font-weight: 700;
-    }
-
-    .mouseover{
-    position: absolute;
-    font-size: 14px;
-    top: 83%;
-    left: 3%;
-    }
-
-    .photo-img{
-        width: 100px;
-        height: 80px;
-    }
-
-    .space-info{
-        position: absolute;
-        top: 35%;
-        left: 6%;
-    }
-
-    .space-text-info{
-    display: inline-block;
-    text-align: left;
-    margin-left: 20px;
-    left:0%;
-    font-size:12px;
-    }
-
-    
-    .arrow-button{
-        cursor: pointer;
-        position: absolute;
-        top: 40%;
-        z-index: 9999;
-    }
-
  
-    .left-arrow-class{
-        position: relative !important;
-    }
-
-    .prev{
-        opacity: 0.5;
-        cursor: pointer;
-        z-index:9999;
-        position: absolute;
-        top: 50%;
-        left:0%;
-    }
-
-    .next{
-        margin-left: 270px;
-        top: 35%;
-        z-index:9999;
-        display: none;
-    }
-
-    .img{
-        position: absolute;
-        opacity: 0;
-    }
-
-    
-    .img:first-child {
-      /* display: block; */
-      opacity: 1;
-    }
 
 
     </style>
@@ -123,13 +27,17 @@
                                     <span>누구나 이용 가능한 서울의 문화공간을 소개합니다.</span>
                                 </strong>
 
+                                <!-- 본문 시작  -->
                             <div class="culture-space-instance">
                             <div class="instance imgBox">
                             <div class="culture-space img on">
+                                <!-- 뒷배경 -->
                                 <img class="background" src="https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=04ae3506f18f4fb39a8553095364f973&thumb=Y">
+                                <!-- 정보란 -->
                                 <div class="space-info">
+                                    <!-- 이미지 -->
                                     <img class="photo-img" src="https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=04ae3506f18f4fb39a8553095364f973&thumb=Y">
-                                    <div class="space-text-info">
+                                    <div class="space-text-info"> 
                                     <div class="space-name-small"><span><strong>DDP(동대문디자인플라자)</strong></span></div>
                                     <div class="space-name-category"><span></span></div>
                                     <div class="space-address"><span>서울특별시 중구 을지로 281</span></div>
@@ -140,7 +48,7 @@
                                     </div>
                                 </div><!-- space info -->
                             </div>
-                        
+                            <!-- 지도 화면 -->
                             <div class="img left-arrow-class">
                                 <img class="prev" src="../../static/images/culture-space/left-arrow.png">
                                 <div id="map2" style="width:350px;height:350px;"></div>
