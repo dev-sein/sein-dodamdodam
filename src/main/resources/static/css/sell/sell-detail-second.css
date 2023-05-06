@@ -54,7 +54,7 @@ body li, body ol, body ul {
     border-radius: 8px;
     background: #f9fafb;
     padding: 8px 16px;
-    color: #495057;
+    color: #006633;;
 }
 .first_container_span{
     line-height: 30px;
@@ -134,7 +134,7 @@ body li, body ol, body ul {
     letter-spacing: 0;
     font-size: 12px;
     font-weight: 400;
-    color: #495057;
+    color: #006633;;
     margin-right: 4px;
 }
 .robo_flex{
@@ -154,7 +154,7 @@ body li, body ol, body ul {
     font-size: 14px;
     font-weight: 700;
     margin-left: 3px;
-    color: #495057;
+    color: #006633;;
 }
 .third_container_div{
     height: 48px;
@@ -390,7 +390,7 @@ body li, body ol, body ul {
     font-size: 12px;
     font-weight: 500;
     cursor: pointer;
-    color: #495057;
+    color: #006633;;
 }
 .declaration_svg{
     display: inline-block;
@@ -460,4 +460,63 @@ body li, body ol, body ul {
     text-indent: -16px;
     color: #212529;
     white-space: pre-line;
+}
+
+
+.CommunityComment_container__mA0K2 .CommunityComment_titleArea__28rwm {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.CommunityComment_container__mA0K2 .CommunityComment_titleArea__28rwm {
+    margin-bottom: 32px;
+}
+
+.CommunityCommentTitle_commentTitle__1Jbgx {
+    padding: 0;
+}
+
+.CommunityCommentTitle_commentTitle__1Jbgx {
+    margin-bottom: 16px;
+}
+
+.CommentTitle_container__3JkFA {
+    position: relative;
+    margin-bottom: 8px;
+    line-height: 24px;
+    color: rgba(0,0,0,.84);
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.CommentTitle_container__3JkFA>p {
+    margin: 0;
+}
+
+.CommentTitle_container__3JkFA .CommentTitle_count__8olvZ {
+    margin-left: 4px;
+    color: #006633;;
+    font-style: normal;
+}
+
+.CommunityCommentTitle_commentTitle__1Jbgx p.CommunityCommentTitle_explanation__XfmmD {
+    margin-top: 8px;
+    color: #868e96;
+    line-height: 20px;
+    letter-spacing: 0;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.Button_button__2FuOU.Button_secondary__LNLsN.Button_contained__2SIAT {
+    border-color: #006633;;
+    background-color: #006633;;
+    color: #fff;
+}
+
+.Button_button__2FuOU.Button_lg__1Dftp {
+    padding: 9px 24px;
+    line-height: 1.75;
+    font-size: 16px;
 }
