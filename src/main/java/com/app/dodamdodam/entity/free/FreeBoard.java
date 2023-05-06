@@ -33,4 +33,11 @@ public class FreeBoard extends Board {
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
+    public FreeBoard(CategoryType freeCategory) {
+        this.freeCategory = freeCategory;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
 }
