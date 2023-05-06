@@ -26,7 +26,7 @@ public class BannerApply extends Period {
     private LocalDate bannerRegisterDate;
     private int period;
     // 수락대기, 수락, 수락거절
-    @ColumnDefault("'APPLYING'")
+    @ColumnDefault("'WAITING'")
     @Enumerated(EnumType.STRING)
     private BannerType bannerStatus;
 
@@ -34,4 +34,12 @@ public class BannerApply extends Period {
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
+    public BannerApply(LocalDate bannerRegisterDate, int period) {
+        this.bannerRegisterDate = bannerRegisterDate;
+        this.period = period;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
 }
