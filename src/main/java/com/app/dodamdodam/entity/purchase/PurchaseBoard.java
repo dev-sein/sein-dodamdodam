@@ -20,9 +20,8 @@ public class PurchaseBoard extends Board {
 //    private Integer purchasePrice;
 //    @NotNull private Integer purchaseCount;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "purchaseBoard")
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "purchaseBoard", cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
     private Product product;
-    private Integer purchasePrice;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "purchaseBoard")
     private List<PurchaseFile> purchaseFiles;
@@ -34,9 +33,12 @@ public class PurchaseBoard extends Board {
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
-    public PurchaseBoard(Product product, Integer purchasePrice) {
+    public PurchaseBoard(String boardTitle, String boardContent) {
+        super(boardTitle, boardContent);
+    }
+
+    public void setProduct(Product product) {
         this.product = product;
-        this.purchasePrice = purchasePrice;
     }
 
     public void setMember(Member member) {
