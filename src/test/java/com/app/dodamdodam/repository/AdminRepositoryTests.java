@@ -1,21 +1,25 @@
 package com.app.dodamdodam.repository;
 
+import com.app.dodamdodam.entity.banner.BannerApply;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.point.Point;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
 import com.app.dodamdodam.entity.recruitment.RecruitmentFile;
+import com.app.dodamdodam.repository.banner.BannerRepository;
 import com.app.dodamdodam.repository.board.recruitment.RecruitmentBoardRepository;
 import com.app.dodamdodam.repository.member.MemberRepository;
 import com.app.dodamdodam.repository.point.PointRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.test.annotation.Rollback;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 
 @SpringBootTest
 @Transactional
@@ -31,6 +35,9 @@ public class AdminRepositoryTests {
 
     @Autowired
     public RecruitmentBoardRepository recruitmentBoardRepository;
+
+    @Autowired
+    public BannerRepository bannerRepository;
 
     @Test //포인트 페이징 조회
     public void findAllTest(){
@@ -78,5 +85,27 @@ public class AdminRepositoryTests {
     public void eventBoardfindAllTest(){
 
     }
+
+    @Test //배너 삭제
+    public void deleteBannerTest(){
+        bannerRepository.findById(754l).ifPresent(bannerApply -> bannerRepository.delete(bannerApply));
+
+    }
+
+    @Test //배너 신청
+    public void bannerSaveTest(){
+        for(int i=0; i<10; i++){
+            BannerApply bannerApply = new BannerApply(LocalDate.now(),1);
+            memberRepository.findById(51L).ifPresent(member -> bannerApply.setMember(member));
+            bannerRepository.save(bannerApply);
+        }
+    }
+
+//    @Test //배너 목록(
+//    public void bannerFindByAllWithPaging(){
+//        Page<BannerApply> bannerApplyPage = bannerRepository.findAll(PageRequest.of(0,5));
+//        bannerApplyPage.getContent().stream().map(bannerApply -> bannerApply.toString()).forEach(log::info);
+//    }
+
 
 }
