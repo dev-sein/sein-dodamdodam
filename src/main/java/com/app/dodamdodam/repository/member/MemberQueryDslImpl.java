@@ -27,12 +27,12 @@ public class MemberQueryDslImpl implements MemberQueryDsl{
         return query.select(new QMemberDTO(
                 member.memberId, member.memberPassword, member.memberName, member.memberEmail, member.memberPhone,
                 member.memberAddress, member.memberAddressDetail, member.memberStatus, member.memberPoint,
-                member.participationCount, member.recruitments.size().intValue())).
+                member.participationCount, member.recruitments.size())).
                 from(member).
-                where(member.id.eq(id)).
-                groupBy(member.memberId, member.memberPassword, member.memberName, member.memberEmail,
-                        member.memberPhone, member.memberAddress, member.memberAddressDetail, member.memberStatus,
-                        member.memberPoint, member.participationCount).fetch();
+                where(member.id.eq(id)).fetch();
+//                groupBy(member.memberId, member.memberPassword, member.memberName, member.memberEmail,
+//                        member.memberPhone, member.memberAddress, member.memberAddressDetail, member.memberStatus,
+//                        member.memberPoint, member.participationCount).fetch();
     }
 
 

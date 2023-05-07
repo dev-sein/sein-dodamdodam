@@ -12,7 +12,7 @@ import java.util.List;
 @Entity
 @Getter
 @Table(name = "TBL_RECRUITMENT")
-@ToString(callSuper = true)
+@ToString(callSuper = true, exclude = {"recruitmentBoard"})
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DynamicInsert
 @DynamicUpdate
@@ -27,4 +27,16 @@ public class Recruitment {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private RecruitmentBoard recruitmentBoard;
+
+    public Recruitment(Member member) {
+        this.member = member;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
+
+    public void setRecruitmentBoard(RecruitmentBoard recruitmentBoard) {
+        this.recruitmentBoard = recruitmentBoard;
+    }
 }
