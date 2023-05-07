@@ -14,8 +14,8 @@ public class Chatting extends Period {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
-    private String senderMemberId;
-    private String receiverMemberId;
+    private Long senderMemberId;
+    private Long receiverMemberId;
     private String chattingContent;
 
 
@@ -24,5 +24,9 @@ public class Chatting extends Period {
     @JoinColumn(name = "ROOM_ID")
     private Room room;
 
-
+    public Chatting(Long senderMemberId, Long receiverMemberId, String chattingContent) {
+        this.senderMemberId = senderMemberId;
+        this.receiverMemberId = receiverMemberId;
+        this.chattingContent = chattingContent;
+    }
 }
