@@ -10,119 +10,6 @@ body{
     position: relative;
 }
 
-header{
-    display: block;
-    position: relative;
-    padding: 0;
-    height: 56px;
-    text-align: left;
-    top: 0;
-    background-color: #fff;
-    width: 100%;
-    margin: 0;
-    border: 0;
-    border-bottom: 1px solid #f0f2f5;
-    letter-spacing: -.02em;
-    color: rgba(0,0,0,.84);
-}
-
-#wrapper {
-	padding: 0 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-    max-width: 1440px;
-    height: 100%;
-    border: 0;
-    vertical-align: baseline;
-}
-
-#header-logo{
-    display: inline-block;
-    position: static;
-    margin: 0;
-    line-height: 22px;
-    font-size: 32px;
-}
-
-#header-a-tag {
-	padding: 14px 0 18px;
-    display: block;
-}
-
-.header-logo-span {
-	width: 85;
-    height: 25;
-	overflow-clip-margin: content-box;
-    overflow: hidden;
-    color: inherit;
-}
-
-#header-select {
-    position: absolute;
-    right: 80px;
-    left: auto;
-    color: #60656a;
-	display: block;
-    margin-left: 24px;
-    box-shadow: none;
-    width: auto;
-    list-style: none;
-    vertical-align: top;
-    box-sizing: border-box;
-    margin: 0;
-    border: 0;
-    text-align: left;
-}
-
-.header-selects {
-	float: left;
-    width: auto;
-    list-style: none;
-    box-sizing: border-box;
-    margin: 0;
-    border: 0;
-    padding: 0;
-    color: #60656a;
-    width: 70px
-}
-
-#header-select-login {
-	width: 56.5px;
-}
-
-.header-selects-a-tag {
-	margin-left: 16px;
-    padding: 0;
-    display: block;
-    text-align: center;
-    text-decoration: none;
-    color: #60656a;
-    margin: 0;
-    border: 0;
-    cursor: pointer;
-    list-style: none;
-}
-
-.header-selects-span-tag {
-	font-size: 15px;
-    font-weight: 400;
-    line-height: 55px;
-    color: rgba(0,0,0,.84);
-    margin: 0;
-    border: 0;
-    padding: 0;
-    padding-top: 1px;
-    vertical-align: baseline;
-    box-sizing: border-box;
-    text-align: center;
-    cursor: pointer;
-    position: relative;
-    top: -2px;
-    right: -8px;
-}
-
 .eye {
     background-image: url(../../img/eye_open.png);
 	/* background-image: url(./../../img/eye_open.png); */
@@ -138,44 +25,6 @@ header{
 
 #eye-wrapper {
 	position: absolute;
-}
-
-#wz-header{
-    position: static;
-    height: 55.11px;
-    margin: 0px;
-    padding: 0px;
-    padding-top: 3px;
-}
-
-.web-header {
-    position: static;
-    display: inline-block;
-    margin: 0;
-    padding: 0;
-}
-
-.header-wrapper{
-    position: relative;
-    text-align: center;
-    border-bottom: 1px solid #f0f2f5;
-    margin: 0;
-    padding: 0;
-    z-index: 9998;
-    background-color: #fff;
-    width: 100%;
-    width: 1440px;
-    height: 56px;
-}
-
-.header-container{
-    padding: 0 80px;
-    display: flex;
-    margin: 0px 39.6px;
-    height: 100%;
-    position: absolute;
-    transform: translate(210%);
-
 }
 
 .wadiz-label{
@@ -334,7 +183,7 @@ header{
     margin-top: -8px;
     border-top: 0;
     border-left: 0;
-    box-shadow: 1px 3px 4px 0 #dde2e6;
+    box-shadow: 3px 3px 4px 0 #dde2e6;
     background-color: #fff;
     width: 15px;
     height: 15px;
@@ -1021,6 +870,7 @@ input::placeholder {
 .action-input {
     position: relative;
     outline: none;
+    width: 372.8px;
 }
 
 .action-input .input-container {
