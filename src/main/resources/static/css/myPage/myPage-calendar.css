@@ -1,8 +1,6 @@
 @charset "UTF-8";
-body {
-    line-height: 1.33;
-    font-family: 'Noto Sans KR' !important;
-}
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;700&display=swap');
 
 @font-face {
     font-family: wadizicon;
@@ -11,6 +9,13 @@ body {
     src: url(https://static.wadiz.kr/static/web/media/wadizicon.1de1502a.eot#iefix) format("embedded-opentype"),url(https://static.wadiz.kr/static/web/media/wadizicon.f5cdf486.woff2) format("woff2"),url(https://static.wadiz.kr/static/web/media/wadizicon.9eb6b0a9.woff) format("woff"),url(https://static.wadiz.kr/static/web/media/wadizicon.e5379495.ttf) format("truetype"),url(https://static.wadiz.kr/static/web/media/wadizicon.077f5804.svg#wadizicon) format("svg")
 }
 
+
+
+body {
+    line-height: 1.33;
+    font-family: Noto Sans KR;
+    background-color: #f4f4f4;;
+}
 
 body {
     overflow-y: scroll;
@@ -35,6 +40,7 @@ a, address, article, aside, audio, b, body, button, canvas, caption, dd, div, dl
     font: inherit;
     box-sizing: border-box;
 }
+
 
 article, main, section {
     display: block;
@@ -63,6 +69,10 @@ a {
 /* container */
 #mypageWrap {
     width: 100%;
+}
+
+#iam-profile-app{
+    background-color: #fff;
 }
 
 #mypageWrap, #mypageWrap * {
@@ -208,10 +218,10 @@ a {
 }
 
 a.ProfileSet {
-	display: inline-block;
+   display: inline-block;
     align-items: center;
     text-decoration: none;
-	padding: 9px 16px;
+   padding: 9px 16px;
     line-height: 1.45;
     font-size: 14px;
     text-align: center;
@@ -230,51 +240,22 @@ a.ProfileSet {
     vertical-align: top;
 }
 
-.management{
-    background-color: #fff;
-    font-size: 13px;
-    position: absolute;
-    right: 23px;
-}
-
-.management2{
-    background-color: #fff;
-    font-size: 13px;
-    position: absolute;
-    right: 23px;
-}
-
-
-.management:hover {
-    background-color: #959595dd;
-  }
-
-  .management2:hover {
-    background-color: #959595dd;
-  }
-
 /* 배너신청하기 버튼 : 색지정 */
 a.Mint {
-	border-color: #006633;
-	background-color: #006633;
-    color: #fff !important;
+    background-color: rgb(0, 196, 196);
+    color: rgb(255, 255, 255);
 }
 
-#apply:hover {
-	border-color: #006633;
-	background-color: #006633ca;
-}
 
-a.ProfileSet:hover{
-	border-color: #E9ECEF;
-	background-color: #E9ECEF;
-}
+/* a.ProfileSet:hover{
+   border-color: #E9ECEF;
+   background-color: #E9ECEF;
+} */
 
 
 /* 참여한 */
 .mypage-project.bg {
     background: #F5F7FA;
-    padding-bottom: 160px;
 }
 
 .mypage-project .tab-list {
@@ -299,7 +280,7 @@ a.ProfileSet:hover{
     width: 33.33333%;
 }
 
-.mypage-project .tab-list ul li button {
+.mypage-project .tab-list ul li a {
     display: block;
     width: 100%;
     height: 47px;
@@ -311,8 +292,8 @@ a.ProfileSet:hover{
     text-decoration: none;
 }
 
-.mypage-project .tab-list ul li.active button  {
-    color: #006633;
+.mypage-project .tab-list ul li.active a  {
+    color: black;
     height: 47px;
 }
 
@@ -399,7 +380,8 @@ a.ProfileSet:hover{
 }
 
 .project-card .card-img-section .project-type.reward {
-    background: #006633;
+    background: rgb(255, 212, 0);
+    color: black;
 }
 
 /* 가상요소 */
@@ -480,7 +462,7 @@ a.ProfileSet:hover{
     width: 48%;
     text-align: right;
     font-size: 11px;
-    color: #006633;
+    color: #00c4c4;
     letter-spacing: -1px;
     box-sizing: border-box!important;
 }
@@ -510,8 +492,7 @@ a.ProfileSet:hover{
     margin-right: 24px;
 }
 
-.mypage-project .tab-list ul li.active button {
-    background: #fff;
+.mypage-project .tab-list ul li.active a {
     font-weight: 700;
 }
 
@@ -598,114 +579,378 @@ a.ProfileSet:hover{
 .ProfileSet {
     margin: auto 0 0 auto;
     max-width: 327px;
+    }
 }
+
+
+/* 추가 */
+.project-list1{
+    padding-bottom: 90px;
+    background: #f4f4f4;
+    width: 100%;
+    height: 130vh;
+    
 }
 
 
-
-
-/* 모달창 전체 스타일 */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 500;
-    left: 0;
+.lecture-list-header{
+    position: sticky;
     top: 0;
+    border-bottom: 1px solid #e4e4e4;
+    height: 103px;
+    z-index: 100;
+}
+
+.lecture-list-title{
+    width: 48%;
+    float: left;
+    margin-bottom: 24px;
+    background: #2c3d50;
+    height: 100px;
+}
+.lecture-list-info{
+    float: right;
+    width: 515px;
+}
+
+.lecture-list-month{
+    float: left;
+    margin-top: 15px;
+    margin-left: 10px;
+    background: #e4e4e4;
+    padding: 12px 0;
+    width: 70px;
+    text-align: center;
+    line-height: initial;
+    color: #2c3d50;
+    font-size: 14px;
+}
+
+.lecture-list-description{
+    margin: 23px 0 0 20px;
+    width: 400px;
+    line-height: initial;
+    font-size: 21px;
+    color: #fff;
+    float: left;
+}
+
+.lecture-list-description span{
+    display: block;
+    font-size: 14px;
+    margin-top: 2px;
+    color: #a6afde;
+}
+
+.lecture-type-selection{
+    float: left;
+    width: 52%;
+    height: 100px;
+}
+
+.lecture-type-buttons{
+    display: flex;
+    margin-top: 0;
+    padding-right: 8px;
+    padding-left: 16px;
+}
+
+.lecture-type-buttons li {
+    border-left: 1px solid #e4e4e4;
+    width: 119px;
+    height: 98px;
+}
+
+.all-type-button, .intro-type-button, .practical-type-button,
+.mentoring-type-button, .special-type-button{
+    display: block;
+    border-top: 1px solid #e4e4e4;
+    border-bottom: 1px solid #e4e4e4;
+    background: #fff;
+    color: rgba(0,0,0,.84);
+    padding: 5px 0;
+    text-align: center;
+    font-size: 14px;
+    padding: 19px 0 21px;
+}
+
+.all em{
+    width: auto;
+    line-height: 18px;
+    font-weight: 500;
+    display: block;
+    margin: 0 auto 10px;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    font-weight: 500;
+}
+
+.all span{
+    display: block;
+}
+
+.reward-btn em{
+        display: block;
+    margin: 0 auto 10px;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    font-weight: 500;
+        background: #2e51ef;
+}
+
+.invest em{
+        display: block;
+    margin: 0 auto 10px;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    font-weight: 500;
+    background: #9f8673;
+}
+
+.combine em{
+    display: block;
+    margin: 0 auto 10px;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    font-weight: 500;
+    background: #705f53;
+}
+
+.special em{
+    display: block;
+    margin: 0 auto 10px;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    font-weight: 500;
+    background: #90949c;
+}
+
+.lecture-type-buttons li:hover{
+background-color: #e4e4e4;
+cursor: pointer;
+}
+
+/* 상세정보 */
+
+.calender-content-wrapper{
+    margin: 60px auto 0;
+    width: 1100px;
+    position: relative;
+}
+
+.lecture-list{
+    width: 685px;
+    height: auto;
+    float: left;
+    margin-top: 29px;
+}
+
+.lecture{
+    margin-bottom: 23px;
+    border: 1px solid #e4e4e4;
+    background: #fff;
+    width: 570px;
+    display: flex;
+    cursor: pointer;
+    flex-direction: column;
+}
+
+.lecture-image{
+    background-image:(url(https://cdn.wadiz.kr/ft/images/green001/2023/0313/20230313133752303_null.jpg/wadiz/thumbnail/253/format/jpg/quality/95/) 1x, url(https://cdn.wadiz.kr/ft/images/green001/2023/0313/20230313133752303_null.jpg/wadiz/thumbnail/506/format/jpg/quality/95/) 2x);
+    transform: scale(1);
+    opacity: 1;
+    display: inline-block;
+    width: 100%;
+    }
+
+.lecture-image img{
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-  }
-  
-  /* 모달창 내용 스타일 */
-  .modal-content {
-    z-index: 200;
-    margin: 0 auto;
-    border-radius: 10px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    /* 기존 스타일 유지 */
-  }
-  
-  /* 닫기 버튼 스타일 */
-  .close {
-    color: #000;
-    float: right;
-    font-size: 19px;
-    font-weight: bold;
-    position: relative;
-    right: 24px;
-    top: 29px;
-    z-index: 500;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: black;
-    text-decoration: none;
+}
+
+.lecture .lecture-wrapper{
+        display: block;
     cursor: pointer;
-  }
-
-  /* 오픈채팅방 링크 */
-  .spi_default .spi_lst li .spi_lst_release li.spi_lnk_copyurl {
-    clear: both;
-    display: block;
-    width: 330px;
-    padding: 0 0 22px 11px;
-    font-size: 0;
-    text-align: left;
+    width: 100%;
+    height: 100%;
 }
 
-.spi_default .spi_lst li .spi_lst_release li {
-    height: auto;
-    margin: 0;
-    background: none;
-    line-height: 16px;
+.lecture-content{
+position: relative;
+float: left;
+padding: 15px 20px;
+width: 390px;
+max-width: 60%;
 }
 
-.spi_default .spi_lst li {
-    float: left;
-    position: relative;
+.lecture-type{
+    display: flex;
+    font-size: 12px;
 }
 
-.spi_default ul, .spi_default li {
-    list-style: none;
-}
-
-.spi_default .spi_lst li .spi_lst_release li.spi_lnk_copyurl .spi_input_copyurl {
+.reward{
+    background: #2e51ef;
     display: inline-block;
-    width: 218px;
-    height: 25px;
-    padding: 0 9px !important;
+    margin-right: 8px;
+    width: 10px;
+    height: 10px;
+}
+
+.lecture-title{
+    margin-bottom: 5px;
+    width: 350px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.lecture-subtitle{
+    margin-bottom: 10px;
+    line-height: 18px;
     font-size: 12px;
-    color: #222;
-    line-height: 25px;
-    vertical-align: middle;
-    text-decoration: none !important;
-    border: 1px solid #d8d8d8;
-    background-color: #f8f8f8;
 }
 
-.spi_default .spi_lst li .spi_lst_release li a {
-    position: relative;
-    float: none;
-    text-indent: 0;
-    background: none;
+.lecture-info{
+    margin-bottom: 5px;
+    line-height: 18px;
+    font-size: 12px;
 }
 
-.spi_default .spi_lst li a {
-    margin: 0;
-    cursor: pointer;
+.lecture-number{
+        position: absolute;
+    top: 135px;
+    right: -135px;
+    text-align: right;
+    font-size: 12px;
 }
 
-.spi_default .spi_lst li a {
-    overflow: hidden;
-    margin: 0;
-    cursor: pointer;
+/* 켈린더 */
+.calender{
+    position: absolute;
+    right: 0;
+    top: 31px;
 }
 
+#calendar {
+    width: 400px;
+    height: 450px;
+    background: #fff;
+  }
   
+  .tui-full-calendar {
+    width: 100%;
+    height: 100%;
+  }
+  
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+.toastui-calendar-template-time,   .toastui-calendar-weekday-grid-more-events {
+    display: none;
+}
+
+.toastui-calendar-daygrid-cell{
+    cursor: pointer;
+}
+
+/* 아이들 table */
+.lecture-wrapper{
+    display: flex;
+}
+.table-wrapper{
+    display: none;
+    position: relative;
+}
+
+.lecture-wrap{
+    display: flex;
+}
+
+.children-table{
+    flex:none;
+    display: block;
+    background-color: #fff;
+    font-size: 10px;
+}
+
+.table-wrapper{
+    background-color: #fff;
+    padding: 25px 90px;
+}
+
+  th {
+    border-bottom: 1px solid rgb(233, 233, 233);
+  }
+
+  th,
+  td {
+    width: 20%;
+    height: 40px;
+    border-bottom: 1px solid rgb(233, 233, 233);
+    border-right: 1px solid rgb(233, 233, 233);
+    text-align: center;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  .num {
+    width: 10%;
+  }
+
+  tr:last-child td {
+    border-bottom: 0;
+  }
+
+
+  .children-table th:first-child,
+  .children-table td:first-child {
+    border-left: none;
+  }
+  
+  .children-table th:last-child,
+  .children-table td:last-child {
+    border-right: none;
+  }
+
+  .header-title {
+    line-height: 44px;
+    letter-spacing: -0.6px;
+    font-size: 22px;
+    font-weight: 700;
+    padding: 48px 12px 29px;
+  }
+
+  .auto-flex, .auto-flex svg, .btn-padding, .calendar-box{
+    background: #fff;
+  }
+
+  .auto-flex svg{
+    width: 16px;
+    cursor: pointer;
+  }
+
+.toastui-calendar-month-daygrid{
+    padding:20px
+}
+
+.toastui-calendar-daygrid-cell+.toastui-calendar-daygrid-cell {
+    border:none;
+}
+
+.toastui-calendar-weekday-grid{
+    border:none !important;
+}
+
+.toastui-calendar-weekday-grid{
+    z-index: 1;
+}
