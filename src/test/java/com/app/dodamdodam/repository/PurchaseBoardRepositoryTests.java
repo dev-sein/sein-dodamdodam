@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -47,6 +48,24 @@ public class PurchaseBoardRepositoryTests {
         }
 
     }
+
+    @Test
+    public void findAllTest(){
+//        purchaseBoardRepository.findAll().stream().map(PurchaseBoard::toString).forEach(log::info);
+        Pageable pageable = Pageable.ofSize(1);
+        purchaseBoardRepository.findAllPurchaseBoard(pageable);
+    }
+
+    @Test
+    public void findByIdTest(){
+        purchaseBoardRepository.findById(3L).ifPresent(purchaseBoard -> log.info(purchaseBoard.toString()));
+    }
+
+    @Test
+    public void deleteTest(){
+        purchaseBoardRepository.findById(3L).ifPresent(purchaseBoardRepository::delete);
+    }
+
 
 
 }

@@ -127,6 +127,25 @@ public class MemberRepositoryTests {
         memberRepository.findById(3L).ifPresent(member -> memberRepository.delete(member));
     }
 
+//    아이디 찾기
+    @Test
+    public void findMemberIdByMemberEmailTest(){
+        String result = memberRepository.findMemberIdByMemberEmail("test1@gmail.com");
+        String msg = "";
+        msg = result!=null ? result : "아이디가 없습니다.";
+        log.info(msg);
+
+
+    }
+
+//    아이디 중복검사
+    @Test
+    public void findCheckMemberIdByEmailTest(){
+        String msg = "";
+        msg = memberRepository.findCheckMemberIdByMemberEmail("test1@gmail.com") ? "아이디 없음" : "아이디 있음";
+        log.info(msg);
+    }
+
 
 
 
