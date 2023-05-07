@@ -21,14 +21,17 @@ public class Product {
     @NotNull private Long productCount;
 
 
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PURCHASE_BOARD_ID")
+    private PurchaseBoard purchaseBoard;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    private Purchase purchase;
+
     public Product(String productName, Integer productPrice, Long productCount) {
         this.productName = productName;
         this.productPrice = productPrice;
         this.productCount = productCount;
     }
-
-    @OneToOne
-    @JoinColumn(name = "PURCHASE_BOARD_ID")
-    private PurchaseBoard purchaseBoard;
-
 }

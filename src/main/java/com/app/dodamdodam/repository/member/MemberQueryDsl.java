@@ -6,6 +6,7 @@ import com.app.dodamdodam.entity.point.Point;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface MemberQueryDsl {
 //    세션에 담긴 id 값으로 유저 정보 받아오기
@@ -16,4 +17,10 @@ public interface MemberQueryDsl {
 //
 ////    memberId로 point 내역 조회
 //    public List<Point> findPointByMemberId(Long memberId);
+
+//    이메일로 아이디 찾기
+    public String findMemberIdByMemberEmail(String memberEmail);
+
+//    아이디 중복검사
+    public boolean findCheckMemberIdByMemberEmail(String memberEmail);
 }

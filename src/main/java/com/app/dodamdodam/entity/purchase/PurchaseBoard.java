@@ -22,11 +22,18 @@ public class PurchaseBoard extends Board {
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "purchaseBoard", cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
     private Product product;
+//    private Integer purchasePrice;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "purchaseBoard")
+    @OneToMany(fetch = FetchType.LAZY,
+            mappedBy = "purchaseBoard",
+            cascade = {CascadeType.REMOVE, CascadeType.PERSIST}
+    )
     private List<PurchaseFile> purchaseFiles;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "purchaseBoard")
+    @OneToMany(fetch = FetchType.LAZY,
+            mappedBy = "purchaseBoard",
+            cascade = {CascadeType.REMOVE, CascadeType.PERSIST}
+    )
     private List<PurchaseReview> purchaseReviews;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -44,4 +51,5 @@ public class PurchaseBoard extends Board {
     public void setMember(Member member) {
         this.member = member;
     }
+
 }

@@ -23,9 +23,26 @@ public class Inquiry extends Period {
     @NotNull private String memberIdentification;
     @NotNull private String inquiryPhoneNumber;
     @NotNull private String inquiryContent;
-    @NotNull private String inquiryAnswer;
-    @ColumnDefault("'APPLYING'")
-    @Enumerated(EnumType.STRING)
-    @NotNull private InquiryStatus inquiryStatus;
+    private String inquiryAnswer;
 
+    @ColumnDefault("'HOLD'")
+    @Enumerated(EnumType.STRING)
+    private InquiryStatus inquiryStatus;
+
+    public Inquiry(InquiryType inquiryType, String inquiryEmail, String memberIdentification, String inquiryPhoneNumber, String inquiryContent, InquiryStatus inquiryStatus) {
+        this.inquiryType = inquiryType;
+        this.inquiryEmail = inquiryEmail;
+        this.memberIdentification = memberIdentification;
+        this.inquiryPhoneNumber = inquiryPhoneNumber;
+        this.inquiryContent = inquiryContent;
+        this.inquiryStatus = inquiryStatus;
+    }
+
+    public void setInquiryAnswer(String inquiryAnswer) {
+        this.inquiryAnswer = inquiryAnswer;
+    }
+
+    public void setInquiryStatus(InquiryStatus inquiryStatus) {
+        this.inquiryStatus = inquiryStatus;
+    }
 }
