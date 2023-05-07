@@ -838,6 +838,18 @@ body, body button, body input, body select, body textarea {
     font-family: Noto Sans KR !important;
 }
 
+table{
+    text-align: center;
+    width: 800px;
+    border: 1px solid #babdc0;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+td{
+    border: 1px solid #babdc0;
+}
+
 
 @media screen and (min-width: 1097px){
 .top-btn {
