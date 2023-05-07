@@ -553,9 +553,9 @@ button.btn-category {
     height: 60px;
     line-height: 60px;
     font-size: 16px;
-    background: #fff;
-    color: #006633;
-    border: 1px solid #006633;
+    background: #006633;
+    color: #fff;
+    /* border: 1px solid #006633; */
     text-align: center;
     font-weight: 600;
 }
