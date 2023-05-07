@@ -317,7 +317,6 @@ body>#root, #wadizTopBanner, #page-container {
 }
 
 .social-account-wrap a.unlinked {
-    opacity: 0.3;
 }
 
 .social-account-wrap li:first-child a {
@@ -360,22 +359,15 @@ body>#root, #wadizTopBanner, #page-container {
 
 /* 네이버 아이콘 */
 .social-account-wrap .naver a, .social-account-big-wrap .naver a {
-    background: #02c300;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAP1BMVEUeyAAAxAAFxgD///+/7bpk1Vn3/PZ42m1g1FT3/fUvyxvQ88uK34D+//09zitb01DZ9NVX00nI8cGQ4YfU88/C6W9bAAAAbklEQVR4AeXStQHAMAwEQEEYTfuvGlIT/gH8jehKUV7hI7K3Yv3trkcKIZLSer6Cyra1kDRHV72DtgNAewZABwZgnOZ/oM4DoGH8BGMw8gnUOwDmafwHDUcAhBMA1LUASP0ObFsKkQTrGT5MVlkBQsgFA8U4Z0EAAAAASUVORK5CYII=) 50% no-repeat;
 }
 
-.icon-naver:before, i.icon.naver:before, i.wadizicon.wa-naver:before {
-    content: "";
-}
 
 /* 카카오 아이콘 */
 .social-account-wrap .kakao a, .social-account-big-wrap .kakao a {
-    background: #fdd800;
-    color: #3f2526;
+    background: url("../../images/myPage/kakao.png") 50% no-repeat;
 }
 
-.icon-kakao:before, i.icon.kakao:before, i.wadizicon.wa-kakao:before {
-    content: "";
-}
 
 /* 구글 아이콘 */
 .social-account-wrap .google a, .social-account-big-wrap .google a {

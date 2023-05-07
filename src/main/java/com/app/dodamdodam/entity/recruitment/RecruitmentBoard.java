@@ -55,6 +55,10 @@ public class RecruitmentBoard extends Board {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "recruitmentBoard")
     private List<Recruitment> recruitments = new ArrayList<Recruitment>();
 
+    public void addRecruitment(Recruitment recruitment){
+        this.recruitments.add(recruitment);
+    }
+
     public RecruitmentBoard(String recruitmentSubtitle, LocalDate recruitmentDate, int recruitmentPeopleCount, String recruitmentOpenChatting, String recruitmentPassword, String recruitmentAddress, String recruitmentAddressDetail) {
         this.recruitmentSubtitle = recruitmentSubtitle;
         this.recruitmentDate = recruitmentDate;
