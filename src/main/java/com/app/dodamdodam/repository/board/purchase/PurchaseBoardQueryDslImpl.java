@@ -5,6 +5,7 @@ import com.app.dodamdodam.entity.purchase.PurchaseBoardDTO;
 import com.app.dodamdodam.entity.purchase.QPurchaseBoard;
 import com.querydsl.core.Tuple;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 
@@ -17,13 +18,12 @@ import java.util.List;
 
 import static com.app.dodamdodam.entity.purchase.QPurchaseBoard.purchaseBoard;
 
+@RequiredArgsConstructor
 public class PurchaseBoardQueryDslImpl implements PurchaseBoardQueryDsl {
-    @Autowired
-    private JPAQueryFactory query;
+    private final JPAQueryFactory query;
 
     @Override
     public Slice<PurchaseBoard> findAllPurchaseBoard(Pageable pageable) {
-        PageRequest pageRequest = PageRequest.of(1, 10, Sort.by(Sort.Direction.DESC, "id"));
         boolean hasNext = false;
 
         List<PurchaseBoard> results = query.select(purchaseBoard)

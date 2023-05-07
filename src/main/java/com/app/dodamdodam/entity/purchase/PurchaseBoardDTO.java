@@ -1,5 +1,6 @@
 package com.app.dodamdodam.entity.purchase;
 
+import com.querydsl.core.annotations.QueryProjection;
 import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.ToString;
@@ -20,6 +21,7 @@ public class PurchaseBoardDTO {
     private String memberAddress;
     private String memberAddressDetail;
 
+    @QueryProjection
     public PurchaseBoardDTO(Long id, String boardTitle, String boardContent, String productName, Integer productPrice, Long productCount, String memberId, String memberName, String memberEmail, String memberPhone, String memberAddress, String memberAddressDetail) {
         this.id = id;
         this.boardTitle = boardTitle;

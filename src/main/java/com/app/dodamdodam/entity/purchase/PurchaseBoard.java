@@ -24,10 +24,16 @@ public class PurchaseBoard extends Board {
     private Product product;
 //    private Integer purchasePrice;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "purchaseBoard")
+    @OneToMany(fetch = FetchType.LAZY,
+            mappedBy = "purchaseBoard",
+            cascade = {CascadeType.REMOVE, CascadeType.PERSIST}
+    )
     private List<PurchaseFile> purchaseFiles;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "purchaseBoard")
+    @OneToMany(fetch = FetchType.LAZY,
+            mappedBy = "purchaseBoard",
+            cascade = {CascadeType.REMOVE, CascadeType.PERSIST}
+    )
     private List<PurchaseReview> purchaseReviews;
 
     @ManyToOne(fetch = FetchType.LAZY)
