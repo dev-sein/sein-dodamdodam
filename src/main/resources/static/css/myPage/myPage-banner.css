@@ -4638,7 +4638,7 @@ cursor: pointer;
     color: #212529;
 }
 
-.MenuItem .Itembottom {
+.MenuItem .Itembottom, .Itembottom2{
     display: flex;
     align-items: center;
     justify-content: normal;
@@ -4655,6 +4655,10 @@ cursor: pointer;
 
 .Itembottom div {
 	text-decoration: line-through;
+    margin-right: 20px;
+}
+
+.Itembottom2 div {
     margin-right: 20px;
 }
 
