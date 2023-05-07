@@ -13,8 +13,25 @@
      <link rel="shortcut icon" href="/static/images/components/dodam-favicon.png">
 </head>
 <body>
+
+   <!-- Modal -->
+<div id="modal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <p>최대 이미지는 5개까지 등록 가능합니다.</p>
+      <button id="confirmBtn" style=" background-color: #006633;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 0.5em 1em;
+      cursor: pointer;
+      margin: 9px 0 0 0px;">확인</button>
+    </div>
+  </div>
+  
     <div class="layout-contents">
-        <div class="layout-container">
+        <div class="layout-container" style="margin: 0 auto 40px;
+        max-width: 1440px;
+        padding-left: 29em;">
             <div>
                 <h2 class="goodsContainer-title">상품 등록</h2>
                 <p class="goodsContainer-description">등록하시는 상품을 소개해 주세요</p>
@@ -23,161 +40,41 @@
                 <!-- 소개하는 사진 등록하는 섹션 -->
                 <section>
                     <div>
-                        <h2 class="section-title">소개 사진 등록</h2>
-                        <div class="section-description">프로젝트의 맨 위에서 가장 먼저 보여 주고 싶은 영상이나 사진을 등록해 주세요.</div>
-                        <div class="content-section">
-                            <div class="file-box-wrap">
-                                <div class="file-add-boxes">
-                                    <div class="div-attach-thumb">
-                                        <label>
-                                            <div class="btn-attach-thumb">
-                                                <i class="ico-plus-xlg">
-                                                    <svg
-                                                        height="26px"
-                                                        viewBox="0 0 512 512"
-                                                        width="26px"
-                                                    >
-                                                        <g>
-                                                            <path
-                                                                d="M384,265H264v119h-17V265H128v-17h119V128h17v120h120V265z"
-                                                            />
-                                                        </g>
-                                                    </svg>
-                                                </i>
-                                            </div>
-                                            <input
-                                                type="file"
-                                                name="imgFile"
-                                                style="display: none"
-                                                accept="image/*"
-                                            />
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="file-add-boxes">
-                                    <div class="div-attach-thumb">
-                                        <label>
-                                            <div class="btn-attach-thumb">
-                                                <i class="ico-plus-xlg">
-                                                    <svg
-                                                        height="26px"
-                                                        viewBox="0 0 512 512"
-                                                        width="26px"
-                                                    >
-                                                        <g>
-                                                            <path
-                                                                d="M384,265H264v119h-17V265H128v-17h119V128h17v120h120V265z"
-                                                            />
-                                                        </g>
-                                                    </svg>
-                                                </i>
-                                            </div>
-                                            <input
-                                                type="file"
-                                                name="imgFile"
-                                                style="display: none"
-                                                accept="image/*"
-                                            />
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="file-add-boxes">
-                                    <div class="div-attach-thumb">
-                                        <label>
-                                            <div class="btn-attach-thumb">
-                                                <i class="ico-plus-xlg">
-                                                    <svg
-                                                        height="26px"
-                                                        viewBox="0 0 512 512"
-                                                        width="26px"
-                                                    >
-                                                        <g>
-                                                            <path
-                                                                d="M384,265H264v119h-17V265H128v-17h119V128h17v120h120V265z"
-                                                            />
-                                                        </g>
-                                                    </svg>
-                                                </i>
-                                            </div>
-                                            <input
-                                                type="file"
-                                                name="imgFile"
-                                                style="display: none"
-                                                accept="image/*"
-                                            />
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="file-add-boxes">
-                                    <div class="div-attach-thumb">
-                                        <label>
-                                            <div class="btn-attach-thumb">
-                                                <i class="ico-plus-xlg">
-                                                    <svg
-                                                        height="26px"
-                                                        viewBox="0 0 512 512"
-                                                        width="26px"
-                                                    >
-                                                        <g>
-                                                            <path
-                                                                d="M384,265H264v119h-17V265H128v-17h119V128h17v120h120V265z"
-                                                            />
-                                                        </g>
-                                                    </svg>
-                                                </i>
-                                            </div>
-                                            <input
-                                                type="file"
-                                                name="imgFile"
-                                                style="display: none"
-                                                accept="image/*"
-                                            />
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="file-add-boxes">
-                                    <div class="div-attach-thumb">
-                                        <label>
-                                            <div class="btn-attach-thumb">
-                                                <i class="ico-plus-xlg">
-                                                    <svg
-                                                        height="26px"
-                                                        viewBox="0 0 512 512"
-                                                        width="26px"
-                                                    >
-                                                        <g>
-                                                            <path
-                                                                d="M384,265H264v119h-17V265H128v-17h119V128h17v120h120V265z"
-                                                            />
-                                                        </g>
-                                                    </svg>
-                                                </i>
-                                            </div>
-                                            <input
-                                                type="file"
-                                                name="imgFile"
-                                                style="display: none"
-                                                accept="image/*"
-                                            />
-                                        </label>
-                                    </div>
-                                </div>
+                      <h2 class="section-title"> 대표 이미지</h2>
+                      <div class="section-description">최대 5개의 이미지를 등록할 수 있습니다.</div>
+                      <div class="content-section">
+                        <div class="file-box-wrap" id="fileBoxWrap">
+                          <div class="file-add-boxes">
+                            <div class="div-attach-thumb">
+                              <div class="btn-attach-thumb">+</div>
+                              <input type="file" id="imgFile" name="imgFile" style="display: none" accept="image/*" multiple />
                             </div>
-                            <p class="text-guide-md">
-                                - 2MB 이하의 JPG, JPEG, GIF, PNG 파일
-                                해상도 630x400 픽셀 이상
-                                여러 장 등록돼요.
-                            </p>
+                          </div>
                         </div>
+                        <p class="text-guide-md">
+                            (첫번째 이미지는 상품의 메인이미지 입니다.)
+                        </p>
+                      </div>
                     </div>
-                </section>
+                  </section>
                 <!-- 제목이 들어갈 섹션 -->
                 <section>
                     <div>
                         <h2 class="section-title">상품 판매 제목</h2>
                         <div class="section-description">상품의 제목으로 써지는 글이에요. 상품을 소개해 주세요.</div>
                         <div class="content-section">
-                            <input class="input-content" type="text" name="" placeholder="제목을 입력해 주세요.">
+                            <input class="input-title" type="text" name="" placeholder="제목을 입력해 주세요.">
+                        </div>
+                    </div>
+                </section>
+                <!-- 개수가 들어갈 섹션 -->
+                <section>
+                    <div>
+                        <h2 class="section-title">상품 개수</h2>
+                        <div class="section-description">회원님이 원하시는 판매수량을 적어주세요.</div>
+                        <div class="content-section">
+                            <input class="input-count" type="text" name="" placeholder="판매하시는 상품의 개수를 적어주세요.">
+                            <span class="text-field">개</span>
                         </div>
                     </div>
                 </section>
@@ -209,4 +106,5 @@
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="../../static/js/sell-board/sell-wright.js"></script>
 </html>

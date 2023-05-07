@@ -21,6 +21,11 @@ public class Product {
     @NotNull private Long productCount;
 
 
+    public Product(String productName, Integer productPrice, Long productCount) {
+        this.productName = productName;
+        this.productPrice = productPrice;
+        this.productCount = productCount;
+    }
 
     @OneToOne
     @JoinColumn(name = "PURCHASE_BOARD_ID")
