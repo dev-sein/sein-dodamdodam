@@ -16,11 +16,11 @@ public class Purchase extends Period {
     @EqualsAndHashCode.Include
     private Long id;
 
-
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PRODUCT_ID")
     private Product product;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
