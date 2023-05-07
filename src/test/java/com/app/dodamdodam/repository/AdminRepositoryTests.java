@@ -3,9 +3,12 @@ package com.app.dodamdodam.repository;
 import com.app.dodamdodam.entity.banner.BannerApply;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.point.Point;
+import com.app.dodamdodam.entity.purchase.Purchase;
+import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
 import com.app.dodamdodam.entity.recruitment.RecruitmentFile;
 import com.app.dodamdodam.repository.banner.BannerRepository;
+import com.app.dodamdodam.repository.board.purchase.PurchaseBoardRepository;
 import com.app.dodamdodam.repository.board.recruitment.RecruitmentBoardRepository;
 import com.app.dodamdodam.repository.member.MemberRepository;
 import com.app.dodamdodam.repository.point.PointRepository;
@@ -38,6 +41,9 @@ public class AdminRepositoryTests {
 
     @Autowired
     public BannerRepository bannerRepository;
+
+    @Autowired
+    public PurchaseBoardRepository purchaseBoardRepository;
 
     @Test //포인트 페이징 조회
     public void findAllTest(){
@@ -72,10 +78,11 @@ public class AdminRepositoryTests {
         recruitmentBoardRepository.findById(451L).ifPresent(recruitmentBoard -> recruitmentBoardRepository.delete(recruitmentBoard));
     }
 
-    @Test //모집글 상세보기 수정, 파일 넣어서 출력 해보기
-    public void recruitmentFindById(){
-        recruitmentBoardRepository.findById(450L).ifPresent(recruitmentBoard -> log.info(recruitmentBoard.toString()));
-    }
+//    @Test //모집글 상세보기 수정, 파일 넣어서 출력 해보기
+//    public void recruitmentFindById(){
+//        recruitmentBoardRepository.findById(450L)
+//                .ifPresent(recruitmentBoard -> recruitmentBoard.getRecruitments()).forEach(log::info));
+//    }
 
     @Test //파일
     public void recruitmentFileSaveTest(){
@@ -101,11 +108,20 @@ public class AdminRepositoryTests {
         }
     }
 
-//    @Test //배너 목록(
-//    public void bannerFindByAllWithPaging(){
-//        Page<BannerApply> bannerApplyPage = bannerRepository.findAll(PageRequest.of(0,5));
-//        bannerApplyPage.getContent().stream().map(bannerApply -> bannerApply.toString()).forEach(log::info);
-//    }
+    @Test //배너 목록
+    public void bannerFindByAllWithPaging(){
+        Page<BannerApply> bannerApplyPage = bannerRepository.findAll(PageRequest.of(0,5));
+        bannerApplyPage.forEach(bannerApply -> log.info(bannerApply.getMember()+""));
+    }
 
+    @Test //판매 게시글 조회 수정 조회
+    public void purchaseFindAllWithPaging(){
+        Page<PurchaseBoard> purchasePage = purchaseBoardRepository.findAll(PageRequest.of(0,5));
+        purchasePage.forEach(purchaseBoard -> log.info(purchaseBoard.getId()+""));
+    }
 
+    @Test //판매 게시글 삭제
+    public void purchaseBoardDelete(){
+        purchaseBoardRepository.findById(753L).ifPresent(purchaseBoard -> purchaseBoardRepository.delete(purchaseBoard));
+    }
 }
