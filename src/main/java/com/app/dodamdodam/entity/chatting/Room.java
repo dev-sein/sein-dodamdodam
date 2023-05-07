@@ -29,7 +29,9 @@ public class Room{
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
-
-
-
+    public Room(int hostId, int havingId, Member member) {
+        this.hostId = hostId;
+        this.havingId = havingId;
+        this.member = member;
+    }
 }

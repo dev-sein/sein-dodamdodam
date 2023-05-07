@@ -14,7 +14,11 @@ public class Chatting extends Period {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
+    private String senderMemberId;
+    private String receiverMemberId;
     private String chattingContent;
+
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ROOM_ID")
