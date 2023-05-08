@@ -46,8 +46,8 @@ public class MemberRepositoryTests {
         for (int i=1; i<=100; i++){
 //            회원 정보 입력
 
-//            Member member = new Member("test" + i,"1234","테스트" + i, "test" + i + "@test.com", "010-1234-5678", "서울시 강남구", "역삼동");
-//            memberRepository.save(member);
+            Member member = new Member("test" + i,"1234","테스트" + i, "test" + i + "@test.com", "010-1234-5678", "서울시 강남구", "역삼동");
+            memberRepository.save(member);
 
 //            모집 게시글 입력
 //            2번 회원이 모집게시글 100개 작성
@@ -56,9 +56,9 @@ public class MemberRepositoryTests {
 //            recruitmentBoardRepository.save(recruitmentBoard);
 
 //            포인트 내역 입력(없어서 목록 불러오기 위해 임의로 넣어놓음)
-            Point point = new Point(10000 * i, pointStatuses.get((i % 3)));
-            memberRepository.findById(2L).ifPresent(member -> point.setMember(member));
-            pointRepository.save(point);
+//            Point point = new Point(10000 * i, pointStatuses.get((i % 3)));
+//            memberRepository.findById(2L).ifPresent(member -> point.setMember(member));
+//            pointRepository.save(point);
         }
 //        Point point = new Point(10000, pointStatuses.get(1));
 //        memberRepository.findById(1L).ifPresent(member -> point.setMember(member));
@@ -125,6 +125,25 @@ public class MemberRepositoryTests {
     @Test
     public void deleteMemberByIdTest(){
         memberRepository.findById(3L).ifPresent(member -> memberRepository.delete(member));
+    }
+
+//    아이디 찾기
+    @Test
+    public void findMemberIdByMemberEmailTest(){
+        String result = memberRepository.findMemberIdByMemberEmail("test1@gmail.com");
+        String msg = "";
+        msg = result!=null ? result : "아이디가 없습니다.";
+        log.info(msg);
+
+
+    }
+
+//    아이디 중복검사
+    @Test
+    public void findCheckMemberIdByEmailTest(){
+        String msg = "";
+        msg = memberRepository.findCheckMemberIdByMemberEmail("test1@gmail.com") ? "아이디 없음" : "아이디 있음";
+        log.info(msg);
     }
 
 
