@@ -5,7 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
-@Getter @ToString
+@Getter @ToString(callSuper = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Inheritance(strategy = InheritanceType.JOINED)
 public class BoardFile {
@@ -17,5 +17,10 @@ public class BoardFile {
     private String filePath;
     private Long fileSize;
 
-
+    public BoardFile(String fileOriginalName, String fileUuid, String filePath, Long fileSize) {
+        this.fileOriginalName = fileOriginalName;
+        this.fileUuid = fileUuid;
+        this.filePath = filePath;
+        this.fileSize = fileSize;
+    }
 }

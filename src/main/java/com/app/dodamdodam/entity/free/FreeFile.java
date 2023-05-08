@@ -10,13 +10,20 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-@ToString
+@ToString(callSuper = true, exclude = "freeBoard")
 @Table(name = "TBL_FREE_FILE")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class FreeFile extends BoardFile {
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "FREE_BOARD_ID")
     private FreeBoard freeBoard;
 
+
+    public FreeFile(String fileOriginalName, String fileUuid, String filePath, Long fileSize) {
+        super(fileOriginalName, fileUuid, filePath, fileSize);
+    }
+
+    public void setFreeBoard(FreeBoard freeBoard) {
+        this.freeBoard = freeBoard;
+    }
 }
