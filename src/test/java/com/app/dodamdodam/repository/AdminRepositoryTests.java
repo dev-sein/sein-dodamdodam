@@ -1,6 +1,7 @@
 package com.app.dodamdodam.repository;
 
 import com.app.dodamdodam.entity.banner.BannerApply;
+import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.point.Point;
 import com.app.dodamdodam.entity.purchase.Purchase;
@@ -8,10 +9,12 @@ import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
 import com.app.dodamdodam.entity.recruitment.RecruitmentFile;
 import com.app.dodamdodam.repository.banner.BannerRepository;
+import com.app.dodamdodam.repository.board.free.FreeBoardRepository;
 import com.app.dodamdodam.repository.board.purchase.PurchaseBoardRepository;
 import com.app.dodamdodam.repository.board.recruitment.RecruitmentBoardRepository;
 import com.app.dodamdodam.repository.member.MemberRepository;
 import com.app.dodamdodam.repository.point.PointRepository;
+import com.app.dodamdodam.type.BannerType;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +47,9 @@ public class AdminRepositoryTests {
 
     @Autowired
     public PurchaseBoardRepository purchaseBoardRepository;
+
+    @Autowired
+    public FreeBoardRepository freeBoardRepository;
 
     @Test //포인트 페이징 조회
     public void findAllTest(){
@@ -123,5 +129,25 @@ public class AdminRepositoryTests {
     @Test //판매 게시글 삭제
     public void purchaseBoardDelete(){
         purchaseBoardRepository.findById(753L).ifPresent(purchaseBoard -> purchaseBoardRepository.delete(purchaseBoard));
+    }
+
+    @Test //자유 게시글 조회
+    public void freeeFindAllWithPaging(){
+        Page<FreeBoard> freeBoardPage = freeBoardRepository.findAll(PageRequest.of(0,5));
+        freeBoardPage.forEach(freeBoard -> log.info(freeBoard.getBoardContent()+""));
+    }
+
+    @Test //자유 게시글 삭제
+    public void freeBoardDelete(){
+        freeBoardRepository.findById(653L).ifPresent(freeBoard -> freeBoardRepository.delete(freeBoard));
+    }
+
+    @Test //배너 신청 수락 및 거절
+    public void setBannerStatus(){
+        bannerRepository.findById(764L).ifPresent(bannerApply -> bannerApply.setBannerStatus(BannerType.REJECT));
+    }
+
+    @Test
+    public void eventBoardInsert(){
     }
 }
