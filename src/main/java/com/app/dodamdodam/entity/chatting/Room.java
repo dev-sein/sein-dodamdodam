@@ -34,4 +34,8 @@ public class Room{
         this.havingId = havingId;
         this.member = member;
     }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
 }

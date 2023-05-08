@@ -49,4 +49,6 @@ public class RoomQueryDslImpl implements RoomQueryDsl {
         // 반환할 슬라이스 객체 생성
         return new SliceImpl<>(slicedRooms, pageable, hasNext);
     }
+
+
 }

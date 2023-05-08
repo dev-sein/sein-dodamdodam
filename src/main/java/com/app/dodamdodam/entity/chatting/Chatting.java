@@ -29,4 +29,8 @@ public class Chatting extends Period {
         this.receiverMemberId = receiverMemberId;
         this.chattingContent = chattingContent;
     }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
 }
