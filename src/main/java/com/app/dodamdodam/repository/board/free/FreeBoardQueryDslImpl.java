@@ -13,8 +13,10 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
     @Autowired
     private JPAQueryFactory query;
 
+
     @Override
     public List<FreeBoard> findFreeBoardListByMemberId(Pageable pageable, Long memberId) {
         return query.select(freeBoard).from(freeBoard).where(freeBoard.member.id.eq(memberId)).orderBy(freeBoard.id.desc()).offset(pageable.getOffset()).limit(pageable.getPageSize()).fetch();
     }
+
 }
