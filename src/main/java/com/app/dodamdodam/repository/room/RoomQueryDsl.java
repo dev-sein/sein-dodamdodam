@@ -9,6 +9,7 @@ import java.util.List;
 import static com.app.dodamdodam.entity.chatting.QRoom.room;
 
 public interface RoomQueryDsl {
-//    id 값으로 Room내역 조회 무한스크롤
-    public List<Room> findRoomByMemberId(Pageable pageable, Long id);
+//    memberId 값으로 Room내역 조회
+    public List<Room> findRoomByMemberId(Pageable pageable, Long memberId);
+
 }

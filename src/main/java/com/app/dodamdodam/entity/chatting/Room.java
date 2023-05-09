@@ -10,7 +10,7 @@ import java.util.List;
 
 @Entity
 @Getter @Table(name = "TBL_ROOM")
-@ToString
+@ToString(exclude = "chatting")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Room{
     @Id @GeneratedValue
@@ -27,7 +27,7 @@ public class Room{
 
     @ManyToOne
     @JoinColumn(name = "MEMBER_ID")
-    private Member member;
+    private Member member; //FK
 
     public Room(Long hostId) {
         this.hostId = hostId;
