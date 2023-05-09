@@ -45,8 +45,8 @@ public class MemberRepositoryTests {
         for (int i=1; i<=100; i++){
 //            회원 정보 입력
 
-            Member member = new Member("test" + i,"1234","테스트" + i, "test" + i + "@test.com", "010-1234-5678", "서울시 강남구", "역삼동");
-            memberRepository.save(member);
+//            Member member = new Member("test" + i,"1234","테스트" + i, "test" + i + "@test.com", "010-1234-5678", "서울시 강남구", "역삼동");
+//            memberRepository.save(member);
 
 //            모집 게시글 입력
 //            2번 회원이 모집게시글 100개 작성

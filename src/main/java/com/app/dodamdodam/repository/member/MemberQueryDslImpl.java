@@ -24,15 +24,16 @@ public class MemberQueryDslImpl implements MemberQueryDsl{
     @Override
     public List<MemberDTO> findByMemberId(Long id) {
 //        return query.select().from(member).where(member.id.eq(id))
-        return query.select(new QMemberDTO(
-                member.memberId, member.memberPassword, member.memberName, member.memberEmail, member.memberPhone,
-                member.memberAddress, member.memberAddressDetail, member.memberStatus, member.memberPoint,
-                member.participationCount, member.recruitments.size().intValue())).
-                from(member).
-                where(member.id.eq(id)).
-                groupBy(member.memberId, member.memberPassword, member.memberName, member.memberEmail,
-                        member.memberPhone, member.memberAddress, member.memberAddressDetail, member.memberStatus,
-                        member.memberPoint, member.participationCount).fetch();
+//        return query.select(new QMemberDTO(
+//                member.memberId, member.memberPassword, member.memberName, member.memberEmail, member.memberPhone,
+//                member.memberAddress, member.memberAddressDetail, member.memberStatus, member.memberPoint,
+//                member.participationCount, member.recruitments.size().intValue())).
+//                from(member).
+//                where(member.id.eq(id)).
+//                groupBy(member.memberId, member.memberPassword, member.memberName, member.memberEmail,
+//                        member.memberPhone, member.memberAddress, member.memberAddressDetail, member.memberStatus,
+//                        member.memberPoint, member.participationCount).fetch();
+        return null;
     }
 
 
