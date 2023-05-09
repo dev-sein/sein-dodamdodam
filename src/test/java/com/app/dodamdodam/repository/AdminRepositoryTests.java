@@ -14,7 +14,9 @@ import com.app.dodamdodam.repository.board.purchase.PurchaseBoardRepository;
 import com.app.dodamdodam.repository.board.recruitment.RecruitmentBoardRepository;
 import com.app.dodamdodam.repository.member.MemberRepository;
 import com.app.dodamdodam.repository.point.PointRepository;
+import com.app.dodamdodam.search.point.PointSearch;
 import com.app.dodamdodam.type.BannerType;
+import com.app.dodamdodam.type.CategoryType;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,8 @@ import org.springframework.test.annotation.Rollback;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 @SpringBootTest
 @Transactional
@@ -51,11 +55,32 @@ public class AdminRepositoryTests {
     @Autowired
     public FreeBoardRepository freeBoardRepository;
 
-    @Test //포인트 페이징 조회
-    public void findAllTest(){
-        Page<Point> pointPage = pointRepository.findAll(PageRequest.of(0, 10));
-        pointPage.getContent().stream().map(point -> point.toString()).forEach(log::info);
+
+    ArrayList<CategoryType> categoryTypes = new ArrayList<CategoryType>(Arrays.asList(CategoryType.ALL, CategoryType.CULTURE, CategoryType.DAILY, CategoryType.EVENT, CategoryType.PURCHASE, CategoryType.RECRUITMENT));
+
+
+    @Test //포인트 상세
+    public void findPointAllWithSearchTest(){
+        PointSearch pointSearch = new PointSearch();
+        pointSearch.setPointAmount(100000);
+
+        Page<Point> pointPage = pointRepository.findAllPointWithSearch(pointSearch, PageRequest.of(1,3));
+        pointPage.forEach(point -> log.info((point.getPointAmount()+"")));
+
     }
+
+/*
+    @Test //포인트 페이징 조회
+    public void findAllPointWithSearchAndPageTest(){
+        PointSearch pointSearch = new PointSearch();
+        pointSearch.setPointAmount(10000);
+        Page<Point> pointPage = pointRepository.findAllPointWithSearch(pointSearch, PageRequest.of(1, 2));
+//        pointPage.stream().map(point -> point.toString()).forEach(log::info);
+        log.info("=========="+pointPage.getContent()); //==251만 가져옴, 351도 10000 포인트임
+        //size가 2일 때 251 반환, size가 1일때 351 반환으로 총 결과값이 두개이지만 하나씩만 반환됨.
+        log.info("=========="+pointPage.getTotalElements()); //==101 반환 (point 전체 행의 수)
+    }
+*/
 
     @Test //멤버 페이징 조회
     public void findAllMemberTest(){
@@ -90,15 +115,6 @@ public class AdminRepositoryTests {
 //                .ifPresent(recruitmentBoard -> recruitmentBoard.getRecruitments()).forEach(log::info));
 //    }
 
-    @Test //파일
-    public void recruitmentFileSaveTest(){
-    }
-
-    @Test //이벤트 조회
-    public void eventBoardfindAllTest(){
-
-    }
-
     @Test //배너 삭제
     public void deleteBannerTest(){
         bannerRepository.findById(754l).ifPresent(bannerApply -> bannerRepository.delete(bannerApply));
@@ -112,6 +128,11 @@ public class AdminRepositoryTests {
             memberRepository.findById(51L).ifPresent(member -> bannerApply.setMember(member));
             bannerRepository.save(bannerApply);
         }
+    }
+
+    @Test //배너 상세 조회
+    public void findBannerById(){
+        bannerRepository.findById(755L).ifPresent(bannerApply -> log.info(bannerApply.toString()));
     }
 
     @Test //배너 목록
@@ -147,7 +168,10 @@ public class AdminRepositoryTests {
         bannerRepository.findById(764L).ifPresent(bannerApply -> bannerApply.setBannerStatus(BannerType.REJECT));
     }
 
-    @Test
-    public void eventBoardInsert(){
+    @Test //자유게시글 상세
+    public void findFreeBoardById(){
+        freeBoardRepository.findById(555L).ifPresent(freeBoard -> log.info(freeBoard.toString()));
     }
+
+
 }
