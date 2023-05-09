@@ -2,7 +2,6 @@ package com.app.dodamdodam.repository.chatting;
 
 
 import com.app.dodamdodam.entity.chatting.Chatting;
-import com.app.dodamdodam.entity.chatting.QChatting;
 import com.app.dodamdodam.type.ReadStatus;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.beans.factory.annotation.Autowired;

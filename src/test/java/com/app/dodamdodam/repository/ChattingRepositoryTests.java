@@ -2,7 +2,6 @@ package com.app.dodamdodam.repository;
 
 import com.app.dodamdodam.entity.chatting.Chatting;
 import com.app.dodamdodam.entity.chatting.Room;
-import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.repository.chatting.ChattingRepository;
 import com.app.dodamdodam.repository.member.MemberRepository;
 import com.app.dodamdodam.repository.room.RoomRepository;
