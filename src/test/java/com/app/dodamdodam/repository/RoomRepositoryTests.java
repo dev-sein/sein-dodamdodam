@@ -1,6 +1,5 @@
 package com.app.dodamdodam.repository;
 
-import com.app.dodamdodam.entity.chatting.Chatting;
 import com.app.dodamdodam.entity.chatting.Room;
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.repository.chatting.ChattingRepository;
@@ -19,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @Rollback(false)
 @Slf4j
-public class ChattingRepositoryTests {
+public class RoomRepositoryTests {
     @Autowired
     private ChattingRepository chattingRepository;
 
@@ -29,25 +28,11 @@ public class ChattingRepositoryTests {
     @Autowired
     private RoomRepository roomRepository;
 
+    /* id로 내가 참여한 채팅 목록 가져오기*/
     @Test
-    public void saveTest(){
-        Room room = new Room(1L);
-        memberRepository.findById(1L).ifPresent(member -> room.setMember(member));
-        Chatting chatting = new Chatting(1L, 2L, "1번이 2번에게 보내는 메세지");
-        Chatting chatting2 = new Chatting(1L, 2L, "1번이 2번에게 보내는 메세지2");
-        chatting.setRoom(room);
-        chatting2.setRoom(room);
-        chattingRepository.save(chatting);
-        chattingRepository.save(chatting2);
-        roomRepository.save(room);
+    public void findByIdTest(){
+        Pageable pageable = PageRequest.of(0,10);
+        roomRepository.findRoomByMemberId(pageable, 3L).stream().map(Room::toString).forEach(log::info);
     }
 
-//    @Test
-//    public void findAll(){
-//        chattingRepository.findAll().stream().map(Chatting::toString).forEach(log::info);
-//    }
-
-
-
 }
-

@@ -17,22 +17,20 @@ public class Room{
     @EqualsAndHashCode.Include
     private Long id;
     @NotNull
-    private int hostId;
-    @NotNull
-    private int havingId;
+    private Long hostId;
+    /*이게 필요한지? - 주석처리*/
+    /*@NotNull
+    private Long havingId;*/
 
-//    @OneToMany(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "CHATTING_ID")
-//    private List<Chatting> chattings = new ArrayList<>();
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "room")
+    private List<Chatting> chattings;
 
     @ManyToOne
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
-    public Room(int hostId, int havingId, Member member) {
+    public Room(Long hostId) {
         this.hostId = hostId;
-        this.havingId = havingId;
-        this.member = member;
     }
 
     public void setMember(Member member) {

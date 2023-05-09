@@ -18,8 +18,6 @@ public class Chatting extends Period {
     private Long receiverMemberId;
     private String chattingContent;
 
-
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ROOM_ID")
     private Room room;
