@@ -1,20 +1,18 @@
 package com.app.dodamdodam.repository;
 
-import com.app.dodamdodam.entity.banner.BannerApply;
 import com.app.dodamdodam.entity.free.FreeBoard;
-import com.app.dodamdodam.entity.point.Point;
+import com.app.dodamdodam.entity.free.FreeFile;
 import com.app.dodamdodam.entity.purchase.Product;
 import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.entity.recruitment.Recruitment;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
-import com.app.dodamdodam.repository.banner.BannerRepository;
 import com.app.dodamdodam.repository.board.free.FreeBoardRepository;
 import com.app.dodamdodam.repository.board.purchase.PurchaseBoardRepository;
 import com.app.dodamdodam.repository.board.recruitment.RecruitmentBoardRepository;
+import com.app.dodamdodam.repository.file.freeFile.FreeFileRepository;
 import com.app.dodamdodam.repository.member.MemberRepository;
 import com.app.dodamdodam.repository.recruitment.RecruitmentRepository;
 import com.app.dodamdodam.type.CategoryType;
-import com.app.dodamdodam.type.PointStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +25,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.UUID;
 
 @SpringBootTest
 @Rollback(false)
@@ -49,6 +49,9 @@ public class BoardRepositoryTests {
     @Autowired
     private RecruitmentRepository recruitmentRepository;
 
+    @Autowired
+    private FreeFileRepository freeFileRepository;
+
     ArrayList<CategoryType> categoryTypes = new ArrayList<CategoryType>(Arrays.asList(CategoryType.ALL, CategoryType.CULTURE, CategoryType.DAILY, CategoryType.EVENT, CategoryType.PURCHASE, CategoryType.RECRUITMENT));
 
     /*모집 게시글 등록*/
@@ -68,9 +71,9 @@ public class BoardRepositoryTests {
     /*자유 게시글 등록*/
     @Test
     public void saveTest2(){
-        FreeBoard freeBoard = new FreeBoard("자유 게시글 제목","자유 게시글 내용" , categoryTypes.get(1));
-        memberRepository.findById(5L).ifPresent(member -> freeBoard.setMember(member));
-        freeBoardRepository.save(freeBoard);
+//        FreeBoard freeBoard = new FreeBoard("자유 게시글 제목","자유 게시글 내용" , categoryTypes.get(1), );
+//        memberRepository.findById(5L).ifPresent(member -> freeBoard.setMember(member));
+//        freeBoardRepository.save(freeBoard);
 //        for (int i=1; i<=100; i++){
 //            FreeBoard freeBoard = new FreeBoard("자유 게시글 제목" + i,"자유 게시글 내용" + i, categoryTypes.get(i % 6));
 //            memberRepository.findById(2L).ifPresent(member -> freeBoard.setMember(member));
@@ -112,5 +115,68 @@ public class BoardRepositoryTests {
             recruitmentRepository.save(recruitment);
         });
     }
+
+    /* 자유 게시글 작성 */
+    @Test
+    public void saveFreeBoardTest(){
+        FreeBoard freeBoard = new FreeBoard("자유게시글 제목", "자유게시글 내용", categoryTypes.get(1));
+        memberRepository.findById(5L).ifPresent(member -> freeBoard.setMember(member));
+        freeBoardRepository.save(freeBoard);
+
+        List<FreeFile> freeFiles = new ArrayList<FreeFile>();
+        FreeFile freeFile = new FreeFile("fileName1", UUID.randomUUID().toString(),"filePath1",500L);
+        FreeFile freeFile2 = new FreeFile("fileName2", UUID.randomUUID().toString(),"filePath2",500L);
+        freeFile.setFreeBoard(freeBoard);
+        freeFile2.setFreeBoard(freeBoard);
+
+        freeFiles.add(freeFile);
+        freeFiles.add(freeFile2);
+        log.info(freeFile.toString());
+        log.info(freeFile2.toString());
+        log.info(freeFiles.toString());
+        freeFileRepository.saveAll(freeFiles);
+
+//        for (int i=1; i<=5; i++) {
+//            List<FreeFile> freeFiles = new ArrayList<FreeFile>();
+//            FreeFile freeFile = new FreeFile("fileName1", UUID.randomUUID().toString(),"filePath" + i,500L);
+//            FreeFile freeFile2 = new FreeFile("fileName2", UUID.randomUUID().toString(),"filePath" + i,500L);
+//            freeBoardRepository.findById()
+//            freeFiles.add(freeFile);
+//            freeFiles.add(freeFile2);
+//            log.info(freeFile.toString());
+//            log.info(freeFiles.toString());
+//            freeFileRepository.saveAll(freeFiles);
+//            FreeBoard freeBoard = new FreeBoard("자유게시글 제목" + i, "자유게시글 내용" + i, categoryTypes.get(i));
+//            freeBoard.setFreeFiles(freeFileRepository.findAll());
+//            memberRepository.findById(5L).ifPresent(member -> freeBoard.setMember(member));
+//            freeBoardRepository.save(freeBoard);
+//            /*file이 안나옴*/
+//        }
+    }
+
+    /* 자유 게시글 목록 */
+    @Test
+    public void findAllFreeBoardListTest(){
+        Pageable pageable = PageRequest.of(0, 10);
+        freeBoardRepository.findAllFreeBoardList(pageable).stream().map(FreeBoard::toString).forEach(log::info);
+    }
+
+    /* 자유 게시글 목록 분류 */
+    @Test
+    public void findFreeBoardListByCategoryTypeTest(){
+        Pageable pageable = PageRequest.of(0, 10);
+        freeBoardRepository.findFreeBoardListByCategoryType(pageable,CategoryType.CULTURE).stream().map(FreeBoard::toString).forEach(log::info);
+    }
+
+    /* 내가 작성한 자유 게시글 목록 분류 */
+    @Test
+    public void findFreeBoardListByCategoryTypeAndMemberIdTest(){
+        Pageable pageable = PageRequest.of(0, 10);
+        freeBoardRepository.findFreeBoardListByCategoryTypeAndMemberId(pageable,CategoryType.CULTURE, 5L).stream().map(FreeBoard::toString).forEach(log::info);
+    }
+
+    /* 자유 게시글 상세 */
+    /* 자유 게시글 수정 */
+    /* 자유 게시글 삭제 */
 
 }

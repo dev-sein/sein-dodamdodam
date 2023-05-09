@@ -78,7 +78,7 @@ public class MemberRepositoryTests {
         memberRepository.findByMemberId(5L).stream().map(MemberDTO::toString).forEach(log::info);
     }
 
-    //    마이페이지 내가 작성한 모집글 목록 조회
+//    마이페이지 내가 작성한 모집글 목록 조회
     @Test
     public void findRecruitBoardByMemberIdTest(){
         Pageable pageable = PageRequest.of(0, 5);
