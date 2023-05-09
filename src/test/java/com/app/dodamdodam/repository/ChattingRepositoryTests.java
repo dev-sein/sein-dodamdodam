@@ -29,17 +29,32 @@ public class ChattingRepositoryTests {
     @Autowired
     private RoomRepository roomRepository;
 
+    /*채팅 추가하기*/
     @Test
     public void saveTest(){
-        Room room = new Room(1L);
-        memberRepository.findById(1L).ifPresent(member -> room.setMember(member));
-        Chatting chatting = new Chatting(1L, 2L, "1번이 2번에게 보내는 메세지");
-        Chatting chatting2 = new Chatting(1L, 2L, "1번이 2번에게 보내는 메세지2");
-        chatting.setRoom(room);
-        chatting2.setRoom(room);
-        chattingRepository.save(chatting);
-        chattingRepository.save(chatting2);
-        roomRepository.save(room);
+        for (int i=1; i<=100; i++) {
+            Room room = new Room(1L);
+            memberRepository.findById(1L).ifPresent(member -> room.setMember(member));
+            Chatting chatting = new Chatting(1L, 2L + i, "1번이 2번에게 보내는 메세지" + i);
+            chatting.setRoom(room);
+            chattingRepository.save(chatting);
+            roomRepository.save(room);
+        }
+    }
+
+    /* id로 내가 참여한 채팅 목록 가져오기*/
+    @Test
+    public void findChattingByMemberIdTest(){
+        Pageable pageable = PageRequest.of(0,10);
+        chattingRepository.findChattingByMemberId(pageable, 1L).stream().map(Chatting::toString).forEach(log::info);
+
+    }
+
+    /* id로 내가 참여한 룸 목록 가져오기*/
+    @Test
+    public void findRoomByMemberIdTest(){
+        Pageable pageable = PageRequest.of(0,10);
+        roomRepository.findRoomByMemberId(pageable, 1L).stream().map(Room::toString).forEach(log::info);
     }
 
 //    @Test

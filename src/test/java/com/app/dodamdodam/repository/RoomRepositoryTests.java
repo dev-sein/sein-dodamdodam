@@ -28,11 +28,6 @@ public class RoomRepositoryTests {
     @Autowired
     private RoomRepository roomRepository;
 
-    /* id로 내가 참여한 채팅 목록 가져오기*/
-    @Test
-    public void findByIdTest(){
-        Pageable pageable = PageRequest.of(0,10);
-        roomRepository.findRoomByMemberId(pageable, 3L).stream().map(Room::toString).forEach(log::info);
-    }
+
 
 }
