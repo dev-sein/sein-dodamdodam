@@ -22,7 +22,7 @@ public class RecruitmentBoardQueryDslImpl implements RecruitmentBoardQueryDsl {
     public List<RecruitmentBoard> findRecruitmentBoardListByMemberId(Pageable pageable, Long memberId) {
         return query.select(recruitmentBoard).from(recruitmentBoard).where(recruitmentBoard.member.id.eq(memberId)).orderBy(recruitmentBoard.id.desc()).offset(pageable.getOffset()).limit(pageable.getPageSize()).fetch();
     }
-    
+
     /* 내가 참가한 모집게시글 목록 가져오기*/
     @Override
     public List<RecruitmentBoard> findRecruitmentedBoardListByMemberId(Pageable pageable, Long memberId) {
