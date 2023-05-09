@@ -1,24 +1,39 @@
 package com.app.dodamdodam.entity.chatting;
 
 import com.app.dodamdodam.audit.Period;
+import com.app.dodamdodam.type.ReadStatus;
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
-@ToString
+@ToString(exclude = "room")
 @Table(name = "TBL_CHATTING")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Chatting extends Period {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
-    private String chattingContent;
+    @NotNull private Long senderMemberId;
+    @NotNull private Long receiverMemberId;
+    @NotNull private String chattingContent;
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private ReadStatus readStatus;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ROOM_ID")
     private Room room;
 
+    public Chatting(Long senderMemberId, Long receiverMemberId, String chattingContent) {
+        this.senderMemberId = senderMemberId;
+        this.receiverMemberId = receiverMemberId;
+        this.chattingContent = chattingContent;
+    }
 
+    public void setRoom(Room room) {
+        this.room = room;
+    }
 }
