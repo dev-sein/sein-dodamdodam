@@ -162,7 +162,7 @@ sellBanner.appendChild(clonedsellBanner4);
 const clonedsellBanner5 = $('.sell-swiper5').clone()[0];
 sellBanner.insertBefore(clonedsellBanner5, document.querySelector('div.swiper-wrapper .sell-swiper1'));
 
-eventBanner.style.transform = `translate(-326px)`;
+sellBanner.style.transform = `translate(-326px)`;
 
 sellPrev.addEventListener('click', function() {
   if (sellCheckArrow) {
@@ -214,97 +214,6 @@ sellNext.addEventListener('click', function() {
 
 
 
-// /* 모집 배너 */
-// const secondBanner = document.querySelector('.recruit-swiper-container');
-// const secondImageDiv = document.querySelectorAll('.recruit-swiper-container .recruit-swiper-image');
-// const secondPrev = document.querySelector('.recruits-bar .arrow-icon-left');
-// const secondNext = document.querySelector('.recruits-bar .arrow-icon-right');
-// let secondCheckArrow = false;
-// let secondCount = 1;
-
-// secondImageDiv.forEach((div, i) => {
-//   div.style.backgroundImage = `url(/static/css/images/main/recruit-00${i + 1}.jpg)`;
-// });
-
-// const clonedsecondBanners = document.querySelectorAll('.recruit-swiper-wrapper > div').values();
-
-// for (const clonedBanner of clonedsecondBanners) {
-//   secondBanner.appendChild(clonedBanner.cloneNode(true));
-// }
-
-// const clonedsecondBanner5 = document.querySelector('.recruit-swiper-box5').cloneNode(true);
-// secondBanner.insertBefore(clonedsecondBanner5, document.querySelector('.recruit-swiper-box .recruit-swiper-box1'));
-
-// secondBanner.style.transform = `translateX(-261px)`;
-
-// secondPrev.addEventListener('click', function() {
-//   if (secondCheckArrow) {
-//     return;
-//   }
-//   secondCheckArrow = true;
-//   secondCount--;
-//   if (secondCount === 0) {
-//     secondBanner.style.transition = 'transform 0s';
-//     secondBanner.style.transform = `translateX(${-261 * (secondImageDiv.length + 1)}px)`;
-//     setTimeout(() => {
-//       secondCount = secondImageDiv.length;
-//       secondBanner.style.transition = 'transform 0.3s';
-//       secondBanner.style.transform = `translateX(${-261 * secondCount}px)`;
-//       secondCheckArrow = false;
-//     }, 10);
-//   } else {
-//     secondBanner.style.transition = 'transform 0.3s';
-//     secondBanner.style.transform = `translateX(${-261 * secondCount}px)`;
-//     setTimeout(() => {
-//       secondCheckArrow = false;
-//     }, 300);
-//   }
-// });
-
-// secondNext.addEventListener('click', function() {
-//   if (secondCheckArrow) {
-//     return;
-//   }
-//   secondCheckArrow = true;
-//   secondCount++;
-//   secondBanner.style.transition = 'transform 0.3s';
-//   secondBanner.style.transform = `translateX(${-261 * secondCount}px)`;
-//   if (secondCount === secondImageDiv.length + 1) {
-//     secondCount = 1;
-//     setTimeout(function() {
-//       secondBanner.style.transition = 'transform 0s';
-//       secondBanner.style.transform = 'translateX(-261px)';
-//     }, 300);
-//   }
-//   setTimeout(() => {
-//     secondBanner.style.transition = 'transform 0s';
-//     secondBanner.style.transform = `translateX(${-261 * secondCount}px)`;
-//     secondCheckArrow = false;
-//   }, 300);
-// });
-
-
-// /* 모집 배너 액션 */
-// // $('.second-banners').each((i, e) => {
-// //   $(e).mouseover(() => {
-// //      $($(".recruit-box-context")[i]).css("transform", "translate(0, -180px)");
-// //      $($(".recruit-box-context")[i]).css("background", "linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4))");
-// //   });
-// //   $(e).mouseout(() => {
-// //      $($(".recruit-box-context")[i]).css("transform", "translate(0, 0px)");
-// //      $($(".recruit-box-context")[i]).css("background", "linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0))");
-// //   });
-// // });
-// $('.recruit-swiper-inner-container').each((i, e) => {
-//   $(e).mouseover(() => {
-//      $($(".recruit-box-context")[i]).css("transform", "translate(0, -180px)");
-//      $($(".recruit-box-context")[i]).css("background", "linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4))");
-//   });
-//   $(e).mouseout(() => {
-//      $($(".recruit-box-context")[i]).css("transform", "translate(0, 0px)");
-//      $($(".recruit-box-context")[i]).css("background", "linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0))");
-//   });
-// });
 
 
 /* 두번째 배너 */
@@ -390,85 +299,182 @@ $('.second-banners').each((i, e) => {
   });
 });
 
-/* 문화공간 배너 */
-// HTMLCollection.prototype.forEach = Array.prototype.forEach;
-// const thirdBanner = document.querySelector('div.third-banner');
-// const thirdImageDiv = document.querySelectorAll('div.third-banner div .third-banner-image');
-// const thirdFirstImageDiv = document.createElement('div');
-// const thirdNext = document.querySelector('div.third-next');
-// const thirdPrev = document.querySelector('div.third-prev');
-// const thirdButtons = document.querySelectorAll('.third-buttons button');
+/* 세번째 배너 */
+HTMLCollection.prototype.forEach = Array.prototype.forEach;
+const thirdBanner = document.querySelector('div.third-banner');
+const thirdImageDiv = document.querySelectorAll('div.third-banner div .third-banner-image');
+const thirdFirstImageDiv = document.createElement('div');
+const thirdNext = document.querySelector('div.third-next');
+const thirdPrev = document.querySelector('div.third-prev');
+const thirdButtons = document.querySelectorAll('.third-buttons button');
 
-// let thirdCheckArrow = false;
-// let thirdCount = 1;
-// const thirdPageNow = document.querySelector('#third-page-now');
-
-
-// thirdImageDiv.forEach(
-//   (div, i) => (div.style.backgroundImage = `url(../../static/css/main/images/third-00${i + 1}.jpg)`)
-// );
-
-// const clonedThirdBanner1 = $('.third-banner1').clone()[0];
-// thirdBanner.appendChild(clonedThirdBanner1); 
-
-// const clonedThirdBanner2 = $('.third-banner2').clone()[0];
-// thirdBanner.appendChild(clonedThirdBanner2);
-
-// const clonedThirdBanner3 = $('.third-banner3').clone()[0];
-// thirdBanner.appendChild(clonedThirdBanner3);
-
-// const clonedThirdBanner4 = $('.third-banner4').clone()[0];
-// thirdBanner.appendChild(clonedThirdBanner4);
+let thirdCheckArrow = false;
+let thirdCount = 1;
+const thirdPageNow = document.querySelector('#third-page-now');
 
 
+thirdImageDiv.forEach(
+  (div, i) => (div.style.backgroundImage = `url(/static/images/main/culture-00${i + 1}.jpg)`)
+);
 
-// const clonedThirdBanner5 = $('.third-banner5').clone()[0];
-// thirdBanner.insertBefore(clonedThirdBanner5, document.querySelector('div.third-banner .third-banner1'));
+const clonedThirdBanner1 = $('.third-banner1').clone()[0];
+thirdBanner.appendChild(clonedThirdBanner1); 
 
-// thirdBanner.style.transform = `translate(-326px)`;
+const clonedThirdBanner2 = $('.third-banner2').clone()[0];
+thirdBanner.appendChild(clonedThirdBanner2);
 
-// thirdPrev.addEventListener('click', function () {
-//   if (thirdCheckArrow) {
-//     return;
-//   }
-//   thirdCheckArrow = true;
-//   thirdCount--;
-//   if (thirdCount === 0) {
-//     thirdBanner.style.transition = 'transform 0s';
-//     thirdBanner.style.transform = `translate(${-326 * (thirdImageDiv.length + 1)}px)`;
-//     setTimeout(() => {
-//       thirdCount = thirdImageDiv.length;
-//       thirdBanner.style.transition = 'transform 0.3s';
-//       thirdBanner.style.transform = `translate(${-326 * thirdCount}px)`;
-//       thirdCheckArrow = false;
-//     }, 10);
-//   } else {
-//     thirdBanner.style.transition = 'transform 0.3s';
-//     thirdBanner.style.transform = `translate(${-326 * thirdCount}px)`;
-//     setTimeout(() => {
-//       thirdCheckArrow = false;
-//     }, 300);
-//   }
-// });
+const clonedThirdBanner3 = $('.third-banner3').clone()[0];
+thirdBanner.appendChild(clonedThirdBanner3);
 
-// thirdNext.addEventListener('click', function () {
-//   if (thirdCheckArrow) {
-//     return;
-//   }
-//   thirdCheckArrow = true;
-//   thirdCount++;
-//   thirdBanner.style.transition = 'transform 0.3s';
-//   thirdBanner.style.transform = `translate(${-326 * thirdCount}px)`;
-//   if (thirdCount == thirdImageDiv.length + 1) {
-//     thirdCount = 1;
-//     setTimeout(function () {
-//             thirdBanner.style.transition = 'transform 0s';
-//             thirdBanner.style.transform = 'translate(-326px)';
-//         }, 300);
-//   }
-//   setTimeout(() => {
-//     thirdBanner.style.transition = 'transform 0s';
-//     thirdBanner.style.transform = `translate(${-326 * thirdCount}px)`;
-//     thirdCheckArrow = false;
-//   }, 300);
-// });
+const clonedThirdBanner4 = $('.third-banner4').clone()[0];
+thirdBanner.appendChild(clonedThirdBanner4);
+
+
+
+const clonedThirdBanner5 = $('.third-banner5').clone()[0];
+thirdBanner.insertBefore(clonedThirdBanner5, document.querySelector('div.third-banner .third-banner1'));
+
+thirdBanner.style.transform = `translate(-326px)`;
+
+thirdPrev.addEventListener('click', function () {
+  if (thirdCheckArrow) {
+    return;
+  }
+  thirdCheckArrow = true;
+  thirdCount--;
+  if (thirdCount === 0) {
+    thirdBanner.style.transition = 'transform 0s';
+    thirdBanner.style.transform = `translate(${-326 * (thirdImageDiv.length + 1)}px)`;
+    setTimeout(() => {
+      thirdCount = thirdImageDiv.length;
+      thirdBanner.style.transition = 'transform 0.3s';
+      thirdBanner.style.transform = `translate(${-326 * thirdCount}px)`;
+      thirdCheckArrow = false;
+    }, 10);
+  } else {
+    thirdBanner.style.transition = 'transform 0.3s';
+    thirdBanner.style.transform = `translate(${-326 * thirdCount}px)`;
+    setTimeout(() => {
+      thirdCheckArrow = false;
+    }, 300);
+  }
+});
+
+thirdNext.addEventListener('click', function () {
+  if (thirdCheckArrow) {
+    return;
+  }
+  thirdCheckArrow = true;
+  thirdCount++;
+  thirdBanner.style.transition = 'transform 0.3s';
+  thirdBanner.style.transform = `translate(${-326 * thirdCount}px)`;
+  if (thirdCount == thirdImageDiv.length + 1) {
+    thirdCount = 1;
+    setTimeout(function () {
+            thirdBanner.style.transition = 'transform 0s';
+            thirdBanner.style.transform = 'translate(-326px)';
+        }, 300);
+  }
+  setTimeout(() => {
+    thirdBanner.style.transition = 'transform 0s';
+    thirdBanner.style.transform = `translate(${-326 * thirdCount}px)`;
+    thirdCheckArrow = false;
+  }, 300);
+});
+
+
+/* 신청 배너 */
+HTMLCollection.prototype.forEach = Array.prototype.forEach;
+const applyBanner = document.querySelector("div.banner");
+const applyImageDiv = document.querySelectorAll("div.banner div");
+const applyLastImageDiv = document.createElement("div");
+const applyFirstImageDiv = document.createElement("div");
+const applyNext = document.querySelector("div.next");
+const applyPrev = document.querySelector("div.prev");
+const applyButtons = document.querySelectorAll(".buttons button");
+let applyCheckArrow = false;
+let applyCount = 1;
+let applyAuto = setInterval(applyAutoSlide, 2000);
+let applyTemp = applyButtons[0];
+
+HTMLCollection.prototype.forEach = Array.prototype.forEach;
+applyButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        clearInterval(applyAuto);
+        applyCount = parseInt(button.innerHTML);
+        changeButtonStyle();
+        applyBanner.style.transition = "transform 0.3s";
+        applyBanner.style.transform = `translate(${-1280 * applyCount}px)`;
+        applyAuto = setInterval(applyAutoSlide, 2000);
+    });
+});
+
+applyImageDiv.forEach((div, i) => div.style.backgroundImage = `url(/static/images/main/apply-00${i+1}.jpg)`)
+
+applyBanner.appendChild(applyLastImageDiv);
+applyLastImageDiv.style.backgroundImage = `url(/static/images/main/apply-001.jpg)`;
+
+applyBanner.insertBefore(applyFirstImageDiv, document.querySelector("div.banner div"));
+applyFirstImageDiv.style.backgroundImage = `url(/static/images/main/apply-00${applyImageDiv.length}.jpg)`
+
+applyBanner.style.transform = `translate(-1280px)`;
+
+function changeButtonStyle() {
+    if(applyTemp){
+        applyTemp.style.background = "white";
+        applyTemp.style.color = "black";
+    }
+    applyButtons[applyCount - 1].style.background = "black";
+    applyButtons[applyCount - 1].style.color = "white";
+    applyTemp = applyButtons[applyCount - 1];
+}
+
+function applyAutoSlide(){
+    applyBanner.style.transition = "transform 0.3s";
+    applyBanner.style.transform = `translate(${-1280 * ++applyCount}px)`;
+    console.log(applyCount);
+    if(applyCount == 6) {
+        applyCount = 1;
+        setTimeout(function(){
+            applyBanner.style.transition = "transform 0s";
+            applyBanner.style.transform = "translate(-1280px)";
+        }, 300);
+    }
+    changeButtonStyle();
+}
+
+applyPrev.addEventListener("click", function(){
+    if(applyCheckArrow){return;}
+    applyCheckArrow = true;
+    clearInterval(applyAuto);
+    applyBanner.style.transition = "transform 0.3s";
+    applyBanner.style.transform = `translate(${-1280 * --applyCount}px)`;
+    if(applyCount == 0) {
+        applyCount = 5;
+        setTimeout(function(){
+            applyBanner.style.transition = "transform 0s";
+            applyBanner.style.transform = `translate(${-1280 * (applyImageDiv.length)}px)`;
+        }, 300);
+    }
+    changeButtonStyle();
+    applyAuto = setInterval(applyAutoSlide, 2000);
+    setTimeout(()=>{applyCheckArrow = false}, 300);
+});
+
+applyNext.addEventListener("click", function(){
+    if(applyCheckArrow){return;}
+    applyCheckArrow = true;
+    clearInterval(applyAuto);
+    applyBanner.style.transition = "transform 0.3s";
+    applyBanner.style.transform = `translate(${-1280 * ++applyCount}px)`;
+    if(applyCount == 6) {
+        applyCount = 1;
+        setTimeout(function(){
+            applyBanner.style.transition = "transform 0s";
+            applyBanner.style.transform = "translate(-1280px)";
+        }, 300);
+    }
+    changeButtonStyle();
+    applyAuto = setInterval(applyAutoSlide, 2000);
+    setTimeout(()=>{applyCheckArrow = false}, 300);
+});

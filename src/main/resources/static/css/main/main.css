@@ -646,6 +646,13 @@
 }
 
 /* 두번째 배너 css */
+.event-banner-container{
+    position: relative;
+    overflow: hidden;
+    margin: 0px auto;
+    max-width: 1280px;
+    min-width: 1090px;
+}
 .second-banner-container{
     position: relative;
     overflow: hidden;
@@ -796,77 +803,154 @@ div.second-next {
     display: none;
 }
 
-/* second-banner 끝 */
-
-.static-banner-container{
+/* 세번째 배너 css */
+.third-banner-container{
     position: relative;
-    padding-left: 0px;
-    padding-right: 0px;
-    margin-bottom: 100px;
+    overflow: hidden;
 }
 
-.static-banner {
-    margin: 0px auto;
-    border-radius: 8px;
-    max-width: 1280px;
-    min-width: 320px;
+div.third-banner {
     display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    background-image: url('https://makercenter.wadiz.kr/static/media/newsletter.5d08ede6da1807c7b556.png');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    height: 220px;
-    flex-direction: row;
-    -webkit-box-pack: justify;
-    justify-content: space-between;
-}
-
-.static-banner-context {
-    margin-left: 120px;
-}
-.static-banner-date {
-    margin-bottom: 12px;
-    font-weight: 400;
-    color: rgb(255, 255, 255);
-    line-height: 26px;
-    font-size: 18px;
-}
-.satic-banner-title {
-    font-weight: 700;
-    color: rgb(255, 255, 255);
-    margin-bottom: 16px;
-    font-size: 32px;
-    line-height: 44px;
-    text-align: left;
-}
-.apply-form {
-    display: flex;
-    -webkit-box-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    align-items: center;
-    border: 0px;
-    border-radius: 3px;
-    background-color: var(--main-sub);
+    gap: 24px;
+    width: 10000px; /* 배너 5개라 * 7 */
+    transition: transform 0.3s;
     cursor: pointer;
-    text-decoration: none;
-    margin-right: 120px;
-    width: 240px;
-    height: 60px;
 }
-.a-context {
-    margin-left: 8px;
+
+div.third-banner .third-banners {
+    width: 302px;
+    height: 273px;
+    float: left;
+    transition: transform 0.4s ease-in-out;
+    background-position: center;
+}
+
+.third-banner-image-wrapper{
+    width: 302px;
+    height: 160px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.third-banner-image{
+    width: 302px;
+    height: 160px;
+    background-size: cover;
+    border-radius: 10px;
+    transition: all 0.2s linear;
+}
+
+.third-banner-image:hover{
+    transform: scale(1.2);  
+}
+
+div.third-move-arrow {
+    z-index: 1;
+    cursor: pointer;
     display: flex;
-    -webkit-box-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    align-items: center;
-    color: rgb(255, 255, 255);
-    font-weight: 700;
-    font-size: 18px;
+    justify-content: space-around;
 }
+
+div.third-move-arrow div {
+    background-size: 7px auto;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+div.third-prev {
+    position: absolute;
+    top: 40%;
+    left: 5px;
+    transform: translate(0, -50%);  
+}
+
+.third-prev-image{
+    width: 50px;
+    height: 50px;
+}
+
+div.third-next {
+    position: absolute;
+    top: 40%;
+    right: 5px;
+    transform: translate(0, -50%);  
+}
+
+.third-page-move-wrapper {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    bottom: 0px;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    height: 28px;
+    padding: 6px 10px;
+    color: rgb(204, 204, 204);
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: -0.36px;
+    font-weight: bold;
+    border-radius: 16px;
+    background-color: rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+#third-page-now{
+    color: rgb(255, 255, 255);
+    margin-right: 2px;
+}
+
+#third-page-total{
+    margin-right: 2px;
+}
+
+.third-banner-text-wrapper{
+    height: 48px;
+    margin-bottom: 10px;
+    color: rgb(33, 37, 41);
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    width: 295px;
+}
+
+
+.third-banner-text{
+    color: rgb(33, 37, 41);
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* 세번째 배너 끝 */
+
+/* 신청 배너 */
+section.container {
+    position: relative;
+    width: 1280px;
+    margin: 0 auto 60px;
+    overflow: hidden;
+}
+
+div.banner {
+    width: 8960px;
+    transition: transform 0.3s;
+    /* transform: translate(-90vw); */
+}
+
+div.banner div {
+    width: 1280px;
+    height: 338px;
+    float: left;
+    background-size: 100%;
+}
+
+
+/* 신청배너 끝 */
+
 
 
 /* banner 메인 배너 */
