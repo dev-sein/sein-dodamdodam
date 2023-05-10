@@ -23,36 +23,38 @@ import static com.app.dodamdodam.entity.purchase.QPurchaseBoard.purchaseBoard;
 public class PurchaseBoardQueryDslImpl implements PurchaseBoardQueryDsl {
     private final JPAQueryFactory query;
 
+//    @Override
+//    public Slice<PurchaseBoard> findAllPurchaseBoard_QueryDSL(Pageable pageable) {
+//        boolean hasNext = false;
+//
+//        List<PurchaseBoard> results = query.select(purchaseBoard)
+//                .from(purchaseBoard)
+//                .join(purchaseBoard.member)
+//                .join(purchaseBoard.purchaseFiles)
+//                .fetchJoin()
+//                .limit(10)
+//                .fetch();
+//
+//        if(results.size() > pageable.getPageSize()) {
+//            hasNext = true;
+//            results.remove(pageable.getPageSize()); //한개 더 가져왔으니 더 가져온 데이터 삭제
+//        }
+//
+//        return new SliceImpl<>(results, pageable, hasNext);
+//    }
+
     @Override
-    public Slice<PurchaseBoard> findAllPurchaseBoard_QueryDSL(Pageable pageable) {
-        boolean hasNext = false;
-
-        List<PurchaseBoard> results = query.select(purchaseBoard)
-                .from(purchaseBoard)
-                .join(purchaseBoard.member)
-                .join(purchaseBoard.purchaseFiles)
-                .fetchJoin()
-                .limit(10)
-                .fetch();
-
-        if(results.size() > pageable.getPageSize()) {
-            hasNext = true;
-            results.remove(pageable.getPageSize()); //한개 더 가져왔으니 더 가져온 데이터 삭제
-        }
-
-        return new SliceImpl<>(results, pageable, hasNext);
-    }
-
-    @Override
-    public Optional<PurchaseBoard> findPurchaseBoardById_QueryDSL(Long id) {
+    public Optional<PurchaseBoard> findPurchaseBoardById_QueryDSL(Long boardId) {
         return Optional.ofNullable(
                 query.select(purchaseBoard)
                         .from(purchaseBoard)
                         .join(purchaseBoard.product)
+                        .fetchJoin()
                         .join(purchaseBoard.member)
+                        .fetchJoin()
                         .join(purchaseBoard.purchaseFiles)
                         .fetchJoin()
-                        .where(purchaseBoard.id.eq(id))
+                        .where(purchaseBoard.id.eq(boardId))
                         .fetchOne()
         );
     }
@@ -79,6 +81,10 @@ public class PurchaseBoardQueryDslImpl implements PurchaseBoardQueryDsl {
                 .from(purchaseBoard)
                 .join(purchaseBoard.purchaseFiles)
                 .fetchJoin()
+                .join(purchaseBoard.product)
+                .fetchJoin()
+                .join(purchaseBoard.member)
+                .fetchJoin()
                 .where(boardTitleContains, boardContentContains, productNameContains)
                 .orderBy(purchaseBoard.id.desc())
                 .offset(pageable.getOffset())
@@ -93,4 +99,6 @@ public class PurchaseBoardQueryDslImpl implements PurchaseBoardQueryDsl {
         return new SliceImpl<>(purchaseBoards, pageable, hasNext);
 
     }
+
+
 }
