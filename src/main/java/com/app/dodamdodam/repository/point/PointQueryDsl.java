@@ -1,8 +1,7 @@
 package com.app.dodamdodam.repository.point;
 
-import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.point.Point;
-import com.app.dodamdodam.search.point.PointSearch;
+import com.app.dodamdodam.search.point.AdminPointSearch;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -13,5 +12,8 @@ public interface PointQueryDsl {
     public List<Point> findPointByMemberId(Long memberId);
 
 //    어드민-포인트 페이지 검색
-    public Page<Point> findAllPointWithSearch(PointSearch pointSearch, Pageable pageable);
+    public Page<Point> findPointWithSearch(AdminPointSearch pointSearch, Pageable pageable);
+
+//  어드민-포인트 아이디 검색(???) 수정중 
+    public Page<Point> findPointMemberIdWithSearch(AdminPointSearch pointSearch, Pageable pageable);
 }
