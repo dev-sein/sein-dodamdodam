@@ -169,21 +169,6 @@ window.onclick = function (event) {
 };
 
 
-/* 링크  */
-const openChatButton = document.querySelector('.management2');
-const tooltip = document.querySelector('.tooltip');
-
-function toggleTooltip() {
-  if (tooltip.style.display === 'none') {
-    tooltip.style.display = 'block';
-    openChatButton.style.display = 'none';
-  } else {
-    tooltip.style.display = 'none';
-    openChatButton.style.display = 'block';
-  }
-}
-
-openChatButton.addEventListener('click', toggleTooltip);
 
 
 

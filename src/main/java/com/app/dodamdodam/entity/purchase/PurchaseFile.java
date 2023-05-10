@@ -10,7 +10,7 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-@ToString(callSuper = true)
+@ToString(callSuper = true, exclude = "purchaseBoard")
 @Table(name = "TBL_PURCHASE_FILE")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class PurchaseFile extends BoardFile {
@@ -18,4 +18,10 @@ public class PurchaseFile extends BoardFile {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PURCHASE_BOARD_ID")
     private PurchaseBoard purchaseBoard;
+
+    public PurchaseFile(String fileOriginalName, String fileUuid, String filePath, Long fileSize, PurchaseBoard purchaseBoard) {
+        super(fileOriginalName, fileUuid, filePath, fileSize);
+        this.purchaseBoard = purchaseBoard;
+    }
+
 }

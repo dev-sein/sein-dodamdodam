@@ -34,7 +34,7 @@ public class RecruitmentBoardQueryDslImpl implements RecruitmentBoardQueryDsl {
 
         return new PageImpl<>(recruitmentBoards, pageable, count);
     }
-    
+
     /* 내가 참가한 모집게시글 목록 가져오기*/
     @Override
     public Page<RecruitmentBoard> findRecruitmentedBoardListByMemberId(Pageable pageable, Long memberId) {
