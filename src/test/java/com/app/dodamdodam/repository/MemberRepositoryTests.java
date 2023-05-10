@@ -103,7 +103,11 @@ public class MemberRepositoryTests {
 //    회원 정보 수정
     @Test
     public void setMemberTest(){
-        memberRepository.findById(2L).ifPresent(member -> member.setMemberPoint(50000));
+        memberRepository.findById(2L).ifPresent(member -> {
+            member.setMemberPoint(50000);
+            member.setMemberPassword("1234");
+        });
+
     }
 
 
