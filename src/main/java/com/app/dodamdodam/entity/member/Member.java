@@ -4,6 +4,8 @@ import com.app.dodamdodam.audit.Period;
 import com.app.dodamdodam.entity.embeddable.Address;
 import com.app.dodamdodam.entity.recruitment.Recruitment;
 import com.app.dodamdodam.type.MemberStatus;
+import com.app.dodamdodam.type.MemberType;
+import com.app.dodamdodam.type.Role;
 import com.sun.istack.NotNull;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
@@ -41,6 +43,12 @@ public class Member extends Period {
     @ColumnDefault("0")
     private Integer participationCount;
 
+    @Enumerated(EnumType.STRING)
+    private MemberType memberType;
+
+    @Enumerated(EnumType.STRING)
+    private Role memberRole;
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "member")
     private List<Recruitment> recruitments = new ArrayList<>();
 
@@ -52,6 +60,20 @@ public class Member extends Period {
         this.memberPhone = memberPhone;
         this.address = address;
         this.memberStatus = memberStatus;
+    }
+
+    public Member(Long id, String memberId, String memberPassword, String memberName, String memberEmail, String memberPhone, Address address, MemberStatus memberStatus, Integer memberPoint, MemberType memberType, Role memberRole) {
+        this.id = id;
+        this.memberId = memberId;
+        this.memberPassword = memberPassword;
+        this.memberName = memberName;
+        this.memberEmail = memberEmail;
+        this.memberPhone = memberPhone;
+        this.address = address;
+        this.memberStatus = memberStatus;
+        this.memberPoint = memberPoint;
+        this.memberType = memberType;
+        this.memberRole = memberRole;
     }
 
     public void setMemberPoint(Integer memberPoint) {
