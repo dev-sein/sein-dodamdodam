@@ -15,6 +15,7 @@ import com.app.dodamdodam.repository.point.PointRepository;
 import com.app.dodamdodam.search.point.AdminPointSearch;
 import com.app.dodamdodam.type.BannerType;
 import com.app.dodamdodam.type.CategoryType;
+import com.app.dodamdodam.type.MemberStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,9 +54,7 @@ public class AdminRepositoryTests {
     @Autowired
     public FreeBoardRepository freeBoardRepository;
 
-
     ArrayList<CategoryType> categoryTypes = new ArrayList<CategoryType>(Arrays.asList(CategoryType.ALL, CategoryType.CULTURE, CategoryType.DAILY, CategoryType.EVENT, CategoryType.PURCHASE, CategoryType.RECRUITMENT));
-
 
     /*포인트*/
     @Test //포인트 페이징 조회
@@ -74,9 +73,9 @@ public class AdminRepositoryTests {
         memberPage.getContent().stream().map(member -> member.toString()).forEach(log::info);
     }
 
-    @Test //멤버 삭제 (멤버 상태 변경으로 바꿔야 함)
+    @Test //멤버 삭제 (멤버 상태 변경)
     public void deleteByMemberId(){
-        memberRepository.findById(150L).ifPresent(member -> memberRepository.delete(member));
+        memberRepository.findById(880L).ifPresent(member -> member.setMemberStatus(MemberStatus.WITHDRAWAL));
     }
 
     @Test //멤버 상세 조회(뱃지 조인해야 함)
@@ -92,7 +91,7 @@ public class AdminRepositoryTests {
 
     @Test //모집글 삭제
     public void recuirmentDeleteTest(){
-        recruitmentBoardRepository.findById(451L).ifPresent(recruitmentBoard -> recruitmentBoardRepository.delete(recruitmentBoard));
+        recruitmentBoardRepository.findById(1045L).ifPresent(recruitmentBoard -> recruitmentBoardRepository.delete(recruitmentBoard));
     }
 
 //    @Test //모집글 상세보기 수정, 파일 넣어서 출력 해보기
@@ -104,15 +103,6 @@ public class AdminRepositoryTests {
     @Test //배너 삭제
     public void deleteBannerTest(){
         bannerRepository.findById(754l).ifPresent(bannerApply -> bannerRepository.delete(bannerApply));
-    }
-
-    @Test //배너 신청
-    public void bannerSaveTest(){
-        for(int i=0; i<10; i++){
-            BannerApply bannerApply = new BannerApply(LocalDate.now(),1);
-            memberRepository.findById(51L).ifPresent(member -> bannerApply.setMember(member));
-            bannerRepository.save(bannerApply);
-        }
     }
 
     @Test //배너 상세 조회
