@@ -1,76 +1,95 @@
-const $frequent = $('.guide-frequent');
-const $use = $('.guide-use');
-const $reserve = $('.guide-reserve');
-
-const $frequentSelect = $('.guide-frequent-select');
-const $useSelect = $('.guide-use-select');
-const $reserveSelect = $('.guide-reserve-select');
-
-$frequent.css("width", "0%")
-$frequent.css("min-width", "0%")
-$frequentSelect.css("width", "378px");
-
-$use.css("width", "104px");
-$useSelect.css("width", "0%");
-$useSelect.css("min-width", "0%");
+const frequentSelect = document.querySelector('.guide-frequent-select');
+const useSelect = document.querySelector('.guide-use-select');
+const reserveSelect = document.querySelector('.guide-reserve-select');
+const use = document.querySelector('.guide-frequent');
+const frequent = document.querySelector('.guide-use');
+const reserve = document.querySelector('.guide-reserve');
 
 
-$reserve.css("width", "104px");
-$reserveSelect.css("width", "0%");
-$reserveSelect.css("min-width", "0%");
+frequentSelect.style.width = '';
+useSelect.style.width = '';
+reserveSelect.style.width = '';
 
 
+// /* background-color: rgb(0, 196, 196); */
+// background-color: var(--select-color);
 
-$frequent.mouseover(function(){
-    $frequent.css("width", "0%")
-    $frequent.css("min-width", "0%")
-    $frequentSelect.css("width", "378px");
-    $frequentSelect.css("min-width", "378px");
+// /* background-color:  rgb(0, 178, 178); */
+// background-color:  var(--main-sub3);
 
-    $use.css("width", "104px");
-    $use.css("min-width", "104px");
-    $useSelect.css("width", "0%");
-    $useSelect.css("min-width", "0%");
+let currentSelection = null; // 현재 선택된 영역을 추적하기 위한 변수
 
-    $reserve.css("width", "104px");
-    $reserve.css("min-width", "104px");
-    $reserveSelect.css("width", "0%");
-    $reserveSelect.css("min-width", "0%");
-});
-$use.mouseover(function(){
-    $frequent.css("width", "104px")
-    $frequent.css("min-width", "104px")
-    $frequentSelect.css("width", "0%");
-    $frequentSelect.css("min-width", "0%");
+/* frequentSelect를 마우스 오버시 다른 요소 바꾸기 */
+if (frequentSelect) {
+  frequentSelect.addEventListener('mouseover', function() {
+    if (currentSelection !== 'frequent') {
+      currentSelection = 'frequent';
+      
+      frequentSelect.style.width = '378px';
+      frequentSelect.style.backgroundColor = 'var(--select-color)';
+      useSelect.style.width = '104px';
+      useSelect.style.backgroundColor = 'var(--no-select-color)';
+      reserveSelect.style.width = '104px';
+      reserveSelect.style.backgroundColor = 'var(--no-select-color)';
 
-    $use.css("width", "0%");
-    $use.css("min-width", "0%");
-    $useSelect.css("width", "378px");
-    $useSelect.css("min-width", "378px");
+      $(".guide-frequent-container").css("display", "flex");
+      $(".guide-use-container").css("display", "none");
+      $(".guide-select-container").css("display", "none");
+      $(".guide-frequent").css("display", "none");
+      $(".guide-use").css("display", "block");
+      $(".guide-reserve").css("display", "block");
+    }
+  });
 
-    $reserve.css("width", "104px");
-    $reserve.css("min-width", "104px");
-    $reserveSelect.css("width", "0%");
-    $reserveSelect.css("min-width", "0%");
+}
 
-});
-$reserve.mouseover(function(){
-    $frequent.css("width", "104px")
-    $frequent.css("min-width", "104px")
-    $frequentSelect.css("width", "0%");
-    $frequentSelect.css("min-width", "0%");
+/* useSelect를 마우스 오버시 다른 요소 바꾸기 */
+if (useSelect) {
+  useSelect.addEventListener('mouseover', function() { 
+    if (currentSelection !== 'use') {
+      currentSelection = 'use';
+      
+      useSelect.style.width = '378px';
+      useSelect.style.backgroundColor = 'var(--select-color)';
+      frequentSelect.style.width = '104px';
+      frequentSelect.style.backgroundColor = 'var(--no-select-color)';
+      reserveSelect.style.width = '104px';
+      reserveSelect.style.backgroundColor = 'var(--no-select-color)';
 
-    $use.css("width", "104px");
-    $use.css("min-width", "104px");
-    $useSelect.css("width", "0%");
-    $useSelect.css("min-width", "0%");
+      $(".guide-use-container").css("display", "flex");
+      $(".guide-frequent-container").css("display", "none");
+      $(".guide-reserve-container").css("display", "none");
+      $(".guide-use").css("display", "none");
+      $(".guide-frequent").css("display", "block");
+      $(".guide-reserve").css("display", "block");
+    }
+  });
 
-    $reserve.css("width", "0%");
-    $reserve.css("min-width", "0%");
-    $reserveSelect.css("width", "378px");
-    $reserveSelect.css("min-width", "378px");
+}
 
-});
+/* reserveSelect를 마우스 오버시 다른 요소 바꾸기 */
+if (reserveSelect) {
+  reserveSelect.addEventListener('mouseover', function() {
+    if (currentSelection !== 'reserve') {
+      currentSelection = 'reserve';
+
+      reserveSelect.style.width = '378px';
+      reserveSelect.style.backgroundColor = 'var(--select-color)';
+      frequentSelect.style.width = '104px';
+      frequentSelect.style.backgroundColor = 'var(--no-select-color)';
+      useSelect.style.width = '104px';
+      useSelect.style.backgroundColor = 'var(--no-select-color)';
+      
+      $(".guide-reserve-container").css("display", "flex");
+      $(".guide-frequent-container").css("display", "none");
+      $(".guide-use-container").css("display", "none");
+      $(".guide-reserve").css("display", "none");
+      $(".guide-frequent").css("display", "block");
+      $(".guide-use").css("display", "block");
+    }
+  });
+
+}
 
 $('.recruit-swiper-inner-container').each((i, e) => {
     $(e).mouseover(() => {
