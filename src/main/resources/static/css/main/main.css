@@ -140,7 +140,7 @@
     transition-property: width, background-color;
     transition-duration: 0.3s, 0.3s;
     /* background-color: rgb(0, 196, 196); */
-    background-color: var(--select-color);
+    background-color: var(--main-sub);
 }
 
 .guide-use-select, .guide-reserve-select {
@@ -583,7 +583,7 @@
     border: 0px;
     border-radius: 3px;
     color: rgb(255, 255, 255);
-    background-color: var(--select-color);
+    background-color: var(--main-sub);
     font-size: 10px;
     font-weight: 700;
 }
@@ -645,125 +645,127 @@
     color: rgb(33, 37, 41);
 }
 
-.recruits-bar {
+/* 두번째 배너 css */
+.second-banner-container{
     position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    margin-bottom: 60px;
-    padding-left: 0px;
-    padding-right: 0px;
-}
-.recruit-container {
-    max-width: 1420px;
-    width: 98%;
-    position: relative;
-    margin: 0px auto 20px;
-}
-
-.recruit-title {
-    max-width: 1280px;
-    min-width: 320px;
-    position: relative;
-    margin: 0px auto;
     overflow: hidden;
 }
-.recruit-title-container{
-    position: relative;
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: justify;
-    justify-content: space-between;
-    padding-bottom: 10px;
-}
 
-.recruit-title-context{
-    font-weight: 700;
-    color: rgb(33, 37, 41);
-    line-height: 34px;
-    font-size: 24px;
-    margin-bottom: 5px;
-}
-
-.recruits-bar .plus-menu {
-    position: relative;
+div.second-banner {
     display: flex;
-    -webkit-box-pack: start;
-    justify-content: flex-start;
-    -webkit-box-align: center;
-    align-items: center;
+    gap: 24px;
+    width: 10000px; /* 배너 5개라 * 7 */
+    transition: transform 0.3s;
     cursor: pointer;
 }
 
-.recruits-bar .plus{
-    margin-right: 8px;
-    color: rgb(0, 0, 0);
-    font-size: 14px;
-    font-weight: 400;
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-}
-
-.recruit-swiper-view {
-    width: 1280px;
-    position: relative;
-    margin: 0px auto;
-}
-
-.recruit-swiper-container {
-    touch-action: pan-y;
-    list-style: none;
-    margin-left: auto;
-    margin-right: auto;
-    overflow: hidden;
-    padding: 0;
-    position: relative;
-    z-index: 1;
-}
-.recruit-swiper-wrapper {
-    box-sizing: initial;
-    display: flex;
-    height: 100%;
-    position: relative;
-    transition-property: -webkit-transform;
-    transition-property: transform;
-    transition-property: transform,-webkit-transform;
-    width: 100%;
-    z-index: 1;
-    gap: 24px;
-}
-.recruit-swiper-box {
-    width: 236.8px;
-    flex-shrink: 0;
-    height: 100%;
-    position: relative;
-    /* transition-property: -webkit-transform;
-    transition-property: transform; */
-    transition-property: transform,-webkit-transform;
-    /* width: 100%; */
-}
-.recruit-swiper-inner-container {
+div.second-banner .second-banners {
     position: relative;
     width: 237px;
     height: 360px;
-    overflow: hidden;
-    border: 0px;
-    border-radius: 10px;
+    float: left;
+    transition: transform 0.4s ease-in-out;
+    background-position: center;
 }
-.recruit-swiper-image {
+
+.second-banner-image-wrapper{
     width: 237px;
     height: 360px;
     margin-bottom: 16px;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    border: 0px;
+    overflow: hidden;
     border-radius: 10px;
-    transition: all 0.2s ease-in-out 0s;
+    background-position: center;
+}
+
+.second-banner-image{
+    width: 237px;
+    height: 360px;
+    background-size: cover;
+    border-radius: 10px;
+    transition: all 0.2s linear;
+    background-position: center;
+}
+
+
+
+div.second-move-arrow {
+    z-index: 1;
     cursor: pointer;
-    background-image: url(https://static.makercenter.wadiz.kr/board/image/b5365bd3-c344-482b-b9f0-239f0185073a.jpg);
+    display: flex;
+    justify-content: space-around;
+}
+
+div.second-move-arrow div {
+    background-size: 7px auto;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+div.second-prev {
+    position: absolute;
+    top: 70%;
+    left: 5px;
+    transform: translate(0, -50%);  
+}
+
+.second-prev-image{
+    width: 50px;
+    height: 50px;
+}
+
+div.second-next {
+    position: absolute;
+    top: 70%;
+    right: 5px;
+    transform: translate(0, -50%);  
+}
+
+.second-page-move-wrapper {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    bottom: 0px;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    height: 28px;
+    padding: 6px 10px;
+    color: rgb(204, 204, 204);
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: -0.36px;
+    font-weight: bold;
+    border-radius: 16px;
+    background-color: rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+#second-page-now{
+    color: rgb(255, 255, 255);
+    margin-right: 2px;
+}
+
+#second-page-total{
+    margin-right: 2px;
+}
+
+.second-banner-text-wrapper{
+    height: 48px;
+    margin-bottom: 10px;
+    color: rgb(33, 37, 41);
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    width: 295px;
+}
+
+
+.second-banner-text{
+    color: rgb(33, 37, 41);
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
 }
 
 .recruit-box-context {
@@ -779,21 +781,22 @@
     transition: all 0.2s ease-in-out 0s;
     transform: translate(0px, 0px);
     background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+    border-radius: 10px;
 }
-
 .recruit-box-title {
     color: rgb(255, 255, 255);
     font-size: 18px;
     font-weight: 700;
     margin-bottom: 30px;
 }
-
 .recruit-box-writer {
     color: rgb(255, 255, 255);
     font-size: 15px;
     font-weight: 500;
     display: none;
 }
+
+/* second-banner 끝 */
 
 .static-banner-container{
     position: relative;
@@ -846,7 +849,7 @@
     align-items: center;
     border: 0px;
     border-radius: 3px;
-    background-color: var(--select-color);
+    background-color: var(--main-sub);
     cursor: pointer;
     text-decoration: none;
     margin-right: 120px;

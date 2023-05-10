@@ -12,7 +12,7 @@ reserveSelect.style.width = '';
 
 
 // /* background-color: rgb(0, 196, 196); */
-// background-color: var(--select-color);
+// background-color: var(--main-sub);
 
 // /* background-color:  rgb(0, 178, 178); */
 // background-color:  var(--main-sub3);
@@ -26,7 +26,7 @@ if (frequentSelect) {
       currentSelection = 'frequent';
       
       frequentSelect.style.width = '378px';
-      frequentSelect.style.backgroundColor = 'var(--select-color)';
+      frequentSelect.style.backgroundColor = 'var(--main-sub)';
       useSelect.style.width = '104px';
       useSelect.style.backgroundColor = 'var(--no-select-color)';
       reserveSelect.style.width = '104px';
@@ -50,7 +50,7 @@ if (useSelect) {
       currentSelection = 'use';
       
       useSelect.style.width = '378px';
-      useSelect.style.backgroundColor = 'var(--select-color)';
+      useSelect.style.backgroundColor = 'var(--main-sub)';
       frequentSelect.style.width = '104px';
       frequentSelect.style.backgroundColor = 'var(--no-select-color)';
       reserveSelect.style.width = '104px';
@@ -74,7 +74,7 @@ if (reserveSelect) {
       currentSelection = 'reserve';
 
       reserveSelect.style.width = '378px';
-      reserveSelect.style.backgroundColor = 'var(--select-color)';
+      reserveSelect.style.backgroundColor = 'var(--main-sub)';
       frequentSelect.style.width = '104px';
       frequentSelect.style.backgroundColor = 'var(--no-select-color)';
       useSelect.style.width = '104px';
@@ -91,16 +91,7 @@ if (reserveSelect) {
 
 }
 
-$('.recruit-swiper-inner-container').each((i, e) => {
-    $(e).mouseover(() => {
-       $($(".recruit-box-context")[i]).css("transform", "translate(0, -180px)");
-       $($(".recruit-box-context")[i]).css("background", "linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4))");
-    });
-    $(e).mouseout(() => {
-       $($(".recruit-box-context")[i]).css("transform", "translate(0, 0px)");
-       $($(".recruit-box-context")[i]).css("background", "linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0))");
-    });
-});
+
 
 // 
 
