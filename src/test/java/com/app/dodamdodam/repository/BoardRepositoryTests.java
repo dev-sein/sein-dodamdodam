@@ -74,11 +74,11 @@ public class BoardRepositoryTests {
 //        FreeBoard freeBoard = new FreeBoard("자유 게시글 제목","자유 게시글 내용" , categoryTypes.get(1), );
 //        memberRepository.findById(5L).ifPresent(member -> freeBoard.setMember(member));
 //        freeBoardRepository.save(freeBoard);
-//        for (int i=1; i<=100; i++){
-//            FreeBoard freeBoard = new FreeBoard("자유 게시글 제목" + i,"자유 게시글 내용" + i, categoryTypes.get(i % 6));
-//            memberRepository.findById(2L).ifPresent(member -> freeBoard.setMember(member));
-//            freeBoardRepository.save(freeBoard);
-//        }
+        for (int i=1; i<=100; i++){
+            FreeBoard freeBoard = new FreeBoard("자유 게시글 제목" + i,"자유 게시글 내용" + i, categoryTypes.get(i % 6));
+            memberRepository.findById(5L).ifPresent(member -> freeBoard.setMember(member));
+            freeBoardRepository.save(freeBoard);
+        }
     }
 
     /*판매 게시글 등록*/
@@ -100,8 +100,8 @@ public class BoardRepositoryTests {
     /* id로 내가 작성한 자유게시글 목록 가져오기*/
     @Test
     public void findByIdTest(){
-        Pageable pageable = PageRequest.of(1,5);
-        freeBoardRepository.findFreeBoardListByMemberId(PageRequest.of(1,5), 5L).stream().map(FreeBoard::toString).forEach(log::info);
+        Pageable pageable = PageRequest.of(0,5);
+        freeBoardRepository.findFreeBoardListByMemberId(PageRequest.of(0,5), 5L).stream().map(FreeBoard::toString).forEach(log::info);
     }
 
 //    @Test
@@ -127,8 +127,8 @@ public class BoardRepositoryTests {
     /* 자유 게시글 작성 */
     @Test
     public void saveFreeBoardTest(){
-        FreeBoard freeBoard = new FreeBoard("자유게시글 제목", "자유게시글 내용", categoryTypes.get(1));
-        memberRepository.findById(5L).ifPresent(member -> freeBoard.setMember(member));
+        FreeBoard freeBoard = new FreeBoard("자유게시글 제목2", "자유게시글 내용2", categoryTypes.get(1));
+        memberRepository.findById(2L).ifPresent(member -> freeBoard.setMember(member));
         freeBoardRepository.save(freeBoard);
 
         List<FreeFile> freeFiles = new ArrayList<FreeFile>();

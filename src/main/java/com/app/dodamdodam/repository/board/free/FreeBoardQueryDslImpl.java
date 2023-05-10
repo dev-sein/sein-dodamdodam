@@ -26,8 +26,8 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
 //    세션에 담긴 id 값 받아와서 내가 작성한 자유 게시글 리스트 가져오기
     @Override
     public Page<FreeBoard> findFreeBoardListByMemberId(Pageable pageable, Long memberId) {
-        List<FreeBoard> freeBoards = query.select(freeBoard).from(freeBoard).where(freeBoard.member.id.eq(memberId)).orderBy(freeBoard.id.desc()).offset(pageable.getOffset()).limit(pageable.getPageSize()).fetch();
-//        List<FreeBoard> freeBoards = query.select(freeBoard).from(freeBoard).join(freeBoard.member).fetchJoin().join(freeBoard.freeFiles).fetchJoin().join(freeBoard.freeReplies).fetchJoin().where(freeBoard.member.id.eq(memberId)).orderBy(freeBoard.id.desc()).offset(pageable.getOffset()).limit(pageable.getPageSize()).fetch();
+//        List<FreeBoard> freeBoards = query.select(freeBoard).from(freeBoard).where(freeBoard.member.id.eq(memberId)).orderBy(freeBoard.id.desc()).offset(pageable.getOffset()).limit(pageable.getPageSize()).fetch();
+        List<FreeBoard> freeBoards = query.select(freeBoard).from(freeBoard).join(freeBoard.member).fetchJoin().join(freeBoard.freeFiles).fetchJoin().where(freeBoard.member.id.eq(memberId)).orderBy(freeBoard.id.desc()).offset(pageable.getOffset()).limit(pageable.getPageSize()).fetch();
         Long count = query.select(freeBoard.count()).from(freeBoard).where(freeBoard.member.id.eq(memberId)).fetchOne();
 
         return new PageImpl<>(freeBoards, pageable, count);
@@ -61,4 +61,5 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
 
         return new PageImpl<>(freeBoards, pageable, count);
     }
+
 }
