@@ -1,5 +1,6 @@
 package com.app.dodamdodam.entity.purchase;
 
+import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.reply.Reply;
 import lombok.*;
 
@@ -22,4 +23,14 @@ public class PurchaseReview extends Reply {
     @JoinColumn(name = "PURCHASE_BOARD_ID")
     private PurchaseBoard purchaseBoard;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MEMBER_ID")
+    private Member member;
+
+    public PurchaseReview(String reviewContent, Integer reviewGrade, PurchaseBoard purchaseBoard, Member member) {
+        this.reviewContent = reviewContent;
+        this.reviewGrade = reviewGrade;
+        this.purchaseBoard = purchaseBoard;
+        this.member = member;
+    }
 }
