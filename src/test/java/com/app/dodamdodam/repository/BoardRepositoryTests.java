@@ -85,8 +85,8 @@ public class BoardRepositoryTests {
     @Test
     public void saveTest3(){
         for (int i=1; i<=100; i++){
-            Product product = new Product("상품" + i, 1000 * i, (long)i);
             PurchaseBoard purchaseBoard = new PurchaseBoard("판매 게시글 제목" + i, "판매 게시글 내용"+ i);
+            Product product = new Product("상품" + i, 1000 * i, (long)i, purchaseBoard);
 
             memberRepository.findById(2L).ifPresent(member -> {
                 purchaseBoard.setMember(member);
