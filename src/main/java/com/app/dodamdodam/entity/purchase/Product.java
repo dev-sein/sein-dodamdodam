@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-@ToString
+@ToString(exclude = "purchaseBoard")
 @Table(name = "TBL_PRODUCT")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Product {

@@ -9,7 +9,7 @@ import java.util.List;
 
 @Entity
 @Getter @Table(name = "TBL_ROOM")
-@ToString(exclude = "chatting")
+@ToString(exclude = "chattings")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Room{
     @Id @GeneratedValue
