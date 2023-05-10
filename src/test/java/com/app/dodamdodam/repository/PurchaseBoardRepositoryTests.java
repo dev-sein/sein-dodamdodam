@@ -43,7 +43,7 @@ public class PurchaseBoardRepositoryTests {
     @Test
     public void saveTest(){
         Address address = new Address("1234", "test-address", "test-detail");
-        Member member = new Member("test1234", "1234", "테스트", "test1234@gmail.com", "01012341234", address, MemberStatus.GENERAL);
+        Member member = new Member("test1234", "1234", "테스트", "test1234@gmail.com", "01012341234", address, MemberStatus.NORMAL);
 
         memberRepository.save(member);
 

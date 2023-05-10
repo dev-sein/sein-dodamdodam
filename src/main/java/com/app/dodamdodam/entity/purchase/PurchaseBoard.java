@@ -5,11 +5,12 @@ import com.app.dodamdodam.entity.member.Member;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Getter
-@ToString(callSuper = true)
+@ToString(callSuper = true, exclude = "purchaseFiles, purchaseReviews")
 @Table(name = "TBL_PURCHASE_BOARD")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class PurchaseBoard extends Board {
@@ -28,13 +29,13 @@ public class PurchaseBoard extends Board {
             mappedBy = "purchaseBoard",
             cascade = {CascadeType.REMOVE, CascadeType.PERSIST}
     )
-    private List<PurchaseFile> purchaseFiles;
+    private List<PurchaseFile> purchaseFiles = new ArrayList<>();
 
     @OneToMany(fetch = FetchType.LAZY,
             mappedBy = "purchaseBoard",
             cascade = {CascadeType.REMOVE, CascadeType.PERSIST}
     )
-    private List<PurchaseReview> purchaseReviews;
+    private List<PurchaseReview> purchaseReviews = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MEMBER_ID")
