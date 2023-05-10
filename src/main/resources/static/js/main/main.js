@@ -6,18 +6,6 @@ const $frequentSelect = $('.guide-frequent-select');
 const $useSelect = $('.guide-use-select');
 const $reserveSelect = $('.guide-reserve-select');
 
-// $frequent.hide();
-//     $use.show();
-//     $reserve.show();
-
-//     $frequentSelect.show();
-//     $useSelect.hide();
-//     $reserveSelect.hide();
-
-    // min-width: 0px;
-    // width: 0%;
-
-// 초기값
 $frequent.css("width", "0%")
 $frequent.css("min-width", "0%")
 $frequentSelect.css("width", "378px");
