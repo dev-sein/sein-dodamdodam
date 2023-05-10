@@ -22,10 +22,14 @@ public class PurchaseBoardServiceImpl implements PurchaseBoardService {
     private final PurchaseBoardRepository purchaseBoardRepository;
 
     @Override
-    public List<PurchaseBoardDTO> getPurchaseBoardsWithSearch(PurchaseBoardSearch purchaseBoardSearch, Pageable pageable) {
-        List<PurchaseBoardDTO> purchaseBoardDTOS = purchaseBoardRepository.findAllWithSearch_QueryDSL(purchaseBoardSearch, pageable)
+    public Slice<PurchaseBoardDTO> getPurchaseBoardsWithSearch(PurchaseBoardSearch purchaseBoardSearch, Pageable pageable) {
+        Slice<PurchaseBoard> purchaseBoards = purchaseBoardRepository.findAllWithSearch_QueryDSL(purchaseBoardSearch, pageable);
+        boolean hasNext = purchaseBoards.hasNext();
+
+        List<PurchaseBoardDTO> purchaseBoardDTOS = purchaseBoards
                 .stream().map(purchaseBoard -> toPurchaseBoardDTO(purchaseBoard)).collect(Collectors.toList());
 
-        return purchaseBoardDTOS;
+
+        return new SliceImpl<>(purchaseBoardDTOS, pageable, hasNext);
     }
 }

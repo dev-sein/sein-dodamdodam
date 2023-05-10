@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 public interface PurchaseBoardService {
 //    게시글 검색
-    public List<PurchaseBoardDTO> getPurchaseBoardsWithSearch(PurchaseBoardSearch purchaseBoardSearch, Pageable pageable);
+    public Slice<PurchaseBoardDTO> getPurchaseBoardsWithSearch(PurchaseBoardSearch purchaseBoardSearch, Pageable pageable);
 
     default PurchaseBoardDTO toPurchaseBoardDTO(PurchaseBoard purchaseBoard){
         return PurchaseBoardDTO.builder().id(purchaseBoard.getId())
@@ -28,6 +28,9 @@ public interface PurchaseBoardService {
                 .purchaseFileDTOs(
                         purchaseBoard.getPurchaseFiles().stream().map(e -> toPurchaseFileDTO(e)).collect(Collectors.toList())
                 )
+                .createdDate(purchaseBoard.getCreatedDate())
+                .updatedDate(purchaseBoard.getUpdatedDate())
+
                 .build();
     }
 

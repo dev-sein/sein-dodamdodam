@@ -17,6 +17,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,9 +35,10 @@ public class MemberDTO {
     private Integer memberPoint;
     private Integer participationCount;
     private Integer recruitmentedCount;
+    private LocalDateTime createdDate;
 
     @QueryProjection
-    public MemberDTO(Long id, String memberId, String memberPassword, String memberName, String memberEmail, String memberPhone, Address address, MemberStatus memberStatus, Integer memberPoint, Integer participationCount, Integer recruitmentedCount) {
+    public MemberDTO(Long id, String memberId, String memberPassword, String memberName, String memberEmail, String memberPhone, Address address, MemberStatus memberStatus, Integer memberPoint, Integer participationCount, Integer recruitmentedCount, LocalDateTime createdDate) {
         this.id = id;
         this.memberId = memberId;
         this.memberPassword = memberPassword;
@@ -48,5 +50,6 @@ public class MemberDTO {
         this.memberPoint = memberPoint;
         this.participationCount = participationCount;
         this.recruitmentedCount = recruitmentedCount;
+        this.createdDate = createdDate;
     }
 }
