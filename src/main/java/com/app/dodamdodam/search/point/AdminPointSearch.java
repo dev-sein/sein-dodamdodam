@@ -5,7 +5,8 @@ import com.sun.istack.NotNull;
 import lombok.Data;
 
 @Data
-public class PointSearch {
+public class AdminPointSearch {
     private Integer pointAmount;
     private PointStatus pointStatus;
+    private String memberId;
 }
