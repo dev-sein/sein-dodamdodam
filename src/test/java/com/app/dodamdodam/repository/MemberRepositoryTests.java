@@ -9,7 +9,9 @@ import com.app.dodamdodam.repository.board.recruitment.RecruitmentBoardRepositor
 import com.app.dodamdodam.repository.member.MemberRepository;
 import com.app.dodamdodam.repository.point.PointRepository;
 import com.app.dodamdodam.type.MemberStatus;
+import com.app.dodamdodam.type.MemberType;
 import com.app.dodamdodam.type.PointStatus;
+import com.app.dodamdodam.type.Role;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +52,7 @@ public class MemberRepositoryTests {
             Address address = new Address("123-456","서울시","강남구");
 //            회원 정보 입력
 
-            Member member = new Member("test" + i,"1234","테스트" + i, "test" + i + "@test.com", "010-1234-5678", address, MemberStatus.NORMAL);
+            Member member = new Member("test1234", "1234", "테스트", "test1234@gmail.com", "01012341234", address, MemberStatus.NORMAL, MemberType.GENERAL, Role.MEMBER);
             memberRepository.save(member);
 
 //            모집 게시글 입력

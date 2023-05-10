@@ -67,14 +67,17 @@ public class ChattingRepositoryTests {
 
     @Test
     public void updateTest(){
-//        시나리오 : 690번 그룹 멤버가 채팅방에 입장하면 chattingStatus id 32, 35만 Read로 바뀐다.
-//        11번 그룹멤버의 정보를 groupMember에 담아준다.
+////        시나리오 : 690번 그룹 멤버가 채팅방에 입장하면 chattingStatus id 32, 35만 Read로 바뀐다.
+////        11번 그룹멤버의 정보를 groupMember에 담아준다.
 //        Chatting chatting = chattingRepository.findById(690L).get();
 //        log.info(chatting.toString());
 //        List<ChattingStatus> chattingStatusList = new ArrayList<>();
 //        chattingStatusList.addAll(chattingStatusRepositoryImpl.findByGroupMemberId(groupMember));
 //        chattingStatusList.stream().forEach(v-> v.update(ReadStatus.READ));
     }
+//
+//        chatting.ad
+//    }
 
 
 
