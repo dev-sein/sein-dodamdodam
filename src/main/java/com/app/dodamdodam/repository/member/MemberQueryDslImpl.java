@@ -8,10 +8,12 @@ import com.app.dodamdodam.entity.point.Point;
 import com.app.dodamdodam.entity.point.QPoint;
 import com.app.dodamdodam.entity.recruitment.QRecruitmentBoard;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
+import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Optional;
 
 import static com.app.dodamdodam.entity.member.QMember.member;
 import static com.app.dodamdodam.entity.point.QPoint.point;
@@ -23,18 +25,37 @@ public class MemberQueryDslImpl implements MemberQueryDsl{
 
     @Override
     public List<MemberDTO> findByMemberId(Long id) {
-//        return query.select().from(member).where(member.id.eq(id))
+        return null;
 //        return query.select(new QMemberDTO(
 //                member.memberId, member.memberPassword, member.memberName, member.memberEmail, member.memberPhone,
 //                member.memberAddress, member.memberAddressDetail, member.memberStatus, member.memberPoint,
-//                member.participationCount, member.recruitments.size().intValue())).
+//                member.participationCount, member.recruitments.size())).
 //                from(member).
-//                where(member.id.eq(id)).
+//                where(member.id.eq(id)).fetch();
+
 //                groupBy(member.memberId, member.memberPassword, member.memberName, member.memberEmail,
 //                        member.memberPhone, member.memberAddress, member.memberAddressDetail, member.memberStatus,
 //                        member.memberPoint, member.participationCount).fetch();
-        return null;
     }
+
+    @Override
+    public String findMemberIdByMemberEmail(String memberEmail) {
+        return query.select(member.memberId).from(member).where(member.memberEmail.eq(memberEmail)).fetchOne();
+    }
+
+    @Override
+    public boolean findCheckMemberIdByMemberEmail(String memberEmail) {
+
+        String result = null;
+        result = query.select(member.memberId).from(member).where(member.memberEmail.eq(memberEmail)).fetchOne();
+
+        if (result != null){
+            return false;
+        }
+
+        return true;
+    }
+
 
 
 

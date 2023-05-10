@@ -42,4 +42,8 @@ public class BannerApply extends Period {
     public void setMember(Member member) {
         this.member = member;
     }
+
+    public void setBannerStatus(BannerType bannerStatus) {
+        this.bannerStatus = bannerStatus;
+    }
 }

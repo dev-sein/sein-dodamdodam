@@ -3,10 +3,13 @@ package com.app.dodamdodam.repository;
 import com.app.dodamdodam.entity.point.Point;
 import com.app.dodamdodam.repository.member.MemberRepository;
 import com.app.dodamdodam.repository.point.PointRepository;
+import com.app.dodamdodam.search.point.PointSearch;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,4 +29,16 @@ public class PointRepositoryTests {
     public void findPointListByIdTest(){
         pointRepository.findPointByMemberId(2L).stream().map(Point::toString).forEach(log::info);
     }
+
+    @Test //포인트 페이징 조회
+    public void findAllPointWithSearchAndPageTest(){
+        PointSearch pointSearch = new PointSearch();
+        pointSearch.setPointAmount(10000);
+        Page<Point> pointPage = pointRepository.findAllPointWithSearch(pointSearch, PageRequest.of(1, 2));
+//        pointPage.stream().map(point -> point.toString()).forEach(log::info);
+        log.info("=========="+pointPage.getContent()); //==251만 가져옴, 351도 10000 포인트임
+        //size가 2일 때 251 반환, size가 1일때 351 반환으로 총 결과값이 두개이지만 하나씩만 반환됨.
+        log.info("=========="+pointPage.getTotalElements()); //==101 반환 (point 전체 행의 수)
+    }
+
 }

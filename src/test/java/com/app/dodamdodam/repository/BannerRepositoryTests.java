@@ -28,7 +28,6 @@ public class BannerRepositoryTests {
     public void saveTest(){
         BannerApply bannerApply = new BannerApply(LocalDate.now(),1);
         memberRepository.findById(2L).ifPresent(member -> bannerApply.setMember(member));
-
         bannerRepository.save(bannerApply);
     }
 }

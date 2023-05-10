@@ -16,7 +16,7 @@ import java.util.List;
 
 @Entity
 @Getter
-@ToString
+@ToString(exclude = "recruitments")
 @Table(name = "TBL_MEMBER")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DynamicInsert

@@ -54,7 +54,7 @@ public class PurchaseBoardQueryDslImpl implements PurchaseBoardQueryDsl {
     }
 
     @Override
-    public List<PurchaseBoard> findPurchaseBoardListByMemberId_QueryDSL(Pageable pageable, Long memberId) {
+    public List<PurchaseBoard> findPurchaseBoardListByMemberId(Pageable pageable, Long memberId) {
         return query.select(purchaseBoard).from(purchaseBoard).where(purchaseBoard.member.id.eq(memberId)).orderBy(purchaseBoard.id.desc()).offset(pageable.getOffset()).limit(pageable.getPageSize()).fetch();
     }
 
