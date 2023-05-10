@@ -12,17 +12,17 @@ import javax.servlet.http.HttpSession;
 @Slf4j
 @ControllerAdvice
 public class GlobalExceptionHandler {
-    @ExceptionHandler(CustomAuthenticationException.class)
-    protected RedirectView handleCustomAuthenticationException(CustomAuthenticationException e, HttpSession session){
-        session.removeAttribute("id");
-        session.removeAttribute("memberId");
-        session.removeAttribute("role");
-        session.invalidate();
-        return new RedirectView("/member/login");
-    }
-
-    @ExceptionHandler(LoginFailedException.class)
-    protected RedirectView handleLoginFailedException(LoginFailedException e){
-        return new RedirectView("/member/login?check=false");
-    }
+//    @ExceptionHandler(CustomAuthenticationException.class)
+//    protected RedirectView handleCustomAuthenticationException(CustomAuthenticationException e, HttpSession session){
+//        session.removeAttribute("id");
+//        session.removeAttribute("memberId");
+//        session.removeAttribute("role");
+//        session.invalidate();
+//        return new RedirectView("/member/login");
+//    }
+//
+//    @ExceptionHandler(LoginFailedException.class)
+//    protected RedirectView handleLoginFailedException(LoginFailedException e){
+//        return new RedirectView("/member/login?check=false");
+//    }
 }

@@ -100,9 +100,17 @@ public class BoardRepositoryTests {
     /* id로 내가 작성한 자유게시글 목록 가져오기*/
     @Test
     public void findByIdTest(){
-        Pageable pageable = PageRequest.of(0,10);
-        freeBoardRepository.findFreeBoardListByMemberId(pageable, 5L).stream().map(FreeBoard::toString).forEach(log::info);
+        Pageable pageable = PageRequest.of(1,5);
+        freeBoardRepository.findFreeBoardListByMemberId(PageRequest.of(1,5), 5L).stream().map(FreeBoard::toString).forEach(log::info);
     }
+
+//    @Test
+//    public void findAllWithSearchTest(){
+//        ProductSearch productSearch = new ProductSearch();
+////        productSearch.setProductPrice(4000L);
+////        productSearch.setProductStock(702L);
+//        productRepository.findAllWithSearch(productSearch, PageRequest.of(3, 2));
+//    }
 
     /* 모집게시글에 참여하기 테스트*/
     /* 200번 모집 게시글에 임의로 5번 유저 참석 시켰음*/
@@ -176,7 +184,24 @@ public class BoardRepositoryTests {
     }
 
     /* 자유 게시글 상세 */
+    @Test
+    public void findFreeBoardByIdTest(){
+        freeBoardRepository.findById(1080L).ifPresent(freeBoard -> log.info(freeBoard.toString()));
+    }
+
     /* 자유 게시글 수정 */
+    @Test
+    public void setFreeBoardByIdTest(){
+        freeBoardRepository.findById(1080L).ifPresent(freeBoard -> {
+            freeBoard.setBoardTitle("수정된 제목");
+            freeBoard.setBoardContent("수정된 내용");
+        });
+    }
+
     /* 자유 게시글 삭제 */
+    @Test
+    public void deleteFreeBoardByIdTest(){
+        freeBoardRepository.findById(1077L).ifPresent(freeBoard -> freeBoardRepository.delete(freeBoard));
+    }
 
 }

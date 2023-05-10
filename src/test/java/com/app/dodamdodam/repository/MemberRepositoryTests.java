@@ -1,12 +1,14 @@
 package com.app.dodamdodam.repository;
 
 import com.app.dodamdodam.domain.MemberDTO;
+import com.app.dodamdodam.entity.embeddable.Address;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.point.Point;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
 import com.app.dodamdodam.repository.board.recruitment.RecruitmentBoardRepository;
 import com.app.dodamdodam.repository.member.MemberRepository;
 import com.app.dodamdodam.repository.point.PointRepository;
+import com.app.dodamdodam.type.MemberStatus;
 import com.app.dodamdodam.type.PointStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -44,10 +46,12 @@ public class MemberRepositoryTests {
     @Test
     public void saveTest(){
         for (int i=1; i<=100; i++){
+
+            Address address = new Address("123-456","서울시","강남구");
 //            회원 정보 입력
 
-//            Member member = new Member("test" + i,"1234","테스트" + i, "test" + i + "@test.com", "010-1234-5678", "서울시 강남구", "역삼동");
-//            memberRepository.save(member);
+            Member member = new Member("test" + i,"1234","테스트" + i, "test" + i + "@test.com", "010-1234-5678", address, MemberStatus.NORMAL);
+            memberRepository.save(member);
 
 //            모집 게시글 입력
 //            2번 회원이 모집게시글 100개 작성
@@ -103,7 +107,11 @@ public class MemberRepositoryTests {
 //    회원 정보 수정
     @Test
     public void setMemberTest(){
-        memberRepository.findById(2L).ifPresent(member -> member.setMemberPoint(50000));
+        memberRepository.findById(2L).ifPresent(member -> {
+            member.setMemberPoint(50000);
+            member.setMemberPassword("1234");
+        });
+
     }
 
 
