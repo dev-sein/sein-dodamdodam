@@ -30,7 +30,6 @@ public class ChattingQueryDslImpl implements ChattingQueryDsl {
                     .fetch();
         }
 
-//
 
 
         @Override
