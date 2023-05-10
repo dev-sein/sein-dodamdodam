@@ -71,4 +71,8 @@ public class Member extends Period {
     public void setMemberPassword(String memberPassword) {
         this.memberPassword = memberPassword;
     }
+
+    public void setMemberStatus(MemberStatus memberStatus) {
+        this.memberStatus = memberStatus;
+    }
 }
