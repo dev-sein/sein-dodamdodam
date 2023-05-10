@@ -32,9 +32,9 @@ public class ChattingRepositoryTests {
     @Test
     public void saveTest(){
         for (int i=1; i<=100; i++) {
-            Room room = new Room(1L);
-            memberRepository.findById(1L).ifPresent(member -> room.setMember(member));
-            Chatting chatting = new Chatting(1L, 2L + i, "1번이 2번에게 보내는 메세지" + i);
+            Room room = new Room(690L);
+            memberRepository.findById(690L).ifPresent(member -> room.setMember(member));
+            Chatting chatting = new Chatting(690L, 691L + i, "690번이"  + 691L + i + "번에게 보내는 메세지" + i);
             chatting.setRoom(room);
             chattingRepository.save(chatting);
             roomRepository.save(room);
@@ -45,7 +45,7 @@ public class ChattingRepositoryTests {
     @Test
     public void findChattingByMemberIdTest(){
         Pageable pageable = PageRequest.of(0,10);
-        chattingRepository.findChattingByMemberId(pageable, 1L).stream().map(Chatting::toString).forEach(log::info);
+        chattingRepository.findChattingByMemberId(pageable, 690L).stream().map(Chatting::toString).forEach(log::info);
 
     }
 
@@ -53,7 +53,7 @@ public class ChattingRepositoryTests {
     @Test
     public void findRoomByMemberIdTest(){
         Pageable pageable = PageRequest.of(0,10);
-        roomRepository.findRoomByMemberId(pageable, 1L).stream().map(Room::toString).forEach(log::info);
+        roomRepository.findRoomByMemberId(pageable, 690L).stream().map(Room::toString).forEach(log::info);
     }
 
 //    @Test

@@ -4,6 +4,9 @@ import com.app.dodamdodam.audit.Period;
 import com.app.dodamdodam.type.ReadStatus;
 import com.sun.istack.NotNull;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 
@@ -12,6 +15,8 @@ import javax.persistence.*;
 @ToString(exclude = "room")
 @Table(name = "TBL_CHATTING")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@DynamicInsert
+@DynamicUpdate
 public class Chatting extends Period {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
@@ -21,6 +26,7 @@ public class Chatting extends Period {
     @NotNull private String chattingContent;
     @NotNull
     @Enumerated(EnumType.STRING)
+    @ColumnDefault("'UNREAD'")
     private ReadStatus readStatus;
 
     @ManyToOne(fetch = FetchType.LAZY)

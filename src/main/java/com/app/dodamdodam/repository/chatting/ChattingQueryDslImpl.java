@@ -4,13 +4,16 @@ package com.app.dodamdodam.repository.chatting;
 import com.app.dodamdodam.entity.chatting.Chatting;
 import com.app.dodamdodam.type.ReadStatus;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 
+import javax.management.Query;
 import java.util.List;
 
 import static com.app.dodamdodam.entity.chatting.QChatting.chatting;
 
+@Slf4j
 public class ChattingQueryDslImpl implements ChattingQueryDsl {
         @Autowired
         private JPAQueryFactory query;
@@ -26,6 +29,9 @@ public class ChattingQueryDslImpl implements ChattingQueryDsl {
                     .limit(pageable.getPageSize())
                     .fetch();
         }
+
+//
+
 
         @Override
         public Integer findUnreadChattingByMemberId(Long memberId, Long roomId){
