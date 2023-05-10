@@ -1,29 +1,29 @@
-package com.app.dodamdodam.config;
-
-import com.app.dodamdodam.type.Role;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.AuthenticationEntryPoint;
-import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.access.AccessDeniedHandler;
-import org.springframework.security.web.authentication.AuthenticationFailureHandler;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-
-@EnableWebSecurity
-@Configuration
-@RequiredArgsConstructor
-@Slf4j
-public class SecurityConfig {
+//package com.app.dodamdodam.config;
+//
+//import com.app.dodamdodam.type.Role;
+//import lombok.RequiredArgsConstructor;
+//import lombok.extern.slf4j.Slf4j;
+//import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
+//import org.springframework.context.annotation.Bean;
+//import org.springframework.context.annotation.Configuration;
+//import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+//import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+//import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+//import org.springframework.security.core.userdetails.UserDetailsService;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.web.AuthenticationEntryPoint;
+//import org.springframework.security.web.SecurityFilterChain;
+//import org.springframework.security.web.access.AccessDeniedHandler;
+//import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+//import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+//import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+//
+//@EnableWebSecurity
+//@Configuration
+//@RequiredArgsConstructor
+//@Slf4j
+//public class SecurityConfig {
 //    private static final String MAIN_PATH = "/main/**";
 //    private static final String ADMIN_PATH = "/admin/**";
 //    private static final String BOARD_PATH = "/board/**";
@@ -90,7 +90,7 @@ public class SecurityConfig {
 //
 //        return http.build();
 //    }
-}
+//}
 
 
 

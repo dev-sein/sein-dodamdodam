@@ -9,9 +9,8 @@ import java.util.List;
 
 public interface RecruitmentBoardQueryDsl {
 //    세션에 담긴 id 값 받아와서 내가 작성한 모집 게시글 리스트 가져오기
-    public List<RecruitmentBoard> findRecruitmentBoardListByMemberId(Pageable pageable, Long memberId);
+    public Page<RecruitmentBoard> findRecruitmentBoardListByMemberId(Pageable pageable, Long memberId);
 
 //    세션에 담긴 id 값 받아와서 내가 작성한 모집 게시글 리스트 가져오기
-    public List<RecruitmentBoard> findRecruitmentedBoardListByMemberId(Pageable pageable, Long memberId);
-
+    public Page<RecruitmentBoard> findRecruitmentedBoardListByMemberId(Pageable pageable, Long memberId);
 }

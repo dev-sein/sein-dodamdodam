@@ -1,5 +1,8 @@
 package com.app.dodamdodam.repository.board.purchase;
 
+import com.app.dodamdodam.entity.free.FreeBoard;
+import com.app.dodamdodam.entity.purchase.PurchaseBoard;
+import com.querydsl.core.Tuple;
 import com.app.dodamdodam.domain.PurchaseBoardDTO;
 import com.app.dodamdodam.entity.purchase.*;
 import com.app.dodamdodam.search.PurchaseBoardSearch;
@@ -14,6 +17,7 @@ import java.util.Optional;
 import org.springframework.data.domain.Pageable;
 
 import static com.app.dodamdodam.entity.purchase.QPurchaseBoard.purchaseBoard;
+
 
 @RequiredArgsConstructor
 public class PurchaseBoardQueryDslImpl implements PurchaseBoardQueryDsl {
@@ -42,20 +46,23 @@ public class PurchaseBoardQueryDslImpl implements PurchaseBoardQueryDsl {
     @Override
     public Optional<PurchaseBoard> findPurchaseBoardById_QueryDSL(Long id) {
         return Optional.ofNullable(
-                query.select(QPurchaseBoard.purchaseBoard)
-                        .from(QPurchaseBoard.purchaseBoard)
-                        .join(QPurchaseBoard.purchaseBoard.product)
-                        .join(QPurchaseBoard.purchaseBoard.member)
-                        .join(QPurchaseBoard.purchaseBoard.purchaseFiles)
+                query.select(purchaseBoard)
+                        .from(purchaseBoard)
+                        .join(purchaseBoard.product)
+                        .join(purchaseBoard.member)
+                        .join(purchaseBoard.purchaseFiles)
                         .fetchJoin()
-                        .where(QPurchaseBoard.purchaseBoard.id.eq(id))
+                        .where(purchaseBoard.id.eq(id))
                         .fetchOne()
         );
     }
 
     @Override
-    public List<PurchaseBoard> findPurchaseBoardListByMemberId(Pageable pageable, Long memberId) {
-        return query.select(purchaseBoard).from(purchaseBoard).where(purchaseBoard.member.id.eq(memberId)).orderBy(purchaseBoard.id.desc()).offset(pageable.getOffset()).limit(pageable.getPageSize()).fetch();
+    public Page<PurchaseBoard> findPurchaseBoardListByMemberId(Pageable pageable, Long memberId) {
+        List<PurchaseBoard> purchaseBoards = query.select(purchaseBoard).from(purchaseBoard).where(purchaseBoard.member.id.eq(memberId)).orderBy(purchaseBoard.id.desc()).offset(pageable.getOffset()).limit(pageable.getPageSize()).fetch();
+        Long count = query.select(purchaseBoard.count()).from(purchaseBoard).where(purchaseBoard.member.id.eq(memberId)).fetchOne();
+
+        return new PageImpl<>(purchaseBoards, pageable, count);
     }
 
 
