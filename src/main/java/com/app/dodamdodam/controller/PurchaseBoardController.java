@@ -5,10 +5,10 @@ import com.app.dodamdodam.search.PurchaseBoardSearch;
 import com.app.dodamdodam.service.board.purchase.PurchaseBoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,7 +19,9 @@ public class PurchaseBoardController {
     private final PurchaseBoardService purchaseBoardService;
 
     @GetMapping("list")
-    public List<PurchaseBoardDTO> getPurchaseBoardList(PurchaseBoardSearch purchaseBoardSearch, Pageable pageable){
-        return purchaseBoardService.getPurchaseBoardsWithSearch(purchaseBoardSearch, pageable);
+    @ResponseBody
+    public String getPurchaseBoardList(@RequestParam("purchaseBoardSearch") PurchaseBoardSearch purchaseBoardSearch, @RequestParam("pageable") Pageable pageable){
+        model.addAttribute("purchaseBoards", purchaseBoardService.getPurchaseBoardsWithSearch(purchaseBoardSearch, pageable));
+        return "/sell-board/sell-list.html";
     }
 }
