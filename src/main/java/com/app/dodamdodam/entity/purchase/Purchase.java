@@ -1,7 +1,9 @@
 package com.app.dodamdodam.entity.purchase;
 
 import com.app.dodamdodam.audit.Period;
+import com.app.dodamdodam.entity.embeddable.Address;
 import com.app.dodamdodam.entity.member.Member;
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
@@ -23,6 +25,9 @@ public class Purchase extends Period {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
+
+    @Embedded
+    @NotNull private Address address;
 
 
 

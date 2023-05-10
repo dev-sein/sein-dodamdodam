@@ -9,9 +9,15 @@ import javax.persistence.Embeddable;
 @Embeddable
 @Getter
 @NoArgsConstructor
-@AllArgsConstructor
+//@AllArgsConstructor
 public class Address {
     private String postcode;
     private String address;
     private String addressDetail;
+
+    public Address(String postcode, String address, String addressDetail) {
+        this.postcode = postcode;
+        this.address = address;
+        this.addressDetail = addressDetail;
+    }
 }
