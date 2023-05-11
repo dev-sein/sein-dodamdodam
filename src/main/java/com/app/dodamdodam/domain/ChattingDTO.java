@@ -15,6 +15,10 @@ import javax.persistence.*;
 @Data
 @Builder
 public class ChattingDTO {
+    public enum MessageType{
+        ENTER, TALK
+    }
+
     private Long id;
     private Long senderMemberId;
     private Long receiverMemberId;
