@@ -5,7 +5,7 @@ import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.event.EventFile;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.repository.board.event.EventBoardRepository;
-import com.app.dodamdodam.repository.file.event.EventFileRepository;
+import com.app.dodamdodam.repository.board.event.EventFileRepository;
 import com.app.dodamdodam.repository.member.MemberRepository;
 import com.app.dodamdodam.type.MemberStatus;
 import com.app.dodamdodam.type.MemberType;
@@ -14,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.test.annotation.Rollback;
 
 import javax.transaction.Transactional;
@@ -27,12 +27,12 @@ import java.util.UUID;
 public class EventBoardRepositoryTests {
     @Autowired
     private EventBoardRepository eventBoardRepository;
-
     @Autowired
     private MemberRepository memberRepository;
-
     @Autowired
     private EventFileRepository eventFileRepository;
+
+
 
     @Test
     public void saveTest(){
@@ -54,6 +54,29 @@ public class EventBoardRepositoryTests {
             eventBoardRepository.save(eventBoard);
         }
     }
+    /*목록 최신순 조회*/
+    @Test
+    public void findAllByIdDescWithPagingTest(){
+        eventBoardRepository.findAllByIdDescWithPaging_QueryDSL(
+                PageRequest.of(0, 3)
+        ).stream().map(EventBoard::toString).forEach(log::info);
+    }
+
+    /*상세글 보기*/
+    @Test
+    public void findByIdTest(){
+        eventBoardRepository.findById(101L).map(EventBoard::toString).ifPresent(log::info);
+    }
+
+    @Test
+    public void updateTest(){
+        eventBoardRepository.findById(101L).ifPresent(eventBoard -> {
+            eventBoard.setBoardTitle("수정제목1");
+            eventBoard.setBoardContent("수정내용1");
+        });
+    }
+
+
 
 
 }
