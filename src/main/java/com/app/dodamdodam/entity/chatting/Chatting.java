@@ -1,6 +1,7 @@
 package com.app.dodamdodam.entity.chatting;
 
 import com.app.dodamdodam.audit.Period;
+import com.app.dodamdodam.type.MessageType;
 import com.app.dodamdodam.type.ReadStatus;
 import com.sun.istack.NotNull;
 import lombok.*;
@@ -26,8 +27,14 @@ public class Chatting extends Period {
     @NotNull private String chattingContent;
     @NotNull
     @Enumerated(EnumType.STRING)
+    private MessageType messageType;
+    //MAKE : 채팅방이 생성된 적 없고 처음 들어온 상태
+    //REUSE : 채팅중인 상태
+    @NotNull
+    @Enumerated(EnumType.STRING)
     @ColumnDefault("'UNREAD'")
     private ReadStatus readStatus;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ROOM_ID")

@@ -59,11 +59,6 @@ public class ChattingRepositoryTests {
         roomRepository.findRoomByMemberId(pageable, 690L).stream().map(Room::toString).forEach(log::info);
     }
 
-//    @Test
-//    public void findAll(){
-//        chattingRepository.findAll().stream().map(Chatting::toString).forEach(log::info);
-//    }
-
 
     @Test
     public void updateTest(){
@@ -75,9 +70,6 @@ public class ChattingRepositoryTests {
 //        chattingStatusList.addAll(chattingStatusRepositoryImpl.findByGroupMemberId(groupMember));
 //        chattingStatusList.stream().forEach(v-> v.update(ReadStatus.READ));
     }
-//
-//        chatting.ad
-//    }
 
 
 
