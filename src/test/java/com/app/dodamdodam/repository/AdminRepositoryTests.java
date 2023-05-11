@@ -18,6 +18,7 @@ import com.app.dodamdodam.repository.point.PointRepository;
 import com.app.dodamdodam.search.board.AdminFreeBoardSearch;
 import com.app.dodamdodam.search.board.AdminPurchaseBoardSearch;
 import com.app.dodamdodam.search.board.AdminRecruitmentSearch;
+import com.app.dodamdodam.search.member.AdminMemberSearch;
 import com.app.dodamdodam.search.point.AdminPointSearch;
 import com.app.dodamdodam.type.BannerType;
 import com.app.dodamdodam.type.CategoryType;
@@ -181,6 +182,19 @@ public class AdminRepositoryTests {
         adminPurchaseBoardSearch.setBoardTitle("판매 게시글 제목1");
         Page<PurchaseBoard> purchaseBoardAdminPages = purchaseBoardRepository.findadminPurchaseSearchWithPaging_QueryDSL(adminPurchaseBoardSearch, PageRequest.of(0, 10));
         log.info("============"+purchaseBoardAdminPages.getContent());
+    }
+
+    @Test //관리자 멤버검색
+    public void findAdminMemberWithPaging_QueryDSL_Test(){
+        AdminMemberSearch adminMemberSearch = new AdminMemberSearch();
+//        adminPurchaseBoardSearch.setBoardTitle("자유 게시글 제목47");
+//        adminFreeBoardSearch.setMemberName("테스트");
+//        adminMemberSearch.setMemberName("판매 게시글 제목1");
+//        adminMemberSearch.setMemberPhone("판매 게시글 제목1");
+//        adminMemberSearch.setMemberEmail("판매 게시글 제목1");
+        adminMemberSearch.setMemberStatus(MemberStatus.NORMAL);
+        Page<Member> memberAdminPage = memberRepository.findAdminMemberWithPaging_QueryDSL(adminMemberSearch, PageRequest.of(0, 10));
+        log.info("============"+memberAdminPage.getContent());
     }
 
 

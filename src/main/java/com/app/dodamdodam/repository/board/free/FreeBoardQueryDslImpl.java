@@ -120,5 +120,4 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
                 .fetchOne());
     }
 
-
 }
