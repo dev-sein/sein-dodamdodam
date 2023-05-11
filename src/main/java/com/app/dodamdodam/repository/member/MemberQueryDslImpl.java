@@ -4,6 +4,8 @@ import com.app.dodamdodam.domain.MemberDTO;
 import com.app.dodamdodam.domain.QMemberDTO;
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.member.Member;
+import com.app.dodamdodam.entity.member.Grade;
+import com.app.dodamdodam.entity.member.QGrade;
 import com.app.dodamdodam.entity.member.QMember;
 import com.app.dodamdodam.entity.point.Point;
 import com.app.dodamdodam.entity.point.QPoint;
@@ -22,6 +24,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static com.app.dodamdodam.entity.free.QFreeBoard.freeBoard;
+import static com.app.dodamdodam.entity.member.QGrade.grade;
 import static com.app.dodamdodam.entity.member.QMember.member;
 import static com.app.dodamdodam.entity.point.QPoint.point;
 import static com.app.dodamdodam.entity.recruitment.QRecruitmentBoard.recruitmentBoard;
@@ -82,5 +85,16 @@ public class MemberQueryDslImpl implements MemberQueryDsl{
         return new PageImpl<>(adminMembes, pageable, count);
     }
 
+    @Override
+    public String findAdminMemberDetail_QueryDSL(Long memberId) {
+//        query.select(grade.gradeTitle).from(member, grade)
+//                .where(member.participationCount.between(grade.gradeStartNumber, grade.gradeEndNumber))
+//                .fetchOne();
+//
 
+
+        return   query.select(grade.gradeTitle).from(grade).join(member)
+                .on(member.participationCount.between(grade.gradeStartNumber, grade.gradeEndNumber))
+                .fetchOne();
+    }
 }

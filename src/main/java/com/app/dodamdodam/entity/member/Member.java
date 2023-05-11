@@ -43,7 +43,7 @@ public class Member extends Period {
     @ColumnDefault("'0'")
     private Integer memberPoint;
     @ColumnDefault("0")
-    private Integer participationCount;
+    private int participationCount;
 
     @Enumerated(EnumType.STRING)
     private MemberType memberType;
@@ -86,5 +86,9 @@ public class Member extends Period {
 
     public void setParticipationCountMinus(){
         this.participationCount--;
+    }
+
+    public Integer getParticipationCount() {
+        return participationCount;
     }
 }
