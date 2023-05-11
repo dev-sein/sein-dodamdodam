@@ -44,6 +44,9 @@
     --main-sub: #006633de;
     --main-sub2: #00663352;
     --main-sub3: #0066330d;
+    --select-color: #006633b8;
+    --no-select-color: #bee4d18c;
+    --main-semi-color: #00663396;
     /* #10837694 */
     --banner1-color: rgb(64, 64, 204);
     --banner2-color: rgb(16, 62, 104);
@@ -134,8 +137,22 @@
     transition: all 0.3s ease-in-out 0s;
     overflow: hidden;
     width: 378px;
-    background: var(--main-sub);
+    transition-property: width, background-color;
+    transition-duration: 0.3s, 0.3s;
+    /* background-color: rgb(0, 196, 196); */
+    background-color: var(--main-sub);
 }
+
+.guide-use-select, .guide-reserve-select {
+    /* background-color: rgb(231, 249, 249); */
+    background-color: var(--no-select-color);
+}
+
+.guide-use-select, .guide-reserve-select{
+    width: 104px;
+}
+
+
 .guide-frequent-container, .guide-use-container, .guide-reserve-container {
     height: 100%;
     flex-direction: column;
@@ -150,6 +167,12 @@
     padding-right: 30px;
     display: flex;
 }
+
+.guide-use-container, .guide-reserve-container{
+    display: none;
+}
+
+
 .frequent-title-bar, .use-title-bar, .reserve-title-bar {
     width: 100%;
     display: flex;
@@ -211,7 +234,9 @@
     margin-right: 15px;
     border: 0px;
     border-radius: 8px;
-    background-color: var(--main-color);
+    /* background-color:  rgb(0, 178, 178); */
+    /* background-color:  var(--main-sub3); */
+    background-color:  var(--main-semi-color);
     color: rgb(255, 255, 255);
     font-size: 24px;
     font-weight: 700;
@@ -246,7 +271,6 @@
     cursor: pointer;
     height: 168px;
     min-width: 104px;
-    background-color: var(--main-sub2);
     border: 0px;
     border-radius: 8px;
     transition: all 0.3s ease-in-out 0s;
@@ -414,7 +438,7 @@
     display: block;
 }
 
-.arrow-icon-right{
+.arrow-icon-right, .sell-next{
     position: absolute;
     top: 40%;
     right: 5px;
@@ -432,13 +456,13 @@
     display: block;
 }
 
-.event-banner {
+.event-banner, .sell-banner {
     position: relative;
     margin: 0px auto;
     max-width: 1280px;
     min-width: 1090px;
 }
-.event-title{
+.event-title, .sell-title{
     position: relative;
     display: flex;
     -webkit-box-align: center;
@@ -449,7 +473,7 @@
     padding-bottom: 10px;
 }
 
-.event-title-container {
+.event-title-container, .sell-title-conatainer {
     font-weight: 700;
     color: rgb(33, 37, 41);
     line-height: 34px;
@@ -506,18 +530,19 @@
     transition-property: transform,-webkit-transform;
     width: 100%;
     z-index: 1;
+    gap: 24px;
 }
 
-.event-swiper-box {
+.event-swiper-box, .sell-swiper-box {
     width: 302px;
-    margin-right: 24px;
+    /* margin-right: 24px; */
 }
-.event-swiper-container, .sell-swiper-image-container{
+.event-swiper-box-container, .sell-swiper-image-container{
     position: relative;
     height: 311px;
 }
 
-.event-swiper-image {
+.event-swiper-image, .sell-swiper-image {
     margin-bottom: 10px;
     background-repeat: no-repeat;
     background-position: center center;
@@ -531,12 +556,12 @@
     height: 160px;
 }
 
-.event-swiper-image:hover {
+.event-swiper-image:hover, .sell-swiper-image:hover {
     background-size: 120%;
 }
 
 
-.event-status {
+.event-status, .sell-status {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
@@ -558,7 +583,7 @@
     border: 0px;
     border-radius: 3px;
     color: rgb(255, 255, 255);
-    background-color: rgb(0, 196, 196);
+    background-color: var(--main-sub);
     font-size: 10px;
     font-weight: 700;
 }
@@ -584,7 +609,7 @@
     font-size: 10px;
     font-weight: 700;
 }
-.event-box-title-container {
+.event-box-title-container, .sell-box-title-container {
     color: rgb(33, 37, 41);
     font-size: 16px;
     font-weight: 500;
@@ -592,7 +617,7 @@
     margin-bottom: 8px;
     width: 300px;
 }
-.event-box-context-container {
+.event-box-context-container, .sell-box-context-container {
     color: rgb(144, 148, 156);
     font-size: 13px;
     font-weight: 400;
@@ -608,7 +633,7 @@
     max-height: 35px;
 }
 
-.event-box-date-container {
+.event-box-date-container, .sell-box-date-container {
     font-size: 14px;
     font-weight: 400;
     display: flex;
@@ -620,125 +645,134 @@
     color: rgb(33, 37, 41);
 }
 
-.recruits-bar {
+/* 두번째 배너 css */
+.event-banner-container{
     position: relative;
-    width: 100%;
-    height: 100%;
     overflow: hidden;
-    margin-bottom: 60px;
-    padding-left: 0px;
-    padding-right: 0px;
-}
-.recruit-container {
-    max-width: 1420px;
-    width: 98%;
-    position: relative;
-    margin: 0px auto 20px;
-}
-
-.recruit-title {
-    max-width: 1280px;
-    min-width: 320px;
-    position: relative;
     margin: 0px auto;
+    max-width: 1280px;
+    min-width: 1090px;
+}
+.second-banner-container{
+    position: relative;
     overflow: hidden;
 }
-.recruit-title-container{
-    position: relative;
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: justify;
-    justify-content: space-between;
-    padding-bottom: 10px;
-}
 
-.recruit-title-context{
-    font-weight: 700;
-    color: rgb(33, 37, 41);
-    line-height: 34px;
-    font-size: 24px;
-    margin-bottom: 5px;
-}
-
-.recruits-bar .plus-menu {
-    position: relative;
+div.second-banner {
     display: flex;
-    -webkit-box-pack: start;
-    justify-content: flex-start;
-    -webkit-box-align: center;
-    align-items: center;
+    gap: 24px;
+    width: 10000px; /* 배너 5개라 * 7 */
+    transition: transform 0.3s;
     cursor: pointer;
 }
 
-.recruits-bar .plus{
-    margin-right: 8px;
-    color: rgb(0, 0, 0);
-    font-size: 14px;
-    font-weight: 400;
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-}
-
-.recruit-swiper-view {
-    width: 1280px;
-    position: relative;
-    margin: 0px auto;
-}
-
-.recruit-swiper-container {
-    touch-action: pan-y;
-    list-style: none;
-    margin-left: auto;
-    margin-right: auto;
-    overflow: hidden;
-    padding: 0;
-    position: relative;
-    z-index: 1;
-}
-.recruit-swiper-wrapper {
-    box-sizing: initial;
-    display: flex;
-    height: 100%;
-    position: relative;
-    transition-property: -webkit-transform;
-    transition-property: transform;
-    transition-property: transform,-webkit-transform;
-    width: 100%;
-    z-index: 1;
-}
-.recruit-swiper-box {
-    width: 236.8px;
-    margin-right: 24px;
-    flex-shrink: 0;
-    height: 100%;
-    position: relative;
-    /* transition-property: -webkit-transform;
-    transition-property: transform; */
-    transition-property: transform,-webkit-transform;
-    /* width: 100%; */
-}
-.recruit-swiper-inner-container {
+div.second-banner .second-banners {
     position: relative;
     width: 237px;
     height: 360px;
-    overflow: hidden;
-    border: 0px;
-    border-radius: 10px;
+    float: left;
+    transition: transform 0.4s ease-in-out;
+    background-position: center;
 }
-.recruit-swiper-image {
+
+.second-banner-image-wrapper{
     width: 237px;
     height: 360px;
     margin-bottom: 16px;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    border: 0px;
+    overflow: hidden;
     border-radius: 10px;
-    transition: all 0.2s ease-in-out 0s;
+    background-position: center;
+}
+
+.second-banner-image{
+    width: 237px;
+    height: 360px;
+    background-size: cover;
+    border-radius: 10px;
+    transition: all 0.2s linear;
+    background-position: center;
+}
+
+
+
+div.second-move-arrow {
+    z-index: 1;
     cursor: pointer;
-    background-image: url(https://static.makercenter.wadiz.kr/board/image/b5365bd3-c344-482b-b9f0-239f0185073a.jpg);
+    display: flex;
+    justify-content: space-around;
+}
+
+div.second-move-arrow div {
+    background-size: 7px auto;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+div.second-prev {
+    position: absolute;
+    top: 70%;
+    left: 5px;
+    transform: translate(0, -50%);  
+}
+
+.second-prev-image{
+    width: 50px;
+    height: 50px;
+}
+
+div.second-next {
+    position: absolute;
+    top: 70%;
+    right: 5px;
+    transform: translate(0, -50%);  
+}
+
+.second-page-move-wrapper {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    bottom: 0px;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    height: 28px;
+    padding: 6px 10px;
+    color: rgb(204, 204, 204);
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: -0.36px;
+    font-weight: bold;
+    border-radius: 16px;
+    background-color: rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+#second-page-now{
+    color: rgb(255, 255, 255);
+    margin-right: 2px;
+}
+
+#second-page-total{
+    margin-right: 2px;
+}
+
+.second-banner-text-wrapper{
+    height: 48px;
+    margin-bottom: 10px;
+    color: rgb(33, 37, 41);
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    width: 295px;
+}
+
+
+.second-banner-text{
+    color: rgb(33, 37, 41);
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
 }
 
 .recruit-box-context {
@@ -754,15 +788,14 @@
     transition: all 0.2s ease-in-out 0s;
     transform: translate(0px, 0px);
     background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+    border-radius: 10px;
 }
-
 .recruit-box-title {
     color: rgb(255, 255, 255);
     font-size: 18px;
     font-weight: 700;
     margin-bottom: 30px;
 }
-
 .recruit-box-writer {
     color: rgb(255, 255, 255);
     font-size: 15px;
@@ -770,75 +803,154 @@
     display: none;
 }
 
-.static-banner-container{
+/* 세번째 배너 css */
+.third-banner-container{
     position: relative;
-    padding-left: 0px;
-    padding-right: 0px;
-    margin-bottom: 100px;
+    overflow: hidden;
 }
 
-.static-banner {
-    margin: 0px auto;
-    border-radius: 8px;
-    max-width: 1280px;
-    min-width: 320px;
+div.third-banner {
     display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    background-image: url('https://makercenter.wadiz.kr/static/media/newsletter.5d08ede6da1807c7b556.png');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    height: 220px;
-    flex-direction: row;
-    -webkit-box-pack: justify;
-    justify-content: space-between;
-}
-
-.static-banner-context {
-    margin-left: 120px;
-}
-.static-banner-date {
-    margin-bottom: 12px;
-    font-weight: 400;
-    color: rgb(255, 255, 255);
-    line-height: 26px;
-    font-size: 18px;
-}
-.satic-banner-title {
-    font-weight: 700;
-    color: rgb(255, 255, 255);
-    margin-bottom: 16px;
-    font-size: 32px;
-    line-height: 44px;
-    text-align: left;
-}
-.apply-form {
-    display: flex;
-    -webkit-box-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    align-items: center;
-    border: 0px;
-    border-radius: 3px;
-    background-color: rgb(0, 196, 196);
+    gap: 24px;
+    width: 10000px; /* 배너 5개라 * 7 */
+    transition: transform 0.3s;
     cursor: pointer;
-    text-decoration: none;
-    margin-right: 120px;
-    width: 240px;
-    height: 60px;
 }
-.a-context {
-    margin-left: 8px;
+
+div.third-banner .third-banners {
+    width: 302px;
+    height: 273px;
+    float: left;
+    transition: transform 0.4s ease-in-out;
+    background-position: center;
+}
+
+.third-banner-image-wrapper{
+    width: 302px;
+    height: 160px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.third-banner-image{
+    width: 302px;
+    height: 160px;
+    background-size: cover;
+    border-radius: 10px;
+    transition: all 0.2s linear;
+}
+
+.third-banner-image:hover{
+    transform: scale(1.2);  
+}
+
+div.third-move-arrow {
+    z-index: 1;
+    cursor: pointer;
     display: flex;
-    -webkit-box-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    align-items: center;
-    color: rgb(255, 255, 255);
-    font-weight: 700;
-    font-size: 18px;
+    justify-content: space-around;
 }
+
+div.third-move-arrow div {
+    background-size: 7px auto;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+div.third-prev {
+    position: absolute;
+    top: 40%;
+    left: 5px;
+    transform: translate(0, -50%);  
+}
+
+.third-prev-image{
+    width: 50px;
+    height: 50px;
+}
+
+div.third-next {
+    position: absolute;
+    top: 40%;
+    right: 5px;
+    transform: translate(0, -50%);  
+}
+
+.third-page-move-wrapper {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    bottom: 0px;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    height: 28px;
+    padding: 6px 10px;
+    color: rgb(204, 204, 204);
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: -0.36px;
+    font-weight: bold;
+    border-radius: 16px;
+    background-color: rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+#third-page-now{
+    color: rgb(255, 255, 255);
+    margin-right: 2px;
+}
+
+#third-page-total{
+    margin-right: 2px;
+}
+
+.third-banner-text-wrapper{
+    height: 48px;
+    margin-bottom: 10px;
+    color: rgb(33, 37, 41);
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    width: 295px;
+}
+
+
+.third-banner-text{
+    color: rgb(33, 37, 41);
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* 세번째 배너 끝 */
+
+/* 신청 배너 */
+section.container {
+    position: relative;
+    width: 1280px;
+    margin: 0 auto 60px;
+    overflow: hidden;
+}
+
+div.banner {
+    width: 8960px;
+    transition: transform 0.3s;
+    /* transform: translate(-90vw); */
+}
+
+div.banner div {
+    width: 1280px;
+    height: 338px;
+    float: left;
+    background-size: 100%;
+}
+
+
+/* 신청배너 끝 */
+
 
 
 /* banner 메인 배너 */
@@ -850,7 +962,7 @@
     -webkit-box-align: center;
     align-items: center;
     transition: all 0.5s ease 0s;
-    background: rgb(95, 173, 5);
+    background: var(--banner1-color);
     height: 440px;
 }
 
