@@ -33,6 +33,7 @@ public class FreeBoardServiceImpl implements FreeBoardService {
         return freeBoardRepository.findFreeBoardListByCategoryType(pageable, categoryType);
     }
 
+    /* 내가 작성한 자유 게시글 가져오기 */
     @Override
     public Page<FreeBoard> getFreeBoardsByMemberId(Pageable pageable, Long memberId) {
         return freeBoardRepository.findFreeBoardListByMemberId(pageable, memberId);

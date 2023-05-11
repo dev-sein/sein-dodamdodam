@@ -1,10 +1,12 @@
 package com.app.dodamdodam.repository;
 
 import com.app.dodamdodam.domain.MemberDTO;
+import com.app.dodamdodam.entity.banner.BannerApply;
 import com.app.dodamdodam.entity.embeddable.Address;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.point.Point;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
+import com.app.dodamdodam.repository.banner.BannerRepository;
 import com.app.dodamdodam.repository.board.recruitment.RecruitmentBoardRepository;
 import com.app.dodamdodam.repository.member.MemberRepository;
 import com.app.dodamdodam.repository.point.PointRepository;
@@ -15,6 +17,7 @@ import com.app.dodamdodam.type.Role;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -40,6 +43,9 @@ public class MemberRepositoryTests {
 
     @Autowired
     private PointRepository pointRepository;
+
+    @Autowired
+    private BannerRepository bannerRepository;
 
 //    Enum 3개 번갈아가면서 사용하기 위한 ArrayList
     ArrayList<PointStatus> pointStatuses = new ArrayList<PointStatus>(Arrays.asList(PointStatus.CHARGE, PointStatus.SAVING, PointStatus.USE));
@@ -121,8 +127,7 @@ public class MemberRepositoryTests {
     @Test
     public void findPointByMemberIdTest(){
         /*수정해야함*/
-
-//        recruitmentBoardRepository.findPointByMemberId(1L).stream().map(point -> point.toString()).forEach(log::info);
+        pointRepository.findPointByMemberId(2L).stream().map(Point::toString).forEach(log::info);
     }
 
 //    비밀번호 변경
@@ -156,8 +161,30 @@ public class MemberRepositoryTests {
         log.info(msg);
     }
 
+//    배너 신청
+    @Test
+    public void saveBannerTest(){
+        BannerApply bannerApply = new BannerApply(LocalDate.now(),6);
+        bannerApply.setMember(memberRepository.findById(2L).get());
+        bannerRepository.save(bannerApply);
+    }
+
+//    배너 신청 목록
+    @Test
+    public void findAllBannerTest(){
+        bannerRepository.findAll().stream().map(BannerApply::toString).forEach(log::info);
+    }
 
 
+
+    @Test //멤버 상세 조회
+    public void findAdminMemberDetail_QueryDSL(){
+        //멤버 상세 조회
+//        memberRepository.findById(1441L).ifPresent(member -> log.info(member.toString()));
+        //멤버 등급 조회        
+       // log.info(memberRepository.findAdminMemberDetail_QueryDSL(1441L));
+        log.info(memberRepository.findAdminMemberDetail_QueryDSL(1441L));
+    }
 
 
 

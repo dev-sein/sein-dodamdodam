@@ -79,6 +79,5 @@ public class InquiryRepositoryTests {
         adminInquirySearch.setInquiryEmail("abcd13@email.com");
         Page<Inquiry> inquiryPage = inquiryRepository.findInquiryWithSearch_QueryDSL(adminInquirySearch, PageRequest.of(0, 10));
         log.info(""+inquiryPage.getContent());
-
     }
 }
