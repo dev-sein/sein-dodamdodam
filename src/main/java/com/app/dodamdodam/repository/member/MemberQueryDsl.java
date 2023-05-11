@@ -27,8 +27,11 @@ public interface MemberQueryDsl {
 //    아이디 중복검사
     public boolean findCheckMemberIdByMemberEmail(String memberEmail);
 
-//  관리자 멤버 게시판 조회
+//  관리자 멤버 게시판 검색 조회
     public Page<Member> findAdminMemberWithPaging_QueryDSL(AdminMemberSearch adminMemberSearch, Pageable pageable);
+
+    //관리자 멤버 상세 조회(뱃지)
+    public String findAdminMemberDetail_QueryDSL(Long memberId);
 }
 
 

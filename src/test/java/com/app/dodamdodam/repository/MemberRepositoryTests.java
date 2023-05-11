@@ -156,8 +156,12 @@ public class MemberRepositoryTests {
         log.info(msg);
     }
 
-
-
+    @Test //멤버 상세 조회
+    public void findAdminMemberDetail_QueryDSL(){
+//        memberRepository.findById(1441L).ifPresent(member -> log.info(member.toString()));
+       // log.info(memberRepository.findAdminMemberDetail_QueryDSL(1441L));
+        log.info(memberRepository.findAdminMemberDetail_QueryDSL(1441L));
+    }
 
 
 
