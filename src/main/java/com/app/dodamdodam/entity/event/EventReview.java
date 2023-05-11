@@ -11,7 +11,7 @@ import javax.persistence.*;
 @ToString(exclude = "eventBoard")
 @Table(name = "TBL_EVENT_BOARD_REPLY")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class EventReply extends Reply {
+public class EventReview extends Reply {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
@@ -25,7 +25,7 @@ public class EventReply extends Reply {
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
-    public EventReply(String replyContent, EventBoard eventBoard, Member member) {
+    public EventReview(String replyContent, EventBoard eventBoard, Member member) {
         this.replyContent = replyContent;
         this.eventBoard = eventBoard;
         this.member = member;
