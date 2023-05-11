@@ -38,11 +38,11 @@
                 도담인들의 원활한 소통을 위한 공간입니다.
             </p>
             <div class="search_chat_container flex">
-                <select class="filter_search_chat">
+                <!-- <select class="filter_search_chat">
                     <option value="">제목+내용</option>
                     <option value="">제목</option>
                     <option value="">내용</option>
-                </select>
+                </select> -->
                 <input type="text" class="search_chat_input" placeholder="주고받은 메시지 검색">
             </div>
             <main id="chat_modal_li_container">
@@ -249,40 +249,114 @@
                 </div>
             </header>
             <div class="search_chat_container">
-                <!-- <select class="filter_search_chat">
-                    <option value="">메시지</option>
-                    <option value="">닉네임</option>
-                    <option value="">아이디</option>
-                </select> -->
                 <input type="text" class="search_chat_input" placeholder="주고받은 메시지 검색" style="width: 90%;">
             </div>
             <main id="chat_modal_li_container">
-                <!-- <ol class="opponent chat_ol">
-                    <li class="chat_li flex opponent">
-                        <div class="li_profile_img">
-                            <img src="/static/images/components/dodam-favicon.png" alt="" width="45px" height="45px">
+                <ol class="chatting_ol">
+                    <li class="chatting_li opponent">
+                        <div class="li_chat_history">
+                            도담도담에 오신 것을 환영합니다!<br>
+                            <!-- 안녕하세요<br>
+                            채팅은 편하신가요<br> -->
                         </div>
-                        <div class="li_chat_name_and_history flex">
-                            <div class="li_profile_nickname">
-                                도담도담
-                            </div>
-                            <div class="li_chat_history">
-                                도담도담에 오신 것을 환영합니다!
-                            </div>
-                        </div>
-                        <div class="li_chat_histroy_and_date flex">
-                            <div class="li_date">
-                                <span class="current_msg_date">오후 5:20</span>
-                            </div>
-                            <div class="li_unchecked_msg_container">
-                                <div class="li_unchecked_msg">1</div>
-                            </div>
+                        <div class="li_chat_date">
+                            오전 10:10
                         </div>
                     </li>
-                </ol> -->
+                    <li class="chatting_li me">
+                        <div class="li_chat_history">
+                            도담도담에 오신 것을 환영합니다<br>
+                            안녕하세요<br>
+                            채팅은 편하신가요<br>
+                        </div>
+                        <div class="li_chat_date">
+                            오전 10:10
+                        </div>
+                    </li>
+                    <li class="chatting_li opponent">
+                        <div class="li_chat_history">
+                            도담도담에 오신 것을 환영합니다!<br>
+                            <!-- 안녕하세요<br>
+                            채팅은 편하신가요<br> -->
+                        </div>
+                        <div class="li_chat_date">
+                            오전 10:10
+                        </div>
+                    </li>
+                    <li class="chatting_li me">
+                        <div class="li_chat_history">
+                            도담도담에 오신 것을 환영합니다<br>
+                            안녕하세요<br>
+                            채팅은 편하신가요<br>
+                        </div>
+                        <div class="li_chat_date">
+                            오전 10:10
+                        </div>
+                    </li>
+                    <li class="chatting_li opponent">
+                        <div class="li_chat_history">
+                            도담도담에 오신 것을 환영합니다!<br>
+                            <!-- 안녕하세요<br>
+                            채팅은 편하신가요<br> -->
+                        </div>
+                        <div class="li_chat_date">
+                            오전 10:10
+                        </div>
+                    </li>
+                    <li class="chatting_li me">
+                        <div class="li_chat_history">
+                            도담도담에 오신 것을 환영합니다<br>
+                            안녕하세요<br>
+                            채팅은 편하신가요<br>
+                        </div>
+                        <div class="li_chat_date">
+                            오전 10:10
+                        </div>
+                    </li>
+                    <li class="chatting_li opponent">
+                        <div class="li_chat_history">
+                            도담도담에 오신 것을 환영합니다!<br>
+                            <!-- 안녕하세요<br>
+                            채팅은 편하신가요<br> -->
+                        </div>
+                        <div class="li_chat_date">
+                            오전 10:10
+                        </div>
+                    </li>
+                    <li class="chatting_li me">
+                        <div class="li_chat_history">
+                            도담도담에 오신 것을 환영합니다<br>
+                            안녕하세요<br>
+                            채팅은 편하신가요<br>
+                        </div>
+                        <div class="li_chat_date">
+                            오전 10:10
+                        </div>
+                    </li>
+                    <li class="chatting_li opponent">
+                        <div class="li_chat_history">
+                            도담도담에 오신 것을 환영합니다!<br>
+                            <!-- 안녕하세요<br>
+                            채팅은 편하신가요<br> -->
+                        </div>
+                        <div class="li_chat_date">
+                            오전 10:10
+                        </div>
+                    </li>
+                    <li class="chatting_li me">
+                        <div class="li_chat_history">
+                            도담도담에 오신 것을 환영합니다<br>
+                            안녕하세요<br>
+                            채팅은 편하신가요<br>
+                        </div>
+                        <div class="li_chat_date">
+                            오전 10:10
+                        </div>
+                    </li>
+                </ol>
             </main>
             <footer class="input_msg_container">
-                <input type="text" class="input_msg">
+                <textarea class="input_msg"></textarea>
                 <button class="msg_submit_button">
                     <svg class="submit_btn_svg" xmlns="http://www.w3.org/2000/svg" width="24px" xmlns:xlink="http://www.w3.org/1999/xlink" style="enable-background:new 0 0 24 24;" version="1.1" viewBox="0 0 24 24" xml:space="preserve">
                         <g id="info"/>

@@ -10,7 +10,7 @@ import java.util.List;
 
 @Entity
 @Getter
-@ToString(callSuper = true, exclude = "purchaseFiles, purchaseReviews")
+@ToString(callSuper = true, exclude = {"purchaseFiles", "purchaseReviews"})
 @Table(name = "TBL_PURCHASE_BOARD")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class PurchaseBoard extends Board {

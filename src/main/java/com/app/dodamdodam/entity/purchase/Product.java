@@ -29,9 +29,10 @@ public class Product {
     @OneToOne(fetch = FetchType.LAZY)
     private Purchase purchase;
 
-    public Product(String productName, Integer productPrice, Long productCount) {
+    public Product(String productName, Integer productPrice, Long productCount, PurchaseBoard purchaseBoard) {
         this.productName = productName;
         this.productPrice = productPrice;
         this.productCount = productCount;
+        this.purchaseBoard = purchaseBoard;
     }
 }
