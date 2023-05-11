@@ -158,7 +158,9 @@ public class MemberRepositoryTests {
 
     @Test //멤버 상세 조회
     public void findAdminMemberDetail_QueryDSL(){
+        //멤버 상세 조회
 //        memberRepository.findById(1441L).ifPresent(member -> log.info(member.toString()));
+        //멤버 등급 조회        
        // log.info(memberRepository.findAdminMemberDetail_QueryDSL(1441L));
         log.info(memberRepository.findAdminMemberDetail_QueryDSL(1441L));
     }

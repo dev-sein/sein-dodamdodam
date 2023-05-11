@@ -87,14 +87,14 @@ public class MemberQueryDslImpl implements MemberQueryDsl{
 
     @Override
     public String findAdminMemberDetail_QueryDSL(Long memberId) {
-//        return query.select(grade.gradeTitle).from(member, grade)
+//        query.select(grade.gradeTitle).from(member, grade)
 //                .where(member.participationCount.between(grade.gradeStartNumber, grade.gradeEndNumber))
 //                .fetchOne();
 //
-//        return query.select(grade.gradeTitle).from(member).join(grade).fetchJoin()
-//                .on(member.participationCount.between(grade.gradeStartNumber, grade.gradeEndNumber))
-//                .fetchOne();
 
-        return null;
+
+        return   query.select(grade.gradeTitle).from(grade).join(member)
+                .on(member.participationCount.between(grade.gradeStartNumber, grade.gradeEndNumber))
+                .fetchOne();
     }
 }
