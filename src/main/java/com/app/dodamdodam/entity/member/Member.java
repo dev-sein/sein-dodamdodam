@@ -50,8 +50,8 @@ public class Member extends Period {
     @Enumerated(EnumType.STRING)
     private Role memberRole;
 
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "member", cascade = CascadeType.REMOVE)
-//    private List<Recruitment> recruitments = new ArrayList<>();
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "member", cascade = CascadeType.REMOVE)
+    private List<Recruitment> recruitments = new ArrayList<>();
 
     public Member(String memberId, String memberPassword, String memberName, String memberEmail, String memberPhone, Address address, MemberStatus memberStatus, MemberType memberType, Role memberRole) {
         this.memberId = memberId;
