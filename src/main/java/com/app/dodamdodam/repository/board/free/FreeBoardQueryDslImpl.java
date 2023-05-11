@@ -1,14 +1,9 @@
 package com.app.dodamdodam.repository.board.free;
 
-import com.app.dodamdodam.domain.QFreeBoardFileDTO;
 import com.app.dodamdodam.entity.free.FreeBoard;
-import com.app.dodamdodam.entity.free.QFreeBoard;
-import com.app.dodamdodam.entity.free.QFreeFile;
-import com.app.dodamdodam.entity.free.QFreeReply;
-import com.app.dodamdodam.entity.member.QMember;
-import com.app.dodamdodam.entity.purchase.PurchaseBoard;
-import com.app.dodamdodam.entity.reply.QReply;
+import com.app.dodamdodam.search.board.AdminFreeBoardSearch;
 import com.app.dodamdodam.type.CategoryType;
+import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -88,6 +83,23 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
         return new PageImpl<>(freeBoards, pageable, count);
     }
 
+    @Override //관리자 자유게시판 검색
+    public Page<FreeBoard> findAdmindFreeBoardWithPaging_QueryDSL(AdminFreeBoardSearch freeBoardSearch, Pageable pageable) {
+        BooleanExpression freeCategoryEq = freeBoardSearch.getFreeCategory() == null ? null : freeBoard.freeCategory.eq(freeBoardSearch.getFreeCategory());
+        BooleanExpression freeTitleEq = freeBoardSearch.getBoardTitle() == null ? null : freeBoard.boardTitle.eq(freeBoardSearch.getBoardTitle());
+        BooleanExpression memberNameEq = freeBoardSearch.getMemberName() == null ? null : freeBoard.member.memberName.eq(freeBoardSearch.getMemberName());
+
+        List<FreeBoard> adminFreeBoards = query.select(freeBoard)
+                .from(freeBoard)
+                .where(freeCategoryEq, freeTitleEq, memberNameEq)
+                .orderBy(freeBoard.id.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+        Long count = query.select(freeBoard.count()).from(freeBoard).fetchOne();
+
+        return new PageImpl<>(adminFreeBoards, pageable, count);
+    }
 
 //    게시글 상세페이지 board 정보, 작성자 정보, 첨부파일
     @Override

@@ -1,9 +1,11 @@
 package com.app.dodamdodam.repository;
 
 import com.app.dodamdodam.entity.inquiry.Inquiry;
+import com.app.dodamdodam.entity.point.Point;
 import com.app.dodamdodam.repository.inquiry.InquiryQueryDsl;
 import com.app.dodamdodam.repository.inquiry.InquiryQueryDslImpl;
 import com.app.dodamdodam.repository.inquiry.InquiryRepository;
+import com.app.dodamdodam.search.Inquiry.AdminInquirySearch;
 import com.app.dodamdodam.type.InquiryStatus;
 import com.app.dodamdodam.type.InquiryType;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -27,9 +29,6 @@ public class InquiryRepositoryTests {
 
     @Autowired
     public InquiryRepository inquiryRepository;
-
-//    @Autowired
-//    public InquiryQueryDslImpl inquiryQueryDsl;
 
 
     @Test //문의사항 저장 테스트
@@ -72,5 +71,14 @@ public class InquiryRepositoryTests {
     @Test //문의 삭제 테스트
     public void deleteTest(){
         inquiryRepository.findById(1L).ifPresent(inquiry -> inquiryRepository.delete(inquiry));
+    }
+
+    @Test //문의사항 검색 테스트
+    public void findInquiryWithSearch_QueryDSL_Test(){
+        AdminInquirySearch adminInquirySearch = new AdminInquirySearch();
+        adminInquirySearch.setInquiryEmail("abcd13@email.com");
+        Page<Inquiry> inquiryPage = inquiryRepository.findInquiryWithSearch_QueryDSL(adminInquirySearch, PageRequest.of(0, 10));
+        log.info(""+inquiryPage.getContent());
+
     }
 }

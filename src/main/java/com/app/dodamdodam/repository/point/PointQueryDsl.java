@@ -11,9 +11,6 @@ public interface PointQueryDsl {
 //    memberId로 point 내역 조회
     public List<Point> findPointByMemberId(Long memberId);
 
-//    어드민-포인트 페이지 검색
-    public Page<Point> findPointWithSearch(AdminPointSearch pointSearch, Pageable pageable);
-
-//  어드민-포인트 아이디 검색(???) 수정중 
-    public Page<Point> findPointMemberIdWithSearch(AdminPointSearch pointSearch, Pageable pageable);
+//  어드민 포인트 정보 검색
+    public Page<Point> findPointMemberIdWithSearch_QueryDSL(AdminPointSearch pointSearch, Pageable pageable);
 }

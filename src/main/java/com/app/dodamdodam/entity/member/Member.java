@@ -73,6 +73,9 @@ public class Member extends Period {
         this.memberPassword = memberPassword;
     }
 
+    public void setMemberStatus(MemberStatus memberStatus) {
+        this.memberStatus = memberStatus;
+    }
     public void setParticipationCountPlus(){
         this.participationCount++;
     }
