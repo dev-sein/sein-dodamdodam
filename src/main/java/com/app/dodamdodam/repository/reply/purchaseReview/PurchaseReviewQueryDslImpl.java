@@ -1,10 +1,6 @@
 package com.app.dodamdodam.repository.reply.purchaseReview;
 
-import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.entity.purchase.PurchaseReview;
-import com.app.dodamdodam.entity.purchase.QPurchaseReview;
-import com.app.dodamdodam.search.PurchaseBoardSearch;
-import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
