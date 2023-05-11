@@ -5,7 +5,6 @@ import com.app.dodamdodam.domain.QEventBoardDTO;
 import com.app.dodamdodam.entity.event.EventBoard;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.hibernate.Criteria;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 

@@ -2,14 +2,21 @@ package com.app.dodamdodam.repository.room;
 
 import com.app.dodamdodam.entity.chatting.QChatting;
 import com.app.dodamdodam.entity.chatting.Room;
+import com.app.dodamdodam.entity.free.FreeBoard;
+import com.app.dodamdodam.search.FreeBoardSearch;
+import com.app.dodamdodam.search.chatting.RoomSearch;
+import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
 import static com.app.dodamdodam.entity.chatting.QChatting.chatting;
 import static com.app.dodamdodam.entity.chatting.QRoom.room;
+import static com.app.dodamdodam.entity.free.QFreeBoard.freeBoard;
 
 
 public class RoomQueryDslImpl implements RoomQueryDsl{
@@ -41,4 +48,25 @@ public class RoomQueryDslImpl implements RoomQueryDsl{
                 .limit(pageable.getPageSize())
                 .fetch();
     }
+
+    @Override
+    public Page<Room> findRoomSearchWithPaging_QueryDSL(RoomSearch roomSearch, Pageable pageable) {
+        BooleanExpression memberNameEq = roomSearch.getMemberName() == null ? null : room.member.memberName.eq(roomSearch.getMemberName());
+        BooleanExpression chattingContentEq = roomSearch.getChattingContent() == null ? null : room.chattings.get(0).chattingContent.eq(roomSearch.getChattingContent());
+
+        List<Room> rooms = query.select(room)
+                .from(room)
+                .join(room.member).fetchJoin()
+                .join(room.chattings).fetchJoin()
+                .where(memberNameEq, chattingContentEq)
+                .orderBy(room.id.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+        Long count = query.select(room.count()).where(memberNameEq, chattingContentEq).from(room).fetchOne();
+
+        return new PageImpl<>(rooms, pageable, count);
+    }
+
+
 }
