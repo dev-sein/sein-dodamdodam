@@ -257,6 +257,8 @@ content{
     /* background: #1083761c; */
     /* background: #00663326; */
     background: #00663314;
+    height: fit-content;
+    min-height: 100%;
 }
 
 .inner-wrapper{
@@ -271,6 +273,8 @@ content{
     box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
     position: relative;
     background-color: #fff;
+    height: fit-content;
+    min-height: 500px;
 }
 
 .page-title{

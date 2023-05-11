@@ -18,10 +18,10 @@ import java.util.List;
 public class PurchaseBoardController {
     private final PurchaseBoardService purchaseBoardService;
 
-    @GetMapping("list")
-    @ResponseBody
-    public String getPurchaseBoardList(@RequestParam("purchaseBoardSearch") PurchaseBoardSearch purchaseBoardSearch, @RequestParam("pageable") Pageable pageable){
-        model.addAttribute("purchaseBoards", purchaseBoardService.getPurchaseBoardsWithSearch(purchaseBoardSearch, pageable));
-        return "/sell-board/sell-list.html";
-    }
+//    @GetMapping("list")
+//    @ResponseBody
+//    public String getPurchaseBoardList(@RequestParam("purchaseBoardSearch") PurchaseBoardSearch purchaseBoardSearch, @RequestParam("pageable") Pageable pageable){
+//        model.addAttribute("purchaseBoards", purchaseBoardService.getPurchaseBoardsWithSearch(purchaseBoardSearch, pageable));
+//        return "/sell-board/sell-list.html";
+//    }
 }

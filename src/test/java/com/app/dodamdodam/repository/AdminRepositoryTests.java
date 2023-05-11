@@ -66,7 +66,6 @@ public class AdminRepositoryTests {
         pointPage.forEach(point -> log.info((point.getPointAmount()+"")));
     }
 
-
     @Test //멤버 페이징 조회
     public void findAllMemberTest(){
         Page<Member> memberPage = memberRepository.findAll(PageRequest.of(0, 10));
@@ -156,7 +155,6 @@ public class AdminRepositoryTests {
 
     }
 
-//    @Test //판매게시판 최신글 3개 글 제목 불러오기
 
 
 }
