@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface FreeBoardQueryDsl {
 //    세션에 담긴 id 값 받아와서 내가 작성한 자유 게시글 리스트 가져오기
@@ -26,4 +27,9 @@ public interface FreeBoardQueryDsl {
 
     //  어드민 자유게시판 검색
     public Page<FreeBoard> findAdmindFreeBoardWithPaging_QueryDSL(AdminFreeBoardSearch adminFreeBoardSearch, Pageable pageable);
+//    자유게시글 상세 페이지
+    public Optional<FreeBoard> findFreeBoardAndFreeFilesById(Long boardId);
+
+//    자유게시글 상세 페이지 댓글
+    public Optional<FreeBoard> findFreeBoardAndFreeRepliesById(Long boardId);
 }

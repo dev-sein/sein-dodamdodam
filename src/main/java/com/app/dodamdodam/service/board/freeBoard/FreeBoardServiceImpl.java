@@ -1,9 +1,8 @@
-package com.app.dodamdodam.service.board.fileBoard;
+package com.app.dodamdodam.service.board.freeBoard;
 
+import com.app.dodamdodam.domain.FreeBoardFileDTO;
 import com.app.dodamdodam.entity.free.FreeBoard;
-import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.repository.board.free.FreeBoardRepository;
-import com.app.dodamdodam.repository.member.MemberRepository;
 import com.app.dodamdodam.type.CategoryType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -22,8 +22,9 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 
     /* 자유 게시글 전체 목록 */
     @Override
-    public Page<FreeBoard> getAllFreeBoards(Pageable pageable) {
-        return freeBoardRepository.findAllFreeBoardList(pageable);
+    public List<FreeBoardFileDTO> getAllFreeBoards(Pageable pageable) {
+        return freeBoardRepository.findAllFreeBoardList(pageable)
+                .stream().map(freeBoard -> toFreeBoardFileDTO(freeBoard)).collect(Collectors.toList());
     }
 
     /* 자유 게시글 카테고리 별 분류해서 가져오기 */
@@ -40,7 +41,7 @@ public class FreeBoardServiceImpl implements FreeBoardService {
     /* 자유 게시글 상세 */
     @Override
     public Optional<FreeBoard> getFreeBoardById(Long boardId) {
-        return freeBoardRepository.findById(boardId);
+        return freeBoardRepository.findFreeBoardAndFreeFilesById(boardId);
     }
 
     /* 자유 게시글 수정 */

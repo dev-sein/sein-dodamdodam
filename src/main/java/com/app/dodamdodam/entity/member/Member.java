@@ -2,6 +2,7 @@ package com.app.dodamdodam.entity.member;
 
 import com.app.dodamdodam.audit.Period;
 import com.app.dodamdodam.entity.embeddable.Address;
+import com.app.dodamdodam.entity.free.FreeLike;
 import com.app.dodamdodam.entity.recruitment.Recruitment;
 import com.app.dodamdodam.type.MemberStatus;
 import com.app.dodamdodam.type.MemberType;
@@ -49,8 +50,8 @@ public class Member extends Period {
     @Enumerated(EnumType.STRING)
     private Role memberRole;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "member")
-    private List<Recruitment> recruitments = new ArrayList<>();
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "member", cascade = CascadeType.REMOVE)
+//    private List<Recruitment> recruitments = new ArrayList<>();
 
     public Member(String memberId, String memberPassword, String memberName, String memberEmail, String memberPhone, Address address, MemberStatus memberStatus, MemberType memberType, Role memberRole) {
         this.memberId = memberId;
@@ -74,5 +75,12 @@ public class Member extends Period {
 
     public void setMemberStatus(MemberStatus memberStatus) {
         this.memberStatus = memberStatus;
+    }
+    public void setParticipationCountPlus(){
+        this.participationCount++;
+    }
+
+    public void setParticipationCountMinus(){
+        this.participationCount--;
     }
 }
