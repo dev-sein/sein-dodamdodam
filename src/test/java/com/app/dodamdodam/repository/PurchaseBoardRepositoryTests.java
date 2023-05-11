@@ -56,7 +56,6 @@ public class PurchaseBoardRepositoryTests {
         for (int i = 0; i < 10; i++) {
 
 
-
             PurchaseBoard purchaseBoard = new PurchaseBoard("테스트제목" + i, "테스트내용" + i);
             purchaseBoard.setMember(member);
 

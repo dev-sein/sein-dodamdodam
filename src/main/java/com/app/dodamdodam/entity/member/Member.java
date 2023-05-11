@@ -2,6 +2,7 @@ package com.app.dodamdodam.entity.member;
 
 import com.app.dodamdodam.audit.Period;
 import com.app.dodamdodam.entity.embeddable.Address;
+import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.recruitment.Recruitment;
 import com.app.dodamdodam.type.MemberStatus;
 import com.app.dodamdodam.type.MemberType;
@@ -51,6 +52,9 @@ public class Member extends Period {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "member")
     private List<Recruitment> recruitments = new ArrayList<>();
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "member", cascade = CascadeType.REMOVE)
+    private List<EventBoard> eventBoards;
 
     public Member(String memberId, String memberPassword, String memberName, String memberEmail, String memberPhone, Address address, MemberStatus memberStatus, MemberType memberType, Role memberRole) {
         this.memberId = memberId;
