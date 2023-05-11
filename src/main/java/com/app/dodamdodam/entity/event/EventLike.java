@@ -1,6 +1,10 @@
 package com.app.dodamdodam.entity.event;
 
+import com.app.dodamdodam.entity.member.Member;
+import com.sun.istack.NotNull;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -14,7 +18,20 @@ public class EventLike {
     @EqualsAndHashCode.Include
     private Long id;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "EVENT_BOARD_ID")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @NotNull
     private EventBoard eventBoard;
+    @NotNull
+    private Long memberId;
+
+    public void setMember(Member memeber){
+        this.memberId = getMemberId();
+    }
+
+    public void setEventBoard(EventBoard eventBoard){
+        this.eventBoard =eventBoard;
+    }
+
 }

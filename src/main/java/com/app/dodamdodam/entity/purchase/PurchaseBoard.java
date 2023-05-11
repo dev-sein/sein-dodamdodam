@@ -53,4 +53,5 @@ public class PurchaseBoard extends Board {
         this.member = member;
     }
 
+
 }
