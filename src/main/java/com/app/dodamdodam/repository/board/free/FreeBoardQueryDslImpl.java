@@ -3,9 +3,12 @@ package com.app.dodamdodam.repository.board.free;
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.free.QFreeFile;
 import com.app.dodamdodam.entity.free.QFreeReply;
+import com.app.dodamdodam.entity.inquiry.Inquiry;
 import com.app.dodamdodam.entity.member.QMember;
 import com.app.dodamdodam.entity.reply.QReply;
+import com.app.dodamdodam.search.board.AdminFreeBoardSearch;
 import com.app.dodamdodam.type.CategoryType;
+import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,6 +20,7 @@ import java.util.List;
 import static com.app.dodamdodam.entity.free.QFreeBoard.freeBoard;
 import static com.app.dodamdodam.entity.free.QFreeFile.freeFile;
 import static com.app.dodamdodam.entity.free.QFreeReply.freeReply;
+import static com.app.dodamdodam.entity.inquiry.QInquiry.inquiry;
 import static com.app.dodamdodam.entity.member.QMember.member;
 
 public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
@@ -60,5 +64,23 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
         Long count = query.select(freeBoard.count()).from(freeBoard).where(freeBoard.freeCategory.eq(categoryType).and(freeBoard.member.id.eq(memberId))).fetchOne();
 
         return new PageImpl<>(freeBoards, pageable, count);
+    }
+
+    @Override //관리자 자유게시판 검색
+    public Page<FreeBoard> findAdmindFreeBoardWithPaging_QueryDSL(AdminFreeBoardSearch freeBoardSearch, Pageable pageable) {
+        BooleanExpression freeCategoryEq = freeBoardSearch.getFreeCategory() == null ? null : freeBoard.freeCategory.eq(freeBoardSearch.getFreeCategory());
+        BooleanExpression freeTitleEq = freeBoardSearch.getBoardTitle() == null ? null : freeBoard.boardTitle.eq(freeBoardSearch.getBoardTitle());
+        BooleanExpression memberNameEq = freeBoardSearch.getMemberName() == null ? null : freeBoard.member.memberName.eq(freeBoardSearch.getMemberName());
+
+        List<FreeBoard> adminFreeBoards = query.select(freeBoard)
+                .from(freeBoard)
+                .where(freeCategoryEq, freeTitleEq, memberNameEq)
+                .orderBy(freeBoard.id.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+        Long count = query.select(freeBoard.count()).from(freeBoard).fetchOne();
+
+        return new PageImpl<>(adminFreeBoards, pageable, count);
     }
 }

@@ -3,6 +3,7 @@ package com.app.dodamdodam.repository.board.purchase;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.entity.purchase.PurchaseReview;
+import com.app.dodamdodam.search.board.AdminPurchaseBoardSearch;
 import org.springframework.data.domain.Page;
 import com.app.dodamdodam.domain.PurchaseBoardDTO;
 import com.app.dodamdodam.search.PurchaseBoardSearch;
@@ -27,6 +28,8 @@ public interface PurchaseBoardQueryDsl {
 //    게시글 검색
     public Slice<PurchaseBoard> findAllWithSearch_QueryDSL(PurchaseBoardSearch purchaseBoardSearch, Pageable pageable);
 
+//  관리자 판매 게시판 검색
+    public Page<PurchaseBoard> findadminPurchaseSearchWithPaging_QueryDSL(AdminPurchaseBoardSearch adminPurchaseBoardSearch, Pageable pageable);
 
 
 }
