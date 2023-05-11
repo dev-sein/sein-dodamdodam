@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -39,7 +40,7 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 
     /* 자유 게시글 상세 */
     @Override
-    public FreeBoard getFreeBoardById(Long boardId) {
+    public Optional<FreeBoard> getFreeBoardById(Long boardId) {
         return freeBoardRepository.findFreeBoardAndFreeFilesById(boardId);
     }
 

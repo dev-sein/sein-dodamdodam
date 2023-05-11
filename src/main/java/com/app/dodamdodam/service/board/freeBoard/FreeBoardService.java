@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
@@ -29,7 +30,7 @@ public interface FreeBoardService {
     public Page<FreeBoard> getFreeBoardsByMemberId(Pageable pageable, Long memberId);
 
     /* 자유 게시글 상세 */
-    public FreeBoard getFreeBoardById(Long boardId);
+    public Optional<FreeBoard> getFreeBoardById(Long boardId);
 
     /* 자유 게시글 수정 */
     public void updateFreeBoard(FreeBoard freeBoard);
