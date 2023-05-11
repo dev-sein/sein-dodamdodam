@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gugi&display=swap">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="/static/css/member/join.css">
-    <link rel="stylesheet" href="/static/css/member/dodam-header.css">
-    <link rel="shortcut icon" href="/static/images/components/dodam-favicon.png">
+    <link rel="stylesheet" href="/css/member/join.css">
+    <link rel="stylesheet" href="/css/member/dodam-header.css">
+    <link rel="shortcut icon" href="/images/components/dodam-favicon.png">
 </head>
 <body>
     <!-- header 시작 -->
@@ -23,7 +23,7 @@
                         <h1 class="dodam-logo">
                             <a href="#">
                                 <span class="project-label">도담도담</span>
-                                <img src="/static/images/components/dodam-logo.png">
+                                <img src="/images/components/dodam-logo.png">
                             </a>
                         </h1>
                         <ul class="header-right">
@@ -87,13 +87,13 @@
             <div class="account-container-email">
                 <h3 class="signup-intro-email">도담도담</h3>
                 <!-- 회원가입 정보 입력 폼 -->
-                <form action="" name="joinForm" method="post">
+                <form th:action="@{/member/join}" th:object="${memberDTO}" name="joinForm" method="post">
                		 <div class="email-signup-form-container">
                         <div class="email-field-container">
                             <label class="EmailAuthField">아이디</label>
                             <div class="email-field-input-continer">
                                 <div class="EmailAuthField_inputField">
-                                    <input name="userIdentification" placeholder="아이디 입력" type="text" class="email-field id_confirm" id="identification-input">
+                                    <input name="memberId" placeholder="아이디 입력" type="text" class="email-field id_confirm" id="identification-input">
                                  	<span id="id_ok" style="color:green; display:none; font-size:13px;">사용 가능한 아이디입니다.</span>
                                  	<span id="id_already" style="color:red; display:none; font-size:13px;">중복된 아이디입니다!</span>
                                     
@@ -105,7 +105,7 @@
                         <div class="password-field">
                             <label>비밀번호</label><!-- 비밀번호 -->
                             <div class="password-field-text">
-                                <input name="userPassword" placeholder="비밀번호 입력" type="password" class="input-password-container" id="password-input" aria-invalid="false">
+                                <input name="memberPassword" placeholder="비밀번호 입력" type="password" class="input-password-container" id="password-input" aria-invalid="false">
                                 <button aria-label="비밀번호 보기" class="Button_TextField_icon" type="button">
                                     <span class="eye" id="eye1">
                                         <span class="Button_children_pw">
@@ -122,7 +122,7 @@
                         <div class="recheck-password">
                             <label></label>
                             <div>
-                                <input name="userPassword" placeholder="비밀번호 확인" type="password" class="re-input-password-container" aria-invalid="false">
+                                <input name="memberPassword" placeholder="비밀번호 확인" type="password" class="re-input-password-container" aria-invalid="false">
                                 <button aria-label="비밀번호 보기" class="Button_TextField_icon1" id="eye-wrapper" type="button">
                                     <span class="eye">
                                         <span class="Button_children">
@@ -141,7 +141,7 @@
                             <label class="EmailAuthField">닉네임</label>
                             <div class="email-field-input-continer">
                                 <div class="EmailAuthField_inputField">
-                                    <input name="userNickname" placeholder="닉네임 입력" type="text" class="nickname-field email-field" id="nickname">
+                                    <input name="memberNickname" placeholder="닉네임 입력" type="text" class="nickname-field email-field" id="nickname">
                                 </div>
                             </div>
                             <em class="nickname-error error-message">최소 2자입니다.</em>
@@ -150,7 +150,7 @@
                             <label class="EmailAuthField">이메일</label>
                             <div class="email-field-input-continer">
                                 <div class="EmailAuthField_inputField">
-                                    <input name="userEmail" placeholder="이메일 입력" type="text" class="email-field" id="email-input">
+                                    <input name="memberEmail" placeholder="이메일 입력" type="text" class="email-field" id="email-input">
                                 </div>
                             </div>
                             <em class="email-error error-message">이메일을 입력해주세요.</em>
@@ -158,13 +158,13 @@
                 	</div>
                     <div class="name-field" id="name-name"><label>이름</label>
                         <div class=" ">
-                            <input name="userName" placeholder="이름 입력" type="text" class="name-input" id="name-input">
+                            <input name="memberName" placeholder="이름 입력" type="text" class="name-input" id="name-input">
                         </div>
                         <em class="name-error error-message">이름을 입력해주세요.</em>
                     </div>
                     <div class="name-field phone-field" id="phone-name"><label>핸드폰 번호</label>
                         <div class=" ">
-                            <input name="userPhone" placeholder="핸드폰 번호 입력" type="text" class="name-input" id="input-phone-number" maxlength="11">
+                            <input name="memberPhone" placeholder="핸드폰 번호 입력" type="text" class="name-input" id="input-phone-number" maxlength="11">
                         </div>
                         <em class="phone-error error-message">핸드폰 번호를 입력해주세요.</em>
                     </div>
@@ -174,14 +174,14 @@
                         </div>
                         <div class="action-input">
                             <div class="input-container mb13">
-                                <input name="eventAddress" id="address" class="address" placeholder="주소검색" required>
+                                <input name="address" id="address" class="address" placeholder="주소검색" required>
                                 <button class="address-btn" id="detailAddress" type="button" onclick="searchAddress()">주소검색</button>
                             </div>
                         </div>
                         </div>
                         <div class="input-container">
                             <div class="waffle input">
-                                <input class="address-detail-input" name="eventAddressDetail" placeholder="상세주소">
+                                <input class="address-detail-input" name="addressDetail" placeholder="상세주소">
                             </div>
                         <div class="waffle helper mb"></div>
                     </div>   
@@ -236,5 +236,5 @@
 </body>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-<script src="../../static/js/member/join.js"></script>
+<script src="/js/member/join.js"></script>
 </html>

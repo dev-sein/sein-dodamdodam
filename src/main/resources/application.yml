@@ -34,8 +34,8 @@ spring:
     ansi:
       enabled: always
 
-#  #Redis
-#  session:
-#    store-type: redis
+  #Redis
+  session:
+    store-type: redis
 
 

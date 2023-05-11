@@ -1,7 +1,6 @@
 package com.app.dodamdodam.repository.member;
 
 import com.app.dodamdodam.domain.MemberDTO;
-import com.app.dodamdodam.domain.QMemberDTO;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.member.QMember;
 import com.app.dodamdodam.entity.point.Point;
@@ -56,7 +55,10 @@ public class MemberQueryDslImpl implements MemberQueryDsl{
         return true;
     }
 
-
+    @Override
+    public Optional<Member> findMemberByMemberId_QueryDSL(String memberId) {
+        return Optional.ofNullable(query.select(member).from(member).where(member.memberId.eq(memberId)).fetchOne());
+    }
 
 
 }

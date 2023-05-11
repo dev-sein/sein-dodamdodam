@@ -23,4 +23,8 @@ public interface MemberQueryDsl {
 
 //    아이디 중복검사
     public boolean findCheckMemberIdByMemberEmail(String memberEmail);
+
+    //    로그인 후 회원 정보 조회
+    public Optional<Member> findMemberByMemberId_QueryDSL(String memberId);
+
 }

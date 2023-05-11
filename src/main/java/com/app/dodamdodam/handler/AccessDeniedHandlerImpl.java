@@ -14,7 +14,7 @@
 //@Slf4j
 //public class AccessDeniedHandlerImpl implements AccessDeniedHandler {
 //
-//    private static final String REDIRECT_URL = "/error/error403.html";
+//    private static final String REDIRECT_URL = "/error/error403.html"; // 접근 권한 없을 때
 //
 //    @Override
 //    public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException {
