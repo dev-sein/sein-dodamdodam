@@ -20,18 +20,15 @@ public class EventLike {
 
     @ManyToOne
     @JoinColumn(name = "EVENT_BOARD_ID")
-    @OnDelete(action = OnDeleteAction.CASCADE)
     @NotNull
     private EventBoard eventBoard;
-    @NotNull
-    private Long memberId;
 
-    public void setMember(Member memeber){
-        this.memberId = getMemberId();
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MEMBER_ID")
+    private Member member;
+
+    public EventLike(EventBoard eventBoard, Member member) {
+        this.eventBoard = eventBoard;
+        this.member = member;
     }
-
-    public void setEventBoard(EventBoard eventBoard){
-        this.eventBoard =eventBoard;
-    }
-
 }
