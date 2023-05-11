@@ -4,6 +4,7 @@ import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.point.Point;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
+import com.app.dodamdodam.search.FreeBoardSearch;
 import com.app.dodamdodam.search.board.AdminFreeBoardSearch;
 import com.app.dodamdodam.type.CategoryType;
 import org.springframework.data.domain.Page;
@@ -32,4 +33,7 @@ public interface FreeBoardQueryDsl {
 
 //    자유게시글 상세 페이지 댓글
     public Optional<FreeBoard> findFreeBoardAndFreeRepliesById(Long boardId);
+
+//    자유게시판 검색
+    public Page<FreeBoard> findFreeBoardWithPaging_QueryDSL(FreeBoardSearch freeBoardSearch, Pageable pageable);
 }

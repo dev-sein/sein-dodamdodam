@@ -31,7 +31,14 @@ public class RecruitmentBoardQueryDslImpl implements RecruitmentBoardQueryDsl {
 //
 //        return new PageImpl<>(purchaseBoards, pageable, count);
 
-        List<RecruitmentBoard> recruitmentBoards = query.select(recruitmentBoard).from(recruitmentBoard).where(recruitmentBoard.member.id.eq(memberId)).orderBy(recruitmentBoard.id.desc()).offset(pageable.getOffset()).limit(pageable.getPageSize()).fetch();
+        List<RecruitmentBoard> recruitmentBoards = query.select(recruitmentBoard).from(recruitmentBoard)
+                .join(recruitmentBoard.member).fetchJoin()
+                .leftJoin(recruitmentBoard.recruitmentFiles).fetchJoin()
+                .leftJoin(recruitmentBoard.recruitments).fetchJoin()
+                .where(recruitmentBoard.member.id.eq(memberId))
+                .orderBy(recruitmentBoard.id.desc())
+                .offset(pageable.getOffset()).limit(pageable.getPageSize())
+                .fetch();
         Long count = query.select(recruitmentBoard.count()).from(recruitmentBoard).where(recruitmentBoard.member.id.eq(memberId)).fetchOne();
 
         return new PageImpl<>(recruitmentBoards, pageable, count);
@@ -41,7 +48,13 @@ public class RecruitmentBoardQueryDslImpl implements RecruitmentBoardQueryDsl {
     @Override
     public Page<RecruitmentBoard> findRecruitmentedBoardListByMemberId(Pageable pageable, Long memberId) {
 
-        query.select(recruitmentBoard).from(recruitmentBoard).where(recruitmentBoard.recruitments.any().member.id.eq(memberId)).orderBy(recruitmentBoard.id.desc()).offset(pageable.getOffset()).limit(pageable.getPageSize()).fetch();
+        query.select(recruitmentBoard).from(recruitmentBoard)
+                .where(recruitmentBoard.recruitments.any().member.id.eq(memberId))
+                .join(recruitmentBoard.member).fetchJoin()
+                .leftJoin(recruitmentBoard.recruitmentFiles).fetchJoin()
+                .orderBy(recruitmentBoard.id.desc())
+                .offset(pageable.getOffset()).limit(pageable.getPageSize())
+                .fetch();
 
         List<RecruitmentBoard> recruitmentBoards = query.select(recruitmentBoard).from(recruitmentBoard).where(recruitmentBoard.recruitments.any().member.id.eq(memberId)).orderBy(recruitmentBoard.id.desc()).offset(pageable.getOffset()).limit(pageable.getPageSize()).fetch();
         Long count = query.select(recruitmentBoard.count()).from(recruitmentBoard).where(recruitmentBoard.recruitments.any().member.id.eq(memberId)).fetchOne();
