@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
     <title>도담도담 - 마이도담</title>
@@ -318,4 +318,8 @@
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script src="/js/myPage/myPage-main.js"></script>
 <script src="/js/myPage/myPage-calendar.js"></script>
+<script th:inline="javascript">
+    freeBoard = [[${freeBoard}]];
+    console.log(freeBoard);
+</script>
 </html>

@@ -204,4 +204,17 @@ public class BoardRepositoryTests {
         freeBoardRepository.findById(1077L).ifPresent(freeBoard -> freeBoardRepository.delete(freeBoard));
     }
 
+
+    /* 자유 게시글 상세 */
+    @Test
+    public void findFreeBoardAndFreeFilesByIdTest(){
+        log.info(freeBoardRepository.findFreeBoardAndFreeFilesById(201L).toString());
+    }
+    
+    /* 자유 게시글 상세, 댓글 */
+    @Test
+    public void findFreeBoardAndFreeRepliesByIdTest(){
+        log.info(freeBoardRepository.findFreeBoardAndFreeRepliesById(201L).toString());
+    }
+
 }
