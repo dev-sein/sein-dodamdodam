@@ -4,6 +4,9 @@ import com.app.dodamdodam.domain.MemberDTO;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.point.Point;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
+import com.app.dodamdodam.search.member.AdminMemberSearch;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,4 +26,9 @@ public interface MemberQueryDsl {
 
 //    아이디 중복검사
     public boolean findCheckMemberIdByMemberEmail(String memberEmail);
+
+//  관리자 멤버 게시판 조회
+    public Page<Member> findAdminMemberWithPaging_QueryDSL(AdminMemberSearch adminMemberSearch, Pageable pageable);
 }
+
+

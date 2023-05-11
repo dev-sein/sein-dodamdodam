@@ -5,6 +5,8 @@ import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.entity.recruitment.QRecruitmentBoard;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
 import com.app.dodamdodam.repository.board.free.FreeBoardQueryDsl;
+import com.app.dodamdodam.search.board.AdminRecruitmentSearch;
+import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +45,25 @@ public class RecruitmentBoardQueryDslImpl implements RecruitmentBoardQueryDsl {
 
         List<RecruitmentBoard> recruitmentBoards = query.select(recruitmentBoard).from(recruitmentBoard).where(recruitmentBoard.recruitments.any().member.id.eq(memberId)).orderBy(recruitmentBoard.id.desc()).offset(pageable.getOffset()).limit(pageable.getPageSize()).fetch();
         Long count = query.select(recruitmentBoard.count()).from(recruitmentBoard).where(recruitmentBoard.recruitments.any().member.id.eq(memberId)).fetchOne();
+
+        return new PageImpl<>(recruitmentBoards, pageable, count);
+    }
+
+    //관리자 모집 게시판 검색
+    @Override
+    public Page<RecruitmentBoard> findAdminRecruitmentBoardWithPaging_QueryDSL(AdminRecruitmentSearch adminRecruitmentSearch, Pageable pageable) {
+        BooleanExpression boardTitleEq = adminRecruitmentSearch.getBoardTitle() == null ? null : recruitmentBoard.boardTitle.eq(adminRecruitmentSearch.getBoardTitle());
+        BooleanExpression memberNameEq = adminRecruitmentSearch.getMemberName() == null ? null : recruitmentBoard.member.memberName.eq(adminRecruitmentSearch.getMemberName());
+        BooleanExpression recruitmentAddressEq = adminRecruitmentSearch.getRecruitmentAddress() == null ? null : recruitmentBoard.recruitmentAddress.eq(adminRecruitmentSearch.getRecruitmentAddress());
+
+        List<RecruitmentBoard> recruitmentBoards = query.select(recruitmentBoard)
+                .from(recruitmentBoard)
+                .where(boardTitleEq, memberNameEq, recruitmentAddressEq)
+                .orderBy(recruitmentBoard.id.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+        Long count = query.select(recruitmentBoard.count()).from(recruitmentBoard).fetchOne();
 
         return new PageImpl<>(recruitmentBoards, pageable, count);
     }

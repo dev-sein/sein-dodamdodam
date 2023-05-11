@@ -9,4 +9,5 @@ public class AdminPointSearch {
     private Integer pointAmount;
     private PointStatus pointStatus;
     private String memberId;
+    private String memberName;
 }
