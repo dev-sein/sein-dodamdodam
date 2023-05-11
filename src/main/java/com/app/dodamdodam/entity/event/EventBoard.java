@@ -29,6 +29,7 @@ public class EventBoard extends Board {
     @NotNull private LocalDate eventStartDate;
     @NotNull private LocalDate eventEndDate;
     @NotNull private String eventIntroduction;
+    @NotNull private String eventMemberCount;
     //    수락대기, 수락, 수락거절
     @ColumnDefault("'APPLYING'")
     @Enumerated(EnumType.STRING)
@@ -47,4 +48,16 @@ public class EventBoard extends Board {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    private EventLike eventLike;
+
+    public EventBoard(String boardTitle, String boardContent){
+        super(boardTitle,boardTitle);
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
+
 }
