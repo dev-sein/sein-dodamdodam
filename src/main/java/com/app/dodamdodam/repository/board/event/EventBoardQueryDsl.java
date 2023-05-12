@@ -17,8 +17,6 @@ import java.util.Optional;
 
 public interface EventBoardQueryDsl {
 
-//  목록 페이징(최신)
-    public Slice<EventBoard> findAllByIdDescWithPaging_QueryDSL(Pageable pageable);
 
     //    판매게시글 각각
     public Optional<EventBoard> findEventBoardById_QueryDSL(Long boardId);
@@ -28,7 +26,6 @@ public interface EventBoardQueryDsl {
 
     //    게시글 검색
     public Slice<EventBoard> findAllWithSearch_QueryDSL(EventBoardSearch eventBoardSearch, Pageable pageable);
-
 
 
 

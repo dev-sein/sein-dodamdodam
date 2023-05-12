@@ -67,14 +67,6 @@ public class EventBoardRepositoryTests {
         result.stream().forEach(eventBoard -> log.info(eventBoard.toString()));
     }
 
-    /*목록 최신순 조회*/
-    @Test
-    public void findAllByIdDescWithPagingTest(){
-        eventBoardRepository.findAllByIdDescWithPaging_QueryDSL(
-                PageRequest.of(0, 3)
-        ).stream().map(EventBoard::toString).forEach(log::info);
-    }
-
     /*상세글 보기*/
     @Test
     public void findByIdTest(){
@@ -94,15 +86,15 @@ public class EventBoardRepositoryTests {
     }
 
     /*리뷰 저장*/
-//    @Test
-//    public void reviewSaveTest(){
-//        EventBoard eventBoard = eventBoardRepository.findById(101L).get();
-//        Member member = memberRepository.findById(101L).get();
-//
-//        for(int i = 0; i<20; i++){
-//            EventReview eventReview = new EventReview("test" + (i+1,eventBoard, member);
-//        }
-//    }
+    @Test
+    public void reviewSaveTest(){
+        EventBoard eventBoard = eventBoardRepository.findById(101L).get();
+        Member member = memberRepository.findById(101L).get();
+
+        for(int i = 0; i<20; i++){
+            EventReview eventReview = new EventReview("test" + (i+1) ,eventBoard, member);
+        }
+    }
 
     @Test
     public void updateTest(){
