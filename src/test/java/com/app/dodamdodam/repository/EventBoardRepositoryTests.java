@@ -90,9 +90,8 @@ public class EventBoardRepositoryTests {
     public void reviewSaveTest(){
         EventBoard eventBoard = eventBoardRepository.findById(101L).get();
         Member member = memberRepository.findById(101L).get();
-
         for(int i = 0; i<20; i++){
-            EventReview eventReview = new EventReview("test" + (i+1) ,eventBoard, member);
+            EventReview eventReview = new EventReview("test" + (i+1),eventBoard, member);
         }
     }
 

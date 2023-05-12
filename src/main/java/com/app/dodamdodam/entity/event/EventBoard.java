@@ -25,26 +25,26 @@ public class EventBoard extends Board {
     @NotNull private String eventAddress;
     @NotNull private String eventAddressDetail;
     @NotNull private LocalDate eventStartDate;
+    @NotNull private LocalDate eventEndDate;
     @NotNull private String eventIntroduction;
-//    조회수
-     private int eventViewNumber;
 //    좋아요 수
     private int eventLikeNumber;
 
     //    수락대기, 수락, 수락거절
     @ColumnDefault("'APPLYING'")
     @Enumerated(EnumType.STRING)
-    @NotNull private EventType eventStatus;
-    @NotNull private String eventBusinessNumber;
-    @NotNull private String eventBusinessName;
-    @NotNull private String eventBusinessTel;
-    @NotNull private String eventBusinessEmail;
+     private EventType eventStatus;
+
+     private String eventBusinessNumber;
+     private String eventBusinessName;
+     private String eventBusinessTel;
+     private String eventBusinessEmail;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "eventBoard")
     private List<EventFile> eventFiles;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "eventBoard")
-    private List<EventReview> eventReplies;
+    private List<EventReview> eventreviews;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MEMBER_ID")
@@ -68,12 +68,12 @@ public class EventBoard extends Board {
     }
 
     @Builder
-    public EventBoard(String eventAddress, String eventAddressDetail, LocalDate eventStartDate, String eventIntroduction, int eventViewNumber, int eventLikeNumber, EventType eventStatus, String eventBusinessNumber, String eventBusinessName, String eventBusinessTel, String eventBusinessEmail, List<EventFile> eventFiles, List<EventReview> eventReplies, Member member, List<EventLike> eventLikes) {
+    public EventBoard(String eventAddress, String eventAddressDetail, LocalDate eventStartDate,LocalDate eventEndDate ,String eventIntroduction, int eventLikeNumber, EventType eventStatus, String eventBusinessNumber, String eventBusinessName, String eventBusinessTel, String eventBusinessEmail, List<EventFile> eventFiles, List<EventReview> eventreviews, Member member, List<EventLike> eventLikes) {
         this.eventAddress = eventAddress;
         this.eventAddressDetail = eventAddressDetail;
         this.eventStartDate = eventStartDate;
+        this.eventEndDate = eventEndDate;
         this.eventIntroduction = eventIntroduction;
-        this.eventViewNumber = eventViewNumber;
         this.eventLikeNumber = eventLikeNumber;
         this.eventStatus = eventStatus;
         this.eventBusinessNumber = eventBusinessNumber;
@@ -81,15 +81,10 @@ public class EventBoard extends Board {
         this.eventBusinessTel = eventBusinessTel;
         this.eventBusinessEmail = eventBusinessEmail;
         this.eventFiles = eventFiles;
-        this.eventReplies = eventReplies;
+        this.eventreviews = eventreviews;
         this.member = member;
         this.eventLikes = eventLikes;
     }
 
-
-//   조회수
-    public void updateReadCount(){
-        this.eventViewNumber++;
-    }
 
 }

@@ -12,4 +12,8 @@ public interface EventLikeQueryDsl {
 
 //  찜
     public Page<EventLike> findBookMarkListWithMemberIdWithPaging_QueryDSL(Pageable pageable, Long memberId);
+
+//   좋아요 한 멤버 찾기
+    public Member findMemberByEventLike(Long eventId, Long memberId);
+
 }

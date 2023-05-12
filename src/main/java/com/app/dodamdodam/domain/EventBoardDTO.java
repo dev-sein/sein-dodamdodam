@@ -1,66 +1,48 @@
 package com.app.dodamdodam.domain;
 
-import com.app.dodamdodam.entity.board.Board;
-import com.app.dodamdodam.entity.event.EventBoard;
+import com.app.dodamdodam.type.EventType;
 import com.querydsl.core.annotations.QueryProjection;
-import jdk.jfr.Event;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.List;
 
 @Data
 @Builder
-@NoArgsConstructor
 public class EventBoardDTO {
 
+    /* 이벤트 보드 정보 다 받아오기*/
     private Long id;
-    private String boardTitle;
-    private String boardContent;
-
-    private List<EventFileDTO> eventFileDTOS;
-
-    private LocalDateTime createdDate;
-    private LocalDateTime updatedDate;
-
-    private MemberDTO memberDTO;
-
     private String eventAddress;
     private String eventAddressDetail;
     private LocalDate eventStartDate;
     private LocalDate eventEndDate;
     private String eventIntroduction;
-    private String eventMemberCount;
-    private int eventViewNumber;
+
+    /* 좋아요 */
     private int eventLikeNumber;
+    /*수락상태*/
+    private EventType eventStatus;
 
-
-
-    private List<EventBoardDTO> eventBoardList;
-
+    /*기업작성*/
+    private String eventBusinessNumber;
+    private String eventBusinessName;
+    private String eventBusinessTel;
+    private String eventBusinessEmail;
 
     @QueryProjection
-    public EventBoardDTO(Long id, String boardTitle, String boardContent, List<EventFileDTO> eventFileDTOS, LocalDateTime createdDate, LocalDateTime updatedDate, MemberDTO memberDTO, String eventAddress, String eventAddressDetail, LocalDate eventStartDate, LocalDate eventEndDate, String eventIntroduction, String eventMemberCount, int eventViewNumber, int eventLikeNumber, List<EventBoardDTO> eventBoardList) {
+    public EventBoardDTO(Long id, String eventAddress, String eventAddressDetail, LocalDate eventStartDate, LocalDate eventEndDate, String eventIntroduction, int eventLikeNumber, EventType eventStatus, String eventBusinessNumber, String eventBusinessName, String eventBusinessTel, String eventBusinessEmail) {
         this.id = id;
-        this.boardTitle = boardTitle;
-        this.boardContent = boardContent;
-        this.eventFileDTOS = eventFileDTOS;
-        this.createdDate = createdDate;
-        this.updatedDate = updatedDate;
-        this.memberDTO = memberDTO;
         this.eventAddress = eventAddress;
         this.eventAddressDetail = eventAddressDetail;
         this.eventStartDate = eventStartDate;
         this.eventEndDate = eventEndDate;
         this.eventIntroduction = eventIntroduction;
-        this.eventMemberCount = eventMemberCount;
-        this.eventViewNumber = eventViewNumber;
         this.eventLikeNumber = eventLikeNumber;
-        this.eventBoardList = eventBoardList;
+        this.eventStatus = eventStatus;
+        this.eventBusinessNumber = eventBusinessNumber;
+        this.eventBusinessName = eventBusinessName;
+        this.eventBusinessTel = eventBusinessTel;
+        this.eventBusinessEmail = eventBusinessEmail;
     }
-
 }
-
