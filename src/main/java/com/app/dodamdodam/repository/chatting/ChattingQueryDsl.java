@@ -12,4 +12,6 @@ public interface ChattingQueryDsl {
 //    안 읽은 채팅 개수 반환
     public Integer findUnreadChattingByMemberId(Long memberId, Long roomId);
 
+
+
 }
