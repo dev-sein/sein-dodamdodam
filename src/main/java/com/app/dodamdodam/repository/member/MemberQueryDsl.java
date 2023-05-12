@@ -22,10 +22,10 @@ public interface MemberQueryDsl {
 //    public List<Point> findPointByMemberId(Long memberId);
 
 //    이메일로 아이디 찾기
-    public String findMemberIdByMemberEmail(String memberEmail);
+    public String findMemberIdByMemberEmail_QueryDSL(String memberEmail);
 
 //    아이디 중복검사
-    public boolean findCheckMemberIdByMemberEmail(String memberEmail);
+    public boolean findCheckMemberIdByMemberEmail_QueryDSL(String memberEmail);
 
 //  관리자 멤버 게시판 검색 조회
     public Page<Member> findAdminMemberWithPaging_QueryDSL(AdminMemberSearch adminMemberSearch, Pageable pageable);

@@ -106,7 +106,7 @@ public class BoardRepositoryTests {
     @Test
     public void findByIdTest(){
         Pageable pageable = PageRequest.of(0,5);
-        freeBoardRepository.findFreeBoardListByMemberId(PageRequest.of(0,5), 5L).stream().map(FreeBoard::toString).forEach(log::info);
+        freeBoardRepository.findFreeBoardListByMemberId_QueryDSL(PageRequest.of(0,5), 5L).stream().map(FreeBoard::toString).forEach(log::info);
     }
 
 //    @Test
@@ -171,28 +171,28 @@ public class BoardRepositoryTests {
     @Test
     public void findAllFreeBoardListTest(){
         Pageable pageable = PageRequest.of(0, 10);
-        freeBoardRepository.findAllFreeBoardList(pageable).stream().map(FreeBoard::toString).forEach(log::info);
+        freeBoardRepository.findAllFreeBoardList_QueryDSL(pageable).stream().map(FreeBoard::toString).forEach(log::info);
     }
 
     /* 자유 게시글 목록 분류 */
     @Test
     public void findFreeBoardListByCategoryTypeTest(){
         Pageable pageable = PageRequest.of(0, 10);
-        freeBoardRepository.findFreeBoardListByCategoryType(pageable,CategoryType.CULTURE).stream().map(FreeBoard::toString).forEach(log::info);
+        freeBoardRepository.findFreeBoardListByCategoryType_QueryDSL(pageable,CategoryType.CULTURE).stream().map(FreeBoard::toString).forEach(log::info);
     }
 
     /* 내가 작성한 자유 게시글 목록 분류 */
     @Test
     public void findFreeBoardListByCategoryTypeAndMemberIdTest(){
         Pageable pageable = PageRequest.of(0, 10);
-        freeBoardRepository.findFreeBoardListByCategoryTypeAndMemberId(pageable,CategoryType.CULTURE, 5L).stream().map(FreeBoard::toString).forEach(log::info);
+        freeBoardRepository.findFreeBoardListByCategoryTypeAndMemberId_QueryDSL(pageable,CategoryType.CULTURE, 5L).stream().map(FreeBoard::toString).forEach(log::info);
     }
 
     /* 자유 게시글 상세 */
     @Test
     public void findFreeBoardByIdTest(){
 //        freeBoardRepository.findById(201L).ifPresent(freeBoard -> log.info(freeBoard.toString()));
-        freeBoardRepository.findFreeBoardAndFreeFilesById(201L).ifPresent(freeBoard -> log.info(freeBoard.toString()));
+        freeBoardRepository.findFreeBoardAndFreeFilesById_QueryDSL(201L).ifPresent(freeBoard -> log.info(freeBoard.toString()));
     }
 
     /* 자유 게시글 수정 */
@@ -214,13 +214,13 @@ public class BoardRepositoryTests {
     /* 자유 게시글 상세 */
     @Test
     public void findFreeBoardAndFreeFilesByIdTest(){
-        log.info(freeBoardRepository.findFreeBoardAndFreeFilesById(201L).toString());
+        log.info(freeBoardRepository.findFreeBoardAndFreeFilesById_QueryDSL(201L).toString());
     }
     
     /* 자유 게시글 상세, 댓글 */
     @Test
     public void findFreeBoardAndFreeRepliesByIdTest(){
-        log.info(freeBoardRepository.findFreeBoardAndFreeRepliesById(201L).toString());
+        log.info(freeBoardRepository.findFreeBoardAndFreeRepliesById_QueryDSL(201L).toString());
     }
 
     /* 자유 게시판에 댓글 달기*/

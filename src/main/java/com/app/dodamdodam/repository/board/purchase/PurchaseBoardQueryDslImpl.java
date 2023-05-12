@@ -63,7 +63,7 @@ public class PurchaseBoardQueryDslImpl implements PurchaseBoardQueryDsl {
     }
 
     @Override
-    public Page<PurchaseBoard> findPurchaseBoardListByMemberId(Pageable pageable, Long memberId) {
+    public Page<PurchaseBoard> findPurchaseBoardListByMemberId_QueryDSL(Pageable pageable, Long memberId) {
         List<PurchaseBoard> purchaseBoards = query.select(purchaseBoard).from(purchaseBoard)
                 .join(purchaseBoard.member).fetchJoin()
                 .leftJoin(purchaseBoard.purchaseFiles).fetchJoin()

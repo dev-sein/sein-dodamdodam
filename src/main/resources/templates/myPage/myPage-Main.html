@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
-    <title>도담도담 - 마이도담</title>
+    <title>마이페이지-메인</title>
     <!--css 연결하는곳-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -46,8 +46,9 @@
                 top: 50px;">
                             <div class="MyWadizSupporterProfile_profileUser__a_r1P">
                                 <button data-event="profile">
-                                    <b class="MyWadizSupporterProfile_userName__3hSE4"
-                                    >린먕<span aria-label="프로필 상세 보기">님</span>
+                                    <b class="MyWadizSupporterProfile_userName__3hSE4">
+                                        <span th:text="${member.memberName}"></span>
+                                        <span aria-label="프로필 상세 보기"> 님</span>
                                         <img src="/images/myPage/arrowRight.png" class="arrowImg">
                                     </b>
                                 </button>
@@ -71,7 +72,7 @@
                                                 <dt class="MyWadizSupporterAccumulate_title__3CiIs">
                                                     <span class="MyWadizSupporterAccumulate_name__1mWXC">포인트</span>
                                                 </dt>
-                                                <dd class="MyWadizSupporterAccumulate_value__1oBSj">0 P</dd>
+                                                <dd class="MyWadizSupporterAccumulate_value__1oBSj"><span th:text="${member.memberPoint}"></span><span>P</span></dd>
                                             </dl>
                                         </a>
                                         <hr
@@ -85,7 +86,7 @@
                                                 <dt class="MyWadizSupporterAccumulate_title__3CiIs">
                                                     <span class="MyWadizSupporterAccumulate_name__1mWXC">결제 내역</span>
                                                 </dt>
-                                                <dd class="MyWadizSupporterAccumulate_value__1oBSj">6건</dd>
+                                                <dd class="MyWadizSupporterAccumulate_value__1oBSj"><span th:text="${point.size()}"></span>건</dd>
                                             </dl>
                                         </a>
                                     </div>
@@ -319,7 +320,9 @@
 <script src="/js/myPage/myPage-main.js"></script>
 <script src="/js/myPage/myPage-calendar.js"></script>
 <script th:inline="javascript">
-    freeBoard = [[${freeBoard}]];
-    console.log(freeBoard);
+    member = [[${member}]];
+    console.log(member);
+    point = [[${point}]];
+    console.log(point);
 </script>
 </html>

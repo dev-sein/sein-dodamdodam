@@ -26,7 +26,7 @@ public class PointQueryDslImpl implements PointQueryDsl {
     private JPAQueryFactory query;
 
     @Override
-    public List<Point> findPointByMemberId(Long memberId) {
+    public List<Point> findPointByMemberId_QueryDSL(Long memberId) {
         return query.select(point).from(point).where(point.member.id.eq(memberId)).orderBy(point.id.desc()).fetch();
     }
 
