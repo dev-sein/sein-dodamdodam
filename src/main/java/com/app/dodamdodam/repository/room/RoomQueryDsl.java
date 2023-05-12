@@ -16,5 +16,7 @@ public interface RoomQueryDsl {
 //    자유게시판 검색
     public Page<Room> findRoomSearchWithPaging_QueryDSL(RoomSearch roomSearch, Pageable pageable);
 
+//    현재 시퀀스 조회
+    public Room getCurrentSequence();
 
 }

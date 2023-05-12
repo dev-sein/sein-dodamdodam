@@ -32,6 +32,8 @@ public class ChattingQueryDslImpl implements ChattingQueryDsl {
 
 
 
+
+
         @Override
         public Integer findUnreadChattingByMemberId(Long memberId, Long roomId){
                 return query

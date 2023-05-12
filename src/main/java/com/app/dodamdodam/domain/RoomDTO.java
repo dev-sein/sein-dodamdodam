@@ -6,17 +6,26 @@ import lombok.Data;
 import org.springframework.web.socket.WebSocketSession;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
 public class RoomDTO {
     private Long id;
     private Long hostId;
+    private Long havingId;
+    private MemberDTO memberDTO;
+    private List<ChattingDTO> chattingDTOS;
     private Set<WebSocketSession> sessions = new HashSet<>();
 
     @Builder
-    public RoomDTO(Long hostId) {
+    public RoomDTO(Long id, Long hostId, Long havingId, MemberDTO memberDTO, List<ChattingDTO> chattingDTOS, Set<WebSocketSession> sessions) {
+        this.id = id;
         this.hostId = hostId;
+        this.havingId = havingId;
+        this.memberDTO = memberDTO;
+        this.chattingDTOS = chattingDTOS;
+        this.sessions = sessions;
     }
 
     public void handlerActions(WebSocketSession session, ChattingDTO chatting, ChatService chatService) {

@@ -2,6 +2,7 @@ package com.app.dodamdodam.handler;
 
 import com.app.dodamdodam.domain.ChattingDTO;
 import com.app.dodamdodam.domain.RoomDTO;
+import com.app.dodamdodam.entity.chatting.QRoom;
 import com.app.dodamdodam.service.chatting.ChatService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
+
+import static com.app.dodamdodam.entity.chatting.QRoom.room;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -24,7 +27,7 @@ public class WebSocketHandler extends TextWebSocketHandler {
         log.info("{}", payload);
         ChattingDTO chatting = objectMapper.readValue(payload, ChattingDTO.class);
 
-        RoomDTO room = chatService.findRoomById(chatting.getId());
-        room.handlerActions(session, chatting, chatService);
+        RoomDTO roomDTO = chatService.findRoomById(chatting.getId());
+        roomDTO.handlerActions(session, chatting, chatService);
     }
 }

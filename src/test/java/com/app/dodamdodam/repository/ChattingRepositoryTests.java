@@ -31,17 +31,26 @@ public class ChattingRepositoryTests {
     @Autowired
     private RoomRepository roomRepository;
 
-    /*채팅 추가하기*/
+    /* 채팅 추가하기 */
     @Test
     public void saveTest(){
-        for (int i=1; i<100; i++) {
-            Room room = new Room(1L);
-            memberRepository.findById(1L).ifPresent(member -> room.setMember(member));
-            Chatting chatting = new Chatting(1L, 1L + i, "1번이"  + (1 + i) + "번에게 보내는 메세지" + i);
-            chatting.setRoom(room);
-            chattingRepository.save(chatting);
-            roomRepository.save(room);
-        }
+//        for (int i=1; i<100; i++) {
+//            Room room = new Room(1L, 2L);
+//            memberRepository.findById(1L).ifPresent(member -> room.setMember(member));
+//            Chatting chatting = new Chatting(1L, 1L + i, "1번이"  + (1 + i) + "번에게 보내는 메세지" + i);
+//            chatting.setRoom(room);
+//            chattingRepository.save(chatting);
+//            roomRepository.save(room);
+//        }
+    }
+
+
+    /* 룸 추가하기 */
+    @Test
+    public void roomSaveTest(){
+        Room room = new Room(1L, 2L);
+        memberRepository.findById(1L).ifPresent(member -> room.setMember(member));
+        roomRepository.save(room);
     }
 
     /* id로 내가 참여한 채팅 목록 가져오기*/
@@ -71,12 +80,12 @@ public class ChattingRepositoryTests {
 //        chattingStatusList.stream().forEach(v-> v.update(ReadStatus.READ));
     }
 
-    /*검색*/
+    /* 검색 */
     @Test
     public void findRoomSearchWithPaging_QueryDSL_Test(){
         RoomSearch roomSearch = new RoomSearch();
-//        roomSearch.setMemberName("테스트1");
-        roomSearch.setChattingContent("1번이 2번에게 보내는 메세지1");
+        roomSearch.setMemberName("테스트1");
+//        roomSearch.setChattingContent("1번이 2번에게 보내는 메세지1");
         Page<Room> roomPage = roomRepository.findRoomSearchWithPaging_QueryDSL(roomSearch, PageRequest.of(0, 10));
         log.info("============"+roomSearch.getChattingContent());
     }

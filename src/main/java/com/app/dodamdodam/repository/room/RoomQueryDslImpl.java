@@ -2,8 +2,6 @@ package com.app.dodamdodam.repository.room;
 
 import com.app.dodamdodam.entity.chatting.QChatting;
 import com.app.dodamdodam.entity.chatting.Room;
-import com.app.dodamdodam.entity.free.FreeBoard;
-import com.app.dodamdodam.search.FreeBoardSearch;
 import com.app.dodamdodam.search.chatting.RoomSearch;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -16,12 +14,12 @@ import java.util.List;
 
 import static com.app.dodamdodam.entity.chatting.QChatting.chatting;
 import static com.app.dodamdodam.entity.chatting.QRoom.room;
-import static com.app.dodamdodam.entity.free.QFreeBoard.freeBoard;
 
 
 public class RoomQueryDslImpl implements RoomQueryDsl{
     @Autowired
     private JPAQueryFactory query;
+
 
 //    @Override
 //    public List<Room> findRoomByMemberId(Pageable pageable, Long memberId) {
@@ -47,6 +45,15 @@ public class RoomQueryDslImpl implements RoomQueryDsl{
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
+    }
+
+    @Override
+    public Room getCurrentSequence() {
+        return query.select(room)
+                .from(room)
+                .orderBy(room.id.desc())
+                .limit(1)
+                .fetchOne();
     }
 
     @Override

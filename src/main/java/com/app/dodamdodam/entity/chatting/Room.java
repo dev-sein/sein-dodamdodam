@@ -18,8 +18,8 @@ public class Room{
     @NotNull
     private Long hostId;
     /*이게 필요한지? - 주석처리*/
-    /*@NotNull
-    private Long havingId;*/
+    @NotNull
+    private Long havingId;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "room")
     private List<Chatting> chattings;
@@ -28,8 +28,9 @@ public class Room{
     @JoinColumn(name = "MEMBER_ID")
     private Member member; //FK
 
-    public Room(Long hostId) {
+    public Room(Long hostId, Long havingId) {
         this.hostId = hostId;
+        this.havingId = havingId;
     }
 
     public void setMember(Member member) {

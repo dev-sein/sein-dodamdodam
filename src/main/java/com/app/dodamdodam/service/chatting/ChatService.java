@@ -1,6 +1,9 @@
 package com.app.dodamdodam.service.chatting;
 
 import com.app.dodamdodam.domain.RoomDTO;
+import com.app.dodamdodam.entity.chatting.QRoom;
+import com.app.dodamdodam.entity.chatting.Room;
+import com.app.dodamdodam.repository.room.RoomRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +16,7 @@ import java.io.IOException;
 import java.util.*;
 
 import static com.app.dodamdodam.entity.chatting.QChatting.chatting;
+import static com.app.dodamdodam.entity.chatting.QRoom.room;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -20,6 +24,7 @@ import static com.app.dodamdodam.entity.chatting.QChatting.chatting;
 public class ChatService {
     private final ObjectMapper objectMapper;
     private Map<String, RoomDTO> chatRooms;
+    private RoomRepository roomRepository;
 
     @PostConstruct
     private void init() {
@@ -34,6 +39,11 @@ public class ChatService {
         return chatRooms.get(memberId);
     }
 
+    // 현재 시퀀스 가져오기
+    public Room getCurrentSequence() {
+        return roomRepository.getCurrentSequence();
+    }
+
 //    public RoomDTO createRoom(String name) {
 //        String randomId = UUID.randomUUID().toString();
 //        RoomDTO chatRoom = RoomDTO.builder()
@@ -44,10 +54,20 @@ public class ChatService {
 //        return chatRoom;
 //    }
 
-    public RoomDTO createRoom(Long hostId) {
-        RoomDTO room = new RoomDTO(hostId);
-        chatRooms.put(room.getId().toString(), room);
-        return room;
+    public RoomDTO createRoom(Long hostId, Long havingId) {
+        Room currentSequence = getCurrentSequence();
+        Long roomId = currentSequence != null ? currentSequence.getId() + 1 : 1L;
+        RoomDTO chatRoom = RoomDTO.builder()
+                .id(roomId)
+                .hostId(hostId)
+                .havingId(havingId)
+                .build();
+        chatRooms.put(String.valueOf(roomId), chatRoom);//아이디와 room 정보를 Map 에 저장
+
+        log.info("=================================", currentSequence.toString());
+        log.info("=================================", roomId.toString());
+        log.info("=================================", chatRoom.toString());
+        return chatRoom;
     }
 
     public <T> void sendMessage(WebSocketSession session, T message) {
