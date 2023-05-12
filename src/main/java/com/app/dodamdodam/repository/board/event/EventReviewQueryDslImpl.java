@@ -1,7 +1,8 @@
-package com.app.dodamdodam.repository.reply.eventReply;
+package com.app.dodamdodam.repository.board.event;
 
-import com.app.dodamdodam.entity.event.EventReply;
-import com.app.dodamdodam.entity.event.QEventReply;
+import com.app.dodamdodam.entity.event.EventReview;
+import com.app.dodamdodam.entity.event.QEventReview;
+import com.app.dodamdodam.repository.board.event.EventReviewQueryDsl;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -10,22 +11,22 @@ import org.springframework.data.domain.SliceImpl;
 
 import java.util.List;
 
-import static com.app.dodamdodam.entity.event.QEventReply.eventReply;
+import static com.app.dodamdodam.entity.event.QEventReview.eventReview;
 
 @RequiredArgsConstructor
-public class EventReplyQueryDslImpl implements EventReplyQueryDsl {
+public class EventReviewQueryDslImpl implements EventReviewQueryDsl {
     private final JPAQueryFactory query;
 
 //    댓글 무한스크롤
     @Override
-    public Slice<EventReply> findAllEventReplyByBoardId(Long boardId, Pageable pageable) {
+    public Slice<EventReview> findAllEventReplyByBoardId(Long boardId, Pageable pageable) {
         boolean hasNext = false;
 
-        List<EventReply> eventReplies = query.select(eventReply)
-                .from(eventReply)
-                .join(eventReply.member)
+        List<EventReview> eventReplies = query.select(eventReview)
+                .from(eventReview)
+                .join(eventReview.member)
                 .fetchJoin()
-                .orderBy(eventReply.id.desc())
+                .orderBy(eventReview.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize() + 1)
                 .fetch();

@@ -6,11 +6,10 @@ import com.app.dodamdodam.type.EventType;
 import com.sun.istack.NotNull;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -45,14 +44,16 @@ public class EventBoard extends Board {
     private List<EventFile> eventFiles;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "eventBoard")
-    private List<EventReply> eventReplies;
+    private List<EventReview> eventReplies;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    private EventLike eventLike;
+    @OneToMany(fetch = FetchType.LAZY , mappedBy = "eventBoard", orphanRemoval = true, cascade = CascadeType.REMOVE)
+    private List<EventLike> eventLikes = new ArrayList<>();
+
+
 
     public EventBoard(String boardTitle, String boardContent){
         super(boardTitle,boardTitle);
@@ -62,8 +63,12 @@ public class EventBoard extends Board {
         this.member = member;
     }
 
+    public void setEventLikeCount(Integer eventLikeNumber){
+        this.eventLikeNumber = eventLikeNumber;
+    }
+
     @Builder
-    public EventBoard(String eventAddress, String eventAddressDetail, LocalDate eventStartDate, String eventIntroduction, int eventViewNumber, int eventLikeNumber, EventType eventStatus, String eventBusinessNumber, String eventBusinessName, String eventBusinessTel, String eventBusinessEmail, List<EventFile> eventFiles, List<EventReply> eventReplies, Member member, EventLike eventLike) {
+    public EventBoard(String eventAddress, String eventAddressDetail, LocalDate eventStartDate, String eventIntroduction, int eventViewNumber, int eventLikeNumber, EventType eventStatus, String eventBusinessNumber, String eventBusinessName, String eventBusinessTel, String eventBusinessEmail, List<EventFile> eventFiles, List<EventReview> eventReplies, Member member, List<EventLike> eventLikes) {
         this.eventAddress = eventAddress;
         this.eventAddressDetail = eventAddressDetail;
         this.eventStartDate = eventStartDate;
@@ -78,7 +83,7 @@ public class EventBoard extends Board {
         this.eventFiles = eventFiles;
         this.eventReplies = eventReplies;
         this.member = member;
-        this.eventLike = eventLike;
+        this.eventLikes = eventLikes;
     }
 
 
@@ -87,10 +92,4 @@ public class EventBoard extends Board {
         this.eventViewNumber++;
     }
 
-    //    좋아요 업데이트
-    public void updateLikePlusCount(){this.eventLikeNumber++;}
-
-    public void updateLikeMinusCount(){
-        this.eventLikeNumber--;
-    }
 }
