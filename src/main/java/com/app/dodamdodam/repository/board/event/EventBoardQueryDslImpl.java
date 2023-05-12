@@ -1,15 +1,10 @@
 package com.app.dodamdodam.repository.board.event;
 
-import com.app.dodamdodam.domain.EventBoardDTO;
-import com.app.dodamdodam.domain.QEventBoardDTO;
 import com.app.dodamdodam.entity.event.EventBoard;
-import com.app.dodamdodam.entity.event.QEventBoard;
 import com.app.dodamdodam.search.EventBoardSearch;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.Criteria;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 
 import java.util.List;

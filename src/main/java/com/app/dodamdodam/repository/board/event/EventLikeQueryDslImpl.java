@@ -18,6 +18,17 @@ import static com.app.dodamdodam.entity.event.QEventLike.eventLike;
 public class EventLikeQueryDslImpl implements EventLikeQueryDsl {
     private final JPAQueryFactory query;
 
+//    좋아요 멤버 찾기
+    @Override
+    public Member findMemberByEventLike(Long eventBoardId, Long memberId){
+        return query.select(eventLike.member)
+                .from(eventLike)
+                .where(eventLike.eventBoard.id.eq(eventBoardId))
+                .where(eventLike.member.id.eq(memberId))
+                .fetchOne();
+    }
+
+//    좋아요 여부
     @Override
     public boolean checkMemberLikesEventBoard_QueryDSL(Member member, EventBoard eventBoard) {
         Long count = query.select(eventLike.count())
@@ -27,6 +38,7 @@ public class EventLikeQueryDslImpl implements EventLikeQueryDsl {
         return count> 0 ;
     }
 
+//    찜목록
     @Override
     public Page<EventLike> findBookMarkListWithMemberIdWithPaging_QueryDSL(Pageable pageable, Long memberId) {
 

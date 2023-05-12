@@ -28,6 +28,7 @@ public interface FreeBoardQueryDsl {
 
     //  어드민 자유게시판 검색
     public Page<FreeBoard> findAdmindFreeBoardWithPaging_QueryDSL(AdminFreeBoardSearch adminFreeBoardSearch, Pageable pageable);
+
 //    자유게시글 상세 페이지
     public Optional<FreeBoard> findFreeBoardAndFreeFilesById(Long boardId);
 

@@ -94,15 +94,15 @@ public class EventBoardRepositoryTests {
     }
 
     /*리뷰 저장*/
-//    @Test
-//    public void reviewSaveTest(){
-//        EventBoard eventBoard = eventBoardRepository.findById(101L).get();
-//        Member member = memberRepository.findById(101L).get();
-//
-//        for(int i = 0; i<20; i++){
-//            EventReview eventReview = new EventReview("test" + (i+1,eventBoard, member);
-//        }
-//    }
+    @Test
+    public void reviewSaveTest(){
+        EventBoard eventBoard = eventBoardRepository.findById(101L).get();
+        Member member = memberRepository.findById(101L).get();
+
+        for(int i = 0; i<20; i++){
+            EventReview eventReview = new EventReview("test" + (i+1),eventBoard, member);
+        }
+    }
 
     @Test
     public void updateTest(){

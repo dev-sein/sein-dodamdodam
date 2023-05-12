@@ -34,7 +34,7 @@ public class EventLikeRepositoryTests {
     @Test
     public void checkMemberLikesEventBoardTest(){
         Optional<Member> member = memberRepository.findById(1L);
-        Optional<EventBoard> eventBoard = eventBoardRepository.findById(9L);
+        Optional<EventBoard> eventBoard = eventBoardRepository.findById(107L);
 
         if(!member.isPresent() || !eventBoard.isPresent()) fail("멤버 혹은 리뷰 보드가 존재하지 않음");
 
@@ -48,7 +48,7 @@ public class EventLikeRepositoryTests {
     @Test
     public void saveTest(){
         Optional<Member> member = memberRepository.findById(1L);
-        Optional<EventBoard> eventBoard = eventBoardRepository.findById(91L);
+        Optional<EventBoard> eventBoard = eventBoardRepository.findById(107L);
 
         if(!member.isPresent() || !eventBoard.isPresent()) fail("멤버 혹은 이벤트 보드가 존재하지 않음");
         Integer likeCount =  eventBoard.get().getEventLikeNumber();

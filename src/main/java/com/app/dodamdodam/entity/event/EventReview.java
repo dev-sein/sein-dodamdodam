@@ -16,6 +16,7 @@ public class EventReview extends Reply {
     @EqualsAndHashCode.Include
     private Long id;
     private String replyContent;
+    private String replyCount;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "EVENT_BOARD_ID")
