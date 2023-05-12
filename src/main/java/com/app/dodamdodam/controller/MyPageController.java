@@ -23,42 +23,47 @@ public class MyPageController {
     private final FreeBoardService freeBoardService;
 
     /*마이 페이지 메인*/
-    @GetMapping("mypage-main")
-    public String mypageMain() {
-        return"mypage/myPage-Main";
-    }
-
-    /* 마이페이지 프로필*/
-    @GetMapping("info")
+    @GetMapping("main")
     public String myPageInfo(Model model, HttpSession session) {
+        /* calendar 작업 추가로 해야함 */
+//        임의로 세션에 memberId값 담아둠
         session.setAttribute("memberId", 2L);
         Long memberId =  (Long)session.getAttribute("memberId");
         memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
-
+        model.addAttribute("point",memberService.getMyPointList(memberId));
         return"myPage/myPage-Main";
     }
 
+    /* 마이페이지 프로필*/
+
     /* 내가 작성한 자유 게시글*/
-    @GetMapping("freeBoard")
+    @GetMapping("free-board")
     public String myPageFreeBoard(Model model, HttpSession session) {
         log.info("들어옴@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         Pageable pageable = PageRequest.of(0, 10);
-//        Long memberId =  5L;
-//        List<FreeBoard> freeBoards = freeBoardService.getFreeBoardsByMemberId(pageable,memberId).getContent();
-//        model.addAttribute("freeBoards",freeBoards);
-
-        Long boardId = 201L;
-//        List<FreeBoard> freeBoards = freeBoardService.getFreeBoardsByMemberId(pageable, memberId).getContent();
-//        log.info(freeBoards.toString());
-//        log.info(freeBoardService.getFreeBoardById(boardId).toString());
-//        model.addAttribute("freeBoard",freeBoardService.getFreeBoardById(boardId));
-
-//        log.info(freeBoardService.getAllFreeBoards(pageable).toString());
         model.addAttribute("freeBoard",freeBoardService.getAllFreeBoards(pageable));
-
-//        model.addAttribute("freeBoards", freeBoards);
 
         return"myPage/myPage-Main";  /*테스트로 아무 페이지에나 보내봄*/
     }
 
+    /* 포인트 내역 */
+    @GetMapping("point")
+    public String myPointList(Model model, HttpSession session) {
+        log.info("들어옴@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        session.setAttribute("memberId", 2L);
+        Long memberId = (Long)session.getAttribute("memberId");
+        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
+        model.addAttribute("points",memberService.getMyPointList(memberId));
+
+        return"myPage/myPage-point";  /*테스트로 아무 페이지에나 보내봄*/
+    }
+
+    @GetMapping("board")
+    public String myBoardList(HttpSession session, Model model){
+        session.setAttribute("memberId", 5L);
+        Long memberId = (Long)session.getAttribute("memberId");
+        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
+        log.info(memberService.getMyFreeBoardListCount(memberId).toString());
+        return "myPage/myPage-myBoards";
+    }
 }

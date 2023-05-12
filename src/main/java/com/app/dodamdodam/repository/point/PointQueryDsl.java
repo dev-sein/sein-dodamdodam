@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface PointQueryDsl {
 //    memberId로 point 내역 조회
-    public List<Point> findPointByMemberId(Long memberId);
+    public List<Point> findPointByMemberId_QueryDSL(Long memberId);
 
 //  어드민 포인트 정보 검색
     public Page<Point> findPointMemberIdWithSearch_QueryDSL(AdminPointSearch pointSearch, Pageable pageable);
