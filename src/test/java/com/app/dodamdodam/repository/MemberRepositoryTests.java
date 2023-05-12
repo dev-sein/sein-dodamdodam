@@ -17,16 +17,13 @@ import com.app.dodamdodam.type.Role;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.Banner;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -94,21 +91,21 @@ public class MemberRepositoryTests {
     @Test
     public void findRecruitBoardByMemberIdTest(){
         Pageable pageable = PageRequest.of(0, 5);
-        recruitmentBoardRepository.findRecruitmentBoardListByMemberId(pageable,2L).stream().map(recruitmentBoard -> recruitmentBoard.toString()).forEach(log::info);
+        recruitmentBoardRepository.findRecruitmentBoardListByMemberId_QueryDSL(pageable,2L).stream().map(recruitmentBoard -> recruitmentBoard.toString()).forEach(log::info);
     }
 
 //    내가 작성한 모집 게시글 목록 불러오고 목록 중 하나 누르면 그 모집 게시글에 참여한 인원 목록(인원들의 정보) 가져오기
     @Test
     public void findRecruitmentBoardListByMemberIdTest(){
         Pageable pageable = PageRequest.of(0, 10);
-        recruitmentBoardRepository.findRecruitmentBoardListByMemberId(pageable, 2L).stream().map(recruitmentBoard -> recruitmentBoard.getRecruitments().toString()).forEach(log::info);
+        recruitmentBoardRepository.findRecruitmentBoardListByMemberId_QueryDSL(pageable, 2L).stream().map(recruitmentBoard -> recruitmentBoard.getRecruitments().toString()).forEach(log::info);
     }
     
 //    내가 참여한 모집 게시글 목록 가져오기
     @Test
     public void findRecruitmentBoardListByMemberIdTest2(){
         Pageable pageable = PageRequest.of(0, 10);
-        recruitmentBoardRepository.findRecruitmentedBoardListByMemberId(pageable,5L).stream().map(RecruitmentBoard::toString).forEach(log::info);
+        recruitmentBoardRepository.findRecruitmentedBoardListByMemberId_QueryDSL(pageable,5L).stream().map(RecruitmentBoard::toString).forEach(log::info);
     }
     
 
@@ -127,7 +124,7 @@ public class MemberRepositoryTests {
     @Test
     public void findPointByMemberIdTest(){
         /*수정해야함*/
-        pointRepository.findPointByMemberId(2L).stream().map(Point::toString).forEach(log::info);
+        pointRepository.findPointByMemberId_QueryDSL(2L).stream().map(Point::toString).forEach(log::info);
     }
 
 //    비밀번호 변경
@@ -145,7 +142,7 @@ public class MemberRepositoryTests {
 //    아이디 찾기
     @Test
     public void findMemberIdByMemberEmailTest(){
-        String result = memberRepository.findMemberIdByMemberEmail("test1@gmail.com");
+        String result = memberRepository.findMemberIdByMemberEmail_QueryDSL("test1@gmail.com");
         String msg = "";
         msg = result!=null ? result : "아이디가 없습니다.";
         log.info(msg);
@@ -157,7 +154,7 @@ public class MemberRepositoryTests {
     @Test
     public void findCheckMemberIdByEmailTest(){
         String msg = "";
-        msg = memberRepository.findCheckMemberIdByMemberEmail("test1@gmail.com") ? "아이디 없음" : "아이디 있음";
+        msg = memberRepository.findCheckMemberIdByMemberEmail_QueryDSL("test1@gmail.com") ? "아이디 없음" : "아이디 있음";
         log.info(msg);
     }
 

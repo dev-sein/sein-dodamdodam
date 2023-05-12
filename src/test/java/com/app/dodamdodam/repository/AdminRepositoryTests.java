@@ -1,9 +1,7 @@
 package com.app.dodamdodam.repository;
 
 import com.app.dodamdodam.entity.banner.BannerApply;
-import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.free.FreeBoard;
-import com.app.dodamdodam.entity.free.FreeFile;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.point.Point;
 import com.app.dodamdodam.entity.purchase.PurchaseBoard;
@@ -19,7 +17,6 @@ import com.app.dodamdodam.search.board.AdminFreeBoardSearch;
 import com.app.dodamdodam.search.board.AdminPurchaseBoardSearch;
 import com.app.dodamdodam.search.board.AdminRecruitmentSearch;
 import com.app.dodamdodam.search.member.AdminMemberSearch;
-import com.app.dodamdodam.search.point.AdminPointSearch;
 import com.app.dodamdodam.type.BannerType;
 import com.app.dodamdodam.type.CategoryType;
 import com.app.dodamdodam.type.MemberStatus;
@@ -129,7 +126,7 @@ public class AdminRepositoryTests {
     @Test //자유게시판 최신글 3개 글 제목 불러오기
     public void findLasterBoardTest(){
         Pageable pageable = PageRequest.of(0, 3);
-        freeBoardRepository.findAllFreeBoardList(pageable).stream().map(FreeBoard::toString).forEach(log::info);
+        freeBoardRepository.findAllFreeBoardList_QueryDSL(pageable).stream().map(FreeBoard::toString).forEach(log::info);
 
     }
 

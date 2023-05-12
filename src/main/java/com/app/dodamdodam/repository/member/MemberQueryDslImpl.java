@@ -40,12 +40,12 @@ public class MemberQueryDslImpl implements MemberQueryDsl{
 
     /* 이메일로 회원 아이디 조회(메일로 쏴줘야 함) */
     @Override
-    public String findMemberIdByMemberEmail(String memberEmail) {
+    public String findMemberIdByMemberEmail_QueryDSL(String memberEmail) {
         return query.select(member.memberId).from(member).where(member.memberEmail.eq(memberEmail)).fetchOne();
     }
 
     @Override
-    public boolean findCheckMemberIdByMemberEmail(String memberEmail) {
+    public boolean findCheckMemberIdByMemberEmail_QueryDSL(String memberEmail) {
 
         String result = null;
         result = query.select(member.memberId).from(member).where(member.memberEmail.eq(memberEmail)).fetchOne();
