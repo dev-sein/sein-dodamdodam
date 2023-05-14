@@ -41,8 +41,6 @@ $identificationInput.on("blur", function() {
 			completeAllCheck();
 });
 
-
-
 // 비밀번호 변수
 const $passwordInput = $("#password-input");
 // 비밀번호 에러 변수

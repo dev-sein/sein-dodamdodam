@@ -32,6 +32,9 @@ public interface MemberQueryDsl {
 
     //관리자 멤버 상세 조회(뱃지)
     public String findAdminMemberDetail_QueryDSL(Long memberId);
+
+    //관리자 홈
+    public Page<Member> findAdminMemberAllOrderByIdDesc();
 }
 
 
