@@ -60,7 +60,7 @@ public class MyPageController {
     @GetMapping("point")
     public String myPointList(Model model, HttpSession session) {
         log.info("들어옴@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-        session.setAttribute("memberId", 2L);
+        session.setAttribute("memberId", 5L);
         Long memberId = (Long)session.getAttribute("memberId");
         memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
         model.addAttribute("points",memberService.getMyPointList(memberId));

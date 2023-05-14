@@ -50,6 +50,7 @@ public class MemberRepositoryTests {
     ArrayList<PointStatus> pointStatuses = new ArrayList<PointStatus>(Arrays.asList(PointStatus.CHARGE, PointStatus.SAVING, PointStatus.USE));
 
 
+    /* 회원 100명 입력 */
     @Test
     public void saveTest(){
         for (int i=1; i<=100; i++){
@@ -83,7 +84,6 @@ public class MemberRepositoryTests {
     }
 
 //    세션에 담긴 id 값으로 회원정보 가져오기(이 유저가 참가한 회수가 이미 있는데 DTO로 참가 회수 넣어서 만들었는데 어떻게 해야할지 애매함)
-//    DTO로 처리하는게 맞는지 모르겠음
     @Test
     public void findByMemberIdTest(){
         memberRepository.findByMemberId(5L).stream().map(MemberDTO::toString).forEach(log::info);

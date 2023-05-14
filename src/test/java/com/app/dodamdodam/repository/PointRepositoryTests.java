@@ -43,22 +43,22 @@ public class PointRepositoryTests {
     @Test
     public void saveTest(){
         Point point = new Point(50000, PointStatus.CHARGE);
-        point.setMember(memberRepository.findById(2L).get());
-        memberRepository.findById(2L).ifPresent(member -> {
+        point.setMember(memberRepository.findById(5L).get());
+        memberRepository.findById(5L).ifPresent(member -> {
             point.setMember(member);
             member.setMemberPoint(member.getMemberPoint() + 50000);
         });
-        pointRepository.save( point);
+        pointRepository.save(point);
     }
 
     /* 포인트 사용 */
     @Test
     public void saveUseTest(){
-        Point point = new Point(50000, PointStatus.USE);
-        point.setMember(memberRepository.findById(2L).get());
-        memberRepository.findById(2L).ifPresent(member -> {
+        Point point = new Point(25000, PointStatus.USE);
+        point.setMember(memberRepository.findById(5L).get());
+        memberRepository.findById(5L).ifPresent(member -> {
             point.setMember(member);
-            member.setMemberPoint(member.getMemberPoint() - 50000);
+            member.setMemberPoint(member.getMemberPoint() - 25000);
         });
         pointRepository.save( point);
     }
