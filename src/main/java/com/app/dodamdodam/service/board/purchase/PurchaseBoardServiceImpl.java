@@ -1,6 +1,7 @@
 package com.app.dodamdodam.service.board.purchase;
 
 import com.app.dodamdodam.domain.PurchaseBoardDTO;
+import com.app.dodamdodam.domain.PurchaseBoardFileDTO;
 import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.repository.board.purchase.PurchaseBoardRepository;
 import com.app.dodamdodam.search.PurchaseBoardSearch;
@@ -31,5 +32,12 @@ public class PurchaseBoardServiceImpl implements PurchaseBoardService {
 
 
         return new SliceImpl<>(purchaseBoardDTOS, pageable, hasNext);
+    }
+
+    /* 내가 작성한 판매 게시글 목록 */
+    @Override
+    public List<PurchaseBoardFileDTO> getPurchaseBoardListByMemberId(Pageable pageable, Long memberId) {
+        return purchaseBoardRepository.findPurchaseBoardListByMemberId_QueryDSL(pageable,memberId).stream()
+                .map(purchaseBoard -> toPurchaseBoardFileDto(purchaseBoard)).collect(Collectors.toList());
     }
 }

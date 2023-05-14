@@ -27,7 +27,7 @@ public interface FreeBoardService {
     public Page<FreeBoard> getFreeBoardsByCategoryType(CategoryType categoryType, Pageable pageable);
 
     /* 내가 작성한 자유게시글 목록 가져오기(memberId로 자유게시글 조회) */
-    public Page<FreeBoard> getFreeBoardsByMemberId(Pageable pageable, Long memberId);
+    public List<FreeBoardFileDTO> getFreeBoardsByMemberId(Pageable pageable, Long memberId);
 
     /* 자유 게시글 상세 */
     public Optional<FreeBoard> getFreeBoardById(Long boardId);
@@ -45,6 +45,10 @@ public interface FreeBoardService {
                 .boardTitle(freeBoard.getBoardTitle())
                 .boardContent(freeBoard.getBoardContent())
                 .memberDTO(toMemberDTO(freeBoard.getMember()))
+                .createdDate(freeBoard.getCreatedDate())
+                .updatedDate(freeBoard.getUpdatedDate())
+                .freeCategory(freeBoard.getFreeCategory())
+                .likeCount(freeBoard.getLikeCount())
                 .freeFileDTOS(
                         freeBoard.getFreeFiles().stream().map(e -> toFreeFileDTO(e)).collect(Collectors.toList())
                 )

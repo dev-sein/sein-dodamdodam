@@ -4,6 +4,8 @@ import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.point.Point;
 import com.app.dodamdodam.repository.board.free.FreeBoardRepository;
+import com.app.dodamdodam.repository.board.purchase.PurchaseBoardRepository;
+import com.app.dodamdodam.repository.board.recruitment.RecruitmentBoardRepository;
 import com.app.dodamdodam.repository.member.MemberRepository;
 import com.app.dodamdodam.repository.point.PointRepository;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +29,12 @@ public class MemberServiceImpl implements MemberService{
     @Autowired
     private FreeBoardRepository freeBoardRepository;
 
+    @Autowired
+    private PurchaseBoardRepository purchaseBoardRepository;
+
+    @Autowired
+    private RecruitmentBoardRepository recruitmentBoardRepository;
+
     /* 로그인 된 유저 정보 */
     @Override
     public Optional<Member> getMemberInfo(Long memberId) {
@@ -49,5 +57,22 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public Long getMyFreeBoardListCount(Long memberId) {
         return freeBoardRepository.findFreeBoardListCountByMemberId_QueryDSL(memberId);
+    }
+
+    /* 내가 작성한 판매게시글 개수 */
+    @Override
+    public Long getMyPurchaseBoardListCount(Long memberId) {
+        return purchaseBoardRepository.findPurchaseBoardListCountByMemberId_QueryDSL(memberId);
+    }
+
+    /* 내가 작성한 모집게시글 개수 */
+    @Override
+    public Long getMyRecruitmentBoardListCount(Long memberId) {
+        return recruitmentBoardRepository.findRecruitmentBoardListCountByMemberId_QueryDSL(memberId);
+    }
+
+    @Override
+    public Long getMyRecruitmentedBoardListCount(Long memberId) {
+        return recruitmentBoardRepository.findRecruitmentedBoardListCountByMemberId_QueryDSL(memberId);
     }
 }

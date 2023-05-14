@@ -24,12 +24,14 @@ public interface MemberService {
     /* 내가 작성한 자유 게시글 개수 */
     public Long getMyFreeBoardListCount(Long memberId);
 
-    /* 내가 작성한 판매 게시글 목록 */
+    /* 내가 작성한 판매 게시글 개수 */
+    public Long getMyPurchaseBoardListCount(Long memberId);
 
-
-    /* 내가 작성한 모집 게시글 목록 */
+    /* 내가 작성한 모집 게시글 개수 */
+    public Long getMyRecruitmentBoardListCount(Long memberId);
 
     /* 내가 작성한 모집 게시글에 참여한 인원 목록 */
+    public Long getMyRecruitmentedBoardListCount(Long memberId);
     
     /* 내가 참여한 모집 게시글 목록 */
 

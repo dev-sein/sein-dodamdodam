@@ -18,6 +18,7 @@ import java.util.Optional;
 
 import org.springframework.data.domain.Pageable;
 
+import static com.app.dodamdodam.entity.free.QFreeBoard.freeBoard;
 import static com.app.dodamdodam.entity.purchase.QPurchaseBoard.purchaseBoard;
 import static com.app.dodamdodam.entity.recruitment.QRecruitmentBoard.recruitmentBoard;
 
@@ -60,6 +61,13 @@ public class PurchaseBoardQueryDslImpl implements PurchaseBoardQueryDsl {
                         .where(purchaseBoard.id.eq(boardId))
                         .fetchOne()
         );
+    }
+
+    @Override
+    public Long findPurchaseBoardListCountByMemberId_QueryDSL(Long memberId) {
+        return query.select(purchaseBoard.count()).from(purchaseBoard)
+                .where(purchaseBoard.member.id.eq(memberId))
+                .fetchOne();
     }
 
     @Override
