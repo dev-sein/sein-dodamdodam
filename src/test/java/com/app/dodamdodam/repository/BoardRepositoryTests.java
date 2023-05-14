@@ -62,14 +62,15 @@ public class BoardRepositoryTests {
     /*모집 게시글 등록*/
     @Test
     public void saveTest(){
-        for (int i=1; i<=100; i++){
-            RecruitmentBoard recruitmentBoard = new RecruitmentBoard("모집 게시글 제목" + i, LocalDate.now(),10 + i, "www.naver.com", "1234", "경기도 성남시", "분당구 수내동");
-            memberRepository.findById(5L).ifPresent(member -> recruitmentBoard.setMember(member));
-            recruitmentBoardRepository.save(recruitmentBoard);
-        }
-//        RecruitmentBoard recruitmentBoard = new RecruitmentBoard("모집 게시글 제목", LocalDate.now(),10, "www.naver.com", "1234", "서울특별시", "강남구");
-//        memberRepository.findById(5L).ifPresent(member -> recruitmentBoard.setMember(member));
-//        recruitmentBoardRepository.save(recruitmentBoard);
+//        for (int i=1; i<=100; i++){
+//            RecruitmentBoard recruitmentBoard = new RecruitmentBoard("모집 게시글 제목" + i, LocalDate.now(),10 + i, "www.naver.com", "1234", "경기도 성남시", "분당구 수내동");
+//            memberRepository.findById(2L).ifPresent(member -> recruitmentBoard.setMember(member));
+//            recruitmentBoardRepository.save(recruitmentBoard);
+//        }
+        RecruitmentBoard recruitmentBoard = new RecruitmentBoard("모집 게시글 제목", LocalDate.now(),10, "www.naver.com", "1234", "서울특별시", "강남구");
+        memberRepository.findById(5L).ifPresent(member -> recruitmentBoard.setMember(member));
+//        recruitmentBoard.addRecruitment();
+        recruitmentBoardRepository.save(recruitmentBoard);
     }
 
     /*자유 게시글 등록*/
@@ -92,7 +93,7 @@ public class BoardRepositoryTests {
             PurchaseBoard purchaseBoard = new PurchaseBoard("판매 게시글 제목" + i, "판매 게시글 내용"+ i);
             Product product = new Product("상품" + i, 1000 * i, (long)i, purchaseBoard);
 
-            memberRepository.findById(5L).ifPresent(member -> {
+            memberRepository.findById(2L).ifPresent(member -> {
                 purchaseBoard.setMember(member);
                 purchaseBoard.setProduct(product);
             });
@@ -117,28 +118,22 @@ public class BoardRepositoryTests {
 //    }
 
     /* 모집게시글에 참여하기 테스트*/
+    /* 200번 모집 게시글에 임의로 5번 유저 참석 시켰음*/
     @Test
     public void saveTest4(){
         memberRepository.findById(5L).ifPresent(member ->
         {
             Recruitment recruitment = new Recruitment(member);
-            recruitmentBoardRepository.findById(507L).ifPresent(recruitmentBoard -> recruitment.setRecruitmentBoard(recruitmentBoard));
+            recruitmentBoardRepository.findById(403L).ifPresent(recruitmentBoard -> recruitment.setRecruitmentBoard(recruitmentBoard));
             recruitmentRepository.save(recruitment);
         });
-    }
-
-    /* 내가 참여한 모집게시글 목록 가져오기 */
-    @Test
-    public void findRecruimentedBoardListByMemberId(){
-        recruitmentBoardRepository.findRecruitmentedBoardListByMemberId_QueryDSL(PageRequest.of(0,5),5L).stream()
-                .map(recruitmentBoard -> recruitmentBoard.toString()).forEach(log::info);
     }
 
     /* 자유 게시글 작성 */
     @Test
     public void saveFreeBoardTest(){
-        FreeBoard freeBoard = new FreeBoard("자유게시글 제목3", "자유게시글 내용3", categoryTypes.get(2));
-        memberRepository.findById(5L).ifPresent(member -> freeBoard.setMember(member));
+        FreeBoard freeBoard = new FreeBoard("자유게시글 제목2", "자유게시글 내용2", categoryTypes.get(1));
+        memberRepository.findById(2L).ifPresent(member -> freeBoard.setMember(member));
         freeBoardRepository.save(freeBoard);
 
         List<FreeFile> freeFiles = new ArrayList<FreeFile>();
@@ -184,13 +179,6 @@ public class BoardRepositoryTests {
     public void findFreeBoardListByCategoryTypeTest(){
         Pageable pageable = PageRequest.of(0, 10);
         freeBoardRepository.findFreeBoardListByCategoryType_QueryDSL(pageable,CategoryType.CULTURE).stream().map(FreeBoard::toString).forEach(log::info);
-    }
-
-    /* 내가 작성한 자유 게시글 목록 */
-    @Test
-    public void findFreeBoardListByMemberIdTest(){
-        Pageable pageable = PageRequest.of(0, 10);
-        freeBoardRepository.findFreeBoardListByMemberId_QueryDSL(pageable,5L).stream().map(FreeBoard::toString).forEach(log::info);
     }
 
     /* 내가 작성한 자유 게시글 목록 분류 */
