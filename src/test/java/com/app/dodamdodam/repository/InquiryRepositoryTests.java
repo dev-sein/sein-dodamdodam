@@ -48,8 +48,8 @@ public class InquiryRepositoryTests {
 
     @Test //답변 저장 테스트
     public void updateAnswerTest(){
-      inquiryRepository.findById(2L).ifPresent(inquiry -> inquiry.setInquiryAnswer("답변내용"));
-      inquiryRepository.findById(2L).ifPresent((inquiry -> inquiry.setInquiryStatus(InquiryStatus.DONE)));
+      inquiryRepository.findById(162L).ifPresent(inquiry -> inquiry.setInquiryAnswer("답변내용"));
+      inquiryRepository.findById(162L).ifPresent((inquiry -> inquiry.setInquiryStatus(InquiryStatus.DONE)));
     }
 
     @Test //전체 조회 테스트

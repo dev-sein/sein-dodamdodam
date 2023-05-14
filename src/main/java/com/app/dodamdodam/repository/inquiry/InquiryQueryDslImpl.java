@@ -11,13 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 import static com.app.dodamdodam.entity.inquiry.QInquiry.inquiry;
 import static com.app.dodamdodam.entity.member.QMember.member;
 import static com.app.dodamdodam.entity.point.QPoint.point;
-
+@Service
 @RequiredArgsConstructor
 public class InquiryQueryDslImpl implements InquiryQueryDsl {
     @Autowired
@@ -28,7 +29,7 @@ public class InquiryQueryDslImpl implements InquiryQueryDsl {
         List<Inquiry> foundInquiry = query.select(inquiry)
                 .from(inquiry)
                 .orderBy(inquiry.id.desc())
-                .offset(pageable.getOffset())
+                .offset(pageable.getOffset() -1)
                 .limit(pageable.getPageSize())
                 .fetch();
 

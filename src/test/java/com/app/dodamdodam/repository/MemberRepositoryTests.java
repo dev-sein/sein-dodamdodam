@@ -18,6 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.annotation.Rollback;
@@ -26,6 +27,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 @SpringBootTest
 @Rollback(false)
@@ -177,12 +179,9 @@ public class MemberRepositoryTests {
     @Test //멤버 상세 조회
     public void findAdminMemberDetail_QueryDSL(){
         //멤버 상세 조회
-//        memberRepository.findById(1441L).ifPresent(member -> log.info(member.toString()));
+        memberRepository.findById(2L).ifPresent(member -> log.info(member.toString()));
         //멤버 등급 조회        
-       // log.info(memberRepository.findAdminMemberDetail_QueryDSL(1441L));
-        log.info(memberRepository.findAdminMemberDetail_QueryDSL(1441L));
+        log.info(memberRepository.findAdminMemberDetail_QueryDSL(2L));
     }
-
-
 
 }
