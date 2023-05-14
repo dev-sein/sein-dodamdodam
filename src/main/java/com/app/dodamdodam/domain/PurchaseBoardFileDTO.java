@@ -10,27 +10,23 @@ import java.util.List;
 
 @Data
 @Builder
-public class FreeBoardFileDTO {
+public class PurchaseBoardFileDTO {
     private Long id;
     private String boardTitle;
     private String boardContent;
-    private CategoryType freeCategory;
     private MemberDTO memberDTO;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
-    private int likeCount;
-    private List<FreeFileDTO> freeFileDTOS;
+    private List<PurchaseFileDTO> purchaseFileDTOS;
 
     @QueryProjection
-    public FreeBoardFileDTO(Long id, String boardTitle, String boardContent, CategoryType freeCategory, MemberDTO memberDTO, LocalDateTime createdDate, LocalDateTime updatedDate, int likeCount, List<FreeFileDTO> freeFileDTOS) {
+    public PurchaseBoardFileDTO(Long id, String boardTitle, String boardContent, MemberDTO memberDTO, LocalDateTime createdDate, LocalDateTime updatedDate, List<PurchaseFileDTO> purchaseFileDTOS) {
         this.id = id;
         this.boardTitle = boardTitle;
         this.boardContent = boardContent;
-        this.freeCategory = freeCategory;
         this.memberDTO = memberDTO;
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;
-        this.likeCount = likeCount;
-        this.freeFileDTOS = freeFileDTOS;
+        this.purchaseFileDTOS = purchaseFileDTOS;
     }
 }
