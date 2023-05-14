@@ -39,8 +39,6 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
     @Override
     public Long findFreeBoardListCountByMemberId_QueryDSL(Long memberId) {
         return query.select(freeBoard.count()).from(freeBoard)
-//                .join(freeBoard.member).fetchJoin()
-//                .leftJoin(freeBoard.freeFiles).fetchJoin()
                 .where(freeBoard.member.id.eq(memberId))
                 .orderBy(freeBoard.id.desc())
                 .fetchOne();

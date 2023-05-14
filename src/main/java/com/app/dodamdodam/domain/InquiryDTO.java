@@ -18,6 +18,7 @@ public class InquiryDTO {
     private InquiryStatus inquiryStatus;
 
 
+
     @QueryProjection
     public InquiryDTO(Long id, InquiryType inquiryType, String inquiryEmail, String inquiryPhoneNumber, String inquiryContent, String inquiryAnswer, InquiryStatus inquiryStatus) {
         this.id = id;

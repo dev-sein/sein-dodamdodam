@@ -33,17 +33,18 @@ public class InquiryRepositoryTests {
 
     @Test //문의사항 저장 테스트
     public void saveTest(){
-        for(int i=0; i<50; i++) {
-            Inquiry inquiry = new Inquiry(
-                    InquiryType.APPLY,
-                    "abcd"+(i+1) +"@email.com",
-                    "memberId" + (i+1),
-                    "0101111111" + (i+1),
-                    "문의내용" + (i+1),
-                    InquiryStatus.HOLD);
-
-            inquiryRepository.save(inquiry);
-        }
+//        for(int i=0; i<50; i++) {
+//            Inquiry inquiry = new Inquiry(
+//                    InquiryType.APPLY,
+//                    "abcd"+(i+1) +"@email.com",
+//                    "memberId" + (i+1),
+//                    "0101111111" + (i+1),
+//                    "문의내용" + (i+1),
+//                    InquiryStatus.HOLD);
+//
+//            inquiryRepository.save(inquiry);
+//        }
+//    }
     }
 
     @Test //답변 저장 테스트

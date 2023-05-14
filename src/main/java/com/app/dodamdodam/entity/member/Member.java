@@ -51,8 +51,8 @@ public class Member extends Period {
     @Enumerated(EnumType.STRING)
     private Role memberRole;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "member", cascade = CascadeType.REMOVE)
-    private List<Recruitment> recruitments = new ArrayList<>();
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "member", cascade = CascadeType.REMOVE)
+//    private List<Recruitment> recruitments = new ArrayList<>();
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "member", cascade = CascadeType.REMOVE)
     private List<EventBoard> eventBoards;

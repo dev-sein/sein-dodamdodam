@@ -708,4 +708,19 @@ a.ProfileSet:hover{
     cursor: pointer;
 }
 
-  
+em.like-count {
+    float: right;
+    padding-left: 15px;
+    background: url(/images/free-board/icon_red_heart.png) no-repeat 0 center;
+    background-size: 11px 10px;
+    line-height: 13px;
+}
+
+.list{
+    color: rgb(144, 148, 156) !important;
+    cursor: pointer;
+}
+
+.list:hover{
+    color: #0066338f !important;
+}

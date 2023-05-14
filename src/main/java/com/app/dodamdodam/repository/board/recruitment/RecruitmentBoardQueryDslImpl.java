@@ -62,6 +62,21 @@ public class RecruitmentBoardQueryDslImpl implements RecruitmentBoardQueryDsl {
         return new PageImpl<>(recruitmentBoards, pageable, count);
     }
 
+    /* 내가 작성한 모집게시글 개수 가져오기 */
+    @Override
+    public Long findRecruitmentBoardListCountByMemberId_QueryDSL(Long memberId) {
+        return query.select(recruitmentBoard.count()).from(recruitmentBoard)
+                .where(recruitmentBoard.member.id.eq(memberId))
+                .fetchOne();
+    }
+
+    @Override
+    public Long findRecruitmentedBoardListCountByMemberId_QueryDSL(Long memberId) {
+        return query.select(recruitmentBoard.count()).from(recruitmentBoard)
+                .where(recruitmentBoard.recruitments.any().member.id.eq(memberId))
+                .fetchOne();
+    }
+
     //관리자 모집 게시판 검색
     @Override
     public Page<RecruitmentBoard> findAdminRecruitmentBoardWithPaging_QueryDSL(AdminRecruitmentSearch adminRecruitmentSearch, Pageable pageable) {

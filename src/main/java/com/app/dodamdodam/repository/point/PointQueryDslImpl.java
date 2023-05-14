@@ -30,6 +30,21 @@ public class PointQueryDslImpl implements PointQueryDsl {
         return query.select(point).from(point).where(point.member.id.eq(memberId)).orderBy(point.id.desc()).fetch();
     }
 
+    @Override //관리자 목록 조회
+    public Page<Point> findAllWithPaging(Pageable pageable) {
+        List<Point> pointList = query.select(point)
+                .from(point)
+                .orderBy(point.id.desc())
+                .offset(pageable.getOffset()-1)
+                .limit(pageable.getPageSize())
+                .fetch();
+
+        Long count = query.select(point.count())
+                .from(point)
+                .fetchOne();
+        return new PageImpl<>(pointList,pageable, count);
+    }
+
     @Override //관리자 - 멤버 id와 이름 조회
     public Page<Point> findPointMemberIdWithSearch_QueryDSL(AdminPointSearch pointSearch, Pageable pageable) {
         BooleanExpression pointAmountEq = pointSearch.getPointAmount() == null ? null : point.pointAmount.eq(pointSearch.getPointAmount());
