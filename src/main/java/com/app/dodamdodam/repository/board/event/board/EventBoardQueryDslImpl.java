@@ -1,7 +1,12 @@
-package com.app.dodamdodam.repository.board.event;
+package com.app.dodamdodam.repository.board.event.board;
 
 import com.app.dodamdodam.entity.event.EventBoard;
+import com.app.dodamdodam.entity.event.QEventBoard;
+import com.app.dodamdodam.entity.event.QEventFile;
+import com.app.dodamdodam.entity.event.QEventLike;
+import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.search.EventBoardSearch;
+import com.app.dodamdodam.type.EventType;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -11,23 +16,42 @@ import org.springframework.data.domain.Slice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 
+import javax.persistence.PreUpdate;
 import java.util.List;
 import java.util.Optional;
 
 import static com.app.dodamdodam.entity.event.QEventBoard.eventBoard;
+import static com.app.dodamdodam.entity.event.QEventFile.eventFile;
+import static com.app.dodamdodam.entity.purchase.QPurchaseBoard.purchaseBoard;
 
 @RequiredArgsConstructor
 public class EventBoardQueryDslImpl implements EventBoardQueryDsl {
     private final JPAQueryFactory query;
 
     @Override
-    public Slice<EventBoard> findAllByIdDescWithPaging_QueryDSL(Pageable pageable) {
-        return null;
+    public Page<EventBoard> findAllEventBoardWithPaging_QueryDSL(Pageable pageable) {
+        List<EventBoard> founddBoard = query.select(eventBoard)
+                .from(eventBoard)
+                .leftJoin(eventBoard.eventFiles, eventFile)
+                .fetchJoin()
+                .where(eventBoard.eventStatus.eq(EventType.valueOf("Hold")))
+                .where(eventBoard.eventStatus.eq(EventType.valueOf("PROGRESS")))
+                .orderBy(eventBoard.id.desc())
+                .offset(pageable.getOffset() -1 )
+                .limit(pageable.getPageSize())
+                .fetch();
+
+        Long count = query.select(eventBoard.count())
+                .from(eventBoard)
+                .where(eventBoard.eventStatus.eq(EventType.valueOf("Hold")))
+                .where(eventBoard.eventStatus.eq(EventType.valueOf("PROGRESS")))
+                .fetchOne();
+
+        return new PageImpl<>(founddBoard, pageable, count);
     }
 
-
     @Override
-    public Optional<EventBoard> findEventBoardById_QueryDSL(Long boardId) {
+    public Optional<EventBoard> findEventBoardById_QueryDSL(Long eventBoardId) {
         return Optional.ofNullable(
                 query.select(eventBoard)
                         .from(eventBoard)
@@ -35,7 +59,7 @@ public class EventBoardQueryDslImpl implements EventBoardQueryDsl {
                         .fetchJoin()
                         .join(eventBoard.eventFiles)
                         .fetchJoin()
-                        .where(eventBoard.id.eq(boardId))
+                        .where(eventBoard.id.eq(eventBoardId))
                         .fetchOne()
         );
     }
@@ -55,30 +79,17 @@ public class EventBoardQueryDslImpl implements EventBoardQueryDsl {
     }
 
     @Override
-    public Slice<EventBoard> findAllWithSearch_QueryDSL(EventBoardSearch eventBoardSearch, Pageable pageable) {
-        BooleanExpression boardTitleContains = eventBoardSearch.getBoardTitle() == null ? null : eventBoard.boardTitle.contains(eventBoardSearch.getBoardTitle());
-        BooleanExpression boardContentContains = eventBoardSearch.getBoardContent() == null ? null : eventBoard.boardContent.contains(eventBoardSearch.getBoardContent());
-
-        boolean hasNext = false;
-
+    public List<EventBoard> findAllWithSearch(EventBoardSearch eventBoardSearch) {
+        BooleanExpression eventTitleLike = eventBoardSearch.getBoardTitle() == null ? null : eventBoard.boardTitle.like(eventBoardSearch.getBoardTitle());
         List<EventBoard> eventBoards = query.select(eventBoard)
                 .from(eventBoard)
-                .join(eventBoard.eventFiles)
-                .fetchJoin()
-                .join(eventBoard.member)
-                .fetchJoin()
-                .where(boardTitleContains, boardContentContains)
+                .where(eventTitleLike)
+                .leftJoin(eventBoard.eventFiles, eventFile)
                 .orderBy(eventBoard.id.desc())
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize() + 1)
                 .fetch();
 
-        if(eventBoards.size() > pageable.getPageSize()) {
-            hasNext = true;
-            eventBoards.remove(pageable.getPageSize()); // 한개 더 가져왔으니 더 가져온 데이터 삭제
-        }
-
-        return new SliceImpl<>(eventBoards, pageable, hasNext);
+        return eventBoards;
     }
+
 
 }

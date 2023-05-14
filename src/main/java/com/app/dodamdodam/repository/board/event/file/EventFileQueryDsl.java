@@ -1,4 +1,4 @@
-package com.app.dodamdodam.repository.board.event;
+package com.app.dodamdodam.repository.board.event.file;
 
 import com.app.dodamdodam.entity.event.EventFile;
 
