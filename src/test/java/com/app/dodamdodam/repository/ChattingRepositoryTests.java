@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -84,10 +85,12 @@ public class ChattingRepositoryTests {
     @Test
     public void findRoomSearchWithPaging_QueryDSL_Test(){
         RoomSearch roomSearch = new RoomSearch();
-        roomSearch.setMemberName("테스트1");
-//        roomSearch.setChattingContent("1번이 2번에게 보내는 메세지1");
-        Page<Room> roomPage = roomRepository.findRoomSearchWithPaging_QueryDSL(roomSearch, PageRequest.of(0, 10));
+//        roomSearch.setMemberName("테스트1");
+//        roomSearch.setChattingContent("1번이2번에게 보내는 메세지1");
+        Slice<Room> roomPage = roomRepository.findRoomSearchWithPaging_QueryDSL(roomSearch, PageRequest.of(1, 5));
         log.info("============"+roomSearch.getChattingContent());
+
+        roomPage.stream().forEach(room -> log.info(room.toString()));
     }
 
 
