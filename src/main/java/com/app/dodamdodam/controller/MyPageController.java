@@ -1,6 +1,12 @@
 package com.app.dodamdodam.controller;
 
+import com.app.dodamdodam.domain.Criteria;
+import com.app.dodamdodam.domain.FreeBoardFileDTO;
+import com.app.dodamdodam.domain.PurchaseBoardFileDTO;
+import com.app.dodamdodam.domain.RecruitmentBoardFileDTO;
 import com.app.dodamdodam.service.board.freeBoard.FreeBoardService;
+import com.app.dodamdodam.service.board.purchase.PurchaseBoardService;
+import com.app.dodamdodam.service.board.recruitmentBoard.RecruitmentBoardService;
 import com.app.dodamdodam.service.member.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -8,10 +14,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @RequestMapping("mypage/*")
@@ -21,6 +27,10 @@ public class MyPageController {
     private final MemberService memberService;
 
     private final FreeBoardService freeBoardService;
+
+    private final PurchaseBoardService purchaseBoardService;
+
+    private final RecruitmentBoardService recruitmentBoardService;
 
     /*마이 페이지 메인*/
     @GetMapping("main")
@@ -58,12 +68,136 @@ public class MyPageController {
         return"myPage/myPage-point";  /*테스트로 아무 페이지에나 보내봄*/
     }
 
-    @GetMapping("board")
+    @GetMapping("free")
     public String myBoardList(HttpSession session, Model model){
         session.setAttribute("memberId", 5L);
         Long memberId = (Long)session.getAttribute("memberId");
+
         memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
-        log.info(memberService.getMyFreeBoardListCount(memberId).toString());
-        return "myPage/myPage-myBoards";
+
+        /* 내가 작성한 자유 게시글 개수 */
+        model.addAttribute("freeBoardCount",memberService.getMyFreeBoardListCount(memberId));
+        /* 내가 작성한 판매 게시글 개수 */
+        model.addAttribute("purchaseBoardCount",memberService.getMyPurchaseBoardListCount(memberId));
+        /* 내가 작성한 모집 게시글 개수 */
+        model.addAttribute("recruitmentBoardCount",memberService.getMyRecruitmentBoardListCount(memberId));
+        /* 내가 참여한 모집 게시글 개수 */
+        model.addAttribute("recruitmentedBoardCount",memberService.getMyRecruitmentedBoardListCount(memberId));
+
+        return "myPage/myPage-myFreeBoards";
+    }
+
+    @ResponseBody
+    @GetMapping("free-board/{page}")
+    public List<FreeBoardFileDTO> myFreeBoardList(HttpSession session, @PathVariable(value = "page") Integer page){
+        session.setAttribute("memberId", 5L);
+        Long memberId = (Long)session.getAttribute("memberId");
+
+        /* 한번에 12개씩 */
+        Pageable pageable = PageRequest.of(page,12);
+
+        List<FreeBoardFileDTO> freeBoards = freeBoardService.getFreeBoardsByMemberId(pageable,memberId);
+
+        log.info(freeBoards.toString());
+        return freeBoards;
+    }
+
+    @GetMapping("purchase")
+    public String myPurchaseBoardList(HttpSession session, Model model){
+        session.setAttribute("memberId", 5L);
+        Long memberId = (Long)session.getAttribute("memberId");
+
+        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
+
+        /* 내가 작성한 자유 게시글 개수 */
+        model.addAttribute("freeBoardCount",memberService.getMyFreeBoardListCount(memberId));
+        /* 내가 작성한 판매 게시글 개수 */
+        model.addAttribute("purchaseBoardCount",memberService.getMyPurchaseBoardListCount(memberId));
+        /* 내가 작성한 모집 게시글 개수 */
+        model.addAttribute("recruitmentBoardCount",memberService.getMyRecruitmentBoardListCount(memberId));
+        /* 내가 참여한 모집 게시글 개수 */
+        model.addAttribute("recruitmentedBoardCount",memberService.getMyRecruitmentedBoardListCount(memberId));
+
+        return "myPage/myPage-myPurchaseBoards";
+    }
+
+    @ResponseBody
+    @GetMapping("purchase-board/{page}")
+    public List<PurchaseBoardFileDTO> myPurchaseBoardList(HttpSession session, @PathVariable(value = "page") Integer page){
+        session.setAttribute("memberId", 5L);
+        Long memberId = (Long)session.getAttribute("memberId");
+
+        /* 한번에 12개씩 */
+        Pageable pageable = PageRequest.of(page,12);
+
+        List<PurchaseBoardFileDTO> purchaseBoards = purchaseBoardService.getPurchaseBoardListByMemberId(pageable,memberId);
+
+        return purchaseBoards;
+    }
+
+    @GetMapping("recruitment")
+    public String myRecruitmentBoardList(HttpSession session, Model model){
+        session.setAttribute("memberId", 5L);
+        Long memberId = (Long)session.getAttribute("memberId");
+
+        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
+
+        /* 내가 작성한 자유 게시글 개수 */
+        model.addAttribute("freeBoardCount",memberService.getMyFreeBoardListCount(memberId));
+        /* 내가 작성한 판매 게시글 개수 */
+        model.addAttribute("purchaseBoardCount",memberService.getMyPurchaseBoardListCount(memberId));
+        /* 내가 작성한 모집 게시글 개수 */
+        model.addAttribute("recruitmentBoardCount",memberService.getMyRecruitmentBoardListCount(memberId));
+        /* 내가 참여한 모집 게시글 개수 */
+        model.addAttribute("recruitmentedBoardCount",memberService.getMyRecruitmentedBoardListCount(memberId));
+
+        return "myPage/myPage-myRecruitmentBoards";
+    }
+
+    @ResponseBody
+    @GetMapping("recruitment-board/{page}")
+    public List<RecruitmentBoardFileDTO> myRecruitmentBoardList(HttpSession session, @PathVariable(value = "page") Integer page){
+        session.setAttribute("memberId", 5L);
+        Long memberId = (Long)session.getAttribute("memberId");
+
+        /* 한번에 12개씩 */
+        Pageable pageable = PageRequest.of(page,12);
+
+        List<RecruitmentBoardFileDTO> recruitmentBoards = recruitmentBoardService.getRecruimentBoardListByMemberId(pageable,memberId);
+
+        return recruitmentBoards;
+    }
+
+    @GetMapping("recruitmented")
+    public String myRecruitmentedBoardList(HttpSession session, Model model){
+        session.setAttribute("memberId", 5L);
+        Long memberId = (Long)session.getAttribute("memberId");
+
+        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
+
+        /* 내가 작성한 자유 게시글 개수 */
+        model.addAttribute("freeBoardCount",memberService.getMyFreeBoardListCount(memberId));
+        /* 내가 작성한 판매 게시글 개수 */
+        model.addAttribute("purchaseBoardCount",memberService.getMyPurchaseBoardListCount(memberId));
+        /* 내가 작성한 모집 게시글 개수 */
+        model.addAttribute("recruitmentBoardCount",memberService.getMyRecruitmentBoardListCount(memberId));
+        /* 내가 참여한 모집 게시글 개수 */
+        model.addAttribute("recruitmentedBoardCount",memberService.getMyRecruitmentedBoardListCount(memberId));
+
+        return "myPage/myPage-myRecruitmentedBoards";
+    }
+
+    @ResponseBody
+    @GetMapping("recruitmented-board/{page}")
+    public List<RecruitmentBoardFileDTO> myRecruitmentedBoardList(HttpSession session, @PathVariable(value = "page") Integer page){
+        session.setAttribute("memberId", 5L);
+        Long memberId = (Long)session.getAttribute("memberId");
+
+        /* 한번에 12개씩 */
+        Pageable pageable = PageRequest.of(page,12);
+
+        List<RecruitmentBoardFileDTO> recruitmentedBoards = recruitmentBoardService.getRecruimentedBoardListByMemberId(pageable,memberId);
+
+        return recruitmentedBoards;
     }
 }

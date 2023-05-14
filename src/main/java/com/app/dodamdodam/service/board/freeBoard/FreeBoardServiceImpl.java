@@ -35,8 +35,9 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 
     /* 내가 작성한 자유 게시글 가져오기 */
     @Override
-    public Page<FreeBoard> getFreeBoardsByMemberId(Pageable pageable, Long memberId) {
-        return freeBoardRepository.findFreeBoardListByMemberId_QueryDSL(pageable, memberId);
+    public List<FreeBoardFileDTO> getFreeBoardsByMemberId(Pageable pageable, Long memberId) {
+        return freeBoardRepository.findFreeBoardListByMemberId_QueryDSL(pageable, memberId)
+                .stream().map(freeBoard -> toFreeBoardFileDTO(freeBoard)).collect(Collectors.toList());
     }
 
     /* 자유 게시글 상세 */

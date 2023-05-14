@@ -133,7 +133,7 @@ public class BoardRepositoryTests {
     @Test
     public void saveFreeBoardTest(){
         FreeBoard freeBoard = new FreeBoard("자유게시글 제목2", "자유게시글 내용2", categoryTypes.get(1));
-        memberRepository.findById(7L).ifPresent(member -> freeBoard.setMember(member));
+        memberRepository.findById(2L).ifPresent(member -> freeBoard.setMember(member));
         freeBoardRepository.save(freeBoard);
 
         List<FreeFile> freeFiles = new ArrayList<FreeFile>();

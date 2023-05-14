@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내가 참여한 모집게시글</title>
+    <!-- css 적용 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/myPage/myPage-myBoards.css">
+    <link rel="stylesheet" href="/css/myPage/myPage-payment.css">
+    <link rel="shortcut icon" href="/static/images/components/dodam-favicon.png">
+</head>
+<body>
+<div id="container">
+    <div id="mypageWrap">
+        <div class="myprofile-wrap">
+            <div id="iam-profile-app" data-profile-image="https://static.wadiz.kr/static/icon/profile-icon-4.png" data-nickname="익명의 서포터 993" data-accnttype-name="개인 회원" data-is-valid-joined-premium-membership="false" data-my-self="true" data-my-funding-all-count="0" data-signature-cnt="0" data-follower-cnt="0" data-following-cnt="0" data-target-enc-user-id="" data-target-user-id="6034797" data-introduceme="" data-is-following="false" data-my-interest-user-keyword="">
+                <section class="ProfileCorp">
+                    <div class="ProfileCorp_inner">
+                        <h3 class="BlindText"></h3>
+                        <!-- 프로필 이미지 -->
+                        <div aria-hidden="true" class="Avatar" >
+                            <span class="Avatar_image" style="background-image: url('https://static.wadiz.kr/assets/icon/profile-icon-6.png'); border: 1px solid rgb(221, 226, 230);"></span>
+                        </div>
+                        <!-- 사업자 회원 정보 -->
+                        <div class="ProfileCorp_info">
+                            <dl class="ProfileInfo_box" aria-label="회원정보">
+                                <dt class="BlindText">회원닉네임</dt>
+                                <dd class="ProfileInfo_nickname" th:text="${member.memberName}"></dd>
+                                <dt class="BlindText">회원유형</dt>
+                                <dd class="ProfileInfo_type">
+                                    <span th:if="${member.memberType.toString.equals('GENERAL')}">일반회원</span>
+                                    <span th:if="${member.memberType.toString.equals('KAKAO')}">카카오회원</span>
+                                    <span th:if="${member.memberType.toString.equals('NAVER')}">네이버회원</span>
+                                </dd>
+                            </dl>
+                            <strong class="BlindText">관심 카테고리</strong>
+                            <!-- 가상요소 -->
+                            <ul class="ProfileInterestKeyword"></ul>
+                            <!-- 카테고리 박스 -->
+                            <dl class="ProfileActivityInfo_infoCountBox">
+                                <div>
+                                    <dt>자유</dt>
+                                    <dd th:text="${freeBoardCount}">
+                                        0
+                                        <span class="BlindText"></span>
+                                    </dd>
+                                </div>
+                                <div>
+                                    <dt>모집</dt>
+                                    <dd th:text="${recruitmentBoardCount}">
+                                        0
+                                        <span class="BlindText">회</span>
+                                    </dd>
+                                </div>
+                                <!--  -->
+                                <div>
+                                    <dt>참여</dt>
+                                    <dd th:text="${recruitmentedBoardCount}">
+                                        0
+                                        <span class="BlindText"></span>
+                                    </dd>
+                                </div>
+                                <div>
+                                    <dt>판매</dt>
+                                    <dd th:text="${purchaseBoardCount}">
+                                        0
+                                        <span class="BlindText"></span>
+                                    </dd>
+                                </div>
+                                <div style="visibility: hidden">
+                                    <dt>구매</dt>
+                                    <dd>
+                                        3
+                                        <span class="BlindText"></span>
+                                    </dd>
+                                </div>
+                            </dl>
+                        </div>
+                        <!-- 프로필 설정 버튼 -->
+                        <a href="https://www.wadiz.kr/web/wmypage/myprofile/modifyprofile" class="ProfileSet Mint" id="apply">
+                                <span>
+                                    <span class="ProfileSet_button">배너 신청하기</span>
+                                </span>
+                        </a>
+                        <a href="https://www.wadiz.kr/web/wmypage/myprofile/modifyprofile" class="ProfileSet">
+                                <span>
+                                    <span class="ProfileSet_button">프로필 편집하기</span>
+                                </span>
+                        </a>
+                    </div>
+                </section>
+            </div>
+            <!-- 참여한 -->
+            <div class="mypage-project bg">
+                <div class="tab-list">
+                    <ul role="tablist">
+                        <!-- 참여한 -->
+                        <li class="active">
+                            <button type="button" class="list1" onclick="location.href='/mypage/free'">나의 자유 게시글</button>
+                        </li>
+                        <li class="active">
+                            <button type="button" class="list2">내가 모집한 게시글</button>
+                        </li>
+                        <li class="active">
+                            <button type="button" class="list3" >내가 참여한 모집 게시글</button>
+                        </li>
+                        <li class="active">
+                            <button type="button" class="list6" onclick="location.href='/mypage/purchase'">내가 판매한 글</button>
+                        </li>
+                        <li class="active"  style="display: none">
+                            <button type="button" class="list4">내가 구매한 글</button>
+                        </li>
+                        <li class="active"  style="display: none">
+                            <button type="button" class="list5">이벤트 홍보 글</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 내가 쓴글 리스트 1-->
+                <div class="project-list1" id="tabFunding1" tabindex="0">
+                    <div class="top-area">
+                        <p class="status-text fundingCount" style="display: none">내가 쓴 글 입니다.</p>
+                    </div>
+                    <!-- 공개 참여 현황 -->
+                    <div class="card-list">
+                        <p style="display: none;">내가 작성한 자유 게시글이 없습니다.</p>
+                        <ul class="free-board-list-container">
+                            <!--자유게시글 목록 들어감-->
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 내가 쓴글 리스트 2-->
+                <div class="project-list2" id="tabFunding2" tabindex="0">
+                    <div class="top-area">
+                        <p class="status-text fundingCount" style="display: none">내가 모집한 글 입니다.</p>
+                    </div>
+                    <!-- 공개 참여 현황 -->
+                    <div class="card-list">
+                        <p style="display: none;">모집한 글이 없습니다.</p>
+                        <ul>
+                            <!-- 글목록 -->
+                            <li class="reward " data-hiddentype="F" data-campaintype="RWD" data-campaignid="155943" data-campaignhiddenseq="">
+                                <a href="/web/campaign/detail/155943">
+                                    <div class="project-card">
+                                        <div class="card-img-section">
+                                            <em class="project-img" style="background-image:url(https://cdn.wadiz.kr/wwwwadiz/green001/2023/0320/20230320212007743_200034.png/wadiz/format/jpg/quality/80)"></em>
+                                            <em class="project-type reward">도담 모집 글</em>
+                                        </div>
+                                        <div class="card-info-section">
+                                            <h4>[어린이날 맞춤배송] 단 1권에 20가지 컨텐츠, 마이펀북 헝겊책</h4>
+                                            <h5>일시 : 2023.04.25</h5>
+                                            <div class="card-category">
+                                                <span class="category1">베이비·키즈</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <button class="management" style="bottom: 14px;
+                                    right: 37px;">신청자 확인</button>
+                            </li>
+                            <li class="reward " data-hiddentype="F" data-campaintype="RWD" data-campaignid="155943" data-campaignhiddenseq="">
+                                <a href="/web/campaign/detail/155943">
+                                    <div class="project-card">
+                                        <div class="card-img-section">
+                                            <em class="project-img" style="background-image:url(https://cdn.wadiz.kr/wwwwadiz/green001/2023/0327/20230327124700428_183048.jpg/wadiz/format/jpg/quality/80)"></em>
+                                            <em class="project-type reward">도담 모집 글</em>
+                                        </div>
+                                        <div class="card-info-section">
+                                            <h4>이건 혁신이에요ㅣ24시간 고정력. 떡지지 않은 자연스러움 시스루 스프레이</h4>
+                                            <h5>일시 : 2023.04.24</h5>
+                                            <div class="card-category">
+                                                <span class="category1">뷰티</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <button class="management" style="bottom: 14px;
+                                    right: 37px;">신청자 확인</button>
+                            </li>
+                            <li class="reward " data-hiddentype="F" data-campaintype="RWD" data-campaignid="155943" data-campaignhiddenseq="">
+                                <a href="/web/campaign/detail/155943">
+                                    <div class="project-card">
+                                        <div class="card-img-section">
+                                            <em class="project-img" style="background-image:url(https://cdn.wadiz.kr/wwwwadiz/green001/2023/0309/20230309163413407_196059.jpg/wadiz/format/jpg/quality/80)"></em>
+                                            <em class="project-type reward">도담 모집 글</em>
+                                        </div>
+                                        <div class="card-info-section">
+                                            <h4>[SBS 모범택시2]정의 구현에 진심인 무지개 찐팬을 위한 스페셜 굿즈!</h4>
+                                            <h5>일시 : 2023.04.25</h5>
+                                            <div class="card-category">
+                                                <span class="category1">캐릭터·굿즈</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <button class="management" id="openModal" style="bottom: 14px;
+                                    right: 37px;">신청자 확인</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 내가 쓴글 리스트 3-->
+                <div class="project-list3" id="tabFunding3" tabindex="0">
+                    <div class="top-area">
+                        <p class="status-text fundingCount" style="display: none">내가 판매한 글 입니다.</p>
+                    </div>
+                    <!-- 공개 참여 현황 -->
+                    <div class="card-list">
+                        <p style="display: none;">내가 판매한 글이 없습니다.</p>
+                        <ul>
+                            <!-- 글목록 -->
+                            <li class="reward " data-hiddentype="F" data-campaintype="RWD" data-campaignid="155943" data-campaignhiddenseq="">
+                                <a href="/web/campaign/detail/155943">
+                                    <div class="project-card">
+                                        <div class="card-img-section">
+                                            <em class="project-img" style="background-image:url(https://cdn.wadiz.kr/wwwwadiz/green001/2023/0320/20230320212007743_200034.png/wadiz/format/jpg/quality/80)"></em>
+                                            <em class="project-type reward">판매 글</em>
+                                        </div>
+                                        <div class="card-info-section">
+                                            <h4>[어린이날 맞춤배송] 단 1권에 20가지 컨텐츠, 마이펀북 헝겊책</h4>
+                                            <h5>일시 : 2023.04.25</h5>
+                                            <div class="card-category">
+                                                <span class="category1">베이비·키즈</span>
+                                                <span class="category2"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="reward " data-hiddentype="F" data-campaintype="RWD" data-campaignid="155943" data-campaignhiddenseq="">
+                                <a href="/web/campaign/detail/155943">
+                                    <div class="project-card">
+                                        <div class="card-img-section">
+                                            <em class="project-img" style="background-image:url(https://cdn.wadiz.kr/wwwwadiz/green001/2023/0327/20230327124700428_183048.jpg/wadiz/format/jpg/quality/80)"></em>
+                                            <em class="project-type reward">판매 글</em>
+                                        </div>
+                                        <div class="card-info-section">
+                                            <h4>이건 혁신이에요ㅣ24시간 고정력. 떡지지 않은 자연스러움 시스루 스프레이</h4>
+                                            <h5>일시 : 2023.04.24</h5>
+                                            <div class="card-category">
+                                                <span class="category1">뷰티</span>
+                                                <span class="category2"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="reward " data-hiddentype="F" data-campaintype="RWD" data-campaignid="155943" data-campaignhiddenseq="">
+                                <a href="/web/campaign/detail/155943">
+                                    <div class="project-card">
+                                        <div class="card-img-section">
+                                            <em class="project-img" style="background-image:url(https://cdn.wadiz.kr/wwwwadiz/green001/2023/0309/20230309163413407_196059.jpg/wadiz/format/jpg/quality/80)"></em>
+                                            <em class="project-type reward">판매 글</em>
+                                        </div>
+                                        <div class="card-info-section">
+                                            <h4>[SBS 모범택시2]정의 구현에 진심인 무지개 찐팬을 위한 스페셜 굿즈!</h4>
+                                            <h5>일시 : 2023.04.25</h5>
+                                            <div class="card-category">
+                                                <span class="category1">캐릭터·굿즈</span>
+                                                <span class="category2"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 침여한글 리스트 4-->
+                <div class="project-list4" id="tabFunding4" tabindex="0">
+                    <div class="top-area">
+                        <p class="status-text fundingCount" style="display: none">참여한 글 입니다.</p>
+                    </div>
+                    <!-- 공개 참여 현황 -->
+                    <div class="card-list">
+                        <p style="display: none;">참여한 글이 없습니다.</p>
+                        <ul>
+                            <!-- 글목록 -->
+                            <li class="reward " data-hiddentype="F" data-campaintype="RWD" data-campaignid="155943" data-campaignhiddenseq="">
+                                <a href="/web/campaign/detail/155943">
+                                    <div class="project-card">
+                                        <div class="card-img-section">
+                                            <em class="project-img" style="background-image:url(https://cdn.wadiz.kr/wwwwadiz/green001/2023/0320/20230320212007743_200034.png/wadiz/format/jpg/quality/80)"></em>
+                                            <em class="project-type reward">참여한 글</em>
+                                        </div>
+                                        <div class="card-info-section">
+                                            <h4>[어린이날 맞춤배송] 단 1권에 20가지 컨텐츠, 마이펀북 헝겊책</h4>
+                                            <h5>일시 : 2023.04.25</h5>
+                                            <div class="card-category">
+                                                <span class="category2"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <button class="management2" style="bottom: 14px;
+                                    right: 37px;">오픈채팅방 참여하기</button>
+                            </li>
+                            <li class="reward " data-hiddentype="F" data-campaintype="RWD" data-campaignid="155943" data-campaignhiddenseq="">
+                                <a href="/web/campaign/detail/155943">
+                                    <div class="project-card">
+                                        <div class="card-img-section">
+                                            <em class="project-img" style="background-image:url(https://cdn.wadiz.kr/wwwwadiz/green001/2023/0327/20230327124700428_183048.jpg/wadiz/format/jpg/quality/80)"></em>
+                                            <em class="project-type reward">내가 쓴 글</em>
+                                        </div>
+                                        <div class="card-info-section">
+                                            <h4>이건 혁신이에요ㅣ24시간 고정력. 떡지지 않은 자연스러움 시스루 스프레이</h4>
+                                            <h5>일시 : 2023.04.24</h5>
+                                            <div class="card-category">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <button class="management2" style="bottom: 14px;
+                                    right: 37px;">오픈채팅방 참여하기</button>
+                            </li>
+                            <li class="reward " data-hiddentype="F" data-campaintype="RWD" data-campaignid="155943" data-campaignhiddenseq="">
+                                <a href="/web/campaign/detail/155943">
+                                    <div class="project-card">
+                                        <div class="card-img-section">
+                                            <em class="project-img" style="background-image:url(https://cdn.wadiz.kr/wwwwadiz/green001/2023/0309/20230309163413407_196059.jpg/wadiz/format/jpg/quality/80)"></em>
+                                            <em class="project-type reward">내가 쓴 글</em>
+                                        </div>
+                                        <div class="card-info-section">
+                                            <h4>[SBS 모범택시2]정의 구현에 진심인 무지개 찐팬을 위한 스페셜 굿즈!</h4>
+                                            <h5>일시 : 2023.04.25</h5>
+                                            <div class="card-category">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <button class="management2" style="bottom: 14px;
+                                    right: 37px;">오픈채팅방 참여하기</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 이벤트 홍보 리스트 5-->
+                <div class="project-list5" id="tabFunding5" tabindex="0">
+                    <div class="top-area">
+                        <p class="status-text fundingCount" style="display: none">이벤트 홍보 글 입니다.</p>
+                    </div>
+                    <!-- 공개 참여 현황 -->
+                    <div class="card-list">
+                        <p style="display: none;">이벤트 홍보 글이 없습니다.</p>
+                        <ul>
+                            <!-- 글목록 -->
+                            <li class="reward " data-hiddentype="F" data-campaintype="RWD" data-campaignid="155943" data-campaignhiddenseq="">
+                                <a href="/web/campaign/detail/155943">
+                                    <div class="project-card">
+                                        <div class="card-img-section">
+                                            <em class="project-img" style="background-image:url(https://cdn.wadiz.kr/wwwwadiz/green001/2023/0320/20230320212007743_200034.png/wadiz/format/jpg/quality/80)"></em>
+                                            <em class="project-type reward">이벤트 홍보 글</em>
+                                        </div>
+                                        <div class="card-info-section">
+                                            <h4>[어린이날 맞춤배송] 단 1권에 20가지 컨텐츠, 마이펀북 헝겊책</h4>
+                                            <h5>일시 : 2023.04.25</h5>
+                                            <div class="card-category">
+                                                <span class="category1">베이비·키즈</span>
+                                                <span class="category2"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="reward " data-hiddentype="F" data-campaintype="RWD" data-campaignid="155943" data-campaignhiddenseq="">
+                                <a href="/web/campaign/detail/155943">
+                                    <div class="project-card">
+                                        <div class="card-img-section">
+                                            <em class="project-img" style="background-image:url(https://cdn.wadiz.kr/wwwwadiz/green001/2023/0327/20230327124700428_183048.jpg/wadiz/format/jpg/quality/80)"></em>
+                                            <em class="project-type reward">이벤트 홍보 글</em>
+                                        </div>
+                                        <div class="card-info-section">
+                                            <h4>이건 혁신이에요ㅣ24시간 고정력. 떡지지 않은 자연스러움 시스루 스프레이</h4>
+                                            <h5>일시 : 2023.04.24</h5>
+                                            <div class="card-category">
+                                                <span class="category1">뷰티</span>
+                                                <span class="category2"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="reward " data-hiddentype="F" data-campaintype="RWD" data-campaignid="155943" data-campaignhiddenseq="">
+                                <a href="/web/campaign/detail/155943">
+                                    <div class="project-card">
+                                        <div class="card-img-section">
+                                            <em class="project-img" style="background-image:url(https://cdn.wadiz.kr/wwwwadiz/green001/2023/0309/20230309163413407_196059.jpg/wadiz/format/jpg/quality/80)"></em>
+                                            <em class="project-type reward">이벤트 홍보 글</em>
+                                        </div>
+                                        <div class="card-info-section">
+                                            <h4>[SBS 모범택시2]정의 구현에 진심인 무지개 찐팬을 위한 스페셜 굿즈!</h4>
+                                            <h5>일시 : 2023.04.25</h5>
+                                            <div class="card-category">
+                                                <span class="category1">캐릭터·굿즈</span>
+                                                <span class="category2"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 게시글5 끝 -->
+
+                <!-- 내가 구매한 글 6-->
+                <div class="project-list6" id="tabFunding6" tabindex="0">
+                    <div class="top-area">
+                        <p class="status-text fundingCount" style="display: none">내가 구매한 글 입니다.</p>
+                    </div>
+                    <!-- 공개 참여 현황 -->
+                    <div class="card-list">
+                        <p style="display: none;">구매한 글이 없습니다.</p>
+                        <ul>
+<!--                            &lt;!&ndash; 글목록 &ndash;&gt;-->
+<!--                            <li class="reward " data-hiddentype="F" data-campaintype="RWD" data-campaignid="155943" data-campaignhiddenseq="">-->
+<!--                                <a href="/web/campaign/detail/155943">-->
+<!--                                    <div class="project-card">-->
+<!--                                        <div class="card-img-section">-->
+<!--                                            <em class="project-img" style="background-image:url(https://cdn.wadiz.kr/wwwwadiz/green001/2023/0320/20230320212007743_200034.png/wadiz/format/jpg/quality/80)"></em>-->
+<!--                                            <em class="project-type reward">나의 구매 글</em>-->
+<!--                                        </div>-->
+<!--                                        <div class="card-info-section">-->
+<!--                                            <h4>[어린이날 맞춤배송] 단 1권에 20가지 컨텐츠, 마이펀북 헝겊책</h4>-->
+<!--                                            <h5>일시 : 2023.04.25</h5>-->
+<!--                                            <div class="card-category">-->
+<!--                                                <span class="category1">베이비·키즈</span>-->
+<!--                                                <span class="category2"></span>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </a>-->
+<!--                            </li>-->
+<!--                            <li class="reward " data-hiddentype="F" data-campaintype="RWD" data-campaignid="155943" data-campaignhiddenseq="">-->
+<!--                                <a href="/web/campaign/detail/155943">-->
+<!--                                    <div class="project-card">-->
+<!--                                        <div class="card-img-section">-->
+<!--                                            <em class="project-img" style="background-image:url(https://cdn.wadiz.kr/wwwwadiz/green001/2023/0327/20230327124700428_183048.jpg/wadiz/format/jpg/quality/80)"></em>-->
+<!--                                            <em class="project-type reward">나의 구매 글</em>-->
+<!--                                        </div>-->
+<!--                                        <div class="card-info-section">-->
+<!--                                            <h4>이건 혁신이에요ㅣ24시간 고정력. 떡지지 않은 자연스러움 시스루 스프레이</h4>-->
+<!--                                            <h5>일시 : 2023.04.24</h5>-->
+<!--                                            <div class="card-category">-->
+<!--                                                <span class="category1">뷰티</span>-->
+<!--                                                <span class="category2"></span>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </a>-->
+<!--                            </li>-->
+<!--                            <li class="reward " data-hiddentype="F" data-campaintype="RWD" data-campaignid="155943" data-campaignhiddenseq="">-->
+<!--                                <a href="/web/campaign/detail/155943">-->
+<!--                                    <div class="project-card">-->
+<!--                                        <div class="card-img-section">-->
+<!--                                            <em class="project-img" style="background-image:url(https://cdn.wadiz.kr/wwwwadiz/green001/2023/0309/20230309163413407_196059.jpg/wadiz/format/jpg/quality/80)"></em>-->
+<!--                                            <em class="project-type reward">나의 구매 글</em>-->
+<!--                                        </div>-->
+<!--                                        <div class="card-info-section">-->
+<!--                                            <h4>[SBS 모범택시2]정의 구현에 진심인 무지개 찐팬을 위한 스페셜 굿즈!</h4>-->
+<!--                                            <h5>일시 : 2023.04.25</h5>-->
+<!--                                            <div class="card-category">-->
+<!--                                                <span class="category1">캐릭터·굿즈</span>-->
+<!--                                                <span class="category2"></span>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </a>-->
+<!--                            </li>-->
+                            <!--판매 게시글 목록-->
+                        </ul>
+                    </div>
+                </div>
+                <!-- 게시글6 끝 -->
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- 모달 창 -->
+<div class="modal" id="myModal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <!-- 여기에 이전에 제공한 코드를 추가하세요. -->
+        <article class="module module--support-list">
+            <div class="support-list__title-container">
+                <div class="support-list__title-unit">
+                    <ul class="support-list__title">
+                        <li class="title__id">번호</li>
+                        <li class="title__title">회원 이름</li>
+                        <li class="title__money">연락처</li>
+                        <!-- <li class="title__detail">상세</li> -->
+                    </ul>
+                </div>
+            </div>
+            <div class="scroll-wraper" style="width: 100%; height: 100%; padding: 5px;">
+                <div id="scroll">
+                    <div class="support-list__info-container">
+                        <div class="support-list__info-unit">
+                            <label class="support__checkbox--label">
+                                <ul class="support-list__info">
+                                    <li class="support__id">05</li>
+                                    <li class="support__id">김욱성</li>
+                                    <li class="support__money">010-1234-1234</li>
+                                </ul>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="support-list__info-container">
+                        <div class="support-list__info-unit">
+                            <label class="support__checkbox--label">
+                                <ul class="support-list__info">
+                                    <li class="support__id">05</li>
+                                    <li class="support__id">김욱성</li>
+                                    <li class="support__money">010-1234-1234</li>
+                                </ul>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="support-list__info-container">
+                        <div class="support-list__info-unit">
+                            <label class="support__checkbox--label">
+                                <ul class="support-list__info">
+                                    <li class="support__id">05</li>
+                                    <li class="support__id">김욱성</li>
+                                    <li class="support__money">010-1234-1234</li>
+                                </ul>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="support-list__info-container">
+                        <div class="support-list__info-unit">
+                            <label class="support__checkbox--label">
+                                <ul class="support-list__info">
+                                    <li class="support__id">05</li>
+                                    <li class="support__id">김욱성</li>
+                                    <li class="support__money">010-1234-1234</li>
+                                </ul>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="support-list__info-container">
+                        <div class="support-list__info-unit">
+                            <label class="support__checkbox--label">
+                                <ul class="support-list__info">
+                                    <li class="support__id">05</li>
+                                    <li class="support__id">김욱성</li>
+                                    <li class="support__money">010-1234-1234</li>
+                                </ul>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="support-list__info-container">
+                        <div class="support-list__info-unit">
+                            <label class="support__checkbox--label">
+                                <ul class="support-list__info">
+                                    <li class="support__id">05</li>
+                                    <li class="support__id">김욱성</li>
+                                    <li class="support__money">010-1234-1234</li>
+                                </ul>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="support-list__info-container">
+                        <div class="support-list__info-unit">
+                            <label class="support__checkbox--label">
+                                <ul class="support-list__info">
+                                    <li class="support__id">04</li>
+                                    <li class="support__id">김세윤</li>
+                                    <li class="support__money">010-1234-1234</li>
+                                </ul>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="support-list__info-container">
+                        <div class="support-list__info-unit">
+                            <label class="support__checkbox--label">
+                                <ul class="support-list__info">
+                                    <li class="support__id">03</li>
+                                    <li class="support__id">윤민우</li>
+                                    <li class="support__money">010-1234-1234</li>
+                                </ul>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="support-list__info-container">
+                        <div class="support-list__info-unit">
+                            <label class="support__checkbox--label">
+                                <ul class="support-list__info">
+                                    <li class="support__id">05</li>
+                                    <li class="support__id">김욱성</li>
+                                    <li class="support__money">010-1234-1234</li>
+                                </ul>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="support-list__info-container">
+                        <div class="support-list__info-unit">
+                            <label class="support__checkbox--label">
+                                <ul class="support-list__info">
+                                    <li class="support__id">05</li>
+                                    <li class="support__id">김욱성</li>
+                                    <li class="support__money">010-1234-1234</li>
+                                </ul>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+</div>
+<!-- 모달끝 -->
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/js/myPage/myPage-myBoards.js"></script>
+<script th:inline="javascript">
+    member = [[${member}]];
+    let nextPage = 0;
+    console.log(member);
+
+    /* 날짜 변환 (년, 월, 일) */
+    function changeDateToString(e){
+        let month = "";
+        date = new Date(e.createdDate);
+        month = date.getMonth() + 1;
+        if (month < 10){
+            month = "0" + month;
+        }
+        return date.getFullYear() + "." + month + "." + date.getDate();
+    }
+
+    /* 자유게시글 목록 분류 */
+    function changeTypeToString(e) {
+        let category = e.freeCategory;
+        if(category.toString() == "ALL"){
+            return "전체";
+        } else if(category.toString() == ("CULTURE")) {
+            return "문화";
+        } else if(category.toString() == ("EVENT")) {
+            return "이벤트";
+        } else if(category.toString() == ("RECRUITMENT")) {
+            return "모집";
+        } else if(category.toString() == ("PURCHASE")) {
+            return "판매";
+        } else if(category.toString() == ("DAILY")) {
+            return "일상";
+        } else {
+            return "전체";
+        }
+    }
+
+    // ajax로 게시글 목록 불러오기(12개씩 가져옴)
+    const fetchData = () => {
+        let page = nextPage;
+        nextPage++;
+        console.log("nextPage : " + nextPage);
+        $.ajax({
+            type: 'GET',
+            url: `/mypage/free-board/${page}`,
+            success: function (result) {
+                console.log(result);
+                showList(result); // 새로운 값을 담기
+            },
+            error: function (error) {
+                console.log('Error fetching data:', error);
+            }
+        });
+    };
+
+
+
+    // 처음에 화면에 목록 뿌려주기
+    $(document).ready(function () {
+        fetchData();
+    });
+
+    // 무한 스크롤 이벤트
+    $(window).scroll(function () {
+        if (Math.ceil($(window).scrollTop()) >= $(document).height() - $(window).height() - 50) {
+            fetchData();
+        }
+    });
+
+    // 화면에 데이터 받아온거 뿌려주기
+    function showList(result) {
+        // console.log("들어옴2@@@@@@@@@@@");
+        for (let i=0; i < result.length; i++) {
+            let text = "";
+            /* 날짜 변환해서 담아둠*/
+            let date = changeDateToString(result[i]);
+            /* 자유게시글 카테고리 변환해서 담아둠 */
+            let category = changeTypeToString(result[i]);
+            /* 리스트 하나하나의 내용 */
+            /* background-image 쪽 추가로 작업해야함, 밋밋하면 likeCount 추가 DTO에 만들어 둠 */
+            text += `
+                    <li class="reward " data-hiddentype="F" data-campaintype="RWD" data-campaignid="155943" data-campaignhiddenseq="">
+                        <a href="/web/campaign/detail/155943">
+                            <div class="project-card">
+                                <div class="card-img-section">
+                                      <em class="project-img" style="background-image:url(https://cdn.wadiz.kr/wwwwadiz/green001/2023/0320/20230320212007743_200034.png/wadiz/format/jpg/quality/80)"></em>
+                                    <em class="project-type reward">내가 쓴 자유글</em>
+                                </div>
+                                <div class="card-info-section">
+                                    <h4>${result[i].boardTitle}</h4>
+                                    <h5>일시 : <span>${date}</span></h5>
+                                    <div class="card-category">
+                                        <span class="category1">${category}</span>
+                                        <span class="category2"><em class="like-count">${result[i].likeCount}</em></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>`;
+            /* 추가한 내용 화면에 뿌려주기 */
+            $(".free-board-list-container").append(text);
+        }
+    }
+</script>
+</html>
