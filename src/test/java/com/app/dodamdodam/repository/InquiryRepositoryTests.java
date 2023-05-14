@@ -31,8 +31,8 @@ public class InquiryRepositoryTests {
     public InquiryRepository inquiryRepository;
 
 
-//    @Test //문의사항 저장 테스트
-//    public void saveTest(){
+    @Test //문의사항 저장 테스트
+    public void saveTest(){
 //        for(int i=0; i<50; i++) {
 //            Inquiry inquiry = new Inquiry(
 //                    InquiryType.APPLY,
@@ -45,6 +45,7 @@ public class InquiryRepositoryTests {
 //            inquiryRepository.save(inquiry);
 //        }
 //    }
+    }
 
     @Test //답변 저장 테스트
     public void updateAnswerTest(){
