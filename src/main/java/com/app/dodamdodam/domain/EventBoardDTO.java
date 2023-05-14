@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 import java.util.List;
 
-@Component
 @Data
+@Getter @ToString
 @NoArgsConstructor
 public class EventBoardDTO {
 
@@ -48,7 +48,7 @@ public class EventBoardDTO {
 
     private boolean checkLike;
 
-    @QueryProjection
+    @Builder
     public EventBoardDTO(Long id, String eventAddress, String eventAddressDetail, LocalDate eventStartDate, LocalDate eventEndDate, String eventIntroduction, String boardTitle, String boardContent, int eventLikeNumber, EventType eventStatus, String eventBusinessNumber, String eventBusinessName, String eventBusinessTel, String eventBusinessEmail, MemberDTO memberDTO, List<EventReviewDTO> reviews, String fileOriginalName, String fileUuid, String filePath, String fileSize) {
         this.id = id;
         this.eventAddress = eventAddress;
@@ -72,21 +72,4 @@ public class EventBoardDTO {
         this.fileSize = fileSize;
     }
 
-    public EventBoard toEntity(){
-        return EventBoard.builder()
-                .boardTitle(boardTitle)
-                .boardContent(boardContent)
-                .fileOriginalName(fileOriginalName)
-                .filePath(filePath)
-                .fileUuid(fileUuid)
-                .eventBusinessName(eventBusinessName)
-                .eventBusinessEmail(eventBusinessEmail)
-                .eventBusinessTel(eventBusinessTel)
-                .eventBusinessNumber(eventBusinessNumber)
-                .eventStartDate(eventStartDate)
-                .eventEndDate(eventEndDate)
-                .eventAddressDetail(eventAddressDetail)
-                .eventAddress(eventAddress)
-                .build();
-    }
 }

@@ -12,15 +12,11 @@ public class EventBoardReviewDTO {
     private Long id;
     private MemberDTO memberDTO;
     private String replyContent;
-    private LocalDateTime createdDate;
-    private LocalDateTime updatedDate;
 
     @QueryProjection
-    public EventBoardReviewDTO(Long id, MemberDTO memberDTO, String replyContent, LocalDateTime createdDate, LocalDateTime updatedDate) {
+    public EventBoardReviewDTO(Long id, MemberDTO memberDTO, String replyContent) {
         this.id = id;
         this.memberDTO = memberDTO;
         this.replyContent = replyContent;
-        this.createdDate = createdDate;
-        this.updatedDate = updatedDate;
     }
 }

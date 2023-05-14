@@ -20,6 +20,7 @@ import java.util.List;
 @NoArgsConstructor
         (access = AccessLevel.PROTECTED)
 @DynamicInsert
+@DynamicUpdate
 public class EventBoard extends Board {
 //    @Id @GeneratedValue
 //    @EqualsAndHashCode.Include
@@ -42,15 +43,9 @@ public class EventBoard extends Board {
      private String eventBusinessTel;
      private String eventBusinessEmail;
 
-//    파일
-    @NotNull private String fileOriginalName;
-    @NotNull private String fileUuid;
-    @NotNull private String filePath;
-    private Long fileSize;
 
-
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "eventBoard")
-//    private List<EventFile> eventFiles;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "eventBoard")
+    private List<EventFile> eventFiles;
 
 //    게시글 댓글
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "eventBoard" , orphanRemoval = true, cascade = CascadeType.REMOVE)
@@ -77,8 +72,7 @@ public class EventBoard extends Board {
         this.eventLikeNumber = eventLikeNumber;
     }
 
-    @Builder
-    public EventBoard(String boardTitle, String boardContent, String eventAddress, String eventAddressDetail, LocalDate eventStartDate, LocalDate eventEndDate, String eventIntroduction, Integer eventLikeNumber, EventType eventStatus, String eventBusinessNumber, String eventBusinessName, String eventBusinessTel, String eventBusinessEmail, String fileOriginalName, String fileUuid, String filePath, Long fileSize, List<EventReview> eventreviews, Member member, List<EventLike> eventLikes) {
+    public EventBoard(String boardTitle, String boardContent, String eventAddress, String eventAddressDetail, LocalDate eventStartDate, LocalDate eventEndDate, String eventIntroduction, Integer eventLikeNumber, EventType eventStatus, String eventBusinessNumber, String eventBusinessName, String eventBusinessTel, String eventBusinessEmail, List<EventFile> eventFiles, List<EventReview> eventreviews, Member member, List<EventLike> eventLikes) {
         super(boardTitle, boardContent);
         this.eventAddress = eventAddress;
         this.eventAddressDetail = eventAddressDetail;
@@ -91,10 +85,7 @@ public class EventBoard extends Board {
         this.eventBusinessName = eventBusinessName;
         this.eventBusinessTel = eventBusinessTel;
         this.eventBusinessEmail = eventBusinessEmail;
-        this.fileOriginalName = fileOriginalName;
-        this.fileUuid = fileUuid;
-        this.filePath = filePath;
-        this.fileSize = fileSize;
+        this.eventFiles = eventFiles;
         this.eventreviews = eventreviews;
         this.member = member;
         this.eventLikes = eventLikes;

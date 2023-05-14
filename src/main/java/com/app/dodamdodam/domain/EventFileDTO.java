@@ -11,7 +11,7 @@ import java.util.List;
 @Data
 @Component
 @NoArgsConstructor
-public class EventBoardFileDTO {
+public class EventFileDTO {
     private Long id;
     private String fileOriginalName;
     private String fileUuid;
@@ -19,7 +19,7 @@ public class EventBoardFileDTO {
     private Long fileSize;
 
     @Builder
-    public EventBoardFileDTO(Long id, String fileOriginalName, String fileUuid, String filePath, Long fileSize) {
+    public EventFileDTO(Long id, String fileOriginalName, String fileUuid, String filePath, Long fileSize) {
         this.id = id;
         this.fileOriginalName = fileOriginalName;
         this.fileUuid = fileUuid;

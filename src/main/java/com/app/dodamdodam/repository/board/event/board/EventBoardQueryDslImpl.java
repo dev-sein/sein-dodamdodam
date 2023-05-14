@@ -5,6 +5,7 @@ import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.event.QEventBoard;
 import com.app.dodamdodam.entity.event.QEventFile;
 import com.app.dodamdodam.entity.event.QEventLike;
+import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.search.EventBoardSearch;
 import com.app.dodamdodam.type.EventType;
@@ -23,66 +24,30 @@ import java.util.Optional;
 
 import static com.app.dodamdodam.entity.event.QEventBoard.eventBoard;
 import static com.app.dodamdodam.entity.event.QEventFile.eventFile;
+import static com.app.dodamdodam.entity.free.QFreeBoard.freeBoard;
 import static com.app.dodamdodam.entity.purchase.QPurchaseBoard.purchaseBoard;
 
-@RequiredArgsConstructor
 public class EventBoardQueryDslImpl implements EventBoardQueryDsl {
-    private final JPAQueryFactory query;
+    @Autowired
+    private JPAQueryFactory query;
 
-//    @Override
-//    public Page<EventBoard> findAllEventBoardWithPaging_QueryDSL(Pageable pageable) {
-//        List<EventBoard> founddBoard = query.select(eventBoard)
-//                .from(eventBoard)
-//                .leftJoin(eventBoard.eventFiles, eventFile)
-//                .fetchJoin()
-//                .where(eventBoard.eventStatus.eq(EventType.valueOf("Hold")))
-//                .where(eventBoard.eventStatus.eq(EventType.valueOf("PROGRESS")))
-//                .orderBy(eventBoard.id.desc())
-//                .offset(pageable.getOffset() -1 )
-//                .limit(pageable.getPageSize())
-//                .fetch();
-//
-//        Long count = query.select(eventBoard.count())
-//                .from(eventBoard)
-//                .where(eventBoard.eventStatus.eq(EventType.valueOf("Hold")))
-//                .where(eventBoard.eventStatus.eq(EventType.valueOf("PROGRESS")))
-//                .fetchOne();
-//
-//        return new PageImpl<>(founddBoard, pageable, count);
-//    }
-
-//    페이징처리 + 검색
+    //    이벤트 정보 게시글 전체 리스트 가져오기
     @Override
-    public Page<EventBoardDTO> findAll(Pageable pageable, Criteria criteria) {
-        return null;
-    }
-
-    @Override
-    public Slice<EventBoard> findAllByIdDescWithPaging_QueryDSL(Pageable pageable) {
-        List<EventBoard> recipeBoards = query.select(eventBoard)
-                .from(eventBoard)
+    public Page<EventBoard> findAllEventBoardList_QueryDSL(Pageable pageable) {
+        List<EventBoard> eventBoards = query.selectFrom(eventBoard)
+                .leftJoin(eventBoard.eventFiles).fetchJoin()
                 .join(eventBoard.member).fetchJoin()
-                .join(eventBoard.eventFiles).fetchJoin()
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize())
+                .orderBy(eventBoard.id.desc())
+                .offset(pageable.getOffset()).limit(pageable.getPageSize())
                 .fetch();
-        return checkLastPage(pageable, recipeBoards);
+
+        Long count = query.select(freeBoard.id.count()).from(freeBoard)
+                .fetchOne();
+
+        return new PageImpl<>(eventBoards, pageable, count);
     }
 
-    //    hasNext true인지 false인지 체크하는 메소드(마지막 페이지 체크)
-    private Slice<EventBoard> checkLastPage(Pageable pageable, List<EventBoard> eventBoards) {
-
-        boolean hasNext = false;
-
-        // 조회한 결과 개수가 요청한 페이지 사이즈보다 크면 뒤에 더 있음, next = true
-        if (eventBoards.size() > pageable.getPageSize()) {
-            hasNext = true;
-            eventBoards.remove(pageable.getPageSize());
-        }
-
-        return new SliceImpl<>(eventBoards, pageable, hasNext);
-    }
-
+    //     상세보기
     @Override
     public Optional<EventBoard> findEventBoardById_QueryDSL(Long eventBoardId) {
         return Optional.ofNullable(
@@ -97,25 +62,16 @@ public class EventBoardQueryDslImpl implements EventBoardQueryDsl {
         );
     }
 
+    //    자유게시글 상세 페이지 댓글
     @Override
-    public Page<EventBoard> findEventBoardListByMemberId(Pageable pageable, Long memberId) {
-        List<EventBoard> eventBoards = query.select(eventBoard).from(eventBoard)
-                .join(eventBoard.member).fetchJoin()
-                .leftJoin(eventBoard.eventFiles).fetchJoin()
-                .where(eventBoard.member.id.eq(memberId))
-                .orderBy(eventBoard.id.desc())
-                .offset(pageable.getOffset()).limit(pageable.getPageSize())
-                .fetch();
-        Long count = query.select(eventBoard.count()).from(eventBoard).where(eventBoard.member.id.eq(memberId)).fetchOne();
-
-        return new PageImpl<>(eventBoards, pageable, count);
+    public Optional<EventBoard> findEventBoardAndEventRepliesById_QueryDSL(Long boardId) {
+        return Optional.ofNullable(query.select(eventBoard).from(eventBoard)
+                .leftJoin(eventBoard.eventreviews).fetchJoin()
+                .where(eventBoard.id.eq(boardId))
+                .fetchOne());
     }
 
-    @Override
-    public void deleteByPost(EventBoard eventBoard) {
-
-    }
-
+// 게시글 검색
     @Override
     public List<EventBoard> findAllWithSearch(EventBoardSearch eventBoardSearch) {
         BooleanExpression eventTitleLike = eventBoardSearch.getBoardTitle() == null ? null : eventBoard.boardTitle.like(eventBoardSearch.getBoardTitle());
