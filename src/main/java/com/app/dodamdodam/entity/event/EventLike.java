@@ -27,7 +27,7 @@ public class EventLike {
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
-
+    @Builder
     public EventLike(EventBoard eventBoard, Member member) {
         this.eventBoard = eventBoard;
         this.member = member;

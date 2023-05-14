@@ -26,8 +26,11 @@ public class EventReview extends Reply {
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
-    public EventReview(String replyContent, EventBoard eventBoard, Member member) {
+    @Builder
+    public EventReview(Long id, String replyContent, String replyCount, EventBoard eventBoard, Member member) {
+        this.id = id;
         this.replyContent = replyContent;
+        this.replyCount = replyCount;
         this.eventBoard = eventBoard;
         this.member = member;
     }

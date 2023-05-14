@@ -38,4 +38,11 @@ public class EventReviewQueryDslImpl implements EventReviewQueryDsl {
                 .where(eventReview.id.eq(eventBoardId))
                 .fetchOne();
     }
+
+    @Override
+    public void deleteByEventBoardId(Long eventBoardId) {
+        query.delete(eventReview)
+                .where(eventReview.eventBoard.id.eq(eventBoardId))
+                .execute();
+    }
 }

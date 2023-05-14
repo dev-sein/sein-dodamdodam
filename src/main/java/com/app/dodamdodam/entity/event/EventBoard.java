@@ -6,6 +6,8 @@ import com.app.dodamdodam.type.EventType;
 import com.sun.istack.NotNull;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -13,11 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter
-@ToString(callSuper = true)
+@ToString(exclude = {"eventBoardLike", "eventBoardReview"}, callSuper = true)
 @Table(name = "TBL_EVENT_BOARD")
 @NoArgsConstructor
         (access = AccessLevel.PROTECTED)
+@DynamicInsert
 public class EventBoard extends Board {
 //    @Id @GeneratedValue
 //    @EqualsAndHashCode.Include
@@ -28,7 +30,7 @@ public class EventBoard extends Board {
     @NotNull private LocalDate eventEndDate;
     @NotNull private String eventIntroduction;
 //    좋아요 수
-    private int eventLikeNumber;
+    private Integer eventLikeNumber;
 
     //    진행전, 진행중, 진행마감
     @ColumnDefault("'APPLYING'")
@@ -40,23 +42,31 @@ public class EventBoard extends Board {
      private String eventBusinessTel;
      private String eventBusinessEmail;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "eventBoard")
-    private List<EventFile> eventFiles;
+//    파일
+    @NotNull private String fileOriginalName;
+    @NotNull private String fileUuid;
+    @NotNull private String filePath;
+    private Long fileSize;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "eventBoard")
+
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "eventBoard")
+//    private List<EventFile> eventFiles;
+
+//    게시글 댓글
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "eventBoard" , orphanRemoval = true, cascade = CascadeType.REMOVE)
     private List<EventReview> eventreviews;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
-
+//  좋아요
     @OneToMany(fetch = FetchType.LAZY , mappedBy = "eventBoard", orphanRemoval = true, cascade = CascadeType.REMOVE)
     private List<EventLike> eventLikes = new ArrayList<>();
 
 
 
     public EventBoard(String boardTitle, String boardContent){
-        super(boardTitle,boardTitle);
+        super(boardTitle,boardContent);
     }
 
     public void setMember(Member member) {
@@ -68,7 +78,8 @@ public class EventBoard extends Board {
     }
 
     @Builder
-    public EventBoard(String eventAddress, String eventAddressDetail, LocalDate eventStartDate,LocalDate eventEndDate ,String eventIntroduction, int eventLikeNumber, EventType eventStatus, String eventBusinessNumber, String eventBusinessName, String eventBusinessTel, String eventBusinessEmail, List<EventFile> eventFiles, List<EventReview> eventreviews, Member member, List<EventLike> eventLikes) {
+    public EventBoard(String boardTitle, String boardContent, String eventAddress, String eventAddressDetail, LocalDate eventStartDate, LocalDate eventEndDate, String eventIntroduction, Integer eventLikeNumber, EventType eventStatus, String eventBusinessNumber, String eventBusinessName, String eventBusinessTel, String eventBusinessEmail, String fileOriginalName, String fileUuid, String filePath, Long fileSize, List<EventReview> eventreviews, Member member, List<EventLike> eventLikes) {
+        super(boardTitle, boardContent);
         this.eventAddress = eventAddress;
         this.eventAddressDetail = eventAddressDetail;
         this.eventStartDate = eventStartDate;
@@ -80,11 +91,12 @@ public class EventBoard extends Board {
         this.eventBusinessName = eventBusinessName;
         this.eventBusinessTel = eventBusinessTel;
         this.eventBusinessEmail = eventBusinessEmail;
-        this.eventFiles = eventFiles;
+        this.fileOriginalName = fileOriginalName;
+        this.fileUuid = fileUuid;
+        this.filePath = filePath;
+        this.fileSize = fileSize;
         this.eventreviews = eventreviews;
         this.member = member;
         this.eventLikes = eventLikes;
     }
-
-
 }

@@ -1,5 +1,6 @@
 package com.app.dodamdodam.repository.board.event.board;
 
+import com.app.dodamdodam.domain.EventBoardDTO;
 import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.event.QEventBoard;
 import com.app.dodamdodam.entity.event.QEventFile;
@@ -28,26 +29,58 @@ import static com.app.dodamdodam.entity.purchase.QPurchaseBoard.purchaseBoard;
 public class EventBoardQueryDslImpl implements EventBoardQueryDsl {
     private final JPAQueryFactory query;
 
+//    @Override
+//    public Page<EventBoard> findAllEventBoardWithPaging_QueryDSL(Pageable pageable) {
+//        List<EventBoard> founddBoard = query.select(eventBoard)
+//                .from(eventBoard)
+//                .leftJoin(eventBoard.eventFiles, eventFile)
+//                .fetchJoin()
+//                .where(eventBoard.eventStatus.eq(EventType.valueOf("Hold")))
+//                .where(eventBoard.eventStatus.eq(EventType.valueOf("PROGRESS")))
+//                .orderBy(eventBoard.id.desc())
+//                .offset(pageable.getOffset() -1 )
+//                .limit(pageable.getPageSize())
+//                .fetch();
+//
+//        Long count = query.select(eventBoard.count())
+//                .from(eventBoard)
+//                .where(eventBoard.eventStatus.eq(EventType.valueOf("Hold")))
+//                .where(eventBoard.eventStatus.eq(EventType.valueOf("PROGRESS")))
+//                .fetchOne();
+//
+//        return new PageImpl<>(founddBoard, pageable, count);
+//    }
+
+//    페이징처리 + 검색
     @Override
-    public Page<EventBoard> findAllEventBoardWithPaging_QueryDSL(Pageable pageable) {
-        List<EventBoard> founddBoard = query.select(eventBoard)
+    public Page<EventBoardDTO> findAll(Pageable pageable, Criteria criteria) {
+        return null;
+    }
+
+    @Override
+    public Slice<EventBoard> findAllByIdDescWithPaging_QueryDSL(Pageable pageable) {
+        List<EventBoard> recipeBoards = query.select(eventBoard)
                 .from(eventBoard)
-                .leftJoin(eventBoard.eventFiles, eventFile)
-                .fetchJoin()
-                .where(eventBoard.eventStatus.eq(EventType.valueOf("Hold")))
-                .where(eventBoard.eventStatus.eq(EventType.valueOf("PROGRESS")))
-                .orderBy(eventBoard.id.desc())
-                .offset(pageable.getOffset() -1 )
+                .join(eventBoard.member).fetchJoin()
+                .join(eventBoard.eventFiles).fetchJoin()
+                .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
+        return checkLastPage(pageable, recipeBoards);
+    }
 
-        Long count = query.select(eventBoard.count())
-                .from(eventBoard)
-                .where(eventBoard.eventStatus.eq(EventType.valueOf("Hold")))
-                .where(eventBoard.eventStatus.eq(EventType.valueOf("PROGRESS")))
-                .fetchOne();
+    //    hasNext true인지 false인지 체크하는 메소드(마지막 페이지 체크)
+    private Slice<EventBoard> checkLastPage(Pageable pageable, List<EventBoard> eventBoards) {
 
-        return new PageImpl<>(founddBoard, pageable, count);
+        boolean hasNext = false;
+
+        // 조회한 결과 개수가 요청한 페이지 사이즈보다 크면 뒤에 더 있음, next = true
+        if (eventBoards.size() > pageable.getPageSize()) {
+            hasNext = true;
+            eventBoards.remove(pageable.getPageSize());
+        }
+
+        return new SliceImpl<>(eventBoards, pageable, hasNext);
     }
 
     @Override
@@ -76,6 +109,11 @@ public class EventBoardQueryDslImpl implements EventBoardQueryDsl {
         Long count = query.select(eventBoard.count()).from(eventBoard).where(eventBoard.member.id.eq(memberId)).fetchOne();
 
         return new PageImpl<>(eventBoards, pageable, count);
+    }
+
+    @Override
+    public void deleteByPost(EventBoard eventBoard) {
+
     }
 
     @Override

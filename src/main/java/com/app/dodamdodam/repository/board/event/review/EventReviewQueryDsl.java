@@ -11,4 +11,7 @@ public interface EventReviewQueryDsl {
 
     /* 댓글 개수*/
     public Long getReviewCount_QueryDSL(Long eventBoardId);
+
+    /* 댓글 삭제*/
+    public void deleteByEventBoardId(Long eventBoardId);
  }

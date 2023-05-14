@@ -3,24 +3,27 @@ package com.app.dodamdodam.domain;
 import com.querydsl.core.annotations.QueryProjection;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Data
-@Builder
+@Component
+@NoArgsConstructor
 public class EventBoardFileDTO {
     private Long id;
-    private String boardTitle;
-    private String boardContent;
-    private MemberDTO memberDTO;
-    private List<FreeFileDTO> freeFileDTOS;
+    private String fileOriginalName;
+    private String fileUuid;
+    private String filePath;
+    private Long fileSize;
 
-    @QueryProjection
-    public EventBoardFileDTO(Long id, String boardTitle, String boardContent, MemberDTO memberDTO, List<FreeFileDTO> freeFileDTOS) {
+    @Builder
+    public EventBoardFileDTO(Long id, String fileOriginalName, String fileUuid, String filePath, Long fileSize) {
         this.id = id;
-        this.boardTitle = boardTitle;
-        this.boardContent = boardContent;
-        this.memberDTO = memberDTO;
-        this.freeFileDTOS = freeFileDTOS;
+        this.fileOriginalName = fileOriginalName;
+        this.fileUuid = fileUuid;
+        this.filePath = filePath;
+        this.fileSize = fileSize;
     }
 }
