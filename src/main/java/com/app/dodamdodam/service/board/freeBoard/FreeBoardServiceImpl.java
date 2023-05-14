@@ -23,25 +23,26 @@ public class FreeBoardServiceImpl implements FreeBoardService {
     /* 자유 게시글 전체 목록 */
     @Override
     public List<FreeBoardFileDTO> getAllFreeBoards(Pageable pageable) {
-        return freeBoardRepository.findAllFreeBoardList(pageable)
+        return freeBoardRepository.findAllFreeBoardList_QueryDSL(pageable)
                 .stream().map(freeBoard -> toFreeBoardFileDTO(freeBoard)).collect(Collectors.toList());
     }
 
     /* 자유 게시글 카테고리 별 분류해서 가져오기 */
     @Override
     public Page<FreeBoard> getFreeBoardsByCategoryType(CategoryType categoryType, Pageable pageable) {
-        return freeBoardRepository.findFreeBoardListByCategoryType(pageable, categoryType);
+        return freeBoardRepository.findFreeBoardListByCategoryType_QueryDSL(pageable, categoryType);
     }
 
+    /* 내가 작성한 자유 게시글 가져오기 */
     @Override
     public Page<FreeBoard> getFreeBoardsByMemberId(Pageable pageable, Long memberId) {
-        return freeBoardRepository.findFreeBoardListByMemberId(pageable, memberId);
+        return freeBoardRepository.findFreeBoardListByMemberId_QueryDSL(pageable, memberId);
     }
 
     /* 자유 게시글 상세 */
     @Override
     public Optional<FreeBoard> getFreeBoardById(Long boardId) {
-        return freeBoardRepository.findFreeBoardAndFreeFilesById(boardId);
+        return freeBoardRepository.findFreeBoardAndFreeFilesById_QueryDSL(boardId);
     }
 
     /* 자유 게시글 수정 */

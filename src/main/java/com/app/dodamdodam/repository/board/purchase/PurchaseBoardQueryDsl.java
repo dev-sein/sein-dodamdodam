@@ -22,8 +22,8 @@ public interface PurchaseBoardQueryDsl {
     public Optional<PurchaseBoard> findPurchaseBoardById_QueryDSL(Long boardId);
 
 
-//    세션에 담긴 id 값 받아와서 내가 작성한 자유 게시글 리스트 가져오기
-    public Page<PurchaseBoard> findPurchaseBoardListByMemberId(Pageable pageable, Long memberId);
+//    세션에 담긴 id 값 받아와서 내가 작성한 판매 게시글 리스트 가져오기
+    public Page<PurchaseBoard> findPurchaseBoardListByMemberId_QueryDSL(Pageable pageable, Long memberId);
 
 //    게시글 검색
     public Slice<PurchaseBoard> findAllWithSearch_QueryDSL(PurchaseBoardSearch purchaseBoardSearch, Pageable pageable);

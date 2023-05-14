@@ -1,6 +1,7 @@
 package com.app.dodamdodam.repository.board.free;
 
 import com.app.dodamdodam.entity.free.FreeBoard;
+import com.app.dodamdodam.search.FreeBoardSearch;
 import com.app.dodamdodam.search.board.AdminFreeBoardSearch;
 import com.app.dodamdodam.type.CategoryType;
 import com.querydsl.core.types.dsl.BooleanExpression;
@@ -21,8 +22,7 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
 
 //    세션에 담긴 id 값 받아와서 내가 작성한 자유 게시글 리스트 가져오기
     @Override
-    public Page<FreeBoard> findFreeBoardListByMemberId(Pageable pageable, Long memberId) {
-//        List<FreeBoard> freeBoards = query.select(freeBoard).from(freeBoard).where(freeBoard.member.id.eq(memberId)).orderBy(freeBoard.id.desc()).offset(pageable.getOffset()).limit(pageable.getPageSize()).fetch();
+    public Page<FreeBoard> findFreeBoardListByMemberId_QueryDSL(Pageable pageable, Long memberId) {
         List<FreeBoard> freeBoards = query.select(freeBoard).from(freeBoard)
                 .join(freeBoard.member).fetchJoin()
                 .leftJoin(freeBoard.freeFiles).fetchJoin()
@@ -30,15 +30,26 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
                 .orderBy(freeBoard.id.desc())
                 .offset(pageable.getOffset()).limit(pageable.getPageSize()).fetch();
         Long count = query.select(freeBoard.count()).from(freeBoard)
-                .where(freeBoard.member.id.eq(memberId)).where(freeBoard.member.id.eq(memberId)).fetchOne();
+                .where(freeBoard.member.id.eq(memberId)).fetchOne();
 
         return new PageImpl<>(freeBoards, pageable, count);
+    }
+
+//    세션에 담긴 id 값 받아와서 내가 작성한 자유 게시글 리스트 개수 가져오기
+    @Override
+    public Long findFreeBoardListCountByMemberId_QueryDSL(Long memberId) {
+        return query.select(freeBoard.count()).from(freeBoard)
+//                .join(freeBoard.member).fetchJoin()
+//                .leftJoin(freeBoard.freeFiles).fetchJoin()
+                .where(freeBoard.member.id.eq(memberId))
+                .orderBy(freeBoard.id.desc())
+                .fetchOne();
     }
 
 
 //    자유 게시글 전체 리스트 가져오기
     @Override
-    public Page<FreeBoard> findAllFreeBoardList(Pageable pageable) {
+    public Page<FreeBoard> findAllFreeBoardList_QueryDSL(Pageable pageable) {
         List<FreeBoard> freeBoards = query.selectFrom(freeBoard)
                 .leftJoin(freeBoard.freeFiles).fetchJoin()
                 .join(freeBoard.member).fetchJoin()
@@ -54,7 +65,7 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
 
 //    자유 게시글 전체 리스트 Category에 따라 분류해서 가져오기
     @Override
-    public Page<FreeBoard> findFreeBoardListByCategoryType(Pageable pageable, CategoryType categoryType) {
+    public Page<FreeBoard> findFreeBoardListByCategoryType_QueryDSL(Pageable pageable, CategoryType categoryType) {
         List<FreeBoard> freeBoards = query.select(freeBoard).from(freeBoard)
                 .join(freeBoard.member).fetchJoin()
                 .leftJoin(freeBoard.freeFiles).fetchJoin()
@@ -70,15 +81,15 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
 
 //    내가 작성한 자유 게시글 리스트 Category에 따라 분류해서 가져오기
     @Override
-    public Page<FreeBoard> findFreeBoardListByCategoryTypeAndMemberId(Pageable pageable, CategoryType categoryType, Long memberId) {
+    public Page<FreeBoard> findFreeBoardListByCategoryTypeAndMemberId_QueryDSL(Pageable pageable, CategoryType categoryType, Long memberId) {
         List<FreeBoard> freeBoards = query.select(freeBoard).from(freeBoard)
                 .join(freeBoard.member).fetchJoin()
                 .leftJoin(freeBoard.freeFiles).fetchJoin()
-                .where(freeBoard.freeCategory.eq(categoryType).and(freeBoard.member.id.eq(memberId)))
+                .where(freeBoard.member.id.eq(memberId).and(freeBoard.freeCategory.eq(categoryType)))
                 .orderBy(freeBoard.id.desc())
                 .offset(pageable.getOffset()).limit(pageable.getPageSize())
                 .fetch();
-        Long count = query.select(freeBoard.count()).from(freeBoard).where(freeBoard.freeCategory.eq(categoryType).and(freeBoard.member.id.eq(memberId))).fetchOne();
+        Long count = query.select(freeBoard.count()).from(freeBoard).where(freeBoard.member.id.eq(memberId).and(freeBoard.freeCategory.eq(categoryType))).fetchOne();
 
         return new PageImpl<>(freeBoards, pageable, count);
     }
@@ -101,9 +112,30 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
         return new PageImpl<>(adminFreeBoards, pageable, count);
     }
 
+// 자유게시판 검색
+    @Override
+    public Page<FreeBoard> findFreeBoardWithPaging_QueryDSL(FreeBoardSearch freeBoardSearch, Pageable pageable) {
+        BooleanExpression writerNameEq = freeBoardSearch.getWriterName() == null ? null : freeBoard.member.memberName.eq(freeBoardSearch.getWriterName());
+        BooleanExpression freeTitleEq = freeBoardSearch.getBoardTitle() == null ? null : freeBoard.boardTitle.eq(freeBoardSearch.getBoardTitle());
+        BooleanExpression freeContentEq = freeBoardSearch.getBoardContent() == null ? null : freeBoard.boardContent.eq(freeBoardSearch.getBoardContent());
+
+        List<FreeBoard> freeBoards = query.select(freeBoard)
+                .from(freeBoard)
+                .join(freeBoard.member).fetchJoin()
+                .leftJoin(freeBoard.freeFiles).fetchJoin()
+                .where(writerNameEq, freeTitleEq, freeContentEq)
+                .orderBy(freeBoard.id.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+        Long count = query.select(freeBoard.count()).where(writerNameEq, freeTitleEq, freeContentEq).from(freeBoard).fetchOne();
+
+        return new PageImpl<>(freeBoards, pageable, count);
+    }
+
 //    게시글 상세페이지 board 정보, 작성자 정보, 첨부파일
     @Override
-    public Optional<FreeBoard> findFreeBoardAndFreeFilesById(Long boardId) {
+    public Optional<FreeBoard> findFreeBoardAndFreeFilesById_QueryDSL(Long boardId) {
         return Optional.ofNullable(query.select(freeBoard).from(freeBoard)
                 .join(freeBoard.member).fetchJoin()
                 .leftJoin(freeBoard.freeFiles).fetchJoin()
@@ -113,7 +145,7 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
 
 //    게시글 상세페이지 board 정보, reply정보
     @Override
-    public Optional<FreeBoard> findFreeBoardAndFreeRepliesById(Long boardId) {
+    public Optional<FreeBoard> findFreeBoardAndFreeRepliesById_QueryDSL(Long boardId) {
         return Optional.ofNullable(query.select(freeBoard).from(freeBoard)
                 .leftJoin(freeBoard.freeReplies).fetchJoin()
                 .where(freeBoard.id.eq(boardId))

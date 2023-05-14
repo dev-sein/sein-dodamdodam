@@ -2,6 +2,7 @@ package com.app.dodamdodam.repository;
 
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.free.FreeFile;
+import com.app.dodamdodam.entity.free.FreeReply;
 import com.app.dodamdodam.entity.purchase.Product;
 import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.entity.recruitment.Recruitment;
@@ -12,6 +13,7 @@ import com.app.dodamdodam.repository.board.recruitment.RecruitmentBoardRepositor
 import com.app.dodamdodam.repository.file.freeFile.FreeFileRepository;
 import com.app.dodamdodam.repository.member.MemberRepository;
 import com.app.dodamdodam.repository.recruitment.RecruitmentRepository;
+import com.app.dodamdodam.repository.reply.freeReply.FreeReplyRepository;
 import com.app.dodamdodam.type.CategoryType;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -51,6 +53,9 @@ public class BoardRepositoryTests {
 
     @Autowired
     private FreeFileRepository freeFileRepository;
+
+    @Autowired
+    private FreeReplyRepository freeReplyRepository;
 
     ArrayList<CategoryType> categoryTypes = new ArrayList<CategoryType>(Arrays.asList(CategoryType.ALL, CategoryType.CULTURE, CategoryType.DAILY, CategoryType.EVENT, CategoryType.PURCHASE, CategoryType.RECRUITMENT));
 
@@ -101,7 +106,7 @@ public class BoardRepositoryTests {
     @Test
     public void findByIdTest(){
         Pageable pageable = PageRequest.of(0,5);
-        freeBoardRepository.findFreeBoardListByMemberId(PageRequest.of(0,5), 5L).stream().map(FreeBoard::toString).forEach(log::info);
+        freeBoardRepository.findFreeBoardListByMemberId_QueryDSL(PageRequest.of(0,5), 5L).stream().map(FreeBoard::toString).forEach(log::info);
     }
 
 //    @Test
@@ -166,27 +171,28 @@ public class BoardRepositoryTests {
     @Test
     public void findAllFreeBoardListTest(){
         Pageable pageable = PageRequest.of(0, 10);
-        freeBoardRepository.findAllFreeBoardList(pageable).stream().map(FreeBoard::toString).forEach(log::info);
+        freeBoardRepository.findAllFreeBoardList_QueryDSL(pageable).stream().map(FreeBoard::toString).forEach(log::info);
     }
 
     /* 자유 게시글 목록 분류 */
     @Test
     public void findFreeBoardListByCategoryTypeTest(){
         Pageable pageable = PageRequest.of(0, 10);
-        freeBoardRepository.findFreeBoardListByCategoryType(pageable,CategoryType.CULTURE).stream().map(FreeBoard::toString).forEach(log::info);
+        freeBoardRepository.findFreeBoardListByCategoryType_QueryDSL(pageable,CategoryType.CULTURE).stream().map(FreeBoard::toString).forEach(log::info);
     }
 
     /* 내가 작성한 자유 게시글 목록 분류 */
     @Test
     public void findFreeBoardListByCategoryTypeAndMemberIdTest(){
         Pageable pageable = PageRequest.of(0, 10);
-        freeBoardRepository.findFreeBoardListByCategoryTypeAndMemberId(pageable,CategoryType.CULTURE, 5L).stream().map(FreeBoard::toString).forEach(log::info);
+        freeBoardRepository.findFreeBoardListByCategoryTypeAndMemberId_QueryDSL(pageable,CategoryType.CULTURE, 5L).stream().map(FreeBoard::toString).forEach(log::info);
     }
 
     /* 자유 게시글 상세 */
     @Test
     public void findFreeBoardByIdTest(){
-        freeBoardRepository.findById(1080L).ifPresent(freeBoard -> log.info(freeBoard.toString()));
+//        freeBoardRepository.findById(201L).ifPresent(freeBoard -> log.info(freeBoard.toString()));
+        freeBoardRepository.findFreeBoardAndFreeFilesById_QueryDSL(201L).ifPresent(freeBoard -> log.info(freeBoard.toString()));
     }
 
     /* 자유 게시글 수정 */
@@ -208,13 +214,33 @@ public class BoardRepositoryTests {
     /* 자유 게시글 상세 */
     @Test
     public void findFreeBoardAndFreeFilesByIdTest(){
-        log.info(freeBoardRepository.findFreeBoardAndFreeFilesById(201L).toString());
+        log.info(freeBoardRepository.findFreeBoardAndFreeFilesById_QueryDSL(201L).toString());
     }
     
     /* 자유 게시글 상세, 댓글 */
     @Test
     public void findFreeBoardAndFreeRepliesByIdTest(){
-        log.info(freeBoardRepository.findFreeBoardAndFreeRepliesById(201L).toString());
+        log.info(freeBoardRepository.findFreeBoardAndFreeRepliesById_QueryDSL(201L).toString());
     }
 
+    /* 자유 게시판에 댓글 달기*/
+    @Test
+    public void saveFreeReplyTest(){
+        FreeReply freeReply = new FreeReply("댓글1");
+        freeReply.setFreeBoard(freeBoardRepository.findById(201L).get());
+        freeReplyRepository.save(freeReply);
+    }
+
+    /* 자유 게시판 댓글 수정 */
+    @Test
+    public void updateFreeReplyTest(){
+        freeBoardRepository.findById(201L).ifPresent(freeBoard -> freeBoard.getFreeReplies().get(0).setReplyContent("수정된 댓글"));
+    }
+
+
+    /* 자유 게시판 댓글 삭제 */
+    @Test
+    public void deleteFreeReplyTest(){
+        freeBoardRepository.findById(201L).ifPresent(freeBoard -> freeReplyRepository.delete(freeBoard.getFreeReplies().get(0)));
+    }
 }

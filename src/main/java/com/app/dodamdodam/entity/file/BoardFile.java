@@ -1,5 +1,6 @@
 package com.app.dodamdodam.entity.file;
 
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
@@ -12,10 +13,10 @@ public class BoardFile {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
-    private String fileOriginalName;
-    private String fileUuid;
-    private String filePath;
-    private Long fileSize;
+    @NotNull private String fileOriginalName;
+    @NotNull private String fileUuid;
+    @NotNull private String filePath;
+     private Long fileSize;
 
     public BoardFile(String fileOriginalName, String fileUuid, String filePath, Long fileSize) {
         this.fileOriginalName = fileOriginalName;
