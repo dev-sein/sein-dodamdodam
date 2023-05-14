@@ -28,18 +28,18 @@ public class ChatService {
 
     @PostConstruct
     private void init() {
-        chatRooms = new LinkedHashMap<>();
+        chatRooms = new Lin`kedHashMap<>();
     }
 
     public List<RoomDTO> findAllRoom() {
         return new ArrayList<>(chatRooms.values());
     }
 
-    public RoomDTO findRoomById(Long memberId) {
+    public RoomDTO findRoomByMemberId(Long memberId) {
         return chatRooms.get(memberId);
     }
 
-    // 현재 시퀀스 가져오기
+// 현재 시퀀스 가져오기
     public Room getCurrentSequence() {
         return roomRepository.getCurrentSequence();
     }

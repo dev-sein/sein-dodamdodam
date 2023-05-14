@@ -3,6 +3,7 @@ package com.app.dodamdodam.handler;
 import com.app.dodamdodam.domain.ChattingDTO;
 import com.app.dodamdodam.domain.RoomDTO;
 import com.app.dodamdodam.entity.chatting.QRoom;
+import com.app.dodamdodam.entity.member.QMember;
 import com.app.dodamdodam.service.chatting.ChatService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +28,11 @@ public class WebSocketHandler extends TextWebSocketHandler {
         log.info("{}", payload);
         ChattingDTO chatting = objectMapper.readValue(payload, ChattingDTO.class);
 
-        RoomDTO roomDTO = chatService.findRoomById(chatting.getId());
+//        RoomDTO roomDTO = chatService.findRoomById(chatting.getId());
+        RoomDTO roomDTO = chatService.findRoomByMemberId(chatting.getSenderMemberId());
+
+
+//    세션 가지고 있음
         roomDTO.handlerActions(session, chatting, chatService);
     }
 }
