@@ -37,7 +37,7 @@ public class MyPageController {
     public String myPageInfo(Model model, HttpSession session) {
         /* calendar 작업 추가로 해야함 */
 //        임의로 세션에 memberId값 담아둠
-        session.setAttribute("memberId", 2L);
+        session.setAttribute("memberId", 5L);
         Long memberId =  (Long)session.getAttribute("memberId");
         memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
         model.addAttribute("point",memberService.getMyPointList(memberId));
@@ -60,7 +60,7 @@ public class MyPageController {
     @GetMapping("point")
     public String myPointList(Model model, HttpSession session) {
         log.info("들어옴@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-        session.setAttribute("memberId", 2L);
+        session.setAttribute("memberId", 5L);
         Long memberId = (Long)session.getAttribute("memberId");
         memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
         model.addAttribute("points",memberService.getMyPointList(memberId));
