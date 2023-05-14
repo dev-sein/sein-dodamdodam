@@ -20,7 +20,7 @@ public class Inquiry extends Period {
     @Enumerated(EnumType.STRING)
     @NotNull private InquiryType inquiryType;
     @NotNull private String inquiryEmail;
-    @NotNull private String memberIdentification;
+    private String memberIdentification;
     @NotNull private String inquiryPhoneNumber;
     @NotNull private String inquiryContent;
     private String inquiryAnswer;
@@ -29,12 +29,15 @@ public class Inquiry extends Period {
     @Enumerated(EnumType.STRING)
     private InquiryStatus inquiryStatus;
 
-    public Inquiry(InquiryType inquiryType, String inquiryEmail, String memberIdentification, String inquiryPhoneNumber, String inquiryContent, InquiryStatus inquiryStatus) {
+    @Builder
+    public Inquiry(Long id, InquiryType inquiryType, String inquiryEmail, String memberIdentification, String inquiryPhoneNumber, String inquiryContent, String inquiryAnswer, InquiryStatus inquiryStatus) {
+        this.id = id;
         this.inquiryType = inquiryType;
         this.inquiryEmail = inquiryEmail;
         this.memberIdentification = memberIdentification;
         this.inquiryPhoneNumber = inquiryPhoneNumber;
         this.inquiryContent = inquiryContent;
+        this.inquiryAnswer = inquiryAnswer;
         this.inquiryStatus = inquiryStatus;
     }
 
