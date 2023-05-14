@@ -30,7 +30,7 @@ public class EventBoard extends Board {
 //    좋아요 수
     private int eventLikeNumber;
 
-    //    수락대기, 수락, 수락거절
+    //    진행전, 진행중, 진행마감
     @ColumnDefault("'APPLYING'")
     @Enumerated(EnumType.STRING)
      private EventType eventStatus;

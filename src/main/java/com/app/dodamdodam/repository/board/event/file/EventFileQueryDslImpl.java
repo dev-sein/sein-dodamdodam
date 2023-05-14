@@ -1,7 +1,7 @@
-package com.app.dodamdodam.repository.board.event;
+package com.app.dodamdodam.repository.board.event.file;
 
 import com.app.dodamdodam.entity.event.EventFile;
-import com.app.dodamdodam.repository.board.event.EventFileQueryDsl;
+import com.app.dodamdodam.repository.board.event.file.EventFileQueryDsl;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 
