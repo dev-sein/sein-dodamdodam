@@ -49,5 +49,8 @@ public class AdminController {
         return pointService.showList(pageable);
     }
 
+    /*판매 게시판*/
+
+
 
 }
