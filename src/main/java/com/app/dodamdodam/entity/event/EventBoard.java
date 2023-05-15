@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@ToString(callSuper = true)
+@ToString(exclude = {"eventBoard"} , callSuper = true)
 @Table(name = "TBL_EVENT_BOARD")
 @NoArgsConstructor
         (access = AccessLevel.PROTECTED)
