@@ -89,6 +89,11 @@ public class MemberServiceImpl implements MemberService{
         memberRepository.findById(memberId).ifPresent(member -> member.setMemberStatus(MemberStatus.WITHDRAWAL));
     }
 
+    @Override
+    public void setMemberInfoById(Long memberId) {
+//        memberRepository.findById(memberId).ifPresent(member -> );
+    }
+
     /* 비밀번호 변경 */
     @Override
     public void setMemberPasswordById(Long memberId, String password) {
