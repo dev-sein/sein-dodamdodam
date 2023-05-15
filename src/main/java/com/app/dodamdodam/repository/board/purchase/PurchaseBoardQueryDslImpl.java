@@ -135,4 +135,22 @@ public class PurchaseBoardQueryDslImpl implements PurchaseBoardQueryDsl {
 
         return new PageImpl<>(adminPurchaseBoards, pageable, count);
     }
+
+    //관리자 목록 페이지
+    @Override
+    public Page<PurchaseBoard> findAllWithPaging(Pageable pageable) {
+        List<PurchaseBoard> foundPurchase = query.select(purchaseBoard)
+                .from(purchaseBoard)
+                .orderBy(purchaseBoard.id.desc())
+                .offset(pageable.getOffset() -1)
+                .limit(pageable.getPageSize())
+                .fetch();
+        Long count = query.select(purchaseBoard.count())
+                .from(purchaseBoard)
+                .fetchOne();
+
+        return new PageImpl<>(foundPurchase, pageable, count);
+
+    }
+
 }

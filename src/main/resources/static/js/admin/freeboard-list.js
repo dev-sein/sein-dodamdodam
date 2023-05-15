@@ -1,51 +1,15 @@
-$(document).ready(function() {
-    // 페이지네이션 버튼 요소들을 선택합니다.
-    const $paginationBtns = $(".page");
-
-    // 페이지네이션 버튼 요소에 이벤트 리스너를 등록합니다.
-    $paginationBtns.click(function() {
-        // 현재 active 클래스가 적용된 버튼의 active 클래스를 제거합니다.
-        $('.active').removeClass('active');
-
-        // 현재 클릭된 버튼에 active 클래스를 추가합니다.
-        $(this).addClass('active');
-    })
-});
-
-// $('tbody tr').on('click', showModal);
-
-$('tbody tr').on('click', function(e){
-    console.log($(e.target));
-    if(!$(e.target).hasClass("select-member")){
-        showModal();
-    } else {
-        closeModal();
-    }
-});
-
-
-function showModal(){
-    $('.modal-whole').css('display', 'flex');
-}
-
-function closeModal(){
-    $('.modal-whole').css('display', 'none');
-}
-
-
-
 
 let page = 1;
 
 $(document).ready(function() {
     $.ajax({
-        url: '/admins/member/list',
+        url: '/admins/free-board/list',
         type: 'post',
         dataType: 'json',
         success: function(result) {
             console.log("success들어옴");
             console.log(result); //사용할 content 값 출력
-            result.content.forEach((member) => showList(member));
+            result.content.forEach((freeBoard) => showList(freeBoard));
             // loadPages();
 
         },
@@ -55,8 +19,8 @@ $(document).ready(function() {
     });
 });
 /*문의 목록*/
-function showList(member) {
-    const $listResults = $("#membertable tbody");
+function showList(freeBoard) {
+    const $listResults = $("#free-board-Table tbody");
     var text = "";
     console.log("showlist");
         console.log("들어옴");
@@ -72,12 +36,12 @@ function showList(member) {
                     </div>
                     <!-- 체크박스 -->
                 </td>
-                <td class="numbers">${member.id}</td>
-                <td>${member.memberName}</td>
-                <td>${member.memberPhone}</td>
-                <td>${member.memberEmail}</td>
-                <td>${member.memberStatus}</td>
-                <!--  <td>{point.pointStatus}</td> -->
+                <td class="numbers">${freeBoard.id}</td>
+                <td>${freeBoard.boardTitle}</td>
+                <td>${freeBoard.memberDTO.memberName}</td>
+                <td>${freeBoard.categoryType}</td>
+                <td>${freeBoard.createdDate}</td>
+                <!-- <td>{point.pointStatus}</td> -->
                 <!-- <td>2000.01.01 21:05:04</td>-->
                 <!-- <td><button class="show-detail" onclick="showModal()">상세보기</button></td> -->
             </tr>

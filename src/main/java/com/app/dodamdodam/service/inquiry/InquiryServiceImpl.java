@@ -1,5 +1,6 @@
 package com.app.dodamdodam.service.inquiry;
 
+import com.app.dodamdodam.domain.AdminInquirySearchDTO;
 import com.app.dodamdodam.domain.InquiryDTO;
 import com.app.dodamdodam.entity.inquiry.Inquiry;
 import com.app.dodamdodam.repository.inquiry.InquiryRepository;
@@ -31,6 +32,12 @@ public class InquiryServiceImpl implements InquiryService {
 
         return new PageImpl<>(inquiryDTOS, pageable, inquiryPage.getTotalElements());
     }
+//
+//    @Override
+//    public Page<AdminInquirySearchDTO> showInquiryWithSearch_QueryDSL(AdminInquirySearch inquirySearch, Pageable pageable) {
+//        Page<AdminInquirySearch> adminInquirySearchPage = inquiryRepository.findInquiryWithSearch_QueryDSL(AdminInquirySearch, PageRequest.of(1, 10));
+//        return null;
+//    }
 
 
 }

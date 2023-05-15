@@ -16,8 +16,6 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
-import static com.app.dodamdodam.entity.free.QFreeBoard.freeBoard;
-import static com.app.dodamdodam.entity.purchase.QPurchaseBoard.purchaseBoard;
 import static com.app.dodamdodam.entity.recruitment.QRecruitmentBoard.recruitmentBoard;
 public class RecruitmentBoardQueryDslImpl implements RecruitmentBoardQueryDsl {
     @Autowired
@@ -117,5 +115,21 @@ public class RecruitmentBoardQueryDslImpl implements RecruitmentBoardQueryDsl {
         Long count = query.select(recruitmentBoard.count()).from(recruitmentBoard).fetchOne();
 
         return new PageImpl<>(recruitmentBoards, pageable, count);
+    }
+
+    @Override
+    public Page<RecruitmentBoard> findAllWithPaging(Pageable pageable) {
+            List<RecruitmentBoard> recruitmentBoards = query.select(recruitmentBoard)
+                    .from(recruitmentBoard)
+                    .orderBy(recruitmentBoard.id.desc())
+                    .offset(pageable.getOffset() -1)
+                    .limit(pageable.getPageSize())
+                    .fetch();
+            Long count = query.select(recruitmentBoard.count())
+                    .from(recruitmentBoard)
+                    .fetchOne();
+
+            return new PageImpl<>(recruitmentBoards, pageable, count);
+
     }
 }

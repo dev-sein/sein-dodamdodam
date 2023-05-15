@@ -9,6 +9,7 @@ import com.app.dodamdodam.entity.recruitment.Recruitment;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
 import com.app.dodamdodam.entity.recruitment.RecruitmentFile;
 import com.app.dodamdodam.search.PurchaseBoardSearch;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 
@@ -22,6 +23,9 @@ public interface RecruitmentBoardService {
 
 //    내가 참가한 모집 게시글 목록
     public List<RecruitmentBoardFileDTO> getRecruimentedBoardListByMemberId(Pageable pageable, Long memberId);
+
+////    관리자 목록 게시판
+//    public Page<RecruitmentBoardFileDTO> showList(Pageable pageable);
 
     default RecruitmentBoardFileDTO toRecruitmentBoardFileDto(RecruitmentBoard recruitmentBoard){
         return RecruitmentBoardFileDTO.builder()
