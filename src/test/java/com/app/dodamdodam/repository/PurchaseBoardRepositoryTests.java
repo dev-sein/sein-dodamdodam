@@ -48,8 +48,18 @@ public class PurchaseBoardRepositoryTests {
 
     @Test
     public void saveTest(){
-        Address address = new Address("1234", "test-address", "test-detail");
-        Member member = new Member("test1234", "1234", "테스트", "test1234@gmail.com", "01012341234", address, MemberStatus.NORMAL, MemberType.GENERAL, Role.MEMBER);
+        Address address = new Address("test-address", "test-detail");
+//        Member member = new Member(73L, "test1234", "1234", "테스트", "test1234@gmail.com", "01012341234", address, MemberStatus.NORMAL, MemberType.GENERAL, Role.MEMBER);
+        Member member = Member.builder().id(73L)
+                .memberId("test1234")
+                .memberPassword("1234")
+                .memberEmail("test1234@gmail.com")
+                .memberName("test")
+                .memberPhone("01012341234")
+                .memberRole(Role.MEMBER)
+                .memberStatus(MemberStatus.NORMAL)
+                .memberType(MemberType.GENERAL)
+                .build();
 
         memberRepository.save(member);
 

@@ -19,12 +19,16 @@ public interface MemberQueryDsl {
 //    public List<Point> findPointByMemberId(Long memberId);
 
 //    이메일로 아이디 찾기
-    public String findMemberIdByMemberEmail(String memberEmail);
+    public String findMemberIdByMemberEmail_QueryDSL(String memberEmail);
 
 //    아이디 중복검사
-    public boolean findCheckMemberIdByMemberEmail(String memberEmail);
+    public boolean findCheckMemberIdByMemberEmail_QueryDSL(String memberEmail);
 
     //    로그인 후 회원 정보 조회
     public Optional<Member> findMemberByMemberId_QueryDSL(String memberId);
+
+//    이메일로 회원 조회
+    public Optional<Member> findMemberByMemberEmail_QueryDSL(String memberEmail);
+
 
 }

@@ -77,6 +77,18 @@ public class Member extends Period {
         this.memberRole = memberRole;
     }
 
+    public Member update(String memberName, String memberEmail, String memberPhone){
+        this.memberName = memberName;
+        this.memberEmail = memberEmail;
+        this.memberPhone = memberPhone;
+
+        return this;
+    }
+
+    public String getRoleKey() {
+        return this.memberRole.getSecurityRole();
+    }
+
     public void setMemberPoint(Integer memberPoint) {
         this.memberPoint = memberPoint;
     }

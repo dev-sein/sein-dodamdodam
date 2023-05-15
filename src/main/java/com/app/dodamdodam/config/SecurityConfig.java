@@ -1,5 +1,6 @@
 package com.app.dodamdodam.config;
 
+import com.app.dodamdodam.service.member.MemberServiceImpl;
 import com.app.dodamdodam.type.Role;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,6 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.AccessDeniedHandler;
@@ -35,11 +37,14 @@ public class SecurityConfig {
     private static final String REMEMBER_ME_TOKEN_KEY = "have a nice day";
     private static final int REMEMBER_ME_TOKEN_EXPIRED = 86400 * 14;
 
-//    private final AccessDeniedHandler accessDeniedHandler;
-//    private final AuthenticationEntryPoint authenticationEntryPoint;
+    private final AccessDeniedHandler accessDeniedHandler;
+    private final AuthenticationEntryPoint authenticationEntryPoint;
     private final AuthenticationSuccessHandler authenticationSuccessHandler;
     private final AuthenticationFailureHandler authenticationFailureHandler;
     private final UserDetailsService userDetailsService;
+
+//    private final DefaultOAuth2UserService userService;x
+    private final MemberServiceImpl memberService;
 
 //    비밀번호 암호화
     @Bean
@@ -62,9 +67,9 @@ public class SecurityConfig {
                 .antMatchers(BOARD_PATH).hasRole(Role.MEMBER.name())
                 .and()
                 .csrf().disable()
-                .exceptionHandling();
-//                .accessDeniedHandler(accessDeniedHandler) //인가 실패
-//                .authenticationEntryPoint(authenticationEntryPoint); //인증 실패
+                .exceptionHandling()
+                .accessDeniedHandler(accessDeniedHandler) //인가 실패
+                .authenticationEntryPoint(authenticationEntryPoint); //인증 실패
 
         log.info(userDetailsService.toString());
 
@@ -87,6 +92,16 @@ public class SecurityConfig {
                 .tokenValiditySeconds(REMEMBER_ME_TOKEN_EXPIRED)
                 .userDetailsService(userDetailsService)
                 .authenticationSuccessHandler(authenticationSuccessHandler);
+
+        http.csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/", "/css/**", "/images/**", "/js/**", "/profile").permitAll()
+                .antMatchers("/api/**").hasRole(Role.MEMBER.name())
+                .anyRequest().authenticated().and()
+                .logout().logoutSuccessUrl("/").and()
+                .oauth2Login()
+                .userInfoEndpoint()
+                .userService(memberService);
 
         return http.build();
     }

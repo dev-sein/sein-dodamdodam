@@ -38,12 +38,12 @@ public class MemberQueryDslImpl implements MemberQueryDsl{
     }
 
     @Override
-    public String findMemberIdByMemberEmail(String memberEmail) {
+    public String findMemberIdByMemberEmail_QueryDSL(String memberEmail) {
         return query.select(member.memberId).from(member).where(member.memberEmail.eq(memberEmail)).fetchOne();
     }
 
     @Override
-    public boolean findCheckMemberIdByMemberEmail(String memberEmail) {
+    public boolean findCheckMemberIdByMemberEmail_QueryDSL(String memberEmail) {
 
         String result = null;
         result = query.select(member.memberId).from(member).where(member.memberEmail.eq(memberEmail)).fetchOne();
@@ -60,5 +60,9 @@ public class MemberQueryDslImpl implements MemberQueryDsl{
         return Optional.ofNullable(query.select(member).from(member).where(member.memberId.eq(memberId)).fetchOne());
     }
 
+    @Override
+    public Optional<Member> findMemberByMemberEmail_QueryDSL(String memberEmail){
+        return Optional.ofNullable(query.select(member).from(member).where(member.memberEmail.eq(memberEmail)).fetchOne());
+    }
 
 }
