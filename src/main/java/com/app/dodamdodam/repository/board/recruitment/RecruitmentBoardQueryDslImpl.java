@@ -34,11 +34,13 @@ public class RecruitmentBoardQueryDslImpl implements RecruitmentBoardQueryDsl {
         List<RecruitmentBoard> recruitmentBoards = query.select(recruitmentBoard).from(recruitmentBoard)
                 .join(recruitmentBoard.member).fetchJoin()
                 .leftJoin(recruitmentBoard.recruitmentFiles).fetchJoin()
-                .leftJoin(recruitmentBoard.recruitments).fetchJoin()
+//                .leftJoin(recruitmentBoard.recruitments).fetchJoin()  // join 3개는 안됨 따로 쿼리 추가로 작성
                 .where(recruitmentBoard.member.id.eq(memberId))
                 .orderBy(recruitmentBoard.id.desc())
                 .offset(pageable.getOffset()).limit(pageable.getPageSize())
                 .fetch();
+
+
         Long count = query.select(recruitmentBoard.count()).from(recruitmentBoard).where(recruitmentBoard.member.id.eq(memberId)).fetchOne();
 
         return new PageImpl<>(recruitmentBoards, pageable, count);
@@ -60,6 +62,27 @@ public class RecruitmentBoardQueryDslImpl implements RecruitmentBoardQueryDsl {
         Long count = query.select(recruitmentBoard.count()).from(recruitmentBoard).where(recruitmentBoard.recruitments.any().member.id.eq(memberId)).fetchOne();
 
         return new PageImpl<>(recruitmentBoards, pageable, count);
+    }
+
+    /* 내가 작성한 모집글에 참가한 인원들(boardId로 참가한 인원들 확인) */
+    @Override
+    public RecruitmentBoard findRecruitmentBoardById_QueryDSL(Long boardId) {
+        return query.select(recruitmentBoard).from(recruitmentBoard)
+                .join(recruitmentBoard.member).fetchJoin()
+                .leftJoin(recruitmentBoard.recruitments).fetchJoin()
+                .where(recruitmentBoard.id.eq(boardId))
+                .fetchOne();
+    }
+
+    /* 내가 참여한 모집게시글 전체 가져오기 */
+    @Override
+    public List<RecruitmentBoard> findAllRecruitmentedBoardListByMemberId_QueryDSL(Long memberId) {
+        return query.select(recruitmentBoard).from(recruitmentBoard)
+                .where(recruitmentBoard.recruitments.any().member.id.eq(memberId))
+                .leftJoin(recruitmentBoard.recruitmentFiles).fetchJoin()
+                .join(recruitmentBoard.member).fetchJoin()
+                .orderBy(recruitmentBoard.id.desc())
+                .fetch();
     }
 
     /* 내가 작성한 모집게시글 개수 가져오기 */

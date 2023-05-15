@@ -1,4 +1,4 @@
-function test() {
+function changeStatus() {
   var checkbox = document.getElementById("dropConfirm");
   var btnDropOut = document.getElementById("btnDropOut");
 

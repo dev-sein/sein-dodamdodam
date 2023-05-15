@@ -70,6 +70,22 @@ public class Member extends Period {
         this.memberRole = memberRole;
     }
 
+    public void setMemberEmail(String memberEmail) {
+        this.memberEmail = memberEmail;
+    }
+
+    public void setMemberPhone(String memberPhone) {
+        this.memberPhone = memberPhone;
+    }
+
+    public void setMemberName(String memberName) {
+        this.memberName = memberName;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
     public void setMemberPoint(Integer memberPoint) {
         this.memberPoint = memberPoint;
     }
