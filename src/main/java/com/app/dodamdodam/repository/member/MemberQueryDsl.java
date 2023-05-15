@@ -1,6 +1,7 @@
 package com.app.dodamdodam.repository.member;
 
 import com.app.dodamdodam.domain.MemberDTO;
+import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.point.Point;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
@@ -35,6 +36,9 @@ public interface MemberQueryDsl {
 
     //관리자 홈
     public Page<Member> findAdminMemberAllOrderByIdDesc();
+
+    //관리자 회원 목록 가져오기
+    public Page<Member> findAllMemberList_QueryDSL(Pageable pageable);
 }
 
 

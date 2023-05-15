@@ -23,4 +23,7 @@ public interface RecruitmentBoardQueryDsl {
 
     //관리자 도담 게시판 검색
     public Page<RecruitmentBoard> findAdminRecruitmentBoardWithPaging_QueryDSL (AdminRecruitmentSearch adminRecruitmentSearch, Pageable pageable);
+
+    //관리자 도담 게시판 페이징
+    public Page<RecruitmentBoard> findAllWithPaging(Pageable pageable);
 }

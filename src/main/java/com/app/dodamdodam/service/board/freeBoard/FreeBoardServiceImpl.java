@@ -7,6 +7,8 @@ import com.app.dodamdodam.type.CategoryType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -60,5 +62,13 @@ public class FreeBoardServiceImpl implements FreeBoardService {
     @Override
     public void deleteFreeBoard(FreeBoard board) {
         freeBoardRepository.findById(board.getId()).ifPresent(freeBoard -> freeBoardRepository.delete(freeBoard));
+    }
+
+    /* 관리자 자유 게시판 목록 */
+    @Override
+    public Page<FreeBoardFileDTO> getAdminFreeBoardList(Pageable pageable) {
+       Page<FreeBoard> freeBoardPage = freeBoardRepository.findAllFreeBoardList_QueryDSL(PageRequest.of(1, 10));
+       List<FreeBoardFileDTO> freeBoardFileDTOS = freeBoardPage.get().map(this::toFreeBoardFileDTO).collect(Collectors.toList());
+        return new PageImpl<>(freeBoardFileDTOS, pageable, freeBoardPage.getTotalElements());
     }
 }

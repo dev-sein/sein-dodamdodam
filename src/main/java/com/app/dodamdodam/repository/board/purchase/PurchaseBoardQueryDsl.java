@@ -5,7 +5,6 @@ import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.entity.purchase.PurchaseReview;
 import com.app.dodamdodam.search.board.AdminPurchaseBoardSearch;
 import org.springframework.data.domain.Page;
-import com.app.dodamdodam.domain.PurchaseBoardDTO;
 import com.app.dodamdodam.search.PurchaseBoardSearch;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
@@ -35,5 +34,7 @@ public interface PurchaseBoardQueryDsl {
 //  관리자 판매 게시판 검색
     public Page<PurchaseBoard> findadminPurchaseSearchWithPaging_QueryDSL(AdminPurchaseBoardSearch adminPurchaseBoardSearch, Pageable pageable);
 
+    //관리자 판매 게시판 페이징
+    public Page<PurchaseBoard> findAllWithPaging(Pageable pageable);
 
 }
