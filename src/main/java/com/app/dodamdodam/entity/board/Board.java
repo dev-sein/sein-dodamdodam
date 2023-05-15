@@ -29,4 +29,5 @@ public class Board extends Period {
         this.boardTitle = boardTitle;
         this.boardContent = boardContent;
     }
+
 }

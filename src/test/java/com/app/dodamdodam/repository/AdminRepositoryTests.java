@@ -7,7 +7,7 @@ import com.app.dodamdodam.entity.point.Point;
 import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
 import com.app.dodamdodam.repository.banner.BannerRepository;
-import com.app.dodamdodam.repository.board.event.EventBoardRepository;
+import com.app.dodamdodam.repository.board.event.board.EventBoardRepository;
 import com.app.dodamdodam.repository.board.free.FreeBoardRepository;
 import com.app.dodamdodam.repository.board.purchase.PurchaseBoardRepository;
 import com.app.dodamdodam.repository.board.recruitment.RecruitmentBoardRepository;
