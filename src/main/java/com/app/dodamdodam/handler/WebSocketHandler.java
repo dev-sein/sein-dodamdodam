@@ -24,12 +24,13 @@ public class WebSocketHandler extends TextWebSocketHandler {
 
     @Override
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
+        log.info("메세지 전송 = {} : {}",session,message.getPayload());
         String payload = message.getPayload();
         log.info("{}", payload);
         ChattingDTO chatting = objectMapper.readValue(payload, ChattingDTO.class);
 
 //        RoomDTO roomDTO = chatService.findRoomById(chatting.getId());
-        RoomDTO roomDTO = chatService.findRoomByMemberId(chatting.getSenderMemberId());
+        RoomDTO roomDTO = chatService.findRoomByMemberId(room.id.toString());
 
 
 //    세션 가지고 있음

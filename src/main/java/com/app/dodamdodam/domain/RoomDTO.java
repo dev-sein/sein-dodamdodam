@@ -11,7 +11,7 @@ import java.util.Set;
 
 @Data
 public class RoomDTO {
-    private Long id;
+    private String id;
     private Long hostId;
     private Long havingId;
     private MemberDTO memberDTO;
@@ -19,7 +19,7 @@ public class RoomDTO {
     private Set<WebSocketSession> sessions = new HashSet<>();
 
     @Builder
-    public RoomDTO(Long id, Long hostId, Long havingId, MemberDTO memberDTO, List<ChattingDTO> chattingDTOS, Set<WebSocketSession> sessions) {
+    public RoomDTO(String id, Long hostId, Long havingId, MemberDTO memberDTO, List<ChattingDTO> chattingDTOS, Set<WebSocketSession> sessions) {
         this.id = id;
         this.hostId = hostId;
         this.havingId = havingId;

@@ -10,7 +10,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/chat/*")
+@RequestMapping("/chat")
 @Slf4j
 public class ChatController {
     private final ChatService chatService;
@@ -19,13 +19,19 @@ public class ChatController {
 //    public RoomDTO createRoom(@RequestBody Long roomId) {
 //        return chatService.createRoom(roomId);
 //    }
-    @PostMapping("create")
-    public RoomDTO createRoom(@RequestBody Long hostId, @RequestBody Long havingId) {
+
+    @GetMapping("")
+    public String goChat() { return "chat/chat"; }
+
+    @PostMapping("/create")
+    @ResponseBody
+    public RoomDTO createRoom() {
         log.info("==============들어오니?================");
-        return chatService.createRoom(hostId, havingId);
+        return chatService.createRoom(1L);
     }
 
-    @GetMapping
+    @GetMapping("/room/find")
+    @ResponseBody
     public List<RoomDTO> findAllRoom() {
         return chatService.findAllRoom();
     }
