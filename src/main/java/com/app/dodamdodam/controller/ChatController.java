@@ -4,12 +4,13 @@ import com.app.dodamdodam.domain.RoomDTO;
 import com.app.dodamdodam.service.chatting.ChatService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RequiredArgsConstructor
-@RestController
+@Controller
 @RequestMapping("/chat")
 @Slf4j
 public class ChatController {
@@ -21,7 +22,7 @@ public class ChatController {
 //    }
 
     @GetMapping("")
-    public String goChat() { return "chat/chat"; }
+    public String goChat() { return "components/chat"; }
 
     @PostMapping("/create")
     @ResponseBody

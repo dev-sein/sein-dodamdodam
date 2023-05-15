@@ -1,4 +1,4 @@
-const $createChat = $(".create_chat");
+const $createChat = $(".chat_li");
 const $sendBtn = $(".msg_submit_button");
 const $inputMsg = $(".input_msg");
 
