@@ -18,8 +18,13 @@ public class Reply extends Period {
     private Long id;
     private String replyContent;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "MEMBER_ID")
-    private Member member;
+    public Reply(String replyContent) {
+        this.replyContent = replyContent;
+    }
+
+    public void setReplyContent(String replyContent) {
+        this.replyContent = replyContent;
+    }
+
 
 }
