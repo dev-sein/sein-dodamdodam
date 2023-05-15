@@ -1,5 +1,6 @@
 package com.app.dodamdodam.service.member;
 
+import com.app.dodamdodam.domain.MemberDTO;
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.point.Point;
@@ -48,6 +49,13 @@ public interface MemberService {
     /* 캘린더에 일정 띄우기 */
     
     
-    
-    
+    /* 관리자 멤버 목록 */
+    public Page<MemberDTO> showList(Pageable pageable);
+
+    default MemberDTO toMemberDTO(Member member){
+        return MemberDTO.builder().id(member.getId()).memberId(member.getMemberId()).memberEmail(member.getMemberEmail())
+            .memberName(member.getMemberName()).memberPhone(member.getMemberPhone()).memberPoint(member.getMemberPoint())
+            .memberStatus(member.getMemberStatus()).build();
+
+    }
 }

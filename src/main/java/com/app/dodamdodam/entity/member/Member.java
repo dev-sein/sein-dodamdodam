@@ -91,4 +91,5 @@ public class Member extends Period {
     public Integer getParticipationCount() {
         return participationCount;
     }
+
 }

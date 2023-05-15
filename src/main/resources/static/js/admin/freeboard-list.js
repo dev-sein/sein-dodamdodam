@@ -9,7 +9,7 @@ $(document).ready(function() {
         success: function(result) {
             console.log("success들어옴");
             console.log(result); //사용할 content 값 출력
-            result.content.forEach((e) => showList(e));
+            result.content.forEach((freeBoard) => showList(freeBoard));
             // loadPages();
 
         },
@@ -19,7 +19,7 @@ $(document).ready(function() {
     });
 });
 /*문의 목록*/
-function showList() {
+function showList(freeBoard) {
     const $listResults = $("#free-board-Table tbody");
     var text = "";
     console.log("showlist");
@@ -36,12 +36,12 @@ function showList() {
                     </div>
                     <!-- 체크박스 -->
                 </td>
-                <td class="numbers">${freeboard.id}</td>
-                <td>${freeboard.boardTitle}</td>
-                <td>${freeboard.memberName}</td>
-                <td>${freeboard.categoryType}</td>
-                <td>${freeboard.createdDate}</td>
-                <!-- <td>${point.pointStatus}</td> -->
+                <td class="numbers">${freeBoard.id}</td>
+                <td>${freeBoard.boardTitle}</td>
+                <td>${freeBoard.memberDTO.memberName}</td>
+                <td>${freeBoard.categoryType}</td>
+                <td>${freeBoard.createdDate}</td>
+                <!-- <td>{point.pointStatus}</td> -->
                 <!-- <td>2000.01.01 21:05:04</td>-->
                 <!-- <td><button class="show-detail" onclick="showModal()">상세보기</button></td> -->
             </tr>

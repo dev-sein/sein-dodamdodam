@@ -1,8 +1,11 @@
 package com.app.dodamdodam.service.member;
 
+import com.app.dodamdodam.domain.MemberDTO;
+import com.app.dodamdodam.domain.PurchaseBoardDTO;
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.point.Point;
+import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.repository.board.free.FreeBoardRepository;
 import com.app.dodamdodam.repository.board.purchase.PurchaseBoardRepository;
 import com.app.dodamdodam.repository.board.recruitment.RecruitmentBoardRepository;
@@ -11,11 +14,14 @@ import com.app.dodamdodam.repository.point.PointRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -75,4 +81,15 @@ public class MemberServiceImpl implements MemberService{
     public Long getMyRecruitmentedBoardListCount(Long memberId) {
         return recruitmentBoardRepository.findRecruitmentedBoardListCountByMemberId_QueryDSL(memberId);
     }
+
+    /* 관리자 멤버 목록*/
+    @Override 
+    public Page<MemberDTO> showList(Pageable pageable) {
+        Page<Member> memberPage = memberRepository.findAllMemberList_QueryDSL(PageRequest.of(1,10));
+        List<MemberDTO> memberDTOS = memberPage.get().map(this::toMemberDTO).collect(Collectors.toList());
+
+        return new PageImpl<>(memberDTOS, pageable, memberPage.getTotalElements());
+    }
+
+
 }

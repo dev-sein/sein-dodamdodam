@@ -22,8 +22,12 @@ public interface PurchaseBoardService {
 //    내가 작성한 판매 게시글 목록
     public List<PurchaseBoardFileDTO> getPurchaseBoardListByMemberId(Pageable pageable, Long memberId);
 
+/*
 //    관리자 게시글 검색
-    public Page<PurchaseBoardDTO> findInquiryWithSearch_QueryDSL(AdminInquirySearch inquirySearch, Pageable pageable);
+    public Page<PurchaseBoardDTO> findPurchaseBoardWithSearch_QueryDSL(AdminInquirySearch inquirySearch, Pageable pageable);
+*/
+    //관리자 : 문의사항 목록
+    public Page<PurchaseBoardDTO> showList(Pageable pageable);
 
     default PurchaseBoardDTO toPurchaseBoardDTO(PurchaseBoard purchaseBoard){
         return PurchaseBoardDTO.builder().id(purchaseBoard.getId())

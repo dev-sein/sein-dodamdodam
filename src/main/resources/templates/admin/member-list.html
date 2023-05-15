@@ -5,10 +5,9 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>판매 게시글 목록</title>
+    <title>회원목록</title>
     <link rel="stylesheet" href="/css/admin/admin.css">
     <link rel="stylesheet" href="/css/admin/user.css">
-    <link rel="stylesheet" href="/css/admin/sale-board.css">
 </head>
 <body>
     <!-- 모달 -->
@@ -19,10 +18,59 @@
         <div class="modal-buttons">
             <button id="cancel-btn">취소</button>
             <button id="confirm-btn">확인</button>
-        </div>
+        </div>  
         </div>
     </div>
     <!-- 모달 -->
+    <!-- 모달창 -->
+    <div class="modal-whole">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title">회원 정보</h2>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="member-profile">
+                    <div class="profile-image">
+                        <img src="/images/admin/teacher.png">
+                    </div>
+                    <div class="member-info">
+                        <div class="info-row">
+                            <div class="info-label">회원번호:</div>
+                            <div class="info-value">1</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">이름:</div>
+                            <div class="info-value">한동석</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">아이디:</div>
+                            <div class="info-value">hds1234</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">핸드폰번호:</div>
+                            <div class="info-value">010-1234-5678</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">이메일:</div>
+                            <div class="info-value">hds1234@gmail.com</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">주소:</div>
+                            <div class="info-value">경기도 남양주시</div>
+                        </div>
+                        <!-- <div class="info-row">
+                            <div class="info-label">뱃지:</div>
+                            <div class="info-value">
+                                <span class="badge gold">Gold</span>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 모달창 -->
     <!-- 헤더 -->
     <header>
         <div class="logo-wrapper">
@@ -89,10 +137,10 @@
             <!-- 검색 창 -->
             <div class="inner-wrapper">
                 <div class="title-wrapper">
-                    <div class="page-title">판매 게시글</div>
+                    <div class="page-title">회원 목록</div>
                     <div class="delete-button">삭제하기</div>
                 </div>
-                <table id="purchaseboard-table">
+                <table id="membertable">
                     <thead>
                     <tr>
                         <th>
@@ -106,16 +154,16 @@
                             <!-- 체크박스 -->
                             <!-- <input type="checkbox" id="select-all" class="substituted"> -->
                         </th>
-                        <th class="number">번호</th>
-                        <th class="title">제목</th>
-                        <th class="writer">판매자</th>
-                        <th class="views">판매수량</th>
-                        <th class="like-count">가격</th>
-                        <th class="register-time">작성시간</th>
+                        <th>회원번호</th>
+                        <th>이름</th>
+                        <th>휴대폰 번호</th>
+                        <th>이메일</th>
+                        <th>회원 구분</th>
                         <!-- <th class="detail-top">상세보기</th> -->
                     </tr>
                     </thead>
                     <tbody>
+                    
                     </tbody>
                 </table>
                 <div class="pages-wrapper">
@@ -141,5 +189,4 @@
 <script src="/js/admin/admin.js"></script>
 <script src="/js/admin/user.js"></script>
 <script src="/js/admin/checkbox.js"></script>
-<script src="/js/admin/purchaseboard-list.js"></script>
 </html>

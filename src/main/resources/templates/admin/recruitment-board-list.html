@@ -5,10 +5,10 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>판매 게시글 목록</title>
-    <link rel="stylesheet" href="/css/admin/admin.css">
-    <link rel="stylesheet" href="/css/admin/user.css">
-    <link rel="stylesheet" href="/css/admin/sale-board.css">
+    <title>모집 게시글 목록</title>
+    <link rel="stylesheet" href="../../static/css/admin/admin.css">
+    <link rel="stylesheet" href="../../static/css/admin/user.css">
+    <link rel="stylesheet" href="../../static/css/admin/recruitment-board.css">
 </head>
 <body>
     <!-- 모달 -->
@@ -81,7 +81,7 @@
                     <form action="" class="search__searchbox__form">
                         <input id="searchbox" type="text" placeholder="원하시는 키워드로 검색해보세요" maxlength="40"/>
                         <button type="button" class="search__searchbox__button">
-                            <img src="/images/admin/search.png"/>
+                            <img src="../../static/images/admin/search.png"/>
                         </button>
                     </form>
                 </div>
@@ -89,10 +89,10 @@
             <!-- 검색 창 -->
             <div class="inner-wrapper">
                 <div class="title-wrapper">
-                    <div class="page-title">판매 게시글</div>
+                    <div class="page-title">모집 게시글</div>
                     <div class="delete-button">삭제하기</div>
                 </div>
-                <table id="purchaseboard-table">
+                <table>
                     <thead>
                     <tr>
                         <th>
@@ -108,14 +108,15 @@
                         </th>
                         <th class="number">번호</th>
                         <th class="title">제목</th>
-                        <th class="writer">판매자</th>
-                        <th class="views">판매수량</th>
-                        <th class="like-count">가격</th>
-                        <th class="register-time">작성시간</th>
+                        <th class="writer">작성자</th>
+                        <th class="views">모집장소</th>
+                        <th class="like-count">모집기간</th>
+                        <th class="register-time">진행 상태</th>
                         <!-- <th class="detail-top">상세보기</th> -->
                     </tr>
                     </thead>
                     <tbody>
+                   
                     </tbody>
                 </table>
                 <div class="pages-wrapper">
@@ -138,8 +139,7 @@
     </main>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="/js/admin/admin.js"></script>
-<script src="/js/admin/user.js"></script>
-<script src="/js/admin/checkbox.js"></script>
-<script src="/js/admin/purchaseboard-list.js"></script>
+<script src="../../static/js/admin/admin.js"></script>
+<script src="../../static/js/admin/user.js"></script>
+<script src="../../static/js/admin/checkbox.js"></script>
 </html>
