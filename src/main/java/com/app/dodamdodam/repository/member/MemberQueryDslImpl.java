@@ -1,6 +1,8 @@
 package com.app.dodamdodam.repository.member;
 
 import com.app.dodamdodam.domain.MemberDTO;
+import com.app.dodamdodam.entity.free.FreeBoard;
+import com.app.dodamdodam.entity.inquiry.Inquiry;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.search.member.AdminMemberSearch;
 import com.querydsl.core.types.dsl.BooleanExpression;
@@ -12,6 +14,8 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
+import static com.app.dodamdodam.entity.free.QFreeBoard.freeBoard;
+import static com.app.dodamdodam.entity.inquiry.QInquiry.inquiry;
 import static com.app.dodamdodam.entity.member.QGrade.grade;
 import static com.app.dodamdodam.entity.member.QMember.member;
 
@@ -73,6 +77,22 @@ public class MemberQueryDslImpl implements MemberQueryDsl{
     @Override
     public Page<Member> findAdminMemberAllOrderByIdDesc() {
         return null;
+    }
+
+    @Override //관리자 멤버 목록 조회
+    public Page<Member> findAllMemberList_QueryDSL(Pageable pageable) {
+        List<Member> members = query.select(member)
+                .from(member)
+                .orderBy(member.id.desc())
+                .offset(pageable.getOffset() -1)
+                .limit(pageable.getPageSize())
+                .fetch();
+
+        Long count = query.select(member.count())
+                .from(member)
+                .fetchOne();
+
+        return new PageImpl<>(members, pageable, count);
     }
 
 
