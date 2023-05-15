@@ -1,13 +1,16 @@
 package com.app.dodamdodam.service.member;
 
+import com.app.dodamdodam.entity.banner.BannerApply;
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.point.Point;
+import com.app.dodamdodam.repository.banner.BannerRepository;
 import com.app.dodamdodam.repository.board.free.FreeBoardRepository;
 import com.app.dodamdodam.repository.board.purchase.PurchaseBoardRepository;
 import com.app.dodamdodam.repository.board.recruitment.RecruitmentBoardRepository;
 import com.app.dodamdodam.repository.member.MemberRepository;
 import com.app.dodamdodam.repository.point.PointRepository;
+import com.app.dodamdodam.type.MemberStatus;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -34,6 +37,9 @@ public class MemberServiceImpl implements MemberService{
 
     @Autowired
     private RecruitmentBoardRepository recruitmentBoardRepository;
+
+    @Autowired
+    private BannerRepository bannerRepository;
 
     /* 로그인 된 유저 정보 */
     @Override
@@ -71,8 +77,29 @@ public class MemberServiceImpl implements MemberService{
         return recruitmentBoardRepository.findRecruitmentBoardListCountByMemberId_QueryDSL(memberId);
     }
 
+    /* 내가 참가한 모집게시글 개수 */
     @Override
     public Long getMyRecruitmentedBoardListCount(Long memberId) {
         return recruitmentBoardRepository.findRecruitmentedBoardListCountByMemberId_QueryDSL(memberId);
     }
+
+    /* 회원 비활성화 처리*/
+    @Override
+    public void setMemberStatusById(Long memberId) {
+        memberRepository.findById(memberId).ifPresent(member -> member.setMemberStatus(MemberStatus.WITHDRAWAL));
+    }
+
+    /* 비밀번호 변경 */
+    @Override
+    public void setMemberPasswordById(Long memberId, String password) {
+        memberRepository.findById(memberId).ifPresent(member -> member.setMemberPassword(password));
+    }
+
+    /* 배너 신청 */
+    @Override
+    public void saveBannerApply(Long memberId, BannerApply bannerApply) {
+        memberRepository.findById(memberId).ifPresent(member -> bannerApply.setMember(member));
+        bannerRepository.save(bannerApply);
+    }
+
 }
