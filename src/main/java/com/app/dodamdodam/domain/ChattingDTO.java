@@ -19,7 +19,7 @@ public class ChattingDTO {
         ENTER, TALK
     }
 
-    private Long id;
+    private String id;
     private Long senderMemberId;
     private Long receiverMemberId;
     private String chattingContent;
@@ -28,7 +28,7 @@ public class ChattingDTO {
     private Integer chattingUnreadCount;
 
     @QueryProjection
-    public ChattingDTO(Long id, Long senderMemberId, Long receiverMemberId, String chattingContent, ReadStatus readStatus, MessageType messageType, Integer chattingUnreadCount) {
+    public ChattingDTO(String id, Long senderMemberId, Long receiverMemberId, String chattingContent, ReadStatus readStatus, MessageType messageType, Integer chattingUnreadCount) {
         this.id = id;
         this.senderMemberId = senderMemberId;
         this.receiverMemberId = receiverMemberId;
@@ -36,5 +36,9 @@ public class ChattingDTO {
         this.readStatus = readStatus;
         this.messageType = messageType;
         this.chattingUnreadCount = chattingUnreadCount;
+    }
+
+    public void setChattingContent(String chattingContent) {
+        this.chattingContent = chattingContent;
     }
 }

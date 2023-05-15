@@ -39,10 +39,13 @@ public class Chatting extends Period {
     @JoinColumn(name = "ROOM_ID")
     private Room room;
 
-    public Chatting(Long senderMemberId, Long receiverMemberId, String chattingContent) {
+    public Chatting(Long senderMemberId, Long receiverMemberId, String chattingContent, MessageType messageType, ReadStatus readStatus, Room room) {
         this.senderMemberId = senderMemberId;
         this.receiverMemberId = receiverMemberId;
         this.chattingContent = chattingContent;
+        this.messageType = messageType;
+        this.readStatus = readStatus;
+        this.room = room;
     }
 
     public void setRoom(Room room) {

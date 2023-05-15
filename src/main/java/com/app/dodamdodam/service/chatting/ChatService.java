@@ -28,15 +28,16 @@ public class ChatService {
 
     @PostConstruct
     private void init() {
-        chatRooms = new Lin`kedHashMap<>();
+        chatRooms = new LinkedHashMap<>();
     }
 
     public List<RoomDTO> findAllRoom() {
         return new ArrayList<>(chatRooms.values());
     }
 
-    public RoomDTO findRoomByMemberId(Long memberId) {
-        return chatRooms.get(memberId);
+//    맴버 정보를 이용해 해당 맴버가 소속 된 룸을 모두 찾아서 리스트로 반환
+    public RoomDTO findRoomByMemberId(String roomId) {
+        return chatRooms.get(roomId);
     }
 
 // 현재 시퀀스 가져오기
@@ -54,22 +55,33 @@ public class ChatService {
 //        return chatRoom;
 //    }
 
-    public RoomDTO createRoom(Long hostId, Long havingId) {
-        Room currentSequence = getCurrentSequence();
-        Long roomId = currentSequence != null ? currentSequence.getId() + 1 : 1L;
+//    채팅방 저장 로직
+    public RoomDTO createRoom(Long id) {
+        String roomId = String.valueOf(id);
         RoomDTO chatRoom = RoomDTO.builder()
                 .id(roomId)
-                .hostId(hostId)
-                .havingId(havingId)
                 .build();
-        chatRooms.put(String.valueOf(roomId), chatRoom);//아이디와 room 정보를 Map 에 저장
-
-        log.info("=================================", currentSequence.toString());
-        log.info("=================================", roomId.toString());
-        log.info("=================================", chatRoom.toString());
+        chatRooms.put(roomId, chatRoom);
         return chatRoom;
     }
 
+//    public RoomDTO createRoom(Long hostId, Long havingId) {
+//        Room currentSequence = getCurrentSequence();
+//        Long roomId = currentSequence != null ? currentSequence.getId() + 1 : 1L;
+//        RoomDTO chatRoom = RoomDTO.builder()
+//                .id(roomId)
+//                .hostId(hostId)
+//                .havingId(havingId)
+//                .build();
+//        chatRooms.put(String.valueOf(roomId), chatRoom);//아이디와 room 정보를 Map 에 저장
+//
+//        log.info("=================================", currentSequence.toString());
+//        log.info("=================================", roomId.toString());
+//        log.info("=================================", chatRoom.toString());
+//        return chatRoom;
+//    }
+
+//    채팅내역 저장 로직
     public <T> void sendMessage(WebSocketSession session, T message) {
         try{
             session.sendMessage(new TextMessage(objectMapper.writeValueAsString(message)));
