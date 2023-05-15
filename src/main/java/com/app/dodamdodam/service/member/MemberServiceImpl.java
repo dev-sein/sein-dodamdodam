@@ -10,6 +10,7 @@ import com.app.dodamdodam.entity.banner.BannerApply;
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.point.Point;
+import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
 import com.app.dodamdodam.repository.banner.BannerRepository;
 import com.app.dodamdodam.repository.board.free.FreeBoardRepository;
 import com.app.dodamdodam.repository.board.purchase.PurchaseBoardRepository;
@@ -107,9 +108,17 @@ public class MemberServiceImpl implements MemberService{
         memberRepository.findById(memberId).ifPresent(member -> member.setMemberStatus(MemberStatus.WITHDRAWAL));
     }
 
+    /* 회원 정보 수정 */
+    /* 페이지를 고치던지 2개 따로 만들던지 해야함 */
     @Override
-    public void setMemberInfoById(Long memberId) {
-//        memberRepository.findById(memberId).ifPresent(member -> );
+    public void setMemberInfoById(Long memberId, Member memberInfo) {
+        memberRepository.findById(memberId).ifPresent(member -> {
+            member.setMemberPassword(memberInfo.getMemberPassword());
+            member.setAddress(memberInfo.getAddress());
+            member.setMemberEmail(memberInfo.getMemberEmail());
+            member.setMemberName(memberInfo.getMemberName());
+            member.setMemberPhone(memberInfo.getMemberPhone());
+        });
     }
 
     /* 비밀번호 변경 */
@@ -123,6 +132,12 @@ public class MemberServiceImpl implements MemberService{
     public void saveBannerApply(Long memberId, BannerApply bannerApply) {
         memberRepository.findById(memberId).ifPresent(member -> bannerApply.setMember(member));
         bannerRepository.save(bannerApply);
+    }
+
+    /* 내가 참가한 모집 게시글 전체 */
+    @Override
+    public List<RecruitmentBoard> getMyRecruitementedBoardList(Long memberId) {
+        return recruitmentBoardRepository.findAllRecruitmentedBoardListByMemberId_QueryDSL(memberId);
     }
 
 }

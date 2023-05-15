@@ -68,6 +68,7 @@ public class MyPageController {
         return"myPage/myPage-point";  /*테스트로 아무 페이지에나 보내봄*/
     }
 
+    /* 내가 작성한 자유게시글 목록 */
     @GetMapping("free")
     public String myBoardList(HttpSession session, Model model){
         session.setAttribute("memberId", 5L);
@@ -87,6 +88,7 @@ public class MyPageController {
         return "myPage/myPage-myFreeBoards";
     }
 
+    /* 내가 작성한 자유게시글 목록 무한 스크롤 */
     @ResponseBody
     @GetMapping("free-board/{page}")
     public List<FreeBoardFileDTO> myFreeBoardList(HttpSession session, @PathVariable(value = "page") Integer page){
@@ -102,6 +104,7 @@ public class MyPageController {
         return freeBoards;
     }
 
+    /* 내가 작성한 판매게시글 목록 */
     @GetMapping("purchase")
     public String myPurchaseBoardList(HttpSession session, Model model){
         session.setAttribute("memberId", 5L);
@@ -121,6 +124,7 @@ public class MyPageController {
         return "myPage/myPage-myPurchaseBoards";
     }
 
+    /* 내가 작성한 판매게시글 목록 무한 스크롤 */
     @ResponseBody
     @GetMapping("purchase-board/{page}")
     public List<PurchaseBoardFileDTO> myPurchaseBoardList(HttpSession session, @PathVariable(value = "page") Integer page){
@@ -135,6 +139,7 @@ public class MyPageController {
         return purchaseBoards;
     }
 
+    /* 내가 작성한 모집게시글 목록 */
     @GetMapping("recruitment")
     public String myRecruitmentBoardList(HttpSession session, Model model){
         session.setAttribute("memberId", 5L);
@@ -154,6 +159,7 @@ public class MyPageController {
         return "myPage/myPage-myRecruitmentBoards";
     }
 
+    /* 내가 작성한 모집게시글 목록 무한 스크롤 */
     @ResponseBody
     @GetMapping("recruitment-board/{page}")
     public List<RecruitmentBoardFileDTO> myRecruitmentBoardList(HttpSession session, @PathVariable(value = "page") Integer page){
@@ -165,9 +171,11 @@ public class MyPageController {
 
         List<RecruitmentBoardFileDTO> recruitmentBoards = recruitmentBoardService.getRecruimentBoardListByMemberId(pageable,memberId);
 
+        log.info(recruitmentBoards.toString());
         return recruitmentBoards;
     }
 
+    /* 내가 참가한 모집게시글 목록 */
     @GetMapping("recruitmented")
     public String myRecruitmentedBoardList(HttpSession session, Model model){
         session.setAttribute("memberId", 5L);
@@ -187,6 +195,7 @@ public class MyPageController {
         return "myPage/myPage-myRecruitmentedBoards";
     }
 
+    /* 내가 참가한 모집게시글 목록 무한 스크롤 */
     @ResponseBody
     @GetMapping("recruitmented-board/{page}")
     public List<RecruitmentBoardFileDTO> myRecruitmentedBoardList(HttpSession session, @PathVariable(value = "page") Integer page){

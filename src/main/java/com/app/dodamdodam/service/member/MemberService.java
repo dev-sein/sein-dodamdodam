@@ -5,6 +5,7 @@ import com.app.dodamdodam.entity.banner.BannerApply;
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.point.Point;
+import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -41,7 +42,7 @@ public interface MemberService {
     public void setMemberStatusById(Long memberId);
 
     /* 내 정보 수정 */
-    public void setMemberInfoById(Long memberId);
+    public void setMemberInfoById(Long memberId, Member memberInfo);
 
     /* 비밀번호 변경 */
     public void setMemberPasswordById(Long memberId, String password);
@@ -49,7 +50,8 @@ public interface MemberService {
     /* 배너신청 */
     public void saveBannerApply(Long memberId, BannerApply bannerApply);
 
-    /* 캘린더에 일정 띄우기 */
+    /* 캘린더에 일정 띄우기(내가 참가한 모집게시글 전체) */
+    public List<RecruitmentBoard> getMyRecruitementedBoardList(Long memberId);
     
     
     /* 관리자 멤버 목록 */
