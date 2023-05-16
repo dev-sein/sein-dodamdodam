@@ -2,7 +2,6 @@ package com.app.dodamdodam.service.member;
 
 import com.app.dodamdodam.domain.MemberDTO;
 import com.app.dodamdodam.entity.member.Member;
-import com.app.dodamdodam.provider.OAuthAttributes;
 import com.app.dodamdodam.provider.UserDetail;
 import com.app.dodamdodam.repository.member.MemberRepository;
 import com.app.dodamdodam.type.Role;
@@ -28,7 +27,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class MemberServiceImpl implements MemberService, OAuth2UserService<OAuth2UserRequest, OAuth2User> {
+public class MemberServiceImpl implements MemberService/*, OAuth2UserService<OAuth2UserRequest, OAuth2User>*/ {
 
     private final MemberRepository memberRepository;
 
@@ -64,35 +63,35 @@ public class MemberServiceImpl implements MemberService, OAuth2UserService<OAuth
                 .build();
     }
 
-    @Override
-    public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
-        OAuth2UserService<OAuth2UserRequest, OAuth2User> delegate = new DefaultOAuth2UserService();
-        OAuth2User oAuth2User = delegate.loadUser(userRequest);
+//    @Override
+//    public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
+//        OAuth2UserService<OAuth2UserRequest, OAuth2User> delegate = new DefaultOAuth2UserService();
+//        OAuth2User oAuth2User = delegate.loadUser(userRequest);
+//
+//        String registrationId = userRequest.getClientRegistration().getRegistrationId();
+//        String userNameAttributeName = userRequest.getClientRegistration().getProviderDetails()
+//                .getUserInfoEndpoint().getUserNameAttributeName();
+//        log.info(userRequest.getClientRegistration().getProviderDetails().toString());
+//        // naver, kakao 로그인 구분
+//        OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
+//
+//        Member member = saveOrUpdate(attributes);
+//
+//        httpSession.setAttribute("name", member.getMemberName()); // name
+//        httpSession.setAttribute("email", member.getMemberEmail()); // email
+//        httpSession.setAttribute("mobile", member.getMemberPhone()); // phone
+//
+//        return new DefaultOAuth2User(
+//                Collections.singleton(new SimpleGrantedAuthority(member.getMemberRole().getSecurityRole())),
+//                attributes.getAttributes(),
+//                attributes.getNameAttributeKey());
+//    }
 
-        String registrationId = userRequest.getClientRegistration().getRegistrationId();
-        String userNameAttributeName = userRequest.getClientRegistration().getProviderDetails()
-                .getUserInfoEndpoint().getUserNameAttributeName();
-        log.info(userRequest.getClientRegistration().getProviderDetails().toString());
-        // naver, kakao 로그인 구분
-        OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
-
-        Member member = saveOrUpdate(attributes);
-
-        httpSession.setAttribute("name", member.getMemberName()); // name
-        httpSession.setAttribute("email", member.getMemberEmail()); // email
-        httpSession.setAttribute("mobile", member.getMemberPhone()); // phone
-
-        return new DefaultOAuth2User(
-                Collections.singleton(new SimpleGrantedAuthority(member.getMemberRole().getSecurityRole())),
-                attributes.getAttributes(),
-                attributes.getNameAttributeKey());
-    }
-
-    private Member saveOrUpdate(OAuthAttributes attributes) {
-        Member member = memberRepository.findMemberByMemberEmail_QueryDSL(attributes.getEmail())
-                .map(entity -> entity.update(attributes.getEmail(), attributes.getMobile(), attributes.getName()))
-                .orElse(attributes.toEntity());
-
-        return memberRepository.save(member);
-    }
+//    private Member saveOrUpdate(OAuthAttributes attributes) {
+//        Member member = memberRepository.findMemberByMemberEmail_QueryDSL(attributes.getEmail())
+//                .map(entity -> entity.update(attributes.getEmail(), attributes.getMobile(), attributes.getName()))
+//                .orElse(attributes.toEntity());
+//
+//        return memberRepository.save(member);
+//    }
 }

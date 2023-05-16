@@ -43,8 +43,8 @@ public class SecurityConfig {
     private final AuthenticationFailureHandler authenticationFailureHandler;
     private final UserDetailsService userDetailsService;
 
-//    private final DefaultOAuth2UserService userService;x
-    private final MemberServiceImpl memberService;
+//    private final DefaultOAuth2UserService userService;
+//    private final MemberServiceImpl memberService;
 
 //    비밀번호 암호화
     @Bean
@@ -93,15 +93,15 @@ public class SecurityConfig {
                 .userDetailsService(userDetailsService)
                 .authenticationSuccessHandler(authenticationSuccessHandler);
 
-        http.csrf().disable()
-                .authorizeRequests()
-                .antMatchers("/", "/css/**", "/images/**", "/js/**", "/profile").permitAll()
-                .antMatchers("/api/**").hasRole(Role.MEMBER.name())
-                .anyRequest().authenticated().and()
-                .logout().logoutSuccessUrl("/").and()
-                .oauth2Login()
-                .userInfoEndpoint()
-                .userService(memberService);
+//        http.csrf().disable()
+//                .authorizeRequests()
+//                .antMatchers("/", "/css/**", "/images/**", "/js/**", "/profile").permitAll()
+//                .antMatchers("/api/**").hasRole(Role.MEMBER.name())
+//                .anyRequest().authenticated().and()
+//                .logout().logoutSuccessUrl("/").and()
+//                .oauth2Login()
+//                .userInfoEndpoint()
+//                .userService(memberService);
 
         return http.build();
     }
