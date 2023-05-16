@@ -25,6 +25,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -32,6 +33,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class MemberServiceImpl implements MemberService{
     @Autowired
     private MemberRepository memberRepository;
@@ -109,15 +111,13 @@ public class MemberServiceImpl implements MemberService{
     }
 
     /* 회원 정보 수정 */
-    /* 페이지를 고치던지 2개 따로 만들던지 해야함 */
     @Override
     public void setMemberInfoById(Long memberId, Member memberInfo) {
         memberRepository.findById(memberId).ifPresent(member -> {
-            member.setMemberPassword(memberInfo.getMemberPassword());
-            member.setAddress(memberInfo.getAddress());
-            member.setMemberEmail(memberInfo.getMemberEmail());
             member.setMemberName(memberInfo.getMemberName());
+            member.setMemberEmail(memberInfo.getMemberEmail());
             member.setMemberPhone(memberInfo.getMemberPhone());
+            member.setAddress(memberInfo.getAddress());
         });
     }
 
