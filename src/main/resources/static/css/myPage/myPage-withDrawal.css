@@ -85,7 +85,7 @@ input, optgroup, select, textarea {
 .account-drop p {
     line-height: 28px;
     letter-spacing: -.4px;
-	color: #868e96;
+    color: #868e96;
     font-size: 17px;
 }
 
@@ -349,21 +349,21 @@ label.wz.checkbox>span:after {
     text-transform: none;
     line-height: 1;
     font-family: wadizicon!important;
-    font-weight: 400;
+    font-weight: 500;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-style: normal;
     font-variant: normal;
     speak: none;
-    content: "";
+    content: "✔";
     position: absolute;
     top: 6px;
-    left: 2px;
+    left: 3.5px;
     width: 16px;
     height: 16px;
     color: #fff;
     font-size: 14px;
-    font-weight: 700;
+    /* font-weight: 700; */
 }
 
 
@@ -553,35 +553,35 @@ label.wz.checkbox>span:after {
 } */
 
 #btnDropOut{
-	cursor: pointer;
+    cursor: pointer;
 }
 
 /* =========================================media============================================== */
 @media screen and (min-width: 732px){
-.account-drop .wrap {
-    margin: 0 auto;
-    padding-right: 0;
-    padding-left: 0;
-    width: 700px;
-}
+    .account-drop .wrap {
+        margin: 0 auto;
+        padding-right: 0;
+        padding-left: 0;
+        width: 700px;
+    }
 
-.account-drop h1 {
-    line-height: 44px;
-    font-size: 36px;
-}
+    .account-drop h1 {
+        line-height: 44px;
+        font-size: 36px;
+    }
 
-.account-drop p {
-    margin-right: -16px;
-}
+    .account-drop p {
+        margin-right: -16px;
+    }
 
-.account-drop h2 {
-    margin-top: 80px;
-    line-height: 36px;
-    font-size: 28px;
-}
+    .account-drop h2 {
+        margin-top: 80px;
+        line-height: 36px;
+        font-size: 28px;
+    }
 
-.account-drop .verify-box {
-    width: 350px;
-}
+    .account-drop .verify-box {
+        width: 350px;
+    }
 
 }

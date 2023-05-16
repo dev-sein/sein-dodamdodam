@@ -67,8 +67,8 @@ public class BoardRepositoryTests {
 //            memberRepository.findById(2L).ifPresent(member -> recruitmentBoard.setMember(member));
 //            recruitmentBoardRepository.save(recruitmentBoard);
 //        }
-        RecruitmentBoard recruitmentBoard = new RecruitmentBoard("모집 게시글 제목", LocalDate.now(),10, "www.naver.com", "1234", "서울특별시", "강남구");
-        memberRepository.findById(5L).ifPresent(member -> recruitmentBoard.setMember(member));
+        RecruitmentBoard recruitmentBoard = new RecruitmentBoard("모집 게시글 제목", LocalDate.now(),10, "https://open.kakao.com/o/ggmF0Jkf", "1234", "경기도 성남시 분당구 수내동", "탄천앞");
+        memberRepository.findById(10L).ifPresent(member -> recruitmentBoard.setMember(member));
 //        recruitmentBoard.addRecruitment();
         recruitmentBoardRepository.save(recruitmentBoard);
     }
@@ -124,7 +124,7 @@ public class BoardRepositoryTests {
         memberRepository.findById(5L).ifPresent(member ->
         {
             Recruitment recruitment = new Recruitment(member);
-            recruitmentBoardRepository.findById(403L).ifPresent(recruitmentBoard -> recruitment.setRecruitmentBoard(recruitmentBoard));
+            recruitmentBoardRepository.findById(616L).ifPresent(recruitmentBoard -> recruitment.setRecruitmentBoard(recruitmentBoard));
             recruitmentRepository.save(recruitment);
         });
     }
