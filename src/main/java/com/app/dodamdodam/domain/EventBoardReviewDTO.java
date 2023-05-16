@@ -20,6 +20,13 @@ public class EventBoardReviewDTO {
     private String gradeTitle;
 
 
+    @QueryProjection
+    public EventBoardReviewDTO(Long id, String memberName, String replyContent, String gradeTitle) {
+        this.id = id;
+        this.memberName = memberName;
+        this.replyContent = replyContent;
+        this.gradeTitle = gradeTitle;
+    }
 
     public EventReview toEntity(){
         return EventReview.builder()

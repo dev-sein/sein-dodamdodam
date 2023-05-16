@@ -18,25 +18,8 @@ public class Reply extends Period {
     private Long id;
     private String replyContent;
 
-    public Reply(String replyContent) {
-        this.replyContent = replyContent;
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MEMBER_ID")
+    private Member member;
 
-    public void setReplyContent(String replyContent) {
-        this.replyContent = replyContent;
-    }
-
-
-<<<<<<< HEAD
-=======
-    public Reply(String replyContent) {
-        this.replyContent = replyContent;
-    }
-
-    public void setReplyContent(String replyContent) {
-        this.replyContent = replyContent;
-    }
-
-
->>>>>>> parent of da909cb (오류 수정중)
 }

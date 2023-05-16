@@ -22,9 +22,9 @@ import java.util.List;
 @NoArgsConstructor
         (access = AccessLevel.PROTECTED)
 public class EventBoard extends Board{
-    @Id @GeneratedValue
-    @EqualsAndHashCode.Include
-    private Long eventBoardid; //pk
+//    @Id @GeneratedValue
+//    @EqualsAndHashCode.Include
+//    private Long eventBoardId; //pk
     @NotNull private String eventAddress;
     @NotNull private String eventAddressDetail;
     @NotNull private LocalDate eventStartDate;
@@ -79,9 +79,8 @@ public class EventBoard extends Board{
     }
 
     @Builder
-    public EventBoard(String boardTitle, String boardContent, Long eventBoardid, String eventAddress, String eventAddressDetail, LocalDate eventStartDate, LocalDate eventEndDate, Integer eventLikeNumber, EventType eventStatus, String eventBusinessNumber, String eventBusinessName, String eventBusinessTel, String eventBusinessEmail, String eventFilePath, String eventFileName, String eventFileUuid, String eventFileSize, List<EventFile> eventFiles, List<EventReview> eventreviews, Member member, List<EventLike> eventLikes) {
+    public EventBoard(String boardTitle, String boardContent, String eventAddress, String eventAddressDetail, LocalDate eventStartDate, LocalDate eventEndDate, Integer eventLikeNumber, EventType eventStatus, String eventBusinessNumber, String eventBusinessName, String eventBusinessTel, String eventBusinessEmail, String eventFilePath, String eventFileName, String eventFileUuid, String eventFileSize, List<EventFile> eventFiles, List<EventReview> eventreviews, Member member, List<EventLike> eventLikes) {
         super(boardTitle, boardContent);
-        this.eventBoardid = eventBoardid;
         this.eventAddress = eventAddress;
         this.eventAddressDetail = eventAddressDetail;
         this.eventStartDate = eventStartDate;
