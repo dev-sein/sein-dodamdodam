@@ -27,4 +27,16 @@ public class Reply extends Period {
     }
 
 
+<<<<<<< HEAD
+=======
+    public Reply(String replyContent) {
+        this.replyContent = replyContent;
+    }
+
+    public void setReplyContent(String replyContent) {
+        this.replyContent = replyContent;
+    }
+
+
+>>>>>>> parent of da909cb (오류 수정중)
 }
