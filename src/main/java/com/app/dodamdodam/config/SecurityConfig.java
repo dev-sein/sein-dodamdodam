@@ -37,8 +37,8 @@ public class SecurityConfig {
     private static final String IGNORE_FAVICON = "/favicon.ico";
 
     private static final String JOIN_OAUTH = "/member/join-OAuth";
-    private static final String PASSWORD = "/member/password";
-    private static final String CHANGE_PASSWORD = "/member/change-password";
+    private static final String PASSWORD = "/member/find-password";
+    private static final String CHANGE_PASSWORD = "/member/password-change";
     private static final String ACCOUNT_CONFIRM = "/member/account-confirm";
     private static final String PHONE_CERTIFICATION = "/member/phone-certification";
 
@@ -67,33 +67,19 @@ public class SecurityConfig {
 //        즉, 권한이 없어도 사용이 가능한 경로
         return web -> web.ignoring()
                 .mvcMatchers(IGNORE_FAVICON) //favicon은 필터에서 제외
-                .antMatchers(IGNORE_MAIN_PATH)
 
-                /* 로그인 확인사항*/
-                .antMatchers(JOIN_OAUTH)
-                .antMatchers(PASSWORD)
-                .antMatchers(CHANGE_PASSWORD)
-                .antMatchers(ACCOUNT_CONFIRM)
-                .antMatchers(PHONE_CERTIFICATION)
+//                /* 로그인 확인사항*/
+//                .antMatchers(JOIN_OAUTH)
+//                .antMatchers(PASSWORD)
+//                .antMatchers(CHANGE_PASSWORD)
+//                .antMatchers(ACCOUNT_CONFIRM)
+//                .antMatchers(PHONE_CERTIFICATION)
 
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()); //static 경로도 필터에서 제외
     }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
-                .authorizeRequests()
-                .antMatchers(ADMIN_PATH).hasRole(Role.ADMIN.name())
-                .antMatchers(MYPAGE_PATH).hasRole(Role.MEMBER.name())
-                .and()
-                .csrf().disable()
-                .exceptionHandling()
-                /* 인가, 인증 Exception Handler */
-                .accessDeniedHandler(accessDeniedHandler) //인가 실패
-                .authenticationEntryPoint(authenticationEntryPoint); //인증 실패
-
-        log.info(userDetailsService.toString());
-
         http
                 .formLogin()
                 .loginPage(LOGIN_PAGE)
@@ -112,7 +98,48 @@ public class SecurityConfig {
                 .key(REMEMBER_ME_TOKEN_KEY)
                 .tokenValiditySeconds(REMEMBER_ME_TOKEN_EXPIRED)
                 .userDetailsService(userDetailsService)
-                .authenticationSuccessHandler(authenticationSuccessHandler);
+                .authenticationSuccessHandler(authenticationSuccessHandler)
+                .and()
+                .authorizeRequests()
+                .antMatchers(ADMIN_PATH).hasRole(Role.ADMIN.name())
+                .antMatchers(MYPAGE_PATH).hasRole(Role.MEMBER.name())
+                .and()
+                .csrf().disable()
+                .exceptionHandling()
+                /* 인가, 인증 Exception Handler */
+                .accessDeniedHandler(accessDeniedHandler) //인가 실패
+                .authenticationEntryPoint(authenticationEntryPoint); //인증 실패
+
+//                .authorizeRequests()
+//                .antMatchers(ADMIN_PATH).hasRole(Role.ADMIN.name())
+//                .antMatchers(MYPAGE_PATH).hasRole(Role.MEMBER.name())
+//                .and()
+//                .csrf().disable()
+//                .exceptionHandling()
+//                /* 인가, 인증 Exception Handler */
+//                .accessDeniedHandler(accessDeniedHandler) //인가 실패
+//                .authenticationEntryPoint(authenticationEntryPoint) //인증 실패
+//                .and()
+//                .formLogin()
+//                .loginPage(LOGIN_PAGE)
+//                .usernameParameter("memberId")
+//                .passwordParameter("memberPassword")
+//                .loginProcessingUrl(LOGIN_PROCESSING_URL)
+//                .successHandler(authenticationSuccessHandler) // 성공
+//                .failureHandler(authenticationFailureHandler) // 실패
+//                .and()
+//                .logout().logoutRequestMatcher(new AntPathRequestMatcher(LOGOUT_URL))
+//                .logoutSuccessUrl(LOGOUT_SUCCESS_URL)
+//                .invalidateHttpSession(Boolean.TRUE)
+//                .and()
+//                .rememberMe()
+//                .rememberMeParameter("remember-me")
+//                .key(REMEMBER_ME_TOKEN_KEY)
+//                .tokenValiditySeconds(REMEMBER_ME_TOKEN_EXPIRED)
+//                .userDetailsService(userDetailsService)
+//                .authenticationSuccessHandler(authenticationSuccessHandler);
+
+        log.info(userDetailsService.toString());
 
 //        http.csrf().disable()
 //                .authorizeRequests()

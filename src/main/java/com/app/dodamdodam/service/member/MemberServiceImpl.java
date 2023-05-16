@@ -147,11 +147,25 @@ public class MemberServiceImpl implements MemberService/*, OAuth2UserService<OAu
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        log.info("loadUserByUsername 진입");
+        log.info(username);
         Member member = memberRepository.findMemberByMemberId_QueryDSL(username).orElseThrow(() -> new UsernameNotFoundException(username + " not found"));
-        return UserDetail.builder()
+
+        log.info("====================");
+        log.info(member.getMemberId());
+        log.info(member.getMemberEmail());
+        log.info(member.getMemberName());
+        log.info(member.getMemberPassword());
+        log.info(member.getMemberPhone());
+        log.info(member.getMemberRole().toString());
+        log.info(member.getMemberStatus().toString());
+        log.info(member.getMemberType().toString());
+        log.info("====================");
+
+        return UserDetail.builder().id(member.getId())
                 .memberId(member.getMemberId())
-                .memberEmail(member.getMemberEmail())
                 .memberPassword(member.getMemberPassword())
+                .memberEmail(member.getMemberEmail())
                 .memberPhone(member.getMemberPhone())
                 .memberName(member.getMemberName())
                 .memberRole(member.getMemberRole())

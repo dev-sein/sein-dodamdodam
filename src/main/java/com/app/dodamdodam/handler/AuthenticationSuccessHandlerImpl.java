@@ -19,10 +19,11 @@ public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHa
     private static final String REDIRECT_URL_FOR_ADMIN = "/admin/member/list";
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-        if(((UserDetail)authentication.getPrincipal()).getMemberType().equals(Role.ADMIN)){
+        log.info("SuccessHandler 진입");
+        if(((UserDetail)authentication.getPrincipal()).getMemberRole().equals(Role.ADMIN)){
             log.info("ADMIN_SUCCESS");
             response.sendRedirect(REDIRECT_URL_FOR_ADMIN);
-        }else {
+        }else if(((UserDetail)authentication.getPrincipal()).getMemberRole().equals(Role.MEMBER)){
             log.info("MEMBER_SUCCESS");
             log.info(authentication.getPrincipal().toString());
             response.sendRedirect(REDIRECT_URL_FOR_MEMBER);

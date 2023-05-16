@@ -19,6 +19,7 @@ public class AuthenticationFailureHandlerImpl implements AuthenticationFailureHa
     private static final String REDIRECT_URL = "/member/login?check=false"; // 실패하면 다시 로그인 페이지로
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
+        log.info("FailureHandler 진입");
         log.error("exception message: {}", exception.getMessage());
         response.sendRedirect(REDIRECT_URL);
     }
