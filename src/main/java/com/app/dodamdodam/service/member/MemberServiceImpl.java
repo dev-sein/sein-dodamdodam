@@ -60,6 +60,16 @@ public class MemberServiceImpl implements MemberService/*, OAuth2UserService<OAu
         memberDTO.setMemberStatus(MemberStatus.NORMAL);
         memberRepository.save(toMemberEntity(memberDTO));
     }
+
+    /* 아이디 중복 검사 */
+    @Override
+    public String checkMemberId(String memberId) {
+        String result = null;
+//        memberRepository.findMemberByMemberId_QueryDSL(memberId).ifPresent(result = "available");
+
+        return null;
+    }
+
     /* 내 포인트 내역 */
     @Override
     public List<Point> getMyPointList(Long memberId) {
@@ -144,33 +154,14 @@ public class MemberServiceImpl implements MemberService/*, OAuth2UserService<OAu
     }
 
 
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        log.info("loadUserByUsername 진입");
-        log.info(username);
         Member member = memberRepository.findMemberByMemberId_QueryDSL(username).orElseThrow(() -> new UsernameNotFoundException(username + " not found"));
-
-        log.info("====================");
-        log.info(member.getMemberId());
-        log.info(member.getMemberEmail());
-        log.info(member.getMemberName());
-        log.info(member.getMemberPassword());
-        log.info(member.getMemberPhone());
-        log.info(member.getMemberRole().toString());
-        log.info(member.getMemberStatus().toString());
-        log.info(member.getMemberType().toString());
-        log.info("====================");
-
-        return UserDetail.builder().id(member.getId())
+        return UserDetail.builder()
+                .id(member.getId())
                 .memberId(member.getMemberId())
                 .memberPassword(member.getMemberPassword())
-                .memberEmail(member.getMemberEmail())
-                .memberPhone(member.getMemberPhone())
-                .memberName(member.getMemberName())
                 .memberRole(member.getMemberRole())
-                .memberStatus(member.getMemberStatus())
-                .memberType(member.getMemberType())
                 .build();
     }
 

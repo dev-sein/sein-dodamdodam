@@ -21,6 +21,7 @@ public class AuthenticationFailureHandlerImpl implements AuthenticationFailureHa
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
         log.info("FailureHandler 진입");
         log.error("exception message: {}", exception.getMessage());
+        exception.printStackTrace();
         response.sendRedirect(REDIRECT_URL);
     }
 }

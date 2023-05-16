@@ -29,6 +29,9 @@ public interface MemberService extends UserDetailsService {
     //    회원가입
     public void join(MemberDTO memberDTO, PasswordEncoder passwordEncoder);
 
+    /* 아이디 중복검사 */
+    public String checkMemberId(String memberId);
+
 
     /* 내가 작성한 자유 게시글 목록 */
     public Page<FreeBoard> getMyFreeBoardList(Pageable pageable, Long memberId);
