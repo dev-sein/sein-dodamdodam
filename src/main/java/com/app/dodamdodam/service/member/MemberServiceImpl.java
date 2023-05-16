@@ -6,7 +6,6 @@ import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.point.Point;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
-import com.app.dodamdodam.provider.UserDetail;
 import com.app.dodamdodam.repository.banner.BannerRepository;
 import com.app.dodamdodam.repository.board.free.FreeBoardRepository;
 import com.app.dodamdodam.repository.board.purchase.PurchaseBoardRepository;
@@ -22,8 +21,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -154,16 +151,16 @@ public class MemberServiceImpl implements MemberService/*, OAuth2UserService<OAu
     }
 
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Member member = memberRepository.findMemberByMemberId_QueryDSL(username).orElseThrow(() -> new UsernameNotFoundException(username + " not found"));
-        return UserDetail.builder()
-                .id(member.getId())
-                .memberId(member.getMemberId())
-                .memberPassword(member.getMemberPassword())
-                .memberRole(member.getMemberRole())
-                .build();
-    }
+//    @Override
+//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//        Member member = memberRepository.findMemberByMemberId_QueryDSL(username).orElseThrow(() -> new UsernameNotFoundException(username + " not found"));
+//        return UserDetail.builder()
+//                .id(member.getId())
+//                .memberId(member.getMemberId())
+//                .memberPassword(member.getMemberPassword())
+//                .memberRole(member.getMemberRole())
+//                .build();
+//    }
 
 //    @Override
 //    public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {

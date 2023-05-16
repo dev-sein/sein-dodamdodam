@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public interface MemberService extends UserDetailsService {
+public interface MemberService /*extends UserDetailsService*/ {
     /* 로그인 된 유저 정보 가져오기 */
     public Optional<Member> getMemberInfo(Long memberId);
 
