@@ -1,8 +1,6 @@
 package com.app.dodamdodam.repository.board.event.like;
 
 import com.app.dodamdodam.entity.event.EventLike;
-import com.app.dodamdodam.entity.event.QEventLike;
-import com.app.dodamdodam.entity.member.Member;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -18,11 +16,10 @@ public class EventLikeQueryDslImpl implements EventLikeQueryDsl {
     private final JPAQueryFactory query;
 
     @Override
-    public Member findMemberByBoardLike(Long eventBoardId, Long memberId){
-        return query.select(eventLike.member)
+    public Long findMemberByBoardLike(Long eventBoardId, Long memberId){
+        return query.select(eventLike.memberId)
                 .from(eventLike)
                 .where(eventLike.eventBoard.id.eq(eventBoardId))
-                .where(eventLike.member.id.eq(memberId))
                 .fetchOne();
     }
 
@@ -37,7 +34,7 @@ public class EventLikeQueryDslImpl implements EventLikeQueryDsl {
     @Override
     public void deleteByMemberIdAndEventBoardId(Long eventBoardId, Long memberId){
         query.delete(eventLike)
-                .where(eventLike.member.id.eq(memberId))
+                .where(eventLike.memberId.eq(memberId))
                 .where(eventLike.eventBoard.id.eq(eventBoardId))
                 .execute();
     }
@@ -46,14 +43,14 @@ public class EventLikeQueryDslImpl implements EventLikeQueryDsl {
     public Page<EventLike> findByLikeMemberIdWithPaging_QueryDsl(Pageable pageable, Long memberId){
         List<EventLike> foundEventBoards = query.select(eventLike)
                 .from(eventLike)
-                .where(eventLike.member.id.eq(memberId))
+                .where(eventLike.memberId.eq(memberId))
                 .orderBy(eventLike.eventBoard.createdDate.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
         Long count = query.select(eventLike.count())
                 .from(eventLike)
-                .where(eventLike.member.id.eq(memberId))
+                .where(eventLike.memberId.eq(memberId))
                 .fetchOne();
 
         return new PageImpl<>(foundEventBoards, pageable, count);
