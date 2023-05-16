@@ -1,19 +1,24 @@
 package com.app.dodamdodam.repository.board.event.like;
 
+import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.event.EventLike;
 import com.app.dodamdodam.entity.event.QEventLike;
 import com.app.dodamdodam.entity.member.Member;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 import static com.app.dodamdodam.entity.event.QEventLike.eventLike;
 
+@Repository
 @RequiredArgsConstructor
+@Slf4j
 public class EventLikeQueryDslImpl implements EventLikeQueryDsl {
     private final JPAQueryFactory query;
 
@@ -58,5 +63,30 @@ public class EventLikeQueryDslImpl implements EventLikeQueryDsl {
 
         return new PageImpl<>(foundEventBoards, pageable, count);
     }
+
+
+
+    @Override
+    public boolean findByEventBoardAndMember(Long memberId, Long boardId) {
+//        return query.select(eventLike)
+//                .where(eventLike.eventBoard.eq(boardId).and(eventLike.memberId)
+        return false;
+    }
+
+    @Override
+    public void deleteByEventBoardAndMember(Long memberId, Long boardId) {
+
+    }
+
+    @Override
+    public void deleteByEventBoard(EventBoard eventBoard) {
+
+    }
+
+    @Override
+    public List<EventLike> findByEventBoard(EventBoard eventBoard) {
+        return null;
+    }
+
 
 }

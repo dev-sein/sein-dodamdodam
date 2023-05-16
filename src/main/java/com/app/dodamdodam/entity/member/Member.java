@@ -2,7 +2,6 @@ package com.app.dodamdodam.entity.member;
 
 import com.app.dodamdodam.audit.Period;
 import com.app.dodamdodam.entity.embeddable.Address;
-import com.app.dodamdodam.entity.free.FreeLike;
 import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.recruitment.Recruitment;
 import com.app.dodamdodam.type.MemberStatus;
