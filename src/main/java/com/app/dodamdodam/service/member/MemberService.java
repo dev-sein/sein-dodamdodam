@@ -44,6 +44,8 @@ public interface MemberService extends UserDetailsService {
                 .memberPassword(memberDTO.getMemberPassword())
                 .memberPhone(memberDTO.getMemberPhone())
                 .memberStatus(memberDTO.getMemberStatus())
+                .memberRole(memberDTO.getMemberRole())
+                .memberType(memberDTO.getMemberType())
                 .address(memberDTO.getAddress())
                 .build();
     }

@@ -29,7 +29,11 @@ public class SecurityConfig {
     private static final String MAIN_PATH = "/main/**";
     private static final String ADMIN_PATH = "/admin/**";
     private static final String BOARD_PATH = "/board/**";
+
+    /* 파비콘 */
     private static final String IGNORE_FAVICON = "/favicon.ico";
+
+    /* 로그인 */
     private static final String LOGIN_PAGE = "/member/login";
     private static final String LOGIN_PROCESSING_URL = "/member/login";
     private static final String LOGOUT_URL = "/member/logout";
@@ -55,6 +59,7 @@ public class SecurityConfig {
 //        WebSecurity에서 관여하지 않을 경로
         return web -> web.ignoring()
                 .mvcMatchers(IGNORE_FAVICON) //favicon은 필터에서 제외
+                .antMatchers(MAIN_PATH)
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()); //static 경로도 필터에서 제외
     }
 
@@ -62,7 +67,6 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers(MAIN_PATH).authenticated()
                 .antMatchers(ADMIN_PATH).hasRole(Role.ADMIN.name())
                 .antMatchers(BOARD_PATH).hasRole(Role.MEMBER.name())
                 .and()

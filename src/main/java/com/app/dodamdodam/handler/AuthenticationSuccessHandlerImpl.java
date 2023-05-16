@@ -13,9 +13,10 @@ import java.io.IOException;
 @Component
 @Slf4j
 public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHandler {
-    private static final String REDIRECT_URL = "/main"; // 로그인하면 메인 컨트롤러로
+    private static final String REDIRECT_URL = "/main/main"; // 로그인하면 메인 컨트롤러로
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+        log.info(authentication.getPrincipal().toString());
         response.sendRedirect(REDIRECT_URL);
     }
 }

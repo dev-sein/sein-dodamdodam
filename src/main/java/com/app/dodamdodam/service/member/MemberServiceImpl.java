@@ -4,6 +4,8 @@ import com.app.dodamdodam.domain.MemberDTO;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.provider.UserDetail;
 import com.app.dodamdodam.repository.member.MemberRepository;
+import com.app.dodamdodam.type.MemberStatus;
+import com.app.dodamdodam.type.MemberType;
 import com.app.dodamdodam.type.Role;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -43,6 +45,8 @@ public class MemberServiceImpl implements MemberService/*, OAuth2UserService<OAu
     public void join(MemberDTO memberDTO, PasswordEncoder passwordEncoder) {
         memberDTO.setMemberPassword(passwordEncoder.encode(memberDTO.getMemberPassword()));
         memberDTO.setMemberRole(Role.MEMBER);
+        memberDTO.setMemberType(MemberType.GENERAL);
+        memberDTO.setMemberStatus(MemberStatus.NORMAL);
         memberRepository.save(toMemberEntity(memberDTO));
 
     }

@@ -58,4 +58,5 @@ public class MyPageController {
         return"myPage/myPage-Main";  /*테스트로 아무 페이지에나 보내봄*/
     }
 
+
 }
