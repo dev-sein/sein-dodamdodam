@@ -2,13 +2,19 @@ package com.app.dodamdodam.entity.file;
 
 import com.sun.istack.NotNull;
 import lombok.*;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 
 @Entity
-@Getter @ToString(callSuper = true)
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
+@ToString
 @Inheritance(strategy = InheritanceType.JOINED)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
+@DynamicInsert
+@DynamicUpdate
 public class BoardFile {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
