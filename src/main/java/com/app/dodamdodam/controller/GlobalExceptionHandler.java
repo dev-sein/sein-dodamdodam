@@ -1,5 +1,7 @@
 package com.app.dodamdodam.controller;
 
+import com.app.dodamdodam.exception.CustomAuthenticationException;
+import com.app.dodamdodam.exception.LoginFailedException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
