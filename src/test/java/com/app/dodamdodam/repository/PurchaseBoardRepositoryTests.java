@@ -32,7 +32,8 @@ import java.util.UUID;
 @Transactional
 @Rollback(false)
 @Slf4j
-public class PurchaseBoardRepositoryTests {
+public class
+PurchaseBoardRepositoryTests {
     @Autowired
     private PurchaseBoardRepository purchaseBoardRepository;
     @Autowired
@@ -64,7 +65,6 @@ public class PurchaseBoardRepositoryTests {
         memberRepository.save(member);
 
         for (int i = 0; i < 10; i++) {
-
 
 
             PurchaseBoard purchaseBoard = new PurchaseBoard("테스트제목" + i, "테스트내용" + i);

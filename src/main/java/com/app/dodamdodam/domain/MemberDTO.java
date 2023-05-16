@@ -36,7 +36,6 @@ public class MemberDTO {
     private MemberStatus memberStatus;
     private Integer memberPoint;
     private Integer participationCount;
-    private Integer recruitmentedCount;
     private LocalDateTime createdDate;
 
 
@@ -44,7 +43,7 @@ public class MemberDTO {
     private Role memberRole;
 
     @Builder
-    public MemberDTO(Long id, String memberId, String memberPassword, String memberName, String memberEmail, String memberPhone, Address address, MemberStatus memberStatus, Integer memberPoint, Integer participationCount, Integer recruitmentedCount, LocalDateTime createdDate, MemberType memberType, Role memberRole) {
+    public MemberDTO(Long id, String memberId, String memberPassword, String memberName, String memberEmail, String memberPhone, Address address, MemberStatus memberStatus, Integer memberPoint, Integer participationCount, LocalDateTime createdDate, MemberType memberType, Role memberRole) {
         this.id = id;
         this.memberId = memberId;
         this.memberPassword = memberPassword;
@@ -55,7 +54,6 @@ public class MemberDTO {
         this.memberStatus = memberStatus;
         this.memberPoint = memberPoint;
         this.participationCount = participationCount;
-        this.recruitmentedCount = recruitmentedCount;
         this.createdDate = createdDate;
         this.memberType = memberType;
         this.memberRole = memberRole;

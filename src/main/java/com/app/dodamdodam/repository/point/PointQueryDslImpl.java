@@ -1,5 +1,6 @@
 package com.app.dodamdodam.repository.point;
 
+import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.member.QGrade;
 import com.app.dodamdodam.entity.member.QMember;
 import com.app.dodamdodam.entity.point.Point;
@@ -25,51 +26,41 @@ public class PointQueryDslImpl implements PointQueryDsl {
     private JPAQueryFactory query;
 
     @Override
-    public List<Point> findPointByMemberId(Long memberId) {
+    public List<Point> findPointByMemberId_QueryDSL(Long memberId) {
         return query.select(point).from(point).where(point.member.id.eq(memberId)).orderBy(point.id.desc()).fetch();
     }
 
-    @Override
-    public Page<Point> findPointWithSearch(AdminPointSearch pointSearch, Pageable pageable) {
-        BooleanExpression pointAmountEq = pointSearch.getPointAmount() == null ? null : point.pointAmount.eq(pointSearch.getPointAmount());
-        BooleanExpression pointStatusEq = pointSearch.getPointStatus() == null ? null : point.pointStatus.eq(pointSearch.getPointStatus());
-
-
-        List<Point> points = query.select(point)
+    @Override //관리자 목록 조회
+    public Page<Point> findAllWithPaging(Pageable pageable) {
+        List<Point> pointList = query.select(point)
                 .from(point)
-                .where(pointAmountEq, pointStatusEq)
                 .orderBy(point.id.desc())
-                .offset(pageable.getOffset())
+                .offset(pageable.getOffset()-1)
                 .limit(pageable.getPageSize())
                 .fetch();
 
-        log.info(pageable.getOffset()+"");
-        log.info(pageable.getPageSize()+"");
-        log.info(points.toString());
-        Long count = query.select(point.count()).from(point).fetchOne();
-
-        return new PageImpl<>(points, pageable, count);
+        Long count = query.select(point.count())
+                .from(point)
+                .fetchOne();
+        return new PageImpl<>(pointList,pageable, count);
     }
 
-
-    @Override
-    public Page<Point> findPointMemberIdWithSearch(AdminPointSearch pointSearch, Pageable pageable) {
-        BooleanExpression memberIdEq = pointSearch.getMemberId() == null ? null : member.memberId.eq(pointSearch.getMemberId());
-      //  BooleanExpression memberNameEq = pointSearch.get() == null ? null : member.memberId.eq(pointSearch.getMemberId());
+    @Override //관리자 - 멤버 id와 이름 조회
+    public Page<Point> findPointMemberIdWithSearch_QueryDSL(AdminPointSearch pointSearch, Pageable pageable) {
+        BooleanExpression pointAmountEq = pointSearch.getPointAmount() == null ? null : point.pointAmount.eq(pointSearch.getPointAmount());
+        BooleanExpression pointStatusEq = pointSearch.getPointStatus() == null ? null : point.pointStatus.eq(pointSearch.getPointStatus());
+        BooleanExpression memberIdEq = pointSearch.getMemberId() == null ? null : point.member.memberId.eq(pointSearch.getMemberId());
+        BooleanExpression memberNameEq = pointSearch.getMemberName() == null ? null : member.memberId.eq(pointSearch.getMemberName());
 
         List<Point> points = query.select(point)
                 .from(point)
                 .join(point.member)
                 .fetchJoin()
-                .where(memberIdEq)
+                .where(pointAmountEq, pointStatusEq, memberIdEq, memberNameEq)
                 .orderBy(point.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
-    //fetchJoin일 때 한 사람, join 할 때
-        log.info(pageable.getOffset()+"/");
-        log.info(pageable.getPageSize()+"/");
-        log.info(points.toString());
         Long count = query.select(point.count()).from(point).fetchOne();
 
         return new PageImpl<>(points, pageable, count);

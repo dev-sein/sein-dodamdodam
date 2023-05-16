@@ -26,12 +26,21 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @RequiredArgsConstructor
 @Slf4j
 public class SecurityConfig {
-    private static final String MAIN_PATH = "/main/**";
+    //    메인
+    private static final String IGNORE_MAIN_PATH = "/main/**";
+    //    관리자
     private static final String ADMIN_PATH = "/admin/**";
-    private static final String BOARD_PATH = "/board/**";
+    //    마이 페이지
+    private static final String MYPAGE_PATH = "/mypage/**";
 
     /* 파비콘 */
     private static final String IGNORE_FAVICON = "/favicon.ico";
+
+    private static final String JOIN_OAUTH = "/member/join-OAuth";
+    private static final String PASSWORD = "/member/password";
+    private static final String CHANGE_PASSWORD = "/member/change-password";
+    private static final String ACCOUNT_CONFIRM = "/member/account-confirm";
+    private static final String PHONE_CERTIFICATION = "/member/phone-certification";
 
     /* 로그인 */
     private static final String LOGIN_PAGE = "/member/login";
@@ -47,8 +56,6 @@ public class SecurityConfig {
     private final AuthenticationFailureHandler authenticationFailureHandler;
     private final UserDetailsService userDetailsService;
 
-//    private final DefaultOAuth2UserService userService;
-//    private final MemberServiceImpl memberService;
 
 //    비밀번호 암호화
     @Bean
@@ -57,9 +64,18 @@ public class SecurityConfig {
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
 //        WebSecurity에서 관여하지 않을 경로
+//        즉, 권한이 없어도 사용이 가능한 경로
         return web -> web.ignoring()
                 .mvcMatchers(IGNORE_FAVICON) //favicon은 필터에서 제외
-                .antMatchers(MAIN_PATH)
+                .antMatchers(IGNORE_MAIN_PATH)
+
+                /* 로그인 확인사항*/
+                .antMatchers(JOIN_OAUTH)
+                .antMatchers(PASSWORD)
+                .antMatchers(CHANGE_PASSWORD)
+                .antMatchers(ACCOUNT_CONFIRM)
+                .antMatchers(PHONE_CERTIFICATION)
+
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()); //static 경로도 필터에서 제외
     }
 
@@ -68,10 +84,11 @@ public class SecurityConfig {
         http
                 .authorizeRequests()
                 .antMatchers(ADMIN_PATH).hasRole(Role.ADMIN.name())
-                .antMatchers(BOARD_PATH).hasRole(Role.MEMBER.name())
+                .antMatchers(MYPAGE_PATH).hasRole(Role.MEMBER.name())
                 .and()
                 .csrf().disable()
                 .exceptionHandling()
+                /* 인가, 인증 Exception Handler */
                 .accessDeniedHandler(accessDeniedHandler) //인가 실패
                 .authenticationEntryPoint(authenticationEntryPoint); //인증 실패
 

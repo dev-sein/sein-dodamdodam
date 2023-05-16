@@ -1,9 +1,13 @@
 package com.app.dodamdodam.repository.member;
 
 import com.app.dodamdodam.domain.MemberDTO;
+import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.point.Point;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
+import com.app.dodamdodam.search.member.AdminMemberSearch;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Optional;
@@ -31,4 +35,17 @@ public interface MemberQueryDsl {
     public Optional<Member> findMemberByMemberEmail_QueryDSL(String memberEmail);
 
 
+//  관리자 멤버 게시판 검색 조회
+    public Page<Member> findAdminMemberWithPaging_QueryDSL(AdminMemberSearch adminMemberSearch, Pageable pageable);
+
+    //관리자 멤버 상세 조회(뱃지)
+    public String findAdminMemberDetail_QueryDSL(Long memberId);
+
+    //관리자 홈
+    public Page<Member> findAdminMemberAllOrderByIdDesc();
+
+    //관리자 회원 목록 가져오기
+    public Page<Member> findAllMemberList_QueryDSL(Pageable pageable);
 }
+
+

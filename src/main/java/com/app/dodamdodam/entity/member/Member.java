@@ -2,6 +2,7 @@ package com.app.dodamdodam.entity.member;
 
 import com.app.dodamdodam.audit.Period;
 import com.app.dodamdodam.entity.embeddable.Address;
+import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.recruitment.Recruitment;
 import com.app.dodamdodam.type.MemberStatus;
 import com.app.dodamdodam.type.MemberType;
@@ -18,7 +19,7 @@ import java.util.List;
 
 @Entity
 @Getter
-@ToString(exclude = "recruitments")
+@ToString
 @Table(name = "TBL_MEMBER")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DynamicInsert
@@ -41,7 +42,7 @@ public class Member extends Period {
     @ColumnDefault("'0'")
     private Integer memberPoint;
     @ColumnDefault("0")
-    private Integer participationCount;
+    private int participationCount;
 
     @Enumerated(EnumType.STRING)
     private MemberType memberType;
@@ -49,8 +50,8 @@ public class Member extends Period {
     @Enumerated(EnumType.STRING)
     private Role memberRole;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "member")
-    private List<Recruitment> recruitments = new ArrayList<>();
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "member", cascade = CascadeType.REMOVE)
+//    private List<Recruitment> recruitments = new ArrayList<>();
 
 //    public Member(String memberId, String memberPassword, String memberName, String memberEmail, String memberPhone, Address address, MemberStatus memberStatus, MemberType memberType, Role memberRole) {
 //        this.memberId = memberId;
@@ -63,6 +64,9 @@ public class Member extends Period {
 //        this.memberType = memberType;
 //        this.memberRole = memberRole;
 //    }
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "member", cascade = CascadeType.REMOVE)
+    private List<EventBoard> eventBoards;
+
     @Builder
     public Member(Long id, String memberId, String memberPassword, String memberName, String memberEmail, String memberPhone, Address address, MemberStatus memberStatus, MemberType memberType, Role memberRole) {
         this.id = id;
@@ -88,6 +92,21 @@ public class Member extends Period {
     public String getRoleKey() {
         return this.memberRole.getSecurityRole();
     }
+    public void setMemberEmail(String memberEmail) {
+        this.memberEmail = memberEmail;
+    }
+
+    public void setMemberPhone(String memberPhone) {
+        this.memberPhone = memberPhone;
+    }
+
+    public void setMemberName(String memberName) {
+        this.memberName = memberName;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
     public void setMemberPoint(Integer memberPoint) {
         this.memberPoint = memberPoint;
@@ -96,4 +115,20 @@ public class Member extends Period {
     public void setMemberPassword(String memberPassword) {
         this.memberPassword = memberPassword;
     }
+
+    public void setMemberStatus(MemberStatus memberStatus) {
+        this.memberStatus = memberStatus;
+    }
+    public void setParticipationCountPlus(){
+        this.participationCount++;
+    }
+
+    public void setParticipationCountMinus(){
+        this.participationCount--;
+    }
+
+    public Integer getParticipationCount() {
+        return participationCount;
+    }
+
 }

@@ -7,12 +7,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/main/*")
+//@RequestMapping("")
 @RequiredArgsConstructor
 @Slf4j
 public class MainController {
 
-    @GetMapping("main")
-    public void gotoMain(){
+    @GetMapping("/main")
+    public String gotoMain(){
+        return "/main/main";
     }
 }

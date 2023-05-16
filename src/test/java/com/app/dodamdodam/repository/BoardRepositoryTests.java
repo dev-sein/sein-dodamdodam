@@ -2,6 +2,7 @@ package com.app.dodamdodam.repository;
 
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.free.FreeFile;
+import com.app.dodamdodam.entity.free.FreeReply;
 import com.app.dodamdodam.entity.purchase.Product;
 import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.entity.recruitment.Recruitment;
@@ -12,6 +13,7 @@ import com.app.dodamdodam.repository.board.recruitment.RecruitmentBoardRepositor
 import com.app.dodamdodam.repository.file.freeFile.FreeFileRepository;
 import com.app.dodamdodam.repository.member.MemberRepository;
 import com.app.dodamdodam.repository.recruitment.RecruitmentRepository;
+import com.app.dodamdodam.repository.reply.freeReply.FreeReplyRepository;
 import com.app.dodamdodam.type.CategoryType;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -52,6 +54,9 @@ public class BoardRepositoryTests {
     @Autowired
     private FreeFileRepository freeFileRepository;
 
+    @Autowired
+    private FreeReplyRepository freeReplyRepository;
+
     ArrayList<CategoryType> categoryTypes = new ArrayList<CategoryType>(Arrays.asList(CategoryType.ALL, CategoryType.CULTURE, CategoryType.DAILY, CategoryType.EVENT, CategoryType.PURCHASE, CategoryType.RECRUITMENT));
 
     /*모집 게시글 등록*/
@@ -74,11 +79,11 @@ public class BoardRepositoryTests {
 //        FreeBoard freeBoard = new FreeBoard("자유 게시글 제목","자유 게시글 내용" , categoryTypes.get(1), );
 //        memberRepository.findById(5L).ifPresent(member -> freeBoard.setMember(member));
 //        freeBoardRepository.save(freeBoard);
-//        for (int i=1; i<=100; i++){
-//            FreeBoard freeBoard = new FreeBoard("자유 게시글 제목" + i,"자유 게시글 내용" + i, categoryTypes.get(i % 6));
-//            memberRepository.findById(2L).ifPresent(member -> freeBoard.setMember(member));
-//            freeBoardRepository.save(freeBoard);
-//        }
+        for (int i=1; i<=100; i++){
+            FreeBoard freeBoard = new FreeBoard("자유 게시글 제목" + i,"자유 게시글 내용" + i, categoryTypes.get(i % 6));
+            memberRepository.findById(5L).ifPresent(member -> freeBoard.setMember(member));
+            freeBoardRepository.save(freeBoard);
+        }
     }
 
     /*판매 게시글 등록*/
@@ -100,8 +105,8 @@ public class BoardRepositoryTests {
     /* id로 내가 작성한 자유게시글 목록 가져오기*/
     @Test
     public void findByIdTest(){
-        Pageable pageable = PageRequest.of(1,5);
-        freeBoardRepository.findFreeBoardListByMemberId(PageRequest.of(1,5), 5L).stream().map(FreeBoard::toString).forEach(log::info);
+        Pageable pageable = PageRequest.of(0,5);
+        freeBoardRepository.findFreeBoardListByMemberId_QueryDSL(PageRequest.of(0,5), 5L).stream().map(FreeBoard::toString).forEach(log::info);
     }
 
 //    @Test
@@ -127,8 +132,8 @@ public class BoardRepositoryTests {
     /* 자유 게시글 작성 */
     @Test
     public void saveFreeBoardTest(){
-        FreeBoard freeBoard = new FreeBoard("자유게시글 제목", "자유게시글 내용", categoryTypes.get(1));
-        memberRepository.findById(5L).ifPresent(member -> freeBoard.setMember(member));
+        FreeBoard freeBoard = new FreeBoard("자유게시글 제목2", "자유게시글 내용2", categoryTypes.get(1));
+        memberRepository.findById(2L).ifPresent(member -> freeBoard.setMember(member));
         freeBoardRepository.save(freeBoard);
 
         List<FreeFile> freeFiles = new ArrayList<FreeFile>();
@@ -166,27 +171,28 @@ public class BoardRepositoryTests {
     @Test
     public void findAllFreeBoardListTest(){
         Pageable pageable = PageRequest.of(0, 10);
-        freeBoardRepository.findAllFreeBoardList(pageable).stream().map(FreeBoard::toString).forEach(log::info);
+        freeBoardRepository.findAllFreeBoardList_QueryDSL(pageable).stream().map(FreeBoard::toString).forEach(log::info);
     }
 
     /* 자유 게시글 목록 분류 */
     @Test
     public void findFreeBoardListByCategoryTypeTest(){
         Pageable pageable = PageRequest.of(0, 10);
-        freeBoardRepository.findFreeBoardListByCategoryType(pageable,CategoryType.CULTURE).stream().map(FreeBoard::toString).forEach(log::info);
+        freeBoardRepository.findFreeBoardListByCategoryType_QueryDSL(pageable,CategoryType.CULTURE).stream().map(FreeBoard::toString).forEach(log::info);
     }
 
     /* 내가 작성한 자유 게시글 목록 분류 */
     @Test
     public void findFreeBoardListByCategoryTypeAndMemberIdTest(){
         Pageable pageable = PageRequest.of(0, 10);
-        freeBoardRepository.findFreeBoardListByCategoryTypeAndMemberId(pageable,CategoryType.CULTURE, 5L).stream().map(FreeBoard::toString).forEach(log::info);
+        freeBoardRepository.findFreeBoardListByCategoryTypeAndMemberId_QueryDSL(pageable,CategoryType.CULTURE, 5L).stream().map(FreeBoard::toString).forEach(log::info);
     }
 
     /* 자유 게시글 상세 */
     @Test
     public void findFreeBoardByIdTest(){
-        freeBoardRepository.findById(1080L).ifPresent(freeBoard -> log.info(freeBoard.toString()));
+//        freeBoardRepository.findById(201L).ifPresent(freeBoard -> log.info(freeBoard.toString()));
+        freeBoardRepository.findFreeBoardAndFreeFilesById_QueryDSL(201L).ifPresent(freeBoard -> log.info(freeBoard.toString()));
     }
 
     /* 자유 게시글 수정 */
@@ -204,4 +210,37 @@ public class BoardRepositoryTests {
         freeBoardRepository.findById(1077L).ifPresent(freeBoard -> freeBoardRepository.delete(freeBoard));
     }
 
+
+    /* 자유 게시글 상세 */
+    @Test
+    public void findFreeBoardAndFreeFilesByIdTest(){
+        log.info(freeBoardRepository.findFreeBoardAndFreeFilesById_QueryDSL(201L).toString());
+    }
+    
+    /* 자유 게시글 상세, 댓글 */
+    @Test
+    public void findFreeBoardAndFreeRepliesByIdTest(){
+        log.info(freeBoardRepository.findFreeBoardAndFreeRepliesById_QueryDSL(201L).toString());
+    }
+
+    /* 자유 게시판에 댓글 달기*/
+    @Test
+    public void saveFreeReplyTest(){
+        FreeReply freeReply = new FreeReply("댓글1");
+        freeReply.setFreeBoard(freeBoardRepository.findById(201L).get());
+        freeReplyRepository.save(freeReply);
+    }
+
+    /* 자유 게시판 댓글 수정 */
+    @Test
+    public void updateFreeReplyTest(){
+        freeBoardRepository.findById(201L).ifPresent(freeBoard -> freeBoard.getFreeReplies().get(0).setReplyContent("수정된 댓글"));
+    }
+
+
+    /* 자유 게시판 댓글 삭제 */
+    @Test
+    public void deleteFreeReplyTest(){
+        freeBoardRepository.findById(201L).ifPresent(freeBoard -> freeReplyRepository.delete(freeBoard.getFreeReplies().get(0)));
+    }
 }

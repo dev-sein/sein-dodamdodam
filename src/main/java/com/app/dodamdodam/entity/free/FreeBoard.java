@@ -8,8 +8,10 @@ import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -24,10 +26,13 @@ public class FreeBoard extends Board {
     @NotNull private CategoryType freeCategory;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "freeBoard")
-    private List<FreeFile> freeFiles;
+    private List<FreeFile> freeFiles = new ArrayList<>();;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "freeBoard")
-    private List<FreeReply> freeReplies;
+    private List<FreeReply> freeReplies = new ArrayList<>();;
+
+    @NotNull
+    private int likeCount;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MEMBER_ID")
@@ -44,5 +49,13 @@ public class FreeBoard extends Board {
 
     public void setMember(Member member) {
         this.member = member;
+    }
+
+    public void updateLikePlus(){
+        this.likeCount++;
+    }
+
+    public void updateLikeMinus(){
+        this.likeCount--;
     }
 }

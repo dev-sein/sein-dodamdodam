@@ -1,39 +1,50 @@
 package com.app.dodamdodam.service.member;
 
 import com.app.dodamdodam.domain.MemberDTO;
+import com.app.dodamdodam.entity.banner.BannerApply;
+import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.member.Member;
+import com.app.dodamdodam.entity.point.Point;
+import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
 import com.app.dodamdodam.provider.UserDetail;
+import com.app.dodamdodam.repository.banner.BannerRepository;
+import com.app.dodamdodam.repository.board.free.FreeBoardRepository;
+import com.app.dodamdodam.repository.board.purchase.PurchaseBoardRepository;
+import com.app.dodamdodam.repository.board.recruitment.RecruitmentBoardRepository;
 import com.app.dodamdodam.repository.member.MemberRepository;
+import com.app.dodamdodam.repository.point.PointRepository;
 import com.app.dodamdodam.type.MemberStatus;
 import com.app.dodamdodam.type.MemberType;
 import com.app.dodamdodam.type.Role;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
-import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
-import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
-import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
-import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
-import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
-import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
 
 @Service
 @RequiredArgsConstructor
 @Slf4j
 public class MemberServiceImpl implements MemberService/*, OAuth2UserService<OAuth2UserRequest, OAuth2User>*/ {
 
-    private final MemberRepository memberRepository;
-
     private final HttpSession httpSession;
+    private final MemberRepository memberRepository;
+    private final PointRepository pointRepository;
+    private final FreeBoardRepository freeBoardRepository;
+    private final PurchaseBoardRepository purchaseBoardRepository;
+    private final RecruitmentBoardRepository recruitmentBoardRepository;
+    private final BannerRepository bannerRepository;
 
     /* 로그인 된 유저 정보 */
     @Override
@@ -48,8 +59,90 @@ public class MemberServiceImpl implements MemberService/*, OAuth2UserService<OAu
         memberDTO.setMemberType(MemberType.GENERAL);
         memberDTO.setMemberStatus(MemberStatus.NORMAL);
         memberRepository.save(toMemberEntity(memberDTO));
-
     }
+    /* 내 포인트 내역 */
+    @Override
+    public List<Point> getMyPointList(Long memberId) {
+        return pointRepository.findPointByMemberId_QueryDSL(memberId);
+    }
+
+    /* 내가 작성한 자유 게시글 목록 */
+    @Override
+    public Page<FreeBoard> getMyFreeBoardList(Pageable pageable, Long memberId) {
+        return freeBoardRepository.findFreeBoardListByMemberId_QueryDSL(pageable, memberId);
+    }
+
+    /* 내가 작성한 자유게시글 개수 */
+    @Override
+    public Long getMyFreeBoardListCount(Long memberId) {
+        return freeBoardRepository.findFreeBoardListCountByMemberId_QueryDSL(memberId);
+    }
+
+    /* 내가 작성한 판매게시글 개수 */
+    @Override
+    public Long getMyPurchaseBoardListCount(Long memberId) {
+        return purchaseBoardRepository.findPurchaseBoardListCountByMemberId_QueryDSL(memberId);
+    }
+
+    /* 내가 작성한 모집게시글 개수 */
+    @Override
+    public Long getMyRecruitmentBoardListCount(Long memberId) {
+        return recruitmentBoardRepository.findRecruitmentBoardListCountByMemberId_QueryDSL(memberId);
+    }
+
+    /* 내가 참가한 모집게시글 개수 */
+    @Override
+    public Long getMyRecruitmentedBoardListCount(Long memberId) {
+        return recruitmentBoardRepository.findRecruitmentedBoardListCountByMemberId_QueryDSL(memberId);
+    }
+
+    /* 관리자 멤버 목록*/
+    @Override 
+    public Page<MemberDTO> showList(Pageable pageable) {
+        Page<Member> memberPage = memberRepository.findAllMemberList_QueryDSL(PageRequest.of(1,10));
+        List<MemberDTO> memberDTOS = memberPage.get().map(this::toMemberDTO).collect(Collectors.toList());
+
+        return new PageImpl<>(memberDTOS, pageable, memberPage.getTotalElements());
+    }
+
+    /* 회원 비활성화 처리*/
+    @Override
+    public void setMemberStatusById(Long memberId) {
+        memberRepository.findById(memberId).ifPresent(member -> member.setMemberStatus(MemberStatus.WITHDRAWAL));
+    }
+
+    /* 회원 정보 수정 */
+    /* 페이지를 고치던지 2개 따로 만들던지 해야함 */
+    @Override
+    public void setMemberInfoById(Long memberId, Member memberInfo) {
+        memberRepository.findById(memberId).ifPresent(member -> {
+            member.setMemberPassword(memberInfo.getMemberPassword());
+            member.setAddress(memberInfo.getAddress());
+            member.setMemberEmail(memberInfo.getMemberEmail());
+            member.setMemberName(memberInfo.getMemberName());
+            member.setMemberPhone(memberInfo.getMemberPhone());
+        });
+    }
+
+    /* 비밀번호 변경 */
+    @Override
+    public void setMemberPasswordById(Long memberId, String password) {
+        memberRepository.findById(memberId).ifPresent(member -> member.setMemberPassword(password));
+    }
+
+    /* 배너 신청 */
+    @Override
+    public void saveBannerApply(Long memberId, BannerApply bannerApply) {
+        memberRepository.findById(memberId).ifPresent(member -> bannerApply.setMember(member));
+        bannerRepository.save(bannerApply);
+    }
+
+    /* 내가 참가한 모집 게시글 전체 */
+    @Override
+    public List<RecruitmentBoard> getMyRecruitementedBoardList(Long memberId) {
+        return recruitmentBoardRepository.findAllRecruitmentedBoardListByMemberId_QueryDSL(memberId);
+    }
+
 
 
     @Override

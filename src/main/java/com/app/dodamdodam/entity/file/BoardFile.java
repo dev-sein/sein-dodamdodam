@@ -1,21 +1,28 @@
 package com.app.dodamdodam.entity.file;
 
+import com.sun.istack.NotNull;
 import lombok.*;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 
 @Entity
-@Getter @ToString(callSuper = true)
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
+@ToString
 @Inheritance(strategy = InheritanceType.JOINED)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
+@DynamicInsert
+@DynamicUpdate
 public class BoardFile {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
-    private String fileOriginalName;
-    private String fileUuid;
-    private String filePath;
-    private Long fileSize;
+    @NotNull private String fileOriginalName;
+    @NotNull private String fileUuid;
+    @NotNull private String filePath;
+     private Long fileSize;
 
     public BoardFile(String fileOriginalName, String fileUuid, String filePath, Long fileSize) {
         this.fileOriginalName = fileOriginalName;

@@ -197,7 +197,8 @@ dl, ol, ul, menu {
 }
 
 #scroll {
-    overflow: auto;
+    overflow-y: scroll;
+    height: 500px;
     width: 100%;
     margin: 1px 0px 0px 0px;
 }
@@ -323,3 +324,27 @@ li {
     }
 
 }
+
+
+  /* 스크롤바 */
+/* 수직 스크롤바 스타일링 */
+::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  /* 스크롤바의 배경 색상 */
+  ::-webkit-scrollbar-track {
+    /* background-color: #f1f1f1; */
+  }
+  
+  /* 스크롤바의 색상 */
+  ::-webkit-scrollbar-thumb {
+    background-color: #00663370;
+    border-radius: 10px;
+  }
+  
+  /* 마우스 오버 시 스크롤바의 색상 */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #006633ca;
+  }
+  /* 스크롤바 */

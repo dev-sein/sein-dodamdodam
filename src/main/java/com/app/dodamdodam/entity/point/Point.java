@@ -34,4 +34,12 @@ public class Point extends Period {
     public void setMember(Member member) {
         this.member = member;
     }
+
+
+    @Builder
+    public Point(Long id, Integer pointAmount, PointStatus pointStatus) {
+        this.id = id;
+        this.pointAmount = pointAmount;
+        this.pointStatus = pointStatus;
+    }
 }

@@ -4,6 +4,7 @@ import com.app.dodamdodam.entity.point.Point;
 import com.app.dodamdodam.repository.member.MemberRepository;
 import com.app.dodamdodam.repository.point.PointRepository;
 import com.app.dodamdodam.search.point.AdminPointSearch;
+import com.app.dodamdodam.type.PointStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,28 +28,38 @@ public class PointRepositoryTests {
     /*포인트 목록 가져오기*/
     @Test
     public void findPointListByIdTest(){
-        pointRepository.findPointByMemberId(2L).stream().map(Point::toString).forEach(log::info);
+        pointRepository.findPointByMemberId_QueryDSL(2L).stream().map(Point::toString).forEach(log::info);
     }
 
-//    @Test //포인트 페이징 조회
-//    public void findAllPointWithSearchTest(){
-//        AdminPointSearch pointSearch = new AdminPointSearch();
-////        pointSearch.setPointAmount(10000);
-//        pointSearch.setMemberId("test1");
-//        Page<Point> pointPage = pointRepository.findPointWithSearch(pointSearch, PageRequest.of(0, 2));
-////        pointPage.stream().map(point -> point.toString()).forEach(log::info);
-////        log.info("========="+pointPage.map(pointPage::toString).forEach(log::info));
-//        log.info("=========="+pointPage.getContent()); //==251만 가져옴, 351도 10000 포인트임
-//        //size가 2일 때 251 반환, size가 1일때 351 반환으로 총 결과값이 두개이지만 하나씩만 반환됨.
-//        log.info("=========="+pointPage.getTotalElements()); //==101 반환 (point 전체 행의 수)
-//    }
+    @Test //관리자 포인트 멤버 정보 조회
+    public void findPointMemberIdWithSearch(){
+        AdminPointSearch pointSearch = new AdminPointSearch();
+        pointSearch.setMemberId("test1234");
+        Page<Point> pointPage = pointRepository.findPointMemberIdWithSearch_QueryDSL(pointSearch, PageRequest.of(0, 10));
+        log.info("i"+pointPage.getContent());
+    }
 
-//    @Test
-//    public void findPointMemberIdWithSearch(){
-//        AdminPointSearch pointSearch = new AdminPointSearch();
-//        pointSearch.setMemberId("test3");
-//        Page<Point> pointPage = pointRepository.findPointMemberIdWithSearch(pointSearch, PageRequest.of(0, 10));
-//        log.info("id반환"+pointPage.getContent());
-//        log.info("id반환"+pointPage.getTotalElements());
-//    }
+    /* 포인트 충전 */
+    @Test
+    public void saveTest(){
+        Point point = new Point(50000, PointStatus.CHARGE);
+        point.setMember(memberRepository.findById(5L).get());
+        memberRepository.findById(5L).ifPresent(member -> {
+            point.setMember(member);
+            member.setMemberPoint(member.getMemberPoint() + 50000);
+        });
+        pointRepository.save(point);
+    }
+
+    /* 포인트 사용 */
+    @Test
+    public void saveUseTest(){
+        Point point = new Point(25000, PointStatus.USE);
+        point.setMember(memberRepository.findById(5L).get());
+        memberRepository.findById(5L).ifPresent(member -> {
+            point.setMember(member);
+            member.setMemberPoint(member.getMemberPoint() - 25000);
+        });
+        pointRepository.save( point);
+    }
 }

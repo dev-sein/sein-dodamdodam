@@ -1,14 +1,14 @@
 package com.app.dodamdodam.service.board.purchase;
 
-import com.app.dodamdodam.domain.MemberDTO;
-import com.app.dodamdodam.domain.ProductDTO;
-import com.app.dodamdodam.domain.PurchaseBoardDTO;
-import com.app.dodamdodam.domain.PurchaseFileDTO;
+import com.app.dodamdodam.domain.*;
+import com.app.dodamdodam.entity.inquiry.Inquiry;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.purchase.Product;
 import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.entity.purchase.PurchaseFile;
+import com.app.dodamdodam.search.Inquiry.AdminInquirySearch;
 import com.app.dodamdodam.search.PurchaseBoardSearch;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 
@@ -18,6 +18,16 @@ import java.util.stream.Collectors;
 public interface PurchaseBoardService {
 //    게시글 검색
     public Slice<PurchaseBoardDTO> getPurchaseBoardsWithSearch(PurchaseBoardSearch purchaseBoardSearch, Pageable pageable);
+
+//    내가 작성한 판매 게시글 목록
+    public List<PurchaseBoardFileDTO> getPurchaseBoardListByMemberId(Pageable pageable, Long memberId);
+
+/*
+//    관리자 게시글 검색
+    public Page<PurchaseBoardDTO> findPurchaseBoardWithSearch_QueryDSL(AdminInquirySearch inquirySearch, Pageable pageable);
+*/
+    //관리자 : 문의사항 목록
+    public Page<PurchaseBoardDTO> showList(Pageable pageable);
 
     default PurchaseBoardDTO toPurchaseBoardDTO(PurchaseBoard purchaseBoard){
         return PurchaseBoardDTO.builder().id(purchaseBoard.getId())
@@ -44,7 +54,6 @@ public interface PurchaseBoardService {
                 .memberStatus(member.getMemberStatus())
                 .memberPoint(member.getMemberPoint())
                 .participationCount(member.getParticipationCount())
-                .recruitmentedCount(member.getParticipationCount())
                 .address(member.getAddress())
                 .build();
     }
@@ -63,6 +72,18 @@ public interface PurchaseBoardService {
                 .filePath(purchaseFile.getFilePath())
                 .fileUuid(purchaseFile.getFileUuid())
                 .fileSize(purchaseFile.getFileSize())
+                .build();
+    }
+
+    default PurchaseBoardFileDTO toPurchaseBoardFileDto(PurchaseBoard purchaseBoard){
+        return PurchaseBoardFileDTO.builder()
+                .boardContent(purchaseBoard.getBoardContent())
+                .boardTitle(purchaseBoard.getBoardTitle())
+                .createdDate(purchaseBoard.getCreatedDate())
+                .updatedDate(purchaseBoard.getUpdatedDate())
+                .id(purchaseBoard.getId())
+                .memberDTO(toMemberDTO(purchaseBoard.getMember()))
+                .purchaseFileDTOS(purchaseBoard.getPurchaseFiles().stream().map(purchaseFile -> toPurchaseFileDTO(purchaseFile)).collect(Collectors.toList()))
                 .build();
     }
 }

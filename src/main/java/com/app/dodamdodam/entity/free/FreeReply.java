@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-@ToString
+@ToString(exclude = "freeBoard")
 @Table(name = "TBL_FREE_BOARD_REPLY")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class FreeReply extends Reply {
@@ -20,4 +20,15 @@ public class FreeReply extends Reply {
     @JoinColumn(name = "FREE_BOARD_ID")
     private FreeBoard freeBoard;
 
+    public FreeReply(String replyContent) {
+        this.replyContent = replyContent;
+    }
+
+    public void setReplyContent(String replyContent) {
+        this.replyContent = replyContent;
+    }
+
+    public void setFreeBoard(FreeBoard freeBoard) {
+        this.freeBoard = freeBoard;
+    }
 }

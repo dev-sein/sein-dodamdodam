@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mypage-point</title>
+    <title>마이페이지-포인트</title>
     <!--css 연결하는곳-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gugi&display=swap">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="../../static/css/myPage/myPage-point.css" />
-    <link rel="stylesheet" href="../../static/css/myPage/myPage-banner.css" >
+    <link rel="stylesheet" href="/css/myPage/myPage-point.css" />
+    <link rel="stylesheet" href="/css/myPage/myPage-banner.css" >
     <link rel="shortcut icon" href="/static/images/components/dodam-favicon.png">
   </head>
   <body>
@@ -20,9 +20,9 @@
         <div class="mybenefit-wrap">
           <h2 class="mypage-top-title short">포인트</h2>
           <div class="mypage-project short">
-            <p class="point-guide">포인트 충전, 적립, 결제 내역입니다.</p>
+            <p class="point-guide">포인트 충전, 적립, 사용 내역입니다.</p>
             <div class="usable-point">
-              <p>현재 사용가능 포인트 <em>0 p</em>
+              <p>보유 포인트 : <em><span th:text="${member.memberPoint}"></span>P</em>
                           <button id="bottom-button" style="top: -13%;
                           width: 14%;
                           right: 5%;">
@@ -53,70 +53,18 @@
                 </div>
                 <div id="scroll">
 
-                    <div class="support-list__info-container">
-                        <div class="support-list__info-unit">
-                            <label for="kus" class="support__checkbox--label">
-                                <ul class="support-list__info">
-                                    <li class="support__id">05</li>
-                                    <li class="support__money">100000</li>
-                                    <li class="support__status1">충전</li>
-                                    <li class="support__date-post">2022-04-23</li>
-                                </ul>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="support-list__info-container">
-                        <div class="support-list__info-unit">
-                            <label for="kus" class="support__checkbox--label">
-                                <ul class="support-list__info">
-                                    <li class="support__id">04</li>
-                                    <li class="support__money">50000</li>
-                                    <li class="support__status3">결제</li>
-                                    <li class="support__date-post">2022-04-24</li>
-                                </ul>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="support-list__info-container">
-                        <div class="support-list__info-unit">
-                            <label for="kus" class="support__checkbox--label">
-                                <ul class="support-list__info">
-                                    <li class="support__id">03</li>
-                                    <li class="support__money">50000</li>
-                                    <li class="support__status2">적립</li>
-                                    <li class="support__date-post">2023-04-23</li>
-                                </ul>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="support-list__info-container">
-                        <div class="support-list__info-unit">
-                            <label for="kus" class="support__checkbox--label">
-                                <ul class="support-list__info">
-                                    <li class="support__id">02</li>
-                                    <li class="support__money">50000</li>
-                                    <li class="support__status2">적립</li>
-                                    <li class="support__date-post">2023-04-23</li>
-                                </ul>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="support-list__info-container">
-                        <div class="support-list__info-unit">
-                            <label for="kus" class="support__checkbox--label">
-                                <ul class="support-list__info">
-                                    <li class="support__id">01</li>
-                                    <li class="support__money">50000</li>
-                                    <li class="support__status2">적립</li>
-                                    <li class="support__date-post">2023-04-23</li>
-                                </ul>
-                            </label>
-                        </div>
-                    </div>
+<!--                    <div class="support-list__info-container">-->
+<!--                        <div class="support-list__info-unit">-->
+<!--                            <label class="support__checkbox&#45;&#45;label">-->
+<!--                                <ul class="support-list__info">-->
+<!--                                    <li class="support__id">05</li>-->
+<!--                                    <li class="support__money"></li>-->
+<!--                                    <li class="support__status1"></li>-->
+<!--                                    <li class="support__date-post">2022-04-23</li>-->
+<!--                                </ul>-->
+<!--                            </label>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
                 </div>
             </article>
@@ -140,10 +88,75 @@
                 </p>
               </div>
             </div>
-
           </div>
         </div>
       </div>
     </div>
   </body>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script th:inline="javascript">
+      points = [[${points}]];
+      console.log(points);
+      let text = ``;
+      let i = 1;
+
+
+      /* 포인트 status 변환 */
+      function chanePointStatusToString(e){
+          if (e.pointStatus == "CHARGE"){
+              return "충전";
+          } else if(e.pointStatus == "SAVING"){
+              return "적립";
+          } else if (e.pointStatus == "USE"){
+              return "사용";
+          }
+      }
+
+      /* 날짜 변환 (년, 월, 일) */
+      function changeDateToString(e){
+          let month = "";
+          date = new Date(e.createdDate);
+          month = date.getMonth() + 1;
+          if (month < 10){
+              month = "0" + month;
+          }
+          return date.getFullYear() + "년 " + month + "월 " + date.getDate() + "일";
+      }
+
+      $(document).ready(function () {
+          points.forEach(point =>{
+              let text = ``;
+              let status = "";
+              let date = "";
+
+              date = changeDateToString(point);
+              status = chanePointStatusToString(point);
+
+              /* 날짜 변환 */
+
+
+              text += `
+                        <div class="support-list__info-container">
+                            <div class="support-list__info-unit">
+                                <label class="support__checkbox--label">
+                                    <ul class="support-list__info">
+                                        <li class="support__id">${i}</li>
+                                        <li class="support__money">${point.pointAmount}</li>
+                                        <li class="support__status1">${status}</li>
+                                        <li class="support__date-post">${date}</li>
+                                    </ul>
+                                </label>
+                            </div>
+                        </div>
+                      `;
+              i++;
+              $('#scroll').append(text);
+          });
+      });
+
+
+
+
+  </script>
 </html>
+

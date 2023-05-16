@@ -355,7 +355,7 @@ label.wz.checkbox>span:after {
     font-style: normal;
     font-variant: normal;
     speak: none;
-    content: "";
+    content: "v";
     position: absolute;
     top: 6px;
     left: 2px;

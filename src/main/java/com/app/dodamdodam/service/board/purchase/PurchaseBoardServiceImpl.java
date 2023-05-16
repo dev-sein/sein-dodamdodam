@@ -1,15 +1,15 @@
 package com.app.dodamdodam.service.board.purchase;
 
 import com.app.dodamdodam.domain.PurchaseBoardDTO;
+import com.app.dodamdodam.domain.PurchaseBoardFileDTO;
 import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.repository.board.purchase.PurchaseBoardRepository;
+import com.app.dodamdodam.search.Inquiry.AdminInquirySearch;
 import com.app.dodamdodam.search.PurchaseBoardSearch;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Slice;
-import org.springframework.data.domain.SliceImpl;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,4 +32,22 @@ public class PurchaseBoardServiceImpl implements PurchaseBoardService {
 
         return new SliceImpl<>(purchaseBoardDTOS, pageable, hasNext);
     }
+
+    /* 내가 작성한 판매 게시글 목록 */
+    @Override
+    public List<PurchaseBoardFileDTO> getPurchaseBoardListByMemberId(Pageable pageable, Long memberId) {
+        return purchaseBoardRepository.findPurchaseBoardListByMemberId_QueryDSL(pageable,memberId).stream()
+                .map(purchaseBoard -> toPurchaseBoardFileDto(purchaseBoard)).collect(Collectors.toList());
+    }
+
+
+    @Override
+    public Page<PurchaseBoardDTO> showList(Pageable pageable) {
+        Page<PurchaseBoard> purchaseBoardPage = purchaseBoardRepository.findAllWithPaging(PageRequest.of(1,10));
+        List<PurchaseBoardDTO> purchaseBoardDTOS = purchaseBoardPage.get().map(this::toPurchaseBoardDTO).collect(Collectors.toList());
+
+        return new PageImpl<>(purchaseBoardDTOS, pageable, purchaseBoardPage.getTotalElements());
+    }
+
+
 }

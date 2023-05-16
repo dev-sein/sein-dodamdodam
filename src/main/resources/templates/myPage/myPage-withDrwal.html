@@ -49,7 +49,8 @@
                   <dd>아직 상환되지 않은 투자금이 있을때, 투자금을 돌려받지 못할 불이익과 위험 감수</dd>
                 </dl>
                     <label class="wz checkbox">
-                    <input type="checkbox" name="agree" value="Y" id="dropConfirm" onclick="test()">
+                    <input type="checkbox" name="agree" id="dropConfirm" onclick="changeStatus()">
+                    <!-- <input type="checkbox" name="agree" value="Y" id="dropConfirm" onclick="changeStatus()"> -->
                         <span>상기 와디즈 탈퇴 시 유의 사항을 확인하였습니다.</span>
                     </label>
                 </p>
@@ -64,5 +65,5 @@
     </body>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-<script src="/static/js/myPage/myPage-wthiDrawal.js"></script>
+<script src="../../static/js/myPage/myPage-wthiDrawal.js"></script>
 </html>
