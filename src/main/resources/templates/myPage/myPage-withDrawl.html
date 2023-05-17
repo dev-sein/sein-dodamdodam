@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../static/css/myPage/myPage-withDrawal.css">
+    <link rel="stylesheet" href="/css/myPage/myPage-withDrawal.css">
     <link rel="shortcut icon" href="/static/images/components/dodam-favicon.png">
 </head>
 <body>
@@ -55,15 +55,16 @@
                     </label>
                 </p>
                 <hr>
-                <form>
+                <form name="withDrawlForm" action="/mypage/withDrawl" method="post">
                 <div class="drop-button">
                   <input type="submit" value="회원 탈퇴" class="wz button red" disabled="disabled" id="btnDropOut">
-                </div></form>
+                </div>
+                </form>
               </div>
             </main>
     </div>
     </body>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-<script src="../../static/js/myPage/myPage-wthiDrawal.js"></script>
+<script src="/js/myPage/myPage-wthiDrawal.js"></script>
 </html>

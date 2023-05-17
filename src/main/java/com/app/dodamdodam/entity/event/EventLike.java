@@ -10,26 +10,33 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-@ToString
+@ToString(exclude = {"eventBoard"})
 @Table(name = "TBL_EVENT_LIKE")
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 public class EventLike {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "EVENT_BOARD_ID")
     @NotNull
-    private EventBoard eventBoard;
+    private Long memberId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "MEMBER_ID")
-    private Member member;
+    @JoinColumn(name = "EVENT_BOARD_ID")
+    @NotNull
+    @OnDelete(action= OnDeleteAction.CASCADE)
+    private EventBoard eventBoard;
 
-    @Builder
-    public EventLike(EventBoard eventBoard, Member member) {
+
+    public EventLike(EventBoard eventBoard) {
         this.eventBoard = eventBoard;
-        this.member = member;
+    }
+
+//    public void setMember(Member member){
+//        this.memberId = member.getMemberId();
+//    }
+
+    public void setEventBoard(EventBoard eventBoard){
+        this.eventBoard = eventBoard;
     }
 }

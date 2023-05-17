@@ -21,6 +21,9 @@ public interface RecruitmentBoardService {
 //    내가 작성한 모집 게시글 목록
     public List<RecruitmentBoardFileDTO> getRecruimentBoardListByMemberId(Pageable pageable, Long memberId);
 
+//    내가 작성한 모집 게시글에 참가한 인원들 목록
+    public RecruitmentMemberDTO getRecruitmentedMembersByBoardId(Long boardId);
+
 //    내가 참가한 모집 게시글 목록
     public List<RecruitmentBoardFileDTO> getRecruimentedBoardListByMemberId(Pageable pageable, Long memberId);
 
@@ -56,8 +59,8 @@ public interface RecruitmentBoardService {
                 .memberStatus(member.getMemberStatus())
                 .memberPoint(member.getMemberPoint())
                 .participationCount(member.getParticipationCount())
-                .recruitmentedCount(member.getParticipationCount())
-                .address(member.getAddress())
+                .address(member.getAddress().getAddress())
+                .addressDetail(member.getAddress().getAddressDetail())
                 .build();
     }
 
@@ -74,6 +77,13 @@ public interface RecruitmentBoardService {
                 .fileSize(recruitmentFile.getFileSize())
                 .fileUuid(recruitmentFile.getFileUuid())
                 .id(recruitmentFile.getId())
+                .build();
+    }
+
+    default RecruitmentMemberDTO toRecruitmentMemberDTO(RecruitmentBoard recruitmentBoard){
+        return RecruitmentMemberDTO.builder()
+                .recruitmentBoardId(recruitmentBoard.getId())
+                .memberDTOS(recruitmentBoard.getRecruitments().stream().map(recruitment -> toMemberDTO(recruitment.getMember())).collect(Collectors.toList()))
                 .build();
     }
 }

@@ -27,6 +27,7 @@ public interface PurchaseBoardQueryDsl {
     public Page<PurchaseBoard> findPurchaseBoardListByMemberId_QueryDSL(Pageable pageable, Long memberId);
 
 //    세션에 담긴 id 값으로 내가 구매한 품목이 있는 판매 게시글 리스트 가져오기
+    public Page<PurchaseBoard> findBoughtPurchaseBoardListByMemberId_QueryDSL(Pageable pageable, Long memberId);
 
 //    게시글 검색
     public Slice<PurchaseBoard> findAllWithSearch_QueryDSL(PurchaseBoardSearch purchaseBoardSearch, Pageable pageable);

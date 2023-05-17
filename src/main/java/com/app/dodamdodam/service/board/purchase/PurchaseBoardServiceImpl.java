@@ -40,13 +40,21 @@ public class PurchaseBoardServiceImpl implements PurchaseBoardService {
                 .map(purchaseBoard -> toPurchaseBoardFileDto(purchaseBoard)).collect(Collectors.toList());
     }
 
-
+    /*관리자 목록 */
     @Override
     public Page<PurchaseBoardDTO> showList(Pageable pageable) {
         Page<PurchaseBoard> purchaseBoardPage = purchaseBoardRepository.findAllWithPaging(PageRequest.of(1,10));
         List<PurchaseBoardDTO> purchaseBoardDTOS = purchaseBoardPage.get().map(this::toPurchaseBoardDTO).collect(Collectors.toList());
 
         return new PageImpl<>(purchaseBoardDTOS, pageable, purchaseBoardPage.getTotalElements());
+    }
+
+    /* 관리자 판매 게시글 삭제 */
+    @Override
+    public void deleteAdminPurchaseBoard(List<Long> purchaseBoardIds) {
+        for(Long purchaseBoardId: purchaseBoardIds){
+            purchaseBoardRepository.deleteById(purchaseBoardId);
+        }
     }
 
 

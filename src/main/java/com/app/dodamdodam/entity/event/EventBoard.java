@@ -1,5 +1,7 @@
 package com.app.dodamdodam.entity.event;
 
+import com.app.dodamdodam.audit.Period;
+import com.app.dodamdodam.domain.EventBoardDTO;
 import com.app.dodamdodam.entity.board.Board;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.type.EventType;
@@ -15,21 +17,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@ToString(exclude = {"eventBoard"} , callSuper = true)
+@ToString(exclude = {"member"})
 @Table(name = "TBL_EVENT_BOARD")
 @NoArgsConstructor
         (access = AccessLevel.PROTECTED)
-@DynamicInsert
-@DynamicUpdate
-public class EventBoard extends Board {
+public class EventBoard extends Board{
 //    @Id @GeneratedValue
 //    @EqualsAndHashCode.Include
-//    private Long id;
+//    private Long eventBoardId; //pk
     @NotNull private String eventAddress;
     @NotNull private String eventAddressDetail;
     @NotNull private LocalDate eventStartDate;
     @NotNull private LocalDate eventEndDate;
-    @NotNull private String eventIntroduction;
 //    좋아요 수
     private Integer eventLikeNumber;
 
@@ -43,9 +42,16 @@ public class EventBoard extends Board {
      private String eventBusinessTel;
      private String eventBusinessEmail;
 
+     /*메인 사진*/
+    @NotNull private String eventFilePath;
+    @NotNull private String eventFileName;
+    @NotNull private String eventFileUuid;
+     private String eventFileSize;
+
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "eventBoard")
     private List<EventFile> eventFiles;
+
 
 //    게시글 댓글
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "eventBoard" , orphanRemoval = true, cascade = CascadeType.REMOVE)
@@ -72,22 +78,48 @@ public class EventBoard extends Board {
         this.eventLikeNumber = eventLikeNumber;
     }
 
-    public EventBoard(String boardTitle, String boardContent, String eventAddress, String eventAddressDetail, LocalDate eventStartDate, LocalDate eventEndDate, String eventIntroduction, Integer eventLikeNumber, EventType eventStatus, String eventBusinessNumber, String eventBusinessName, String eventBusinessTel, String eventBusinessEmail, List<EventFile> eventFiles, List<EventReview> eventreviews, Member member, List<EventLike> eventLikes) {
+    @Builder
+    public EventBoard(String boardTitle, String boardContent, String eventAddress, String eventAddressDetail, LocalDate eventStartDate, LocalDate eventEndDate, Integer eventLikeNumber, EventType eventStatus, String eventBusinessNumber, String eventBusinessName, String eventBusinessTel, String eventBusinessEmail, String eventFilePath, String eventFileName, String eventFileUuid, String eventFileSize, List<EventFile> eventFiles, List<EventReview> eventreviews, Member member, List<EventLike> eventLikes) {
         super(boardTitle, boardContent);
         this.eventAddress = eventAddress;
         this.eventAddressDetail = eventAddressDetail;
         this.eventStartDate = eventStartDate;
         this.eventEndDate = eventEndDate;
-        this.eventIntroduction = eventIntroduction;
         this.eventLikeNumber = eventLikeNumber;
         this.eventStatus = eventStatus;
         this.eventBusinessNumber = eventBusinessNumber;
         this.eventBusinessName = eventBusinessName;
         this.eventBusinessTel = eventBusinessTel;
         this.eventBusinessEmail = eventBusinessEmail;
+        this.eventFilePath = eventFilePath;
+        this.eventFileName = eventFileName;
+        this.eventFileUuid = eventFileUuid;
+        this.eventFileSize = eventFileSize;
         this.eventFiles = eventFiles;
         this.eventreviews = eventreviews;
         this.member = member;
         this.eventLikes = eventLikes;
     }
+
+//    update
+    public void Update(EventBoardDTO eventBoardDTO){
+        this.eventAddress = eventAddress;
+        this.eventAddressDetail = eventAddressDetail;
+        this.eventStartDate = eventStartDate;
+        this.eventEndDate = eventEndDate;
+        this.eventBusinessNumber = eventBusinessNumber;
+        this.eventBusinessName = eventBusinessName;
+        this.eventBusinessTel = eventBusinessTel;
+        this.eventBusinessEmail = eventBusinessEmail;
+        this.eventFilePath = eventFilePath;
+        this.eventFileName = eventFileName;
+        this.eventFileUuid = eventFileUuid;
+        this.eventFileSize = eventFileSize;
+        this.eventFiles = eventFiles;
+    }
+
+
+    public void updateEventLikeNumberPlus(){this.eventLikeNumber++;}
+    public void updateEventLikeNumberMinus(){this.eventLikeNumber--;}
+
 }

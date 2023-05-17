@@ -13,12 +13,11 @@ import javax.persistence.Embeddable;
 @ToString
 //@AllArgsConstructor
 public class Address {
-    private String postcode;
+//    private String postcode;
     private String address;
     private String addressDetail;
 
-    public Address(String postcode, String address, String addressDetail) {
-        this.postcode = postcode;
+    public Address(String address, String addressDetail) {
         this.address = address;
         this.addressDetail = addressDetail;
     }

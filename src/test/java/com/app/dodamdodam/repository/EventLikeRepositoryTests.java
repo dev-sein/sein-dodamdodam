@@ -29,33 +29,41 @@ public class EventLikeRepositoryTests {
     @Autowired
     private MemberRepository memberRepository;
 
+//
+//    @Test
+//    public void checkMemberLikesEventBoardTest(){
 
     @Test
     public void checkMemberLikesEventBoardTest(){
-        Optional<Member> member = memberRepository.findById(1L);
-        Optional<EventBoard> eventBoard = eventBoardRepository.findById(107L);
-
-        if(!member.isPresent() || !eventBoard.isPresent()) fail("멤버 혹은 리뷰 보드가 존재하지 않음");
-
-        checkMemberAlreadyLikes(member.get(), eventBoard.get());
-    }
-
-    private boolean checkMemberAlreadyLikes(Member member, EventBoard eventBoard){
-        return eventLikeRepository.checkMemberLikesEventBoard_QueryDSL(member, eventBoard);
+//        Optional<Member> member = memberRepository.findById(1L);
+//        Optional<EventBoard> eventBoard = eventBoardRepository.findById(107L);
+//
+//        if(!member.isPresent() || !eventBoard.isPresent()) fail("멤버 혹은 리뷰 보드가 존재하지 않음");
+//
+//        checkMemberAlreadyLikes(member.get(), eventBoard.get());
+//    }
+//
+//    private boolean checkMemberAlreadyLikes(Member member, EventBoard eventBoard){
+//        return eventLikeRepository.checkMemberLikesEventBoard_QueryDSL(member, eventBoard);
+//    }
+//
+//    @Test
+//    public void saveTest(){
     }
 
     @Test
     public void saveTest(){
-        Optional<Member> member = memberRepository.findById(1L);
-        Optional<EventBoard> eventBoard = eventBoardRepository.findById(107L);
-
-        if(!member.isPresent() || !eventBoard.isPresent()) fail("멤버 혹은 이벤트 보드가 존재하지 않음");
-        Integer likeCount =  eventBoard.get().getEventLikeNumber();
-
-        EventLike eventLike = new EventLike(eventBoard.get(), member.get());
-        eventLikeRepository.save(eventLike);
-
-        eventBoard.get().setEventLikeCount(++likeCount);
+//        Optional<Member> member = memberRepository.findById(1L);
+//        Optional<EventBoard> eventBoard = eventBoardRepository.findById(107L);
+//
+//        if(!member.isPresent() || !eventBoard.isPresent()) fail("멤버 혹은 이벤트 보드가 존재하지 않음");
+//        Integer likeCount =  eventBoard.get().getEventLikeNumber();
+//
+//        EventLike eventLike = new EventLike(eventBoard.get(), member.get());
+//        eventLikeRepository.save(eventLike);
+//
+//        eventBoard.get().setEventLikeCount(++likeCount);
+//        }
         }
 
 

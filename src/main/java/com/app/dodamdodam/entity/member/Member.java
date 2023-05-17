@@ -2,7 +2,6 @@ package com.app.dodamdodam.entity.member;
 
 import com.app.dodamdodam.audit.Period;
 import com.app.dodamdodam.entity.embeddable.Address;
-import com.app.dodamdodam.entity.free.FreeLike;
 import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.recruitment.Recruitment;
 import com.app.dodamdodam.type.MemberStatus;
@@ -20,7 +19,7 @@ import java.util.List;
 
 @Entity
 @Getter
-@ToString(exclude = "recruitments")
+@ToString
 @Table(name = "TBL_MEMBER")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DynamicInsert
@@ -58,7 +57,8 @@ public class Member extends Period {
     private List<EventBoard> eventBoards;
 
     @Builder
-    public Member(String memberId, String memberPassword, String memberName, String memberEmail, String memberPhone, Address address, MemberStatus memberStatus, MemberType memberType, Role memberRole) {
+    public Member(Long id, String memberId, String memberPassword, String memberName, String memberEmail, String memberPhone, Address address, MemberStatus memberStatus, MemberType memberType, Role memberRole) {
+        this.id = id;
         this.memberId = memberId;
         this.memberPassword = memberPassword;
         this.memberName = memberName;
@@ -97,6 +97,7 @@ public class Member extends Period {
     public void setMemberStatus(MemberStatus memberStatus) {
         this.memberStatus = memberStatus;
     }
+
     public void setParticipationCountPlus(){
         this.participationCount++;
     }

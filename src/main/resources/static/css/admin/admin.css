@@ -380,3 +380,8 @@ content{
     /* font-family: 'KOTRA_BOLD-Bold'; */
     color: #8282827e;
 }
+
+.right-button{
+    width: 20px;
+    height: 20px;
+}

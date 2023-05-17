@@ -1,5 +1,10 @@
 @charset "UTF-8";
+html{
+    height: 100%;
+}
+
 body {
+    height: 100%;
     line-height: 1.33;
     font-family: 'Noto Sans KR' !important;
 }
@@ -85,7 +90,7 @@ body li, body ol, body ul {
 }
 /* 프로필 사진 수정 및 삭제 */
 #image {
-	visibility:hidden;
+    visibility:hidden;
 }
 
 .profileimg-wrap {
@@ -136,16 +141,21 @@ body li, body ol, body ul {
     width: 100%;
     padding: 0;
 }
-/* 회사 */
-.input-div2 li:first-child {
+
+.input-div2 li {
+    /* float: left; */
+    width: 100%;
+    padding: 0;
+}
+/* .input-div2 li:first-child {
     float: left;
-    width: 49%;
+    width: 100%;
     padding: 0;
 }
 /* 직책 */
 .input-div2 li:last-child {
     float: right;
-    width: 49%;
+    width: 100%;
     padding: 0;
 }
 
@@ -235,6 +245,84 @@ body li, body ol, body ul {
     text-decoration: none;
 }
 
+/* 모달 */
+/* 스타일 설정 */
+.modal {
+    display: flex;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    margin: 0;
+    align-items: center;
+    font-family: 'Noto Sans KR';
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 30px;
+    /* padding-bottom: 20px; */
+    border: 1px solid #888;
+    width: 400px;
+    height: 130px;
+    text-align: center;
+    border-radius: 10px;
+    position: relative;
+    bottom: 45px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    display: none;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#closeModalBtn{
+    background-color: #006633;
+    border-radius: 5px;
+    padding: 8px 30px;
+    margin: 0;
+    margin-top: 15px;
+    color: #FFF;
+    position: relative;
+    /* top: 5px; */
+}
+
+/* 애니메이션 효과 */
+.modal-content {
+    animation: modalzoom 0.3s;
+}
+
+@keyframes modalzoom {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+/* 모달 */
+
+
+
 /* 프로필 취소 */
 .btn-div2 li:first-child {
     float: left;
@@ -262,6 +350,12 @@ body li, body ol, body ul {
 .wz.button.gray {
     background-color: #90949c;
     color: #fff;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 /* 프로필 왁인 */
@@ -294,7 +388,7 @@ body li, body ol, body ul {
 }
 
 #gray:hover{
-	background-color: #006633ca;
+    background-color: #006633ca;
 }
 
 .address-btn:hover{
@@ -302,56 +396,56 @@ body li, body ol, body ul {
 }
 
 #mint:hover{
-	background-color:#60656A;
+    background-color:#60656A;
 }
 
 #imageAdd{
-	background-color: #fff;
-	border-color: #fff;
+    background-color: #fff;
+    border-color: #fff;
 }
 
 #file {
-  display: none;
+    display: none;
 }
 
 .setting-profileimg{
-	position: relative;
+    position: relative;
     display: flex;
 }
 
 .btn-upload{
     left: 45%;
-	cursor:pointer;
-	position: absolute;
+    cursor:pointer;
+    position: absolute;
     top: 99px;
 }
 
 .btn-upload span{
-font-size: 13px;
+    font-size: 13px;
 }
 
 #btn_deletePhoto{
-	right: 36%;
-	margin: 0;
-	text-decoration: none;
+    right: 36%;
+    margin: 0;
+    text-decoration: none;
 }
 
 #btn_deletePhoto span{
-	font-size: 13px;
-	text-decoration: none!important;
+    font-size: 13px;
+    text-decoration: none!important;
 }
 #preview{
-	width: 100px;
-	height: 100px;
+    width: 100px;
+    height: 100px;
 }
 
 /* ===================================media=================================== */
 @media screen and (min-width: 960px) {
-#waccountContainer {
-    width: 400px;
-    margin: 0 auto;
-    padding: 50px 0;
-}
+    #waccountContainer {
+        width: 400px;
+        margin: 0 auto;
+        padding: 50px 0;
+    }
 
 
 

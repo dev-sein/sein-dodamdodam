@@ -1,6 +1,7 @@
 package com.app.dodamdodam.domain;
 
 import com.app.dodamdodam.entity.event.EventBoard;
+import com.app.dodamdodam.entity.event.EventFile;
 import com.app.dodamdodam.type.EventType;
 import com.querydsl.core.annotations.QueryProjection;
 import lombok.*;
@@ -9,8 +10,8 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 import java.util.List;
 
+@Component
 @Data
-@Getter @ToString
 @NoArgsConstructor
 public class EventBoardDTO {
 
@@ -39,17 +40,20 @@ public class EventBoardDTO {
     /*댓글 정보*/
     List<EventReviewDTO> reviews;
     /*파일*/
-    private String fileOriginalName;
-    private String fileUuid;
-    private String filePath;
-    private String fileSize;
+    private List<EventFile> eventFiles;
+
+    /*메인 이미지*/
+    private String eventFilePath;
+    private String eventFileName;
+    private String eventFileUuid;
+    private String eventFileSize;
 
     private int endPage;
 
     private boolean checkLike;
 
-    @Builder
-    public EventBoardDTO(Long id, String eventAddress, String eventAddressDetail, LocalDate eventStartDate, LocalDate eventEndDate, String eventIntroduction, String boardTitle, String boardContent, int eventLikeNumber, EventType eventStatus, String eventBusinessNumber, String eventBusinessName, String eventBusinessTel, String eventBusinessEmail, MemberDTO memberDTO, List<EventReviewDTO> reviews, String fileOriginalName, String fileUuid, String filePath, String fileSize) {
+    @QueryProjection
+    public EventBoardDTO(Long id, String eventAddress, String eventAddressDetail, LocalDate eventStartDate, LocalDate eventEndDate, String eventIntroduction, String boardTitle, String boardContent, int eventLikeNumber, EventType eventStatus, String eventBusinessNumber, String eventBusinessName, String eventBusinessTel, String eventBusinessEmail, MemberDTO memberDTO, List<EventReviewDTO> reviews, List<EventFile> eventFiles, String eventFilePath, String eventFileName, String eventFileUuid, String eventFileSize, int endPage, boolean checkLike) {
         this.id = id;
         this.eventAddress = eventAddress;
         this.eventAddressDetail = eventAddressDetail;
@@ -66,10 +70,34 @@ public class EventBoardDTO {
         this.eventBusinessEmail = eventBusinessEmail;
         this.memberDTO = memberDTO;
         this.reviews = reviews;
-        this.fileOriginalName = fileOriginalName;
-        this.fileUuid = fileUuid;
-        this.filePath = filePath;
-        this.fileSize = fileSize;
+        this.eventFiles = eventFiles;
+        this.eventFilePath = eventFilePath;
+        this.eventFileName = eventFileName;
+        this.eventFileUuid = eventFileUuid;
+        this.eventFileSize = eventFileSize;
+        this.endPage = endPage;
+        this.checkLike = checkLike;
     }
+
+    public EventBoard toEntity(){
+        return EventBoard.builder()
+                .boardTitle(boardTitle)
+                .boardContent(boardContent)
+                .eventAddress(eventAddress)
+                .eventAddressDetail(eventAddressDetail)
+                .eventStartDate(eventStartDate)
+                .eventEndDate(eventEndDate)
+                .eventBusinessNumber(eventBusinessNumber)
+                .eventBusinessTel(eventBusinessTel)
+                .eventBusinessEmail(eventBusinessEmail)
+                .eventBusinessName(eventBusinessName)
+                .eventFiles(eventFiles)
+                .eventFilePath(eventFilePath)
+                .eventFileName(eventFileName)
+                .eventFileSize(eventFileSize)
+                .eventFileUuid(eventFileUuid)
+                .build();
+    }
+
 
 }
