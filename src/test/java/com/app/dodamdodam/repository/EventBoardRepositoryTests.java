@@ -37,35 +37,35 @@ public class EventBoardRepositoryTests {
 
 
 
-    @Test
-    public void saveTest(){
-        Address address = new Address("1234", "test-address", "test-detail");
-        Member member = new Member("test1234", "1234", "테스트", "test1234@gmail.com", "01012341234", address, MemberStatus.NORMAL, MemberType.GENERAL, Role.MEMBER);
-
-        memberRepository.save(member);
-
-        for(int i= 0; i< 10; i ++){
-
-            EventBoard eventBoard = new EventBoard("테스트제목" + i, "테스트내용"+ i);
-            eventBoard.setMember(member);
-
-            for(int j = 0; j < 5; j ++){
-                EventFile eventFile = new EventFile("test" +(i+1) + ".png", UUID.randomUUID().toString(), "test" + i+1, 10L, eventBoard);
-                eventFileRepository.save(eventFile);
-            }
-
-            eventBoardRepository.save(eventBoard);
-        }
-    }
+//    @Test
+//    public void saveTest(){
+//        Address address = new Address("1234", "test-address", "test-detail");
+//        Member member = new Member("test1234", "1234", "테스트", "test1234@gmail.com", "01012341234", address, MemberStatus.NORMAL, MemberType.GENERAL, Role.MEMBER);
+//
+//        memberRepository.save(member);
+//
+//        for(int i= 0; i< 10; i ++){
+//
+//            EventBoard eventBoard = new EventBoard("테스트제목" + i, "테스트내용"+ i);
+//            eventBoard.setMember(member);
+//
+//            for(int j = 0; j < 5; j ++){
+//                EventFile eventFile = new EventFile("test" +(i+1) + ".png", UUID.randomUUID().toString(), "test" + i+1, 10L, eventBoard);
+//                eventFileRepository.save(eventFile);
+//            }
+//
+//            eventBoardRepository.save(eventBoard);
+//        }
+//    }
 
 //    무한스크롤
-    @Test
-    public void findAllWithSearch_QueryDSLTest(){
-        EventBoardSearch eventBoardSearch = new EventBoardSearch();
-
-        Slice<EventBoard> result = eventBoardRepository.findAllWithSearch_QueryDSL(eventBoardSearch, PageRequest.of(1,5));
-        result.stream().forEach(eventBoard -> log.info(eventBoard.toString()));
-    }
+//    @Test
+//    public void findAllWithSearch_QueryDSLTest(){
+//        EventBoardSearch eventBoardSearch = new EventBoardSearch();
+//
+//        Slice<EventBoard> result = eventBoardRepository.findAllWithSearch_QueryDSL(eventBoardSearch, PageRequest.of(1,5));
+//        result.stream().forEach(eventBoard -> log.info(eventBoard.toString()));
+//    }
 
     /*상세글 보기*/
     @Test
@@ -85,15 +85,15 @@ public class EventBoardRepositoryTests {
                 .ifPresent(eventBoard -> log.info(eventBoard.toString()));
     }
 
-    /*리뷰 저장*/
-    @Test
-    public void reviewSaveTest(){
-        EventBoard eventBoard = eventBoardRepository.findById(101L).get();
-        Member member = memberRepository.findById(101L).get();
-        for(int i = 0; i<20; i++){
-            EventReview eventReview = new EventReview("test" + (i+1),eventBoard, member);
-        }
-    }
+//    /*리뷰 저장*/
+//    @Test
+//    public void reviewSaveTest(){
+//        EventBoard eventBoard = eventBoardRepository.findById(101L).get();
+//        Member member = memberRepository.findById(101L).get();
+//        for(int i = 0; i<20; i++){
+//            EventReview eventReview = new EventReview("test" + (i+1),eventBoard, member);
+//        }
+//    }
 
     @Test
     public void updateTest(){

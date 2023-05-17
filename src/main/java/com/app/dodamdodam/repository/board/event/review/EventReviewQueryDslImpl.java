@@ -17,25 +17,31 @@ public class EventReviewQueryDslImpl implements EventReviewQueryDsl {
     private final JPAQueryFactory query;
 
     @Override
-    public Page<EventReview> findAllByEventBoardWithPaging_QueryDSL(Long eventBoardId, Pageable pageable) {
-        List<EventReview> foundEventReview = query.select(eventReview)
+    public Slice<EventReview> findAllByEventWithPaging_QueryDsl(Long eventBoardId, Pageable pageable) {
+        List<EventReview> foundReview = query.select(eventReview)
                 .from(eventReview)
                 .leftJoin(eventReview.member, member)
                 .fetchJoin()
                 .where(eventReview.eventBoard.id.eq(eventBoardId))
                 .orderBy(eventReview.id.desc())
-                .offset(pageable.getOffset()-1)
-                .limit(pageable.getPageSize()).fetch();
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize() + 1)
+                .fetch();
 
-        Long count = getReviewCount_QueryDSL(eventBoardId);
-        return new PageImpl<>(foundEventReview, pageable, count);
+        boolean hasNext = false;
+        if (foundReview.size() > pageable.getPageSize()) {
+            foundReview.remove(pageable.getPageSize());
+            hasNext = true;
+        }
+
+        return new SliceImpl<>(foundReview, pageable, hasNext);
     }
 
     @Override
     public Long getReviewCount_QueryDSL(Long eventBoardId) {
         return query.select(eventReview.count())
                 .from(eventReview)
-                .where(eventReview.id.eq(eventBoardId))
+                .where(eventReview.eventBoard.id.eq(eventBoardId))
                 .fetchOne();
     }
 

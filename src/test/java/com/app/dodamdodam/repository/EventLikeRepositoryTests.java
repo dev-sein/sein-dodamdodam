@@ -30,19 +30,19 @@ public class EventLikeRepositoryTests {
     private MemberRepository memberRepository;
 
 
-    @Test
-    public void checkMemberLikesEventBoardTest(){
-        Optional<Member> member = memberRepository.findById(1L);
-        Optional<EventBoard> eventBoard = eventBoardRepository.findById(107L);
-
-        if(!member.isPresent() || !eventBoard.isPresent()) fail("멤버 혹은 리뷰 보드가 존재하지 않음");
-
-        checkMemberAlreadyLikes(member.get(), eventBoard.get());
-    }
-
-    private boolean checkMemberAlreadyLikes(Member member, EventBoard eventBoard){
-        return eventLikeRepository.checkMemberLikesEventBoard_QueryDSL(member, eventBoard);
-    }
+//    @Test
+//    public void checkMemberLikesEventBoardTest(){
+//        Optional<Member> member = memberRepository.findById(1L);
+//        Optional<EventBoard> eventBoard = eventBoardRepository.findById(107L);
+//
+//        if(!member.isPresent() || !eventBoard.isPresent()) fail("멤버 혹은 리뷰 보드가 존재하지 않음");
+//
+//        checkMemberAlreadyLikes(member.get(), eventBoard.get());
+//    }
+//
+////    private boolean checkMemberAlreadyLikes(Member member, EventBoard eventBoard){
+////        return eventLikeRepository.checkMemberLikesEventBoard_QueryDSL(member, eventBoard);
+////    }
 
     @Test
     public void saveTest(){

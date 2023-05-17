@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>이벤트 정보 작성</title>
-    <link rel="stylesheet" href="../../static/css/event-board/event-board-write.css">
+    <link rel="stylesheet" href="/css/event-board/event-board-write.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">  
@@ -14,8 +14,8 @@
 <body>
     <div id="page-container">
         <main id="container">
-            <form id="submit-btn" class="event-register" method="">
-                <!-- 회원 유형 선택 -->
+            <form id="submit-btn" class="event-register" method="post" action="/event-board/event-board-write" enctype="multipart/form-data" name="form">
+            <!-- 회원 유형 선택 -->
                 <section class="member-type">
                     <h3 class="h3-text">신청 유형 선택</h3>
                     <!-- <p class="description-content">사업자 등록 없이 개인으로 메이커 페이지를<br>
@@ -46,7 +46,7 @@
                         </div>
                         <div class="input-container">
                             <div class="waffle input">
-                                <input class="businessRegNumber number" name="businessRegNumber" placeholder="사업자 등록번호 10자리 입력" maxlength="10" required>
+                                <input class="businessRegNumber number" name="eventBusinessNumber" placeholder="사업자 등록번호 10자리 입력" maxlength="10" required >
                             </div>
                             <div class="waffle helper mb"></div>
                             <div class="businessRegNumber-error-msg erro-msg"></div>
@@ -60,7 +60,7 @@
                         </div>
                         <div class="input-container">
                             <div class="waffle input">
-                                <input name="businessRegName" placeholder="상호/법인명 입력" required>
+                                <input name="eventBusinessName" placeholder="상호/법인명 입력" required >
                             </div>
                             <div class="waffle helper mb"></div>
                         </div>
@@ -74,7 +74,7 @@
                         </div>
                         <div class="input-container">
                             <div class="waffle input">
-                                <input class="representive-tel number" name="businessNumber" placeholder="회사의 대표번호를 입력해주세요" required>
+                                <input class="representive-tel number" name="eventBusinessTel" placeholder="회사의 대표번호를 입력해주세요" required >
                             </div>
                             <div class="waffle helpe mb"></div>
                             <div class="representive-tel-error-msg error-msg"></div>
@@ -89,7 +89,7 @@
                         </div>
                         <div class="input-container">
                             <div class="waffle input">
-                                <input class="business-email email" name="businessEmail" placeholder="대표 이메일을 적어주세요" required>
+                                <input class="business-email email" name="eventBusinessEmail" placeholder="대표 이메일을 적어주세요" required >
                             </div>
                             <div class="waffle helper mb"></div>
                             <div class="business-email-error-msg error-msg"></div>
@@ -109,7 +109,7 @@
                         </div>
                         <div class="input-container">
                             <div class="waffle input">
-                                <input name="eventTitle" placeholder="이벤트명을 적어주세요" required>
+                                <input name="boardTitle" placeholder="이벤트명을 적어주세요" required >
                             </div>
                             <div class="waffle helper mb"></div>
                         </div>
@@ -122,14 +122,14 @@
                         </div>
                         <div class="action-input">
                             <div class="input-container mb13">
-                                <input name="eventAddress" id="address" class="address" placeholder="주소검색" required>
+                                <input name="eventAddress" id="address" class="address" placeholder="주소검색" required >
                                 <button class="address-btn" id="detailAddress" type="button" onclick="searchAddress()">주소검색</button>
                                 </div>
                            </div>
                         </div>
                         <div class="input-container">
                             <div class="waffle input address-input">
-                                <input name="eventAddressDetail" placeholder="상세주소">
+                                <input name="eventAddressDetail" placeholder="상세주소" >
                             </div>
                             <label id="address-error" class="error" for="address">필수 항목입니다.</label>
                             <div class="waffle helper mb"></div>
@@ -145,8 +145,8 @@
                         </div>
                         <div class="input-container">
                             <div class="waffle input">
-                                <input type="date" name="startDate" id="startDate" required>
-                                <input type="date" name="endDate" id="endDate" required>
+                                <input type="date" name="eventStartDate" id="startDate" required >
+                                <input type="date" name="eventEndDate" id="endDate" required >
                             </div>
                             <div class="waffle helper mb"></div>
                         </div>
@@ -159,7 +159,7 @@
                             <label>이벤트 소개</label>
                         </div>
                         <div class="input-container">
-                                <textarea rows="5"placeholder="이벤트 소개를 적어주세요" name="event-introduction" required></textarea>
+                                <textarea rows="5"placeholder="이벤트 소개를 적어주세요" name="boardContent" required ></textarea>
 
                             <div class="waffle helper mb"></div>
                         </div>
@@ -169,10 +169,10 @@
                    <div id="plus_picture">
                     <div class="waffle field">
                         <div class="waffle label">
-                            <label>파일 첨부
+                            파일 첨부
                         </div>
                     <button class="file-button" type="button">
-                        <input class="file-input" id='btnAtt' type="file" multiple="multiple" name="fileNames" accept="application/pdf,image/jpg,image/jpeg,image/png" required>등록
+                        <input class="file-input" id='btnAtt' type="file" multiple="multiple" name="eventFiles" accept="application/pdf,image/jpg,image/jpeg,image/png" required>등록
                     </button>
                     <label id="btnAtt-error" class="error" for="btnAtt">필수 항목입니다.</label>
                     <div id='att_zone'></div></label>   
@@ -190,8 +190,16 @@
 
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="../../static/js/event-board/event-board.js"></script>
+<script src="/js/event-board/event-board-write.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script th:inline="javascript">
+    let fileDTOS = null;
+    let eventBoardDTO = [[${eventBoardDTO}]];
+    if(eventBoardDTO == null || eventBoardDTO == undefined){
+    }else {
+        fileDTOS = eventBoardDTO.eventFiles;
+    }
+</script>
 </html>
 
