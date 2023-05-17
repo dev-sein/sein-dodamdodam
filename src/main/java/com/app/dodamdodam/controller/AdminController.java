@@ -1,9 +1,9 @@
 package com.app.dodamdodam.controller;
 
 import com.app.dodamdodam.domain.*;
-import com.app.dodamdodam.entity.inquiry.Inquiry;
 import com.app.dodamdodam.service.board.freeBoard.FreeBoardService;
 import com.app.dodamdodam.service.board.purchase.PurchaseBoardService;
+import com.app.dodamdodam.service.board.recruitmentBoard.RecruitmentBoardService;
 import com.app.dodamdodam.service.inquiry.InquiryService;
 import com.app.dodamdodam.service.member.MemberService;
 import com.app.dodamdodam.service.point.PointService;
@@ -13,10 +13,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,6 +28,7 @@ public class AdminController {
     private final FreeBoardService freeBoardService;
     private final PurchaseBoardService purchaseBoardService;
     private final MemberService memberService;
+    private final RecruitmentBoardService recruitmentBoardService;
 
     /*문의 게시판*/
     @GetMapping("inquiry/list") //문의 게시판 목록
@@ -41,14 +40,11 @@ public class AdminController {
     @GetMapping("inquiry/list-content")  //문의 게시판 목록
     public Page<InquiryDTO> adminInquiryGetListJson(@RequestParam(name = "page") int page) {
         PageRequest pageRequest = PageRequest.of(page, 10);
-//        Pageable pageable = PageRequest.of(page, 10);
         Page<InquiryDTO> inquiryAdminPages = inquiryService.showList(pageRequest);
-        log.info("======================"+page);
         return inquiryAdminPages;
     }
 
-    /*문의 삭제*/
-    @DeleteMapping("inquiry/delete")
+    @DeleteMapping("inquiry/delete") //문의 삭제
     @ResponseBody
     public ResponseEntity<String> deleteAdminInquires(@RequestBody List<Long> inquiryIds){
         inquiryService.deleteInquires(inquiryIds);
@@ -68,10 +64,10 @@ public class AdminController {
     }
 
     @ResponseBody
-    @GetMapping("point/list/{page}")
-    public Page<PointDTO> getPointList(@RequestParam(value = "page") Integer page) {
-        Pageable pageable = PageRequest.of(page-1, 10);
-        Page<PointDTO> pointAdminPage =  pointService.showList(pageable);
+    @GetMapping("point/list-content")
+    public Page<PointDTO> getPointList(@RequestParam(value = "page") int page) {
+        PageRequest pageRequest = PageRequest.of(page, 10);
+        Page<PointDTO> pointAdminPage =  pointService.showList(pageRequest);
         return pointAdminPage;
     }
 
@@ -83,10 +79,10 @@ public class AdminController {
     }
 
     @ResponseBody
-    @GetMapping("free-board/list/{page}") //자유 게시판 목록
-    public Page<FreeBoardFileDTO> getFreeBoardList(@RequestParam(value = "page") Integer page){
-        Pageable pageable = PageRequest.of(page-1, 10);
-        Page<FreeBoardFileDTO> freeBoardAdminPage = freeBoardService.getAdminFreeBoardList(pageable);
+    @GetMapping("free-board/list-content") //자유 게시판 목록
+    public Page<FreeBoardFileDTO> getFreeBoardList(@RequestParam(value = "page") int page){
+        PageRequest pageRequest = PageRequest.of(page, 10);
+        Page<FreeBoardFileDTO> freeBoardAdminPage = freeBoardService.getAdminFreeBoardList(pageRequest);
         return freeBoardAdminPage;
     }
 
@@ -97,7 +93,6 @@ public class AdminController {
         return ResponseEntity.ok("게시물 삭제에 성공했습니다");
     }
 
-
     /*판매 게시판 */
     @GetMapping("purchase-board/list") //판매 게시판 목록
     public String adminPurchaseBoardList(){
@@ -105,10 +100,10 @@ public class AdminController {
     }
 
     @ResponseBody
-    @GetMapping("purchase-board/list/{page}") //판매 게시판 목록
-    public Page<PurchaseBoardDTO> getPurchaseBoardList(@RequestParam(value = "page") Integer page){
-        Pageable pageable = PageRequest.of(page - 1, 10);
-        Page<PurchaseBoardDTO> purchaseBoardAdminPage = purchaseBoardService.showList(pageable);
+    @GetMapping("purchase-board/list-content") //판매 게시판 목록
+    public Page<PurchaseBoardDTO> getPurchaseBoardList(@RequestParam(value = "page") int page){
+        PageRequest pageRequest = PageRequest.of(page, 10);
+        Page<PurchaseBoardDTO> purchaseBoardAdminPage = purchaseBoardService.showList(pageRequest);
         return purchaseBoardAdminPage;
     }
 
@@ -124,10 +119,10 @@ public class AdminController {
     public String adminMemberList(){ return "admin/member-list"; }
 
     @ResponseBody
-    @GetMapping("member/list/{page}") //멤버 목록
-    public Page<MemberDTO> getMemberList(@RequestParam(value = "page") Integer page){
-        Pageable pageable = PageRequest.of(page-1, 10);
-        Page<MemberDTO> memberAdminPage = memberService.showList(pageable);
+    @GetMapping("member/list-content") //멤버 목록
+    public Page<MemberDTO> getMemberList(@RequestParam(value = "page") int page){
+        PageRequest pageRequest = PageRequest.of(page, 10);
+        Page<MemberDTO> memberAdminPage = memberService.showList(pageRequest);
         return memberAdminPage;
     }
 
@@ -136,6 +131,25 @@ public class AdminController {
     public ResponseEntity<String> setMemberStatus(@RequestBody List<Long> ids, MemberStatus memberStatus){
         memberService.setMemberStatus(ids, memberStatus);
         return ResponseEntity.ok("회원 상태 변경 완료하였습니다");
+    }
+
+    /*모집 게시판*/
+    @GetMapping("recruitment-board/list") //모집 목록
+    public String adminRecruitmentBoardList(){ return "admin/recruitment-board"; }
+
+    @ResponseBody
+    @GetMapping("recruitment-board/list-content")  //모집 게시판 목록
+    public Page<RecruitmentBoardFileDTO> adminRecruitmentBoardGetListJson(@RequestParam(name = "page") int page) {
+        PageRequest pageRequest = PageRequest.of(page, 10);
+        Page<RecruitmentBoardFileDTO> recruitmentBoardFileDTOPage = recruitmentBoardService.showList(pageRequest);
+        return recruitmentBoardFileDTOPage;
+    }
+
+    @DeleteMapping("recruitment-board/delete") //모집 게시글 삭제
+    @ResponseBody
+    public ResponseEntity<String> deleteAdminRecruitmentBoard(@RequestBody List<Long> recruitmentBoardIds){
+        recruitmentBoardService.deleteRecruitmentBoard(recruitmentBoardIds);
+        return ResponseEntity.ok("게시물 삭제에 성공했습니다");
     }
 
 

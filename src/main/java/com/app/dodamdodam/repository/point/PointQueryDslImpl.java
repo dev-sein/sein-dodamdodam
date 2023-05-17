@@ -35,7 +35,7 @@ public class PointQueryDslImpl implements PointQueryDsl {
         List<Point> pointList = query.select(point)
                 .from(point)
                 .orderBy(point.id.desc())
-                .offset(pageable.getOffset()-1)
+                .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
 

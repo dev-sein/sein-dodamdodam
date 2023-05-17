@@ -67,7 +67,7 @@ public class FreeBoardServiceImpl implements FreeBoardService {
     /* 관리자 자유 게시글 목록 */
     @Override
     public Page<FreeBoardFileDTO> getAdminFreeBoardList(Pageable pageable) {
-       Page<FreeBoard> freeBoardPage = freeBoardRepository.findAllFreeBoardList_QueryDSL(PageRequest.of(1, 10));
+       Page<FreeBoard> freeBoardPage = freeBoardRepository.findAllFreeBoardList_QueryDSL(pageable);
        List<FreeBoardFileDTO> freeBoardFileDTOS = freeBoardPage.get().map(this::toFreeBoardFileDTO).collect(Collectors.toList());
         return new PageImpl<>(freeBoardFileDTOS, pageable, freeBoardPage.getTotalElements());
     }

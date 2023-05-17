@@ -122,7 +122,7 @@ public class RecruitmentBoardQueryDslImpl implements RecruitmentBoardQueryDsl {
             List<RecruitmentBoard> recruitmentBoards = query.select(recruitmentBoard)
                     .from(recruitmentBoard)
                     .orderBy(recruitmentBoard.id.desc())
-                    .offset(pageable.getOffset() -1)
+                    .offset(pageable.getOffset())
                     .limit(pageable.getPageSize())
                     .fetch();
             Long count = query.select(recruitmentBoard.count())
