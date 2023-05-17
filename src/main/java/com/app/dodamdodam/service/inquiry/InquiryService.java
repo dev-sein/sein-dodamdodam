@@ -9,6 +9,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public interface InquiryService {
 
@@ -18,14 +20,17 @@ public interface InquiryService {
     //관리자 : 문의사항 목록
     public Page<InquiryDTO> showList(Pageable pageable);
 
-//    //관리자 : 문의사항 검색
-//    public Page<AdminInquirySearchDTO> showInquiryWithSearch_QueryDSL(AdminInquirySearch inquirySearch, Pageable pageable);
+    //관리자 : 문의사항 검색
+    public Page<AdminInquirySearchDTO> showInquiryWithSearch_QueryDSL(AdminInquirySearch inquirySearch, Pageable pageable);
 
-    default Inquiry toInquiryEntity(InquiryDTO inquiryDTO){
-        return Inquiry.builder().id(inquiryDTO.getId()).inquiryEmail(inquiryDTO.getInquiryEmail()).inquiryContent(inquiryDTO.getInquiryContent())
-                .inquiryPhoneNumber(inquiryDTO.getInquiryPhoneNumber()).inquiryType(inquiryDTO.getInquiryType()).inquiryStatus(inquiryDTO.getInquiryStatus())
-                .inquiryAnswer(inquiryDTO.getInquiryAnswer()).build();
-    }
+    //관리자 : 문의사항 삭제
+    public void deleteInquires(List<Long> inquiryIds);
+
+//    default Inquiry toInquiryEntity(InquiryDTO inquiryDTO){
+//        return Inquiry.builder().id(inquiryDTO.getId()).inquiryEmail(inquiryDTO.getInquiryEmail()).inquiryContent(inquiryDTO.getInquiryContent())
+//                .inquiryPhoneNumber(inquiryDTO.getInquiryPhoneNumber()).inquiryType(inquiryDTO.getInquiryType()).inquiryStatus(inquiryDTO.getInquiryStatus())
+//                .inquiryAnswer(inquiryDTO.getInquiryAnswer()).build();
+//    }
 
     default InquiryDTO toInquiryDTO(Inquiry inquiry){
         return InquiryDTO.builder().id(inquiry.getId()).inquiryContent(inquiry.getInquiryContent())

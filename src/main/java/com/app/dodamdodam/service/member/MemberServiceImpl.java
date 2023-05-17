@@ -140,4 +140,13 @@ public class MemberServiceImpl implements MemberService{
         return recruitmentBoardRepository.findAllRecruitmentedBoardListByMemberId_QueryDSL(memberId);
     }
 
+    /* 멤버 상태 변경*/
+    @Override
+    public void setMemberStatus(List<Long> ids, MemberStatus memberStatus) {
+        for(Long id: ids){
+            memberRepository.findById(id).ifPresent(member -> member.setMemberStatus(MemberStatus.WITHDRAWAL));
+        }
+    }
+
+
 }
