@@ -86,7 +86,7 @@
                                     <span class="ProfileSet_button">배너 신청하기</span>
                                 </span>
                         </a>
-                        <a href="https://www.wadiz.kr/web/wmypage/myprofile/modifyprofile" class="ProfileSet">
+                        <a href="/mypage/info" class="ProfileSet">
                                 <span>
                                     <span class="ProfileSet_button">프로필 편집하기</span>
                                 </span>
@@ -336,8 +336,6 @@
         });
     };
 
-
-
     // 처음에 화면에 목록 뿌려주기
     $(document).ready(function () {
         fetchData();
@@ -363,22 +361,22 @@
             /* background-image 쪽 추가로 작업해야함, 밋밋하면 likeCount 추가 DTO에 만들어 둠 */
             text += `
                     <li class="reward " data-hiddentype="F" data-campaintype="RWD" data-campaignid="155943" data-campaignhiddenseq="">
-                        <a href="/web/campaign/detail/155943">
+                        <div>
                             <div class="project-card">
-                                <div class="card-img-section">
+                                <div class="card-img-section" style="cursor: pointer" onclick="window.open('/free/detail/${result[i].id}')">
                                       <em class="project-img" style="background-image:url(https://cdn.wadiz.kr/wwwwadiz/green001/2023/0320/20230320212007743_200034.png/wadiz/format/jpg/quality/80)"></em>
                                     <em class="project-type reward">내가 쓴 자유글</em>
                                 </div>
                                 <div class="card-info-section">
                                     <h4>${result[i].boardTitle}</h4>
-                                    <h5>일시 : <span>${date}</span></h5>
+                                    <h5>작성날짜 : <span>${date}</span></h5>
                                     <div class="card-category">
                                         <span class="category1">${category}</span>
                                         <span class="category2"><em class="like-count">${result[i].likeCount}</em></span>
                                     </div>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                     </li>`;
             /* 추가한 내용 화면에 뿌려주기 */
             $(".free-board-list-container").append(text);
