@@ -19,13 +19,14 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @Builder
-public class MemberDTO {
+public class MemberDTO implements Serializable {
     private Long id;
     private String memberId;
     private String memberPassword;
@@ -57,5 +58,11 @@ public class MemberDTO {
         this.createdDate = createdDate;
         this.memberType = memberType;
         this.memberRole = memberRole;
+    }
+
+    public MemberDTO(Member member) {
+        this.memberName = member.getMemberName();
+        this.memberEmail = member.getMemberEmail();
+        this.memberPhone = member.getMemberPhone();
     }
 }

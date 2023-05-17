@@ -81,10 +81,20 @@ public class Member extends Period {
         this.memberRole = memberRole;
     }
 
-    public Member update(String memberName, String memberEmail, String memberPhone){
+    @Builder
+    public Member(String memberName, String memberPhone, String memberEmail, Role memberRole, MemberStatus memberStatus, MemberType memberType) {
         this.memberName = memberName;
-        this.memberEmail = memberEmail;
         this.memberPhone = memberPhone;
+        this.memberEmail = memberEmail;
+        this.memberRole = memberRole;
+        this.memberStatus = memberStatus;
+        this.memberType = memberType;
+    }
+
+    public Member update(String memberName, String memberPhone, String memberEmail){
+        this.memberName = memberName;
+        this.memberPhone = memberPhone;
+        this.memberEmail = memberEmail;
 
         return this;
     }
