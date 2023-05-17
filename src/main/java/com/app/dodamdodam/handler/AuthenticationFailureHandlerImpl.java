@@ -1,6 +1,7 @@
 package com.app.dodamdodam.handler;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.stereotype.Component;
@@ -13,9 +14,11 @@ import java.io.IOException;
 @Component
 @Slf4j
 public class AuthenticationFailureHandlerImpl implements AuthenticationFailureHandler {
-    private static final String REDIRECT_URL = "/member/login";
+    private static final String REDIRECT_URL = "/member/login?check=false";
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
+//        HttpSecurity http;
+        log.info("SecurityFilterChain start");
         log.error("exception message: {}", exception.getMessage());
         response.sendRedirect(REDIRECT_URL);
     }

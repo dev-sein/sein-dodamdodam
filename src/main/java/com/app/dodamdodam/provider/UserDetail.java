@@ -4,9 +4,11 @@ import com.app.dodamdodam.type.Role;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
 import java.util.Collection;
 
 @Component
@@ -32,8 +34,9 @@ public class UserDetail implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return authorities;
+        return Arrays.asList(new SimpleGrantedAuthority(Role.MEMBER.getSecurityRole()), new SimpleGrantedAuthority(Role.ADMIN.getSecurityRole()));
     }
+
 
     @Override
     public String getPassword() {
