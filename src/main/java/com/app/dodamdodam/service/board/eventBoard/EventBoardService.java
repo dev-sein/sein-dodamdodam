@@ -54,11 +54,9 @@ public interface EventBoardService {
                 .memberName(member.getMemberName())
                 .memberEmail(member.getMemberEmail())
                 .memberPhone(member.getMemberPhone())
-                .address(member.getAddress())
                 .memberStatus(member.getMemberStatus())
                 .memberPoint(member.getMemberPoint())
                 .participationCount(member.getParticipationCount())
-                .recruitmentedCount(member.getParticipationCount())
                 .createdDate(member.getCreatedDate())
                 .build();
     }
@@ -80,7 +78,6 @@ public interface EventBoardService {
                 .memberEmail(memberDTO.getMemberEmail())
                 .memberName(memberDTO.getMemberName())
                 .memberPhone(memberDTO.getMemberPhone())
-                .address(memberDTO.getAddress())
                 .memberStatus(memberDTO.getMemberStatus())
                 .memberRole(memberDTO.getMemberRole())
                 .build();
