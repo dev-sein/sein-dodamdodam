@@ -24,7 +24,7 @@ $identificationInput.on("blur", function() {
 			if ($identificationInput.val() < 1) {
 				//$identificationWarning.text("아이디를 입력해주세요.");
 				$identificationWarning.css("display", "block");
-				$identificationInput.css("border-color", "#f66");
+				$identificationInput.css("border-color", "#ff6666");
 				identificationFlag = false;
 				// !isPhoneNum.test(mobile.value)
 			} else if (!regExp.test($identificationInput.val())) {
@@ -413,16 +413,16 @@ $(".Button_TextField_icon1").on("click",function(){
 $('#id_confirm').on('blur', function(){
 	var currentId = $('#id_confirm').val();
 	$.ajax({
-		url: '/member/checkId',
+		url: '/member/check-id',
 		type: 'post',
 		data: currentId,
 		success: function (data) {
-			if (data === 'available') { //cnt가 1이 아니면(=0일 경우) -> 사용 가능한 이메일
-				$('.email_ok').css("display", "inline-block");
-				$('.email_already').css("display", "none");
-			} else { // cnt가 1일 경우 -> 이미 존재하는 이메일
+			if (data === 'available') { // 사용 가능한 아이디
 				$('.email_already').css("display", "inline-block");
 				$('.email_ok').css("display", "none");
+			} else { // // 사용 불가능한 아이디
+				$('.email_ok').css("display", "inline-block");
+				$('.email_already').css("display", "none");
 			}
 		}
 	});
