@@ -68,20 +68,20 @@
             </div>
             <main id="main-chat-container">
                 <li>
-                    <div class="sender-message">
-                        <div class="sender-name">박다예</div>
-                        <div class="sender-message-box">
-                            <div class="sender-content">졸려</div>
-                            <div class="chat-date">13:58</div>
-                        </div>
-                    </div>
-                    <div class="receiver-message">
-                        <div class="receiver-name">정세인</div>
-                        <div class="receiver-message-box">
-                            <div class="receiver-content">깨워줄까?</div>
-                            <div class="chat-date">13:58</div>
-                        </div>
-                    </div>
+<!--                    <div class="sender-message">-->
+<!--                        <div class="sender-name">박다예</div>-->
+<!--                        <div class="sender-message-box">-->
+<!--                            <div class="sender-content">졸려</div>-->
+<!--                            <div class="chat-date">13:58</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="receiver-message">-->
+<!--                        <div class="receiver-name">정세인</div>-->
+<!--                        <div class="receiver-message-box">-->
+<!--                            <div class="receiver-content">깨워줄까?</div>-->
+<!--                            <div class="chat-date">13:58</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
                 </li>
             </main>
             <footer class="input_msg_container">
@@ -124,7 +124,7 @@
         console.log("nextPage : " + nextPage);
         $.ajax({
             type: 'GET',
-            url: `/chat/room/${page}`,
+            url: `/chat/chat-room/${page}`,
             success: function (result) {
                 console.log(result);
                 showList(result); // 새로운 값을 담기
@@ -180,10 +180,14 @@
         }
     }
 
-    //     let memberName = document.getElementById("memberId").innerText;
-    //     let memberId = document.getElementById("memberId").getAttribute("href");
-    //
-    //
+
+
+
+
+
+
+    // let memberName = document.getElementById("memberId").innerText;
+    // let memberId = document.getElementById("memberId").getAttribute("href");
     //
     // socket.onmessage = async function (e) {
     //     console.log("*************들어옴*************")
@@ -248,6 +252,123 @@
     //         });
     //     }
     // });
+
+</script>
+<script>
+    let webSocket;
+    function connect(){
+        webSocket = new WebSocket("ws://localhost:10000/ws/chat");
+        webSocket.onopen = onOpen;
+        webSocket.onclose = onClose;
+        webSocket.onmessage = onMessage;
+    }
+
+    // ajax로 게시글 목록 불러오기(8개씩 가져옴)
+    const fetchData = () => {
+        let page = nextPage;
+        nextPage++;
+        console.log("nextPage : " + nextPage);
+        $.ajax({
+            type: 'GET',
+            url: `/chat/chat-room/${page}`,
+            success: function (result) {
+                console.log(result);
+                showList(result); // 새로운 값을 담기
+            },
+            error: function (error) {
+                console.log('Error fetching data:', error);
+            }
+        });
+    };
+
+    // 처음에 화면에 목록 뿌려주기
+    $(document).ready(function () {
+        fetchData();
+    });
+    // db에서 해당 채팅룸의 채팅 내용을 모두 가져온다.
+    function getList(param, callback, error) {
+        $.ajax({
+            url: "/chatting/roomId/" + param.roomId,
+            type: "get",
+            async:false,
+            success: function (result, status, xhr) {
+                if (callback) {
+                    callback(result);
+                }
+            },
+            error: function (xhr, status, err) {
+                if (error) {
+                    error(err);
+                }
+            }
+        });
+    }
+
+    // 채팅 db에서 해당 채팅 룸의 채팅 내용을 모두 가져온 후 다시
+    function show(id) {
+        getList({
+            roomId: id
+        }, getChattingContentList)
+    }
+
+    function getChattingContentList(result) {
+        const $listResults = $("#main-chat-container li")
+        for (let i = 0; i < result.length; i++) {
+            let text = "";
+            /* 날짜 변환해서 담아둠*/
+            let date = changeDateToString(result[i]);
+            console.log("*****************************들어옴******************************")
+                text += `
+                    <div class="sender-message">
+                        <div class="sender-name">${result[i].senderMemberId}</div>
+                        <div class="sender-message-box">
+                            <div class="sender-content">${result[i].chattingContent}</div>
+                            <div class="chat-date">${date}</div>
+                        </div>
+                    </div>
+                `;
+            $listResults.append(text);
+        }
+    }
+
+        function onMessage(e){
+            if(!e.data.includes(':')){
+                return null;
+            }
+            console.log("onmessage들어옴")
+            chattingRoom =document.getElementById("chattingRoom");
+            chatdata = e.data;
+            let datas = chatdata.replaceAll("\"", "");
+            let realDatas = datas.split(":");
+            let dateTime = new Date().toTimeString().split(' ')[0];
+            let time = dateTime.split(":")
+            text += `
+
+                `;
+
+
+            chattingRoom.innerHTML =chattingRoom.innerHTML
+                + "<div class=\"opponent\">"
+                + "<div class=\"thumb\">"
+                + "<a href='javascript:void(0)' target=\"_blank\">"
+                + `<img src="`+realDatas[0]+`" alt="user thumbnail" class="Profile__Thumbnail-sc-1rgtq5h-8 eBTIQt">`
+                + "</div>"
+                + "<div class=\"userIdChatTxt\">"
+                + "<span class=\"userId\">" + realDatas[1] + "</span>"
+                + "<div class=\"chatTxt\">"
+                + "<span class=\"chatTxtContents\">"
+                + "<a style=\"color: rgb(51, 51, 51);\">" + realDatas[2] + "</a>"
+                + "</span>"
+                + "<div class=\"timeWrap\">"
+                + "<span class=\"time\">" + time[0]+ ":" + time[1] + "</span>"
+                + "</div>"
+                + "</div>"
+                + "</div>"
+                + "</div>"
+            document.getElementById('chattingRoom').scrollTop = document.getElementById('chattingRoom').scrollHeight;
+        }
+
+
 
 </script>
 </html>

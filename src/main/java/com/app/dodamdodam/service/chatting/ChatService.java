@@ -81,7 +81,7 @@ public interface ChatService {
     public List<RoomDTO> getRoomByMemberId(Pageable pageable, Long memberId);
 
 //    roomId로 채팅 목록 불러오기
-    public List<ChattingDTO> getChattingByRoomId(Pageable pageable, Long roomId);
+    public List<ChattingDTO> getChattingByRoomId(Pageable pageable, Long roomId, Long memberId);
 
     default RoomDTO toRoomDTO(Room room){
         return RoomDTO.builder()
