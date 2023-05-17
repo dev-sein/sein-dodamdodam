@@ -1,45 +1,69 @@
 package com.app.dodamdodam.domain;
 
 import com.app.dodamdodam.service.chatting.ChatService;
+import com.app.dodamdodam.service.chatting.ChatServiceImpl;
+import com.querydsl.core.annotations.QueryProjection;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.socket.WebSocketSession;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Data
+@Builder
+@Slf4j
 public class RoomDTO {
     private Long id;
     private Long hostId;
     private Long havingId;
     private MemberDTO memberDTO;
-    private List<ChattingDTO> chattingDTOS;
+    private LocalDateTime createdDate;
+    private LocalDateTime updatedDate;
+    private Integer chattingUnreadCount;
     private Set<WebSocketSession> sessions = new HashSet<>();
 
-    @Builder
-    public RoomDTO(Long id, Long hostId, Long havingId, MemberDTO memberDTO, List<ChattingDTO> chattingDTOS, Set<WebSocketSession> sessions) {
+    @QueryProjection
+    public RoomDTO(Long id, Long hostId, Long havingId, MemberDTO memberDTO, LocalDateTime createdDate, LocalDateTime updatedDate, Integer chattingUnreadCount, Set<WebSocketSession> sessions) {
         this.id = id;
         this.hostId = hostId;
         this.havingId = havingId;
         this.memberDTO = memberDTO;
-        this.chattingDTOS = chattingDTOS;
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
+        this.chattingUnreadCount = chattingUnreadCount;
         this.sessions = sessions;
     }
 
-    public void handlerActions(WebSocketSession session, ChattingDTO chatting, ChatService chatService) {
-        if (chatting.getMessageType().equals(ChattingDTO.MessageType.ENTER)) {
+    public void handlerActions(WebSocketSession session, ChattingDTO chattingDTO, ChatServiceImpl chatService) {
+        if (chattingDTO.getMessageType().equals(ChattingDTO.MessageType.ENTER)) {
             sessions.add(session);
-            chatting.setChattingContent(chatting.getSenderMemberId() + "님이 입장했습니다.");
+//            sessions.put(chattingDTO.getSenderMemberId(), session);
+            chattingDTO.setChattingContent(chattingDTO.getSenderMemberId() + "님이 입장했습니다.");
         }
-        sendMessage(chatting, chatService);
+        log.info("===============================================================================");
+        log.info("===============================================================================");
+        log.info("==================================== handleMessage ============================");
+        log.info("===============================================================================");
+        log.info("===============================================================================");
+        log.info(sessions.toString());
+        sendMessage(chattingDTO, chatService);
 
     }
 
-    private <T> void sendMessage(T message, ChatService chatService) {
+    private <T> void sendMessage(T message, ChatServiceImpl chatService) {
         sessions.parallelStream()
                 .forEach(session -> chatService.sendMessage(session, message));
+        log.info("===============================================================================");
+        log.info("===============================================================================");
+        log.info("==================================== send =====================================");
+        log.info("===============================================================================");
+        log.info("===============================================================================");
+        log.info("===============================================================================");
+        log.info(sessions.toString());
     }
 
 }

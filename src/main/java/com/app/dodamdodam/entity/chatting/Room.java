@@ -1,17 +1,19 @@
 package com.app.dodamdodam.entity.chatting;
 
+import com.app.dodamdodam.audit.Period;
 import com.app.dodamdodam.entity.member.Member;
 import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Getter @Table(name = "TBL_ROOM")
 @ToString(exclude = "chattings")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Room{
+public class Room extends Period {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
@@ -21,8 +23,8 @@ public class Room{
     @NotNull
     private Long havingId;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "room")
-    private List<Chatting> chattings;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "room", cascade = {CascadeType.REMOVE, CascadeType.PERSIST} )
+    private List<Chatting> chattings = new ArrayList<>();;
 
     @ManyToOne
     @JoinColumn(name = "MEMBER_ID")
