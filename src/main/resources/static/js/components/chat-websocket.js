@@ -14,67 +14,10 @@ const socket = new WebSocket("ws://localhost:10000/ws/chat");
 
 
 
-socket.onmessage = async function (e) {
-    console.log("=====================들어옴==================")
-    let result;
-    try {
-        if (e !== null && e !== undefined) {
-            //수신한 메시지의 데이터 부분을 JSON으로 파싱하여 result 변수에 저장합니다.
-            result = await JSON.parse(e.data);
-            console.log(result);
-        }
-    } catch (err) {
-        console.log(err);
-    }
-};
 
-$createChat.on("click", function () {
-    $.ajax({
-        type: "POST",
-        url: "/chat/create",
-        data: {},
-        dataType: "json",
-        success: function (result) {
-            let data = {
-                type: "ENTER",
-                roomId: result.roomId,
-                sender: "사용자1",
-            }
-            // WebSocket을 통해 서버로 데이터 전송
-            socket.send(JSON.stringify(data));
-        }
-    });
-});
 
-$sendBtn.on("click", function () {
-    // 메시지 입력란에서 입력된 내용 가져오기
-    let message = $inputMsg.val();
 
-    // 입력된 메시지가 비어있지 않은 경우에만 처리
-    if (message !== "") {
-        // 서버로 전송할 메시지 데이터 구성
-        $.ajax({
-            type: "POST",
-            url: "/chat/create",
-            data: {},
-            dataType: "json",
-            success: function (result) {
-                let data = {
-                    type: "TALK",  // 메시지 타입: "TALK"
-                    roomId: result.roomId,  // 채팅방 ID
-                    sender: "사용자1",  // 발신자
-                    message: message  // 메시지 내용
-                }
 
-                // 메시지 입력란 비우기
-                $inputMsg.val("");
-
-                // WebSocket을 통해 서버로 데이터 전송
-                socket.send(JSON.stringify(data));
-            }
-        });
-    }
-});
 
 // // websocket 생성
 // const websocket = new WebSocket("ws://localhost:10000/ws/chat");

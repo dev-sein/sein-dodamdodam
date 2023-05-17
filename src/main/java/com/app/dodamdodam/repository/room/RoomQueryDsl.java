@@ -14,7 +14,7 @@ import java.util.List;
 
 public interface RoomQueryDsl {
 //    memberId 값으로 Room내역 조회
-    public Slice<Room> findRoomByMemberId(Pageable pageable, Long memberId);
+    public Page<Room> findRoomByMemberId_QueryDSL(Pageable pageable, Long memberId);
 
 //    검색 - 무한스크롤
     public Slice<Room> findRoomSearchWithPaging_QueryDSL(RoomSearch roomSearch, Pageable pageable);

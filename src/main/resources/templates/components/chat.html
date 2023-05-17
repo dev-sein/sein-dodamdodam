@@ -10,11 +10,12 @@
     <link rel="stylesheet" href="/css/components/footer.css">
 </head>
 <body>
+    <div>
+        <button class="create_chat">채팅방 생성</button>
+    </div>
     <div id="footer">
         <div class="channel_chat_container">
-            <button type="button">
-
-            </button>
+            <button type="button"></button>
         </div>
         <div id="chat_modal">
             <header class="flex" id="chat_header_container">
@@ -22,7 +23,7 @@
                     <div class="chat_header_logo">
                         <img width="30" height="30" src="/images/components/dodam-favicon.png" alt="">
                     </div>
-                    <span class="chat_header_name">
+                    <span class="chat_header_name" id="memberId" th:href="${member.memberId}" th:text="${member.memberName}">
                         도담도담 채팅
                     </span>
                 </div>
@@ -42,35 +43,14 @@
             </div>
             <main id="chat_modal_li_container">
                 <ol>
-                    <li class="chat_li flex">
-                        <div class="li_profile_img">
-                            <img src="/images/components/dodam-favicon.png" alt="" width="45px" height="45px">
-                        </div>
-                        <div class="li_chat_name_and_history flex">
-                            <div class="li_profile_nickname">
-                                도담도담
-                            </div>
-                            <div class="li_chat_history">
-                                도담도담에 오신 것을 환영합니다!
-                            </div>
-                        <!-- <div class="last_date">4/27(목)</div> -->
-                        </div>
-                        <div class="li_chat_histroy_and_date flex">
-                            <div class="li_date">
-                                <span class="current_msg_date">오후 5:20</span>
-                            </div>
-                            <div class="li_unchecked_msg_container">
-                                <div class="li_unchecked_msg">1</div>
-                            </div>
-                        </div>
-                    </li>
+
                 </ol>
             </main>
         </div>
         <div id="chat_room">
             <header class="flex" id="header-chat-container">
                 <div class="flex chat_header_logo_conatainer">
-                    <span class="chat_header_name">
+                    <span class="chat_header_name" >
                         정세인
                     </span>
                 </div>
@@ -120,5 +100,154 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/js/components/chat-modal.js"></script>
-<script src="/js/components/chat-websocket.js"></script>
+<!--<script src="/js/components/chat-websocket.js"></script>-->
+<script th:inline="javascript">
+    member = [[${member}]];
+    let nextPage = 0;
+    console.log(member);
+
+    /* 날짜 변환 (년, 월, 일) */
+    function changeDateToString(e){
+        let month = "";
+        date = new Date(e.createdDate);
+        month = date.getMonth() + 1;
+        if (month < 10){
+            month = "0" + month;
+        }
+        return date.getFullYear() + "." + month + "." + date.getDate();
+    }
+
+    // ajax로 게시글 목록 불러오기(8개씩 가져옴)
+    const fetchData = () => {
+        let page = nextPage;
+        nextPage++;
+        console.log("nextPage : " + nextPage);
+        $.ajax({
+            type: 'GET',
+            url: `/chat/room/${page}`,
+            success: function (result) {
+                console.log(result);
+                showList(result); // 새로운 값을 담기
+            },
+            error: function (error) {
+                console.log('Error fetching data:', error);
+            }
+        });
+    };
+
+    // 처음에 화면에 목록 뿌려주기
+    $(document).ready(function () {
+        fetchData();
+    });
+
+    // 무한 스크롤 이벤트
+    $(window).scroll(function () {
+        if (Math.ceil($(window).scrollTop()) >= $(document).height() - $(window).height() - 50) {
+            fetchData();
+        }
+    });
+
+    function showList(result) {
+        const $listResults = $("#chat_modal_li_container ol")
+        for (let i = 0; i < result.length; i++) {
+            let text = "";
+            /* 날짜 변환해서 담아둠*/
+            let date = changeDateToString(result[i]);
+            console.log("*****************************들어옴******************************")
+            text += `
+                <li class="chat_li flex">
+                    <div class="li_profile_img">
+                        <img src="/images/components/dodam-favicon.png" alt="" width="45px" height="45px">
+                    </div>
+                    <div class="li_chat_name_and_history flex">
+                        <div class="li_profile_nickname">${result[i].memberName}
+                        </div>
+                        <div class="li_chat_history">
+                            도담도담에 오신 것을 환영합니다!
+                        </div>
+                    </div>
+                    <div class="li_chat_history_and_date flex">
+                        <div class="li_date">
+                            <span class="current_msg_date">${date}</span>
+                        </div>
+                        <div class="li_unchecked_msg_container">
+                            <div class="li_unchecked_msg"></div>
+                        </div>
+                    </div>
+                </li>
+            `;
+            $listResults.append(text);
+        }
+    }
+
+    //     let memberName = document.getElementById("memberId").innerText;
+    //     let memberId = document.getElementById("memberId").getAttribute("href");
+    //
+    //
+    //
+    // socket.onmessage = async function (e) {
+    //     console.log("*************들어옴*************")
+    //     let result;
+    //     try {
+    //         if (e !== null && e !== undefined) {
+    //             //수신한 메시지의 데이터 부분을 JSON으로 파싱하여 result 변수에 저장합니다.
+    //             result = await JSON.parse(e.data);
+    //             console.log(result);
+    //         }
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    // };
+    //
+    // $createChat.on("click", function () {
+    //     $.ajax({
+    //         type: "POST",
+    //         url: "/chat/create",
+    //         data: {},
+    //         dataType: "json",
+    //         success: function (result) {
+    //             let data = {
+    //                 messageType: "ENTER",
+    //                 roomId: result.roomId,
+    //                 receiverMemberId: memberId,
+    //                 receiverMemberName: memberName
+    //             }
+    //             // WebSocket을 통해 서버로 데이터 전송
+    //             socket.send(JSON.stringify(data));
+    //         }
+    //     });
+    // });
+    //
+    // $sendBtn.on("click", function () {
+    //     // 메시지 입력란에서 입력된 내용 가져오기
+    //     let message = $inputMsg.val();
+    //
+    //     // 입력된 메시지가 비어있지 않은 경우에만 처리
+    //     if (message !== "") {
+    //         // 서버로 전송할 메시지 데이터 구성
+    //         $.ajax({
+    //             type: "POST",
+    //             url: "/chat/create",
+    //             data: {},
+    //             dataType: "json",
+    //             success: function (result) {
+    //                 let data = {
+    //                     messageType: "TALK",  // 메시지 타입: "TALK"
+    //                     roomId: result.roomId,  // 채팅방 ID
+    //                     receiverMemberId: memberId,
+    //                     receiverMemberName: memberName,
+    //                     chattingContent: message  // 메시지 내용
+    //                 }
+    //
+    //                 // 메시지 입력란 비우기
+    //                 $inputMsg.val("");
+    //
+    //                 // WebSocket을 통해 서버로 데이터 전송
+    //                 socket.send(JSON.stringify(data));
+    //             }
+    //         });
+    //     }
+    // });
+
+</script>
 </html>

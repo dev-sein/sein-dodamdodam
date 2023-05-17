@@ -18,7 +18,7 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DynamicInsert
 @DynamicUpdate
-public class Chatting extends Period {
+public class Chatting {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
@@ -39,13 +39,10 @@ public class Chatting extends Period {
     @JoinColumn(name = "ROOM_ID")
     private Room room;
 
-    public Chatting(Long senderMemberId, Long receiverMemberId, String chattingContent, MessageType messageType, ReadStatus readStatus, Room room) {
+    public Chatting(Long senderMemberId, Long receiverMemberId, String chattingContent) {
         this.senderMemberId = senderMemberId;
         this.receiverMemberId = receiverMemberId;
         this.chattingContent = chattingContent;
-        this.messageType = messageType;
-        this.readStatus = readStatus;
-        this.room = room;
     }
 
     public void setRoom(Room room) {

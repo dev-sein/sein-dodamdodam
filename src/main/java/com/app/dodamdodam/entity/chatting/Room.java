@@ -1,5 +1,6 @@
 package com.app.dodamdodam.entity.chatting;
 
+import com.app.dodamdodam.audit.Period;
 import com.app.dodamdodam.entity.member.Member;
 import com.sun.istack.NotNull;
 import lombok.*;
@@ -12,7 +13,7 @@ import java.util.List;
 @Getter @Table(name = "TBL_ROOM")
 @ToString(exclude = "chattings")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Room{
+public class Room extends Period {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;

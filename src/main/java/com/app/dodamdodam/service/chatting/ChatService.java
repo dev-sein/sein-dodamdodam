@@ -1,49 +1,41 @@
 package com.app.dodamdodam.service.chatting;
 
+import com.app.dodamdodam.domain.ChattingDTO;
+import com.app.dodamdodam.domain.MemberDTO;
 import com.app.dodamdodam.domain.RoomDTO;
-import com.app.dodamdodam.entity.chatting.QRoom;
+import com.app.dodamdodam.entity.chatting.Chatting;
 import com.app.dodamdodam.entity.chatting.Room;
-import com.app.dodamdodam.repository.room.RoomRepository;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
-import org.springframework.web.socket.TextMessage;
-import org.springframework.web.socket.WebSocketSession;
+import com.app.dodamdodam.entity.member.Member;
+import org.springframework.data.domain.Pageable;
 
-import javax.annotation.PostConstruct;
-import java.io.IOException;
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 
-import static com.app.dodamdodam.entity.chatting.QChatting.chatting;
-import static com.app.dodamdodam.entity.chatting.QRoom.room;
+public interface ChatService {
+//    private final ObjectMapper objectMapper;
+//    private Map<String, RoomDTO> chatRooms;
+//    private RoomRepository roomRepository;
 
-@Slf4j
-@RequiredArgsConstructor
-@Service
-public class ChatService {
-    private final ObjectMapper objectMapper;
-    private Map<String, RoomDTO> chatRooms;
-    private RoomRepository roomRepository;
+//    @PostConstruct
+//    private void init() {
+//        chatRooms = new LinkedHashMap<>();
+//    }
 
-    @PostConstruct
-    private void init() {
-        chatRooms = new LinkedHashMap<>();
-    }
 
-    public List<RoomDTO> findAllRoom() {
-        return new ArrayList<>(chatRooms.values());
-    }
+//    public List<RoomDTO> findAllRoom() {
+//        return new ArrayList<>(chatRooms.values());
+//    }
 
 //    맴버 정보를 이용해 해당 맴버가 소속 된 룸을 모두 찾아서 리스트로 반환
-    public RoomDTO findRoomByMemberId(String roomId) {
-        return chatRooms.get(roomId);
-    }
+//    public RoomDTO findRoomByMemberId(String roomId) {
+//        return chatRooms.get(roomId);
+//    }
+
 
 // 현재 시퀀스 가져오기
-    public Room getCurrentSequence() {
-        return roomRepository.getCurrentSequence();
-    }
+//    public Room getCurrentSequence() {
+//        return roomRepository.getCurrentSequence();
+//    }
 
 //    public RoomDTO createRoom(String name) {
 //        String randomId = UUID.randomUUID().toString();
@@ -56,14 +48,15 @@ public class ChatService {
 //    }
 
 //    채팅방 저장 로직
-    public RoomDTO createRoom(Long id) {
-        String roomId = String.valueOf(id);
-        RoomDTO chatRoom = RoomDTO.builder()
-                .id(roomId)
-                .build();
-        chatRooms.put(roomId, chatRoom);
-        return chatRoom;
-    }
+//    public RoomDTO createRoom(Long id) {
+//        String roomId = String.valueOf(id);
+//        RoomDTO chatRoom = RoomDTO.builder()
+//                .id(roomId)
+//                .build();
+//        chatRooms.put(roomId, chatRoom);
+//        log.info(chatRoom.toString());
+//        return chatRoom;
+//    }
 
 //    public RoomDTO createRoom(Long hostId, Long havingId) {
 //        Room currentSequence = getCurrentSequence();
@@ -81,12 +74,51 @@ public class ChatService {
 //        return chatRoom;
 //    }
 
-//    채팅내역 저장 로직
-    public <T> void sendMessage(WebSocketSession session, T message) {
-        try{
-            session.sendMessage(new TextMessage(objectMapper.writeValueAsString(message)));
-        } catch (IOException e) {
-            log.error(e.getMessage(), e);
-        }
+//    채팅방 생성
+//    public void saveMessage(ChattingDTO chattingDTO, Long memberId, Long roomId);
+
+//    내가 참여한 채팅룸 목록
+    public List<RoomDTO> getRoomByMemberId(Pageable pageable, Long memberId);
+
+//    roomId로 채팅 목록 불러오기
+    public List<ChattingDTO> getChattingByRoomId(Pageable pageable, Long roomId);
+
+    default RoomDTO toRoomDTO(Room room){
+        return RoomDTO.builder()
+                .id(room.getId())
+                .hostId(room.getHostId())
+                .havingId(room.getHavingId())
+                .memberDTO(toMemberDTO(room.getMember()))
+                .createdDate(room.getCreatedDate())
+                .createdDate(room.getUpdatedDate())
+                .build();
     }
+
+    default ChattingDTO toChattingDTO(Chatting chatting){
+        return ChattingDTO.builder()
+                .id(chatting.getId())
+                .chattingContent(chatting.getChattingContent())
+                .senderMemberId(chatting.getSenderMemberId())
+                .receiverMemberId(chatting.getReceiverMemberId())
+                .roomDTO(toRoomDTO(chatting.getRoom()))
+                .build();
+    }
+
+    default MemberDTO toMemberDTO(Member member){
+        return MemberDTO.builder().id(member.getId())
+                .memberEmail(member.getMemberEmail())
+                .memberName(member.getMemberName())
+                .memberId(member.getMemberId())
+                .memberPassword(member.getMemberPassword())
+                .memberPhone(member.getMemberPhone())
+                .memberStatus(member.getMemberStatus())
+                .memberPoint(member.getMemberPoint())
+                .participationCount(member.getParticipationCount())
+                .recruitmentedCount(member.getParticipationCount())
+                .address(member.getAddress())
+                .build();
+    }
+
+
+
 }

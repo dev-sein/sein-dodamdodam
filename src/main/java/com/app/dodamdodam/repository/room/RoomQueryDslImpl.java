@@ -12,6 +12,7 @@ import java.util.List;
 
 import static com.app.dodamdodam.entity.chatting.QChatting.chatting;
 import static com.app.dodamdodam.entity.chatting.QRoom.room;
+import static com.app.dodamdodam.entity.free.QFreeBoard.freeBoard;
 
 
 public class RoomQueryDslImpl implements RoomQueryDsl{
@@ -36,24 +37,19 @@ public class RoomQueryDslImpl implements RoomQueryDsl{
 //    룸 목록 무한스크롤
 //    세션으로 넘겨받은 MEMBERID를 HOSTID와 같은지 조회 해서 ROOM 목록을 불러온다.
     @Override
-    public Slice<Room> findRoomByMemberId(Pageable pageable, Long memberId) {
-        boolean hasNext = false;
-
+    public Page<Room> findRoomByMemberId_QueryDSL(Pageable pageable, Long memberId) {
         List<Room> rooms = query.select(room)
                 .from(room)
                 .where(room.hostId.eq(memberId))
                 .join(room.chattings).fetchJoin()
                 .orderBy(room.id.desc())
                 .offset(pageable.getOffset())
-                .limit(pageable.getPageSize() + 1)
+                .limit(pageable.getPageSize())
                 .fetch();
+        Long count = query.select(room.count()).from(room)
+                .where(room.hostId.eq(memberId)).fetchOne();
 
-        if (rooms.size() > pageable.getPageSize()){
-            hasNext = true;
-            rooms.remove(pageable.getPageSize());
-        }
-
-        return new SliceImpl<>(rooms, pageable, hasNext);
+        return new PageImpl<>(rooms, pageable, count);
     }
 
 //    현재 시퀀스 조회
