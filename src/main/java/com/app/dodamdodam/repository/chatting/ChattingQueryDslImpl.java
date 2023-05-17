@@ -6,14 +6,13 @@ import com.app.dodamdodam.type.ReadStatus;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Slice;
-import org.springframework.data.domain.SliceImpl;
+import org.springframework.data.domain.*;
 
 import javax.management.Query;
 import java.util.List;
 
 import static com.app.dodamdodam.entity.chatting.QChatting.chatting;
+import static com.app.dodamdodam.entity.chatting.QRoom.room;
 
 @Slf4j
 public class ChattingQueryDslImpl implements ChattingQueryDsl {
@@ -22,23 +21,18 @@ public class ChattingQueryDslImpl implements ChattingQueryDsl {
 
 //        룸 목록 클릭 시 MEMBERID를 넘겨받음. 이를 통해서 SENDERMEMBERID와 MEMBERID가 같은지 조회해서 채팅 내용을 조회한다.
         @Override
-        public Slice<Chatting> findChattingByMemberId(Pageable pageable, Long memberId) {
-                boolean hasNext = false;
-
+        public Page<Chatting> findChattingByRoomId_QueryDSL(Pageable pageable, Long roomId, Long memberId) {
                 List<Chatting> chattings = query.select(chatting)
                     .from(chatting)
-                    .where(chatting.senderMemberId.eq(memberId))
+                    .where(chatting.senderMemberId.eq(memberId).and(chatting.room.id.eq(roomId)))
                     .orderBy(chatting.id.desc())
                     .offset(pageable.getOffset())
-                    .limit(pageable.getPageSize() + 1)
+                    .limit(pageable.getPageSize())
                     .fetch();
+                Long count = query.select(chatting.count()).from(chatting)
+                        .where(chatting.senderMemberId.eq(memberId).and(chatting.room.id.eq(roomId))).fetchOne();
 
-                if (chattings.size() > pageable.getPageSize()){
-                        hasNext = true;
-                        chattings.remove(pageable.getPageSize());
-                }
-
-                return new SliceImpl<>(chattings, pageable, hasNext);
+                return new PageImpl<>(chattings, pageable, count);
         }
 
         @Override

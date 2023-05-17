@@ -56,8 +56,8 @@ public class ChatServiceImpl implements ChatService {
 
     /*내가 쓴 채팅 목록*/
     @Override
-    public List<ChattingDTO> getChattingByRoomId(Pageable pageable, Long roomId) {
-        return chattingRepository.findChattingByMemberId(pageable, roomId).stream().map(chatting -> toChattingDTO(chatting)).collect(Collectors.toList());
+    public List<ChattingDTO> getChattingByRoomId(Pageable pageable, Long roomId, Long memberId) {
+        return chattingRepository.findChattingByRoomId_QueryDSL(pageable, roomId, memberId).stream().map(chatting -> toChattingDTO(chatting)).collect(Collectors.toList());
     }
 
     /*채팅룸 저장*/
