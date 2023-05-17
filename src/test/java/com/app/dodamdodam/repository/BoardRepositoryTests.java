@@ -67,8 +67,8 @@ public class BoardRepositoryTests {
 //            memberRepository.findById(2L).ifPresent(member -> recruitmentBoard.setMember(member));
 //            recruitmentBoardRepository.save(recruitmentBoard);
 //        }
-        RecruitmentBoard recruitmentBoard = new RecruitmentBoard("모집 게시글 제목", LocalDate.now(),10, "www.naver.com", "1234", "서울특별시", "강남구");
-        memberRepository.findById(5L).ifPresent(member -> recruitmentBoard.setMember(member));
+        RecruitmentBoard recruitmentBoard = new RecruitmentBoard("모집 게시글 제목", LocalDate.now(),10, "https://open.kakao.com/o/ggmF0Jkf", "1234", "경기도 성남시 분당구 수내동", "탄천앞");
+        memberRepository.findById(10L).ifPresent(member -> recruitmentBoard.setMember(member));
 //        recruitmentBoard.addRecruitment();
         recruitmentBoardRepository.save(recruitmentBoard);
     }
@@ -121,12 +121,19 @@ public class BoardRepositoryTests {
     /* 200번 모집 게시글에 임의로 5번 유저 참석 시켰음*/
     @Test
     public void saveTest4(){
-        memberRepository.findById(5L).ifPresent(member ->
+        memberRepository.findById(52L).ifPresent(member ->
+//        memberRepository.findById(5L).ifPresent(member ->
         {
             Recruitment recruitment = new Recruitment(member);
-            recruitmentBoardRepository.findById(403L).ifPresent(recruitmentBoard -> recruitment.setRecruitmentBoard(recruitmentBoard));
+            recruitmentBoardRepository.findById(608L).ifPresent(recruitmentBoard -> recruitment.setRecruitmentBoard(recruitmentBoard));
             recruitmentRepository.save(recruitment);
         });
+    }
+
+    /* 모집게시글에 참여한 인원들 정보 가져오기 */
+    @Test
+    public void saveTest5(){
+        log.info(recruitmentBoardRepository.findRecruitmentedMembersByBoardId_QueryDSL(616L).toString());
     }
 
     /* 자유 게시글 작성 */

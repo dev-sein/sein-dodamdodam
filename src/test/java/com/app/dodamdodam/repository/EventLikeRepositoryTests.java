@@ -32,6 +32,9 @@ public class EventLikeRepositoryTests {
 //
 //    @Test
 //    public void checkMemberLikesEventBoardTest(){
+
+    @Test
+    public void checkMemberLikesEventBoardTest(){
 //        Optional<Member> member = memberRepository.findById(1L);
 //        Optional<EventBoard> eventBoard = eventBoardRepository.findById(107L);
 //
@@ -46,6 +49,10 @@ public class EventLikeRepositoryTests {
 //
 //    @Test
 //    public void saveTest(){
+    }
+
+    @Test
+    public void saveTest(){
 //        Optional<Member> member = memberRepository.findById(1L);
 //        Optional<EventBoard> eventBoard = eventBoardRepository.findById(107L);
 //
@@ -57,6 +64,7 @@ public class EventLikeRepositoryTests {
 //
 //        eventBoard.get().setEventLikeCount(++likeCount);
 //        }
+        }
 
 
 

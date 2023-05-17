@@ -55,7 +55,7 @@ public class MemberRepositoryTests {
     public void saveTest(){
         for (int i=1; i<=100; i++) {
 
-            Address address = new Address("123-456", "서울시", "강남구");
+            Address address = new Address("서울시","강남구");
 //            회원 정보 입력
 
 //            Member member = new Member("test1234", "1234", "테스트", "test1234@gmail.com", "01012341234", address, MemberStatus.NORMAL, MemberType.GENERAL, Role.MEMBER);

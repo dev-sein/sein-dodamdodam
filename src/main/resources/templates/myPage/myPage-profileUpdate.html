@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로필 정보 설정</title>
+    <!-- link 적용 -->
+    <link rel="stylesheet" href="/css/event-board/event-board-write.css">
+    <link rel="stylesheet" href="/css/myPage/myPage-profileUpdate.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">  
+    <link rel="shortcut icon" href="/static/images/components/dodam-favicon.png">
+</head>
+<body>
+    <!--모달창-->
+    <div id="myModal" class="modal" th:if="${#strings.equals(param.update, 'ok')}">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>프로필 정보가 성공적으로 수정되었습니다.</p>
+            <button id="closeModalBtn">확인</button>
+        </div>
+    </div>
+    <!--모달창-->
+      <!-- 프로필 정보 설정 -->
+      <div id="waccountWrap">
+             <div class="waccount-wrap">            
+                <div id="waccountContainer">
+                   <h3>프로필 정보 설정</h3>
+                   <div id="tabContent1" class="tab-content">
+                      <h5>프로필 사진</h5>
+                      <div class="profileimg-wrap">
+                        <button type="button" id="resultProfileImg" class="profileimg" onclick="triggerInputFile()">
+                           <em id="image_container" style="background-image: url('https://static.wadiz.kr/assets/icon/profile-icon-6.png');"></em>
+                       </button>
+                       <!-- <input type="file" id="inputProfileImg" accept="image/*" style="display:none;" onchange="previewImage(event)"> -->
+                         <!-- <p class="setting-profileimg">
+                           <button type="button" id="btn_updatePhoto">
+                              <span id="img">바꾸기</span>
+                          </button>
+                          <button type="button" id="btn_deletePhoto">삭제</button>
+                          <input type="file" id="inputProfileImg" accept="image/*" style="display:none;" onchange="previewImage(event)">
+                         </p> -->
+                      </div>
+                      <form method="post" action="/mypage/info/update" name="userInfoForm" >
+                          <input type="hidden" name="id" th:value="${member.id}">
+                         <h5>이름</h5>
+                         <ul class="input-div2">
+                            <li><input type="text" class="input-text" maxlength="50" id="memberName" name="memberName" placeholder="이름" th:value="${member.memberName}"></li>
+                            <!-- <li><input type="text" class="input-text" maxlength="50" id="position" placeholder="직책" value=""></li> -->
+                         </ul>
+                         <h5>이메일</h5>
+                         <ul class="input-div2">
+                           <li><input type="text" class="input-text" maxlength="50" id="memberEmail" name="memberEmail" placeholder="이메일" th:value="${member.memberEmail}"></li>
+                        </ul>
+                         <h5>핸드폰 번호</h5>
+                         <ul class="input-div2">
+                           <li><input type="number" class="input-text" maxlength="50" id="memberPhone" name="memberPhone" placeholder="핸드폰 번호(' - ' 없이 숫자만 입력해주세요.)" th:value="${member.memberPhone}"></li>
+                        </ul>
+                         <h5>주소 변경</h5>
+                         <div class="waffle field">
+                           <div class="action-input">
+                               <div class="input-container mb13">
+                                   <input id="address" name="address" class="address" placeholder="주소검색" th:value="${member.address.address}">
+                                   <button class="address-btn" id="detailAddress" type="button" onclick="searchAddress()" style="width:93px">주소검색</button>
+                                   </div>
+                              </div>
+                           </div>
+                           <div class="input-container">
+                               <div class="waffle input">
+                                   <input name="addressDetail" id="addressDetail" placeholder="상세주소" th:value="${member.address.addressDetail}">
+                               </div>
+                               <div class="waffle helper mb"></div>
+                       </div>   
+                         <!-- <h5>자신을 소개를 해주세요.</h5>
+                        <div class="textarea-wrap">
+                            <textarea id="introduceme" maxlength="80"></textarea>
+                         </div> -->
+                        <div class="btn-bottom">
+                           <ul class="btn-div2">
+                              <li>
+                                 <button type="button" class="wz button gray btn-darkgray" id="mint" onclick="location.href='/mypage/main'">취소</button>
+                              </li>
+                              <li>
+                                 <button type="button" class="wz button primary btn-mint" id="ok-button">확인</button>
+                              </li>
+                           </ul>
+                        </div>
+                      </form>
+               </div>
+            </div>
+         </div>
+      </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/js/myPage/myPage-profileUpdate.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script th:inline="javascript">
+    member = [[${member}]];
+    console.log(member);
+</script>
+</html>

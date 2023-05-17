@@ -2,6 +2,7 @@ package com.app.dodamdodam.service.board.recruitmentBoard;
 
 import com.app.dodamdodam.domain.RecruitmentBoardFileDTO;
 import com.app.dodamdodam.domain.RecruitmentFileDTO;
+import com.app.dodamdodam.domain.RecruitmentMemberDTO;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
 import com.app.dodamdodam.repository.board.recruitment.RecruitmentBoardRepository;
 import lombok.RequiredArgsConstructor;
@@ -21,12 +22,21 @@ public class RecruitmentBoardServiceImpl implements RecruitmentBoardService {
     @Autowired
     private RecruitmentBoardRepository recruitmentBoardRepository;
 
+//    내가 작성한 모집 게시글 목록
     @Override
     public List<RecruitmentBoardFileDTO> getRecruimentBoardListByMemberId(Pageable pageable, Long memberId) {
         return recruitmentBoardRepository.findRecruitmentBoardListByMemberId_QueryDSL(pageable,memberId)
                 .stream().map(recruitmentBoard -> toRecruitmentBoardFileDto(recruitmentBoard)).collect(Collectors.toList());
     }
 
+//    내가 작성한 모집 게시글에 참가한 인원들
+    @Override
+    public RecruitmentMemberDTO getRecruitmentedMembersByBoardId(Long boardId) {
+        return toRecruitmentMemberDTO(recruitmentBoardRepository.findRecruitmentedMembersByBoardId_QueryDSL(boardId));
+    }
+
+
+    //    내가 참가한 모집 게시글 목록
     @Override
     public List<RecruitmentBoardFileDTO> getRecruimentedBoardListByMemberId(Pageable pageable, Long memberId) {
         return recruitmentBoardRepository.findRecruitmentedBoardListByMemberId_QueryDSL(pageable,memberId)
