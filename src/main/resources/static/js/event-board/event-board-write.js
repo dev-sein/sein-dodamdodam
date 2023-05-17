@@ -243,7 +243,7 @@ $("form[name='form']").on("submit", function (e) {
         method: 'post',
         success: function (result) {
             // redirect 경로
-            location.href = "/event-board/list";
+            location.href = "/event-board/event-board-list";
         }
     })
 });
