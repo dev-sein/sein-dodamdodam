@@ -7,6 +7,7 @@ import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.point.Point;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
+import com.app.dodamdodam.type.MemberStatus;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -54,7 +55,10 @@ public interface MemberService {
     /* 캘린더에 일정 띄우기(내가 참가한 모집게시글 전체) */
     public List<RecruitmentBoard> getMyRecruitementedBoardList(Long memberId);
     
-    
+
+    /* 관리자 회원 변경*/
+    public void setMemberStatus(List<Long> ids, MemberStatus memberStatus);
+
     /* 관리자 멤버 목록 */
     public Page<MemberDTO> showList(Pageable pageable);
 
