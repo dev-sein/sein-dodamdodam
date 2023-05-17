@@ -3,6 +3,8 @@ package com.app.dodamdodam.domain;
 import com.app.dodamdodam.entity.chatting.Room;
 import com.app.dodamdodam.type.MessageType;
 import com.app.dodamdodam.type.ReadStatus;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.querydsl.core.annotations.QueryProjection;
 import com.sun.istack.NotNull;
 import lombok.Builder;
@@ -25,16 +27,23 @@ public class ChattingDTO {
     private String chattingContent;
     private ReadStatus readStatus;
     private MessageType messageType;
-    private Integer chattingUnreadCount;
+    private RoomDTO roomDTO;
 
     @QueryProjection
-    public ChattingDTO(Long id, Long senderMemberId, Long receiverMemberId, String chattingContent, ReadStatus readStatus, MessageType messageType, Integer chattingUnreadCount) {
+    public ChattingDTO(Long id, Long senderMemberId, Long receiverMemberId, String chattingContent, ReadStatus readStatus, MessageType messageType, RoomDTO roomDTO) {
         this.id = id;
         this.senderMemberId = senderMemberId;
         this.receiverMemberId = receiverMemberId;
         this.chattingContent = chattingContent;
         this.readStatus = readStatus;
         this.messageType = messageType;
-        this.chattingUnreadCount = chattingUnreadCount;
+        this.roomDTO = roomDTO;
+    }
+
+//    @JsonCreator
+//    public ChattingDTO(@JsonProperty("type") String type, @JsonProperty("sender") String sender) {}
+
+    public void setChattingContent(String chattingContent) {
+        this.chattingContent = chattingContent;
     }
 }

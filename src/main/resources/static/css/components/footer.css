@@ -1016,7 +1016,7 @@ footer.inner-utils .footer-container-container {
     position: fixed;
     width: 60px;
     height: 60px;
-    background: url('/static/images/components/dodam_speech_bubble_chatting_talk_icon.png') no-repeat center/100%;
+    background: url('/images/components/dodam_speech_bubble_chatting_talk_icon.png') no-repeat center/100%;
     border-radius: 50%;
 
     cursor: pointer;
@@ -1153,7 +1153,7 @@ input:focus {
     position: relative;
     bottom: 3px;
 }
-.li_chat_histroy_and_date {
+.li_chat_history_and_date {
     flex-direction: column;
     position: relative;
     bottom: 3px;
