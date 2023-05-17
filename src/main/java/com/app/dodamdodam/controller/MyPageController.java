@@ -174,6 +174,15 @@ public class MyPageController {
         return recruitmentBoards;
     }
 
+    /* 내가 작성한 모집게시글에 참여한 회원 목록 */
+    @ResponseBody
+    @GetMapping("recruitments/{boardId}")
+    public RecruitmentMemberDTO myRecruitmentMembers(@PathVariable(value = "boardId") Long boardId){
+        RecruitmentMemberDTO recruitmentMembers = recruitmentBoardService.getRecruitmentedMembersByBoardId(boardId);
+        log.info(recruitmentMembers.toString());
+        return recruitmentMembers;
+    }
+
     /* 내가 참가한 모집게시글 목록 */
     @GetMapping("recruitmented")
     public String myRecruitmentedBoardList(HttpSession session, Model model){
@@ -249,6 +258,7 @@ public class MyPageController {
     @GetMapping("change-password")
     public String changePasswordPage(HttpSession session){
         session.setAttribute("memberId", 11L);
+
 
         return "myPage/myPage-password";
     }
