@@ -53,9 +53,9 @@ public class MemberRepositoryTests {
     /* 회원 100명 입력 */
     @Test
     public void saveTest(){
-        for (int i=1; i<=100; i++){
+        for (int i=1; i<=100; i++) {
 
-            Address address = new Address("123-456","서울시","강남구");
+            Address address = new Address("서울시","강남구");
 //            회원 정보 입력
 
             Member member = new Member("test1234", "1234", "테스트", "test1234@gmail.com", "01012341234", address, MemberStatus.NORMAL, MemberType.GENERAL, Role.MEMBER);
@@ -72,9 +72,6 @@ public class MemberRepositoryTests {
 //            memberRepository.findById(2L).ifPresent(member -> point.setMember(member));
 //            pointRepository.save(point);
         }
-//        Point point = new Point(10000, pointStatuses.get(1));
-//        memberRepository.findById(1L).ifPresent(member -> point.setMember(member));
-//        pointRepository.save(point);
     }
 
 //    세션에 담긴 id 값으로 회원정보 가져오기

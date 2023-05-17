@@ -208,10 +208,10 @@ a {
 }
 
 a.ProfileSet {
-	display: inline-block;
+    display: inline-block;
     align-items: center;
     text-decoration: none;
-	padding: 9px 16px;
+    padding: 9px 16px;
     line-height: 1.45;
     font-size: 14px;
     text-align: center;
@@ -234,7 +234,12 @@ a.ProfileSet {
     background-color: #fff;
     font-size: 13px;
     position: absolute;
-    right: 23px;
+    right: 20px;
+    padding: 5px;
+    /* background: red; */
+    bottom: -5px;
+    border-radius: 2px;
+    right: 15px;
 }
 
 .management2{
@@ -246,28 +251,29 @@ a.ProfileSet {
 
 
 .management:hover {
-    background-color: #959595dd;
-  }
+    background-color: #006633b5;
+    color: #fff;
+}
 
-  .management2:hover {
+.management2:hover {
     background-color: #959595dd;
-  }
+}
 
 /* 배너신청하기 버튼 : 색지정 */
 a.Mint {
-	border-color: #006633;
-	background-color: #006633;
+    border-color: #006633;
+    background-color: #006633;
     color: #fff !important;
 }
 
 #apply:hover {
-	border-color: #006633;
-	background-color: #006633ca;
+    border-color: #006633;
+    background-color: #006633ca;
 }
 
 a.ProfileSet:hover{
-	border-color: #E9ECEF;
-	background-color: #E9ECEF;
+    border-color: #E9ECEF;
+    background-color: #E9ECEF;
 }
 
 
@@ -459,6 +465,7 @@ a.ProfileSet:hover{
     bottom: 20px;
     width: 100%;
     height: 12px;
+    height: fit-content;
 }
 
 .project-card .card-info-section .card-category .category1 {
@@ -495,110 +502,110 @@ a.ProfileSet:hover{
 
 /* ======================================media========================================== */
 @media screen and (min-width: 960px) {
-.mypage-project .tab-list ul {
-    width: 960px;
-    margin: 0 auto;
-    padding: 0 24px;
-}
+    .mypage-project .tab-list ul {
+        width: 960px;
+        margin: 0 auto;
+        padding: 0 24px;
+    }
 
-.myprofile-wrap .mypage-project .card-list ul, .myprofile-wrap .mypage-project .tab-list ul, .myprofile-wrap .mypage-project .top-area {
-    width: 918px;
-}
+    .myprofile-wrap .mypage-project .card-list ul, .myprofile-wrap .mypage-project .tab-list ul, .myprofile-wrap .mypage-project .top-area {
+        width: 918px;
+    }
 
-.mypage-project .tab-list ul li {
-    width: auto;
-    margin-right: 24px;
-}
+    .mypage-project .tab-list ul li {
+        width: auto;
+        margin-right: 24px;
+    }
 
-.mypage-project .tab-list ul li.active button {
-    background: #fff;
-    font-weight: 700;
-}
+    .mypage-project .tab-list ul li.active button {
+        background: #fff;
+        font-weight: 700;
+    }
 
-.mypage-project .top-area {
-    width: 960px;
-    margin: 0 auto;
-    padding: 16px 24px 35px;
-}
+    .mypage-project .top-area {
+        width: 960px;
+        margin: 0 auto;
+        padding: 16px 24px 35px;
+    }
 
-.mypage-project .top-area .status-text {
-    font-size: 13px;
-    line-height: 18px;
-}
+    .mypage-project .top-area .status-text {
+        font-size: 13px;
+        line-height: 18px;
+    }
 
-.mypage-project .card-list ul {
-    width: 960px;
-    margin: -2px auto 0;
-    padding: 0 9px;
-}
+    .mypage-project .card-list ul {
+        width: 960px;
+        margin: -2px auto 0;
+        padding: 0 9px;
+    }
 
-.mypage-project .card-list ul li {
-    float: left;
-    width: 300px;
-    padding: 0 15px;
-}
+    .mypage-project .card-list ul li {
+        float: left;
+        width: 300px;
+        padding: 0 15px;
+    }
 
-.project-card .card-img-section .project-img {
-    height: 225px;
-    overflow: hidden;
-}
+    .project-card .card-img-section .project-img {
+        height: 225px;
+        overflow: hidden;
+    }
 
-.mypage-project .card-list ul:after {
-    content: "";
-    clear: both;
-    display: block;
-}
+    .mypage-project .card-list ul:after {
+        content: "";
+        clear: both;
+        display: block;
+    }
 
 }
 
 @media screen and (min-width: 769px) {
-.ProfileCorp {
-    padding-top: 50px;
-    padding-bottom: 80px;
-}
+    .ProfileCorp {
+        padding-top: 50px;
+        padding-bottom: 80px;
+    }
 
-.ProfileCorp_inner {
-    display: flex;
-    padding-left: 94px;
-}
+    .ProfileCorp_inner {
+        display: flex;
+        padding-left: 94px;
+    }
 
-.Avatar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 80px;
-    height: 80px;
-}
+    .Avatar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 80px;
+        height: 80px;
+    }
 
-.ProfileCorp_info {
-    flex-basis: 370px;
-    flex-shrink: 0;
-    max-width: 370px;
-}
+    .ProfileCorp_info {
+        flex-basis: 370px;
+        flex-shrink: 0;
+        max-width: 370px;
+    }
 
-.ProfileActivityInfo_infoCountBox {
-    justify-content: initial;
-    margin: 6px 0 -12px;
-}
+    .ProfileActivityInfo_infoCountBox {
+        justify-content: initial;
+        margin: 6px 0 -12px;
+    }
 
-.ProfileActivityInfo_infoCountBox>div {
-    flex: none;
-    padding: 12px 20px 16px;
-}
+    .ProfileActivityInfo_infoCountBox>div {
+        flex: none;
+        padding: 12px 20px 16px;
+    }
 
 
-.ProfileActivityInfo_infoCountBox>div:first-child {
-    padding-left: 0;
-}
+    .ProfileActivityInfo_infoCountBox>div:first-child {
+        padding-left: 0;
+    }
 
-.ProfileActivityInfo_infoCountBox dt {
-    margin-top: 2px;
-}
+    .ProfileActivityInfo_infoCountBox dt {
+        margin-top: 2px;
+    }
 
-.ProfileSet {
-    margin: auto 0 0 auto;
-    max-width: 327px;
-}
+    .ProfileSet {
+        margin: auto 0 0 auto;
+        max-width: 327px;
+    }
 }
 
 
@@ -614,10 +621,10 @@ a.ProfileSet:hover{
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.4);
-  }
-  
-  /* 모달창 내용 스타일 */
-  .modal-content {
+}
+
+/* 모달창 내용 스타일 */
+.modal-content {
     z-index: 200;
     margin: 0 auto;
     border-radius: 10px;
@@ -626,10 +633,10 @@ a.ProfileSet:hover{
     left: 50%;
     transform: translate(-50%, -50%);
     /* 기존 스타일 유지 */
-  }
-  
-  /* 닫기 버튼 스타일 */
-  .close {
+}
+
+/* 닫기 버튼 스타일 */
+.close {
     color: #000;
     float: right;
     font-size: 19px;
@@ -638,17 +645,17 @@ a.ProfileSet:hover{
     right: 24px;
     top: 29px;
     z-index: 500;
-  }
-  
-  .close:hover,
-  .close:focus {
+}
+
+.close:hover,
+.close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
-  }
+}
 
-  /* 오픈채팅방 링크 */
-  .spi_default .spi_lst li .spi_lst_release li.spi_lnk_copyurl {
+/* 오픈채팅방 링크 */
+.spi_default .spi_lst li .spi_lst_release li.spi_lnk_copyurl {
     clear: both;
     display: block;
     width: 330px;

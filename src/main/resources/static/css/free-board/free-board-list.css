@@ -374,6 +374,7 @@ em.like-count {
     line-height: 34px;
     font-size: 13px;
     border: none;
+    outline: none;
 }
 
 button:not(:disabled) {
@@ -545,7 +546,7 @@ em.type  {
     .bar-button {
         width: 112px;
     }
-    
+
     .bar-button a {
         padding: 19px 0 21px;
     }

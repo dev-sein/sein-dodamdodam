@@ -6,9 +6,9 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>모집 게시글 목록</title>
-    <link rel="stylesheet" href="../../static/css/admin/admin.css">
-    <link rel="stylesheet" href="../../static/css/admin/user.css">
-    <link rel="stylesheet" href="../../static/css/admin/recruitment-board.css">
+    <link rel="stylesheet" href="/css/admin/admin.css">
+    <link rel="stylesheet" href="/css/admin/user.css">
+    <link rel="stylesheet" href="/css/admin/recruitment-board.css">
 </head>
 <body>
     <!-- 모달 -->
@@ -81,7 +81,7 @@
                     <form action="" class="search__searchbox__form">
                         <input id="searchbox" type="text" placeholder="원하시는 키워드로 검색해보세요" maxlength="40"/>
                         <button type="button" class="search__searchbox__button">
-                            <img src="../../static/images/admin/search.png"/>
+                            <img src="/images/admin/search.png"/>
                         </button>
                     </form>
                 </div>
@@ -92,7 +92,7 @@
                     <div class="page-title">모집 게시글</div>
                     <div class="delete-button">삭제하기</div>
                 </div>
-                <table>
+                <table id="recruitment-table">
                     <thead>
                     <tr>
                         <th>
@@ -116,206 +116,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>
-                            <!-- 체크박스 -->
-                            <div class="checkbox-wrapper-21">
-                                <label class="control control--checkbox">
-                                    <input type="checkbox" id="select-all" class="substituted select-member" style="display: none;"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </div>
-                            <!-- 체크박스 -->
-                        </td>
-                        <td class="numbers">1</td>
-                        <td class="board-titles">모집 게시글</td>
-                        <td>작성자</td>
-                        <td>85<span>회</span></td>
-                        <td>1 / 15</td>
-                        <td>서울특별시 강남구 코리아 IT 아카데미</td>
-                        <!-- <td><button class="show-detail" onclick="showModal()">상세보기</button></td> -->
-                    </tr>
-                    <!-- 회원 -->
-                    <tr>
-                        <td>
-                            <!-- 체크박스 -->
-                            <div class="checkbox-wrapper-21">
-                                <label class="control control--checkbox">
-                                    <input type="checkbox" id="select-all" class="substituted select-member" style="display: none;"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </div>
-                            <!-- 체크박스 -->
-                        </td>
-                        <td class="numbers">2</td>
-                        <td>모집 게시글</td>
-                        <td>작성자</td>
-                        <td>230<span>회</span></td>
-                        <td>5 / 15</td>
-                        <td>서울특별시 강남구 코리아 IT 아카데미</td>
-                        <!-- <td><button class="show-detail" onclick="showModal()">상세보기</button></td> -->
-                    </tr>
-                    <!-- 회원 -->
-                    <tr>
-                        <td>
-                            <!-- 체크박스 -->
-                            <div class="checkbox-wrapper-21">
-                                <label class="control control--checkbox">
-                                    <input type="checkbox" id="select-all" class="substituted select-member" style="display: none;"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </div>
-                            <!-- 체크박스 -->
-                        </td>
-                        <td class="numbers">3</td>
-                        <td>모집 게시글</td>
-                        <td>작성자</td>
-                        <td>45<span>회</span></td>
-                        <td>3 / 20</td>
-                        <td>서울특별시 강남구 코리아 IT 아카데미</td>
-                        <!-- <td><button class="show-detail" onclick="showModal()">상세보기</button></td> -->
-                    </tr>
-                    <!-- 회원 -->
-                    <tr>
-                        <td>
-                            <!-- 체크박스 -->
-                            <div class="checkbox-wrapper-21">
-                                <label class="control control--checkbox">
-                                    <input type="checkbox" id="select-all" class="substituted select-member" style="display: none;"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </div>
-                            <!-- 체크박스 -->
-                        </td>
-                        <td class="numbers">4</td>
-                        <td>모집 게시글</td>
-                        <td>작성자</td>
-                        <td>85<span>회</span></td>
-                        <td>3 / 20</td>
-                        <td>서울특별시 강남구 코리아 IT 아카데미</td>
-                        <!-- <td><button class="show-detail" onclick="showModal()">상세보기</button></td> -->
-                    </tr>
-                    <!-- 회원 -->
-                    <tr>
-                        <td>
-                            <!-- 체크박스 -->
-                            <div class="checkbox-wrapper-21">
-                                <label class="control control--checkbox">
-                                    <input type="checkbox" id="select-all" class="substituted select-member" style="display: none;"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </div>
-                            <!-- 체크박스 -->
-                        </td>
-                        <td class="numbers">5</td>
-                        <td>모집 게시글</td>
-                        <td>작성자</td>
-                        <td>85<span>회</span></td>
-                        <td>3 / 20</td>
-                        <td>서울특별시 강남구 코리아 IT 아카데미</td>
-                        <!-- <td><button class="show-detail" onclick="showModal()">상세보기</button></td> -->
-                    </tr>
-                    <!-- 회원 -->
-                    <tr>
-                        <td>
-                            <!-- 체크박스 -->
-                            <div class="checkbox-wrapper-21">
-                                <label class="control control--checkbox">
-                                    <input type="checkbox" id="select-all" class="substituted select-member" style="display: none;"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </div>
-                            <!-- 체크박스 -->
-                        </td>
-                        <td class="numbers">6</td>
-                        <td>모집 게시글</td>
-                        <td>작성자</td>
-                        <td>85<span>회</span></td>
-                        <td>3 / 20</td>
-                        <td>서울특별시 강남구 코리아 IT 아카데미</td>
-                        <!-- <td><button class="show-detail" onclick="showModal()">상세보기</button></td> -->
-                    </tr>
-                    <!-- 회원 -->
-                    <tr>
-                        <td>
-                            <!-- 체크박스 -->
-                            <div class="checkbox-wrapper-21">
-                                <label class="control control--checkbox">
-                                    <input type="checkbox" id="select-all" class="substituted select-member" style="display: none;"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </div>
-                            <!-- 체크박스 -->
-                        </td>
-                        <td class="numbers">7</td>
-                        <td>모집 게시글</td>
-                        <td>작성자</td>
-                        <td>85<span>회</span></td>
-                        <td>3 / 20</td>
-                        <td>서울특별시 강남구 코리아 IT 아카데미</td>
-                        <!-- <td><button class="show-detail" onclick="showModal()">상세보기</button></td> -->
-                    </tr>
-                    <!-- 회원 -->
-                    <tr>
-                        <td>
-                            <!-- 체크박스 -->
-                            <div class="checkbox-wrapper-21">
-                                <label class="control control--checkbox">
-                                    <input type="checkbox" id="select-all" class="substituted select-member" style="display: none;"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </div>
-                            <!-- 체크박스 -->
-                        </td>
-                        <td class="numbers">8</td>
-                        <td>모집 게시글</td>
-                        <td>작성자</td>
-                        <td>85<span>회</span></td>
-                        <td>3 / 20</td>
-                        <td>서울특별시 강남구 코리아 IT 아카데미</td>
-                        <!-- <td><button class="show-detail" onclick="showModal()">상세보기</button></td> -->
-                    </tr>
-                    <!-- 회원 -->
-                    <tr>
-                        <td>
-                            <!-- 체크박스 -->
-                            <div class="checkbox-wrapper-21">
-                                <label class="control control--checkbox">
-                                    <input type="checkbox" id="select-all" class="substituted select-member" style="display: none;"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </div>
-                            <!-- 체크박스 -->
-                        </td>
-                        <td class="numbers">9</td>
-                        <td>모집 게시글</td>
-                        <td>작성자</td>
-                        <td>85<span>회</span></td>
-                        <td>3 / 20</td>
-                        <td>서울특별시 강남구 코리아 IT 아카데미</td>
-                        <!-- <td><button class="show-detail" onclick="showModal()">상세보기</button></td> -->
-                    </tr>
-                    <!-- 회원 -->
-                    <tr>
-                        <td>
-                            <!-- 체크박스 -->
-                            <div class="checkbox-wrapper-21">
-                                <label class="control control--checkbox">
-                                    <input type="checkbox" id="select-all" class="substituted select-member" style="display: none;"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </div>
-                            <!-- 체크박스 -->
-                        </td>
-                        <td class="numbers">10</td>
-                        <td>모집 게시글</td>
-                        <td>작성자</td>
-                        <td>85<span>회</span></td>
-                        <td>3 / 20</td>
-                        <td>서울특별시 강남구 코리아 IT 아카데미</td>
-                        <!-- <td><button class="show-detail" onclick="showModal()">상세보기</button></td> -->
-                    </tr>
-                    <!-- 회원 -->
+
                     </tbody>
                 </table>
                 <div class="pages-wrapper">
@@ -338,7 +139,8 @@
     </main>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="../../static/js/admin/admin.js"></script>
-<script src="../../static/js/admin/user.js"></script>
-<script src="../../static/js/admin/checkbox.js"></script>
+<script src="/js/admin/admin.js"></script>
+<script src="/js/admin/user.js"></script>
+<script src="/js/admin/checkbox.js"></script>
+<script src="/js/admin/recruitmentboard-list.js"></script>
 </html>

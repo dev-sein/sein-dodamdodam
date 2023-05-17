@@ -84,7 +84,7 @@ public class MemberQueryDslImpl implements MemberQueryDsl{
         List<Member> members = query.select(member)
                 .from(member)
                 .orderBy(member.id.desc())
-                .offset(pageable.getOffset() -1)
+                .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
 
