@@ -1,6 +1,7 @@
 package com.app.dodamdodam.repository;
 
 import com.app.dodamdodam.entity.banner.BannerApply;
+import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.point.Point;
@@ -60,6 +61,11 @@ public class AdminRepositoryTests {
     public EventBoardRepository eventBoardRepository;
 
     ArrayList<CategoryType> categoryTypes = new ArrayList<CategoryType>(Arrays.asList(CategoryType.ALL, CategoryType.CULTURE, CategoryType.DAILY, CategoryType.EVENT, CategoryType.PURCHASE, CategoryType.RECRUITMENT));
+
+    @Test
+    public void eventBoardsaveTest(){
+
+    }
 
     /*목록 조회*/
     @Test //멤버 페이징 조회
