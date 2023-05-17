@@ -30,7 +30,7 @@ public class InquiryServiceImpl implements InquiryService {
 
     @Override //문의사항 목록
     public Page<InquiryDTO> showList(Pageable pageable) {
-        Page<Inquiry> inquiryPage = inquiryRepository.findAllWithPaging(PageRequest.of(1, 10));
+        Page<Inquiry> inquiryPage = inquiryRepository.findAllWithPaging(pageable);
         List<InquiryDTO> inquiryDTOS = inquiryPage.get().map(this::toInquiryDTO).collect(Collectors.toList());
 
         return new PageImpl<>(inquiryDTOS, pageable, inquiryPage.getTotalElements());

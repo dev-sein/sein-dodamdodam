@@ -43,10 +43,20 @@ public class RecruitmentBoardServiceImpl implements RecruitmentBoardService {
                 .stream().map(recruitmentBoard -> toRecruitmentBoardFileDto(recruitmentBoard)).collect(Collectors.toList());
     }
 
-//    @Override
-//    public Page<RecruitmentBoardFileDTO> showList(Pageable pageable) {
-//            Page<RecruitmentBoard> recruitmentBoardPage = recruitmentBoardRepository.findAllWithPaging(PageRequest.of(1, 10));
-//          //  List<RecruitmentFileDTO> recruitmentFileDTOS = recruitmentBoardPage.get().map(this::toRecruitmentFileDto).collect(Collectors.toList());
-//            return new PageImpl<>(recruitmentFileDTOS, pageable, recruitmentBoardPage.getTotalElements());
-//        }
+    //  관리자 목록
+    @Override
+    public Page<RecruitmentBoardFileDTO> showList(Pageable pageable) {
+            Page<RecruitmentBoard> recruitmentBoardPage = recruitmentBoardRepository.findAllWithPaging(pageable);
+            List<RecruitmentBoardFileDTO> recruitmentFileDTOS = recruitmentBoardPage.get().map(this::toRecruitmentBoardFileDto).collect(Collectors.toList());
+            return new PageImpl<>(recruitmentFileDTOS, pageable, recruitmentBoardPage.getTotalElements());
+        }
+
+    @Override
+    public void deleteRecruitmentBoard(List<Long> recruitmentBoardIds) {
+        for(Long recruitmentBoardId: recruitmentBoardIds){
+            recruitmentBoardRepository.deleteById(recruitmentBoardId);
+        }
+    }
+
+
 }

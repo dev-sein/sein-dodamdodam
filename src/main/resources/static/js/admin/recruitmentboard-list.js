@@ -17,8 +17,8 @@ $(document).ready(function() {
 });
 
 /*목록 출력*/
-const $listResults = $("#pointTable tbody");
-function showList(point) {
+const $listResults = $("#recruitment-table tbody");
+function showList(recruitmentBoard) {
     var text = "";
     console.log("showlist");
     console.log("들어옴");
@@ -34,12 +34,12 @@ function showList(point) {
                     </div>
                     <!-- 체크박스 -->
                 </td>
-                <td class="numbers">${point.id}</td>
-                <td>${point.memberId}</td>
-                <td>${point.memberName}</td>
-                <td>${point.pointAmount}</td>
-                <td>${point.createdDate}</td>
-                <td>${point.pointStatus}</td>
+                <td class="numbers">${recruitmentBoard.id}</td>
+                <td>${recruitmentBoard.boardTitle}</td>
+                <td>${recruitmentBoard.memberDTO.memberName}</td>
+                <td>${recruitmentBoard.recruitmentAddress}</td>
+                <td>${recruitmentBoard.recruitmentDate}</td>
+                <td>${recruitmentBoard.recruitmentStatus}</td>
                 <!-- <td>2000.01.01 21:05:04</td>-->
                 <!-- <td><button class="show-detail" onclick="showModal()">상세보기</button></td> -->
             </tr>
@@ -53,14 +53,14 @@ const $pageWrap = $(".pages-wrapper");
 function adminList(page) {
     console.log("함수 실행")
     $.ajax({
-        url: `/admins/point/list/${page}`,
+        url: `/admins/recruitment-board/list-content`,
         type: 'get',
         data: { page: page },
         dataType: 'json',
         success: function(result) {
             console.log("success들어옴");
             // $listResults.empty();
-            result.content.forEach((point) => showList(point)); //목록 출력 함수
+            result.content.forEach((recruitmentBoard) => showList(recruitmentBoard)); //목록 출력 함수
             console.log(result); // 사용할 JSON 데이터 출력, 페이지 선택을 해도 데이터 contents에서 계속 1페이지 데이터로 출력됨
             showPage(result); //페이지 실행 함수
             console.log("adminlist");
@@ -137,3 +137,39 @@ function showPage(data) {
 // adminList();
 
 
+
+/*항목 삭제*/
+$(document).ready(function() {
+    // 삭제 버튼 클릭 시
+    $('.delete-button').click(function() {
+        var selectedItems = [];
+        // 체크된 항목의 ID를 배열에 추가
+        $('input.substituted.select-member:checked').each(function() {
+            var inquiryId = $(this).closest('tr').find('.numbers').text();
+            selectedItems.push(parseInt(inquiryId));
+        });
+
+        // 선택된 항목이 없는 경우 경고창을 표시하고 함수를 종료
+        if (selectedItems.length === 0) {
+            alert('삭제할 항목을 선택해주세요.');
+            return;
+        }
+        $('#delete-modal').show(); //삭제 모달창 열기
+        $('#confirm-btn').click(function() { //모달창의 확인 버튼 눌렀을 경우 데이터 삭제
+            $.ajax({
+                url: '/admins/recruitment-board/delete',
+                type: 'DELETE',
+                contentType: 'application/json',
+                data: JSON.stringify(selectedItems),
+                success: function (response) {
+                    // alert(response); // 서버로부터의 응답 메시지를 알림으로 표시(모달로 바꾸기)
+                    location.reload() //삭제완료 후 새로고침
+                },
+                error: function (xhr, status, error) {
+                    alert('오류가 발생했습니다. 다시 시도해주세요.');
+                    console.log(error);
+                }
+            });
+        });
+    });
+});

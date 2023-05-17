@@ -27,8 +27,11 @@ public interface RecruitmentBoardService {
 //    내가 참가한 모집 게시글 목록
     public List<RecruitmentBoardFileDTO> getRecruimentedBoardListByMemberId(Pageable pageable, Long memberId);
 
-////    관리자 목록 게시판
-//    public Page<RecruitmentBoardFileDTO> showList(Pageable pageable);
+//    관리자 목록 게시판
+    public Page<RecruitmentBoardFileDTO> showList(Pageable pageable);
+
+//    관리자 삭제
+    public void deleteRecruitmentBoard(List<Long> recruitmentBoardIds);
 
     default RecruitmentBoardFileDTO toRecruitmentBoardFileDto(RecruitmentBoard recruitmentBoard){
         return RecruitmentBoardFileDTO.builder()

@@ -113,7 +113,8 @@ body{
    /* align-items: center; */
    /* display: flex; */
    position: relative;
-   top: -30px;
+   /*top: -30px;*/
+     top: 50%;
    text-align: center;
    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
  }
@@ -384,4 +385,8 @@ content{
 .right-button{
     width: 20px;
     height: 20px;
+}
+
+.inquiry-email{
+    width: 17% !important;
 }

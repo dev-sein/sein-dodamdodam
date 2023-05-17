@@ -1,6 +1,7 @@
 package com.app.dodamdodam.repository;
 
 import com.app.dodamdodam.entity.banner.BannerApply;
+import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.point.Point;
@@ -30,6 +31,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.test.annotation.Rollback;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -60,6 +63,25 @@ public class AdminRepositoryTests {
     public EventBoardRepository eventBoardRepository;
 
     ArrayList<CategoryType> categoryTypes = new ArrayList<CategoryType>(Arrays.asList(CategoryType.ALL, CategoryType.CULTURE, CategoryType.DAILY, CategoryType.EVENT, CategoryType.PURCHASE, CategoryType.RECRUITMENT));
+
+//    @Test
+//    public void eventBoardsaveTest(){
+//        EventBoard eventBoard = new EventBoard("모집 게시글 제목", LocalDateTime.now(), )
+//    }
+
+    /*모집 게시글 등록*/
+    @Test
+    public void saveTest1(){
+//        for (int i=1; i<=100; i++){
+//            RecruitmentBoard recruitmentBoard = new RecruitmentBoard("모집 게시글 제목" + i, LocalDate.now(),10 + i, "www.naver.com", "1234", "경기도 성남시", "분당구 수내동");
+//            memberRepository.findById(2L).ifPresent(member -> recruitmentBoard.setMember(member));
+//            recruitmentBoardRepository.save(recruitmentBoard);
+//        }
+        RecruitmentBoard recruitmentBoard = new RecruitmentBoard("모집 게시글 제목", LocalDate.now(),10, "https://open.kakao.com/o/ggmF0Jkf", "1234", "경기도 성남시 분당구 수내동", "탄천앞");
+        memberRepository.findById(201L).ifPresent(member -> recruitmentBoard.setMember(member));
+//        recruitmentBoard.addRecruitment();
+        recruitmentBoardRepository.save(recruitmentBoard);
+    }
 
     /*목록 조회*/
     @Test //멤버 페이징 조회
