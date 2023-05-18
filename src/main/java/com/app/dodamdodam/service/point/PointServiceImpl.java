@@ -19,7 +19,7 @@ public class PointServiceImpl implements PointService {
 
     @Override
     public Page<PointDTO> showList(Pageable pageable) {
-        Page<Point> pointPage = pointRepository.findAllWithPaging(PageRequest.of(1, 10));
+        Page<Point> pointPage = pointRepository.findAllWithPaging(pageable);
         List<PointDTO> pointDTOS = pointPage.get().map(this::toPointDTO).collect(Collectors.toList());
 
         return new PageImpl<>(pointDTOS, pageable, pointPage.getTotalElements());

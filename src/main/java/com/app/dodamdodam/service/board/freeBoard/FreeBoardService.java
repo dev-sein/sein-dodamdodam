@@ -49,6 +49,9 @@ public interface FreeBoardService {
     /* 자유 게시글 검색 */
     public List<FreeBoardFileDTO> getFreeBoardsBySearch(Pageable pageable, FreeBoardSearch freeBoardSearch);
 
+    /* 관리자 자유게시판 삭제*/
+    public void deleteAdminFreeBoard(List<Long> freeBoardIds);
+
 
     /* toDTO */
     default FreeBoardFileDTO toFreeBoardFileDTO(FreeBoard freeBoard){

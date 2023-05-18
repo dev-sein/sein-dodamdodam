@@ -17,13 +17,13 @@ $(document).ready(function() {
 });
 
 /*목록 출력*/
-const $listResults = $("#free-board-Table tbody");
-function showList(freeBoard) {
+const $listResults = $("#recruitment-table tbody");
+function showList(recruitmentBoard) {
     var text = "";
     console.log("showlist");
     console.log("들어옴");
     text += `
-            <tr>
+                 <tr>
                 <td>
                     <!-- 체크박스 -->
                     <div class="checkbox-wrapper-21">
@@ -34,16 +34,16 @@ function showList(freeBoard) {
                     </div>
                     <!-- 체크박스 -->
                 </td>
-                <td class="numbers">${freeBoard.id}</td>
-                <td>${freeBoard.boardTitle}</td>
-                <td>${freeBoard.memberDTO.memberName}</td>
-                <td>${freeBoard.freeCategory}</td>
-                <td>${freeBoard.createdDate}</td>
-                <!-- <td>{point.pointStatus}</td> -->
+                <td class="numbers">${recruitmentBoard.id}</td>
+                <td>${recruitmentBoard.boardTitle}</td>
+                <td>${recruitmentBoard.memberDTO.memberName}</td>
+                <td>${recruitmentBoard.recruitmentAddress}</td>
+                <td>${recruitmentBoard.recruitmentDate}</td>
+                <td>${recruitmentBoard.recruitmentStatus}</td>
                 <!-- <td>2000.01.01 21:05:04</td>-->
                 <!-- <td><button class="show-detail" onclick="showModal()">상세보기</button></td> -->
             </tr>
-        `;
+    `;
     $listResults.append(text);
 }
 
@@ -53,17 +53,18 @@ const $pageWrap = $(".pages-wrapper");
 function adminList(page) {
     console.log("함수 실행")
     $.ajax({
-        url: `/admins/free-board/list/${page}`,
+        url: `/admins/recruitment-board/list-content`,
         type: 'get',
         data: { page: page },
         dataType: 'json',
         success: function(result) {
             console.log("success들어옴");
             // $listResults.empty();
-            result.content.forEach((freeBoard) => showList(freeBoard)); //목록 출력 함수
+            result.content.forEach((recruitmentBoard) => showList(recruitmentBoard)); //목록 출력 함수
             console.log(result); // 사용할 JSON 데이터 출력, 페이지 선택을 해도 데이터 contents에서 계속 1페이지 데이터로 출력됨
             showPage(result); //페이지 실행 함수
             console.log("adminlist");
+
         },
         error: function(xhr, status, error) {
             console.error('Error:', error);
@@ -156,7 +157,7 @@ $(document).ready(function() {
         $('#delete-modal').show(); //삭제 모달창 열기
         $('#confirm-btn').click(function() { //모달창의 확인 버튼 눌렀을 경우 데이터 삭제
             $.ajax({
-                url: '/admins/inquiry/delete',
+                url: '/admins/recruitment-board/delete',
                 type: 'DELETE',
                 contentType: 'application/json',
                 data: JSON.stringify(selectedItems),

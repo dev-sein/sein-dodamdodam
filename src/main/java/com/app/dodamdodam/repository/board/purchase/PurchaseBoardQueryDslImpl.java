@@ -157,7 +157,7 @@ public class PurchaseBoardQueryDslImpl implements PurchaseBoardQueryDsl {
         List<PurchaseBoard> foundPurchase = query.select(purchaseBoard)
                 .from(purchaseBoard)
                 .orderBy(purchaseBoard.id.desc())
-                .offset(pageable.getOffset() -1)
+                .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
         Long count = query.select(purchaseBoard.count())

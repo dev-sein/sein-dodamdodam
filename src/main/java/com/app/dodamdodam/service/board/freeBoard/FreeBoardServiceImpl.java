@@ -65,10 +65,10 @@ public class FreeBoardServiceImpl implements FreeBoardService {
         freeBoardRepository.findById(board.getId()).ifPresent(freeBoard -> freeBoardRepository.delete(freeBoard));
     }
 
-    /* 관리자 자유 게시판 목록 */
+    /* 관리자 자유 게시글 목록 */
     @Override
     public Page<FreeBoardFileDTO> getAdminFreeBoardList(Pageable pageable) {
-       Page<FreeBoard> freeBoardPage = freeBoardRepository.findAllFreeBoardList_QueryDSL(PageRequest.of(1, 10));
+       Page<FreeBoard> freeBoardPage = freeBoardRepository.findAllFreeBoardList_QueryDSL(pageable);
        List<FreeBoardFileDTO> freeBoardFileDTOS = freeBoardPage.get().map(this::toFreeBoardFileDTO).collect(Collectors.toList());
         return new PageImpl<>(freeBoardFileDTOS, pageable, freeBoardPage.getTotalElements());
     }
@@ -84,7 +84,14 @@ public class FreeBoardServiceImpl implements FreeBoardService {
     /* 자유 게시글 검색 */
     @Override
     public List<FreeBoardFileDTO> getFreeBoardsBySearch(Pageable pageable, FreeBoardSearch freeBoardSearch) {
-        return freeBoardRepository.findFreeBoardBySearchWithPaging_QueryDSL(freeBoardSearch,pageable).stream().map(freeBoard -> toFreeBoardFileDTO(freeBoard)).collect(Collectors.toList());
+        return freeBoardRepository.findFreeBoardBySearchWithPaging_QueryDSL(freeBoardSearch, pageable).stream().map(freeBoard -> toFreeBoardFileDTO(freeBoard)).collect(Collectors.toList());
+    }
 
+    /* 관리자 자유 게시글 삭제*/
+    @Override
+    public void deleteAdminFreeBoard(List<Long> freeBoardIds) {
+        for(Long freeBoardId: freeBoardIds){
+            freeBoardRepository.deleteById(freeBoardId);
+        }
     }
 }

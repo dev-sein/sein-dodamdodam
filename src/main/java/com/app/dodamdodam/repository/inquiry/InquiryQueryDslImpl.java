@@ -29,7 +29,7 @@ public class InquiryQueryDslImpl implements InquiryQueryDsl {
         List<Inquiry> foundInquiry = query.select(inquiry)
                 .from(inquiry)
                 .orderBy(inquiry.id.desc())
-                .offset(pageable.getOffset() -1)
+                .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
 

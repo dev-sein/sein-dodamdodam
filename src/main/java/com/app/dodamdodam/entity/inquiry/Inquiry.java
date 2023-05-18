@@ -29,15 +29,12 @@ public class Inquiry extends Period {
     @Enumerated(EnumType.STRING)
     private InquiryStatus inquiryStatus;
 
-    @Builder
-    public Inquiry(Long id, InquiryType inquiryType, String inquiryEmail, String memberIdentification, String inquiryPhoneNumber, String inquiryContent, String inquiryAnswer, InquiryStatus inquiryStatus) {
-        this.id = id;
+    public Inquiry(InquiryType inquiryType, String inquiryEmail, String memberIdentification, String inquiryPhoneNumber, String inquiryContent, InquiryStatus inquiryStatus) {
         this.inquiryType = inquiryType;
         this.inquiryEmail = inquiryEmail;
         this.memberIdentification = memberIdentification;
         this.inquiryPhoneNumber = inquiryPhoneNumber;
         this.inquiryContent = inquiryContent;
-        this.inquiryAnswer = inquiryAnswer;
         this.inquiryStatus = inquiryStatus;
     }
 

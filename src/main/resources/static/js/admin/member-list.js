@@ -1,10 +1,10 @@
-const $listResults = $("#inquiryTable tbody");
+const $listResults = $("#membertable tbody");
 let page = 0;
 
 listService = (function() {
     function list(page, callback) {
         $.ajax({
-            url: '/admins/inquiry/list-content',
+            url: '/admins/member/list-content',
             type: 'get',
             data: { page: page }, // 수정: page를 객체 형태로 전달
             success: function(list) {
@@ -70,28 +70,32 @@ function displayPagination(totalPages) {
 
 function listText(list) {
     console.log("list text 들어옴");
-    let inquiryDTOS = list.content;
-    $(inquiryDTOS).each((i, inquiry) => {
+    let memberDTOS = list.content;
+    $(memberDTOS).each((i, member) => {
         console.log("text 들어옴");
         var text = "";
         text += `
-      <tr>
-        <td>
-          <div class="checkbox-wrapper-21">
-            <label class="control control--checkbox">
-              <input type="checkbox" id="select-all" class="substituted select-member" style="display: none;" />
-              <div class="control__indicator"></div>
-            </label>
-          </div>
-        </td>
-        <td class="numbers">${inquiry.id}</td>
-        <td>${inquiry.inquiryType}</td>
-         <td>${inquiry.inquiryContent}</td>
-        <td>${inquiry.inquiryEmail}</td>
-        <td>${inquiry.inquiryPhoneNumber}</td>
-        <td>${inquiry.inquiryStatus}</td>
-      </tr>
-    `;
+            <tr>
+                <td>
+                    <!-- 체크박스 -->
+                    <div class="checkbox-wrapper-21">
+                        <label class="control control--checkbox">
+                            <input type="checkbox" id="select-all" class="substituted select-member" style="display: none;" />
+                            <div class="control__indicator"></div>
+                        </label>
+                    </div>
+                    <!-- 체크박스 -->
+                </td>
+                <td class="numbers">${member.id}</td>
+                <td>${member.memberName}</td>
+                <td>${member.memberPhone}</td>
+                <td>${member.memberEmail}</td>
+                <td>${member.memberStatus}</td>
+                <!--  <td>{point.pointStatus}</td> -->
+                <!-- <td>2000.01.01 21:05:04</td>-->
+                <!-- <td><button class="show-detail" onclick="showModal()">상세보기</button></td> -->
+            </tr>
+        `;
         $listResults.append(text);
     });
 }
@@ -112,25 +116,25 @@ $(document).ready(function() {
         var selectedItems = [];
         // 체크된 항목의 ID를 배열에 추가
         $('input.substituted.select-member:checked').each(function() {
-            var inquiryId = $(this).closest('tr').find('.numbers').text();
-            selectedItems.push(parseInt(inquiryId));
+            var memberId = $(this).closest('tr').find('.numbers').text();
+            selectedItems.push(parseInt(memberId));
         });
 
         // 선택된 항목이 없는 경우 경고창을 표시하고 함수를 종료
         if (selectedItems.length === 0) {
-            alert('삭제할 항목을 선택해주세요.');
+            alert('탈퇴할 회원을 선택해주세요.');
             return;
         }
         $('#delete-modal').show(); //삭제 모달창 열기
-        $('#confirm-btn').click(function() { //모달창의 확인 버튼 눌렀을 경우 데이터 삭제
+        $('#confirm-btn').click(function() { //모달창의 확인 버튼 눌렀을 경우 데이터 변경
             $.ajax({
-                url: '/admins/inquiry/delete',
-                type: 'DELETE',
+                url: '/admins/member/withdraw',
+                type: 'PATCH',
                 contentType: 'application/json',
                 data: JSON.stringify(selectedItems),
                 success: function (response) {
                     // alert(response); // 서버로부터의 응답 메시지를 알림으로 표시(모달로 바꾸기)
-                    location.reload() //삭제완료 후 새로고침
+                    location.reload() //변경완료 후 새로고침
                 },
                 error: function (xhr, status, error) {
                     alert('오류가 발생했습니다. 다시 시도해주세요.');

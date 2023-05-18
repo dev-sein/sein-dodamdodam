@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,14 +35,14 @@ public class ChattingRepositoryTests {
     /* 채팅 추가하기 */
     @Test
     public void saveTest(){
-//        for (int i=1; i<100; i++) {
-//            Room room = new Room(1L, 2L);
-//            memberRepository.findById(1L).ifPresent(member -> room.setMember(member));
-//            Chatting chatting = new Chatting(1L, 1L + i, "1번이"  + (1 + i) + "번에게 보내는 메세지" + i);
-//            chatting.setRoom(room);
-//            chattingRepository.save(chatting);
-//            roomRepository.save(room);
-//        }
+        for (int i=1; i<100; i++) {
+            Room room = new Room(199L, 199L + i);
+            memberRepository.findById(199L).ifPresent(member -> room.setMember(member));
+            Chatting chatting = new Chatting(199L, 199L + i, "199번이"  + (199 + i) + "번에게 보내는 메세지" + i);
+            chatting.setRoom(room);
+            chattingRepository.save(chatting);
+            roomRepository.save(room);
+        }
     }
 
 
@@ -65,7 +66,7 @@ public class ChattingRepositoryTests {
     @Test
     public void findRoomByMemberIdTest(){
         Pageable pageable = PageRequest.of(0,10);
-        roomRepository.findRoomByMemberId(pageable, 690L).stream().map(Room::toString).forEach(log::info);
+        roomRepository.findRoomByMemberId_QueryDSL(pageable, 690L).stream().map(Room::toString).forEach(log::info);
     }
 
 
@@ -84,10 +85,12 @@ public class ChattingRepositoryTests {
     @Test
     public void findRoomSearchWithPaging_QueryDSL_Test(){
         RoomSearch roomSearch = new RoomSearch();
-        roomSearch.setMemberName("테스트1");
-//        roomSearch.setChattingContent("1번이 2번에게 보내는 메세지1");
-        Page<Room> roomPage = roomRepository.findRoomSearchWithPaging_QueryDSL(roomSearch, PageRequest.of(0, 10));
+//        roomSearch.setMemberName("테스트1");
+//        roomSearch.setChattingContent("1번이2번에게 보내는 메세지1");
+        Slice<Room> roomPage = roomRepository.findRoomSearchWithPaging_QueryDSL(roomSearch, PageRequest.of(1, 5));
         log.info("============"+roomSearch.getChattingContent());
+
+        roomPage.stream().forEach(room -> log.info(room.toString()));
     }
 
 

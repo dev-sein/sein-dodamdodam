@@ -18,7 +18,7 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DynamicInsert
 @DynamicUpdate
-public class Chatting extends Period {
+public class Chatting {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
@@ -28,8 +28,7 @@ public class Chatting extends Period {
     @NotNull
     @Enumerated(EnumType.STRING)
     private MessageType messageType;
-    //MAKE : 채팅방이 생성된 적 없고 처음 들어온 상태
-    //REUSE : 채팅중인 상태
+
     @NotNull
     @Enumerated(EnumType.STRING)
     @ColumnDefault("'UNREAD'")

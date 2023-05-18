@@ -26,8 +26,11 @@ public interface PurchaseBoardService {
 //    관리자 게시글 검색
     public Page<PurchaseBoardDTO> findPurchaseBoardWithSearch_QueryDSL(AdminInquirySearch inquirySearch, Pageable pageable);
 */
-    //관리자 : 문의사항 목록
+    //관리자 : 판매 게시판 목록
     public Page<PurchaseBoardDTO> showList(Pageable pageable);
+
+    //관리자 : 판매 게시판 삭제
+    public void deleteAdminPurchaseBoard(List<Long> purchaseBoardIds);
 
     default PurchaseBoardDTO toPurchaseBoardDTO(PurchaseBoard purchaseBoard){
         return PurchaseBoardDTO.builder().id(purchaseBoard.getId())

@@ -29,6 +29,9 @@ public class EventLikeRepositoryTests {
     @Autowired
     private MemberRepository memberRepository;
 
+//
+//    @Test
+//    public void checkMemberLikesEventBoardTest(){
 
     @Test
     public void checkMemberLikesEventBoardTest(){
@@ -42,6 +45,10 @@ public class EventLikeRepositoryTests {
 //
 //    private boolean checkMemberAlreadyLikes(Member member, EventBoard eventBoard){
 //        return eventLikeRepository.checkMemberLikesEventBoard_QueryDSL(member, eventBoard);
+//    }
+//
+//    @Test
+//    public void saveTest(){
     }
 
     @Test
@@ -56,6 +63,7 @@ public class EventLikeRepositoryTests {
 //        eventLikeRepository.save(eventLike);
 //
 //        eventBoard.get().setEventLikeCount(++likeCount);
+//        }
         }
 
 
