@@ -27,15 +27,15 @@ public class ChatController {
     private final ChatServiceImpl chatServiceImpl;
 
     /*신규 채팅룸 생성*/
-//    @PostMapping("/create")
-//    @ResponseBody
-//    public RoomDTO createRoom(Model model, HttpSession session) {
-//        session.setAttribute("memberId", 199L);
-//        Long memberId = (Long)session.getAttribute("memberId");
-//        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
-//        log.info("==============들어오니?================");
-//        return chatServiceImpl.createRoom(500L);
-//    }
+    @PostMapping("/create")
+    @ResponseBody
+    public RoomDTO createRoom(Model model, HttpSession session) {
+        session.setAttribute("memberId", 199L);
+        Long memberId = (Long)session.getAttribute("memberId");
+        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
+        log.info("==============들어오니?================");
+        return chatServiceImpl.createRoom(500L);
+    }
 
 //    @GetMapping("/room/find")
 //    @ResponseBody
@@ -70,7 +70,7 @@ public class ChatController {
         Long memberId = (Long)session.getAttribute("memberId");
 
         //한번에 8개 씩
-        Pageable pageable = PageRequest.of(page, 6);
+        Pageable pageable = PageRequest.of(page, 10);
 
         List<RoomDTO> roomDTOList = chatServiceImpl.getRoomByMemberId(pageable,memberId);
         log.info(roomDTOList.toString());
