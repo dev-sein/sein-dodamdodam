@@ -42,4 +42,8 @@ public interface FreeBoardQueryDsl {
     public Page<FreeBoard> findFreeBoardWithPaging_QueryDSL(FreeBoardSearch freeBoardSearch, Pageable pageable);
 
 
+    public Page<FreeBoard> findFreeBoardBySearchWithPaging_QueryDSL(FreeBoardSearch freeBoardSearch, Pageable pageable);
+
+//    자유게시판 좋아요 Top5
+    public List<FreeBoard> findFreeBoardListByLikeCount();
 }

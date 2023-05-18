@@ -62,14 +62,14 @@
                          <div class="waffle field">
                            <div class="action-input">
                                <div class="input-container mb13">
-                                   <input id="address" name="address" class="address" placeholder="주소검색" th:value="${member.address.address}">
+                                   <input id="address" name="address.address" class="address" placeholder="주소검색" th:value="${member.address.address}">
                                    <button class="address-btn" id="detailAddress" type="button" onclick="searchAddress()" style="width:93px">주소검색</button>
                                    </div>
                               </div>
                            </div>
                            <div class="input-container">
                                <div class="waffle input">
-                                   <input name="addressDetail" id="addressDetail" placeholder="상세주소" th:value="${member.address.addressDetail}">
+                                   <input name="address.addressDetail" id="addressDetail" placeholder="상세주소" th:value="${member.address.addressDetail}">
                                </div>
                                <div class="waffle helper mb"></div>
                        </div>   
