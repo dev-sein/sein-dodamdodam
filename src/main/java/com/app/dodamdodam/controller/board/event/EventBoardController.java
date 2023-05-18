@@ -43,20 +43,18 @@ public class EventBoardController {
         return "event-board/event-board-detail";
     }
 
+
 // 작성하기
     @GetMapping("event-board-write")
-    public void goToEventWrite(Model model) {
-        model.addAttribute("eventBoard", new EventBoardDTO());
-    }
+    public void goToWriteForm(EventBoardDTO eventBoardDTO) { }
 
     @PostMapping("event-board-write")
-    public RedirectView EventWrite(@ModelAttribute EventBoardDTO eventBoardDTO) {
-        Long memberId = 1L;
+    public RedirectView write(@ModelAttribute("eventBoardDTO") EventBoardDTO eventBoardDTO/*, @AuthenticationPrincipal UserDetail userDetail*/) {
+
+        Long memberId = 1l;
         eventBoardService.write(eventBoardDTO, memberId);
-
-        log.info("=====================" + eventBoardDTO);
-
         return new RedirectView("/event-board/event-board-list");
     }
+
 
 }

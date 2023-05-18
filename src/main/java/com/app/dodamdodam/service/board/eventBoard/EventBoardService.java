@@ -2,22 +2,13 @@ package com.app.dodamdodam.service.board.eventBoard;
 
 import com.app.dodamdodam.domain.EventBoardDTO;
 import com.app.dodamdodam.domain.EventFileDTO;
-import com.app.dodamdodam.domain.FreeBoardFileDTO;
 import com.app.dodamdodam.domain.MemberDTO;
 import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.event.EventFile;
 import com.app.dodamdodam.entity.member.Member;
-import com.app.dodamdodam.repository.board.event.board.EventBoardRepository;
-import com.app.dodamdodam.repository.board.event.file.EventFileRepository;
-import jdk.jfr.Event;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
-import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
-import javax.transaction.Transactional;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
