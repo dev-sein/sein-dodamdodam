@@ -3,6 +3,7 @@ package com.app.dodamdodam.controller.board.free;
 import com.app.dodamdodam.domain.FreeBoardFileDTO;
 import com.app.dodamdodam.search.FreeBoardSearch;
 import com.app.dodamdodam.service.board.freeBoard.FreeBoardService;
+import com.app.dodamdodam.type.CategoryType;
 import com.sun.tools.jconsole.JConsoleContext;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -34,17 +35,31 @@ public class FreeBoardController {
 //    자유게시판 무한 스크롤  // 검색으로 수정하기
     @ResponseBody
     @GetMapping("list-search")
-    public List<FreeBoardFileDTO> getFreeBoardList(@RequestParam int page, @RequestParam String search){
+    public List<FreeBoardFileDTO> getFreeBoardList(@RequestParam int page, @RequestParam String search, @RequestParam String category){
         FreeBoardSearch freeBoardSearch = new FreeBoardSearch();
         freeBoardSearch.setBoardContent(search);
         freeBoardSearch.setBoardTitle(search);
         freeBoardSearch.setWriterName(search);
+        CategoryType categoryType = null;
+        if (category.equals("문화")){
+            categoryType = CategoryType.CULTURE;
+        } else if (category.equals("일상")){
+            categoryType = CategoryType.DAILY;
+        } else if (category.equals("이벤트")){
+            categoryType = CategoryType.EVENT;
+        } else if (category.equals("판매")){
+            categoryType = CategoryType.PURCHASE;
+        } else if (category.equals("모집")){
+            categoryType = CategoryType.RECRUITMENT;
+        } else {
+            categoryType = null;
+        }
 
         log.info(freeBoardSearch.toString());
 
         Pageable pageable = PageRequest.of(page,10);
 
-        List<FreeBoardFileDTO> freeBoards = freeBoardService.getFreeBoardsBySearch(pageable, freeBoardSearch);
+        List<FreeBoardFileDTO> freeBoards = freeBoardService.getFreeBoardsBySearch(pageable, categoryType, freeBoardSearch);
         log.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         log.info(freeBoards.toString());
 
@@ -55,6 +70,7 @@ public class FreeBoardController {
     @GetMapping("detail/{boardId}")
     public String freeBoardDetail(Model model, @PathVariable(value = "boardId") Long boardId){
         freeBoardService.getFreeBoardById(boardId).ifPresent(freeBoard -> model.addAttribute("freeBoardDetail",freeBoard));
+        model.addAttribute("top5",freeBoardService.getTop5FreeBoards());
 
         return "free-board/free-board-detail";
     }

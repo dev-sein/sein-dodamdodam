@@ -47,7 +47,7 @@ public interface FreeBoardService {
     public List<FreeBoardFileDTO> getTop5FreeBoards();
 
     /* 자유 게시글 검색 */
-    public List<FreeBoardFileDTO> getFreeBoardsBySearch(Pageable pageable, FreeBoardSearch freeBoardSearch);
+    public List<FreeBoardFileDTO> getFreeBoardsBySearch(Pageable pageable, CategoryType categoryType, FreeBoardSearch freeBoardSearch);
 
     /* 관리자 자유게시판 삭제*/
     public void deleteAdminFreeBoard(List<Long> freeBoardIds);

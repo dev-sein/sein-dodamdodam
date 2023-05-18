@@ -83,8 +83,8 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 
     /* 자유 게시글 검색 */
     @Override
-    public List<FreeBoardFileDTO> getFreeBoardsBySearch(Pageable pageable, FreeBoardSearch freeBoardSearch) {
-        return freeBoardRepository.findFreeBoardBySearchWithPaging_QueryDSL(freeBoardSearch, pageable).stream().map(freeBoard -> toFreeBoardFileDTO(freeBoard)).collect(Collectors.toList());
+    public List<FreeBoardFileDTO> getFreeBoardsBySearch(Pageable pageable, CategoryType categoryType ,FreeBoardSearch freeBoardSearch) {
+        return freeBoardRepository.findFreeBoardBySearchWithPaging_QueryDSL(freeBoardSearch, categoryType, pageable).stream().map(freeBoard -> toFreeBoardFileDTO(freeBoard)).collect(Collectors.toList());
     }
 
     /* 관리자 자유 게시글 삭제*/

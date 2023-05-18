@@ -20,12 +20,20 @@
                 <div class="detail-title">
                     <div class="detail-info">
                         <p class="board">자유게시판</p>
-                        <em class="type">수다</em>
-                        <p class="title">리바운드 본 사람??</p>
+                        <em class="type">
+                            <span th:if="${#strings.equals(freeBoardDetail.freeCategory, 'ALL')}">전체</span>
+                            <span th:if="${#strings.equals(freeBoardDetail.freeCategory, 'CULTURE')}">문화</span>
+                            <span th:if="${#strings.equals(freeBoardDetail.freeCategory, 'EVENT')}">이벤트</span>
+                            <span th:if="${#strings.equals(freeBoardDetail.freeCategory, 'RECRUITMENT')}">모집</span>
+                            <span th:if="${#strings.equals(freeBoardDetail.freeCategory, 'PURCHASE')}">판매</span>
+                            <span th:if="${#strings.equals(freeBoardDetail.freeCategory, 'DAILY')}">일상</span>
+                        </em>
+                        <p class="title" th:text="${freeBoardDetail.boardTitle}">리바운드 본 사람??</p>
                         <p class="info">
                             <em class="writer">박다예</em>
-                            <em class="date">2023.04.23</em>
-                            <em class="like-count">10</em>
+<!--                            <em class="date" th:text="${freeBoardDetail.createdDate}">2023.04.23</em>-->
+                            <em class="date" th:text="${#temporals.format(freeBoardDetail.createdDate, 'yyyy.MM.dd HH:mm')}">2023.04.23</em>
+                            <em class="like-count" th:text="${freeBoardDetail.likeCount}">10</em>
                         </p>
                     </div>
                 </div>
@@ -34,53 +42,54 @@
                         <img src="/images/free-board/slamdunk.jpg" >
                         <img src="/images/free-board/rebound.jpg" >
                     </p>
-                    <p>슬램덩크 VS 리바운드<br></p>
-                    <p>뭐가 더 재밌는지 댓글로 남겨주세요!<br></p>
-                    <p>슬램덩크 봤어야 했는데!!!! 한손은 거들뿐!!!!<br></p>
-                    <p>리바운드도 못 보겠지...ㅠㅠ<br></p>
-                    <p>벌써 4월 23일이라니 이제 눈 감았다 뜨면 금요일...?<br></p>
-                    <p>5월 1일날 리바운드...?...!(갠톡)<br></p>
+                    <div th:text="${freeBoardDetail.boardContent}"></div>
+<!--                    <p th:text="${freeBoardDetail.boardContent}"></p>-->
+<!--                    <p>뭐가 더 재밌는지 댓글로 남겨주세요!<br></p>-->
+<!--                    <p>슬램덩크 봤어야 했는데!!!! 한손은 거들뿐!!!!<br></p>-->
+<!--                    <p>리바운드도 못 보겠지...ㅠㅠ<br></p>-->
+<!--                    <p>벌써 4월 23일이라니 이제 눈 감았다 뜨면 금요일...?<br></p>-->
+<!--                    <p>5월 1일날 리바운드...?...!(갠톡)<br></p>-->
                 </div>
             </div>
             <!-- 상세페이지 끝 -->
             <div class="section2">
                 <div class="btn-wrap">
-                    <button class="btn-write">자유게시판 바로가기</button>
+                    <button class="btn-write" onclick="location.href='/free/list'">자유게시판 바로가기</button>
                 </div>
                 <div class="best-list detail">
                     <img src="/images/free-board/trophy_icon.png" alt="">
                     <h4>인기글 TOP5</h4>
                     <ol>
-                       <li>
+                        <li>
                             <em>1</em>
                             <p class="title">
-                                <a href="">[4팀 점메추] 네모오징어</a>
+                                <a th:href="@{/free/detail/{boardId}(boardId = ${top5[0].id})}" th:text="${top5[0].boardTitle}">[4팀 점메추] 네모오징어</a>
                             </p>
-                       </li> 
-                       <li>
+                        </li>
+                        <li>
                             <em>2</em>
                             <p class="title">
-                                <a href="">[4팀 점메추] 돛고기</a>
+                                <a th:href="@{/free/detail/{boardId}(boardId = ${top5[1].id})}" th:text="${top5[1].boardTitle}">[4팀 점메추] 돛고기</a>
                             </p>
-                       </li> 
-                       <li>
+                        </li>
+                        <li>
                             <em>3</em>
                             <p class="title">
-                                <a href="">[4팀 점메추] 부대찌개</a>
+                                <a th:href="@{/free/detail/{boardId}(boardId = ${top5[2].id})}" th:text="${top5[2].boardTitle}">[4팀 점메추] 부대찌개</a>
                             </p>
-                       </li> 
-                       <li>
+                        </li>
+                        <li>
                             <em>4</em>
                             <p class="title">
-                                <a href="">[4팀 점메추] 연가</a>
+                                <a th:href="@{/free/detail/{boardId}(boardId = ${top5[3].id})}" th:text="${top5[3].boardTitle}">[4팀 점메추] 연가</a>
                             </p>
-                       </li> 
-                       <li>
+                        </li>
+                        <li>
                             <em>5</em>
                             <p class="title">
-                                <a href="">[4팀 점메추] 스메쉬버</a>
+                                <a th:href="@{/free/detail/{boardId}(boardId = ${top5[4].id})}" th:text="${top5[4].boardTitle}">[4팀 점메추] 스메쉬버거</a>
                             </p>
-                       </li> 
+                        </li>
                     </ol>
                 </div>
             </div>
@@ -134,7 +143,7 @@
                                         </ul>
                                     </div>
                                     <p class="comment-content">둘 다 재밌음 [스포]</p>
-                                    <textarea id="" class="modify-textarea" style="display: none;">둘 다 재밌음 [스포]</textarea>
+                                    <textarea class="modify-textarea" style="display: none;">둘 다 재밌음 [스포]</textarea>
                                     <div class="comment-date">
                                         2023.04.23 23:56
                                     </div>
