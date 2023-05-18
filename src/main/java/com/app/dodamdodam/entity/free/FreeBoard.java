@@ -3,6 +3,7 @@ package com.app.dodamdodam.entity.free;
 import com.app.dodamdodam.entity.board.Board;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.type.CategoryType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
@@ -34,6 +35,7 @@ public class FreeBoard extends Board {
     @NotNull
     private int likeCount;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MEMBER_ID")
     private Member member;

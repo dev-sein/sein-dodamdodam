@@ -10,9 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700;800&display=swap" rel="stylesheet">
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../static/css/admin/admin.css">
-    <link rel="stylesheet" href="../../static/css/admin/home.css">
-    <link rel="stylesheet" href="../../static/css/admin/board-detail.css">
+    <link rel="stylesheet" href="/css/admin/admin.css">
+    <link rel="stylesheet" href="/css/admin/home.css">
+    <link rel="stylesheet" href="/css/admin/board-detail.css">
 </head>
 <body>
     <!-- 모달 -->
@@ -97,7 +97,7 @@
                             <div class="slider">
                                 <div class="slider__container">
                                   <div class="slider__item">
-                                    <!-- <img src="../../static/images/admin/1.png" > -->
+                                    <!-- <img src="/images/admin/1.png" > -->
                                     <img src="https://cdn.wadiz.kr/wwwwadiz/green001/2023/0112/20230112203341104_181833.jpeg/wadiz/format/jpg/quality/80/" >
                                   </div>
                                   <div class="slider__item">
@@ -115,15 +115,15 @@
                         <div class="right-info-wrapper">
                             <div class="classification-wrapper">
                                 <div class="classification">제목</div>
-                                <div class="event-title info">자유 게시글 제목1</div>
+                                <div class="event-title info"> <span th:text="${freeBoardFileDTO.boardTitle}"></span></div>
                             </div>
                             <div class="classification-wrapper">
                                 <div class="classification">작성자</div>
-                                <div class="writer info">작성자1</div>
+                                <div class="writer info"> <span th:text="${freeBoardFileDTO.memberDTO.memberName}"></span></div>
                             </div>
                             <div class="classification-wrapper">
                                 <div class="classification">카테고리</div>
-                                <div class="date info"><span class="seen-count">314</span>회</div>
+                                <div class="date info"> <span th:text="${freeBoardFileDTO.freeCategory}"></span></div>
                             </div>
                             <!-- <div class="classification-wrapper">
                                 <div class="classification">좋아요</div>
@@ -131,35 +131,28 @@
                             </div> -->
                             <div class="classification-wrapper">
                                 <div class="classification">작성 날짜</div>
-                                <div class="date info">2023년 4월 25일 오후 5시 20분</div>
+                                <div class="date info">
+                                    <span th:text="${freeBoardFileDTO.updatedDate}"></span>
+                                </div>
                             </div>
                             <div class="classification-wrapper">
                                 <div class="classification">내용</div>
                                 <div class="contents">
                                     <div class="contents-inner">
-                                        자유 게시글 내용 입니다. 자유 게시글 내용 입니다. 자유 게시글 내용 입니다.
-                                        자유 게시글 내용 입니다. 자유 게시글 내용 입니다. 자유 게시글 내용 입니다.
-                                        자유 게시글 내용 입니다. 자유 게시글 내용 입니다. 자유 게시글 내용 입니다.
-                                        자유 게시글 내용 입니다. 자유 게시글 내용 입니다. 자유 게시글 내용 입니다.
-                                        자유 게시글 내용 입니다. 자유 게시글 내용 입니다. 자유 게시글 내용 입니다.
-                                        자유 게시글 내용 입니다. 자유 게시글 내용 입니다. 자유 게시글 내용 입니다.
-                                        자유 게시글 내용 입니다. 자유 게시글 내용 입니다. 자유 게시글 내용 입니다.
-                                        자유 게시글 내용 입니다. 자유 게시글 내용 입니다. 자유 게시글 내용 입니다.
-                                        자유 게시글 내용 입니다. 자유 게시글 내용 입니다. 자유 게시글 내용 입니다.
-                                        자유 게시글 내용 입니다. 자유 게시글 내용 입니다. 자유 게시글 내용 입니다.
-                                        자유 게시글 내용 입니다. 자유 게시글 내용 입니다. 자유 게시글 내용 입니다.
+                                      <span th:text="${freeBoardFileDTO.boardContent}"></span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> <!--inner box wrapper-->
             </div>
         </content>
         <!-- contents -->
     </main>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="../../static/js/admin/admin.js"></script>
-<script src="../../static/js/admin/board-detail.js"></script>
+<script src="/js/admin/admin.js"></script>
+<script src="/js/admin/board-detail.js"></script>
+<!--<script src="/js/admin/free-board-detail.js"></script>-->
 </html>

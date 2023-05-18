@@ -122,7 +122,9 @@ public class AdminRepositoryTests {
 
     /*상세 조회*/
     @Test //자유게시글 상세
-    public void findFreeBoardById(){ freeBoardRepository.findById(1994L).ifPresent(freeBoard -> log.info(freeBoard.toString())); }
+    public void findFreeBoardById(){
+        freeBoardRepository.findById(401L).stream().map(FreeBoard::getFreeFiles).forEach(freeFiles -> log.info(freeFiles.toString()));
+        freeBoardRepository.findById(401L).ifPresent(freeBoard -> log.info(freeBoard.toString())); }
 
     @Test //판매게시글 상세
     public void findPurchaseBoardById(){

@@ -15,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -24,8 +25,8 @@ public class InquiryServiceImpl implements InquiryService {
     private final InquiryRepository inquiryRepository;
 
     //문의사항 등록
-    public void saveInquiry(InquiryDTO inquiryDTO){
-//      Inquiry inquiry = inquiryDTO.toEntity();
+    public void register(InquiryDTO inquiryDTO){
+        inquiryRepository.save(toInquiryEntity(inquiryDTO));
     }
 
     @Override //문의사항 목록
@@ -50,6 +51,12 @@ public class InquiryServiceImpl implements InquiryService {
         for(Long inquiryId: inquiryIds){
             inquiryRepository.deleteById(inquiryId);
         }
+    }
+
+    @Override
+    public InquiryDTO getAdminInquiryDetail(Long id) {
+        Optional<Inquiry> inquirydetails = inquiryRepository.findById(id);
+        return toInquiryDTO(inquirydetails.get());
     }
 
     private AdminInquirySearchDTO toAdminInquirySearchDTO(Inquiry inquiry) {

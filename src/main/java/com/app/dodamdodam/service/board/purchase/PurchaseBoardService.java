@@ -32,6 +32,9 @@ public interface PurchaseBoardService {
     //관리자 : 판매 게시판 삭제
     public void deleteAdminPurchaseBoard(List<Long> purchaseBoardIds);
 
+    //관리자 : 판매 게시판 상세
+    public PurchaseBoardDTO getAdminPurchaseBoardDetail(Long id);
+
     default PurchaseBoardDTO toPurchaseBoardDTO(PurchaseBoard purchaseBoard){
         return PurchaseBoardDTO.builder().id(purchaseBoard.getId())
                 .boardTitle(purchaseBoard.getBoardTitle())

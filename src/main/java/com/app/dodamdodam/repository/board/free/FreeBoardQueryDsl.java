@@ -40,4 +40,6 @@ public interface FreeBoardQueryDsl {
 
 //    자유게시판 검색
     public Page<FreeBoard> findFreeBoardWithPaging_QueryDSL(FreeBoardSearch freeBoardSearch, Pageable pageable);
+
+
 }
