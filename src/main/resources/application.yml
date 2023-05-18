@@ -34,8 +34,20 @@ spring:
     ansi:
       enabled: always
 
+  session:
+    store-type: redis
+
 #  #Redis
 #  session:
 #    store-type: redis
+
+  # 이미지 용량
+  servlet:
+    multipart:
+      maxFileSize: 10MB
+      maxRequestSize: 20MB
+
+      location: c:\\upload
+      enabled: true
 
 

@@ -6,5 +6,4 @@ import lombok.Data;
 public class EventBoardSearch {
     private String boardTitle;
     private String boardContent;
-    private String productName;
 }

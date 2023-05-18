@@ -12,6 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,5 +25,12 @@ import java.util.stream.Collectors;
 public class InquiryController {
     private final InquiryService inquiryService;
 
+    @GetMapping("register")
+    public String inquiryRegister(){ return "helpcenter/inquiry-register"; }
 
+    @PostMapping("/register")
+    public String inquiryRegisterFinish(@ModelAttribute InquiryDTO inquiryDTO) {
+        inquiryService.register(inquiryDTO);
+        return "redirect:/inquiry/success";
+    }
 }

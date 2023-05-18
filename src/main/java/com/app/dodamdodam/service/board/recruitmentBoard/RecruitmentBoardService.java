@@ -33,6 +33,9 @@ public interface RecruitmentBoardService {
 //    관리자 삭제
     public void deleteRecruitmentBoard(List<Long> recruitmentBoardIds);
 
+//    관리자 상세보기
+    public RecruitmentBoardFileDTO getAdminRecruitmentBoardDetail(Long id);
+
     default RecruitmentBoardFileDTO toRecruitmentBoardFileDto(RecruitmentBoard recruitmentBoard){
         return RecruitmentBoardFileDTO.builder()
                 .id(recruitmentBoard.getId())

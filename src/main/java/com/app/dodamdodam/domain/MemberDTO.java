@@ -5,6 +5,7 @@ import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.recruitment.Recruitment;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
 import com.app.dodamdodam.type.MemberStatus;
+import com.app.dodamdodam.type.Role;
 import com.querydsl.core.annotations.QueryProjection;
 import com.sun.istack.NotNull;
 import lombok.Builder;
@@ -37,9 +38,10 @@ public class MemberDTO {
     private Integer memberPoint;
     private Integer participationCount;
     private LocalDateTime createdDate;
+    private Role memberRole;
 
     @QueryProjection
-    public MemberDTO(Long id, String memberId, String memberPassword, String memberName, String memberEmail, String memberPhone, Address address, MemberStatus memberStatus, Integer memberPoint, Integer participationCount, LocalDateTime createdDate) {
+    public MemberDTO(Long id, String memberId, String memberPassword, String memberName, String memberEmail, String memberPhone, Address address, MemberStatus memberStatus, Integer memberPoint, Integer participationCount, LocalDateTime createdDate, Role memberRole) {
         this.id = id;
         this.memberId = memberId;
         this.memberPassword = memberPassword;
@@ -51,5 +53,6 @@ public class MemberDTO {
         this.memberPoint = memberPoint;
         this.participationCount = participationCount;
         this.createdDate = createdDate;
+        this.memberRole = memberRole;
     }
 }

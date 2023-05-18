@@ -157,4 +157,9 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
                 .fetchOne());
     }
 
+//    @Override
+//    public Page<FreeBoard> findFreeBoardWithPaging_QueryDSL(FreeBoardSearch freeBoardSearch, Pageable pageable) {
+//        return null;
+//    }
+
 }

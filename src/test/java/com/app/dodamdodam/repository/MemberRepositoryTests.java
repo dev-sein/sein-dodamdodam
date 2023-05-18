@@ -58,8 +58,9 @@ public class MemberRepositoryTests {
             Address address = new Address("서울시","강남구");
 //            회원 정보 입력
 
-//            Member member = new Member("test1234", "1234", "테스트", "test1234@gmail.com", "01012341234", address, MemberStatus.NORMAL, MemberType.GENERAL, Role.MEMBER);
-//            memberRepository.save(member);
+
+            Member member = new Member("test1234", "1234", "테스트", "test1234@gmail.com", "01012341234", address, MemberStatus.NORMAL, MemberType.GENERAL, Role.MEMBER);
+            memberRepository.save(member);
 
 //            모집 게시글 입력
 //            2번 회원이 모집게시글 100개 작성
@@ -68,13 +69,10 @@ public class MemberRepositoryTests {
 //            recruitmentBoardRepository.save(recruitmentBoard);
 
 //            포인트 내역 입력(없어서 목록 불러오기 위해 임의로 넣어놓음)
-            Point point = new Point(10000 * i, pointStatuses.get((i % 3)));
-            memberRepository.findById(216L).ifPresent(member -> point.setMember(member));
-            pointRepository.save(point);
+//            Point point = new Point(10000 * i, pointStatuses.get((i % 3)));
+//            memberRepository.findById(2L).ifPresent(member -> point.setMember(member));
+//            pointRepository.save(point);
         }
-//        Point point = new Point(10000, pointStatuses.get(1));
-//        memberRepository.findById(1L).ifPresent(member -> point.setMember(member));
-//        pointRepository.save(point);
     }
 
 //    세션에 담긴 id 값으로 회원정보 가져오기
