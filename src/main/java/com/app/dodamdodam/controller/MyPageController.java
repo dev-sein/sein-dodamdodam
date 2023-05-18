@@ -231,6 +231,7 @@ public class MyPageController {
     /* 회원 정보 수정 */
     @PostMapping("info/update")
     public RedirectView updateMemberInfo(MemberDTO memberDTO){
+        log.info(memberDTO.toString());
         Member updatedMember = memberService.toMemberEntity(memberDTO);
         memberService.setMemberInfoById(memberDTO.getId(),updatedMember);
         return new RedirectView("/mypage/info?update=ok");
@@ -258,7 +259,6 @@ public class MyPageController {
     @GetMapping("change-password")
     public String changePasswordPage(HttpSession session){
         session.setAttribute("memberId", 11L);
-
 
         return "myPage/myPage-password";
     }

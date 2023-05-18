@@ -1,20 +1,15 @@
 package com.app.dodamdodam.repository.board.event.like;
 
+import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.event.EventLike;
+import org.aspectj.weaver.Member;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.util.List;
-
 public interface EventLikeQueryDsl {
-    public Long findMemberByBoardLike(Long eventBoardId, Long memberId);
+    // 멤버의 좋아요 체크
+    public boolean checkMemberLikesEventBoard_QueryDSL(Long eventBoardId, Long memberId);
 
-    public Long getEventLikeCount(Long eventBoardId);
-
-    public void deleteByMemberIdAndEventBoardId(Long eventBoardId, Long memberId);
-
-    public Page<EventLike> findByLikeMemberIdWithPaging_QueryDsl(Pageable pageable, Long memberId);
-
-
-
+    //    찜목록
+//    public Page<EventLike> findBookmarkListWithMemberIdWithPaging_QueryDSL(Pageable pageable, Long memberId);
 }

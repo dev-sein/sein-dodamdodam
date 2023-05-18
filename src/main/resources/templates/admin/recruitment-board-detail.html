@@ -10,9 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700;800&display=swap" rel="stylesheet">
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../static/css/admin/admin.css">
-    <link rel="stylesheet" href="../../static/css/admin/home.css">
-    <link rel="stylesheet" href="../../static/css/admin/board-detail.css">
+    <link rel="stylesheet" href="/css/admin/admin.css">
+    <link rel="stylesheet" href="/css/admin/home.css">
+    <link rel="stylesheet" href="/css/admin/board-detail.css">
 </head>
 <body>
     <!-- 모달 -->
@@ -97,7 +97,7 @@
                             <div class="slider">
                                 <div class="slider__container">
                                   <div class="slider__item">
-                                    <!-- <img src="../../static/images/admin/1.png" > -->
+                                    <!-- <img src="/images/admin/1.png" > -->
                                     <img src="https://cdn.wadiz.kr/wwwwadiz/green001/2022/1222/20221222181926253_178058.jpg/wadiz/format/jpg/quality/80/" >
                                   </div>
                                   <div class="slider__item">
@@ -115,37 +115,37 @@
                         <div class="right-info-wrapper">
                             <div class="classification-wrapper">
                                 <div class="classification">제목</div>
-                                <div class="event-title info">모집 게시글 제목1</div>
+                                <div class="event-title info"><span th:text="${recruitmentBoardFileDTO.boardTitle}"></div>
                             </div>
                             <div class="classification-wrapper">
                                 <div class="classification">작성자</div>
-                                <div class="writer info">작성자1</div>
+                                <div class="writer info"><span th:text="${recruitmentBoardFileDTO.memberDTO.memberName}"></div>
                             </div>
                             <div class="classification-wrapper">
                                 <div class="classification">모집 장소</div>
-                                <div class="date info">서울특별시 강남구 테헤란로 146 현익빌딩 4층</div>
+                                <div class="date info"><span th:text="${recruitmentBoardFileDTO.recruitmentAddress}"></div>
                             </div>
                             <div class="classification-wrapper">
                                 <div class="classification">참가인원</div>
                                 <div class="recruit-numbers info">
                                     <span class="now-people">5</span>
                                     <span> / </span>
-                                    <span class="total-people">20</span>
+                                    <span class="total-people"><span th:text="${recruitmentBoardFileDTO.recruitmentPeopleCount}"></span>
                                 </div>
                             </div>
                             <div class="classification-wrapper">
                                 <div class="classification">모집 날짜</div>
-                                <div class="recruit-numbers info">010-1234-5678</div>
+                                <div class="recruit-numbers info"><span th:text="${recruitmentBoardFileDTO.recruitmentDate}"></div>
                             </div>
                             <div class="classification-wrapper">
-                                <div class="classification">모집마감</div>
-                                <div class="date info">2023년 05월 12일</div>
+                                <div class="classification">모집 상태</div>
+                                <div class="date info"><span th:text="${recruitmentBoardFileDTO.recruitmentStatus}"></div>
                             </div>
                             <div class="classification-wrapper">
                                 <div class="classification">내용</div>
                                 <div class="contents">
                                     <div class="contents-inner">
-                                        모집 게시글 내용1
+                                        <span th:text="${recruitmentBoardFileDTO.boardContent}">
                                     </div>
                                 </div>
                             </div>
@@ -158,6 +158,6 @@
     </main>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="../../static/js/admin/admin.js"></script>
-<script src="../../static/js/admin/board-detail.js"></script>
+<script src="/js/admin/admin.js"></script>
+<script src="/js/admin/board-detail.js"></script>
 </html>

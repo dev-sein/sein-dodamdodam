@@ -112,26 +112,33 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
 
 // 자유게시판 검색
     @Override
-    public Page<FreeBoard> findFreeBoardWithPaging_QueryDSL(FreeBoardSearch freeBoardSearch, Pageable pageable) {
-        BooleanExpression writerNameEq = freeBoardSearch.getWriterName() == null ? null : freeBoard.member.memberName.eq(freeBoardSearch.getWriterName());
-        BooleanExpression freeTitleEq = freeBoardSearch.getBoardTitle() == null ? null : freeBoard.boardTitle.eq(freeBoardSearch.getBoardTitle());
-        BooleanExpression freeContentEq = freeBoardSearch.getBoardContent() == null ? null : freeBoard.boardContent.eq(freeBoardSearch.getBoardContent());
+    public Page<FreeBoard> findFreeBoardBySearchWithPaging_QueryDSL(FreeBoardSearch freeBoardSearch, CategoryType categoryType, Pageable pageable) {
+        BooleanExpression writerNameEq = freeBoardSearch.getWriterName() == null ? null : freeBoard.member.memberName.contains(freeBoardSearch.getWriterName());
+        BooleanExpression freeTitleEq = freeBoardSearch.getBoardTitle() == null ? null : freeBoard.boardTitle.contains(freeBoardSearch.getBoardTitle());
+        BooleanExpression freeContentEq = freeBoardSearch.getBoardContent() == null ? null : freeBoard.boardContent.contains(freeBoardSearch.getBoardContent());
+        BooleanExpression categoryEq = categoryType == null ? null : freeBoard.freeCategory.eq(categoryType);
 
         List<FreeBoard> freeBoards = query.select(freeBoard)
                 .from(freeBoard)
                 .join(freeBoard.member).fetchJoin()
                 .leftJoin(freeBoard.freeFiles).fetchJoin()
-                .where(writerNameEq, freeTitleEq, freeContentEq)
+                .where(writerNameEq.or(freeTitleEq).or(freeContentEq).and(categoryEq))
                 .orderBy(freeBoard.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
-        Long count = query.select(freeBoard.count()).where(writerNameEq, freeTitleEq, freeContentEq).from(freeBoard).fetchOne();
+        Long count = query.select(freeBoard.count()).where(writerNameEq.or(freeTitleEq).or(freeContentEq).and(categoryEq)).from(freeBoard).fetchOne();
 
         return new PageImpl<>(freeBoards, pageable, count);
     }
 
-//    게시글 상세페이지 board 정보, 작성자 정보, 첨부파일
+    // 자유게시판 좋아요 Top5 가져오기
+    @Override
+    public List<FreeBoard> findFreeBoardListByLikeCount() {
+        return query.selectFrom(freeBoard).orderBy(freeBoard.likeCount.desc()).limit(5).fetch();
+    }
+
+    //    게시글 상세페이지 board 정보, 작성자 정보, 첨부파일
     @Override
     public Optional<FreeBoard> findFreeBoardAndFreeFilesById_QueryDSL(Long boardId) {
         return Optional.ofNullable(query.select(freeBoard).from(freeBoard)
@@ -149,5 +156,10 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
                 .where(freeBoard.id.eq(boardId))
                 .fetchOne());
     }
+
+//    @Override
+//    public Page<FreeBoard> findFreeBoardWithPaging_QueryDSL(FreeBoardSearch freeBoardSearch, Pageable pageable) {
+//        return null;
+//    }
 
 }

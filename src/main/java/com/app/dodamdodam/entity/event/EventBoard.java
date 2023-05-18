@@ -17,20 +17,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@ToString(exclude = {"member"})
+@ToString(exclude = {"eventReviews", "eventLikes"}, callSuper = true)
 @Table(name = "TBL_EVENT_BOARD")
 @NoArgsConstructor
         (access = AccessLevel.PROTECTED)
+@DynamicInsert
+@DynamicUpdate
+@Getter
 public class EventBoard extends Board{
-//    @Id @GeneratedValue
-//    @EqualsAndHashCode.Include
-//    private Long eventBoardId; //pk
+
+//    이벤트 게시글 비지니스 작성
     @NotNull private String eventAddress;
     @NotNull private String eventAddressDetail;
     @NotNull private LocalDate eventStartDate;
     @NotNull private LocalDate eventEndDate;
 //    좋아요 수
     private Integer eventLikeNumber;
+
+    /*리뷰 수*/
+    @ColumnDefault(value="0")
+    private Integer eventReviewCount;
 
     //    진행전, 진행중, 진행마감
     @ColumnDefault("'APPLYING'")
@@ -42,22 +48,15 @@ public class EventBoard extends Board{
      private String eventBusinessTel;
      private String eventBusinessEmail;
 
-     /*메인 사진*/
-    @NotNull private String eventFilePath;
-    @NotNull private String eventFileName;
-    @NotNull private String eventFileUuid;
-     private String eventFileSize;
-
-
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "eventBoard")
     private List<EventFile> eventFiles;
 
-
 //    게시글 댓글
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "eventBoard" , orphanRemoval = true, cascade = CascadeType.REMOVE)
-    private List<EventReview> eventreviews;
+    private List<EventReview> eventReviews;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+// 작성한 유저
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 //  좋아요
@@ -65,6 +64,25 @@ public class EventBoard extends Board{
     private List<EventLike> eventLikes = new ArrayList<>();
 
 
+    @Builder
+    public EventBoard(Long id, String boardTitle, String boardContent, String eventAddress, String eventAddressDetail, LocalDate eventStartDate, LocalDate eventEndDate, Integer eventLikeNumber, Integer eventReviewCount, EventType eventStatus, String eventBusinessNumber, String eventBusinessName, String eventBusinessTel, String eventBusinessEmail, List<EventFile> eventFiles, List<EventReview> eventReviews, Member member, List<EventLike> eventLikes) {
+        super(id, boardTitle, boardContent);
+        this.eventAddress = eventAddress;
+        this.eventAddressDetail = eventAddressDetail;
+        this.eventStartDate = eventStartDate;
+        this.eventEndDate = eventEndDate;
+        this.eventLikeNumber = eventLikeNumber;
+        this.eventReviewCount = eventReviewCount;
+        this.eventStatus = eventStatus;
+        this.eventBusinessNumber = eventBusinessNumber;
+        this.eventBusinessName = eventBusinessName;
+        this.eventBusinessTel = eventBusinessTel;
+        this.eventBusinessEmail = eventBusinessEmail;
+        this.eventFiles = eventFiles;
+        this.eventReviews = eventReviews;
+        this.member = member;
+        this.eventLikes = eventLikes;
+    }
 
     public EventBoard(String boardTitle, String boardContent){
         super(boardTitle,boardContent);
@@ -78,48 +96,9 @@ public class EventBoard extends Board{
         this.eventLikeNumber = eventLikeNumber;
     }
 
-    @Builder
-    public EventBoard(String boardTitle, String boardContent, String eventAddress, String eventAddressDetail, LocalDate eventStartDate, LocalDate eventEndDate, Integer eventLikeNumber, EventType eventStatus, String eventBusinessNumber, String eventBusinessName, String eventBusinessTel, String eventBusinessEmail, String eventFilePath, String eventFileName, String eventFileUuid, String eventFileSize, List<EventFile> eventFiles, List<EventReview> eventreviews, Member member, List<EventLike> eventLikes) {
-        super(boardTitle, boardContent);
-        this.eventAddress = eventAddress;
-        this.eventAddressDetail = eventAddressDetail;
-        this.eventStartDate = eventStartDate;
-        this.eventEndDate = eventEndDate;
-        this.eventLikeNumber = eventLikeNumber;
-        this.eventStatus = eventStatus;
-        this.eventBusinessNumber = eventBusinessNumber;
-        this.eventBusinessName = eventBusinessName;
-        this.eventBusinessTel = eventBusinessTel;
-        this.eventBusinessEmail = eventBusinessEmail;
-        this.eventFilePath = eventFilePath;
-        this.eventFileName = eventFileName;
-        this.eventFileUuid = eventFileUuid;
-        this.eventFileSize = eventFileSize;
-        this.eventFiles = eventFiles;
-        this.eventreviews = eventreviews;
-        this.member = member;
-        this.eventLikes = eventLikes;
+    public void setEventReviewCount(Integer eventReviewCount) {
+        this.eventReviewCount = eventReviewCount;
     }
 
-//    update
-    public void Update(EventBoardDTO eventBoardDTO){
-        this.eventAddress = eventAddress;
-        this.eventAddressDetail = eventAddressDetail;
-        this.eventStartDate = eventStartDate;
-        this.eventEndDate = eventEndDate;
-        this.eventBusinessNumber = eventBusinessNumber;
-        this.eventBusinessName = eventBusinessName;
-        this.eventBusinessTel = eventBusinessTel;
-        this.eventBusinessEmail = eventBusinessEmail;
-        this.eventFilePath = eventFilePath;
-        this.eventFileName = eventFileName;
-        this.eventFileUuid = eventFileUuid;
-        this.eventFileSize = eventFileSize;
-        this.eventFiles = eventFiles;
-    }
-
-
-    public void updateEventLikeNumberPlus(){this.eventLikeNumber++;}
-    public void updateEventLikeNumberMinus(){this.eventLikeNumber--;}
 
 }

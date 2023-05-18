@@ -6,7 +6,9 @@ import com.app.dodamdodam.entity.free.FreeFile;
 import com.app.dodamdodam.entity.free.FreeReply;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.purchase.Product;
+import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.entity.purchase.PurchaseFile;
+import com.app.dodamdodam.search.FreeBoardSearch;
 import com.app.dodamdodam.type.CategoryType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -41,9 +43,17 @@ public interface FreeBoardService {
     /* 관리자 자유 게시판 목록*/
     public Page<FreeBoardFileDTO> getAdminFreeBoardList(Pageable pageable);
 
+    /* 자유게시글 좋아요 Top5 */
+    public List<FreeBoardFileDTO> getTop5FreeBoards();
+
+    /* 자유 게시글 검색 */
+    public List<FreeBoardFileDTO> getFreeBoardsBySearch(Pageable pageable, CategoryType categoryType, FreeBoardSearch freeBoardSearch);
+
     /* 관리자 자유게시판 삭제*/
     public void deleteAdminFreeBoard(List<Long> freeBoardIds);
 
+    /* 관리자 자유게시판 상세보기 */
+    public FreeBoardFileDTO getAdminFreeBoardDetail(Long id);
 
     /* toDTO */
     default FreeBoardFileDTO toFreeBoardFileDTO(FreeBoard freeBoard){
@@ -88,8 +98,7 @@ public interface FreeBoardService {
                 .memberStatus(member.getMemberStatus())
                 .memberPoint(member.getMemberPoint())
                 .participationCount(member.getParticipationCount())
-                .address(member.getAddress().getAddress())
-                .addressDetail(member.getAddress().getAddressDetail())
+                .address(member.getAddress())
                 .build();
     }
 

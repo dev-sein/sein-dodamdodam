@@ -1,36 +1,29 @@
 package com.app.dodamdodam.domain;
 
-import com.app.dodamdodam.entity.event.EventReview;
-import com.querydsl.core.annotations.QueryProjection;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Component;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
-@Component
-@Data
-@NoArgsConstructor
+@Getter
+@ToString
 public class EventBoardReviewDTO {
     private Long id;
     private String memberName;
     private String replyContent;
     private String gradeTitle;
+    private Integer eventReviewCount;
 
+    private LocalDateTime createdDate;
+    private LocalDateTime updatedDate;
 
-    @QueryProjection
-    public EventBoardReviewDTO(Long id, String memberName, String replyContent, String gradeTitle) {
+    @Builder
+    public EventBoardReviewDTO(Long id, String memberName, String replyContent, String gradeTitle, Integer eventReviewCount, LocalDateTime createdDate, LocalDateTime updatedDate) {
         this.id = id;
         this.memberName = memberName;
         this.replyContent = replyContent;
         this.gradeTitle = gradeTitle;
-    }
-
-    public EventReview toEntity(){
-        return EventReview.builder()
-                .replyContent(replyContent)
-                .build();
+        this.eventReviewCount = eventReviewCount;
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
     }
 }
