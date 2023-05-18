@@ -19,8 +19,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.data.domain.SliceImpl;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
+import javax.transaction.Transactional;
+import java.io.File;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,6 +29,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Qualifier("eventBoard")
 @Slf4j
+@Transactional
 public class EventBoardServiceImpl implements EventBoardService {
     private final EventBoardRepository eventBoardRepository;
     private final MemberRepository memberRepository;
@@ -42,37 +44,27 @@ public class EventBoardServiceImpl implements EventBoardService {
     }
 // 저장하기
 @Override
-@Transactional(rollbackFor = Exception.class)
 public void write(EventBoardDTO eventBoardDTO, Long memberId) {
-    List<EventFileDTO> eventFileDTOS = eventBoardDTO.getEventFiles();
-    // 아이디 조회 실패 시 Exception
-    Member member = memberRepository.findById(memberId).orElseThrow(MemberNotFoundException::new);
+    List<EventFileDTO> fileDTOS = eventBoardDTO.getEventFiles();
 
-    // 게시판에 setMember
-    EventBoard eventBoard = toEventBoardEntity(eventBoardDTO);
-    eventBoard.setMember(member);
+    memberRepository.findById(memberId).ifPresent(
+            member -> eventBoardDTO.setMemberDTO(toMemberDTO(member))
+    );
+    log.info("들어옴@@@@@@@@@@@@@@@@@@");
+    log.info(eventBoardDTO.toString());
+    log.info(toEventBoardEntity(eventBoardDTO).toString());
 
-    eventBoardRepository.save(eventBoard);
-
-    int count = 0;
-
-    for (int i = 0; i < eventFileDTOS.size(); i++) {
-        if(eventFileDTOS.get(i) == null) continue;
-
-        if (count == 0) {
-            eventFileDTOS.get(i).setFileRepresent(FileRepresent.REPRESENT);
-            count++;
-        } else {
-            eventFileDTOS.get(i).setFileRepresent(FileRepresent.ORDINARY);
+    eventBoardRepository.save(toEventBoardEntity(eventBoardDTO));
+    if(fileDTOS != null){
+        for (int i = 0; i < fileDTOS.size(); i++) {
+            if(i == 0){
+                fileDTOS.get(i).setFileRepresent(FileRepresent.REPRESENT);
+            }else {
+                fileDTOS.get(i).setFileRepresent(FileRepresent.ORDINARY);
+            }
+            fileDTOS.get(i).setEventBoard(getCurrentSequence());
+            eventFileRepository.save(toEventFileEntity(fileDTOS.get(i)));
         }
-
-        eventFileDTOS.get(i).setEventBoardDTO(eventBoardToDTO(getCurrentSequence()));
-        // 엔티티
-        EventFile eventFile = toEventFileEntity(eventFileDTOS.get(i));
-
-        eventFile.setEventBoard(eventBoard);
-
-        eventFileRepository.save(eventFile);
     }
 }
 //    현재 시퀀스 가져오기

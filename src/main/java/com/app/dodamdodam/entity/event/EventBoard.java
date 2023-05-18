@@ -22,6 +22,7 @@ import java.util.List;
 @NoArgsConstructor
         (access = AccessLevel.PROTECTED)
 @DynamicInsert
+@DynamicUpdate
 @Getter
 public class EventBoard extends Board{
 
@@ -55,7 +56,7 @@ public class EventBoard extends Board{
     private List<EventReview> eventReviews;
 
 // 작성한 유저
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 //  좋아요

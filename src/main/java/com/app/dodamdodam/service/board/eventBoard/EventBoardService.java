@@ -2,22 +2,14 @@ package com.app.dodamdodam.service.board.eventBoard;
 
 import com.app.dodamdodam.domain.EventBoardDTO;
 import com.app.dodamdodam.domain.EventFileDTO;
-import com.app.dodamdodam.domain.FreeBoardFileDTO;
 import com.app.dodamdodam.domain.MemberDTO;
 import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.event.EventFile;
 import com.app.dodamdodam.entity.member.Member;
-import com.app.dodamdodam.repository.board.event.board.EventBoardRepository;
-import com.app.dodamdodam.repository.board.event.file.EventFileRepository;
-import jdk.jfr.Event;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
-import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
-import javax.transaction.Transactional;
-import java.io.File;
-import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -54,22 +46,29 @@ public interface EventBoardService {
                 .memberName(member.getMemberName())
                 .memberEmail(member.getMemberEmail())
                 .memberPhone(member.getMemberPhone())
-                .address(member.getAddress())
                 .memberStatus(member.getMemberStatus())
                 .memberPoint(member.getMemberPoint())
                 .participationCount(member.getParticipationCount())
-                .recruitmentedCount(member.getParticipationCount())
                 .createdDate(member.getCreatedDate())
                 .build();
     }
 
     default EventBoard toEventBoardEntity(EventBoardDTO eventBoardDTO){
         return EventBoard.builder()
-                .id(eventBoardDTO.getId())
                 .boardTitle(eventBoardDTO.getBoardTitle())
                 .boardContent(eventBoardDTO.getBoardContent())
                 .eventFiles(eventBoardDTO.getEventFiles().stream().map(file -> toEventFileEntity(file)).collect(Collectors.toList()))
                 .member(toMemberEntity(eventBoardDTO.getMemberDTO()))
+                .eventBusinessName(eventBoardDTO.getEventBusinessName())
+                .eventBusinessNumber(eventBoardDTO.getEventBusinessNumber())
+                .eventBusinessEmail(eventBoardDTO.getEventBusinessEmail())
+                .eventBusinessTel(eventBoardDTO.getEventBusinessTel())
+                .eventStartDate(LocalDate.parse(eventBoardDTO.getEventStartDate()))
+                .eventEndDate(LocalDate.parse(eventBoardDTO.getEventEndDate()))
+                .eventAddressDetail(eventBoardDTO.getEventAddressDetail())
+                .eventAddress(eventBoardDTO.getEventAddress())
+                .eventLikeNumber(eventBoardDTO.getEventLikeNumber())
+                .eventReviewCount(eventBoardDTO.getEventLikeNumber())
                 .build();
     }
 
@@ -80,7 +79,6 @@ public interface EventBoardService {
                 .memberEmail(memberDTO.getMemberEmail())
                 .memberName(memberDTO.getMemberName())
                 .memberPhone(memberDTO.getMemberPhone())
-                .address(memberDTO.getAddress())
                 .memberStatus(memberDTO.getMemberStatus())
                 .memberRole(memberDTO.getMemberRole())
                 .build();

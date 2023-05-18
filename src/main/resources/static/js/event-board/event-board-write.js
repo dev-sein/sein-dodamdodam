@@ -67,15 +67,19 @@ $(function() {
     });
 });
 
+$('.submit-btn').on('click', function () {
+    document.eventForm.submit();
+})
+
 
 /* 파일 */
+let sel_files = [];  // 전역 변수로 이동
 
 ( /* att_zone : 이미지들이 들어갈 위치 id, btn : file tag id */
     imageView = function imageView(att_zone, btn){
 
         var attZone = document.getElementById(att_zone);
         var btnAtt = document.getElementById(btn)
-        var sel_files = [];
 
         // 이미지와 체크 박스를 감싸고 있는 div 속성
         var div_style = 'display:inline-block;position:relative;'
@@ -150,103 +154,18 @@ $(function() {
 
 
 
-/* event-board-write.js */
 
-const insertData = {
-    eventBusinessNumber: "",
-    eventBusinessName: "",
-    eventBusinessTel: "",
-    eventBusinessEmail: "",
-    boardTitle: "",
-    eventAddress: "",
-    eventAddressDetail: "",
-    eventStartDate: "",
-    eventEndDate: "",
-    boardContent: "",
-    eventFiles: []
+
+function toStringByFormatting(source, delimiter = '/') {
+    const year = source.getFullYear();
+    const month = leftPad(source.getMonth() + 1);
+    const day = leftPad(source.getDate());
+
+    return [year, month, day].join(delimiter);
 }
 
-function send() {
 
-}
 
-/* 파일 등록 */
-// const $fileAttachBtn = $(".file-button");
-// const $imgFile = $("input[type='file']");
-//
-// $fileAttachBtn.on("click", function () {
-//     let $fileInput = $(this).find('input');
-//     $fileInput.click();
-// });
-
-const fileAjax = (data) => {
-    $.ajax({
-        url: '/image/upload',
-        data: data,
-        method: 'post',
-        processData: false,
-        contentType: false,
-        success: function (result) {
-            if(result){
-                let file = new Object();
-
-                file.filePath = result.paths[0];
-                file.fileUuid = result.uuids[0];
-                file.fileOrgName = result.orgNames[0];
-
-                insertData.eventFiles.push(file);
-                console.log(insertData);
-            }
-        }
-    });
-}
-
-$imgFile.on('change', function (e) {
-    console.log(this.files[0]);
-    let file = this.files[0];
-    let formData = new FormData();
-
-    formData.append('file', file);
-
-    fileAjax(formData);
-});
-
-$("form[name='form']").on("submit", function (e) {
-    e.preventDefault();
-
-    let eventBusinessNumber = $("input[name='eventBusinessNumber']").val();
-    let eventBusinessName = $("input[name='eventBusinessName']").val();
-    let eventBusinessTel = $("input[name='eventBusinessTel']").val();
-    let eventBusinessEmail = $("input[name='eventBusinessEmail']").val();
-    let boardTitle = $("input[name='boardTitle']").val();
-    let eventAddress = $("input[name='eventAddress']").val();
-    let eventAddressDetail = $("input[name='eventAddressDetail']").val();
-    let eventStartDate = $("input[name='eventStartDate']").val();
-    let eventEndDate = $("input[name='eventEndDate']").val();
-    let boardContent = $("textarea[name='boardContent']").val();
-
-    insertData.eventBusinessNumber = eventBusinessNumber;
-    insertData.eventBusinessName = eventBusinessName;
-    insertData.eventBusinessTel = eventBusinessTel;
-    insertData.eventBusinessEmail = eventBusinessEmail;
-    insertData.boardTitle = boardTitle;
-    insertData.eventAddress = eventAddress;
-    insertData.eventAddressDetail = eventAddressDetail;
-    insertData.eventStartDate = eventStartDate;
-    insertData.eventEndDate = eventEndDate;
-    insertData.boardContent = boardContent;
-
-    $.ajax({
-        url: '/event-board/insert',
-        data: JSON.stringify(insertData),
-        contentType: "application/json; charset=utf-8",
-        method: 'post',
-        success: function (result) {
-            // redirect 경로
-            location.href = "/event-board/list";
-        }
-    })
-});
 
 
 

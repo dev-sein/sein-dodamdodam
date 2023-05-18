@@ -16,6 +16,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/event-board/*")
 @RequiredArgsConstructor
@@ -43,20 +45,25 @@ public class EventBoardController {
         return "event-board/event-board-detail";
     }
 
+
 // 작성하기
-    @GetMapping("event-board-write")
-    public void goToEventWrite(Model model) {
-        model.addAttribute("eventBoard", new EventBoardDTO());
+    @GetMapping("write")
+    public String goToWriteForm(HttpSession session) {
+        /*임시로 세션에 memberId 담아둠*/
+        session.setAttribute("memberId", 1L);
+
+        return "event-board/event-board-write";
     }
 
-    @PostMapping("event-board-write")
-    public RedirectView EventWrite(@ModelAttribute EventBoardDTO eventBoardDTO) {
-        Long memberId = 1L;
+
+    @PostMapping("write")
+    public RedirectView write(EventBoardDTO eventBoardDTO, HttpSession session) {
+        Long memberId = (Long)session.getAttribute("memberId");
+        log.info(eventBoardDTO.toString());
+
         eventBoardService.write(eventBoardDTO, memberId);
-
-        log.info("=====================" + eventBoardDTO);
-
         return new RedirectView("/event-board/event-board-list");
     }
+
 
 }

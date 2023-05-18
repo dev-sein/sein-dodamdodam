@@ -13,8 +13,8 @@ import javax.persistence.ManyToOne;
 import java.io.File;
 import java.util.List;
 
-@Getter
-@ToString
+@Data
+@Builder
 public class EventFileDTO {
     private Long id;
     private String fileOriginalName;
@@ -28,20 +28,21 @@ public class EventFileDTO {
 
     private EventBoardDTO eventBoardDTO;
 
-    public void setFileRepresent(FileRepresent fileRepresent) {
-        this.fileRepresent = fileRepresent;
-    }
+//    public void setFileRepresent(FileRepresent fileRepresent) {
+//        this.fileRepresent = fileRepresent;
+//    }
+//
+//    public void setBoard(EventBoard eventBoard) {
+//        this.eventBoard = eventBoard;
+//    }
+//
+//    public void setEventBoardDTO(EventBoardDTO eventBoardDTO) {
+//        this.eventBoardDTO = eventBoardDTO;
+//    }
 
-    public void setBoard(EventBoard eventBoard) {
-        this.eventBoard = eventBoard;
-    }
+    @QueryProjection
 
-    public void setEventBoardDTO(EventBoardDTO eventBoardDTO) {
-        this.eventBoardDTO = eventBoardDTO;
-    }
-
-    @Builder
-    public EventFileDTO(Long id, String fileOriginalName, String fileUuid, String filePath, Long fileSize, FileRepresent fileRepresent, EventBoard eventBoard) {
+    public EventFileDTO(Long id, String fileOriginalName, String fileUuid, String filePath, Long fileSize, FileRepresent fileRepresent, EventBoard eventBoard, EventBoardDTO eventBoardDTO) {
         this.id = id;
         this.fileOriginalName = fileOriginalName;
         this.fileUuid = fileUuid;
@@ -49,5 +50,6 @@ public class EventFileDTO {
         this.fileSize = fileSize;
         this.fileRepresent = fileRepresent;
         this.eventBoard = eventBoard;
+        this.eventBoardDTO = eventBoardDTO;
     }
 }
