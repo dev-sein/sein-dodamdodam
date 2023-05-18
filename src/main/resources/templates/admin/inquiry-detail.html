@@ -10,9 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700;800&display=swap" rel="stylesheet">
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../static/css/admin/admin.css">
-    <link rel="stylesheet" href="../../static/css/admin/home.css">
-    <link rel="stylesheet" href="../../static/css/admin/managament-board-detail.css">
+    <link rel="stylesheet" href="/css/admin/admin.css">
+    <link rel="stylesheet" href="/css/admin/home.css">
+    <link rel="stylesheet" href="/css/admin/managament-board-detail.css">
 </head>
 <body>
     <!-- 모달 -->
@@ -100,28 +100,25 @@
                         <div class="right-info-wrapper">
                             <div class="classification-wrapper">
                                 <div class="classification">문의 유형</div>
-                                <div class="writer info">김욱성</div>
-                            </div>
-                            <div class="classification-wrapper">
-                                <div class="classification">작성 시간</div>
-                                <div class="writer info">2023년 4월 27일 오후 1시 42분</div>
+                                <div class="writer info"><span th:text="${inquiryDTO.inquiryType}"></div>
                             </div>
                             <div class="classification-wrapper">
                                 <div class="classification">이메일</div>
-                                <div class="writer info">hds1234@gmail.com</div>
+                                <div class="writer info"><span th:text="${inquiryDTO.inquiryEmail}"></div>
                             </div>
                             <div class="classification-wrapper">
                                 <div class="classification">휴대폰 번호</div>
-                                <div class="writer info">010-1234-5678</div>
+                                <div class="writer info"><span th:text="${inquiryDTO.inquiryPhoneNumber}"></div>
+                            </div>
+                            <div class="classification-wrapper">
+                                <div class="classification">답변 상태</div>
+                                <div class="writer info"><span th:text="${inquiryDTO.inquiryStatus}"></div>
                             </div>
                             <div class="classification-wrapper">
                                 <div class="classification">문의 내용</div>
                                 <div class="contents">
                                     <div class="contents-inner">
-                                        문의 내용 문의 내용 문의 내용 문의 내용 문의 내용 문의 내용 
-                                        문의 내용 문의 내용 문의 내용 문의 내용 문의 내용 문의 내용 
-                                        문의 내용 문의 내용 문의 내용 문의 내용 문의 내용 문의 내용 
-                                        문의 내용 문의 내용 문의 내용 문의 내용 문의 내용 문의 내용 
+                                        <span th:text="${inquiryDTO.inquiryContent}">
                                     </div>
                                 </div>
                             </div>
@@ -136,7 +133,7 @@
                                         <div class="classification">문의 답변</div>
                                         <div class="button-wrapper">
                                             <button type="button" class="answer-button">
-                                                <img class="airplane" src="../../static/images/admin/paper-plane.png">
+                                                <img class="airplane" src="/images/admin/paper-plane.png">
                                                 <!-- <div class="button-inner-text">답변완료</div> -->
                                             </button>
                                         </div>
@@ -155,6 +152,6 @@
     </main>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="../../static/js/admin/admin.js"></script>
-<script src="../../static/js/admin/management-board-detail.js"></script>
+<script src="/js/admin/admin.js"></script>
+<script src="/js/admin/management-board-detail.js"></script>
 </html>

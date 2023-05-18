@@ -62,6 +62,9 @@ public interface MemberService {
     /* 관리자 멤버 목록 */
     public Page<MemberDTO> showList(Pageable pageable);
 
+    /* 관리자 멤버 상세 */
+    public MemberDTO getAdminMemberDetail(Long id);
+
     default MemberDTO toMemberDTO(Member member){
         return MemberDTO.builder().id(member.getId()).memberId(member.getMemberId()).memberEmail(member.getMemberEmail())
             .memberName(member.getMemberName()).memberPhone(member.getMemberPhone()).memberPoint(member.getMemberPoint())

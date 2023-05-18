@@ -27,6 +27,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -102,6 +103,12 @@ public class MemberServiceImpl implements MemberService{
         List<MemberDTO> memberDTOS = memberPage.get().map(this::toMemberDTO).collect(Collectors.toList());
 
         return new PageImpl<>(memberDTOS, pageable, memberPage.getTotalElements());
+    }
+
+    @Override
+    public MemberDTO getAdminMemberDetail(Long id) {
+        Optional<Member> member = memberRepository.findById(id);
+        return toMemberDTO(member.get());
     }
 
     /* 회원 비활성화 처리*/

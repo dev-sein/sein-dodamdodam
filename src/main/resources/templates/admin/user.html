@@ -23,7 +23,7 @@
     </div>
     <!-- 모달 -->
     <!-- 모달창 -->
-    <div class="modal-whole">
+    <div class="modal-whole" style="display:block;">
         <div class="modal">
             <div class="modal-header">
                 <h2 class="modal-title">회원 정보</h2>
@@ -37,7 +37,7 @@
                     <div class="member-info">
                         <div class="info-row">
                             <div class="info-label">회원번호:</div>
-                            <div class="info-value">1</div>
+                            <div class="info-value"><span th:text="${member.id}"></div>
                         </div>
                         <div class="info-row">
                             <div class="info-label">이름:</div>

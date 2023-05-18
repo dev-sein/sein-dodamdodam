@@ -52,6 +52,8 @@ public interface FreeBoardService {
     /* 관리자 자유게시판 삭제*/
     public void deleteAdminFreeBoard(List<Long> freeBoardIds);
 
+    /* 관리자 자유게시판 상세보기 */
+    public FreeBoardFileDTO getAdminFreeBoardDetail(Long id);
 
     /* toDTO */
     default FreeBoardFileDTO toFreeBoardFileDTO(FreeBoard freeBoard){

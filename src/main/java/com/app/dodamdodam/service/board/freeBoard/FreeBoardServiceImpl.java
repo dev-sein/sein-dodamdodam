@@ -7,6 +7,7 @@ import com.app.dodamdodam.search.FreeBoardSearch;
 import com.app.dodamdodam.type.CategoryType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -94,4 +95,12 @@ public class FreeBoardServiceImpl implements FreeBoardService {
             freeBoardRepository.deleteById(freeBoardId);
         }
     }
+
+    /* 관리자 자유 게시글 상세보기 */
+    @Override
+    public FreeBoardFileDTO getAdminFreeBoardDetail(Long id) {
+        Optional<FreeBoard> freeBoard = freeBoardRepository.findById(id);
+        return toFreeBoardFileDTO(freeBoard.get());
+    }
+
 }
