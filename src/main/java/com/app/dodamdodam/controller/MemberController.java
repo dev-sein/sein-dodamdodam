@@ -47,8 +47,8 @@ public class MemberController {
 
     @ResponseBody
     @PostMapping("check-id")
-    public void checkId(){
-
+    public void checkId(@RequestBody String currentId){
+        memberService.checkMemberId(currentId);
     }
 
     /* 이메일 보내기 */

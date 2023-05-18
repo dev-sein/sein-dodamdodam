@@ -7,6 +7,11 @@ var regExp = /^[A-Za-z0-9]([-_.]?[0-9a-z]){5,20}$/;
 
 let identificationFlag = false;
 // 아이디 정규식 이벤트 사용 및 함수
+
+/*아이디 중복검사*/
+$identificationInput.on('blur', function(){
+
+});
 $identificationInput.on("blur", function() {
 	// $.ajax({
 	// 	url: contextPath + "/user/checkIdOk.user",
@@ -20,24 +25,43 @@ $identificationInput.on("blur", function() {
 	// 			$identificationWarning.css("display", "block");
 	// 			$identificationInput.css("border-color", "#f66");
 	// 			identificationFlag = false;
-	// 		} 
-			if ($identificationInput.val() < 1) {
-				//$identificationWarning.text("아이디를 입력해주세요.");
-				$identificationWarning.css("display", "block");
-				$identificationInput.css("border-color", "#ff6666");
+	// 		}
+	var currentId = $identificationInput.val();
+	$.ajax({
+		url: '/member/check-id',
+		type: 'post',
+		data: currentId,
+		success: function (data) {
+			if (data === 'available') { // 사용 가능한 아이디
+				$('.email_already').css("display", "inline-block");
+				$('.email_ok').css("display", "none");
+
+				if ($identificationInput.val() < 1) {
+					//$identificationWarning.text("아이디를 입력해주세요.");
+					$identificationWarning.css("display", "block");
+					$identificationInput.css("border-color", "#ff6666");
+					identificationFlag = false;
+					// !isPhoneNum.test(mobile.value)
+				} else if (!regExp.test($identificationInput.val())) {
+					$identificationWarning.text("6~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.");
+					$identificationWarning.css("display", "block");
+					$identificationInput.css("border-color", "#f66");
+					identificationFlag = false;
+				} else {
+					$identificationWarning.css("display", "none");
+					$identificationInput.css("border-color", "#dde2e6");
+					identificationFlag = true;
+					// #dde2e6;
+				}
+
+			} else { // // 사용 불가능한 아이디
+				$('.email_ok').css("display", "inline-block");
+				$('.email_already').css("display", "none");
 				identificationFlag = false;
-				// !isPhoneNum.test(mobile.value)
-			} else if (!regExp.test($identificationInput.val())) {
-				$identificationWarning.text("6~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.");
-				$identificationWarning.css("display", "block");
-				$identificationInput.css("border-color", "#f66");
-				identificationFlag = false;
-			} else {
-				$identificationWarning.css("display", "none");
-				$identificationInput.css("border-color", "#dde2e6");
-				identificationFlag = true;
-				// #dde2e6;
 			}
+		}
+	});
+
 			completeAllCheck();
 });
 
@@ -409,21 +433,3 @@ $(".Button_TextField_icon1").on("click",function(){
 })
 
 
-/*아이디 중복검사*/
-$('#id_confirm').on('blur', function(){
-	var currentId = $('#id_confirm').val();
-	$.ajax({
-		url: '/member/check-id',
-		type: 'post',
-		data: currentId,
-		success: function (data) {
-			if (data === 'available') { // 사용 가능한 아이디
-				$('.email_already').css("display", "inline-block");
-				$('.email_ok').css("display", "none");
-			} else { // // 사용 불가능한 아이디
-				$('.email_ok').css("display", "inline-block");
-				$('.email_already').css("display", "none");
-			}
-		}
-	});
-});
