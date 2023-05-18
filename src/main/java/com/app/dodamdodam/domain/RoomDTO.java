@@ -26,6 +26,7 @@ public class RoomDTO {
     private Integer chattingUnreadCount;
     private Set<WebSocketSession> sessions = new HashSet<>();
 
+
     @QueryProjection
     public RoomDTO(Long id, Long hostId, Long havingId, MemberDTO memberDTO, LocalDateTime createdDate, LocalDateTime updatedDate, Integer chattingUnreadCount, Set<WebSocketSession> sessions) {
         this.id = id;
@@ -37,6 +38,9 @@ public class RoomDTO {
         this.chattingUnreadCount = chattingUnreadCount;
         this.sessions = sessions;
     }
+
+
+
 
     public void handlerActions(WebSocketSession session, ChattingDTO chattingDTO, ChatServiceImpl chatService) {
         if (chattingDTO.getMessageType().equals(ChattingDTO.MessageType.ENTER)) {
