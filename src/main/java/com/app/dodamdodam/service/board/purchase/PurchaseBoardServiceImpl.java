@@ -45,7 +45,7 @@ public class PurchaseBoardServiceImpl implements PurchaseBoardService {
     /*관리자 목록 */
     @Override
     public Page<PurchaseBoardDTO> showList(Pageable pageable) {
-        Page<PurchaseBoard> purchaseBoardPage = purchaseBoardRepository.findAllWithPaging(PageRequest.of(1,10));
+        Page<PurchaseBoard> purchaseBoardPage = purchaseBoardRepository.findAllWithPaging(pageable);
         List<PurchaseBoardDTO> purchaseBoardDTOS = purchaseBoardPage.get().map(this::toPurchaseBoardDTO).collect(Collectors.toList());
 
         return new PageImpl<>(purchaseBoardDTOS, pageable, purchaseBoardPage.getTotalElements());

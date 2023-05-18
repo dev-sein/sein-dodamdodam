@@ -1,4 +1,4 @@
-const $listResults = $("#inquiryTable tbody");
+const $listResults = $("#banner-table tbody");
 let page = 0;
 
 listService = (function() {
@@ -70,8 +70,8 @@ function displayPagination(totalPages) {
 
 function listText(list) {
     console.log("list text 들어옴");
-    let inquiryDTOS = list.content;
-    $(inquiryDTOS).each((i, inquiry) => {
+    let bannerDTOS = list.content;
+    $(bannerDTOS).each((i, banner) => {
         console.log("text 들어옴");
         var text = "";
         text += `
@@ -84,12 +84,12 @@ function listText(list) {
             </label>
           </div>
         </td>
-        <td class="numbers">${inquiry.id}</td>
-        <td>${inquiry.inquiryType}</td>
-         <td>${inquiry.inquiryContent}</td>
-        <td>${inquiry.inquiryEmail}</td>
-        <td>${inquiry.inquiryPhoneNumber}</td>
-        <td>${inquiry.inquiryStatus}</td>
+        <td class="numbers">${banner.id}</td>
+        <td>${banner.memberDTO.memberName}</td>
+         <td>${banner.memberDTO.memberPhone}</td>
+        <td>${banner.bannerRegisterDate}</td>
+        <td>${banner.createdDate}</td>
+        <td>${banner.bannerStatus}</td>
       </tr>
     `;
         $listResults.append(text);
@@ -104,8 +104,9 @@ function getList(page) {
     });
 }
 
+/*
 
-/*항목 삭제*/
+/!*항목 삭제*!/
 $(document).ready(function() {
     // 삭제 버튼 클릭 시
     $('.delete-button').click(function() {
@@ -139,4 +140,4 @@ $(document).ready(function() {
             });
         });
     });
-});
+});*/

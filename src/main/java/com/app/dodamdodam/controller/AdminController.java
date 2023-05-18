@@ -3,6 +3,7 @@ package com.app.dodamdodam.controller;
 import com.app.dodamdodam.domain.*;
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.recruitment.Recruitment;
+import com.app.dodamdodam.service.banner.BannerApplyService;
 import com.app.dodamdodam.service.board.freeBoard.FreeBoardService;
 import com.app.dodamdodam.service.board.purchase.PurchaseBoardService;
 import com.app.dodamdodam.service.board.recruitmentBoard.RecruitmentBoardService;
@@ -32,6 +33,7 @@ public class AdminController {
     private final PurchaseBoardService purchaseBoardService;
     private final MemberService memberService;
     private final RecruitmentBoardService recruitmentBoardService;
+    private final BannerApplyService bannerApplyService;
 
     /*홈*/
     @GetMapping("/home")
@@ -200,16 +202,26 @@ public class AdminController {
         return "admin/recruitment-board-detail";
     }
 
-    /*배너 신청하기*/
-    @GetMapping("banner")
-    public String banner(){return "admin/banner";}
+    /*배너 */
+    @GetMapping("banner/list") //배너 목록
+    public String adminBannerList(){return "admin/banner";}
 
-    /*배너 신청하기*/
-    @GetMapping("banner-detail")
-    public String bannerDetail(){return "admin/banner-detail";}
+    @ResponseBody
+    @GetMapping("banner/list-content") //배너 신청 목록
+    public Page<BannerDTO> adminBannerGetListJson(@RequestParam(name = "page") int page) {
+        PageRequest pageRequest = PageRequest.of(page, 10);
+        Page<BannerDTO> bannerDTOPage = bannerApplyService.showList(pageRequest);
+        return bannerDTOPage;
+    }
 
-    /*배너 신청하기*/
-    @GetMapping("banner-management")
-    public String bannerManagement(){return "admin/banner-management";}
+    @GetMapping("banner/detail/{id}")  // 배너 상세 현황
+    public String adminBannerDetail(@PathVariable("id") Long bannerApplyId, Model model) {
+        BannerDTO bannerDTO = bannerApplyService.getAdminBannerDetail(bannerApplyId);
+        model.addAttribute("bannerDTO", bannerDTO);
+        return "admin/banner-detail";
+    }
+
+    @GetMapping("banner-management") // 배너 관리하기
+    public String bannerManagement(){ return "admin/banner-management"; }
 
 }

@@ -3,6 +3,7 @@ package com.app.dodamdodam.repository.banner;
 import com.app.dodamdodam.entity.banner.BannerApply;
 import com.app.dodamdodam.entity.banner.QBannerApply;
 import com.app.dodamdodam.entity.free.FreeBoard;
+import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.search.banner.AdminBannerSearch;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -15,12 +16,28 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 import static com.app.dodamdodam.entity.banner.QBannerApply.bannerApply;
+import static com.app.dodamdodam.entity.purchase.QPurchaseBoard.purchaseBoard;
 
 @RequiredArgsConstructor
 public class BannerqueryDslImpl implements BannerqueryDsl {
 
     @Autowired
     private JPAQueryFactory query;
+
+    @Override
+    public Page<BannerApply> findAllWithPaging(Pageable pageable) {
+        List<BannerApply> bannerApplyList = query.select(bannerApply)
+                .from(bannerApply)
+                .orderBy(bannerApply.id.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+        Long count = query.select(bannerApply.count())
+                .from(bannerApply)
+                .fetchOne();
+
+        return new PageImpl<>(bannerApplyList, pageable, count);
+    }
 
     @Override //관리자 배너 검색
     public Page<BannerApply> findAdminBannerApplyWithPaging_QueryDSL(AdminBannerSearch bannerSearch, Pageable pageable) {
