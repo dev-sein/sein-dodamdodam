@@ -18,6 +18,7 @@ public class OAuthController {
         log.info("==================================================");
         log.info(memberDTO.toString());
         return new RedirectView("/main");
+
     }
 //    @GetMapping("/")
 //    public String oAuthLogin(Model model, HttpSession session){

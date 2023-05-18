@@ -83,14 +83,13 @@ public class SecurityConfig {
                 .authorizeRequests() // 인가 설정(권한 설정)
                 .antMatchers(MAIN_PATH).authenticated()
                 .antMatchers(ADMIN_PATH).hasRole(Role.ADMIN.name())
-//                .antMatchers(BOARD_PATH).hasRole(Role.MEMBER.name())
                 .and()
                 .oauth2Login()
                 .userInfoEndpoint()
                 .userService(memberOAuthService);
 
         // 커스텀 필터 추가
-        http.addFilterAfter(new CustomLogginFilter(), UsernamePasswordAuthenticationFilter.class);
+//        http.addFilterAfter(new CustomLogginFilter(), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
