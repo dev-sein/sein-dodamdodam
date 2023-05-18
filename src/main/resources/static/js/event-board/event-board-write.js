@@ -152,6 +152,33 @@ let sel_files = [];  // 전역 변수로 이동
 )('att_zone', 'btnAtt')
 
 
+$('.submit-btn').on('click', function () {
+    // FormData 객체 생성
+    var formData = new FormData();
+
+    // 이미지 파일을 formData에 추가
+    var fileInput = document.getElementById('btnAtt');
+    for (var i = 0; i < fileInput.files.length; i++) {
+        formData.append('eventFiles', fileInput.files[i]);
+    }
+
+    // Ajax를 사용하여 formData를 서버로 전송
+    $.ajax({
+        url: '/upload',  // 업로드를 처리할 서버 엔드포인트 URL
+        type: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+            // 업로드 성공 시 동작할 코드 작성
+            console.log('파일 업로드 성공');
+        },
+        error: function (xhr, status, error) {
+            // 업로드 실패 시 동작할 코드 작성
+            console.error('파일 업로드 실패:', error);
+        }
+    });
+});
 
 
 
