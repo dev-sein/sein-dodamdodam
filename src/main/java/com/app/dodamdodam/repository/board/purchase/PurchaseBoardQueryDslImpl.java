@@ -84,8 +84,23 @@ public class PurchaseBoardQueryDslImpl implements PurchaseBoardQueryDsl {
         return new PageImpl<>(purchaseBoards, pageable, count);
     }
 
+    @Override
+    public Page<PurchaseBoard> findBoughtPurchaseBoardListByMemberId_QueryDSL(Pageable pageable, Long memberId) {
+        List<PurchaseBoard> purchaseBoards = query.select(purchaseBoard).from(purchaseBoard)
+                .join(purchaseBoard.product)
+                .leftJoin(purchaseBoard.product.purchase)
+                .where(purchaseBoard.product.purchase.member.id.eq(memberId))
+                .orderBy(purchaseBoard.id.desc())
+                .offset(pageable.getOffset()).limit(pageable.getPageSize())
+                .fetch();
 
-//    무한스크롤
+        Long count = query.select(purchaseBoard.count()).from(purchaseBoard).where(purchaseBoard.product.purchase.member.id.eq(memberId)).fetchOne();
+
+        return new PageImpl<>(purchaseBoards, pageable, count);
+    }
+
+
+    //    무한스크롤
     @Override
     public Slice<PurchaseBoard> findAllWithSearch_QueryDSL(PurchaseBoardSearch purchaseBoardSearch, Pageable pageable){
         BooleanExpression boardTitleContains = purchaseBoardSearch.getBoardTitle() == null ? null : purchaseBoard.boardTitle.contains(purchaseBoardSearch.getBoardTitle());

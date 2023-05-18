@@ -16,7 +16,7 @@ public interface RecruitmentBoardQueryDsl {
     public Page<RecruitmentBoard> findRecruitmentedBoardListByMemberId_QueryDSL(Pageable pageable, Long memberId);
 
 //    모집글에 참가한 인원들 가져오기
-    public RecruitmentBoard findRecruitmentBoardById_QueryDSL(Long boardId);
+    public RecruitmentBoard findRecruitmentedMembersByBoardId_QueryDSL(Long boardId);
 
 //    내가 참여한 모집 게시글 전체 리스트 가져오기
     public List<RecruitmentBoard> findAllRecruitmentedBoardListByMemberId_QueryDSL(Long memberId);

@@ -114,34 +114,38 @@ function completeAllCheck() {
 
 }
 
+/* 모달창 닫기 */
+$('#closeModalBtn').on('click', function () {
+    $('.modal').hide();
+})
 
 /* 모달 */
-$formSubmit.on("click", function(event) {
-    event.preventDefault();
-    $("#passwordError").hide();
-    $(".error-text").hide();
-
-    // check password and passwordConfirm match
-    let password = $("#newPassword").val();
-    let passwordConfirm = $("#newPasswordConfirm").val();
-    if (password !== passwordConfirm) {
-        $(".error-text").show();
-        return;
-    }
-
-    // show modal
-    let modal = `
-        <div id="modal-overlay">
-            <div id="modal">
-                <p>비밀번호가 변경되었습니다</p>
-                <button id="modal-close">확인</button>
-            </div>
-        </div>
-    `;
-    $("body").append(modal);
-
-    // close modal
-    $("#modal-close").on("click", function() {
-        $("#modal-overlay").remove();
-    });
-});
+// $formSubmit.on("click", function(event) {
+//     event.preventDefault();
+//     $("#passwordError").hide();
+//     $(".error-text").hide();
+//
+//     // check password and passwordConfirm match
+//     let password = $("#newPassword").val();
+//     let passwordConfirm = $("#newPasswordConfirm").val();
+//     if (password !== passwordConfirm) {
+//         $(".error-text").show();
+//         return;
+//     }
+//
+//     // show modal
+//     let modal = `
+//         <div id="modal-overlay">
+//             <div id="modal">
+//                 <p>비밀번호가 변경되었습니다</p>
+//                 <button id="modal-close">확인</button>
+//             </div>
+//         </div>
+//     `;
+//     $("body").append(modal);
+//
+//     // close modal
+//     $("#modal-close").on("click", function() {
+//         $("#modal-overlay").remove();
+//     });
+// });

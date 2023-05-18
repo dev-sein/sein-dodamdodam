@@ -26,6 +26,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -36,6 +37,7 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 @Slf4j
+@Transactional
 public class MemberServiceImpl implements MemberService/*, OAuth2UserService<OAuth2UserRequest, OAuth2User>*/ {
 
     private final HttpSession httpSession;
@@ -111,7 +113,7 @@ public class MemberServiceImpl implements MemberService/*, OAuth2UserService<OAu
     }
 
     /* 관리자 멤버 목록*/
-    @Override 
+    @Override
     public Page<MemberDTO> showList(Pageable pageable) {
         Page<Member> memberPage = memberRepository.findAllMemberList_QueryDSL(PageRequest.of(1,10));
         List<MemberDTO> memberDTOS = memberPage.get().map(this::toMemberDTO).collect(Collectors.toList());
@@ -126,15 +128,13 @@ public class MemberServiceImpl implements MemberService/*, OAuth2UserService<OAu
     }
 
     /* 회원 정보 수정 */
-    /* 페이지를 고치던지 2개 따로 만들던지 해야함 */
     @Override
     public void setMemberInfoById(Long memberId, Member memberInfo) {
         memberRepository.findById(memberId).ifPresent(member -> {
-            member.setMemberPassword(memberInfo.getMemberPassword());
-            member.setAddress(memberInfo.getAddress());
-            member.setMemberEmail(memberInfo.getMemberEmail());
             member.setMemberName(memberInfo.getMemberName());
+            member.setMemberEmail(memberInfo.getMemberEmail());
             member.setMemberPhone(memberInfo.getMemberPhone());
+            member.setAddress(memberInfo.getAddress());
         });
     }
 

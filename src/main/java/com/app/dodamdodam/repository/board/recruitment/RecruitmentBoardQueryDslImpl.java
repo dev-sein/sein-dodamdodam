@@ -64,7 +64,7 @@ public class RecruitmentBoardQueryDslImpl implements RecruitmentBoardQueryDsl {
 
     /* 내가 작성한 모집글에 참가한 인원들(boardId로 참가한 인원들 확인) */
     @Override
-    public RecruitmentBoard findRecruitmentBoardById_QueryDSL(Long boardId) {
+    public RecruitmentBoard findRecruitmentedMembersByBoardId_QueryDSL(Long boardId) {
         return query.select(recruitmentBoard).from(recruitmentBoard)
                 .join(recruitmentBoard.member).fetchJoin()
                 .leftJoin(recruitmentBoard.recruitments).fetchJoin()

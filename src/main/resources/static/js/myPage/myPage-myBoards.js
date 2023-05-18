@@ -147,26 +147,26 @@
 
 
 /* 모달창 열기 */
-const modal = document.getElementById("myModal");
-const openModalButton = document.getElementById("openModal");
-const closeModalButton = document.getElementsByClassName("close")[0];
-
-// 모달창을 연다.
-openModalButton.onclick = function () {
-  modal.style.display = "block";
-};
-
-// 모달창을 닫는다.
-closeModalButton.onclick = function () {
-  modal.style.display = "none";
-};
-
-// 모달창 외부를 클릭하면 모달창을 닫는다.
-window.onclick = function (event) {
-  if (event.target === modal) {
-    modal.style.display = "none";
-  }
-};
+// const modal = document.getElementById("myModal");
+// const openModalButton = document.getElementById("openModal");
+// const closeModalButton = document.getElementsByClassName("close")[0];
+//
+// // 모달창을 연다.
+// openModalButton.onclick = function () {
+//   modal.style.display = "block";
+// };
+//
+// // 모달창을 닫는다.
+// closeModalButton.onclick = function () {
+//   modal.style.display = "none";
+// };
+//
+// // 모달창 외부를 클릭하면 모달창을 닫는다.
+// window.onclick = function (event) {
+//   if (event.target === modal) {
+//     modal.style.display = "none";
+//   }
+// };
 
 
 

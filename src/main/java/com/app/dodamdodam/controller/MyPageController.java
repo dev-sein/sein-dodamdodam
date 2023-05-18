@@ -1,9 +1,7 @@
 package com.app.dodamdodam.controller;
 
-import com.app.dodamdodam.domain.Criteria;
-import com.app.dodamdodam.domain.FreeBoardFileDTO;
-import com.app.dodamdodam.domain.PurchaseBoardFileDTO;
-import com.app.dodamdodam.domain.RecruitmentBoardFileDTO;
+import com.app.dodamdodam.domain.*;
+import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.service.board.freeBoard.FreeBoardService;
 import com.app.dodamdodam.service.board.purchase.PurchaseBoardService;
 import com.app.dodamdodam.service.board.recruitmentBoard.RecruitmentBoardService;
@@ -15,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -173,6 +172,15 @@ public class MyPageController {
         return recruitmentBoards;
     }
 
+    /* 내가 작성한 모집게시글에 참여한 회원 목록 */
+    @ResponseBody
+    @GetMapping("recruitments/{boardId}")
+    public RecruitmentMemberDTO myRecruitmentMembers(@PathVariable(value = "boardId") Long boardId){
+        RecruitmentMemberDTO recruitmentMembers = recruitmentBoardService.getRecruitmentedMembersByBoardId(boardId);
+        log.info(recruitmentMembers.toString());
+        return recruitmentMembers;
+    }
+
     /* 내가 참가한 모집게시글 목록 */
     @GetMapping("recruitmented")
     public String myRecruitmentedBoardList(HttpSession session, Model model){
@@ -206,5 +214,59 @@ public class MyPageController {
         List<RecruitmentBoardFileDTO> recruitmentedBoards = recruitmentBoardService.getRecruimentedBoardListByMemberId(pageable,memberId);
 
         return recruitmentedBoards;
+    }
+
+    /* 회원 정보 수정 페이지 */
+    @GetMapping("info")
+    public String getMyInfo(HttpSession session, Model model){
+        session.setAttribute("memberId", 5L);
+        Long memberId = (Long)session.getAttribute("memberId");
+        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member",member));
+
+        return "myPage/myPage-profileUpdate";
+    }
+
+    /* 회원 정보 수정 */
+    @PostMapping("info/update")
+    public RedirectView updateMemberInfo(MemberDTO memberDTO){
+        Member updatedMember = memberService.toMemberEntity(memberDTO);
+        memberService.setMemberInfoById(memberDTO.getId(),updatedMember);
+        return new RedirectView("/mypage/info?update=ok");
+    }
+
+    /* 회원탈퇴 페이지 */
+    @GetMapping("withDrawl")
+    public String memberWithDrawl(HttpSession session){
+        session.setAttribute("memberId", 10L);
+//        Long memberId = (Long)session.getAttribute("memberId");
+
+        return "myPage/myPage-withDrawl";
+    }
+
+    /* 회원탈퇴 (회원 비활성화)*/
+    @PostMapping("withDrawl")
+    public RedirectView setMemberStatus(HttpSession session){
+        Long memberId = (Long)session.getAttribute("memberId");
+        memberService.setMemberStatusById(memberId);
+        session.invalidate();
+        return new RedirectView("/main");
+    }
+
+    /* 비밀번호 변경 페이지 */
+    @GetMapping("change-password")
+    public String changePasswordPage(HttpSession session){
+        session.setAttribute("memberId", 11L);
+
+
+        return "myPage/myPage-password";
+    }
+
+
+    /* 비밀번호 변경 */
+    @PostMapping("change-password")
+    public RedirectView changePassword(HttpSession session, String memberPassword){
+        Long memberId = (Long)session.getAttribute("memberId");
+        memberService.setMemberPasswordById(memberId,memberPassword);
+        return new RedirectView("/mypage/change-password?update=ok");
     }
 }

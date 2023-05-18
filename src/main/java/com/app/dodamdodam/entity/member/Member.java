@@ -129,6 +129,7 @@ public class Member extends Period {
     public void setMemberStatus(MemberStatus memberStatus) {
         this.memberStatus = memberStatus;
     }
+
     public void setParticipationCountPlus(){
         this.participationCount++;
     }

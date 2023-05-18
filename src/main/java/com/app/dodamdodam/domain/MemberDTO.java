@@ -44,7 +44,10 @@ public class MemberDTO implements Serializable {
     private Role memberRole;
 
     @Builder
+    @QueryProjection
     public MemberDTO(Long id, String memberId, String memberPassword, String memberName, String memberEmail, String memberPhone, Address address, MemberStatus memberStatus, Integer memberPoint, Integer participationCount, LocalDateTime createdDate, MemberType memberType, Role memberRole) {
+//    public MemberDTO(Long id, String memberId, String memberPassword, String memberName, String memberEmail, String memberPhone, String address, String addressDetail, MemberStatus memberStatus, Integer memberPoint, Integer participationCount, LocalDateTime createdDate) {
+
         this.id = id;
         this.memberId = memberId;
         this.memberPassword = memberPassword;

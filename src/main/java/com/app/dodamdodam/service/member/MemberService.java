@@ -2,6 +2,7 @@ package com.app.dodamdodam.service.member;
 
 import com.app.dodamdodam.domain.MemberDTO;
 import com.app.dodamdodam.entity.banner.BannerApply;
+import com.app.dodamdodam.entity.embeddable.Address;
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.point.Point;
@@ -103,5 +104,24 @@ public interface MemberService extends UserDetailsService {
                 .memberType(memberDTO.getMemberType())
                 .address(memberDTO.getAddress())
                 .build();
+
+
+//        return MemberDTO.builder().id(member.getId()).memberId(member.getMemberId()).memberEmail(member.getMemberEmail())
+//            .memberName(member.getMemberName()).memberPhone(member.getMemberPhone()).memberPoint(member.getMemberPoint())
+//            .memberStatus(member.getMemberStatus()).address(member.getAddress().getAddress()).addressDetail(member.getAddress().getAddressDetail())
+//                .memberPassword(member.getMemberPassword()).createdDate(member.getCreatedDate()).participationCount(member.getParticipationCount())
+//                .build();
     }
+
+//    default Member toMemberEntity(MemberDTO memberDTO){
+//        return Member.builder()
+//                .id(memberDTO.getId())
+//                .memberEmail(memberDTO.getMemberEmail())
+//                .memberName(memberDTO.getMemberName())
+//                .memberId(memberDTO.getMemberId())
+//                .memberPassword(memberDTO.getMemberPassword())
+//                .memberPhone(memberDTO.getMemberPhone())
+//                .address(new Address(memberDTO.getAddress(), memberDTO.getAddressDetail()))
+//                .build();
+//    }
 }
