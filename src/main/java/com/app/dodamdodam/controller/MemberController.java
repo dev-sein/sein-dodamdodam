@@ -47,8 +47,20 @@ public class MemberController {
 
     @ResponseBody
     @PostMapping("check-id")
-    public void checkId(@RequestBody String currentId){
-        memberService.checkMemberId(currentId);
+    public String checkId(@RequestParam("currentId") String currentId){
+        return memberService.checkMemberId(currentId);
+    }
+
+    @ResponseBody
+    @PostMapping("check-email")
+    public String checkEmail(@RequestParam("currentEmail") String currentEmail){
+        return memberService.checkMemberEmail(currentEmail);
+    }
+
+    @ResponseBody
+    @PostMapping("check-phone")
+    public String checkPhone(@RequestParam("currentPhone") String currentPhone){
+        return memberService.checkMemberPhone(currentPhone);
     }
 
     /* 이메일 보내기 */

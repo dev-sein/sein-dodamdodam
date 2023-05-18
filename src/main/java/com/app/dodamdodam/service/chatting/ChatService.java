@@ -1,7 +1,6 @@
 package com.app.dodamdodam.service.chatting;
 
 import com.app.dodamdodam.domain.RoomDTO;
-import com.app.dodamdodam.entity.chatting.QRoom;
 import com.app.dodamdodam.entity.chatting.Room;
 import com.app.dodamdodam.repository.room.RoomRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -13,10 +12,10 @@ import org.springframework.web.socket.WebSocketSession;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
-import java.util.*;
-
-import static com.app.dodamdodam.entity.chatting.QChatting.chatting;
-import static com.app.dodamdodam.entity.chatting.QRoom.room;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @RequiredArgsConstructor

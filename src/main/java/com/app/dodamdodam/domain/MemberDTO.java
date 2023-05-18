@@ -7,12 +7,14 @@ import com.app.dodamdodam.type.MemberType;
 import com.app.dodamdodam.type.Role;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
 @Builder
+@NoArgsConstructor
 public class MemberDTO implements Serializable {
     private Long id;
     private String memberId;

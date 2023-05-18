@@ -30,6 +30,14 @@ public interface MemberService extends UserDetailsService {
     /* 아이디 중복검사 */
     public String checkMemberId(String memberId);
 
+    /* 이메일 중복검사 */
+    public String checkMemberEmail(String memberEmail);
+
+    /* 휴대폰 중복검사 */
+    public String checkMemberPhone(String memberPhone);
+
+//    public Optional<Member> getMemberByMemberEmail(String memberEmail);
+
 
     /* 내가 작성한 자유 게시글 목록 */
     public Page<FreeBoard> getMyFreeBoardList(Pageable pageable, Long memberId);

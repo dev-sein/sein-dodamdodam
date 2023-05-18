@@ -17,9 +17,10 @@ public class AuthenticationFailureHandlerImpl implements AuthenticationFailureHa
     private static final String REDIRECT_URL = "/member/login?check=false";
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
-//        HttpSecurity http;
         log.info("SecurityFilterChain start");
         log.error("exception message: {}", exception.getMessage());
+        log.error("exception message: {}", exception.getMessage(), exception);
+        log.error("exception message: {}", exception.getStackTrace());
         response.sendRedirect(REDIRECT_URL);
     }
 }

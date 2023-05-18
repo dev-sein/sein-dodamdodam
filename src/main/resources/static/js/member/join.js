@@ -30,11 +30,12 @@ $identificationInput.on("blur", function() {
 	$.ajax({
 		url: '/member/check-id',
 		type: 'post',
-		data: currentId,
+		data: {"currentId": currentId},
 		success: function (data) {
 			if (data === 'available') { // 사용 가능한 아이디
-				$('.email_already').css("display", "inline-block");
-				$('.email_ok').css("display", "none");
+
+				console.log("사용가능");
+				$('#id_already').css("display", "none");
 
 				if ($identificationInput.val() < 1) {
 					//$identificationWarning.text("아이디를 입력해주세요.");
@@ -50,19 +51,20 @@ $identificationInput.on("blur", function() {
 				} else {
 					$identificationWarning.css("display", "none");
 					$identificationInput.css("border-color", "#dde2e6");
+					$('.id_ok').css("display", "inline-block");
 					identificationFlag = true;
 					// #dde2e6;
 				}
 
 			} else { // // 사용 불가능한 아이디
-				$('.email_ok').css("display", "inline-block");
-				$('.email_already').css("display", "none");
+				console.log("사용불가능");
+				$('#id_already').css("display", "block");
+				$('#id_ok').css("display", "none");
 				identificationFlag = false;
 			}
 		}
 	});
-
-			completeAllCheck();
+	completeAllCheck();
 });
 
 // 비밀번호 변수
@@ -217,18 +219,33 @@ var emailPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-
 $emailInput.on("blur", function(){
     // 이메일 정규식
     var emailPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-    
-    /* 이메일 중복 확인 */
-    if (!emailPattern.test($emailInput.val())) {
-        $emailError.text("이메일 형식이 올바르지 않습니다.");
-        $emailError.css("display", "block");
-        $emailInput.css("border-color", "#e52929");
-		emailFlag = false;
-    } else {
-        $emailError.css("display", "none");
-        $emailInput.css("border-color", "#e0e0e0");
-		emailFlag = true;
-    }
+	var currentEmail = $emailInput.val();
+	$.ajax({
+		url: '/member/check-email',
+		type: 'post',
+		data: {"currentEmail": currentEmail},
+		success: function (data) {
+
+			if(data === 'available') {
+				/* 이메일 중복 확인 */
+				if (!emailPattern.test($emailInput.val())) {
+					$emailError.text("이메일 형식이 올바르지 않습니다.");
+					$emailError.css("display", "block");
+					$emailInput.css("border-color", "#e52929");
+					emailFlag = false;
+				} else {
+					$emailError.css("display", "none");
+					$emailInput.css("border-color", "#e0e0e0");
+					emailFlag = true;
+				}
+			} else {
+				$emailError.text("중복된 이메일 입니다.");
+				$emailError.css("display", "block");
+				$emailInput.css("border-color", "#e52929");
+				emailFlag = false;
+			}
+		}
+	});
 	completeAllCheck();
 });
 
@@ -283,24 +300,36 @@ $phoneInput.on("blur", function() {
 	var $phoneInputVal = $phoneInput.val();
 	var phoneInputVal = $phoneInput.val();
 
+	$.ajax({
+		url: '/member/check-phone',
+		type: 'post',
+		data: {"currentPhone": phoneInputVal},
+		success: function (data) {
+			if(data === 'available') {
+				if ($phoneInputVal.length < 1) {
+					$phoneWarning.text("핸드폰 번호를 입력해주세요.");
+					$phoneWarning.css("display", "block");
+					$phoneInput.css("border-color", "#f66");
+					phoneFlag = false;
+				} else if (!isPhoneNum.test($phoneInputVal)) {
+					$phoneWarning.text("잘못된 형식입니다. 다시 입력해주세요.");
+					$phoneWarning.css("display", "block");
+					$phoneInput.css("border-color", "#f66");
+					phoneFlag = false;
+				} else {
+					$phoneWarning.css("display", "none");
+					$phoneInput.css("border-color", "#dde2e6");
+					phoneFlag = true;
+				}
+			} else {
+				$phoneWarning.text("중복된 핸드폰 번호입니다. 다시 입력해주세요.");
+				$phoneWarning.css("display", "block");
+				$phoneInput.css("border-color", "#f66");
+				phoneFlag = false;
+			}
 
-	// $phoneInput.css("border-color", "#f66");
-	// $phoneInput.css("border-color", "#dde2e6");
-	if ($phoneInputVal.length < 1) {
-		$phoneWarning.text("핸드폰 번호를 입력해주세요.");
-		$phoneWarning.css("display", "block");
-		$phoneInput.css("border-color", "#f66");
-		phoneFlag = false;
-	} else if (!isPhoneNum.test($phoneInputVal)) {
-		$phoneWarning.text("잘못된 형식입니다. 다시 입력해주세요.");
-		$phoneWarning.css("display", "block");
-		$phoneInput.css("border-color", "#f66");
-		phoneFlag = false;
-	} else {
-		$phoneWarning.css("display", "none");
-		$phoneInput.css("border-color", "#dde2e6");
-		phoneFlag = true;
-	}
+		}
+	});
 
 	completeAllCheck();
 });
@@ -354,6 +383,14 @@ function completeAllCheck() {
 		$completeButton.css("color", "#fff");
 	} else {
 		console.log("하나라도 실패 시 들어옴.")
+		console.log(identificationFlag);
+		console.log(passwordFlag);
+		console.log(passwordCheckFlag);
+		console.log(emailFlag);
+		console.log(nameFlag);
+		console.log(phoneFlag);
+		console.log(check);
+
 		$completeButton.css("pointer-events", "none");
 		$completeButton.css("cursor", "default");
 		// $completeButton.css("border-color", "#00c4c4");

@@ -69,12 +69,42 @@ public class MemberServiceImpl implements MemberService/*, OAuth2UserService<OAu
         String result = null;
 
         Optional<Member> optionalMember = memberRepository.findMemberByMemberId_QueryDSL(memberId);
-        if (optionalMember.isPresent()){
+        if (!optionalMember.isPresent()){
             result = "available";
         }
 
         return result;
     }
+
+    /* 이메일 중복 검사 */
+    @Override
+    public String checkMemberEmail(String memberEmail) {
+        String result = null;
+
+        Optional<Member> optionalMember = memberRepository.findByMemberEmail(memberEmail);
+        if (!optionalMember.isPresent()){
+            result = "available";
+        }
+
+        return result;
+    }
+
+    /* 이메일 중복 검사 */
+    @Override
+    public String checkMemberPhone(String memberPhone) {
+        String result = null;
+
+        Optional<Member> optionalMember = memberRepository.findByMemberPhone(memberPhone);
+        if (!optionalMember.isPresent()){
+            result = "available";
+        }
+
+        return result;
+    }
+//    @Override
+//    public Optional<Member> getMemberByMemberEmail(String memberEmail){
+//        return memberRepository.findByMemberEmail(memberEmail);
+//    }
 
     /* 내 포인트 내역 */
     @Override

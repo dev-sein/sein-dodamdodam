@@ -17,6 +17,7 @@ public class MainController {
 
     @GetMapping("/main")
     public String gotoMain(@AuthenticationPrincipal UserDetail userDetail, Model model){
+//        userDetail.getMemberEmail();
         model.addAttribute("id", userDetail.getId());
         return "/main/main";
     }

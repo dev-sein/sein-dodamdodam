@@ -15,4 +15,6 @@ public interface MemberRepository extends JpaRepository<Member, Long>, MemberQue
     public Optional<Member> findByMemberId(String memberId);
     //    이메일로 전체 정보 조회 (MemberService)
     public Optional<Member> findByMemberEmail(String memberEmail);
+    //    휴대폰으로 전체 정보 조회 (MemberService)
+    public Optional<Member> findByMemberPhone(String memberPhone);
 }
