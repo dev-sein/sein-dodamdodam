@@ -67,6 +67,10 @@ $(function() {
     });
 });
 
+$('.submit-btn').on('click', function () {
+    document.eventForm.submit();
+})
+
 
 /* 파일 */
 let sel_files = [];  // 전역 변수로 이동
@@ -147,144 +151,10 @@ let sel_files = [];  // 전역 변수로 이동
     }
 )('att_zone', 'btnAtt')
 
-$(document).ready(function() {
-    let files = [];
-
-    $("input[type=file]").on("change", function () {
-        const $files = $("input[type=file]")[0].files;
-        let formData = new FormData();
-
-        $.each($files, (i, file) => {
-            files.push(file);
-        })
-
-        files.forEach((file, e) => {
-            formData.append("file", file);
-        })
-
-        $.ajax({
-            url: "/file/upload",
-            type: "post",
-            data: formData,
-            contentType: false,
-            processData: false,
-            success: function (uuids) {
-                globalThis.uuids = uuids;
-                console.log(uuids);
-                let $ul = $("#att_zone");
-                $.each($files, (i, file) => {
-                    if (file.type.startsWith("image")) {
-                        let text = `
-                            <li class="img_list" id="li${i}">
-                                <div class="img_box_wrapper">
-                                    <header class="delete_button_wrapper">
-                                        <label class="close-button" id="button${i}">
-                                            <button icon-position="0" color="white" fill="false" type="button"
-                                                class="pasing-button-1 pasing-no-select">
-                                                <span class="pasing-button-span">
-                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                        width="24" height="24" fill="none"
-                                                        viewBox="0 0 24 24">
-                                                        <path
-                                                            d="M18.5 4L12 10.5 5.5 4 4 5.5l6.5 6.5L4 18.5 5.5 20l6.5-6.5 6.5 6.5 1.5-1.5-6.5-6.5L20 5.5 18.5 4z"
-                                                            fill="#cacaca"></path>
-                                                    </svg>
-                                                </span>
-                                            </button>
-                                        </label>
-                                    </header>
-                                    <article class="img_wrapper">
-                                        <div class="img_div">
-                                            <img src="/file/display?fileName=${toStringByFormatting(new Date())}/t_${uuids[i]}_${file.name}" class="inserted_img">
-                                        </div>
-                                    </article>
-                                </div>
-                            </li>
-                        `;
-                        $ul.append(text);
-                    }
-                });
-            }
-        });
-    });
-});
 
 
 
 
-/* event-board-write.js */
-
-const insertData = {
-    eventBusinessNumber: "",
-    eventBusinessName: "",
-    eventBusinessTel: "",
-    eventBusinessEmail: "",
-    boardTitle: "",
-    eventAddress: "",
-    eventAddressDetail: "",
-    eventStartDate: "",
-    eventEndDate: "",
-    boardContent: "",
-    eventFiles: []
-}
-
-
-
-
-$(".submit-btn").submit(function(e) {
-    e.preventDefault();
-    const $files = $("#btnAtt")[0].files;
-    let formData = new FormData();
-
-    let boardTitle = $("input[name='boardTitle']").val();
-    let boardContent = $("textarea[name='boardContent']").val();
-    let eventBusinessNumber = $("input[name='eventBusinessNumber']").val();
-    let eventBusinessName = $("input[name='eventBusinessName']").val();
-    let eventBusinessTel = $("input[name='eventBusinessTel']").val();
-    let eventBusinessEmail = $("input[name='eventBusinessEmail']").val();
-    let eventAddress = $("input[name='eventAddress']").val();
-    let eventStartDate = $("input[name='eventStartDate']").val();
-    let eventEndDate = $("input[name='eventEndDate']").val();
-
-    if (!$files.length) {
-        alert("Please upload at least one file.");
-        return false;
-    } else if (!boardTitle) {
-        alert("Please enter the event title.");
-        return false;
-    } else if (!boardContent) {
-        alert("Please enter the event description.");
-        return false;
-    } else if (!eventBusinessNumber || !eventBusinessName || !eventBusinessTel || !eventBusinessEmail) {
-        alert("Please fill out all business information fields.");
-        return false;
-    } else if (!eventAddress || !eventStartDate || !eventEndDate) {
-        alert("Please fill out all event information fields.");
-        return false;
-    }
-
-    Array.from($files).forEach((file, i) => {
-        formData.append("eventFiles", file);
-        formData.append(`fileDTOS[${i}].fileOriginalName`, file.name);
-        formData.append(`fileDTOS[${i}].fileUuid`, globalThis.uuids[i]);
-        formData.append(`fileDTOS[${i}].filePath`, toStringByFormatting(new Date()));
-    });
-
-    $.ajax({
-        url: "/event-board/event-board-write",
-        type: "post",
-        data: formData,
-        contentType: false,
-        processData: false,
-        success: function(response) {
-            alert("Your event has been successfully posted!");
-            // You can redirect the user to a different page or do other tasks.
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            alert("Something went wrong, please try again later.");
-        }
-    });
-});
 
 function toStringByFormatting(source, delimiter = '/') {
     const year = source.getFullYear();

@@ -9,6 +9,7 @@ import com.app.dodamdodam.entity.member.Member;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -54,11 +55,20 @@ public interface EventBoardService {
 
     default EventBoard toEventBoardEntity(EventBoardDTO eventBoardDTO){
         return EventBoard.builder()
-                .id(eventBoardDTO.getId())
                 .boardTitle(eventBoardDTO.getBoardTitle())
                 .boardContent(eventBoardDTO.getBoardContent())
                 .eventFiles(eventBoardDTO.getEventFiles().stream().map(file -> toEventFileEntity(file)).collect(Collectors.toList()))
                 .member(toMemberEntity(eventBoardDTO.getMemberDTO()))
+                .eventBusinessName(eventBoardDTO.getEventBusinessName())
+                .eventBusinessNumber(eventBoardDTO.getEventBusinessNumber())
+                .eventBusinessEmail(eventBoardDTO.getEventBusinessEmail())
+                .eventBusinessTel(eventBoardDTO.getEventBusinessTel())
+                .eventStartDate(LocalDate.parse(eventBoardDTO.getEventStartDate()))
+                .eventEndDate(LocalDate.parse(eventBoardDTO.getEventEndDate()))
+                .eventAddressDetail(eventBoardDTO.getEventAddressDetail())
+                .eventAddress(eventBoardDTO.getEventAddress())
+                .eventLikeNumber(eventBoardDTO.getEventLikeNumber())
+                .eventReviewCount(eventBoardDTO.getEventLikeNumber())
                 .build();
     }
 

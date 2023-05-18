@@ -5,7 +5,8 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
-@Getter @ToString
+@Data
+@Builder
 public class EventReviewDTO {
     private Long id;
     private String memberName;
@@ -18,7 +19,7 @@ public class EventReviewDTO {
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
 
-    @Builder
+    @QueryProjection
     public EventReviewDTO(Long id, String memberName, String gradeTitle, String replyContent, Integer eventReviewCount, LocalDateTime createdDate, LocalDateTime updatedDate) {
         this.id = id;
         this.memberName = memberName;
