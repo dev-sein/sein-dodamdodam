@@ -39,9 +39,6 @@ public interface FreeBoardQueryDsl {
     public Optional<FreeBoard> findFreeBoardAndFreeRepliesById_QueryDSL(Long boardId);
 
 //    자유게시판 검색
-    public Page<FreeBoard> findFreeBoardWithPaging_QueryDSL(FreeBoardSearch freeBoardSearch, Pageable pageable);
-
-
     public Page<FreeBoard> findFreeBoardBySearchWithPaging_QueryDSL(FreeBoardSearch freeBoardSearch, Pageable pageable);
 
 //    자유게시판 좋아요 Top5
