@@ -10,6 +10,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
@@ -23,8 +24,13 @@ public class OAuthController {
     private final MemberService memberService;
 
     @GetMapping("/")
-    public RedirectView oAuthLogin(HttpSession session){
+    public RedirectView oAuthLogin(HttpSession session, RedirectAttributes redirectAttributes){
         MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+        if (memberDTO.getId() == null) {
+            redirectAttributes.addFlashAttribute("member", memberDTO);
+//            redirectAttributes.addAttribute("member", memberDTO);
+            return new RedirectView("/member/join");
+        }
         log.info("==================================================");
         log.info(memberDTO.toString());
 //        Optional<Member> optionalMember = memberService.getMemberByMemberEmail(memberDTO.getMemberEmail());

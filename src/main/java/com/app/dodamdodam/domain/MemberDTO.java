@@ -53,4 +53,6 @@ public class MemberDTO implements Serializable {
         this.memberEmail = member.getMemberEmail();
         this.memberPhone = member.getMemberPhone();
     }
+
+
 }

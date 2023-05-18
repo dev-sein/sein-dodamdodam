@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
@@ -23,7 +24,8 @@ public class MemberController {
     private final HttpSession httpSession;
 
     @GetMapping("join")
-    public String goToJoinForm(MemberDTO memberDTO){
+    public String goToJoinForm(/*HttpSession httpSession, Model model*/){
+//        model.addAttribute("member", httpSession.getAttribute("member"));
         return "/member/join";
     }
 

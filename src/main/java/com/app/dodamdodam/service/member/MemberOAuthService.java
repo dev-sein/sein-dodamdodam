@@ -3,6 +3,7 @@ package com.app.dodamdodam.service.member;
 import com.app.dodamdodam.domain.MemberDTO;
 import com.app.dodamdodam.domain.OAuthAttributes;
 import com.app.dodamdodam.entity.member.Member;
+import com.app.dodamdodam.provider.UserDetail;
 import com.app.dodamdodam.repository.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
 import java.util.Collections;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -47,7 +49,7 @@ public class MemberOAuthService implements OAuth2UserService<OAuth2UserRequest, 
 //        OAuth를 통해 전달받은 정보를 DTO로 변환하여 session에 저장
 //        session에 객체를 저장하기 위해 직렬화 사용(다시 가져올 때에는 역직렬화를 통해 원본 객체 생성)
 //        회원 번호를 사용하는 것 보다 OAuth 인증에 작성된 이메일을 사용하는 것이 올바르다.
-        session.setAttribute("member", new MemberDTO(member));
+//        session.setAttribute("member", new MemberDTO(member));
 
         return new DefaultOAuth2User(
                 Collections.singleton(new SimpleGrantedAuthority(member.getMemberRole().getSecurityRole())),
@@ -56,10 +58,51 @@ public class MemberOAuthService implements OAuth2UserService<OAuth2UserRequest, 
     }
 
     private Member saveOrUpdate(OAuthAttributes attributes) {
-        Member foundMember = memberRepository.findByMemberEmail(attributes.getEmail())
-                .map(member -> member.update(attributes.getName(), attributes.getMobile(), attributes.getEmail()))
-                .orElse(attributes.toEntity());
+//        Member foundMember = memberRepository.findByMemberEmail(attributes.getEmail())
+//                .map(member -> member.update(attributes.getName(), attributes.getMobile(), attributes.getEmail()))
+//                .orElse(
+//                        attributes.toEntity()
+//
+//                );
+//
+//        return memberRepository.save(foundMember);
 
-        return memberRepository.save(foundMember);
+        Optional<Member> foundMemberOptional = memberRepository.findByMemberEmail(attributes.getEmail());
+        Member foundMember;
+
+        if (foundMemberOptional.isPresent()) {
+            // 이미 가입된 회원이 있는 경우, 회원 정보 업데이트
+            foundMember = foundMemberOptional.get().update(attributes.getName(), attributes.getMobile(), attributes.getEmail());
+            session.setAttribute("member",
+                    MemberDTO.builder().id(foundMember.getId())
+                            .memberId(foundMember.getMemberId())
+                            .memberPassword(foundMember.getMemberPassword())
+                            .memberEmail(foundMember.getMemberEmail())
+                            .memberName(foundMember.getMemberName())
+                            .memberPhone(foundMember.getMemberPhone())
+                            .memberPoint(foundMember.getMemberPoint())
+                            .memberType(foundMember.getMemberType())
+                            .memberRole(foundMember.getMemberRole())
+                            .memberStatus(foundMember.getMemberStatus())
+                            .build()
+            );
+            memberRepository.save(foundMember);
+//            UserDetail.builder()
+//                    .id(foundMember.getId())
+//                    .memberId(foundMember.getMemberId())
+//                    .memberPassword(foundMember.getMemberPassword())
+//                    .memberRole(foundMember.getMemberRole())
+//                    .build();
+
+        } else {
+            // 추가 입력 사항이 필요한 경우, 폼 페이지로 리디렉션
+            // 필요한 정보를 폼 페이지에 미리 채워 넣기 위해 해당 정보를 세션에 저장
+            foundMember = foundMemberOptional.map(member -> member.update(attributes.getName(), attributes.getMobile(), attributes.getEmail()))
+                    .orElse(attributes.toEntity());
+            session.setAttribute("member", new MemberDTO(foundMember));
+//            return null; // 추가 처리가 필요함을 나타내기 위해 null 반환
+        }
+
+        return foundMember;
     }
 }
