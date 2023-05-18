@@ -195,6 +195,12 @@ public class BoardRepositoryTests {
         freeBoardRepository.findFreeBoardListByCategoryTypeAndMemberId_QueryDSL(pageable,CategoryType.CULTURE, 5L).stream().map(FreeBoard::toString).forEach(log::info);
     }
 
+    /* 자유게시글 좋아요 Top5 */
+    @Test
+    public void findTop5(){
+        freeBoardRepository.findFreeBoardListByLikeCount().stream().map(FreeBoard::toString).forEach(log::info);
+    }
+
     /* 자유 게시글 상세 */
     @Test
     public void findFreeBoardByIdTest(){

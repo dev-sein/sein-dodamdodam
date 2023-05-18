@@ -61,7 +61,7 @@ public interface MemberService {
     default MemberDTO toMemberDTO(Member member){
         return MemberDTO.builder().id(member.getId()).memberId(member.getMemberId()).memberEmail(member.getMemberEmail())
             .memberName(member.getMemberName()).memberPhone(member.getMemberPhone()).memberPoint(member.getMemberPoint())
-            .memberStatus(member.getMemberStatus()).address(member.getAddress().getAddress()).addressDetail(member.getAddress().getAddressDetail())
+            .memberStatus(member.getMemberStatus()).address(member.getAddress())
                 .memberPassword(member.getMemberPassword()).createdDate(member.getCreatedDate()).participationCount(member.getParticipationCount())
                 .build();
     }
@@ -74,7 +74,7 @@ public interface MemberService {
                 .memberId(memberDTO.getMemberId())
                 .memberPassword(memberDTO.getMemberPassword())
                 .memberPhone(memberDTO.getMemberPhone())
-                .address(new Address(memberDTO.getAddress(), memberDTO.getAddressDetail()))
+                .address(memberDTO.getAddress())
                 .build();
     }
 }

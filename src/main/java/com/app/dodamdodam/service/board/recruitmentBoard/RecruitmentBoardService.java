@@ -59,8 +59,7 @@ public interface RecruitmentBoardService {
                 .memberStatus(member.getMemberStatus())
                 .memberPoint(member.getMemberPoint())
                 .participationCount(member.getParticipationCount())
-                .address(member.getAddress().getAddress())
-                .addressDetail(member.getAddress().getAddressDetail())
+                .address(member.getAddress())
                 .build();
     }
 
