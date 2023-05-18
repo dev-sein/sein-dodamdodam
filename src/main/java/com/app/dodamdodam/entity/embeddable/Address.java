@@ -1,9 +1,6 @@
 package com.app.dodamdodam.entity.embeddable;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.Embeddable;
 
@@ -11,6 +8,7 @@ import javax.persistence.Embeddable;
 @Getter
 @NoArgsConstructor
 @ToString
+@Setter
 //@AllArgsConstructor
 public class Address {
 //    private String postcode;

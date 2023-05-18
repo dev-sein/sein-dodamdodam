@@ -6,6 +6,7 @@ import com.app.dodamdodam.search.board.AdminRecruitmentSearch;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface RecruitmentBoardQueryDsl {
@@ -27,9 +28,12 @@ public interface RecruitmentBoardQueryDsl {
 //    내가 참여 모집 게시글 전체 개수 가져오기
     public Long findRecruitmentedBoardListCountByMemberId_QueryDSL(Long memberId);
 
-    //관리자 도담 게시판 검색
+//    관리자 도담 게시판 검색
     public Page<RecruitmentBoard> findAdminRecruitmentBoardWithPaging_QueryDSL (AdminRecruitmentSearch adminRecruitmentSearch, Pageable pageable);
 
-    //관리자 도담 게시판 페이징
+//    관리자 도담 게시판 페이징
     public Page<RecruitmentBoard> findAllWithPaging(Pageable pageable);
+
+//    내가 참여한 모집 게시글 날짜로 검색
+    public List<RecruitmentBoard> findRecruitmentBoardListByMemberIdAndDate(Long memberId, LocalDate recruitmentDate);
 }
