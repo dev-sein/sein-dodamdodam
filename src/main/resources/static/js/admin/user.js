@@ -15,6 +15,7 @@ $(document).ready(function() {
 // $('tbody tr').on('click', showModal);
 
 $('tbody tr').on('click', function(e){
+    console.log("클릭 이벤트 들어옴");
     console.log($(e.target));
     if(!$(e.target).hasClass("select-member")){
         showModal();

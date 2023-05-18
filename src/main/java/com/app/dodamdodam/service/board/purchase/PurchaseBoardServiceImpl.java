@@ -2,6 +2,7 @@ package com.app.dodamdodam.service.board.purchase;
 
 import com.app.dodamdodam.domain.PurchaseBoardDTO;
 import com.app.dodamdodam.domain.PurchaseBoardFileDTO;
+import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.repository.board.purchase.PurchaseBoardRepository;
 import com.app.dodamdodam.search.Inquiry.AdminInquirySearch;
@@ -13,6 +14,7 @@ import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -55,6 +57,13 @@ public class PurchaseBoardServiceImpl implements PurchaseBoardService {
         for(Long purchaseBoardId: purchaseBoardIds){
             purchaseBoardRepository.deleteById(purchaseBoardId);
         }
+    }
+
+    /* 관리자 판매 게시글 상세 */
+    @Override
+    public PurchaseBoardDTO getAdminPurchaseBoardDetail(Long id) {
+        Optional<PurchaseBoard> purchaseBoard = purchaseBoardRepository.findById(id);
+        return toPurchaseBoardDTO(purchaseBoard.get());
     }
 
 

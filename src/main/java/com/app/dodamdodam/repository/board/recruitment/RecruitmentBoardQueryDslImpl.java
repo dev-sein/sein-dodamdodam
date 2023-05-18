@@ -14,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static com.app.dodamdodam.entity.recruitment.QRecruitmentBoard.recruitmentBoard;
@@ -131,5 +132,18 @@ public class RecruitmentBoardQueryDslImpl implements RecruitmentBoardQueryDsl {
 
             return new PageImpl<>(recruitmentBoards, pageable, count);
 
+    }
+
+    /* 내가 참가한 모집 날짜로 검색 */
+    @Override
+    public List<RecruitmentBoard> findRecruitmentBoardListByMemberIdAndDate(Long memberId, LocalDate recruitmentDate) {
+        List<RecruitmentBoard> recruitmentBoards = query.select(recruitmentBoard).from(recruitmentBoard)
+                .where(recruitmentBoard.recruitments.any().member.id.eq(memberId).and(recruitmentBoard.recruitmentDate.eq(recruitmentDate)))
+                .leftJoin(recruitmentBoard.recruitmentFiles).fetchJoin()
+                .join(recruitmentBoard.member).fetchJoin()
+                .orderBy(recruitmentBoard.id.desc())
+                .fetch();
+
+        return recruitmentBoards;
     }
 }

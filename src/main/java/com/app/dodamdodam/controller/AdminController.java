@@ -1,6 +1,8 @@
 package com.app.dodamdodam.controller;
 
 import com.app.dodamdodam.domain.*;
+import com.app.dodamdodam.entity.free.FreeBoard;
+import com.app.dodamdodam.entity.recruitment.Recruitment;
 import com.app.dodamdodam.service.board.freeBoard.FreeBoardService;
 import com.app.dodamdodam.service.board.purchase.PurchaseBoardService;
 import com.app.dodamdodam.service.board.recruitmentBoard.RecruitmentBoardService;
@@ -13,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,6 +32,10 @@ public class AdminController {
     private final PurchaseBoardService purchaseBoardService;
     private final MemberService memberService;
     private final RecruitmentBoardService recruitmentBoardService;
+
+    /*홈*/
+    @GetMapping("/home")
+    public String adminHome(){return "admin/home";}
 
     /*문의 게시판*/
     @GetMapping("inquiry/list") //문의 게시판 목록
@@ -56,6 +63,15 @@ public class AdminController {
     public Page<AdminInquirySearchDTO> adminInquirySearch(){
         return null;
     }
+
+
+    @GetMapping("inquiry/detail/{id}") //문의 게시판 상세
+    public String adminInquiryDetail(@PathVariable("id") Long inquiryId, Model model){
+        InquiryDTO inquiryDTO = inquiryService.getAdminInquiryDetail(inquiryId);
+        model.addAttribute("inquiryDTO", inquiryDTO);
+        return "admin/inquiry-detail";
+    }
+
 
     /*포인트 게시판 */
     @GetMapping("point/list") //포인트 게시판 목록
@@ -93,6 +109,13 @@ public class AdminController {
         return ResponseEntity.ok("게시물 삭제에 성공했습니다");
     }
 
+    @GetMapping("free-board/detail/{id}") // 자유게시글 상세
+    public String freeBoardDetail(@PathVariable("id") Long boardId, Model model) {
+        FreeBoardFileDTO freeBoardFileDTO = freeBoardService.getAdminFreeBoardDetail(boardId);
+        model.addAttribute("freeBoardFileDTO", freeBoardFileDTO);
+        return "admin/free-board-detail";
+    }
+
     /*판매 게시판 */
     @GetMapping("purchase-board/list") //판매 게시판 목록
     public String adminPurchaseBoardList(){
@@ -114,6 +137,13 @@ public class AdminController {
         return ResponseEntity.ok("게시물 삭제에 성공했습니다");
     }
 
+    @GetMapping("purchase-board/detail/{id}") // 판매 게시글 상세
+    public String purchaseBoardDetail(@PathVariable("id") Long boardId, Model model) {
+        PurchaseBoardDTO purchaseBoardDTO = purchaseBoardService.getAdminPurchaseBoardDetail(boardId);
+        model.addAttribute("purchaseBoardDTO", purchaseBoardDTO);
+        return "admin/purchase-board-detail";
+    }
+
     /*멤버 게시판*/
     @GetMapping("member/list") //멤버 목록
     public String adminMemberList(){ return "admin/member-list"; }
@@ -124,6 +154,17 @@ public class AdminController {
         PageRequest pageRequest = PageRequest.of(page, 10);
         Page<MemberDTO> memberAdminPage = memberService.showList(pageRequest);
         return memberAdminPage;
+    }
+
+    @ResponseBody
+    @GetMapping("member/detail/{memberId}") // 멤버 상세
+    public ResponseEntity<MemberDTO> getMemberDetail(@PathVariable Long memberId) {
+        MemberDTO memberDTO = memberService.getAdminMemberDetail(memberId);
+        if (memberDTO != null) {
+            return ResponseEntity.ok(memberDTO);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PatchMapping("member/withdraw")
@@ -152,5 +193,23 @@ public class AdminController {
         return ResponseEntity.ok("게시물 삭제에 성공했습니다");
     }
 
+    @GetMapping("recruitment-board/detail/{id}") // 모집 게시글 상세
+    public String recruitmentBoardDetail(@PathVariable("id") Long boardId, Model model) {
+        RecruitmentBoardFileDTO recruitmentBoardFileDTO = recruitmentBoardService.getAdminRecruitmentBoardDetail(boardId);
+        model.addAttribute("recruitmentBoardFileDTO", recruitmentBoardFileDTO);
+        return "admin/recruitment-board-detail";
+    }
+
+    /*배너 신청하기*/
+    @GetMapping("banner")
+    public String banner(){return "admin/banner";}
+
+    /*배너 신청하기*/
+    @GetMapping("banner-detail")
+    public String bannerDetail(){return "admin/banner-detail";}
+
+    /*배너 신청하기*/
+    @GetMapping("banner-management")
+    public String bannerManagement(){return "admin/banner-management";}
 
 }

@@ -3,6 +3,7 @@ package com.app.dodamdodam.service.board.recruitmentBoard;
 import com.app.dodamdodam.domain.RecruitmentBoardFileDTO;
 import com.app.dodamdodam.domain.RecruitmentFileDTO;
 import com.app.dodamdodam.domain.RecruitmentMemberDTO;
+import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
 import com.app.dodamdodam.repository.board.recruitment.RecruitmentBoardRepository;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -51,11 +53,19 @@ public class RecruitmentBoardServiceImpl implements RecruitmentBoardService {
             return new PageImpl<>(recruitmentFileDTOS, pageable, recruitmentBoardPage.getTotalElements());
         }
 
+    //  관리자 삭제
     @Override
     public void deleteRecruitmentBoard(List<Long> recruitmentBoardIds) {
         for(Long recruitmentBoardId: recruitmentBoardIds){
             recruitmentBoardRepository.deleteById(recruitmentBoardId);
         }
+    }
+
+    //관리자 상세
+    @Override
+    public RecruitmentBoardFileDTO getAdminRecruitmentBoardDetail(Long id) {
+        Optional<RecruitmentBoard> recruitmentBoard = recruitmentBoardRepository.findById(id);
+        return toRecruitmentBoardFileDto(recruitmentBoard.get());
     }
 
 

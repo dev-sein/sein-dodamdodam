@@ -107,6 +107,27 @@ function getList(page) {
         displayPagination(list.totalPages);
     });
 }
+/*
+$listResults.on("click", "tr", function(e) {
+    console.log("클릭 이벤트 들어옴");
+    console.log($(e.target));
+    if (!$(e.target).hasClass("select-member")) {
+        showModal();
+    } else {
+        closeModal();
+    }
+});
+
+
+function showModal(){
+    $('.modal-whole').css('display', 'flex');
+}
+
+function closeModal(){
+    $('.modal-whole').css('display', 'none');
+}*/
+
+
 
 
 /*항목 삭제*/

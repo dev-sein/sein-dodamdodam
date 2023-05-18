@@ -31,9 +31,9 @@ public class MemberDTO {
     private String memberName;
     private String memberEmail;
     private String memberPhone;
-//    private Address address;
-    private String address;
-    private String addressDetail;
+    private Address address;
+//    private String address;
+//    private String addressDetail;
     private MemberStatus memberStatus;
     private Integer memberPoint;
     private Integer participationCount;
@@ -41,7 +41,7 @@ public class MemberDTO {
     private Role memberRole;
 
     @QueryProjection
-    public MemberDTO(Long id, String memberId, String memberPassword, String memberName, String memberEmail, String memberPhone, String address, String addressDetail, MemberStatus memberStatus, Integer memberPoint, Integer participationCount, LocalDateTime createdDate) {
+    public MemberDTO(Long id, String memberId, String memberPassword, String memberName, String memberEmail, String memberPhone, Address address, MemberStatus memberStatus, Integer memberPoint, Integer participationCount, LocalDateTime createdDate) {
         this.id = id;
         this.memberId = memberId;
         this.memberPassword = memberPassword;
@@ -49,7 +49,6 @@ public class MemberDTO {
         this.memberEmail = memberEmail;
         this.memberPhone = memberPhone;
         this.address = address;
-        this.addressDetail = addressDetail;
         this.memberStatus = memberStatus;
         this.memberPoint = memberPoint;
         this.participationCount = participationCount;
