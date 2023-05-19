@@ -54,18 +54,16 @@ public class AdminController {
         return inquiryAdminPages;
     }*/
 
-    //    ajax로 불러온다 부모님 마당 게시글 목록
-    //    pageableDefault는 몇개 뿌릴지를 저기서 정해주는 것이다.
-
 
     @GetMapping("inquiry/list/{page}")
     @ResponseBody
     public Page<InquiryDTO> getInquiryBoards(@PathVariable("page") Integer page, AdminInquirySearch adminInquirySearch) {
         log.info("================================" + adminInquirySearch);
-        Page<InquiryDTO> result = inquiryService.showInquiryWithSearch_QueryDSL(PageRequest.of(page, 10), adminInquirySearch);
-                PageRequest.of(page - 1, 10);
+        Page<InquiryDTO> result = inquiryService.showInquiryWithSearch_QueryDSL(PageRequest.of(page , 10), adminInquirySearch);
+                log.info(page+"페이지");
         return result;
     }
+
 
     @DeleteMapping("inquiry/delete") //문의 삭제
     @ResponseBody

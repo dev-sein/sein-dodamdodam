@@ -37,7 +37,7 @@ public class InquiryServiceImpl implements InquiryService {
     }
 
     //관리자 : 문의사항 검색
-    @Override //관리자 페이징+검색
+    @Override
     public Page<InquiryDTO> showInquiryWithSearch_QueryDSL(Pageable pageable, AdminInquirySearch inquirySearch) {
         Page<Inquiry> inquiryPage = inquiryRepository.findInquiryWithSearch_QueryDSL(inquirySearch, pageable);
         List<InquiryDTO> adminInquirySearchDTOS = inquiryPage.getContent().stream()
