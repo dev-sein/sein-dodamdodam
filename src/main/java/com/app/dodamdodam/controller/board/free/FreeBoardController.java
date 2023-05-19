@@ -77,6 +77,9 @@ public class FreeBoardController {
 
         model.addAttribute("freeBoardDetail", freeBoardService.getFreeBoardById(boardId));
         model.addAttribute("top5",freeBoardService.getTop5FreeBoards());
+        /* PageRequest는 뭐 넣어도 상관없이 개수 가져와서 아무렇게나 넣음 */
+        model.addAttribute("replyCount",freeReplyService.getFreeRepliesCountByBoardId(PageRequest.of(0, 5), boardId));
+        
 
         return "free-board/free-board-detail";
     }
