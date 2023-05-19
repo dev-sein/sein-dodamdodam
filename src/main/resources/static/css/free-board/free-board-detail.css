@@ -625,6 +625,8 @@ button.btn-category {
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     word-wrap: break-word;
+    position: relative;
+    top: 3px;
 }
 
 
@@ -687,7 +689,7 @@ button.btn-category {
         height: auto;
         padding: 15px 0 15px 15px;
     }
-    
+
     .story-info em.category {
         display: inline-block;
         margin-bottom: 8px;
@@ -713,7 +715,7 @@ button.btn-category {
         -webkit-box-orient: vertical;
         word-wrap: break-word;
     }
-    
+
     .img-wrap {
         width: 156px;
     }
