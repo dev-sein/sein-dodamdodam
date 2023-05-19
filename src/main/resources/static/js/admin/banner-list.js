@@ -104,9 +104,9 @@ function getList(page) {
     });
 }
 
-/*
 
-/!*항목 삭제*!/
+
+/*항목 삭제*/
 $(document).ready(function() {
     // 삭제 버튼 클릭 시
     $('.delete-button').click(function() {
@@ -123,9 +123,9 @@ $(document).ready(function() {
             return;
         }
         $('#delete-modal').show(); //삭제 모달창 열기
-        $('#confirm-btn').click(function() { //모달창의 확인 버튼 눌렀을 경우 데이터 삭제
+        $('#confirm-btn').click(function() {//모달창의 확인 버튼 눌렀을 경우 데이터 삭제
             $.ajax({
-                url: '/admins/inquiry/delete',
+                url: '/admins/banner/delete',
                 type: 'DELETE',
                 contentType: 'application/json',
                 data: JSON.stringify(selectedItems),
@@ -140,4 +140,4 @@ $(document).ready(function() {
             });
         });
     });
-});*/
+});

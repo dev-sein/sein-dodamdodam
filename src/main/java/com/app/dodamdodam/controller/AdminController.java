@@ -3,6 +3,7 @@ package com.app.dodamdodam.controller;
 import com.app.dodamdodam.domain.*;
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.recruitment.Recruitment;
+import com.app.dodamdodam.search.Inquiry.AdminInquirySearch;
 import com.app.dodamdodam.service.banner.BannerApplyService;
 import com.app.dodamdodam.service.board.freeBoard.FreeBoardService;
 import com.app.dodamdodam.service.board.purchase.PurchaseBoardService;
@@ -45,12 +46,25 @@ public class AdminController {
         return "admin/inquiry-list";
     }
 
-    @ResponseBody
+   /* @ResponseBody
     @GetMapping("inquiry/list-content")  //문의 게시판 목록
     public Page<InquiryDTO> adminInquiryGetListJson(@RequestParam(name = "page") int page) {
         PageRequest pageRequest = PageRequest.of(page, 10);
         Page<InquiryDTO> inquiryAdminPages = inquiryService.showList(pageRequest);
         return inquiryAdminPages;
+    }*/
+
+    //    ajax로 불러온다 부모님 마당 게시글 목록
+    //    pageableDefault는 몇개 뿌릴지를 저기서 정해주는 것이다.
+
+
+    @GetMapping("inquiry/list/{page}")
+    @ResponseBody
+    public Page<InquiryDTO> getInquiryBoards(@PathVariable("page") Integer page, AdminInquirySearch adminInquirySearch) {
+        log.info("================================" + adminInquirySearch);
+        Page<InquiryDTO> result = inquiryService.showInquiryWithSearch_QueryDSL(PageRequest.of(page, 10), adminInquirySearch);
+                PageRequest.of(page - 1, 10);
+        return result;
     }
 
     @DeleteMapping("inquiry/delete") //문의 삭제
@@ -58,12 +72,6 @@ public class AdminController {
     public ResponseEntity<String> deleteAdminInquires(@RequestBody List<Long> inquiryIds){
         inquiryService.deleteInquires(inquiryIds);
         return ResponseEntity.ok("게시물 삭제에 성공했습니다");
-    }
-
-    @ResponseBody
-    @PostMapping("inquiry/search")
-    public Page<AdminInquirySearchDTO> adminInquirySearch(){
-        return null;
     }
 
 
@@ -219,6 +227,13 @@ public class AdminController {
         BannerDTO bannerDTO = bannerApplyService.getAdminBannerDetail(bannerApplyId);
         model.addAttribute("bannerDTO", bannerDTO);
         return "admin/banner-detail";
+    }
+
+    @DeleteMapping("banner/delete") //모집 게시글 삭제
+    @ResponseBody
+    public ResponseEntity<String> deleteAdminBanner(@RequestBody List<Long> bannerIds){
+        bannerApplyService.deleteAdminBannerList(bannerIds);
+        return ResponseEntity.ok("게시물 삭제에 성공했습니다");
     }
 
     @GetMapping("banner-management") // 배너 관리하기

@@ -10,6 +10,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public interface BannerApplyService {
     //관리자 : 배너 신청 목록
@@ -17,6 +19,9 @@ public interface BannerApplyService {
 
     //관리자 : 배너 상세 신청 내역
     public BannerDTO getAdminBannerDetail(Long id);
+
+    //관리자 : 배너 삭제
+    public void deleteAdminBannerList(List<Long> bannerApplyIds);
 
     default BannerDTO toBannerDTO(BannerApply bannerApply){
         return BannerDTO.builder().id(bannerApply.getId()).bannerRegisterDate(bannerApply.getBannerRegisterDate())

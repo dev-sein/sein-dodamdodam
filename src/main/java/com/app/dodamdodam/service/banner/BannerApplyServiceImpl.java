@@ -26,9 +26,23 @@ public class BannerApplyServiceImpl implements BannerApplyService {
         return new PageImpl<>(bannerDTOS, pageable, bannerApplyPage.getTotalElements());
     }
 
-    @Override //관리자 배너 상세 보기
+    @Override //관리자 배너 상세보기
     public BannerDTO getAdminBannerDetail(Long id) {
         Optional<BannerApply> bannerApply = bannerRepository.findById(id);
-        return toBannerDTO(bannerApply.get());
+        if (bannerApply.isPresent()) {
+            return toBannerDTO(bannerApply.get());
+        } else {
+            // 값이 없을 경우에 대한 처리 로직
+            // 예를 들어, null을 반환하거나 예외를 throw할 수 있습니다.
+            return null; // 혹은 예외 처리 코드 작성
+        }
     }
+
+    @Override //관리자 삭제
+    public void deleteAdminBannerList(List<Long> bannerApplyIds) {
+        for (Long bannerApplyId : bannerApplyIds) {
+            bannerRepository.deleteById(bannerApplyId);
+        }
+    }
+
 }
