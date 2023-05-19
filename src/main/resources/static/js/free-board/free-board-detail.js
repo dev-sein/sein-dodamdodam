@@ -1,5 +1,5 @@
 /* 클릭 시 수정/삭제 버튼 창 */
-function showList(e){
+function showUtil(e){
     if($(e).next().css('display') == 'none'){
         $(e).next().show();
     } else {
