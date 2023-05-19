@@ -10,9 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700;800&display=swap" rel="stylesheet">
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
-    <link rel="stylesheet" href="/static/css/admin/admin.css">
-    <link rel="stylesheet" href="/static/css/admin/home.css">
-    <link rel="stylesheet" href="/static/css/admin/board-detail.css">
+    <link rel="stylesheet" href="/css/admin/admin.css">
+    <link rel="stylesheet" href="/css/admin/home.css">
+    <link rel="stylesheet" href="/css/admin/board-detail.css">
 </head>
 <body>
     <!-- 모달 -->
@@ -98,8 +98,8 @@
                             <div class="slider">
                                 <div class="slider__container">
                                   <div class="slider__item">
-                                    <img src="/static/images/admin/banner1.png" >
-                                    <a href="/static/images/admin/banner1.png" download="image.png" style="display: none;">이미지 다운로드</a>
+                                    <img src="/images/admin/banner1.png" >
+                                    <a href="/images/admin/banner1.png" download="image.png" style="display: none;">이미지 다운로드</a>
                                   </div>
                                 </div>
                             </div>
@@ -112,11 +112,11 @@
                         <div class="right-info-wrapper">
                             <div class="classification-wrapper">
                                 <div class="classification">신청자</div>
-                                <div class="event-title info">윤민우</div>
+                                <div class="event-title info"><span th:text="${bannerDTO.memberDTO.memberName}"></div>
                             </div>
                             <div class="classification-wrapper">
                                 <div class="classification">상태</div>
-                                <div class="writer info">수락완료</div>
+                                <div class="writer info"><span th:text="${bannerDTO.bannerStatus}"></div>
                             </div>
                             <div class="classification-wrapper">
                                 <div class="classification">결제 금액</div>
@@ -124,20 +124,20 @@
                             </div>
                             <div class="classification-wrapper">
                                 <div class="classification">등록 요청일</div>
-                                <div class="recruit-numbers info"><span class="like-count">30</span>일</div>
+                                <div class="recruit-numbers info"><span th:text="${bannerDTO.bannerRegisterDate}">/div>
                             </div>
                             <div class="classification-wrapper">
                                 <div class="classification">신청일자</div>
-                                <div class="date info">2023년 4월 25일 오후 5시 20분</div>
+                                <div class="date info"><span th:text="${bannerDTO.createdDate}"></div>
                             </div>
                             <div class="classification-wrapper">
                                 <div class="classification">내용</div>
                                 <div class="contents">
                                     <div class="contents-inner">
+                                        <!--배너 신청 내용 배너 신청 내용 배너 신청 내용 배너 신청 내용 배너 신청 내용
                                         배너 신청 내용 배너 신청 내용 배너 신청 내용 배너 신청 내용 배너 신청 내용
                                         배너 신청 내용 배너 신청 내용 배너 신청 내용 배너 신청 내용 배너 신청 내용
-                                        배너 신청 내용 배너 신청 내용 배너 신청 내용 배너 신청 내용 배너 신청 내용
-                                        배너 신청 내용 배너 신청 내용 배너 신청 내용 배너 신청 내용 배너 신청 내용
+                                        배너 신청 내용 배너 신청 내용 배너 신청 내용 배너 신청 내용 배너 신청 내용-->
                                     </div>
                                 </div>
                             </div>
@@ -150,6 +150,6 @@
     </main>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="../../static/js/admin/admin.js"></script>
-<script src="../../static/js/admin/banner-detail.js"></script>
+<script src="/js/admin/admin.js"></script>
+<script src="/js/admin/banner-detail.js"></script>
 </html>
