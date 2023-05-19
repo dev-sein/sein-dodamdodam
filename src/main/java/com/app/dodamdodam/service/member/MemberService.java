@@ -74,8 +74,7 @@ public interface MemberService {
     }
 
     default Member toMemberEntity(MemberDTO memberDTO){
-        return Member.builder()
-                .id(memberDTO.getId())
+        return Member.builder().id(memberDTO.getId())
                 .memberEmail(memberDTO.getMemberEmail())
                 .memberName(memberDTO.getMemberName())
                 .memberId(memberDTO.getMemberId())
