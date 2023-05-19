@@ -32,7 +32,7 @@ public interface FreeBoardService {
     public List<FreeBoardFileDTO> getFreeBoardsByMemberId(Pageable pageable, Long memberId);
 
     /* 자유 게시글 상세 */
-    public Optional<FreeBoard> getFreeBoardById(Long boardId);
+    public FreeBoardFileDTO getFreeBoardById(Long boardId);
 
     /* 자유 게시글 수정 */
     public void updateFreeBoard(FreeBoard freeBoard);
@@ -40,14 +40,19 @@ public interface FreeBoardService {
     /* 자유 게시글 삭제 */
     public void deleteFreeBoard(FreeBoard freeBoard);
 
-    /* 관리자 자유 게시판 목록*/
-    public Page<FreeBoardFileDTO> getAdminFreeBoardList(Pageable pageable);
-
     /* 자유게시글 좋아요 Top5 */
     public List<FreeBoardFileDTO> getTop5FreeBoards();
 
     /* 자유 게시글 검색 */
     public List<FreeBoardFileDTO> getFreeBoardsBySearch(Pageable pageable, CategoryType categoryType, FreeBoardSearch freeBoardSearch);
+
+    /* 댓글 작성 */
+    public void saveFreeBoardReply(FreeReply freeReply, Long boardId, Long memberId);
+
+    /* ========================== 관리자 ========================== */
+
+    /* 관리자 자유 게시판 목록*/
+    public Page<FreeBoardFileDTO> getAdminFreeBoardList(Pageable pageable);
 
     /* 관리자 자유게시판 삭제*/
     public void deleteAdminFreeBoard(List<Long> freeBoardIds);
