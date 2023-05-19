@@ -25,26 +25,15 @@ public class OAuthController {
 
     @GetMapping("/")
     public RedirectView oAuthLogin(HttpSession session, RedirectAttributes redirectAttributes){
+        log.info(" ------------------- 로그인 처리 후 맨 마지막 컨트롤러 ------------------------------------- ");
         MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
         if (memberDTO.getId() == null) {
             redirectAttributes.addFlashAttribute("member", memberDTO);
-//            redirectAttributes.addAttribute("member", memberDTO);
             return new RedirectView("/member/join");
         }
         log.info("==================================================");
         log.info(memberDTO.toString());
-//        Optional<Member> optionalMember = memberService.getMemberByMemberEmail(memberDTO.getMemberEmail());
-//        optionalMember.ifPresent(member -> session.setAttribute("member", member));
         return new RedirectView("/main");
 
     }
-//    @GetMapping("/")
-//    public String oAuthLogin(Model model, HttpSession session){
-//        MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
-//         model.addAttribute(memberDTO);
-//
-//        log.info("==================================================");
-//        log.info(memberDTO.toString());
-//        return "/member/join";
-//    }
 }

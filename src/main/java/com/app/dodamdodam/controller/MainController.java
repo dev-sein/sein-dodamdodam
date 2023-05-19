@@ -22,10 +22,8 @@ public class MainController {
 
     @GetMapping("/main")
     public String gotoMain(@AuthenticationPrincipal UserDetail userDetail, HttpSession session, Model model){
-//        userDetail.getMemberEmail();
-        log.info("=========================================");
-//        log.info(userDetail.getId() + "");
-        log.info(session.getId() + "");
+        log.info("==================== main controller =====================");
+        log.info(session.getAttribute("member") + "");
         log.info("=========================================");
         model.addAttribute("id", session.getId());
         return "/main/main";

@@ -34,10 +34,14 @@ public class MyPageController {
     /*마이 페이지 메인*/
     @GetMapping("main")
     public String myPageInfo(Model model, HttpSession session) {
+        log.info("==================mypage main========================");
+        log.info(session.getAttribute("member").toString());
+        MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
+        Long memberId = memberDTO.getId();
         /* calendar 작업 추가로 해야함 */
 //        임의로 세션에 memberId값 담아둠
-        session.setAttribute("memberId", 5L);
-        Long memberId =  (Long)session.getAttribute("memberId");
+//        session.setAttribute("memberId", 5L);
+//        Long memberId =  (Long)session.getAttribute("memberId");
         memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
         model.addAttribute("point",memberService.getMyPointList(memberId));
         return"myPage/myPage-Main";

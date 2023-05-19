@@ -87,6 +87,7 @@ public class SecurityConfig {
                 .oauth2Login()
                 .userInfoEndpoint()
                 .userService(memberOAuthService);
+                log.info("-------------------------- security OAuth Login ------------------------------------");
 
         // 커스텀 필터 추가
 //        http.addFilterAfter(new CustomLogginFilter(), UsernamePasswordAuthenticationFilter.class);

@@ -31,6 +31,7 @@ public class MemberController {
 
     @PostMapping("join")
     public RedirectView join(MemberDTO memberDTO){
+        log.info(memberDTO.toString());
         memberService.join(memberDTO, passwordEncoder);
         return new RedirectView("/member/login");
     }

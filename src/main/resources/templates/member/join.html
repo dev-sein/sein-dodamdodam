@@ -150,8 +150,8 @@
                             <label class="EmailAuthField">이메일</label>
                             <div class="email-field-input-continer">
                                 <div class="EmailAuthField_inputField">
-                                    <input th:if="${member.memberEmail == null}" name="memberEmail" placeholder="이메일 입력" type="text" class="email-field" id="email-input">
-                                    <input th:unless="${member.memberEmail == null}" name="memberEmail" placeholder="이메일 입력" type="text" class="email-field" id="email-input" th:value="${member.memberEmail}" readonly>
+                                    <input th:if="${member == null}" name="memberEmail" placeholder="이메일 입력" type="text" class="email-field" id="email-input">
+                                    <input th:unless="${member == null}" name="memberEmail" placeholder="이메일 입력" type="text" class="email-field" id="email-input" th:value="${member.memberEmail}" readonly>
                                 </div>
                             </div>
                             <em class="email-error error-message">이메일을 입력해주세요.</em>
@@ -159,15 +159,15 @@
                 	</div>
                     <div class="name-field" id="name-name"><label>이름</label>
                         <div class=" ">
-                            <input th:if="${member.memberName != null}" name="memberName" placeholder="이름 입력" type="text" class="name-input" id="name-input" th:value="${member.memberName}" readonly>
-                            <input th:unless="${member.memberName != null}" name="memberName" placeholder="이름 입력" type="text" class="name-input" id="name-input">
+                            <input th:if="${member != null && member.memberName != null}" name="memberName" placeholder="이름 입력" type="text" class="name-input" id="name-input" th:value="${member.memberName}" readonly>
+                            <input th:unless="${member != null && member.memberName != null}" name="memberName" placeholder="이름 입력" type="text" class="name-input" id="name-input">
                         </div>
                         <em class="name-error error-message">이름을 입력해주세요.</em>
                     </div>
                     <div class="name-field phone-field" id="phone-name"><label>핸드폰 번호</label>
                         <div class=" ">
-                            <input th:if="${member.memberPhone != null}" name="memberPhone" placeholder="핸드폰 번호 입력" type="text" class="name-input" id="input-phone-number" maxlength="11" th:value="${member.memberPhone}" readonly>
-                            <input th:unless="${member.memberPhone != null}" name="memberPhone" placeholder="핸드폰 번호 입력" type="text" class="name-input" id="input-phone-number" maxlength="11">
+                            <input th:if="${member != null && member.memberPhone != null}" name="memberPhone" placeholder="핸드폰 번호 입력" type="text" class="name-input" id="input-phone-number" maxlength="11" th:value="${member.memberPhone}" readonly>
+                            <input th:unless="${member != null && member.memberPhone != null}" name="memberPhone" placeholder="핸드폰 번호 입력" type="text" class="name-input" id="input-phone-number" maxlength="11">
                         </div>
                         <em class="phone-error error-message">핸드폰 번호를 입력해주세요.</em>
                     </div>
