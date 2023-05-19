@@ -4,6 +4,8 @@ import com.app.dodamdodam.domain.*;
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.recruitment.Recruitment;
 import com.app.dodamdodam.search.Inquiry.AdminInquirySearch;
+import com.app.dodamdodam.search.board.AdminRecruitmentSearch;
+import com.app.dodamdodam.search.member.AdminMemberSearch;
 import com.app.dodamdodam.service.banner.BannerApplyService;
 import com.app.dodamdodam.service.board.freeBoard.FreeBoardService;
 import com.app.dodamdodam.service.board.purchase.PurchaseBoardService;
@@ -46,16 +48,8 @@ public class AdminController {
         return "admin/inquiry-list";
     }
 
-   /* @ResponseBody
-    @GetMapping("inquiry/list-content")  //문의 게시판 목록
-    public Page<InquiryDTO> adminInquiryGetListJson(@RequestParam(name = "page") int page) {
-        PageRequest pageRequest = PageRequest.of(page, 10);
-        Page<InquiryDTO> inquiryAdminPages = inquiryService.showList(pageRequest);
-        return inquiryAdminPages;
-    }*/
 
-
-    @GetMapping("inquiry/list/{page}")
+    @GetMapping("inquiry/list/{page}") //문의 게시판 검색
     @ResponseBody
     public Page<InquiryDTO> getInquiryBoards(@PathVariable("page") Integer page, AdminInquirySearch adminInquirySearch) {
         log.info("================================" + adminInquirySearch);
@@ -63,7 +57,6 @@ public class AdminController {
                 log.info(page+"페이지");
         return result;
     }
-
 
     @DeleteMapping("inquiry/delete") //문의 삭제
     @ResponseBody
@@ -157,11 +150,11 @@ public class AdminController {
     public String adminMemberList(){ return "admin/member-list"; }
 
     @ResponseBody
-    @GetMapping("member/list-content") //멤버 목록
-    public Page<MemberDTO> getMemberList(@RequestParam(value = "page") int page){
-        PageRequest pageRequest = PageRequest.of(page, 10);
-        Page<MemberDTO> memberAdminPage = memberService.showList(pageRequest);
-        return memberAdminPage;
+    @GetMapping("member/list/{page}") //멤버 검색
+    public Page<MemberDTO> getMemberList(@PathVariable("page") Integer page, AdminMemberSearch adminMemberSearch) {
+        Page<MemberDTO> result = memberService.showMemberWithSearch_QueryDSL(PageRequest.of(page , 10), adminMemberSearch);
+        log.info(page+"페이지");
+        return result;
     }
 
     @ResponseBody
@@ -187,11 +180,10 @@ public class AdminController {
     public String adminRecruitmentBoardList(){ return "admin/recruitment-board"; }
 
     @ResponseBody
-    @GetMapping("recruitment-board/list-content")  //모집 게시판 목록
-    public Page<RecruitmentBoardFileDTO> adminRecruitmentBoardGetListJson(@RequestParam(name = "page") int page) {
-        PageRequest pageRequest = PageRequest.of(page, 10);
-        Page<RecruitmentBoardFileDTO> recruitmentBoardFileDTOPage = recruitmentBoardService.showList(pageRequest);
-        return recruitmentBoardFileDTOPage;
+    @GetMapping("recruitment-board/list/{page}")  //모집 게시판 검색, 목록
+    public Page<RecruitmentBoardFileDTO> getRecruitmentList(@PathVariable("page") Integer page, AdminRecruitmentSearch adminRecruitmentSearch) {
+        Page<RecruitmentBoardFileDTO> result = recruitmentBoardService.showAdminRecruitmentWithSearch_QueryDSL(PageRequest.of(page , 10), adminRecruitmentSearch);
+        return result;
     }
 
     @DeleteMapping("recruitment-board/delete") //모집 게시글 삭제

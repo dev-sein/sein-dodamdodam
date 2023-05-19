@@ -64,14 +64,6 @@ public class InquiryQueryDslImpl implements InquiryQueryDsl {
     }*/
         @Override
         public Page<Inquiry> findInquiryWithSearch_QueryDSL(AdminInquirySearch inquirySearch, Pageable pageable) {
-       /*     BooleanExpression searchEmail = inquirySearch.getInquiryEmail() == null ? null : inquiry.inquiryEmail.contains(inquirySearch.getInquiryEmail());
-            BooleanExpression searchPhoneNumber = inquirySearch.getInquiryPhoneNumber() == null ? null : inquiry.inquiryPhoneNumber.contains(inquirySearch.getInquiryPhoneNumber());
-            BooleanExpression searchContent = inquirySearch.getInquiryContent() == null ? null : inquiry.inquiryContent.contains(inquirySearch.getInquiryContent());
-*/
-/*            BooleanExpression searchAll = inquirySearch.getInquiryContent() == null && inquirySearch.getInquiryEmail() == null && inquirySearch.getInquiryPhoneNumber() == null ? null
-                    :(inquiry.inquiryContent.contains(inquirySearch.getInquiryContent())
-                    .or(inquiry.inquiryEmail.contains(inquirySearch.getInquiryEmail())).or(inquiry.inquiryPhoneNumber.contains(inquirySearch.getInquiryPhoneNumber())));*/
-
             BooleanExpression searchAll = null;
             if (inquirySearch.getInquiryContent() != null || inquirySearch.getInquiryEmail() != null || inquirySearch.getInquiryPhoneNumber() != null) {
                 BooleanExpression searchContent = inquirySearch.getInquiryContent() != null ? inquiry.inquiryContent.contains(inquirySearch.getInquiryContent()) : null;

@@ -1,5 +1,6 @@
 package com.app.dodamdodam.service.member;
 
+import com.app.dodamdodam.domain.InquiryDTO;
 import com.app.dodamdodam.domain.MemberDTO;
 import com.app.dodamdodam.entity.banner.BannerApply;
 import com.app.dodamdodam.entity.embeddable.Address;
@@ -7,6 +8,8 @@ import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.point.Point;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
+import com.app.dodamdodam.search.Inquiry.AdminInquirySearch;
+import com.app.dodamdodam.search.member.AdminMemberSearch;
 import com.app.dodamdodam.type.MemberStatus;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -64,6 +67,9 @@ public interface MemberService {
 
     /* 관리자 멤버 상세 */
     public MemberDTO getAdminMemberDetail(Long id);
+
+    /*관리자 멤버 검색*/
+    public Page<MemberDTO> showMemberWithSearch_QueryDSL(Pageable pageable, AdminMemberSearch adminMemberSearch);
 
     default MemberDTO toMemberDTO(Member member){
         return MemberDTO.builder().id(member.getId()).memberId(member.getMemberId()).memberEmail(member.getMemberEmail())
