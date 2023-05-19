@@ -236,11 +236,21 @@ public class BoardRepositoryTests {
         log.info(freeBoardRepository.findFreeBoardAndFreeRepliesById_QueryDSL(201L).toString());
     }
 
+    /* 자유 게시판 댓글 조회 */
+    @Test
+    public void findReplyTest(){
+//        FreeReply freeReply = new FreeReply("테스트 댓글555",memberRepository.findById(7L).get(),freeBoardRepository.findById(200L).get());
+//        log.info(freeReply.getReplyContent());
+//        freeReplyRepository.findById(700L).ifPresent(freeReply -> log.info(freeReply.toString()));
+        Pageable pageable = PageRequest.of(0,5);
+        freeReplyRepository.findFreeRepliesByBoardId(pageable, 204L).stream().map(FreeReply::toString).forEach(log::info);
+    }
+
     /* 자유 게시판에 댓글 달기*/
     @Test
     public void saveFreeReplyTest(){
-        FreeReply freeReply = new FreeReply("댓글1");
-        freeReply.setFreeBoard(freeBoardRepository.findById(201L).get());
+        FreeReply freeReply = FreeReply.builder().freeBoard(freeBoardRepository.findById(200L).get()).replyContent("자유게시글 댓글1")
+                .member(memberRepository.findById(6L).get()).build();
         freeReplyRepository.save(freeReply);
     }
 
