@@ -57,21 +57,7 @@ public class Member extends Period {
     private List<EventBoard> eventBoards;
 
     @Builder
-    public Member(Long id, String memberId, String memberPassword, String memberName, String memberEmail, String memberPhone, Address address, MemberStatus memberStatus, MemberType memberType, Role memberRole) {
-        this.id = id;
-        this.memberId = memberId;
-        this.memberPassword = memberPassword;
-        this.memberName = memberName;
-        this.memberEmail = memberEmail;
-        this.memberPhone = memberPhone;
-        this.address = address;
-        this.memberStatus = memberStatus;
-        this.memberType = memberType;
-        this.memberRole = memberRole;
-    }
-
-    @Builder
-    public Member(String memberId, String memberPassword, String memberName, String memberEmail, String memberPhone, Address address, MemberStatus memberStatus, MemberType memberType, Role memberRole) {
+    public Member(Long id, String memberId, String memberPassword, String memberName, String memberEmail, String memberPhone, Address address, MemberStatus memberStatus, Integer memberPoint, int participationCount, MemberType memberType, Role memberRole, List<EventBoard> eventBoards) {
         this.id = id;
         this.memberId = memberId;
         this.memberPassword = memberPassword;

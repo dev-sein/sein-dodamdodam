@@ -10,6 +10,7 @@ import com.app.dodamdodam.repository.reply.freeReply.FreeReplyRepository;
 import com.app.dodamdodam.search.FreeBoardSearch;
 import com.app.dodamdodam.type.CategoryType;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -24,6 +25,7 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 @Transactional
+@Slf4j
 public class FreeReplyServiceImpl implements FreeReplyService {
     @Autowired
     private FreeBoardRepository freeBoardRepository;
@@ -60,5 +62,12 @@ public class FreeReplyServiceImpl implements FreeReplyService {
         Page<FreeReply> freeReplies = freeReplyRepository.findFreeRepliesByBoardId(pageable,boardId);
         List<FreeReplyDTO> freeReplyDTOS = freeReplies.get().map(freeReply -> toFreeReplyDTO(freeReply)).collect(Collectors.toList());
         return freeReplyDTOS;
+    }
+
+    /* 자유게시글 boardId로 그 게시글에 달린 댓글 총 개수 구하기*/
+    @Override
+    public Long getFreeRepliesCountByBoardId(Pageable pageable, Long boardId) {
+        Page<FreeReply> freeReplies = freeReplyRepository.findFreeRepliesByBoardId(pageable,boardId);
+        return freeReplies.getTotalElements();
     }
 }

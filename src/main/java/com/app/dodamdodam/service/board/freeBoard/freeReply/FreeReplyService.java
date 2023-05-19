@@ -30,6 +30,9 @@ public interface FreeReplyService {
     /* 댓글 조회 */
     public List<FreeReplyDTO> getFreeRepliesByBoardId(Pageable pageable, Long boardId);
 
+    /* 총 댓글수 조회 */
+    public Long getFreeRepliesCountByBoardId(Pageable pageable, Long boardId);
+
     default FreeReplyDTO toFreeReplyDTO(FreeReply freeReply){
         return FreeReplyDTO.builder().id(freeReply.getId())
                 .memberDTO(toMemberDTO(freeReply.getMember()))
