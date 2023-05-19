@@ -42,6 +42,7 @@ public class EventBoardDTO {
     List<EventReviewDTO> reviews;
     /*파일*/
     private List<EventFileDTO> eventFiles;
+    private List<MultipartFile> uploadFiles;
 
     /*만든날짜, 업뎃일*/
     private LocalDateTime createdDate;
@@ -52,8 +53,7 @@ public class EventBoardDTO {
     }
 
 
-    @QueryProjection
-    public EventBoardDTO(Long id, String eventAddress, String eventAddressDetail, String eventStartDate, String eventEndDate, String eventIntroduction, String boardTitle, String boardContent, int eventLikeNumber, EventType eventStatus, String eventBusinessNumber, String eventBusinessName, String eventBusinessTel, String eventBusinessEmail, MemberDTO memberDTO, List<EventReviewDTO> reviews, List<EventFileDTO> eventFiles, LocalDateTime createdDate, LocalDateTime updatedDate) {
+    public EventBoardDTO(Long id, String eventAddress, String eventAddressDetail, String eventStartDate, String eventEndDate, String eventIntroduction, String boardTitle, String boardContent, int eventLikeNumber, EventType eventStatus, String eventBusinessNumber, String eventBusinessName, String eventBusinessTel, String eventBusinessEmail, MemberDTO memberDTO, List<EventReviewDTO> reviews, List<EventFileDTO> eventFiles, List<MultipartFile> uploadFiles, LocalDateTime createdDate, LocalDateTime updatedDate) {
         this.id = id;
         this.eventAddress = eventAddress;
         this.eventAddressDetail = eventAddressDetail;
@@ -71,9 +71,16 @@ public class EventBoardDTO {
         this.memberDTO = memberDTO;
         this.reviews = reviews;
         this.eventFiles = eventFiles;
+        this.uploadFiles = uploadFiles;
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;
     }
+
+    @QueryProjection
+
+
+
+
 
     public void setMemberDTO(MemberDTO memberDTO) {
         this.memberDTO = memberDTO;

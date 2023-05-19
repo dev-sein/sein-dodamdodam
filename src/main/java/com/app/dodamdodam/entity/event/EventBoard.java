@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@ToString(exclude = {"eventReviews", "eventLikes"}, callSuper = true)
+@ToString(exclude = {"member", "eventLikes"}, callSuper = true)
 @Table(name = "TBL_EVENT_BOARD")
 @NoArgsConstructor
         (access = AccessLevel.PROTECTED)
@@ -60,7 +60,7 @@ public class EventBoard extends Board{
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 //  좋아요
-    @OneToMany(fetch = FetchType.LAZY , mappedBy = "eventBoard", orphanRemoval = true, cascade = CascadeType.REMOVE)
+    @OneToMany(fetch = FetchType.LAZY , mappedBy = "eventBoard", orphanRemoval = true, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private List<EventLike> eventLikes = new ArrayList<>();
 
 
