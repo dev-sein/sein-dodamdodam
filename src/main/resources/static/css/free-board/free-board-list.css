@@ -351,7 +351,14 @@ em.like-count {
     text-align: center;
 }
 
+.pushed{
+    background-color: #fff;
+}
 
+.pushed a{
+    background-color: #0066338f;
+    color: #fff;
+}
 
 /* side */
 
@@ -458,6 +465,9 @@ button:not(:disabled) {
 /* ë§ˆìš°ìŠ¤ì˜¤ë²„ */
 li.bar-button a:hover {
     background-color: #00663314;
+    color: #000;
+    /*background-color: #0066338f;*/
+    /*color: #fff;*/
 }
 
 /* page-list */

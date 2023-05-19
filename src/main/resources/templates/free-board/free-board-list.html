@@ -31,40 +31,40 @@
                 <!-- 자유게시판 카테고리 시작 -->
                 <div class="free-board-type">
                     <ul class="bar-button-list">
-                        <li class="bar-button">
+                        <li class="bar-button" onclick="changeStatus(this)">
                             <a name="all" class="type-all">
                                 <em>ALL</em>
                                 <span>전체보기</span>
                             </a>
                         </li>
-                        <li class="bar-button">
+                        <li class="bar-button" onclick="changeStatus(this)">
                             <a name="culture" class="type-culture">
                                 <em></em>
                                 <span>문화</span>
                             </a>
                         </li>
-                        <li class="bar-button">
+                        <li class="bar-button" onclick="changeStatus(this)">
                             <a name="event" class="type-event">
                                 <em></em>
                                 <span>이벤트</span>
                             </a>
                         </li>
-                        <li class="bar-button">
+                        <li class="bar-button" onclick="changeStatus(this)">
                             <a name="recruitment" class="type-recruitment">
                                 <em></em>
                                 <span>모집</span>
                             </a>
                         </li>
-                        <li class="bar-button">
+                        <li class="bar-button" onclick="changeStatus(this)">
                             <a name="free" class="type-sell">
                                 <em></em>
                                 <span>판매</span>
                             </a>
                         </li>
-                        <li class="bar-button">
+                        <li class="bar-button" onclick="changeStatus(this)">
                             <a name="free" class="type-free">
                                 <em></em>
-                                <span>수다</span>
+                                <span>일상</span>
                             </a>
                         </li>
                     </ul>
@@ -213,31 +213,31 @@
                            <li>
                                 <em>1</em>
                                 <p class="title">
-                                    <a href="" th:text="${top5[0].boardTitle}">[4팀 점메추] 네모오징어</a>
+                                    <a th:href="@{/free/detail/{boardId}(boardId = ${top5[0].id})}" th:text="${top5[0].boardTitle}">[4팀 점메추] 네모오징어</a>
                                 </p>
                            </li> 
                            <li>
                                 <em>2</em>
                                 <p class="title">
-                                    <a href="" th:text="${top5[1].boardTitle}">[4팀 점메추] 돛고기</a>
+                                    <a th:href="@{/free/detail/{boardId}(boardId = ${top5[1].id})}" th:text="${top5[1].boardTitle}">[4팀 점메추] 돛고기</a>
                                 </p>
                            </li> 
                            <li>
                                 <em>3</em>
                                 <p class="title">
-                                    <a href="" th:text="${top5[2].boardTitle}">[4팀 점메추] 부대찌개</a>
+                                    <a th:href="@{/free/detail/{boardId}(boardId = ${top5[2].id})}" th:text="${top5[2].boardTitle}">[4팀 점메추] 부대찌개</a>
                                 </p>
                            </li> 
                            <li>
                                 <em>4</em>
                                 <p class="title">
-                                    <a href="" th:text="${top5[3].boardTitle}">[4팀 점메추] 연가</a>
+                                    <a th:href="@{/free/detail/{boardId}(boardId = ${top5[3].id})}" th:text="${top5[3].boardTitle}">[4팀 점메추] 연가</a>
                                 </p>
                            </li> 
                            <li>
                                 <em>5</em>
                                 <p class="title">
-                                    <a href="" th:text="${top5[4].boardTitle}">[4팀 점메추] 스메쉬버거</a>
+                                    <a th:href="@{/free/detail/{boardId}(boardId = ${top5[4].id})}" th:text="${top5[4].boardTitle}">[4팀 점메추] 스메쉬버거</a>
                                 </p>
                            </li> 
                         </ol>
@@ -252,6 +252,16 @@
 <script th:inline="javascript">
     let nextPage = 0;
     let checkStatus = false;
+    let freeCategory;
+
+    $('.bar-button').on("click", function () {
+        freeCategory = $('.pushed').find('span').text()
+        console.log(freeCategory);
+        $(".free-board-list").empty();
+        nextPage = 0
+        fetchData();
+        checkStatus = false;
+    })
 
     $('.btn-search').on("click", function(){
         console.log("들어옴");
@@ -301,7 +311,7 @@
         checkStatus = false;
         $.ajax({
             type: 'GET',
-            url: `/free/list-search?page=${page}&&search=${search}`,
+            url: `/free/list-search?page=${page}&&search=${search}&&category=${freeCategory}`,
             success: function (result) {
                 console.log(result);
                 // showList(result); // 새로운 값을 담기
@@ -362,6 +372,13 @@
             /* 추가한 내용 화면에 뿌려주기 */
             $(".free-board-list").append(text);
         }
+    }
+</script>
+<script>
+    // $('bar-button').on();
+    function changeStatus(e) {
+        $('.bar-button').attr('class', 'bar-button');
+        $(e).addClass('pushed');
     }
 </script>
 </html>
