@@ -237,6 +237,7 @@ p.info em {
 .comment-count {
     margin-bottom: 20px;
     font-size: 16px;
+    margin-top: 10px;
 }
 
 .comment-count em {

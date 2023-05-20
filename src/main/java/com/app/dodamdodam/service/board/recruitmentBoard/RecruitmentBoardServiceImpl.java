@@ -1,11 +1,15 @@
 package com.app.dodamdodam.service.board.recruitmentBoard;
 
+import com.app.dodamdodam.domain.InquiryDTO;
 import com.app.dodamdodam.domain.RecruitmentBoardFileDTO;
 import com.app.dodamdodam.domain.RecruitmentFileDTO;
 import com.app.dodamdodam.domain.RecruitmentMemberDTO;
 import com.app.dodamdodam.entity.free.FreeBoard;
+import com.app.dodamdodam.entity.inquiry.Inquiry;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
 import com.app.dodamdodam.repository.board.recruitment.RecruitmentBoardRepository;
+import com.app.dodamdodam.search.Inquiry.AdminInquirySearch;
+import com.app.dodamdodam.search.board.AdminRecruitmentSearch;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -50,6 +54,15 @@ public class RecruitmentBoardServiceImpl implements RecruitmentBoardService {
     public Page<RecruitmentBoardFileDTO> showList(Pageable pageable) {
             Page<RecruitmentBoard> recruitmentBoardPage = recruitmentBoardRepository.findAllWithPaging(pageable);
             List<RecruitmentBoardFileDTO> recruitmentFileDTOS = recruitmentBoardPage.get().map(this::toRecruitmentBoardFileDto).collect(Collectors.toList());
+            return new PageImpl<>(recruitmentFileDTOS, pageable, recruitmentBoardPage.getTotalElements());
+        }
+
+    @Override
+    public Page<RecruitmentBoardFileDTO> showAdminRecruitmentWithSearch_QueryDSL(Pageable pageable, AdminRecruitmentSearch adminRecruitmentSearch) {
+            Page<RecruitmentBoard> recruitmentBoardPage = recruitmentBoardRepository.findAdminRecruitmentBoardWithPaging_QueryDSL(adminRecruitmentSearch, pageable);
+            List<RecruitmentBoardFileDTO> recruitmentFileDTOS = recruitmentBoardPage.getContent().stream()
+                    .map(this::toRecruitmentBoardFileDto)
+                    .collect(Collectors.toList());
             return new PageImpl<>(recruitmentFileDTOS, pageable, recruitmentBoardPage.getTotalElements());
         }
 

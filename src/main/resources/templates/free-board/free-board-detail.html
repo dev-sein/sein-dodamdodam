@@ -101,7 +101,7 @@
                     <button type="button" class="btn-like">
                         <img src="/images/free-board/icon_gray_heart.png" class="none-heart">
                         <img src="/images/free-board/icon_red_heart.png" style="display: none;" class="active-heart">
-                        <span>10</span>
+                        <span th:text="${freeBoardDetail.likeCount}">10</span>
                     </button>
                     <div class="btn-share">
                         <a id="kakaotalk-sharing-btn" href="javascript:shareMessage()">
@@ -117,47 +117,53 @@
                         </p>
                     </div>
                     <p class="comment-count">
-                        <em>3</em>개의 댓글이 달려있습니다.
+                        <em><span th:text="${replyCount}"></span></em>개의 댓글이 달려있습니다.
                     </p>
                     <div class="main-comment">
-                        <textarea name="" id="" placeholder="댓글을 입력하세요."></textarea>
-                        <div class="btn-complete">
-                            <button class="btn-color">댓글달기</button>
-                        </div>
+                        <form action="/free/write-reply" id="reply-form" method="post" name="replyForm" style="height: 100%; width: 100%">
+                            <textarea name="replyContent" id="" placeholder="댓글을 입력하세요."></textarea>
+                            <input type="hidden" name="boardId" id="boardId" th:value="${freeBoardDetail.id}">
+                            <div class="btn-complete">
+                                <button class="btn-color" type="button" onclick="sendData()">댓글달기</button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="comment-list">
-                        <ul id="comment-list-detail">
-                            <li class="top" style="display: list-item;">
-                                <div class="comment-wrap">
-                                    <div class="comment-info">
-                                        <img src="/images/badge/medal_gold_winner_badge_reward_icon.png">
-                                        <span class="name">김욱성</span>
-                                        <button class="comment-util" onclick="showList(this)"></button>
-                                        <ul class="comment-util-list">
-                                            <li>
-                                                <button type="button" class="modify-button">수정</button>
-                                            </li>
-                                            <li>
-                                                <button>삭제</button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <p class="comment-content">둘 다 재밌음 [스포]</p>
-                                    <textarea class="modify-textarea" style="display: none;">둘 다 재밌음 [스포]</textarea>
-                                    <div class="comment-date">
-                                        2023.04.23 23:56
-                                    </div>
-                                    <div class="comment-bottom" style="display:none;">
-                                        <button type="button" class="modify-cancel">취소</button>
-                                        <button type="button" class="modify-confirm">수정완료</button>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
+                    <div class="comment-list-wrapper" style="width: 100%; height: fit-content;">
+
                     </div>
+<!--                    <div class="comment-list">-->
+<!--                        <ul id="comment-list-detail">-->
+<!--                            <li class="top" style="display: list-item;">-->
+<!--                                <div class="comment-wrap">-->
+<!--                                    <div class="comment-info">-->
+<!--                                        <img src="/images/badge/medal_gold_winner_badge_reward_icon.png">-->
+<!--                                        <span class="name">김욱성</span>-->
+<!--                                        <button class="comment-util" onclick="showList(this)"></button>-->
+<!--                                        <ul class="comment-util-list">-->
+<!--                                            <li>-->
+<!--                                                <button type="button" class="modify-button">수정</button>-->
+<!--                                            </li>-->
+<!--                                            <li>-->
+<!--                                                <button>삭제</button>-->
+<!--                                            </li>-->
+<!--                                        </ul>-->
+<!--                                    </div>-->
+<!--                                    <p class="comment-content">둘 다 재밌음 [스포]</p>-->
+<!--                                    <textarea class="modify-textarea" style="display: none;">둘 다 재밌음 [스포]</textarea>-->
+<!--                                    <div class="comment-date">-->
+<!--                                        2023.04.23 23:56-->
+<!--                                    </div>-->
+<!--                                    <div class="comment-bottom" style="display:none;">-->
+<!--                                        <button type="button" class="modify-cancel">취소</button>-->
+<!--                                        <button type="button" class="modify-confirm">수정완료</button>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
                 </div>
                 <div class="btn-place">
-                    <button class="btn-comment">댓글 더 보기</button>
+                    <button class="btn-comment" id="show-more-btn">댓글 더 보기</button>
                     <button class="btn-comment" style="display: none;">댓글 닫기</button>
                 </div>
             </div>
@@ -223,11 +229,14 @@
   Kakao.init('e21d13e33dbb10932785f7663d4603f1'); // 사용하려는 앱의 JavaScript 키 입력
 </script>
 <script th:inline="javascript">
-    let freeBoardDetail = [[${freeBoardDetail}]];
-    console.log(freeBoardDetail);
+    // let freeBoardDetail = [[${freeBoardDetail}]];
+    // console.log(freeBoardDetail);
 
     let nextPage = 0;
+    let boardId = $('#boardId').val();
     let checkStatus = false;
+
+    console.log(boardId);
 
     /* 날짜 변환 (년, 월, 일) */
     function changeDateToString(e){
@@ -237,10 +246,10 @@
         if (month < 10){
             month = "0" + month;
         }
-        return date.getFullYear() + "." + month + "." + date.getDate();
+        return date.getFullYear() + "." + month + "." + date.getDate() + " " + date.getHours() + ":" + date.getMinutes();
     }
 
-    // ajax로 게시글 목록 불러오기(12개씩 가져옴)
+    // ajax로 게시글 목록 불러오기(5개씩 가져옴)
     const fetchData = () => {
         let page = nextPage;
         nextPage++;
@@ -248,7 +257,7 @@
         checkStatus = false;
         $.ajax({
             type: 'GET',
-            url: `/free/replies/{page}`,
+            url: `/free/replies/${boardId}/${page}`,
             success: function (result) {
                 console.log(result);
                 // showList(result); // 새로운 값을 담기
@@ -262,20 +271,59 @@
         });
     };
 
+    // ajax로 댓글 작성
+    const sendData = () => {
+        console.log("sendData 들어옴@@@@");
+        $.ajax({
+            type: 'POST',
+            url: `/free/write-reply`,
+            data: $('#reply-form').serialize(),
+            success: function (result) {
+                console.log(result);
+                $(".comment-list-wrapper").empty();
+                nextPage = 0;
+                fetchData();
+            },
+            error: function (error) {
+                console.log('Error fetching data:', error);
+            }
+        });
+    };
+
     // 처음에 화면에 목록 뿌려주기
     $(document).ready(function () {
         console.log("Ready 들어옴");
-        // fetchData();
+        fetchData();
     });
 
-    // 무한 스크롤 이벤트
-    $(window).scroll(function () {
-        if (Math.ceil($(window).scrollTop()) >= $(document).height() - $(window).height() - 50) {
-            if (checkStatus){
-                // fetchData();
-            }
+    // 댓글 더 보기
+    $('#show-more-btn').on('click', function () {
+        if (checkStatus){
+            fetchData();
         }
     });
+
+    // ajax로 삭제하기
+    function deleteReply(e) {
+        console.log($(e).next().val());
+        let replyId = $(e).next().val();
+
+        $.ajax({
+            type: 'POST',
+            url: `/free/delete-reply/${replyId}`,
+            success: function (result) {
+                console.log(result);
+                $(".comment-list-wrapper").empty();
+                nextPage = 0;
+                fetchData();
+            },
+            error: function (error) {
+                console.log('Error fetching data:', error);
+            }
+        });
+
+    }
+
 
     // 화면에 데이터 받아온거 뿌려주기
     function showList(result) {
@@ -284,14 +332,43 @@
             let text = "";
             /* 날짜 변환해서 담아둠*/
             let date = changeDateToString(result[i]);
-            /* 자유게시글 카테고리 변환해서 담아둠 */
-            let category = changeTypeToString(result[i]);
             /* 리스트 하나하나의 내용 */
             /* background-image 쪽 추가로 작업해야함, 밋밋하면 likeCount 추가 DTO에 만들어 둠 */
             text += `
+                    <div class="comment-list">
+                        <ul id="comment-list-detail">
+                            <li class="top" style="display: list-item;">
+                                <div class="comment-wrap">
+                                    <div class="comment-info">
+                                        <img src="/images/badge/medal_gold_winner_badge_reward_icon.png">
+                                        <span class="name">${result[i].memberDTO.memberName}</span>
+                                        <button class="comment-util" onclick="showUtil(this)"></button>
+                                        <ul class="comment-util-list">
+                                            <li>
+                                                <button type="button" class="modify-button">수정</button>
+                                            </li>
+                                            <li>
+                                                <button type="button" onclick="deleteReply(this)">삭제</button>
+                                                <input type="hidden" name="replyId" value="${result[i].id}">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <p class="comment-content">${result[i].replyContent}</p>
+                                    <textarea class="modify-textarea" style="display: none;">${result[i].replyContent}</textarea>
+                                    <div class="comment-date">
+                                        ${date}
+                                    </div>
+                                    <div class="comment-bottom" style="display:none;">
+                                        <button type="button" class="modify-cancel">취소</button>
+                                        <button type="button" class="modify-confirm">수정완료</button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                     `;
             /* 추가한 내용 화면에 뿌려주기 */
-            $(".free-board-list").append(text);
+            $(".comment-list-wrapper").append(text);
         }
     }
 </script>

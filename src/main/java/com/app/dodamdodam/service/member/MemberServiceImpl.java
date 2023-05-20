@@ -1,8 +1,10 @@
 package com.app.dodamdodam.service.member;
 
+import com.app.dodamdodam.domain.InquiryDTO;
 import com.app.dodamdodam.domain.MemberDTO;
 import com.app.dodamdodam.domain.PurchaseBoardDTO;
 import com.app.dodamdodam.entity.free.FreeBoard;
+import com.app.dodamdodam.entity.inquiry.Inquiry;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.point.Point;
 import com.app.dodamdodam.entity.purchase.PurchaseBoard;
@@ -17,6 +19,8 @@ import com.app.dodamdodam.repository.board.purchase.PurchaseBoardRepository;
 import com.app.dodamdodam.repository.board.recruitment.RecruitmentBoardRepository;
 import com.app.dodamdodam.repository.member.MemberRepository;
 import com.app.dodamdodam.repository.point.PointRepository;
+import com.app.dodamdodam.search.Inquiry.AdminInquirySearch;
+import com.app.dodamdodam.search.member.AdminMemberSearch;
 import com.app.dodamdodam.type.MemberStatus;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -111,6 +115,7 @@ public class MemberServiceImpl implements MemberService{
         return toMemberDTO(member.get());
     }
 
+
     /* 회원 비활성화 처리*/
     @Override
     public void setMemberStatusById(Long memberId) {
@@ -155,5 +160,14 @@ public class MemberServiceImpl implements MemberService{
         }
     }
 
+    /* 관리자 멤버 검색 */
+    @Override
+    public Page<MemberDTO> showMemberWithSearch_QueryDSL(Pageable pageable, AdminMemberSearch adminMemberSearch) {
+        Page<Member> memberPage = memberRepository.findAdminMemberWithPaging_QueryDSL(adminMemberSearch, pageable);
+        List<MemberDTO> adminMemberSearchDTOS = memberPage.getContent().stream()
+                .map(this::toMemberDTO)
+                .collect(Collectors.toList());
+        return new PageImpl<>(adminMemberSearchDTOS, pageable, memberPage.getTotalElements());
+    }
 
 }
