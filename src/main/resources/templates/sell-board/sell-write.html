@@ -36,7 +36,7 @@
                 <h2 class="goodsContainer-title">상품 등록</h2>
                 <p class="goodsContainer-description">등록하시는 상품을 소개해 주세요</p>
             </div>
-            <form th:action="${/boards/purchase/write}" th:method="post">
+            <form>
                 <!-- 소개하는 사진 등록하는 섹션 -->
                 <section>
                     <div>
@@ -73,7 +73,7 @@
                         <h2 class="section-title">상품명</h2>
                         <div class="section-description">회원님이 판매하시는 상품명을 적어주세요.</div>
                         <div class="content-section">
-                            <input class="input-count" type="text" name="puchaseBoardDTO.productName" placeholder="판매하시는 상품의 이름을 적어주세요.">
+                            <input class="input-count" id="input-name" type="text" name="puchaseBoardDTO.productName" placeholder="판매하시는 상품의 이름을 적어주세요.">
                         </div>
                     </div>
                 </section>
@@ -82,7 +82,7 @@
                         <h2 class="section-title">상품 개수</h2>
                         <div class="section-description">회원님이 원하시는 판매수량을 적어주세요.</div>
                         <div class="content-section">
-                            <input class="input-count" type="text" name="productDTO.productCount" placeholder="판매하시는 상품의 개수를 적어주세요.">
+                            <input class="input-count" id="input-count" type="number" name="productDTO.productCount" placeholder="판매하시는 상품의 개수를 적어주세요.">
                             <span class="text-field">개</span>
                         </div>
                     </div>
@@ -115,5 +115,5 @@
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-<script src="js/sell-board/sell-write.js"></script>
+<script src="/js/sell-board/sell-write.js"></script>
 </html>

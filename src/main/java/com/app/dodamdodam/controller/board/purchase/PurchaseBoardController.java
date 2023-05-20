@@ -1,4 +1,4 @@
-package com.app.dodamdodam.controller;
+package com.app.dodamdodam.controller.board.purchase;
 
 import com.app.dodamdodam.domain.ProductDTO;
 import com.app.dodamdodam.domain.PurchaseBoardDTO;
@@ -19,24 +19,26 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/boards/purchase/*")
+@RequestMapping("/purchase/*")
 @RequiredArgsConstructor
 public class PurchaseBoardController {
     private final PurchaseBoardService purchaseBoardService;
 
     @GetMapping("write")
-    public String goPurchaseBoardWrite(){ return "/sell-board/sell-write"; }
+    public String goPurchaseBoardWrite(){ return "sell-board/sell-write"; }
 
+    @ResponseBody
     @PostMapping("write")
-    public RedirectView getPurchaseWriteForm(PurchaseBoardDTO purchaseBoardDTO, ProductDTO productDTO, HttpSession session){
+    public RedirectView getPurchaseWriteForm(@RequestBody PurchaseBoardDTO purchaseBoardDTO, HttpSession session){
         Long memberId = (Long) session.getAttribute("id");
 
-        purchaseBoardService.register(purchaseBoardDTO, productDTO, memberId);
+        purchaseBoardService.register(purchaseBoardDTO, purchaseBoardDTO.getProductDTO(), memberId);
 
-        return new RedirectView("/sell-board/sell-list");
+        return new RedirectView("/purchase/list");
     }
 
 
+    
     @GetMapping("list")
     public String goPurchaseBoardList(){
         return "/sell-board/sell-list";

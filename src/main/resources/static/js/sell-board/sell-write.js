@@ -1,5 +1,5 @@
 
-
+const fileArray = new Array();
 
 document.querySelector(".btn-attach-thumb").addEventListener("click", function () {
     const currentImageCount = document.querySelectorAll(".file-add-boxes img").length;
@@ -79,14 +79,15 @@ document.querySelector(".btn-attach-thumb").addEventListener("click", function (
       contentType: false,
       success: function (result) {
         if(result){
-          let file = new Object();
+          result.forEach((result, i) => {
+            let file = new Object();
 
-          file.filePath = result.paths[0];
-          file.fileUuid = result.uuids[0];
-          file.fileOrgName = result.orgNames[0];
+            file.filePath = result.paths[i];
+            file.fileUuid = result.uuids[i];
+            file.fileOrgName = result.orgNames[i];
 
-          insertData.reviewBoardFiles[index] = file;
-          console.log(insertData);
+            fileArray.push(file);
+          });
         }
       }
     });
@@ -107,16 +108,21 @@ document.querySelector(".btn-attach-thumb").addEventListener("click", function (
 
   /* 모든 항목 입력 확인 js */
   document.querySelector(".button-button").addEventListener("click", function () {
+    this.preventDefault();
+
     const imgFiles = document.getElementById("imgFile").files;
     const inputTitle = document.querySelector(".input-content");
     const inputCount = document.querySelector(".input-content");
+    const inputName = document.querySelector("#input-name");
     const inputPrice = document.querySelector(".input-content.price-margin");
     const contentTextarea = document.querySelector(".content-textarea");
+
 
     if (
         imgFiles.length === 0 ||
         inputTitle.value.trim() === "" ||
         inputCount.value.trim() === "" ||
+        inputName.value.trim() === "" ||
         inputPrice.value.trim() === "" ||
         contentTextarea.value.trim() === ""
     ) {
@@ -124,6 +130,7 @@ document.querySelector(".btn-attach-thumb").addEventListener("click", function (
     } else {
         // 저장 로직을 여기에 추가해주세요.
         showModalWithMessage("판매글이 등록되었습니다");
+        writeBoard();
     }
 });
 
@@ -139,4 +146,34 @@ function showModalWithMessage(message) {
     };
 }
 
+
+
+function writeBoard(){
+  let $boardTitle = $('.input-title'); // 제목
+  let $boardContent = $('.content-textarea'); // 내용
+  let $productPrice = $('.price-margin'); // 가격
+  let $productName = $('#input-name'); // 상품명
+  let $productCount = $('.input-count'); // 상품수
+
+  let purchaseBoardDTO = {
+  boardTitle : $boardTitle.val(),
+  boardContent : $boardContent.val(),
+  productDTO : {
+      productPrice : $productPrice.val().replaceAll(",", "").replaceAll(".", "").replaceAll("-", "").replaceAll(" ", ""),
+      productName : $productName.val(),
+      productCount : $productCount.val().replaceAll(",", "").replaceAll(".", "").replaceAll("-", "").replaceAll(" ", "")
+    }
+  };
+
+  $.ajax({
+    url: '/purchase/write',
+    data: JSON.stringify(purchaseBoardDTO),
+    method: 'post',
+    processData: false,
+    contentType: 'application/json',
+    success: function() {
+      location.href='/purchase/list';
+    }
+  });
+}
   

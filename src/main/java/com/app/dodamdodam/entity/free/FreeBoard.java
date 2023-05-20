@@ -42,8 +42,8 @@ public class FreeBoard extends Board {
         this.freeFiles = freeFiles;
     }
 
-    public FreeBoard(String boardTitle, String boardContent, CategoryType freeCategory) {
-        super(boardTitle, boardContent);
+    public FreeBoard(Long id,String boardTitle, String boardContent, CategoryType freeCategory) {
+        super(id, boardTitle, boardContent);
         this.freeCategory = freeCategory;
     }
 

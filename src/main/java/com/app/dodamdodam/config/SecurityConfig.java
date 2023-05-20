@@ -27,9 +27,15 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @RequiredArgsConstructor
 @Slf4j
 public class SecurityConfig {
+//    관리자
     private static final String ADMIN_PATH = "/admin/**";
+//    마이페이지
     private static final String MYPAGE_PATH = "/mypage/**";
-//    private static final String WRITE_PATH = "/**/write";
+//    판매 게시판
+    private static final String PURCHASE_BOARD_LIST_PATH = "/purchase/list/**";
+    private static final String PURCHASE_BOARD_DETAIL_PATH = "/purchase/detail/**";
+    private static final String PURCHASE_BOARD_WRITE_PATH = "/purchase/write/**";
+
 
 //    private static final String BOARD_PATH = "/board/**";
     private static final String IGNORE_FAVICON = "/favicon.ico";
@@ -56,6 +62,8 @@ public class SecurityConfig {
 //        WebSecurity에서 관여하지 않을 경로
         return web -> web.ignoring()
                 .mvcMatchers(IGNORE_FAVICON) //favicon은 필터에서 제외
+                .antMatchers(PURCHASE_BOARD_LIST_PATH)
+                .antMatchers(PURCHASE_BOARD_DETAIL_PATH)
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()); //static 경로도 필터에서 제외
     }
 
@@ -82,11 +90,13 @@ public class SecurityConfig {
                 .authenticationSuccessHandler(authenticationSuccessHandler) // 인증 성공(로그인 성공)
                 .and()
                 .csrf().disable()
+
                 .authorizeRequests() // 인가 설정(권한 설정)
                 .antMatchers(ADMIN_PATH).hasRole(Role.ADMIN.name())
-//                .antMatchers(MYPAGE_PATH).hasRole(Role.MEMBER.name())
-//                .antMatchers(WRITE_PATH).hasRole(Role.MEMBER.name())
+                .antMatchers(MYPAGE_PATH).hasRole(Role.MEMBER.name())
+                .antMatchers(PURCHASE_BOARD_WRITE_PATH).hasRole(Role.MEMBER.name())
                 .anyRequest().permitAll()
+
                 .and()
                 .oauth2Login()
                 .userInfoEndpoint()
