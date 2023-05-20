@@ -13,8 +13,8 @@ import com.app.dodamdodam.repository.board.purchase.PurchaseBoardRepository;
 import com.app.dodamdodam.repository.board.recruitment.RecruitmentBoardRepository;
 import com.app.dodamdodam.repository.member.MemberRepository;
 import com.app.dodamdodam.repository.point.PointRepository;
+import com.app.dodamdodam.search.member.AdminMemberSearch;
 import com.app.dodamdodam.type.MemberStatus;
-import com.app.dodamdodam.type.MemberType;
 import com.app.dodamdodam.type.Role;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -155,6 +155,12 @@ public class MemberServiceImpl implements MemberService/*, OAuth2UserService<OAu
         return new PageImpl<>(memberDTOS, pageable, memberPage.getTotalElements());
     }
 
+    @Override
+    public MemberDTO getAdminMemberDetail(Long id) {
+        Optional<Member> member = memberRepository.findById(id);
+        return toMemberDTO(member.get());
+    }
+
     /* 회원 비활성화 처리*/
     @Override
     public void setMemberStatusById(Long memberId) {
@@ -217,4 +223,23 @@ public class MemberServiceImpl implements MemberService/*, OAuth2UserService<OAu
                 .memberRole(member.getMemberRole())
                 .build();
     }
+    /* 멤버 상태 변경*/
+    @Override
+    public void setMemberStatus(List<Long> ids, MemberStatus memberStatus) {
+        for(Long id: ids){
+            memberRepository.findById(id).ifPresent(member -> member.setMemberStatus(MemberStatus.WITHDRAWAL));
+        }
+    }
+
+    /* 관리자 멤버 검색 */
+    @Override
+    public Page<MemberDTO> showMemberWithSearch_QueryDSL(Pageable pageable, AdminMemberSearch adminMemberSearch) {
+        Page<Member> memberPage = memberRepository.findAdminMemberWithPaging_QueryDSL(adminMemberSearch, pageable);
+        List<MemberDTO> adminMemberSearchDTOS = memberPage.getContent().stream()
+                .map(this::toMemberDTO)
+                .collect(Collectors.toList());
+        return new PageImpl<>(adminMemberSearchDTOS, pageable, memberPage.getTotalElements());
+    }
+
+
 }

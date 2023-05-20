@@ -5,12 +5,11 @@ import com.app.dodamdodam.domain.PurchaseBoardDTO;
 import com.app.dodamdodam.domain.PurchaseBoardFileDTO;
 import com.app.dodamdodam.domain.PurchaseFileDTO;
 import com.app.dodamdodam.entity.purchase.PurchaseBoard;
-import com.app.dodamdodam.entity.purchase.PurchaseFile;
 import com.app.dodamdodam.repository.board.purchase.PurchaseBoardRepository;
 import com.app.dodamdodam.repository.file.purchase.PurchaseFileRepository;
 import com.app.dodamdodam.repository.member.MemberRepository;
-import com.app.dodamdodam.search.Inquiry.AdminInquirySearch;
 import com.app.dodamdodam.search.PurchaseBoardSearch;
+import com.app.dodamdodam.search.board.AdminPurchaseBoardSearch;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
@@ -19,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -65,15 +65,38 @@ public class PurchaseBoardServiceImpl implements PurchaseBoardService {
                 .map(purchaseBoard -> toPurchaseBoardFileDTO(purchaseBoard)).collect(Collectors.toList());
     }
 
+    /* 관리자 검색 목록 */
+    @Override
+    public Page<PurchaseBoardDTO> findPurchaseBoardWithSearch_QueryDSL(Pageable pageable, AdminPurchaseBoardSearch adminPurchaseBoardSearch) {
+        Page<PurchaseBoard> purchaseBoards = purchaseBoardRepository.findadminPurchaseSearchWithPaging_QueryDSL(adminPurchaseBoardSearch, pageable);
+        List<PurchaseBoardDTO> purchaseBoardDTOS = purchaseBoards.getContent().stream()
+                .map(this::toPurchaseBoardDTO)
+                .collect(Collectors.toList());
+        return new PageImpl<>(purchaseBoardDTOS, pageable, purchaseBoards.getTotalElements());
+    }
 
-
-
+    /*관리자 목록 */
     @Override
     public Page<PurchaseBoardDTO> showList(Pageable pageable) {
-        Page<PurchaseBoard> purchaseBoardPage = purchaseBoardRepository.findAllWithPaging(PageRequest.of(1,10));
+        Page<PurchaseBoard> purchaseBoardPage = purchaseBoardRepository.findAllWithPaging(pageable);
         List<PurchaseBoardDTO> purchaseBoardDTOS = purchaseBoardPage.get().map(this::toPurchaseBoardDTO).collect(Collectors.toList());
 
         return new PageImpl<>(purchaseBoardDTOS, pageable, purchaseBoardPage.getTotalElements());
+    }
+
+    /* 관리자 판매 게시글 삭제 */
+    @Override
+    public void deleteAdminPurchaseBoard(List<Long> purchaseBoardIds) {
+        for(Long purchaseBoardId: purchaseBoardIds){
+            purchaseBoardRepository.deleteById(purchaseBoardId);
+        }
+    }
+
+    /* 관리자 판매 게시글 상세 */
+    @Override
+    public PurchaseBoardDTO getAdminPurchaseBoardDetail(Long id) {
+        Optional<PurchaseBoard> purchaseBoard = purchaseBoardRepository.findById(id);
+        return toPurchaseBoardDTO(purchaseBoard.get());
     }
 
 

@@ -12,25 +12,17 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-@ToString(exclude = "eventBoard")
+@ToString
 @Table(name = "TBL_EVENT_BOARD_REPLY")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class EventReview extends Reply {
-    @Id @GeneratedValue
-    @EqualsAndHashCode.Include
-    private Long id;
-    private String replyContent;
-    private int replyCount;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "EVENT_BOARD_ID")
-    @OnDelete(action= OnDeleteAction.CASCADE)
+    @JoinColumn
     private EventBoard eventBoard; //fk
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "MEMBER_ID")
-    @NotNull
-    @OnDelete(action=OnDeleteAction.CASCADE)
+    @JoinColumn
     private Member member;
 
 
@@ -42,16 +34,10 @@ public class EventReview extends Reply {
         this.member = member;
     }
 
-    @Builder
-    public EventReview(Long id, String replyContent, int replyCount, EventBoard eventBoard, Member member) {
-        this.id = id;
-        this.replyContent = replyContent;
-        this.replyCount = replyCount;
+
+    public EventReview(String replyContent, Member member, EventBoard eventBoard) {
+        super(replyContent, member);
         this.eventBoard = eventBoard;
         this.member = member;
-    }
-
-    public void update(String replyContent){
-        this.replyContent = replyContent;
     }
 }

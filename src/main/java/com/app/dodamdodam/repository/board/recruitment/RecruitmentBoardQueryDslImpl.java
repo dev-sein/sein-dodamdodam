@@ -1,6 +1,7 @@
 package com.app.dodamdodam.repository.board.recruitment;
 
 import com.app.dodamdodam.entity.free.FreeBoard;
+import com.app.dodamdodam.entity.inquiry.Inquiry;
 import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.entity.recruitment.QRecruitmentBoard;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
@@ -14,8 +15,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
+import java.time.LocalDate;
 import java.util.List;
 
+import static com.app.dodamdodam.entity.inquiry.QInquiry.inquiry;
 import static com.app.dodamdodam.entity.recruitment.QRecruitmentBoard.recruitmentBoard;
 public class RecruitmentBoardQueryDslImpl implements RecruitmentBoardQueryDsl {
     @Autowired
@@ -101,20 +104,26 @@ public class RecruitmentBoardQueryDslImpl implements RecruitmentBoardQueryDsl {
     //관리자 모집 게시판 검색
     @Override
     public Page<RecruitmentBoard> findAdminRecruitmentBoardWithPaging_QueryDSL(AdminRecruitmentSearch adminRecruitmentSearch, Pageable pageable) {
-        BooleanExpression boardTitleEq = adminRecruitmentSearch.getBoardTitle() == null ? null : recruitmentBoard.boardTitle.eq(adminRecruitmentSearch.getBoardTitle());
-        BooleanExpression memberNameEq = adminRecruitmentSearch.getMemberName() == null ? null : recruitmentBoard.member.memberName.eq(adminRecruitmentSearch.getMemberName());
-        BooleanExpression recruitmentAddressEq = adminRecruitmentSearch.getRecruitmentAddress() == null ? null : recruitmentBoard.recruitmentAddress.eq(adminRecruitmentSearch.getRecruitmentAddress());
+        BooleanExpression searchAll = null;
+        if (adminRecruitmentSearch.getBoardTitle() != null || adminRecruitmentSearch.getMemberName() != null || adminRecruitmentSearch.getRecruitmentAddress() != null) {
+            BooleanExpression searchTitle = adminRecruitmentSearch.getBoardTitle() != null ? recruitmentBoard.boardTitle.contains(adminRecruitmentSearch.getBoardTitle()) : null;
+            BooleanExpression searchName = adminRecruitmentSearch.getMemberName() != null ? recruitmentBoard.member.memberName.contains(adminRecruitmentSearch.getMemberName()) : null;
+            BooleanExpression searchAddress = adminRecruitmentSearch.getRecruitmentAddress() != null ? recruitmentBoard.recruitmentAddress.contains(adminRecruitmentSearch.getRecruitmentAddress()) : null;
+
+            searchAll = searchTitle.or(searchName).or(searchAddress);
+        }
 
         List<RecruitmentBoard> recruitmentBoards = query.select(recruitmentBoard)
                 .from(recruitmentBoard)
-                .where(boardTitleEq, memberNameEq, recruitmentAddressEq)
+                .where(searchAll)
                 .orderBy(recruitmentBoard.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
-        Long count = query.select(recruitmentBoard.count()).from(recruitmentBoard).fetchOne();
+        Long count = query.select(recruitmentBoard.count()).from(recruitmentBoard).where(searchAll).fetchOne();
 
         return new PageImpl<>(recruitmentBoards, pageable, count);
+    
     }
 
     @Override
@@ -122,7 +131,7 @@ public class RecruitmentBoardQueryDslImpl implements RecruitmentBoardQueryDsl {
             List<RecruitmentBoard> recruitmentBoards = query.select(recruitmentBoard)
                     .from(recruitmentBoard)
                     .orderBy(recruitmentBoard.id.desc())
-                    .offset(pageable.getOffset() -1)
+                    .offset(pageable.getOffset())
                     .limit(pageable.getPageSize())
                     .fetch();
             Long count = query.select(recruitmentBoard.count())
@@ -131,5 +140,18 @@ public class RecruitmentBoardQueryDslImpl implements RecruitmentBoardQueryDsl {
 
             return new PageImpl<>(recruitmentBoards, pageable, count);
 
+    }
+
+    /* 내가 참가한 모집 날짜로 검색 */
+    @Override
+    public List<RecruitmentBoard> findRecruitmentBoardListByMemberIdAndDate(Long memberId, LocalDate recruitmentDate) {
+        List<RecruitmentBoard> recruitmentBoards = query.select(recruitmentBoard).from(recruitmentBoard)
+                .where(recruitmentBoard.recruitments.any().member.id.eq(memberId).and(recruitmentBoard.recruitmentDate.eq(recruitmentDate)))
+                .leftJoin(recruitmentBoard.recruitmentFiles).fetchJoin()
+                .join(recruitmentBoard.member).fetchJoin()
+                .orderBy(recruitmentBoard.id.desc())
+                .fetch();
+
+        return recruitmentBoards;
     }
 }

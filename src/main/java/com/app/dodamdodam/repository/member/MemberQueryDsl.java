@@ -22,10 +22,10 @@ public interface MemberQueryDsl {
 ////    memberId로 point 내역 조회
 //    public List<Point> findPointByMemberId(Long memberId);
 
-//    이메일로 아이디 찾기
+//  이메일로 아이디 찾기
     public String findMemberIdByMemberEmail_QueryDSL(String memberEmail);
 
-//    아이디 중복검사
+//  아이디 중복검사
     public boolean findCheckMemberIdByMemberEmail_QueryDSL(String memberEmail);
 
     //    로그인 후 회원 정보 조회
@@ -38,14 +38,15 @@ public interface MemberQueryDsl {
 //  관리자 멤버 게시판 검색 조회
     public Page<Member> findAdminMemberWithPaging_QueryDSL(AdminMemberSearch adminMemberSearch, Pageable pageable);
 
-    //관리자 멤버 상세 조회(뱃지)
+//  관리자 멤버 상세 조회(뱃지)
     public String findAdminMemberDetail_QueryDSL(Long memberId);
 
-    //관리자 홈
+//  관리자 홈
     public Page<Member> findAdminMemberAllOrderByIdDesc();
 
-    //관리자 회원 목록 가져오기
+//  관리자 회원 목록 가져오기
     public Page<Member> findAllMemberList_QueryDSL(Pageable pageable);
+
 }
 
 

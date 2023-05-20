@@ -1,79 +1,142 @@
+const $listResults = $("#inquiryTable tbody");
+let page = 0;
 
-let page = 1;
+listService = (function() {
+    function list(page, callback) {
+        $.ajax({
+            url: '/admins/inquiry/list-content',
+            type: 'get',
+            data: { page: page }, // 수정: page를 객체 형태로 전달
+            success: function(list) {
+                if (callback) {
+                    console.log("들어옴");
+                    callback(list);
+                }
+            }
+        });
+    }
 
-$(document).ready(function() {
-    $.ajax({
-        url: '/admins/inquiry/list',
-        type: 'post',
-        dataType: 'json',
-        success: function(result) {
-            console.log("success들어옴");
-            console.log(result); //사용할 content 값 출력
-            result.content.forEach((inquiry) => showList(inquiry));
-            loadInquiries();
+    return {
+        list: list
+    };
+})();
 
-        },
-        error: function(xhr, status, error) {
-            console.error('Error:', error);
+getList(page);
+
+
+$(".pages-wrapper").on("click", ".page", function(e) {
+    e.preventDefault();
+    console.log("page 들어옴");
+    $listResults.empty();
+    const targetPage = $(this).text();
+
+    if ($(this).hasClass("arrow-left")) {
+        if (page > 0) {
+            page--;
         }
+    } else if ($(this).hasClass("arrow-right")) {
+        page++;
+    } else {
+        page = parseInt(targetPage) - 1;
+    }
+    getList(page);
+});
+
+
+function displayPagination(totalPages) {
+    const $pagination = $(".pages-wrapper");
+    $pagination.empty();
+
+    const maxDisplayedPages = 10; // 한 번에 표시할 페이지 수
+    const startPage = Math.floor(page / maxDisplayedPages) * maxDisplayedPages; // 시작 페이지 번호
+
+    if (page > 0) {
+        $pagination.append("<div class='arrow-left page'></div>");
+    }
+
+    for (let i = startPage; i < startPage + maxDisplayedPages && i < totalPages; i++) {
+        if (i === page) {
+            $pagination.append("<div class='page active'>" + (i + 1) + "</div>");
+        } else {
+            $pagination.append("<div class='page'>" + (i + 1) + "</div>");
+        }
+    }
+
+    if (page < totalPages - 1) {
+        $pagination.append("<div class='arrow-right page'></div>");
+    }
+}
+
+
+function listText(list) {
+    console.log("list text 들어옴");
+    let inquiryDTOS = list.content;
+    $(inquiryDTOS).each((i, inquiry) => {
+        console.log("text 들어옴");
+        var text = "";
+        text += `
+      <tr>
+        <td>
+          <div class="checkbox-wrapper-21">
+            <label class="control control--checkbox">
+              <input type="checkbox" id="select-all" class="substituted select-member" style="display: none;" />
+              <div class="control__indicator"></div>
+            </label>
+          </div>
+        </td>
+        <td class="numbers">${inquiry.id}</td>
+        <td>${inquiry.inquiryType}</td>
+         <td>${inquiry.inquiryContent}</td>
+        <td>${inquiry.inquiryEmail}</td>
+        <td>${inquiry.inquiryPhoneNumber}</td>
+        <td>${inquiry.inquiryStatus}</td>
+      </tr>
+    `;
+        $listResults.append(text);
+    });
+}
+
+function getList(page) {
+    console.log("getList 들어옴");
+    listService.list(page, function(list) { // 수정: page를 인자로 전달
+        listText(list);
+        displayPagination(list.totalPages);
+    });
+}
+
+
+/*항목 삭제*/
+$(document).ready(function() {
+    // 삭제 버튼 클릭 시
+    $('.delete-button').click(function() {
+        var selectedItems = [];
+        // 체크된 항목의 ID를 배열에 추가
+        $('input.substituted.select-member:checked').each(function() {
+            var inquiryId = $(this).closest('tr').find('.numbers').text();
+            selectedItems.push(parseInt(inquiryId));
+        });
+
+        // 선택된 항목이 없는 경우 경고창을 표시하고 함수를 종료
+        if (selectedItems.length === 0) {
+            alert('삭제할 항목을 선택해주세요.');
+            return;
+        }
+        $('#delete-modal').show(); //삭제 모달창 열기
+        $('#confirm-btn').click(function() { //모달창의 확인 버튼 눌렀을 경우 데이터 삭제
+            $.ajax({
+                url: '/admins/inquiry/delete',
+                type: 'DELETE',
+                contentType: 'application/json',
+                data: JSON.stringify(selectedItems),
+                success: function (response) {
+                    // alert(response); // 서버로부터의 응답 메시지를 알림으로 표시(모달로 바꾸기)
+                    location.reload() //삭제완료 후 새로고침
+                },
+                error: function (xhr, status, error) {
+                    alert('오류가 발생했습니다. 다시 시도해주세요.');
+                    console.log(error);
+                }
+            });
+        });
     });
 });
-/*문의 목록*/
-function showList(inquiry) {
-    const $listResults = $("#inquiryTable tbody");
-    var text = "";
-    console.log("showlist");
-    // inquiries.forEach(inquiry => {
-        console.log("들어옴");
-        text += `
-            <tr>
-                <td>
-                    <!-- 체크박스 -->
-                    <div class="checkbox-wrapper-21">
-                        <label class="control control--checkbox">
-                            <input type="checkbox" id="select-all" class="substituted select-member" style="display: none;" />
-                            <div class="control__indicator"></div>
-                        </label>
-                    </div>
-                    <!-- 체크박스 -->
-                </td>
-                <td class="numbers">${inquiry.id}</td>
-                <td>${inquiry.inquiryType}</td>
-                <td>${inquiry.inquiryEmail}</td>
-                <td>${inquiry.inquiryPhoneNumber}</td>
-                <td>${inquiry.inquiryContent}</td>
-                <td>${inquiry.inquiryStatus}</td>
-                <!-- <td>2000.01.01 21:05:04</td>-->
-                <!-- <td><button class="show-detail" onclick="showModal()">상세보기</button></td> -->
-            </tr>
-        `;
-    // });
-    $listResults.append(text);
-}
-$(document).ready(function() {
-    // 페이지 번호 클릭 이벤트 처리
-    $(".page").on("click", function () {
-        page = $(this).text(); // 클릭한 페이지 번호 가져오기
-       loadInquiries(); // 문의사항 목록 조회 함수 호출
-    });
-})
-    // 문의사항 목록 조회 함수
-function loadInquiries() {
-    $.ajax({
-        url: '/admins/inquiry/list',
-        type: 'get',
-        // data: { page: page },
-        dataType: 'json',
-        success: function(result) {
-            console.log('페이지 처리 성공');
-            showList(result);
-        },
-        error: function(xhr, status, error) {
-            console.error('Error:', error);
-        }
-    });
-}
-
-
-
-

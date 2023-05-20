@@ -1,27 +1,28 @@
 package com.app.dodamdodam.domain;
 
-import com.app.dodamdodam.entity.event.EventBoard;
-import com.app.dodamdodam.entity.event.EventFile;
 import com.app.dodamdodam.type.EventType;
-import com.querydsl.core.annotations.QueryProjection;
-import lombok.*;
+import lombok.Builder;
+import lombok.Data;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
-@Component
 @Data
-@NoArgsConstructor
+@Component
 public class EventBoardDTO {
 
     /* 이벤트 보드 정보 다 받아오기*/
     private Long id;
     private String eventAddress;
     private String eventAddressDetail;
-    private LocalDate eventStartDate;
-    private LocalDate eventEndDate;
+    private String eventStartDate;
+    private String eventEndDate;
     private String eventIntroduction;
+
+    /*게시글 정보*/
     private String boardTitle;
     private String boardContent;
 
@@ -40,20 +41,19 @@ public class EventBoardDTO {
     /*댓글 정보*/
     List<EventReviewDTO> reviews;
     /*파일*/
-    private List<EventFile> eventFiles;
+    private List<EventFileDTO> eventFiles;
+    private List<MultipartFile> uploadFiles;
 
-    /*메인 이미지*/
-    private String eventFilePath;
-    private String eventFileName;
-    private String eventFileUuid;
-    private String eventFileSize;
+    /*만든날짜, 업뎃일*/
+    private LocalDateTime createdDate;
+    private LocalDateTime updatedDate;
 
-    private int endPage;
+    public EventBoardDTO() {
+        this.eventFiles = new ArrayList<>();
+    }
 
-    private boolean checkLike;
-
-    @QueryProjection
-    public EventBoardDTO(Long id, String eventAddress, String eventAddressDetail, LocalDate eventStartDate, LocalDate eventEndDate, String eventIntroduction, String boardTitle, String boardContent, int eventLikeNumber, EventType eventStatus, String eventBusinessNumber, String eventBusinessName, String eventBusinessTel, String eventBusinessEmail, MemberDTO memberDTO, List<EventReviewDTO> reviews, List<EventFile> eventFiles, String eventFilePath, String eventFileName, String eventFileUuid, String eventFileSize, int endPage, boolean checkLike) {
+    @Builder
+    public EventBoardDTO(Long id, String eventAddress, String eventAddressDetail, String eventStartDate, String eventEndDate, String eventIntroduction, String boardTitle, String boardContent, int eventLikeNumber, EventType eventStatus, String eventBusinessNumber, String eventBusinessName, String eventBusinessTel, String eventBusinessEmail, MemberDTO memberDTO, List<EventReviewDTO> reviews, List<EventFileDTO> eventFiles, List<MultipartFile> uploadFiles, LocalDateTime createdDate, LocalDateTime updatedDate) {
         this.id = id;
         this.eventAddress = eventAddress;
         this.eventAddressDetail = eventAddressDetail;
@@ -71,33 +71,18 @@ public class EventBoardDTO {
         this.memberDTO = memberDTO;
         this.reviews = reviews;
         this.eventFiles = eventFiles;
-        this.eventFilePath = eventFilePath;
-        this.eventFileName = eventFileName;
-        this.eventFileUuid = eventFileUuid;
-        this.eventFileSize = eventFileSize;
-        this.endPage = endPage;
-        this.checkLike = checkLike;
+        this.uploadFiles = uploadFiles;
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
     }
 
-    public EventBoard toEntity(){
-        return EventBoard.builder()
-                .boardTitle(boardTitle)
-                .boardContent(boardContent)
-                .eventAddress(eventAddress)
-                .eventAddressDetail(eventAddressDetail)
-                .eventStartDate(eventStartDate)
-                .eventEndDate(eventEndDate)
-                .eventBusinessNumber(eventBusinessNumber)
-                .eventBusinessTel(eventBusinessTel)
-                .eventBusinessEmail(eventBusinessEmail)
-                .eventBusinessName(eventBusinessName)
-                .eventFiles(eventFiles)
-                .eventFilePath(eventFilePath)
-                .eventFileName(eventFileName)
-                .eventFileSize(eventFileSize)
-                .eventFileUuid(eventFileUuid)
-                .build();
-    }
 
+
+
+
+
+    public void setMemberDTO(MemberDTO memberDTO) {
+        this.memberDTO = memberDTO;
+    }
 
 }

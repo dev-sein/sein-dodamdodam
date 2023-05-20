@@ -8,6 +8,8 @@ import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.entity.purchase.PurchaseFile;
 import com.app.dodamdodam.search.Inquiry.AdminInquirySearch;
 import com.app.dodamdodam.search.PurchaseBoardSearch;
+import com.app.dodamdodam.search.board.AdminPurchaseBoardSearch;
+import com.app.dodamdodam.search.board.AdminRecruitmentSearch;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
@@ -25,12 +27,17 @@ public interface PurchaseBoardService {
 //    저장
     public void register(PurchaseBoardDTO purchaseBoardDTO, ProductDTO productDTO, Long memberId);
 
-/*
 //    관리자 게시글 검색
-    public Page<PurchaseBoardDTO> findPurchaseBoardWithSearch_QueryDSL(AdminInquirySearch inquirySearch, Pageable pageable);
-*/
-    //관리자 : 문의사항 목록
+    public Page<PurchaseBoardDTO> findPurchaseBoardWithSearch_QueryDSL(Pageable pageable, AdminPurchaseBoardSearch adminPurchaseBoardSearch);
+
+    //관리자 : 판매 게시판 목록
     public Page<PurchaseBoardDTO> showList(Pageable pageable);
+
+    //관리자 : 판매 게시판 삭제
+    public void deleteAdminPurchaseBoard(List<Long> purchaseBoardIds);
+
+    //관리자 : 판매 게시판 상세
+    public PurchaseBoardDTO getAdminPurchaseBoardDetail(Long id);
 
     default PurchaseBoardDTO toPurchaseBoardDTO(PurchaseBoard purchaseBoard){
         return PurchaseBoardDTO.builder().id(purchaseBoard.getId())
@@ -106,11 +113,6 @@ public interface PurchaseBoardService {
                 .build();
 
 
-//        return MemberDTO.builder().id(member.getId()).memberId(member.getMemberId()).memberEmail(member.getMemberEmail())
-//            .memberName(member.getMemberName()).memberPhone(member.getMemberPhone()).memberPoint(member.getMemberPoint())
-//            .memberStatus(member.getMemberStatus()).address(member.getAddress().getAddress()).addressDetail(member.getAddress().getAddressDetail())
-//                .memberPassword(member.getMemberPassword()).createdDate(member.getCreatedDate()).participationCount(member.getParticipationCount())
-//                .build();
     }
     default Product toProductEntity(ProductDTO productDTO) {
         return Product.builder().id(productDTO.getId())

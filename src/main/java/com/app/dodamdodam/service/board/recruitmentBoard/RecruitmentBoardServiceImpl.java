@@ -1,10 +1,15 @@
 package com.app.dodamdodam.service.board.recruitmentBoard;
 
+import com.app.dodamdodam.domain.InquiryDTO;
 import com.app.dodamdodam.domain.RecruitmentBoardFileDTO;
 import com.app.dodamdodam.domain.RecruitmentFileDTO;
 import com.app.dodamdodam.domain.RecruitmentMemberDTO;
+import com.app.dodamdodam.entity.free.FreeBoard;
+import com.app.dodamdodam.entity.inquiry.Inquiry;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
 import com.app.dodamdodam.repository.board.recruitment.RecruitmentBoardRepository;
+import com.app.dodamdodam.search.Inquiry.AdminInquirySearch;
+import com.app.dodamdodam.search.board.AdminRecruitmentSearch;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -14,6 +19,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -43,10 +49,38 @@ public class RecruitmentBoardServiceImpl implements RecruitmentBoardService {
                 .stream().map(recruitmentBoard -> toRecruitmentBoardFileDto(recruitmentBoard)).collect(Collectors.toList());
     }
 
-//    @Override
-//    public Page<RecruitmentBoardFileDTO> showList(Pageable pageable) {
-//            Page<RecruitmentBoard> recruitmentBoardPage = recruitmentBoardRepository.findAllWithPaging(PageRequest.of(1, 10));
-//          //  List<RecruitmentFileDTO> recruitmentFileDTOS = recruitmentBoardPage.get().map(this::toRecruitmentFileDto).collect(Collectors.toList());
-//            return new PageImpl<>(recruitmentFileDTOS, pageable, recruitmentBoardPage.getTotalElements());
-//        }
+    //  관리자 목록
+    @Override
+    public Page<RecruitmentBoardFileDTO> showList(Pageable pageable) {
+            Page<RecruitmentBoard> recruitmentBoardPage = recruitmentBoardRepository.findAllWithPaging(pageable);
+            List<RecruitmentBoardFileDTO> recruitmentFileDTOS = recruitmentBoardPage.get().map(this::toRecruitmentBoardFileDto).collect(Collectors.toList());
+            return new PageImpl<>(recruitmentFileDTOS, pageable, recruitmentBoardPage.getTotalElements());
+        }
+
+     //    관리자 검색
+    @Override
+    public Page<RecruitmentBoardFileDTO> showAdminRecruitmentWithSearch_QueryDSL(Pageable pageable, AdminRecruitmentSearch adminRecruitmentSearch) {
+            Page<RecruitmentBoard> recruitmentBoardPage = recruitmentBoardRepository.findAdminRecruitmentBoardWithPaging_QueryDSL(adminRecruitmentSearch, pageable);
+            List<RecruitmentBoardFileDTO> recruitmentFileDTOS = recruitmentBoardPage.getContent().stream()
+                    .map(this::toRecruitmentBoardFileDto)
+                    .collect(Collectors.toList());
+            return new PageImpl<>(recruitmentFileDTOS, pageable, recruitmentBoardPage.getTotalElements());
+        }
+
+    //  관리자 삭제
+    @Override
+    public void deleteRecruitmentBoard(List<Long> recruitmentBoardIds) {
+        for(Long recruitmentBoardId: recruitmentBoardIds){
+            recruitmentBoardRepository.deleteById(recruitmentBoardId);
+        }
+    }
+
+    //관리자 상세
+    @Override
+    public RecruitmentBoardFileDTO getAdminRecruitmentBoardDetail(Long id) {
+        Optional<RecruitmentBoard> recruitmentBoard = recruitmentBoardRepository.findById(id);
+        return toRecruitmentBoardFileDto(recruitmentBoard.get());
+    }
+
+
 }

@@ -59,19 +59,24 @@ public class MemberQueryDslImpl implements MemberQueryDsl{
     }
     @Override //관리자 멤버 검색
     public Page<Member> findAdminMemberWithPaging_QueryDSL(AdminMemberSearch adminMemberSearch, Pageable pageable) {
-        BooleanExpression memberNameEq = adminMemberSearch.getMemberName() == null ? null : member.memberName.eq(adminMemberSearch.getMemberName());
-        BooleanExpression memberEmailEq = adminMemberSearch.getMemberEmail() == null ? null : member.memberEmail.eq(adminMemberSearch.getMemberEmail());
-        BooleanExpression memberPhoneEq = adminMemberSearch.getMemberPhone() == null ? null : member.memberPhone.eq(adminMemberSearch.getMemberPhone());
-        BooleanExpression memberStatusEq = adminMemberSearch.getMemberStatus() == null ? null : member.memberStatus.eq(adminMemberSearch.getMemberStatus());
+        BooleanExpression searchAll = null;
+        if (adminMemberSearch.getMemberName() != null || adminMemberSearch.getMemberEmail() != null || adminMemberSearch.getMemberPhone() != null) {
+            BooleanExpression searchName = adminMemberSearch.getMemberName() != null ? member.memberName.contains(adminMemberSearch.getMemberName()) : null;
+            BooleanExpression searchEmail = adminMemberSearch.getMemberEmail() != null ? member.memberEmail.contains(adminMemberSearch.getMemberEmail()) : null;
+            BooleanExpression searchPhoneNumber = adminMemberSearch.getMemberPhone() != null ? member.memberPhone.contains(adminMemberSearch.getMemberPhone()) : null;
 
+            searchAll = searchName.or(searchEmail).or(searchPhoneNumber);
+        }
+        
+        
         List<Member> adminMembes = query.select(member)
                 .from(member)
-                .where(memberEmailEq, memberPhoneEq, memberNameEq, memberStatusEq)
+                .where(searchAll)
                 .orderBy(member.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
-        Long count = query.select(member.count()).from(member).fetchOne();
+        Long count = query.select(member.count()).from(member).where(searchAll).fetchOne();
 
         return new PageImpl<>(adminMembes, pageable, count);
     }
@@ -94,7 +99,7 @@ public class MemberQueryDslImpl implements MemberQueryDsl{
         List<Member> members = query.select(member)
                 .from(member)
                 .orderBy(member.id.desc())
-                .offset(pageable.getOffset() -1)
+                .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
 

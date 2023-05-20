@@ -1,6 +1,6 @@
 $('#chat_modal').hide();
-// $('#chat_room').hide();
-$('#chat_room').show();
+$('#chat_room').hide();
+// $('#chat_room').show();
 
 $('.channel_chat_container').on('click', function(){
     $('#chat_modal').fadeIn(500);

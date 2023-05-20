@@ -2,12 +2,10 @@
 
 body {
     font-family: 'Noto Sans KR', sans-serif;
-    src: local ("NotoSansKR");
     color: #333333;
     font-size: 15px;
     font-weight: 400;
     line-height: 1.5;
-
 }
 
 a {
@@ -198,7 +196,6 @@ img {
 }
 .nav-trigger-ul {
     padding: 80px 0;
-    
     position: fixed;
     left: 0;
     top: 0;
@@ -363,7 +360,7 @@ img {
 }
 
 .form-field label {
-    display: block;
+    display: inline-flex;
     font-size: 13px;
     margin-bottom: 10px;
     font-weight: 600;
@@ -439,7 +436,7 @@ option {
 }
 
 .form-field label {
-    display: block;
+    display: inline-flex;
     font-size: 13px;
     margin-bottom: 10px;
     font-weight: 600;

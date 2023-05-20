@@ -16,6 +16,7 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
+import static com.app.dodamdodam.entity.free.QFreeBoard.freeBoard;
 import static com.app.dodamdodam.entity.member.QMember.member;
 import static com.app.dodamdodam.entity.point.QPoint.point;
 
@@ -35,7 +36,7 @@ public class PointQueryDslImpl implements PointQueryDsl {
         List<Point> pointList = query.select(point)
                 .from(point)
                 .orderBy(point.id.desc())
-                .offset(pageable.getOffset()-1)
+                .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
 
@@ -46,22 +47,29 @@ public class PointQueryDslImpl implements PointQueryDsl {
     }
 
     @Override //관리자 - 멤버 id와 이름 조회
-    public Page<Point> findPointMemberIdWithSearch_QueryDSL(AdminPointSearch pointSearch, Pageable pageable) {
-        BooleanExpression pointAmountEq = pointSearch.getPointAmount() == null ? null : point.pointAmount.eq(pointSearch.getPointAmount());
-        BooleanExpression pointStatusEq = pointSearch.getPointStatus() == null ? null : point.pointStatus.eq(pointSearch.getPointStatus());
-        BooleanExpression memberIdEq = pointSearch.getMemberId() == null ? null : point.member.memberId.eq(pointSearch.getMemberId());
-        BooleanExpression memberNameEq = pointSearch.getMemberName() == null ? null : member.memberId.eq(pointSearch.getMemberName());
+    public Page<Point> findPointMemberIdWithSearch_QueryDSL(AdminPointSearch adminPointSearchpointSearch, Pageable pageable) {
+        BooleanExpression searchAll = null;
+        if (adminPointSearchpointSearch.getMemberId() != null || adminPointSearchpointSearch.getMemberName() != null || adminPointSearchpointSearch.getPointAmount() != null) {
+            BooleanExpression searchId = adminPointSearchpointSearch.getMemberId() != null ? point.member.memberId.contains(adminPointSearchpointSearch.getMemberId()) : null;
+            BooleanExpression searchName = adminPointSearchpointSearch.getMemberName() != null ? point.member.memberName.contains(adminPointSearchpointSearch.getMemberName()) : null;
+            BooleanExpression searchAmount = adminPointSearchpointSearch.getPointAmount() != null ? point.pointAmount.eq(adminPointSearchpointSearch.getPointAmount()) : null;
 
+
+            searchAll = searchId.or(searchName).or(searchAmount);
+        }
+
+        
+        
         List<Point> points = query.select(point)
                 .from(point)
                 .join(point.member)
                 .fetchJoin()
-                .where(pointAmountEq, pointStatusEq, memberIdEq, memberNameEq)
+                .where(searchAll)
                 .orderBy(point.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
-        Long count = query.select(point.count()).from(point).fetchOne();
+        Long count = query.select(point.count()).from(point).where(searchAll).fetchOne();
 
         return new PageImpl<>(points, pageable, count);
     }

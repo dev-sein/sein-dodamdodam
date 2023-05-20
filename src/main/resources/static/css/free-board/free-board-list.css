@@ -263,7 +263,7 @@ strong {
     opacity: 1;
 }
 
-/* 이미지 사이즈 */
+/* ì´ë¯¸ì§€ ì‚¬ì´ì¦ˆ */
 .free-board-image.image-detail img {
     width: 252px;
     height: 170px;
@@ -333,11 +333,11 @@ strong {
 em.like-count {
     float: left;
     padding-left: 15px;
-    background: url('/static/images/free-board/icon_red_heart.png') no-repeat 0 center;
+    background: url('/images/free-board/icon_red_heart.png') no-repeat 0 center;
     background-size: 11px 10px;
 }
 
-/* 작성하기 버튼 */
+/* ìž‘ì„±í•˜ê¸° ë²„íŠ¼ */
 .btn-wrap .btn-write {
     display: block;
     width: 100%;
@@ -351,7 +351,14 @@ em.like-count {
     text-align: center;
 }
 
+.pushed{
+    background-color: #fff;
+}
 
+.pushed a{
+    background-color: #0066338f;
+    color: #fff;
+}
 
 /* side */
 
@@ -446,7 +453,7 @@ button:not(:disabled) {
     height: 40px;
     font-size: 14px;
     line-height: 20px;
-    padding-top: 5px;
+    padding-top: 8px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -455,9 +462,12 @@ button:not(:disabled) {
     word-wrap: break-word;
 }
 
-/* 마우스오버 */
+/* ë§ˆìš°ìŠ¤ì˜¤ë²„ */
 li.bar-button a:hover {
     background-color: #00663314;
+    color: #000;
+    /*background-color: #0066338f;*/
+    /*color: #fff;*/
 }
 
 /* page-list */

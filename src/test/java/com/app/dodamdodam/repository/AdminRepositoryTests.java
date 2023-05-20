@@ -16,7 +16,6 @@ import com.app.dodamdodam.repository.point.PointRepository;
 import com.app.dodamdodam.search.board.AdminFreeBoardSearch;
 import com.app.dodamdodam.search.board.AdminPurchaseBoardSearch;
 import com.app.dodamdodam.search.board.AdminRecruitmentSearch;
-import com.app.dodamdodam.search.member.AdminMemberSearch;
 import com.app.dodamdodam.type.BannerType;
 import com.app.dodamdodam.type.CategoryType;
 import com.app.dodamdodam.type.MemberStatus;
@@ -30,6 +29,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.test.annotation.Rollback;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -60,6 +60,25 @@ public class AdminRepositoryTests {
     public EventBoardRepository eventBoardRepository;
 
     ArrayList<CategoryType> categoryTypes = new ArrayList<CategoryType>(Arrays.asList(CategoryType.ALL, CategoryType.CULTURE, CategoryType.DAILY, CategoryType.EVENT, CategoryType.PURCHASE, CategoryType.RECRUITMENT));
+
+//    @Test
+//    public void eventBoardsaveTest(){
+//        EventBoard eventBoard = new EventBoard("모집 게시글 제목", LocalDateTime.now(), )
+//    }
+
+    /*모집 게시글 등록*/
+    @Test
+    public void saveTest1(){
+//        for (int i=1; i<=100; i++){
+//            RecruitmentBoard recruitmentBoard = new RecruitmentBoard("모집 게시글 제목" + i, LocalDate.now(),10 + i, "www.naver.com", "1234", "경기도 성남시", "분당구 수내동");
+//            memberRepository.findById(2L).ifPresent(member -> recruitmentBoard.setMember(member));
+//            recruitmentBoardRepository.save(recruitmentBoard);
+//        }
+        RecruitmentBoard recruitmentBoard = new RecruitmentBoard("모집 게시글 제목", LocalDate.now(),10, "https://open.kakao.com/o/ggmF0Jkf", "1234", "경기도 성남시 분당구 수내동", "탄천앞");
+        memberRepository.findById(201L).ifPresent(member -> recruitmentBoard.setMember(member));
+//        recruitmentBoard.addRecruitment();
+        recruitmentBoardRepository.save(recruitmentBoard);
+    }
 
     /*목록 조회*/
     @Test //멤버 페이징 조회
@@ -100,7 +119,9 @@ public class AdminRepositoryTests {
 
     /*상세 조회*/
     @Test //자유게시글 상세
-    public void findFreeBoardById(){ freeBoardRepository.findById(1994L).ifPresent(freeBoard -> log.info(freeBoard.toString())); }
+    public void findFreeBoardById(){
+        freeBoardRepository.findById(401L).stream().map(FreeBoard::getFreeFiles).forEach(freeFiles -> log.info(freeFiles.toString()));
+        freeBoardRepository.findById(401L).ifPresent(freeBoard -> log.info(freeBoard.toString())); }
 
     @Test //판매게시글 상세
     public void findPurchaseBoardById(){
@@ -181,18 +202,18 @@ public class AdminRepositoryTests {
         log.info("============"+purchaseBoardAdminPages.getContent());
     }
 
-    @Test //관리자 멤버검색
-    public void findAdminMemberWithPaging_QueryDSL_Test(){
-        AdminMemberSearch adminMemberSearch = new AdminMemberSearch();
-//        adminPurchaseBoardSearch.setBoardTitle("자유 게시글 제목47");
-//        adminFreeBoardSearch.setMemberName("테스트");
-//        adminMemberSearch.setMemberName("판매 게시글 제목1");
-//        adminMemberSearch.setMemberPhone("판매 게시글 제목1");
-//        adminMemberSearch.setMemberEmail("판매 게시글 제목1");
-        adminMemberSearch.setMemberStatus(MemberStatus.NORMAL);
-        Page<Member> memberAdminPage = memberRepository.findAdminMemberWithPaging_QueryDSL(adminMemberSearch, PageRequest.of(0, 10));
-        log.info("============"+memberAdminPage.getContent());
-    }
+//    @Test //관리자 멤버검색
+//    public void findAdminMemberWithPaging_QueryDSL_Test(){
+//        AdminMemberSearch adminMemberSearch = new AdminMemberSearch();
+////        adminPurchaseBoardSearch.setBoardTitle("자유 게시글 제목47");
+////        adminFreeBoardSearch.setMemberName("테스트");
+////        adminMemberSearch.setMemberName("판매 게시글 제목1");
+////        adminMemberSearch.setMemberPhone("판매 게시글 제목1");
+////        adminMemberSearch.setMemberEmail("판매 게시글 제목1");
+//        adminMemberSearch.setMemberStatus(MemberStatus.NORMAL);
+//        Page<Member> memberAdminPage = memberRepository.findAdminMemberWithPaging_QueryDSL(adminMemberSearch, PageRequest.of(0, 10));
+//        log.info("============"+memberAdminPage.getContent());
+//    }
 
 
 }

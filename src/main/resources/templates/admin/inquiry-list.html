@@ -40,28 +40,28 @@
             <div class="menu-bar">
                 <ul>
                     <li class="menu">
-                        <a class="menus" href="#">홈</a>
+                        <a class="menus" href="/admins/home">홈</a>
                     </li>
                     <li class="menu">
-                        <a class="menus" href="#">회원 목록</a>
+                        <a class="menus" href="/admins/member/list">회원 목록</a>
                     </li>
                     <li class="menu">
-                        <a class="menus" href="#">이벤트 게시글</a>
+                        <a class="menus" href="/admins/event-board-list">이벤트 게시글</a>
                     </li>
                     <li class="menu">
-                        <a class="menus" href="#">모집 게시글</a>
+                        <a class="menus" href="/admins/recruitment-board/list">모집 게시글</a>
                     </li>
                     <li class="menu">
-                        <a class="menus" href="#">판매 게시글</a>
+                        <a class="menus" href="/admins/purchase-board/list">판매 게시글</a>
                     </li>
                     <li class="menu">
-                        <a class="menus" href="#">자유 게시글</a>
+                        <a class="menus" href="/admins/free-board/list">자유 게시글</a>
                     </li>
                     <li class="menu">
-                        <a class="menus" href="#">문의사항 관리</a>
+                        <a class="menus" href="/admins/inquiry/list">문의사항 관리</a>
                     </li>
                     <li class="menu">
-                        <a class="menus" href="#">포인트 내역</a>
+                        <a class="menus" href="/admins/point/list">포인트 내역</a>
                     </li>
                     <li class="menu">
                         <a class="menus" href="#">배너신청 현황</a>
@@ -109,10 +109,10 @@
                             <!-- <input type="checkbox" id="select-all" class="substituted"> -->
                         </th>
                         <th class="number">번호</th>
-                        <th class="title">문의 유형</th>
-                        <th class="writer">이메일 주소</th>
-                        <th class="views">휴대폰 번호</th>
-                        <th class="like-count">내용</th>
+                        <th class="views">문의 유형</th>
+                        <th class="like-count">문의 내용</th>
+                        <th class="writer inquiry-email">이메일 주소</th>
+                        <th class="title">휴대폰 번호</th>
                         <th class="register-time">답변 여부</th>
                         <!-- <th class="detail-top">상세보기</th> -->
                     </tr>
@@ -120,7 +120,7 @@
                     <tbody>
                     </tbody>
                 </table>
-              
+
                 <div class="pages-wrapper">
                     <div class="arrow-left"></div>
                     <div class="page active">1</div>
@@ -141,8 +141,9 @@
     </main>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+</script>
 <script src="/js/admin/admin.js"></script>
-<script src="/js/admin/user.js"></script>
-<script src="/js/admin/checkbox.js"></script>
 <script src="/js/admin/inquiry-list.js"></script>
+<script src="/js/admin/checkbox.js"></script>
 </html>

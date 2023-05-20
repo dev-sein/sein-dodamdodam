@@ -6,9 +6,8 @@ import lombok.Data;
 
 @Data
 public class AdminInquirySearch {
-    private InquiryType inquiryType;
     private String inquiryEmail;
+    private String inquiryContent;
     private String inquiryPhoneNumber;
-    private InquiryStatus inquiryStatus;
 
 }

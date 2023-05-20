@@ -68,7 +68,7 @@ public class BoardRepositoryTests {
 //            recruitmentBoardRepository.save(recruitmentBoard);
 //        }
         RecruitmentBoard recruitmentBoard = new RecruitmentBoard("모집 게시글 제목", LocalDate.now(),10, "https://open.kakao.com/o/ggmF0Jkf", "1234", "경기도 성남시 분당구 수내동", "탄천앞");
-        memberRepository.findById(10L).ifPresent(member -> recruitmentBoard.setMember(member));
+        memberRepository.findById(201L).ifPresent(member -> recruitmentBoard.setMember(member));
 //        recruitmentBoard.addRecruitment();
         recruitmentBoardRepository.save(recruitmentBoard);
     }
@@ -194,6 +194,12 @@ public class BoardRepositoryTests {
         Pageable pageable = PageRequest.of(0, 10);
         freeBoardRepository.findFreeBoardListByCategoryTypeAndMemberId_QueryDSL(pageable,CategoryType.CULTURE, 5L).stream().map(FreeBoard::toString).forEach(log::info);
     }
+
+    /* 자유게시글 좋아요 Top5 */
+//    @Test
+//    public void findTop5(){
+//        freeBoardRepository.findFreeBoardListByLikeCount().stream().map(FreeBoard::toString).forEach(log::info);
+//    }
 
     /* 자유 게시글 상세 */
     @Test

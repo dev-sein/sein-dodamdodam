@@ -1,29 +1,79 @@
+const $listResults = $("#purchaseboard-table tbody");
+let page = 0;
 
-let page = 1;
+listService = (function() {
+    function list(page, callback) {
+        $.ajax({
+            url: '/admins/purchase-board/list-content',
+            type: 'get',
+            data: { page: page }, // 수정: page를 객체 형태로 전달
+            success: function(list) {
+                if (callback) {
+                    console.log("들어옴");
+                    callback(list);
+                }
+            }
+        });
+    }
 
-$(document).ready(function() {
-    $.ajax({
-        url: '/admins/purchase-board/list',
-        type: 'post',
-        dataType: 'json',
-        success: function(result) {
-            console.log("success들어옴");
-            console.log(result); //사용할 content 값 출력
-            result.content.forEach((purchaseBoard) => showList(purchaseBoard));
-            // loadPages();
+    return {
+        list: list
+    };
+})();
 
-        },
-        error: function(xhr, status, error) {
-            console.error('Error:', error);
+getList(page);
+
+
+$(".pages-wrapper").on("click", ".page", function(e) {
+    e.preventDefault();
+    console.log("page 들어옴");
+    $listResults.empty();
+    const targetPage = $(this).text();
+
+    if ($(this).hasClass("arrow-left")) {
+        if (page > 0) {
+            page--;
         }
-    });
+    } else if ($(this).hasClass("arrow-right")) {
+        page++;
+    } else {
+        page = parseInt(targetPage) - 1;
+    }
+    getList(page);
 });
-/*문의 목록*/
-function showList(purchaseBoard) {
-    const $listResults = $("#purchaseboard-table tbody");
-    var text = "";
-    console.log("showlist");
-        console.log("들어옴");
+
+
+function displayPagination(totalPages) {
+    const $pagination = $(".pages-wrapper");
+    $pagination.empty();
+
+    const maxDisplayedPages = 10; // 한 번에 표시할 페이지 수
+    const startPage = Math.floor(page / maxDisplayedPages) * maxDisplayedPages; // 시작 페이지 번호
+
+    if (page > 0) {
+        $pagination.append("<div class='arrow-left page'></div>");
+    }
+
+    for (let i = startPage; i < startPage + maxDisplayedPages && i < totalPages; i++) {
+        if (i === page) {
+            $pagination.append("<div class='page active'>" + (i + 1) + "</div>");
+        } else {
+            $pagination.append("<div class='page'>" + (i + 1) + "</div>");
+        }
+    }
+
+    if (page < totalPages - 1) {
+        $pagination.append("<div class='arrow-right page'></div>");
+    }
+}
+
+
+function listText(list) {
+    console.log("list text 들어옴");
+    let purchaseBoardDTOS = list.content;
+    $(purchaseBoardDTOS).each((i, purchaseBoard) => {
+        console.log("text 들어옴");
+        var text = "";
         text += `
             <tr>
                 <td>
@@ -40,103 +90,57 @@ function showList(purchaseBoard) {
                 <td>${purchaseBoard.boardTitle}</td>
                 <td>${purchaseBoard.memberDTO.memberName}</td>
                 <td>${purchaseBoard.productDTO.productCount}</td>
-                <td>${purchaseBoard.productDTO.productPrice}</td>
+                <td>${purchaseBoard.productDTO.productPrice}원</td>
                 <td>${purchaseBoard.createdDate}</td>
                 <!-- <td>2000.01.01 21:05:04</td>-->
                 <!-- <td><button class="show-detail" onclick="showModal()">상세보기</button></td> -->
             </tr>
         `;
-    // });
-    $listResults.append(text);
-}
-$(document).ready(function() {
-    // 페이지 번호 클릭 이벤트 처리
-    $(".page").on("click", function () {
-        page = $(this).text(); // 클릭한 페이지 번호 가져오기
-        // loadPages(); // 문의사항 목록 조회 함수 호출
+        $listResults.append(text);
     });
-})
-//     // 문의사항 목록 조회 함수
-// function loadPages() {
-//     $.ajax({
-//         url: '/admins/point/list',
-//         type: 'get',
-//         // data: { page: page },
-//         dataType: 'json',
-//         success: function(result) {
-//             console.log('페이지 처리 성공');
-//             showList(result);
-//         },
-//         error: function(xhr, status, error) {
-//             console.error('Error:', error);
-//         }
-//     });
-// }
+}
+
+function getList(page) {
+    console.log("getList 들어옴");
+    listService.list(page, function(list) { // 수정: page를 인자로 전달
+        listText(list);
+        displayPagination(list.totalPages);
+    });
+}
 
 
-// const doSearch = (searchProduct, page) => {
-//     let pageNum;
-//     if(page) {
-//         pageNum = $(page).data("page");
-//         searchProduct.page = pageNum;
-//     }
+/*항목 삭제*/
+$(document).ready(function() {
+    // 삭제 버튼 클릭 시
+    $('.delete-button').click(function() {
+        var selectedItems = [];
+        // 체크된 항목의 ID를 배열에 추가
+        $('input.substituted.select-member:checked').each(function() {
+            var inquiryId = $(this).closest('tr').find('.numbers').text();
+            selectedItems.push(parseInt(inquiryId));
+        });
 
-//     console.log(searchProduct);
-
-//     $doAjax("GET", SEARCH_URL, searchProduct, (result) => {
-//         console.log(result);
-//         $itemCount.text(result.totalElements);
-
-//         // 결과 append 전 내용 비우기
-//         $itemWrap.empty();
-
-//         // 결과 append
-//         result.content.forEach((e) => appendList(e));
-
-//         // 페이징 버튼 생성
-//         showPage(result);
-//     });
-// }
-
-// // 페이지 로딩 시 검색 요청
-// doSearch({});
-
-// function showPage(result) {
-//     let pageable = result.pageable;
-//     let pageNumber = pageable.pageNumber;
-//     let count = Math.floor(pageNumber / PAGE_AMOUNT);
-//     // 7 page / 5 -> floor(1.4) = 1 -> 1 * 5 + 1 -> startPage = 6
-//     let startPage = count * PAGE_AMOUNT;
-//     let endPage = startPage + PAGE_AMOUNT;
-
-//     endPage = endPage > result.totalPages ? result.totalPages : endPage;
-
-//     console.log("end page : " + endPage);
-
-//     let hasPrev = startPage > 1;
-//     // 170 page / 5 = 24 -> 171 /
-//     let hasNext = endPage < result.totalPages;
-
-//     // 페이징 HTML 태그를 추가하는 코드 작성
-//     let paging = "";
-//     paging += `<div class="paging" style="text-align: center">`;
-
-//     if (hasPrev) {
-//         paging += `<a class="changePage" data-page="${startPage}" 
-//                         onclick="preventDefault(this)"><span><</span></a>`;
-//     }
-//     for (let i = startPage + 1; i < endPage + 1; i++) {
-//         let page = i;
-//         if (pageNumber + 1 != page) {
-//             paging += `<a class="changePage" data-page="${page}" onclick="doSearch(searchProduct, this)"><span>${page}</span></a>`;
-//         } else {
-//             paging += `<span id="currentPage">${page}</span>`;
-//         }
-//     }
-//     if (hasNext) {
-//         paging += `<a class="changePage" data-page="${endPage}" onclick="doSearch(searchProduct)"><span>></span></a>`
-//     }
-
-//     $('.paging-div').html(paging);
-// }
-
+        // 선택된 항목이 없는 경우 경고창을 표시하고 함수를 종료
+        if (selectedItems.length === 0) {
+            alert('삭제할 항목을 선택해주세요.');
+            return;
+        }
+        $('#delete-modal').show(); //삭제 모달창 열기
+        $('#confirm-btn').click(function() { //모달창의 확인 버튼 눌렀을 경우 데이터 삭제
+            $.ajax({
+                url: '/admins/purchase-board/delete',
+                type: 'DELETE',
+                contentType: 'application/json',
+                data: JSON.stringify(selectedItems),
+                success: function (response) {
+                    // alert(response); // 서버로부터의 응답 메시지를 알림으로 표시(모달로 바꾸기)
+                    location.reload() //삭제완료 후 새로고침
+                },
+                error: function (xhr, status, error) {
+                    alert('오류가 발생했습니다. 다시 시도해주세요.');
+                    console.log(error);
+                }
+            });
+        });
+    });
+});

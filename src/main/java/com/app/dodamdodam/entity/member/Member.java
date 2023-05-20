@@ -68,7 +68,7 @@ public class Member extends Period {
     private List<EventBoard> eventBoards;
 
     @Builder
-    public Member(Long id, String memberId, String memberPassword, String memberName, String memberEmail, String memberPhone, Address address, MemberStatus memberStatus, MemberType memberType, Role memberRole) {
+    public Member(Long id, String memberId, String memberPassword, String memberName, String memberEmail, String memberPhone, Address address, MemberStatus memberStatus, Integer memberPoint, int participationCount, MemberType memberType, Role memberRole, List<EventBoard> eventBoards) {
         this.id = id;
         this.memberId = memberId;
         this.memberPassword = memberPassword;
@@ -77,8 +77,11 @@ public class Member extends Period {
         this.memberPhone = memberPhone;
         this.address = address;
         this.memberStatus = memberStatus;
+        this.memberPoint = memberPoint;
+        this.participationCount = participationCount;
         this.memberType = memberType;
         this.memberRole = memberRole;
+        this.eventBoards = eventBoards;
     }
 
 //    @Builder

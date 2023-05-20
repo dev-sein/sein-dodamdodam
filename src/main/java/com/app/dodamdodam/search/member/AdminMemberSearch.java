@@ -8,5 +8,4 @@ public class AdminMemberSearch {
     private String memberName;
     private String memberEmail;
     private String memberPhone;
-    private MemberStatus memberStatus;
 }

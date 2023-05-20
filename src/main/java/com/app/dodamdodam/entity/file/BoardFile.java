@@ -13,9 +13,10 @@ import javax.persistence.*;
 @Inheritance(strategy = InheritanceType.JOINED)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 //@AllArgsConstructor
+@Table(name="TBL_BOARD_FILE")
 @DynamicInsert
 @DynamicUpdate
-public class BoardFile {
+public abstract class BoardFile {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;

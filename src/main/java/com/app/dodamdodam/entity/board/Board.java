@@ -2,6 +2,7 @@ package com.app.dodamdodam.entity.board;
 
 import com.app.dodamdodam.audit.Period;
 import lombok.*;
+import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
 
@@ -10,6 +11,7 @@ import javax.persistence.*;
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "TBL_BOARD")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@DynamicInsert
 public class Board extends Period {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
@@ -25,10 +27,14 @@ public class Board extends Period {
         this.boardContent = boardContent;
     }
 
+    public Board(String boardTitle, String boardContent) {
+        this.boardTitle = boardTitle;
+        this.boardContent = boardContent;
+    }
+
     public Board(Long id, String boardTitle, String boardContent) {
         this.id = id;
         this.boardTitle = boardTitle;
         this.boardContent = boardContent;
     }
-
 }
