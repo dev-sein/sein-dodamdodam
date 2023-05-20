@@ -154,7 +154,7 @@ let sel_files = [];  // 전역 변수로 이동
 $(document).ready(function(){
     $("#btnAtt").on("change", function(){ // input type file 변경 이벤트
         var formData = new FormData();
-        var inputFile = $("input[name='eventFiles1']");
+        var inputFile = $("input[name='eventFiles']");
         var files = inputFile[0].files;
 
         for(var i = 0; i < files.length; i++){

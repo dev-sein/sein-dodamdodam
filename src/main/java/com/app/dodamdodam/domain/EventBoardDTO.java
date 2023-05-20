@@ -2,10 +2,10 @@ package com.app.dodamdodam.domain;
 
 import com.app.dodamdodam.type.EventType;
 import com.querydsl.core.annotations.QueryProjection;
-import lombok.*;
+import lombok.Builder;
+import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +52,7 @@ public class EventBoardDTO {
         this.eventFiles = new ArrayList<>();
     }
 
-
+    @QueryProjection
     public EventBoardDTO(Long id, String eventAddress, String eventAddressDetail, String eventStartDate, String eventEndDate, String eventIntroduction, String boardTitle, String boardContent, int eventLikeNumber, EventType eventStatus, String eventBusinessNumber, String eventBusinessName, String eventBusinessTel, String eventBusinessEmail, MemberDTO memberDTO, List<EventReviewDTO> reviews, List<EventFileDTO> eventFiles, List<MultipartFile> uploadFiles, LocalDateTime createdDate, LocalDateTime updatedDate) {
         this.id = id;
         this.eventAddress = eventAddress;
@@ -76,7 +76,6 @@ public class EventBoardDTO {
         this.updatedDate = updatedDate;
     }
 
-    @QueryProjection
 
 
 

@@ -12,6 +12,8 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
+import static com.app.dodamdodam.entity.banner.QBannerApply.bannerApply;
+
 
 @RequiredArgsConstructor
 public class BannerqueryDslImpl implements BannerqueryDsl {

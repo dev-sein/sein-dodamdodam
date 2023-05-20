@@ -2,7 +2,6 @@ package com.app.dodamdodam.service.board.freeBoard;
 
 import com.app.dodamdodam.domain.FreeBoardFileDTO;
 import com.app.dodamdodam.entity.free.FreeBoard;
-import com.app.dodamdodam.entity.free.FreeReply;
 import com.app.dodamdodam.repository.board.free.FreeBoardRepository;
 import com.app.dodamdodam.search.FreeBoardSearch;
 import com.app.dodamdodam.type.CategoryType;
@@ -47,9 +46,8 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 
     /* 자유 게시글 상세 */
     @Override
-    public FreeBoardFileDTO getFreeBoardById(Long boardId) {
-        FreeBoardFileDTO freeBoardFileDTO = toFreeBoardFileDTO(freeBoardRepository.findFreeBoardAndFreeFilesById_QueryDSL(boardId).get());
-        return freeBoardFileDTO;
+    public Optional<FreeBoard> getFreeBoardById(Long boardId) {
+        return freeBoardRepository.findFreeBoardAndFreeFilesById_QueryDSL(boardId);
     }
 
     /* 자유 게시글 수정 */
@@ -68,6 +66,13 @@ public class FreeBoardServiceImpl implements FreeBoardService {
         freeBoardRepository.findById(board.getId()).ifPresent(freeBoard -> freeBoardRepository.delete(freeBoard));
     }
 
+    /* 관리자 자유 게시글 목록 */
+    @Override
+    public Page<FreeBoardFileDTO> getAdminFreeBoardList(Pageable pageable) {
+       Page<FreeBoard> freeBoardPage = freeBoardRepository.findAllFreeBoardList_QueryDSL(pageable);
+       List<FreeBoardFileDTO> freeBoardFileDTOS = freeBoardPage.get().map(this::toFreeBoardFileDTO).collect(Collectors.toList());
+        return new PageImpl<>(freeBoardFileDTOS, pageable, freeBoardPage.getTotalElements());
+    }
 
     /* 자유 게시글 Top5 */
     @Override
@@ -81,25 +86,6 @@ public class FreeBoardServiceImpl implements FreeBoardService {
     @Override
     public List<FreeBoardFileDTO> getFreeBoardsBySearch(Pageable pageable, CategoryType categoryType ,FreeBoardSearch freeBoardSearch) {
         return freeBoardRepository.findFreeBoardBySearchWithPaging_QueryDSL(freeBoardSearch, categoryType, pageable).stream().map(freeBoard -> toFreeBoardFileDTO(freeBoard)).collect(Collectors.toList());
-    }
-
-
-    /* 자유 게시글 댓글 작성 */
-    @Override
-    public void saveFreeBoardReply(FreeReply freeReply, Long boardId, Long memberId) {
-
-    }
-
-
-
-    /*====================== 관리자 ======================*/
-
-    /* 관리자 자유 게시글 목록 */
-    @Override
-    public Page<FreeBoardFileDTO> getAdminFreeBoardList(Pageable pageable) {
-        Page<FreeBoard> freeBoardPage = freeBoardRepository.findAllFreeBoardList_QueryDSL(pageable);
-        List<FreeBoardFileDTO> freeBoardFileDTOS = freeBoardPage.get().map(this::toFreeBoardFileDTO).collect(Collectors.toList());
-        return new PageImpl<>(freeBoardFileDTOS, pageable, freeBoardPage.getTotalElements());
     }
 
     /* 관리자 자유 게시글 삭제*/

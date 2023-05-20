@@ -92,17 +92,17 @@ public interface EventBoardService {
     default List<EventFileDTO> eventFileToDTO(List<EventFile> eventFiles){
         List<EventFileDTO> eventFileDTOS = new ArrayList<>();
         eventFiles.forEach(
-            eventFile ->{
-                EventFileDTO eventFileDTO = EventFileDTO.builder()
-                        .id(eventFile.getId())
-                        .fileOriginalName(eventFile.getFileOriginalName())
-                        .filePath(eventFile.getFilePath())
-                        .fileUuid(eventFile.getFileUuid())
-                        .fileSize(eventFile.getFileSize())
-                        .fileRepresent(eventFile.getFileRepresent())
-                        .build();
-                eventFileDTOS.add(eventFileDTO);
-            }
+                eventFile ->{
+                    EventFileDTO eventFileDTO = EventFileDTO.builder()
+                            .id(eventFile.getId())
+                            .fileOriginalName(eventFile.getFileOriginalName())
+                            .filePath(eventFile.getFilePath())
+                            .fileUuid(eventFile.getFileUuid())
+                            .fileSize(eventFile.getFileSize())
+                            .fileRepresent(eventFile.getFileRepresent())
+                            .build();
+                    eventFileDTOS.add(eventFileDTO);
+                }
         );
         return eventFileDTOS;
     }
