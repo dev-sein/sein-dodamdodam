@@ -100,9 +100,14 @@ public class FreeBoardController {
 //    자유 게시판 댓글 수정
     @PostMapping("update-reply/{replyId}")
     @ResponseBody
-    public void writeReply(FreeReply updatedFreeReply, @PathVariable(value = "replyId") Long replyId){
-        freeReplyService.setFreeReplyContent(updatedFreeReply, replyId);
-}
+    public String writeReply(String updatedFreeReply, @PathVariable(value = "replyId") Long replyId){
+        log.info("수정 들어옴");
+        log.info(updatedFreeReply);
+
+        FreeReply updatedReply = new FreeReply(updatedFreeReply);
+        freeReplyService.setFreeReplyContent(updatedReply, replyId);
+        return "success";
+    }
 
 //    자유 게시판 댓글 삭제
     @PostMapping("delete-reply/{replyId}")
