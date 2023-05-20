@@ -297,8 +297,8 @@ let phoneFlag = false;
 // 핸드폰 정규식 이벤트 함수 사용
 $phoneInput.on("blur", function() {
 	var isPhoneNum = /([01]{2,})([01679]{1,})([0-9]{3,4})([0-9]{4})/;
-	var $phoneInputVal = $phoneInput.val();
-	var phoneInputVal = $phoneInput.val();
+	var $phoneInputVal = $phoneInput.val().replaceAll("-", "");
+	var phoneInputVal = $phoneInput.val().replaceAll("-", "");
 
 	$.ajax({
 		url: '/member/check-phone',

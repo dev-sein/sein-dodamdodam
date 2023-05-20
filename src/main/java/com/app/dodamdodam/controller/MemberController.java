@@ -25,7 +25,6 @@ public class MemberController {
 
     @GetMapping("join")
     public String goToJoinForm(/*HttpSession httpSession, Model model*/){
-//        model.addAttribute("member", httpSession.getAttribute("member"));
         return "/member/join";
     }
 

@@ -22,6 +22,9 @@ public interface PurchaseBoardService {
 //    내가 작성한 판매 게시글 목록
     public List<PurchaseBoardFileDTO> getPurchaseBoardListByMemberId(Pageable pageable, Long memberId);
 
+//    저장
+    public void register(PurchaseBoardDTO purchaseBoardDTO, ProductDTO productDTO, Long memberId);
+
 /*
 //    관리자 게시글 검색
     public Page<PurchaseBoardDTO> findPurchaseBoardWithSearch_QueryDSL(AdminInquirySearch inquirySearch, Pageable pageable);

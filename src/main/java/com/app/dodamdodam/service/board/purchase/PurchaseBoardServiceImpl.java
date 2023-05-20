@@ -1,9 +1,11 @@
 package com.app.dodamdodam.service.board.purchase;
 
+import com.app.dodamdodam.domain.ProductDTO;
 import com.app.dodamdodam.domain.PurchaseBoardDTO;
 import com.app.dodamdodam.domain.PurchaseBoardFileDTO;
 import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.repository.board.purchase.PurchaseBoardRepository;
+import com.app.dodamdodam.repository.member.MemberRepository;
 import com.app.dodamdodam.search.Inquiry.AdminInquirySearch;
 import com.app.dodamdodam.search.PurchaseBoardSearch;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +22,29 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class PurchaseBoardServiceImpl implements PurchaseBoardService {
     private final PurchaseBoardRepository purchaseBoardRepository;
+    private final MemberRepository memberRepository;
+
+    @Override
+    public void register(PurchaseBoardDTO purchaseBoardDTO, ProductDTO productDTO, Long memberId) {
+        List<PurchaseBoardFileDTO> purchaseFileDTOs = purchaseBoardDTO.getPurchaseFileDTOs();
+
+        memberRepository.findById(memberId).ifPresent(
+                member -> suggestDTO.setMemberDTO(toMemberDTO(member))
+        );
+
+        suggestRepository.save(toSuggestEntity(suggestDTO));
+        if(fileDTOS != null){
+            for (int i = 0; i < fileDTOS.size(); i++) {
+                if(i == 0){
+                    fileDTOS.get(i).setFileType(FileType.REPRESENTATIVE);
+                }else {
+                    fileDTOS.get(i).setFileType(FileType.NORMAL);
+                }
+                fileDTOS.get(i).setSuggest(getCurrentSequence());
+                suggestFileRepository.save(toSuggestFileEntity(fileDTOS.get(i)));
+            }
+        }
+    }
 
     @Override
     public Slice<PurchaseBoardDTO> getPurchaseBoardsWithSearch(PurchaseBoardSearch purchaseBoardSearch, Pageable pageable) {
@@ -39,6 +64,8 @@ public class PurchaseBoardServiceImpl implements PurchaseBoardService {
         return purchaseBoardRepository.findPurchaseBoardListByMemberId_QueryDSL(pageable,memberId).stream()
                 .map(purchaseBoard -> toPurchaseBoardFileDto(purchaseBoard)).collect(Collectors.toList());
     }
+
+
 
 
     @Override

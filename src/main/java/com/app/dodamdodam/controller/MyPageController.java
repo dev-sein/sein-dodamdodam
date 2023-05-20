@@ -37,6 +37,7 @@ public class MyPageController {
         log.info("==================mypage main========================");
         log.info(session.getAttribute("member").toString());
         MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
+//        Long id = (Long) session.getAttribute("member");
         Long memberId = memberDTO.getId();
         /* calendar 작업 추가로 해야함 */
 //        임의로 세션에 memberId값 담아둠

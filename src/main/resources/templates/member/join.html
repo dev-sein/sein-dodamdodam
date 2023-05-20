@@ -88,6 +88,8 @@
                 <h3 class="signup-intro-email">도담도담</h3>
                 <!-- 회원가입 정보 입력 폼 -->
                 <form th:action="@{/member/join}" th:object="${memberDTO}" name="joinForm" method="post">
+                    <input th:if="${member != null && member.memberType != null}" type="hidden" name="memberType" th:value="member.memberType">
+                    <input th:unless="${member != null && member.memberType != null}" type="hidden" name="memberType" th:value="GENERAL">
                		 <div class="email-signup-form-container">
                         <div class="email-field-container">
                             <label class="EmailAuthField">아이디</label>

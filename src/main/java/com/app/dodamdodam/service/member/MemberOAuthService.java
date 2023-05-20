@@ -70,23 +70,22 @@ public class MemberOAuthService implements OAuth2UserService<OAuth2UserRequest, 
             foundMember = foundMemberOptional.get();
             session.setAttribute("member",
                     MemberDTO.builder().id(foundMember.getId())
-                            .memberId(foundMember.getMemberId())
-                            .memberPassword(foundMember.getMemberPassword())
-                            .memberEmail(foundMember.getMemberEmail())
-                            .memberName(foundMember.getMemberName())
-                            .memberPhone(foundMember.getMemberPhone())
-                            .memberPoint(foundMember.getMemberPoint())
-                            .memberType(foundMember.getMemberType())
-                            .memberRole(foundMember.getMemberRole())
-                            .memberStatus(foundMember.getMemberStatus())
+//                            .memberId(foundMember.getMemberId())
+//                            .memberPassword(foundMember.getMemberPassword())
+//                            .memberEmail(foundMember.getMemberEmail())
+//                            .memberName(foundMember.getMemberName())
+//                            .memberPhone(foundMember.getMemberPhone())
+//                            .memberPoint(foundMember.getMemberPoint())
+//                            .memberType(foundMember.getMemberType())
+//                            .memberRole(foundMember.getMemberRole())
+//                            .memberStatus(foundMember.getMemberStatus())
                             .build()
             );
-            memberRepository.save(foundMember);
 
         } else {
             // 첫 오어스 로그인 시 진입
             // 필요한 정보를 폼 페이지에 미리 채워 넣기 위해 해당 정보를 세션에 저장
-            foundMember = foundMemberOptional.map(member -> member.update(attributes.getName(), attributes.getMobile(), attributes.getEmail()))
+            foundMember = foundMemberOptional.map(member -> member.update(attributes.getName(), attributes.getMobile(), attributes.getEmail(), attributes.getMemberType()))
                     .orElse(attributes.toEntity());
             session.setAttribute("member", new MemberDTO(foundMember));
         }

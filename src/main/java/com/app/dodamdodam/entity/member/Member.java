@@ -91,10 +91,11 @@ public class Member extends Period {
 //        this.memberType = memberType;
 //    }
 
-    public Member update(String memberName, String memberPhone, String memberEmail){
+    public Member update(String memberName, String memberPhone, String memberEmail, MemberType memberType){
         this.memberName = memberName;
         this.memberPhone = memberPhone;
         this.memberEmail = memberEmail;
+        this.memberType = memberType;
 
         return this;
     }
@@ -141,5 +142,6 @@ public class Member extends Period {
     public Integer getParticipationCount() {
         return participationCount;
     }
+
 
 }

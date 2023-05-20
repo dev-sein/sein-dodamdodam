@@ -1,6 +1,8 @@
 package com.app.dodamdodam.controller;
 
+import com.app.dodamdodam.domain.ProductDTO;
 import com.app.dodamdodam.domain.PurchaseBoardDTO;
+import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.search.PurchaseBoardSearch;
 import com.app.dodamdodam.service.board.purchase.PurchaseBoardService;
 import lombok.RequiredArgsConstructor;
@@ -9,7 +11,9 @@ import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,12 +24,19 @@ import java.util.Map;
 public class PurchaseBoardController {
     private final PurchaseBoardService purchaseBoardService;
 
-//    @GetMapping("list")
-//    @ResponseBody
-//    public String getPurchaseBoardList(@RequestParam("purchaseBoardSearch") PurchaseBoardSearch purchaseBoardSearch, @RequestParam("pageable") Pageable pageable){
-//        model.addAttribute("purchaseBoards", purchaseBoardService.getPurchaseBoardsWithSearch(purchaseBoardSearch, pageable));
-//        return "/sell-board/sell-list.html";
-//    }
+    @GetMapping("write")
+    public String goPurchaseBoardWrite(){ return "/sell-board/sell-write"; }
+
+    @PostMapping("write")
+    public RedirectView getPurchaseWriteForm(PurchaseBoardDTO purchaseBoardDTO, ProductDTO productDTO, HttpSession session){
+        Long memberId = (Long) session.getAttribute("id");
+
+        purchaseBoardService.register(purchaseBoardDTO, productDTO, memberId);
+
+        return new RedirectView("/sell-board/sell-list");
+    }
+
+
     @GetMapping("list")
     public String goPurchaseBoardList(){
         return "/sell-board/sell-list";
@@ -46,6 +57,8 @@ public class PurchaseBoardController {
 
         return purchaseBoardDTOs;
     }
+
+
 }
 
 

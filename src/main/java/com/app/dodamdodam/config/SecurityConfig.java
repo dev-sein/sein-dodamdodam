@@ -27,8 +27,10 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @RequiredArgsConstructor
 @Slf4j
 public class SecurityConfig {
-    private static final String MAIN_PATH = "/main/**";
     private static final String ADMIN_PATH = "/admin/**";
+    private static final String MYPAGE_PATH = "/mypage/**";
+//    private static final String WRITE_PATH = "/**/write";
+
 //    private static final String BOARD_PATH = "/board/**";
     private static final String IGNORE_FAVICON = "/favicon.ico";
     private static final String LOGIN_PAGE = "/member/login";
@@ -81,8 +83,10 @@ public class SecurityConfig {
                 .and()
                 .csrf().disable()
                 .authorizeRequests() // 인가 설정(권한 설정)
-                .antMatchers(MAIN_PATH).authenticated()
                 .antMatchers(ADMIN_PATH).hasRole(Role.ADMIN.name())
+//                .antMatchers(MYPAGE_PATH).hasRole(Role.MEMBER.name())
+//                .antMatchers(WRITE_PATH).hasRole(Role.MEMBER.name())
+                .anyRequest().permitAll()
                 .and()
                 .oauth2Login()
                 .userInfoEndpoint()

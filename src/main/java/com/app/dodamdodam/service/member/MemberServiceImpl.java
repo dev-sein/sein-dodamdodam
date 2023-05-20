@@ -58,11 +58,11 @@ public class MemberServiceImpl implements MemberService/*, OAuth2UserService<OAu
     public void join(MemberDTO memberDTO, PasswordEncoder passwordEncoder) {
         memberDTO.setMemberPassword(passwordEncoder.encode(memberDTO.getMemberPassword()));
         memberDTO.setMemberRole(Role.MEMBER);
-        if (memberDTO.getMemberType() == null) {
-            memberDTO.setMemberType(MemberType.GENERAL);
-        } else {
-            memberDTO.setMemberType(memberDTO.getMemberType());
-        }
+//        if (memberDTO.getMemberType() == null) {
+//            memberDTO.setMemberType(MemberType.GENERAL);
+//        } else {
+//            memberDTO.setMemberType(memberDTO.getMemberType());
+//        }
         memberDTO.setMemberStatus(MemberStatus.NORMAL);
         memberRepository.save(toMemberEntity(memberDTO));
     }
