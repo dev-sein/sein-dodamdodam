@@ -16,8 +16,8 @@ public class EventFile extends BoardFile {
     @JoinColumn(name = "EVENT_BOARD_ID")
     private EventBoard eventBoard;
 
-    public EventFile(String fileOriginalName, String fileUuid, String filePath, Long fileSize, EventBoard eventBoard) {
-        super(fileOriginalName, fileUuid, filePath, fileSize);
+    public EventFile(Long id, String fileOriginalName, String fileUuid, String filePath, Long fileSize, EventBoard eventBoard) {
+        super(id, fileOriginalName, fileUuid, filePath, fileSize);
         this.eventBoard = eventBoard;
     }
 }

@@ -12,7 +12,7 @@ import javax.persistence.*;
 @ToString
 @Inheritance(strategy = InheritanceType.JOINED)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
+//@AllArgsConstructor
 @DynamicInsert
 @DynamicUpdate
 public class BoardFile {
@@ -24,7 +24,8 @@ public class BoardFile {
     @NotNull private String filePath;
      private Long fileSize;
 
-    public BoardFile(String fileOriginalName, String fileUuid, String filePath, Long fileSize) {
+    public BoardFile(Long id, String fileOriginalName, String fileUuid, String filePath, Long fileSize) {
+        this.id = id;
         this.fileOriginalName = fileOriginalName;
         this.fileUuid = fileUuid;
         this.filePath = filePath;

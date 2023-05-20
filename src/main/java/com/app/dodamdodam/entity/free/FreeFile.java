@@ -19,8 +19,8 @@ public class FreeFile extends BoardFile {
     private FreeBoard freeBoard;
 
 
-    public FreeFile(String fileOriginalName, String fileUuid, String filePath, Long fileSize) {
-        super(fileOriginalName, fileUuid, filePath, fileSize);
+    public FreeFile(Long id, String fileOriginalName, String fileUuid, String filePath, Long fileSize) {
+        super(id, fileOriginalName, fileUuid, filePath, fileSize);
     }
 
     public void setFreeBoard(FreeBoard freeBoard) {

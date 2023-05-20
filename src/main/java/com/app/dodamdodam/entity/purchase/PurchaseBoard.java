@@ -41,8 +41,8 @@ public class PurchaseBoard extends Board {
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
-    public PurchaseBoard(String boardTitle, String boardContent) {
-        super(boardTitle, boardContent);
+    public PurchaseBoard(Long id, String boardTitle, String boardContent) {
+        super(id, boardTitle, boardContent);
     }
 
     public void setProduct(Product product) {
@@ -53,5 +53,11 @@ public class PurchaseBoard extends Board {
         this.member = member;
     }
 
-
+    @Builder
+    public PurchaseBoard(Long id, String boardTitle, String boardContent, Product product, List<PurchaseFile> purchaseFiles, Member member) {
+        super(id, boardTitle, boardContent);
+        this.product = product;
+        this.purchaseFiles = purchaseFiles;
+        this.member = member;
+    }
 }

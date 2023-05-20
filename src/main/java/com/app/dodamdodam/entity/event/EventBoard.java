@@ -66,8 +66,8 @@ public class EventBoard extends Board{
 
 
 
-    public EventBoard(String boardTitle, String boardContent){
-        super(boardTitle,boardContent);
+    public EventBoard(Long id, String boardTitle, String boardContent){
+        super(id, boardTitle,boardContent);
     }
 
     public void setMember(Member member) {
@@ -79,8 +79,8 @@ public class EventBoard extends Board{
     }
 
     @Builder
-    public EventBoard(String boardTitle, String boardContent, String eventAddress, String eventAddressDetail, LocalDate eventStartDate, LocalDate eventEndDate, Integer eventLikeNumber, EventType eventStatus, String eventBusinessNumber, String eventBusinessName, String eventBusinessTel, String eventBusinessEmail, String eventFilePath, String eventFileName, String eventFileUuid, String eventFileSize, List<EventFile> eventFiles, List<EventReview> eventreviews, Member member, List<EventLike> eventLikes) {
-        super(boardTitle, boardContent);
+    public EventBoard(Long id, String boardTitle, String boardContent, String eventAddress, String eventAddressDetail, LocalDate eventStartDate, LocalDate eventEndDate, Integer eventLikeNumber, EventType eventStatus, String eventBusinessNumber, String eventBusinessName, String eventBusinessTel, String eventBusinessEmail, String eventFilePath, String eventFileName, String eventFileUuid, String eventFileSize, List<EventFile> eventFiles, List<EventReview> eventreviews, Member member, List<EventLike> eventLikes) {
+        super(id, boardTitle, boardContent);
         this.eventAddress = eventAddress;
         this.eventAddressDetail = eventAddressDetail;
         this.eventStartDate = eventStartDate;

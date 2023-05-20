@@ -35,4 +35,14 @@ public class Product {
         this.productCount = productCount;
         this.purchaseBoard = purchaseBoard;
     }
+
+    @Builder
+    public Product(Long id, String productName, Integer productPrice, Long productCount, PurchaseBoard purchaseBoard, Purchase purchase) {
+        this.id = id;
+        this.productName = productName;
+        this.productPrice = productPrice;
+        this.productCount = productCount;
+        this.purchaseBoard = purchaseBoard;
+        this.purchase = purchase;
+    }
 }

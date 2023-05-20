@@ -25,7 +25,8 @@ public class Board extends Period {
         this.boardContent = boardContent;
     }
 
-    public Board(String boardTitle, String boardContent) {
+    public Board(Long id, String boardTitle, String boardContent) {
+        this.id = id;
         this.boardTitle = boardTitle;
         this.boardContent = boardContent;
     }
