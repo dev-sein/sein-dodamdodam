@@ -1,3 +1,6 @@
+
+
+
 document.querySelector(".btn-attach-thumb").addEventListener("click", function () {
     const currentImageCount = document.querySelectorAll(".file-add-boxes img").length;
     if (currentImageCount < 5) {
@@ -13,11 +16,14 @@ document.querySelector(".btn-attach-thumb").addEventListener("click", function (
       document.getElementById("imgFile").value = "";
     });
   }
-  
+
+
   document.getElementById("imgFile").addEventListener("change", function (e) {
     const files = e.target.files;
     const fileBoxWrap = document.getElementById("fileBoxWrap");
-  
+    let formData = new FormData(); // input 태그 담는 폼
+
+
     for (let i = 0; i < files.length; i++) {
       const currentImageCount = document.querySelectorAll(".file-add-boxes img").length;
       const remainingImageSlots = 5 - currentImageCount;
@@ -26,9 +32,11 @@ document.querySelector(".btn-attach-thumb").addEventListener("click", function (
         showModal();
         break;
       }
-  
+
       const file = files[i];
       const reader = new FileReader();
+
+      formData.append("file", file);
   
       reader.onload = function (e) {
         const fileAddBox = document.createElement("div");
@@ -62,6 +70,28 @@ document.querySelector(".btn-attach-thumb").addEventListener("click", function (
         break;
       }
     }
+
+    $.ajax({
+      url: '/file/upload',
+      data: data,
+      method: 'post',
+      processData: false,
+      contentType: false,
+      success: function (result) {
+        if(result){
+          let file = new Object();
+
+          file.filePath = result.paths[0];
+          file.fileUuid = result.uuids[0];
+          file.fileOrgName = result.orgNames[0];
+
+          insertData.reviewBoardFiles[index] = file;
+          console.log(insertData);
+        }
+      }
+    });
+
+
   });
   
   function showModal() {
