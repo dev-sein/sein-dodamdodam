@@ -2,7 +2,9 @@ package com.app.dodamdodam.repository.board.event.board;
 
 import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.event.QEventBoard;
+import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.search.EventBoardSearch;
+import com.app.dodamdodam.search.board.AdminEventBoardSearch;
 import com.app.dodamdodam.type.EventType;
 import com.querydsl.core.types.Expression;
 import com.querydsl.core.types.dsl.BooleanExpression;
@@ -16,6 +18,7 @@ import java.util.List;
 import java.util.Optional;
 import static com.app.dodamdodam.entity.event.QEventBoard.eventBoard;
 import static com.app.dodamdodam.entity.event.QEventFile.eventFile;
+import static com.app.dodamdodam.entity.free.QFreeBoard.freeBoard;
 
 public class EventBoardQueryDslImpl implements EventBoardQueryDsl {
     @Autowired
@@ -65,8 +68,33 @@ public class EventBoardQueryDslImpl implements EventBoardQueryDsl {
                 .fetchOne();
     }
 
+    /* 관리자 이벤트 게시글 검색 */
+    @Override
+    public Page<EventBoard> findAdmindEventBoardWithPaging_QueryDSL(AdminEventBoardSearch adminEventBoardSearch, Pageable pageable) {
+        BooleanExpression searchAll = null;
+        if (adminEventBoardSearch.getBoardTitle() != null || adminEventBoardSearch.getMemberName() != null || adminEventBoardSearch.getEventAddress() != null || adminEventBoardSearch.getEventAddressDetail() != null) {
+            BooleanExpression searchTitle = adminEventBoardSearch.getBoardTitle() != null ? eventBoard.boardTitle.contains(adminEventBoardSearch.getBoardTitle()) : null;
+            BooleanExpression searchName = adminEventBoardSearch.getMemberName() != null ? eventBoard.member.memberName.contains(adminEventBoardSearch.getMemberName()) : null;
+            BooleanExpression searchAddress = adminEventBoardSearch.getMemberName() != null ? eventBoard.eventAddress.contains(adminEventBoardSearch.getEventAddress()) : null;
+            BooleanExpression searchAddressDetail = adminEventBoardSearch.getMemberName() != null ? eventBoard.eventAddressDetail.contains(adminEventBoardSearch.getEventAddressDetail()) : null;
 
-//    상세보기
+            searchAll = searchTitle.or(searchName).or(searchAddress).or(searchAddressDetail);
+        }
+
+        List<EventBoard> adminEventBoards = query.select(eventBoard)
+                .from(eventBoard)
+                .where(searchAll)
+                .orderBy(eventBoard.id.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+        Long count = query.select(eventBoard.count()).from(eventBoard).where(searchAll).fetchOne();
+
+        return new PageImpl<>(adminEventBoards, pageable, count);
+    }
+
+
+    //    상세보기
     @Override
     public Optional<EventBoard> findEventBoardById_QueryDSL(Long eventBoardId) {
         EventBoard eventBoard = query.select(QEventBoard.eventBoard)
