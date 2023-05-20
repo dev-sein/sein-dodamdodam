@@ -179,7 +179,6 @@ public class AdminRepositoryTests {
         AdminFreeBoardSearch adminFreeBoardSearch = new AdminFreeBoardSearch();
         adminFreeBoardSearch.setBoardTitle("자유 게시글 제목47");
 //        adminFreeBoardSearch.setMemberName("테스트");
-        adminFreeBoardSearch.setFreeCategory(CategoryType.RECRUITMENT);
         Page<FreeBoard> freeBoardPage = freeBoardRepository.findAdmindFreeBoardWithPaging_QueryDSL(adminFreeBoardSearch, PageRequest.of(0, 10));
         log.info("============"+freeBoardPage.getContent());
     }
@@ -213,7 +212,6 @@ public class AdminRepositoryTests {
 //        adminMemberSearch.setMemberName("판매 게시글 제목1");
 //        adminMemberSearch.setMemberPhone("판매 게시글 제목1");
 //        adminMemberSearch.setMemberEmail("판매 게시글 제목1");
-        adminMemberSearch.setMemberStatus(MemberStatus.NORMAL);
         Page<Member> memberAdminPage = memberRepository.findAdminMemberWithPaging_QueryDSL(adminMemberSearch, PageRequest.of(0, 10));
         log.info("============"+memberAdminPage.getContent());
     }

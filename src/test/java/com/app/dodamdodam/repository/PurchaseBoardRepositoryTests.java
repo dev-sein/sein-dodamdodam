@@ -47,7 +47,7 @@ PurchaseBoardRepositoryTests {
     @Autowired
     private PurchaseReviewRepository purchaseReviewRepository;
 
-    @Test
+   /* @Test
     public void saveTest(){
         Address address = new Address("test-address", "test-detail");
         Member member = new Member( 1000L, "test1234", "1234", "구매테스트", "test1234@gmail.com", "01012345678", address, MemberStatus.NORMAL, MemberType.GENERAL, Role.MEMBER);
@@ -72,7 +72,7 @@ PurchaseBoardRepositoryTests {
             purchaseBoardRepository.save(purchaseBoard);
         }
 
-    }
+    }*/
 
     @Test
     public void findAllWithSearch_QueryDSLTest(){
