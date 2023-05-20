@@ -1,26 +1,13 @@
 package com.app.dodamdodam.domain;
 
 import com.app.dodamdodam.entity.embeddable.Address;
-import com.app.dodamdodam.entity.member.Member;
-import com.app.dodamdodam.entity.recruitment.Recruitment;
-import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
 import com.app.dodamdodam.type.MemberStatus;
 import com.app.dodamdodam.type.Role;
 import com.querydsl.core.annotations.QueryProjection;
-import com.sun.istack.NotNull;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.ColumnDefault;
-import org.springframework.stereotype.Component;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 @Builder
@@ -32,7 +19,7 @@ public class MemberDTO {
     private String memberEmail;
     private String memberPhone;
     private Address address;
-//    private String address;
+    //    private String address;
 //    private String addressDetail;
     private MemberStatus memberStatus;
     private Integer memberPoint;

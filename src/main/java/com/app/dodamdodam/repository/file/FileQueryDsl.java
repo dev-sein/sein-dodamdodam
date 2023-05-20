@@ -6,5 +6,4 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface FileQueryDsl {
-    public List<EventFileDTO> findAllFiles(LocalDateTime date);
 }

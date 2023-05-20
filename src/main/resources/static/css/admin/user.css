@@ -89,7 +89,7 @@ td:first-child {
 }
 
 
-/* ì²´í¬ ë°•ìŠ¤ */
+/* 체크 박스 */
 .checkbox-wrapper-21 .control {
     display: block;
     position: relative;
@@ -159,7 +159,7 @@ td:first-child {
 }
 
 
-/* ìƒì„¸ë³´ê¸° ë²„íŠ¼ */
+/* 상세보기 버튼 */
 /* .show-detail {
     background-color: #9bd8d0fc;
     border-radius: 4px;
@@ -213,9 +213,9 @@ td:first-child {
 .show-detail:hover{
     opacity: .75;
 }
-/* ìƒì„¸ë³´ê¸° ë²„íŠ¼ */
+/* 상세보기 버튼 */
 
-/* íŽ˜ì´ì§• */
+/* 페이징 */
 .pages-wrapper{
     display: flex;
     text-align: center;
@@ -264,10 +264,10 @@ td:first-child {
     cursor: pointer;
 }
 
-/* íŽ˜ì´ì§• */
+/* 페이징 */
 
 
-/* ëª¨ë‹¬ */
+/* 모달 */
 .modal-whole {
     font-family: 'TheJamsil5Bold';
     position: fixed;
@@ -294,7 +294,7 @@ td:first-child {
 
 .modal-header {
     display: flex;
-    /* justify-content: space-between; */
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -302,7 +302,6 @@ td:first-child {
     font-size: 30px;
     cursor: pointer;
     /* display: none; */
-    margin-left: 350px;
 }
 
 .modal-title{
@@ -359,4 +358,4 @@ td:first-child {
     color: white;
 }
 
-/* ëª¨ë‹¬ */
+/* 모달 */

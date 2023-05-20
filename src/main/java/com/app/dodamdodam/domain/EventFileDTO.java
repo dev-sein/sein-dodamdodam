@@ -3,10 +3,13 @@ package com.app.dodamdodam.domain;
 import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.type.FileRepresent;
 import com.querydsl.core.annotations.QueryProjection;
-import lombok.*;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder
+@NoArgsConstructor
 public class EventFileDTO {
     private Long id;
     private String fileOriginalName;
@@ -20,14 +23,6 @@ public class EventFileDTO {
 
     private EventBoardDTO eventBoardDTO;
 
-    @QueryProjection
-    public EventFileDTO(Long id, String fileOriginalName, String fileUuid, String filePath, Long fileSize) {
-        this.id = id;
-        this.fileOriginalName = fileOriginalName;
-        this.fileUuid = fileUuid;
-        this.filePath = filePath;
-        this.fileSize = fileSize;
-    }
 
     @QueryProjection
     public EventFileDTO(Long id, String fileOriginalName, String fileUuid, String filePath, Long fileSize, FileRepresent fileRepresent, EventBoard eventBoard, EventBoardDTO eventBoardDTO) {
@@ -40,6 +35,4 @@ public class EventFileDTO {
         this.eventBoard = eventBoard;
         this.eventBoardDTO = eventBoardDTO;
     }
-
-
 }
