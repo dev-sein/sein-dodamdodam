@@ -1,10 +1,9 @@
-const $listResults = $("#inquiryTable tbody");
+const $listResults = $("#banner-table tbody");
 const PAGE_AMOUNT = 10;
 const SEARCH_URL = "/parentsYard/list/show";
-const inquirySearch = {
-    inquiryEmail: null,
-    inquiryPhoneNumber: null,
-    inquiryContent: null
+const searchVariable = {
+    memberPhone: null,
+    memberName: null
 };
 
 let page = 0;
@@ -12,12 +11,12 @@ let page = 0;
 
 function getList() {
     console.log("ajax 들어옴");
-    let url = "/admins/inquiry/list/" + page;
-    // 검색 조건이 비어있을 때에만 inquirySearch 객체를 전송.
-    if (inquirySearch.inquiryEmail || inquirySearch.inquiryPhoneNumber || inquirySearch.inquiryContent) {
+    let url = "/admins/banner/list/" + page;
+    // 검색 조건이 비어있을 때에만 searchVariable 객체를 전송.
+    if (searchVariable.memberPhone || searchVariable.memberName) {
         $.ajax({
             url: url,
-            data: inquirySearch,
+            data: searchVariable,
             success: function(data) {
                 console.log(data);
                 if (data.content.length > 0) {
@@ -54,9 +53,8 @@ $(".search__searchbox__button").on("click", function (e) {
     $listResults.empty();
     console.log("검색 들어옴");
     let $search = $("#searchbox").val(); //input 입력값
-    inquirySearch.inquiryEmail = $search;
-    inquirySearch.inquiryPhoneNumber = $search;
-    inquirySearch.inquiryContent = $search;
+    searchVariable.memberPhone = $search;
+    searchVariable.memberName = $search;
 
     page = 0; // 페이지 번호를 0으로 초기화
     getList(); // 전체 목록 가져오기
@@ -108,16 +106,16 @@ function displayPagination(totalPages) {
     }
 }
 
-//   문의사항 목록
+//   배너 목록
 function showList(data) {
     console.log("showList 들어옴");
-    let inquiryDTOS = data.content;
-    inquiryDTOS.forEach(inquiry => {
-        // const formattedDate = formatDate(new Date(inquiry.parentsBoardRegisterDate));
+    let banners = data.content;
+    banners.forEach(banner => {
+        // const formattedDate = formatDate(new Date(freeBoard.createdDate));
         console.log("text 들어옴");
         var text = "";
         text += `
-        <tr onclick="redirectToDetail(${inquiry.id})">
+       <tr onclick="redirectToDetail(${banner.id})">
         <td>
           <div class="checkbox-wrapper-21">
             <label class="control control--checkbox">
@@ -126,23 +124,23 @@ function showList(data) {
             </label>
           </div>
         </td>
-        <td class="numbers">${inquiry.id}</td>
-        <td>${inquiry.inquiryType}</td>
-         <td>${inquiry.inquiryContent}</td>
-        <td>${inquiry.inquiryEmail}</td>
-        <td>${inquiry.inquiryPhoneNumber}</td>
-        <td>${inquiry.inquiryStatus}</td>
+        <td class="numbers">${banner.id}</td>
+        <td>${banner.memberDTO.memberName}</td>
+         <td>${banner.memberDTO.memberPhone}</td>
+        <td>${formatDate(new Date(banner.bannerRegisterDate))}</td>
+        <td>${formatDate(new Date(banner.createdDate))}</td>
+        <td>${banner.bannerStatus}</td>
       </tr>
     `;
         $listResults.append(text);
 
-});
+    });
 }
 
 getList();
 
+
 // 상세 페이지로 이동하는 함수
 function redirectToDetail(id) {
-    window.location.href = "/admins/inquiry/detail/" + id;
+    window.location.href = "/admins/banner/detail/" + id;
 }
-

@@ -9,6 +9,8 @@ import com.app.dodamdodam.entity.purchase.Product;
 import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.entity.purchase.PurchaseFile;
 import com.app.dodamdodam.search.FreeBoardSearch;
+import com.app.dodamdodam.search.board.AdminFreeBoardSearch;
+import com.app.dodamdodam.search.board.AdminRecruitmentSearch;
 import com.app.dodamdodam.type.CategoryType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -59,6 +61,10 @@ public interface FreeBoardService {
 
     /* 관리자 자유게시판 상세보기 */
     public FreeBoardFileDTO getAdminFreeBoardDetail(Long id);
+
+    /* 관리자 자유게시판 검색 */
+    public Page<FreeBoardFileDTO> showAdminFreeWithSearch_QueryDSL(Pageable pageable, AdminFreeBoardSearch adminFreeBoardSearch);
+
 
     /* toDTO */
     default FreeBoardFileDTO toFreeBoardFileDTO(FreeBoard freeBoard){

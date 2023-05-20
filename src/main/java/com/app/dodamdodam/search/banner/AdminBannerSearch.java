@@ -7,9 +7,7 @@ import java.time.LocalDate;
 
 @Data
 public class AdminBannerSearch {
-    private BannerType bannerStatus;
     private String memberName;
     private String memberPhone;
-    private LocalDate bannerRegisterDate;
 
 }

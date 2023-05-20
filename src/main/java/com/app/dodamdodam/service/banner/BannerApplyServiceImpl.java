@@ -1,9 +1,12 @@
 package com.app.dodamdodam.service.banner;
 
 import com.app.dodamdodam.domain.BannerDTO;
+import com.app.dodamdodam.domain.FreeBoardFileDTO;
 import com.app.dodamdodam.entity.banner.BannerApply;
+import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
 import com.app.dodamdodam.repository.banner.BannerRepository;
+import com.app.dodamdodam.search.banner.AdminBannerSearch;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -36,6 +39,16 @@ public class BannerApplyServiceImpl implements BannerApplyService {
             // 예를 들어, null을 반환하거나 예외를 throw할 수 있습니다.
             return null; // 혹은 예외 처리 코드 작성
         }
+    }
+
+    /*관리자 배너 검색하기 */
+    @Override
+    public Page<BannerDTO> showAdminBannerWithSearch_QueryDSL(Pageable pageable, AdminBannerSearch adminBannerSearch) {
+        Page<BannerApply> bannerApplyPage = bannerRepository.findAdminBannerApplyWithPaging_QueryDSL(adminBannerSearch, pageable);
+        List<BannerDTO> bannerDTOS = bannerApplyPage.getContent().stream()
+                .map(this::toBannerDTO)
+                .collect(Collectors.toList());
+        return new PageImpl<>(bannerDTOS, pageable, bannerApplyPage.getTotalElements());
     }
 
     @Override //관리자 삭제

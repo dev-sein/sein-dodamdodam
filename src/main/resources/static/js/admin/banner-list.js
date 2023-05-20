@@ -75,7 +75,7 @@ function listText(list) {
         console.log("text 들어옴");
         var text = "";
         text += `
-      <tr>
+      <tr onclick="redirectToDetail(${banner.id})">
         <td>
           <div class="checkbox-wrapper-21">
             <label class="control control--checkbox">
@@ -141,3 +141,8 @@ $(document).ready(function() {
         });
     });
 });
+
+// 상세 페이지로 이동하는 함수
+function redirectToDetail(id) {
+    window.location.href = "/admins/banner/detail/" + id;
+}

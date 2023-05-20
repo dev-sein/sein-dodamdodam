@@ -1,10 +1,10 @@
-const $listResults = $("#recruitment-table tbody");
+const $listResults = $("#pointTable tbody");
 const PAGE_AMOUNT = 10;
 const SEARCH_URL = "/parentsYard/list/show";
 const searchVariable = {
-    boardTitle: null,
     memberName: null,
-    recruitmentAddress: null
+    pointAmount: null,
+    memberId: null
 };
 
 let page = 0;
@@ -12,38 +12,38 @@ let page = 0;
 
 function getList() {
     console.log("ajax 들어옴");
-    let url = "/admins/recruitment-board/list/" + page;
+    let url = "/admins/point/list/" + page;
     // 검색 조건이 비어있을 때에만 searchVariable 객체를 전송.
-    if (searchVariable.boardTitle || searchVariable.memberName || searchVariable.recruitmentAddress) {
-        $.ajax({
-            url: url,
-            data: searchVariable,
-            success: function(data) {
-                console.log(data);
-                if (data.content.length > 0) {
-                    showList(data);
-                    displayPagination(data.totalPages);
-                } else { //검색 결과가 없을 때
-                    $listResults.append("<tr><td colspan='7'>검색 결과가 없습니다.</td></tr>");
-                }
-            }
-        });
-    } else {
-        // 검색 조건이 없을 때
-        $listResults.empty(); // 이전 검색 결과를 지우기 위해 빈 내용으로 초기화
-        $.ajax({
-            url: url,
-            success: function(data) {
-                console.log(data);
+    if (searchVariable.pointAmount || searchVariable.memberName || searchVariable.memberId) {
+    $.ajax({
+        url: url,
+        data: searchVariable,
+        success: function(data) {
+            console.log(data);
+            if (data.content.length > 0) {
                 showList(data);
                 displayPagination(data.totalPages);
-
-                if (data.content.length === 0) {
-                    $listResults.append("<tr><td colspan='7'>검색 결과가 없습니다.</td></tr>");
-                }
+            } else { //검색 결과가 없을 때
+                $listResults.append("<tr><td colspan='7'>검색 결과가 없습니다.</td></tr>");
             }
-        });
-    }
+        }
+    });
+} else {
+    // 검색 조건이 없을 때
+    $listResults.empty(); // 이전 검색 결과를 지우기 위해 빈 내용으로 초기화
+    $.ajax({
+        url: url,
+        success: function(data) {
+            console.log(data);
+            showList(data);
+            displayPagination(data.totalPages);
+
+            if (data.content.length === 0) {
+                $listResults.append("<tr><td colspan='7'>검색 결과가 없습니다.</td></tr>");
+            }
+        }
+    });
+}
 
 }
 
@@ -54,9 +54,9 @@ $(".search__searchbox__button").on("click", function (e) {
     $listResults.empty();
     console.log("검색 들어옴");
     let $search = $("#searchbox").val(); //input 입력값
-    searchVariable.boardTitle = $search;
+    searchVariable.pointAmount = $search;
     searchVariable.memberName = $search;
-    searchVariable.recruitmentAddress = $search;
+    searchVariable.memberId = $search;
 
     page = 0; // 페이지 번호를 0으로 초기화
     getList(); // 전체 목록 가져오기
@@ -108,16 +108,16 @@ function displayPagination(totalPages) {
     }
 }
 
-//   문의사항 목록
+// 목록
 function showList(data) {
     console.log("showList 들어옴");
-    let recruitmentBoards = data.content;
-    recruitmentBoards.forEach(recruitmentBoard => {
-        // const formattedDate = formatDate(new Date(inquiry.parentsBoardRegisterDate));
+    let points = data.content;
+    points.forEach(point => {
+        // const formattedDate = formatDate(new Date(freeBoard.createdDate));
         console.log("text 들어옴");
         var text = "";
         text += `
-                <tr onclick="redirectToDetail(${recruitmentBoard.id})">
+                 <tr>
                 <td>
                     <!-- 체크박스 -->
                     <div class="checkbox-wrapper-21">
@@ -128,12 +128,12 @@ function showList(data) {
                     </div>
                     <!-- 체크박스 -->
                 </td>
-                <td class="numbers">${recruitmentBoard.id}</td>
-                <td>${recruitmentBoard.boardTitle}</td>
-                <td>${recruitmentBoard.memberDTO.memberName}</td>
-                <td>${recruitmentBoard.recruitmentAddress}</td>
-                <td>${recruitmentBoard.recruitmentDate}</td>
-                <td>${recruitmentBoard.recruitmentStatus}</td>
+                <td class="numbers">${point.id}</td>
+                <td>${point.memberId}</td>
+                <td>${point.memberName}</td>
+                <td>${point.pointAmount}</td>
+                <td>${formatDate(new Date(point.createdDate))}</td>
+                <td>${point.pointStatus}</td>
                 <!-- <td>2000.01.01 21:05:04</td>-->
                 <!-- <td><button class="show-detail" onclick="showModal()">상세보기</button></td> -->
             </tr>
@@ -145,7 +145,3 @@ function showList(data) {
 
 getList();
 
-// 상세 페이지로 이동하는 함수
-function redirectToDetail(id) {
-    window.location.href = "/admins/recruitment-board/detail/" + id;
-}

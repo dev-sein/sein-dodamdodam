@@ -8,6 +8,8 @@ import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.entity.purchase.PurchaseFile;
 import com.app.dodamdodam.search.Inquiry.AdminInquirySearch;
 import com.app.dodamdodam.search.PurchaseBoardSearch;
+import com.app.dodamdodam.search.board.AdminPurchaseBoardSearch;
+import com.app.dodamdodam.search.board.AdminRecruitmentSearch;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
@@ -22,10 +24,9 @@ public interface PurchaseBoardService {
 //    내가 작성한 판매 게시글 목록
     public List<PurchaseBoardFileDTO> getPurchaseBoardListByMemberId(Pageable pageable, Long memberId);
 
-/*
 //    관리자 게시글 검색
-    public Page<PurchaseBoardDTO> findPurchaseBoardWithSearch_QueryDSL(AdminInquirySearch inquirySearch, Pageable pageable);
-*/
+    public Page<PurchaseBoardDTO> findPurchaseBoardWithSearch_QueryDSL(Pageable pageable, AdminPurchaseBoardSearch adminPurchaseBoardSearch);
+
     //관리자 : 판매 게시판 목록
     public Page<PurchaseBoardDTO> showList(Pageable pageable);
 
