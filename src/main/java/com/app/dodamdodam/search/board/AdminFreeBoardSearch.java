@@ -5,7 +5,6 @@ import lombok.Data;
 
 @Data
 public class AdminFreeBoardSearch {
-    private CategoryType freeCategory;
     private String boardTitle;
     private String memberName;
 

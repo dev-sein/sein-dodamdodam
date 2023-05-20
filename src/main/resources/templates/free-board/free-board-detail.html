@@ -101,7 +101,7 @@
                     <button type="button" class="btn-like">
                         <img src="/images/free-board/icon_gray_heart.png" class="none-heart">
                         <img src="/images/free-board/icon_red_heart.png" style="display: none;" class="active-heart">
-                        <span>10</span>
+                        <span th:text="${freeBoardDetail.likeCount}">10</span>
                     </button>
                     <div class="btn-share">
                         <a id="kakaotalk-sharing-btn" href="javascript:shareMessage()">
@@ -117,7 +117,7 @@
                         </p>
                     </div>
                     <p class="comment-count">
-                        <em>3</em>개의 댓글이 달려있습니다.
+                        <em><span th:text="${replyCount}"></span></em>개의 댓글이 달려있습니다.
                     </p>
                     <div class="main-comment">
                         <textarea name="" id="" placeholder="댓글을 입력하세요."></textarea>

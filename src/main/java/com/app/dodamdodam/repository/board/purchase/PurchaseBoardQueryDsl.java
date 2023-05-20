@@ -35,7 +35,7 @@ public interface PurchaseBoardQueryDsl {
 //  관리자 판매 게시판 검색
     public Page<PurchaseBoard> findadminPurchaseSearchWithPaging_QueryDSL(AdminPurchaseBoardSearch adminPurchaseBoardSearch, Pageable pageable);
 
-    //관리자 판매 게시판 페이징
+    //  관리자 판매 게시판 검색
     public Page<PurchaseBoard> findAllWithPaging(Pageable pageable);
 
 }

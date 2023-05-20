@@ -71,6 +71,9 @@ public class FreeBoardController {
     public String freeBoardDetail(Model model, @PathVariable(value = "boardId") Long boardId){
         freeBoardService.getFreeBoardById(boardId).ifPresent(freeBoard -> model.addAttribute("freeBoardDetail",freeBoard));
         model.addAttribute("top5",freeBoardService.getTop5FreeBoards());
+        /* PageRequest는 뭐 넣어도 상관없이 개수 가져와서 아무렇게나 넣음 */
+        model.addAttribute("replyCount",freeReplyService.getFreeRepliesCountByBoardId(PageRequest.of(0, 5), boardId));
+        
 
         return "free-board/free-board-detail";
     }

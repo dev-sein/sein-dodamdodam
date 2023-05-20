@@ -4,6 +4,7 @@ import com.app.dodamdodam.domain.FreeBoardFileDTO;
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.repository.board.free.FreeBoardRepository;
 import com.app.dodamdodam.search.FreeBoardSearch;
+import com.app.dodamdodam.search.board.AdminFreeBoardSearch;
 import com.app.dodamdodam.type.CategoryType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -103,4 +104,16 @@ public class FreeBoardServiceImpl implements FreeBoardService {
         return toFreeBoardFileDTO(freeBoard.get());
     }
 
+    /* 관리자 자유 게시글 검색*/
+    @Override
+    public Page<FreeBoardFileDTO> showAdminFreeWithSearch_QueryDSL(Pageable pageable, AdminFreeBoardSearch adminFreeBoardSearch) {
+            Page<FreeBoard> freeBoardPage = freeBoardRepository.findAdmindFreeBoardWithPaging_QueryDSL(adminFreeBoardSearch, pageable);
+            List<FreeBoardFileDTO> freeBoardFileDTOS = freeBoardPage.getContent().stream()
+                    .map(this::toFreeBoardFileDTO)
+                    .collect(Collectors.toList());
+            return new PageImpl<>(freeBoardFileDTOS, pageable, freeBoardPage.getTotalElements());
+        }
+
 }
+
+

@@ -31,4 +31,6 @@ public class FreeReply extends Reply {
     public void setFreeBoard(FreeBoard freeBoard) {
         this.freeBoard = freeBoard;
     }
+
+
 }
