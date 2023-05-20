@@ -42,6 +42,8 @@ public class AdminController {
     private final RecruitmentBoardService recruitmentBoardService;
     private final BannerApplyService bannerApplyService;
 
+    /* 오류확인 */
+
     /*홈*/
     @GetMapping("/home")
     public String adminHome(){return "admin/home";}
