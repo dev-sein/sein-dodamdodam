@@ -6,9 +6,9 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>배너신청 현황</title>
-    <link rel="stylesheet" href="../../static/css/admin/admin.css">
-    <link rel="stylesheet" href="../../static/css/admin/user.css">
-    <link rel="stylesheet" href="../../static/css/admin/banner.css">
+    <link rel="stylesheet" href="/css/admin/admin.css">
+    <link rel="stylesheet" href="/css/admin/user.css">
+    <link rel="stylesheet" href="/css/admin/banner.css">
 </head>
 <body>
     <!-- 모달 -->
@@ -40,35 +40,35 @@
             <div class="menu-bar">
                 <ul>
                     <li class="menu">
-                        <a class="menus" href="#">홈</a>
+                        <a class="menus" href="/admins/home">홈</a>
                     </li>
                     <li class="menu">
-                        <a class="menus" href="#">회원 목록</a>
+                        <a class="menus" href="/admins/member/list">회원 목록</a>
                     </li>
                     <li class="menu">
-                        <a class="menus" href="#">이벤트 게시글</a>
+                        <a class="menus" href="/admins/event-board-list">이벤트 게시글</a>
                     </li>
                     <li class="menu">
-                        <a class="menus" href="#">모집 게시글</a>
+                        <a class="menus" href="/admins/recruitment-board/list">모집 게시글</a>
                     </li>
                     <li class="menu">
-                        <a class="menus" href="#">판매 게시글</a>
+                        <a class="menus" href="/admins/purchase-board/list">판매 게시글</a>
                     </li>
                     <li class="menu">
-                        <a class="menus" href="#">자유 게시글</a>
+                        <a class="menus" href="/admins/free-board/list">자유 게시글</a>
                     </li>
                     <li class="menu">
-                        <a class="menus" href="#">문의사항 관리</a>
+                        <a class="menus" href="/admins/inquiry/list">문의사항 관리</a>
                     </li>
                     <li class="menu">
-                        <a class="menus" href="#">포인트 내역</a>
+                        <a class="menus" href="/admins/point/list">포인트 내역</a>
                     </li>
                     <li class="menu">
-                        <a class="menus" href="#">배너신청 현황</a>
+                        <a class="menus" href="/admins/banner/list">배너신청 현황</a>
                     </li>
-                    <li class="menu">
+                    <!--<li class="menu">
                         <a class="menus" href="#">배너관리</a>
-                    </li>
+                    </li>-->
                 </ul>
             </div>
         </nav>
@@ -81,7 +81,7 @@
                     <form action="" class="search__searchbox__form">
                         <input id="searchbox" type="text" placeholder="원하시는 키워드로 검색해보세요" maxlength="40"/>
                         <button type="button" class="search__searchbox__button">
-                            <img src="../../static/images/admin/search.png"/>
+                            <img src="/images/admin/search.png"/>
                         </button>
                     </form>
                 </div>
@@ -92,7 +92,7 @@
                     <div class="page-title">배너신청 현황</div>
                     <div class="delete-button">삭제하기</div>
                 </div>
-                <table>
+                <table id="banner-table">
                     <thead>
                     <tr>
                         <th>
@@ -116,206 +116,6 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>
-                            <!-- 체크박스 -->
-                            <div class="checkbox-wrapper-21">
-                                <label class="control control--checkbox">
-                                    <input type="checkbox" id="select-all" class="substituted select-member" style="display: none;"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </div>
-                            <!-- 체크박스 -->
-                        </td>
-                        <td class="numbers">1</td>
-                        <td>제목1</td>
-                        <td>신청자1</td>
-                        <td>010-1234-1234</td>
-                        <td>2000.01.01 21:05:04</td>
-                        <td class="status">수락완료</td>
-                        <!-- <td><button class="show-detail" onclick="showModal()">상세보기</button></td> -->
-                    </tr>
-                    <!-- 회원 -->
-                    <tr>
-                        <td>
-                            <!-- 체크박스 -->
-                            <div class="checkbox-wrapper-21">
-                                <label class="control control--checkbox">
-                                    <input type="checkbox" id="select-all" class="substituted select-member" style="display: none;"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </div>
-                            <!-- 체크박스 -->
-                        </td>
-                        <td class="numbers">2</td>
-                        <td>제목2</td>
-                        <td>신청자2</td>
-                        <td>010-1234-1234</td>
-                        <td>2022.01.01 21:05:04</td>
-                        <td class="status">대기중</td>
-                        <!-- <td><button class="show-detail" onclick="showModal()">상세보기</button></td> -->
-                    </tr>
-                    <!-- 회원 -->
-                    <tr>
-                        <td>
-                            <!-- 체크박스 -->
-                            <div class="checkbox-wrapper-21">
-                                <label class="control control--checkbox">
-                                    <input type="checkbox" id="select-all" class="substituted select-member" style="display: none;"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </div>
-                            <!-- 체크박스 -->
-                        </td>
-                        <td class="numbers">3</td>
-                        <td>제목3</td>
-                        <td>신청자3</td>
-                        <td>010-1234-1234</td>
-                        <td>2023.01.01 21:05:04</td>
-                        <td class="status">대기중</td>
-                        <!-- <td><button class="show-detail" onclick="showModal()">상세보기</button></td> -->
-                    </tr>
-                    <!-- 회원 -->
-                    <tr>
-                        <td>
-                            <!-- 체크박스 -->
-                            <div class="checkbox-wrapper-21">
-                                <label class="control control--checkbox">
-                                    <input type="checkbox" id="select-all" class="substituted select-member" style="display: none;"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </div>
-                            <!-- 체크박스 -->
-                        </td>
-                        <td class="numbers">4</td>
-                        <td>제목4</td>
-                        <td>신청자4</td>
-                        <td>010-1234-1234</td>
-                        <td>2023.04.01 21:05:04</td>
-                        <td class="status">수락완료</td>
-                        <!-- <td><button class="show-detail" onclick="showModal()">상세보기</button></td> -->
-                    </tr>
-                    <!-- 회원 -->
-                    <tr>
-                        <td>
-                            <!-- 체크박스 -->
-                            <div class="checkbox-wrapper-21">
-                                <label class="control control--checkbox">
-                                    <input type="checkbox" id="select-all" class="substituted select-member" style="display: none;"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </div>
-                            <!-- 체크박스 -->
-                        </td>
-                        <td class="numbers">5</td>
-                        <td>제목5</td>
-                        <td>신청자5</td>
-                        <td>010-1234-1234</td>
-                        <td>2023.04.01 21:05:04</td>
-                        <td class="status">대기중</td>
-                        <!-- <td><button class="show-detail" onclick="showModal()">상세보기</button></td> -->
-                    </tr>
-                    <!-- 회원 -->
-                    <tr>
-                        <td>
-                            <!-- 체크박스 -->
-                            <div class="checkbox-wrapper-21">
-                                <label class="control control--checkbox">
-                                    <input type="checkbox" id="select-all" class="substituted select-member" style="display: none;"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </div>
-                            <!-- 체크박스 -->
-                        </td>
-                        <td class="numbers">6</td>
-                        <td>제목6</td>
-                        <td>신청자6</td>
-                        <td>010-1234-1234</td>
-                        <td>2023.04.01 21:05:04</td>
-                        <td class="status">대기중</td>
-                        <!-- <td><button class="show-detail" onclick="showModal()">상세보기</button></td> -->
-                    </tr>
-                    <!-- 회원 -->
-                    <tr>
-                        <td>
-                            <!-- 체크박스 -->
-                            <div class="checkbox-wrapper-21">
-                                <label class="control control--checkbox">
-                                    <input type="checkbox" id="select-all" class="substituted select-member" style="display: none;"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </div>
-                            <!-- 체크박스 -->
-                        </td>
-                        <td class="numbers">7</td>
-                        <td>제목7</td>
-                        <td>신청자7</td>
-                        <td>010-1234-1234</td>
-                        <td>2023.04.01 21:05:04</td>
-                        <td class="status">대기중</td>
-                        <!-- <td><button class="show-detail" onclick="showModal()">상세보기</button></td> -->
-                    </tr>
-                    <!-- 회원 -->
-                    <tr>
-                        <td>
-                            <!-- 체크박스 -->
-                            <div class="checkbox-wrapper-21">
-                                <label class="control control--checkbox">
-                                    <input type="checkbox" id="select-all" class="substituted select-member" style="display: none;"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </div>
-                            <!-- 체크박스 -->
-                        </td>
-                        <td class="numbers">8</td>
-                        <td>제목8</td>
-                        <td>신청자8</td>
-                        <td>010-1234-1234</td>
-                        <td>2023.04.01 21:05:04</td>
-                        <td class="status">대기중</td>
-                        <!-- <td><button class="show-detail" onclick="showModal()">상세보기</button></td> -->
-                    </tr>
-                    <!-- 회원 -->
-                    <tr>
-                        <td>
-                            <!-- 체크박스 -->
-                            <div class="checkbox-wrapper-21">
-                                <label class="control control--checkbox">
-                                    <input type="checkbox" id="select-all" class="substituted select-member" style="display: none;"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </div>
-                            <!-- 체크박스 -->
-                        </td>
-                        <td class="numbers">9</td>
-                        <td>제목9</td>
-                        <td>신청자9</td>
-                        <td>010-1234-1234</td>
-                        <td>2023.04.01 21:05:04</td>
-                        <td class="status">대기중</td>
-                        <!-- <td><button class="show-detail" onclick="showModal()">상세보기</button></td> -->
-                    </tr>
-                    <!-- 회원 -->
-                    <tr>
-                        <td>
-                            <!-- 체크박스 -->
-                            <div class="checkbox-wrapper-21">
-                                <label class="control control--checkbox">
-                                    <input type="checkbox" id="select-all" class="substituted select-member" style="display: none;"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </div>
-                            <!-- 체크박스 -->
-                        </td>
-                        <td class="numbers">10</td>
-                        <td>제목10</td>
-                        <td>신청자10</td>
-                        <td>010-1234-1234</td>
-                        <td>2023.04.01 21:05:04</td>
-                        <td class="status">대기중</td>
-                        <!-- <td><button class="show-detail" onclick="showModal()">상세보기</button></td> -->
-                    </tr>
-                    <!-- 회원 -->
                     </tbody>
                 </table>
                 <div class="pages-wrapper">
@@ -338,7 +138,8 @@
     </main>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="../../static/js/admin/admin.js"></script>
-<script src="../../static/js/admin/user.js"></script>
-<script src="../../static/js/admin/checkbox.js"></script>
+<script src="/js/admin/admin.js"></script>
+<script src="/js/admin/user.js"></script>
+<script src="/js/admin/checkbox.js"></script>
+<script src="/js/admin/banner-search.js"></script>
 </html>
