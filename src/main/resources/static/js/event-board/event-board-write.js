@@ -157,9 +157,13 @@ $(document).ready(function(){
         var inputFile = $("input[name='eventFiles']");
         var files = inputFile[0].files;
 
-        for(var i = 0; i < files.length; i++){
-            formData.append("file", files[i]);
-        }
+        $($files).each((i, file) => {
+            files.push(file);
+        })
+
+        files.forEach((file, e) => {
+            formData.append("file", file);
+        })
 
         $.ajax({
             url: '/file/upload',
@@ -185,3 +189,29 @@ $(document).ready(function(){
         $("#submit-btn").submit(); // 폼 전송
     });
 });
+
+$(".save-button").click(() => {
+    const $files = $("input[type=file]")[0].files;
+    let text = "";
+
+    FileList.prototype.forEach = Array.prototype.forEach;
+    files.forEach((file, i) => {
+        text +=
+            `
+                <input type="hidden" name="fileDTOS[${i}].fileOriginalName" value="${file.name}">
+                <input type="hidden" name="fileDTOS[${i}].fileUuid" value="${globalThis.uuids[i]}">
+                <input type="hidden" name="fileDTOS[${i}].filePath" value="${toStringByFormatting(new Date())}">
+                `;
+    });
+    $("form[name=eventForm]").append(text);
+    $("form[name=eventForm]").submit();
+})
+
+
+function toStringByFormatting(source, delimiter = '/') {
+    const year = source.getFullYear();
+    const month = leftPad(source.getMonth() + 1);
+    const day = leftPad(source.getDate());
+
+    return [year, month, day].join(delimiter);
+}

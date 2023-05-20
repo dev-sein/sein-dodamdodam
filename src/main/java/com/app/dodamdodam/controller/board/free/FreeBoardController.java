@@ -3,8 +3,8 @@ package com.app.dodamdodam.controller.board.free;
 import com.app.dodamdodam.domain.FreeBoardFileDTO;
 import com.app.dodamdodam.search.FreeBoardSearch;
 import com.app.dodamdodam.service.board.freeBoard.FreeBoardService;
+import com.app.dodamdodam.service.board.freeBoard.freeReply.FreeReplyService;
 import com.app.dodamdodam.type.CategoryType;
-import com.sun.tools.jconsole.JConsoleContext;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
@@ -13,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -22,6 +21,8 @@ import java.util.List;
 @Slf4j
 public class FreeBoardController {
     private final FreeBoardService freeBoardService;
+
+    private final FreeReplyService freeReplyService;
 
 //    자유게시판 메인
     @GetMapping("list")
@@ -73,7 +74,7 @@ public class FreeBoardController {
         model.addAttribute("top5",freeBoardService.getTop5FreeBoards());
         /* PageRequest는 뭐 넣어도 상관없이 개수 가져와서 아무렇게나 넣음 */
         model.addAttribute("replyCount",freeReplyService.getFreeRepliesCountByBoardId(PageRequest.of(0, 5), boardId));
-        
+
 
         return "free-board/free-board-detail";
     }
