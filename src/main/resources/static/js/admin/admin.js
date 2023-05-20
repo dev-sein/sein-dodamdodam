@@ -32,7 +32,13 @@ $('#cancel-btn').on('click', function(){
 });
 /* modal */
 
-
+/* date format*/
+function formatDate(date) {
+    var year = date.getFullYear();
+    var month = String(date.getMonth() + 1).padStart(2, '0');
+    var day = String(date.getDate()).padStart(2, '0');
+    return year + '-' + month + '-' + day;
+}
 
 
 

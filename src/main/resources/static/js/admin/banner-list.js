@@ -1,4 +1,4 @@
-const $listResults = $("#inquiryTable tbody");
+const $listResults = $("#banner-table tbody");
 let page = 0;
 
 listService = (function() {
@@ -70,12 +70,12 @@ function displayPagination(totalPages) {
 
 function listText(list) {
     console.log("list text 들어옴");
-    let inquiryDTOS = list.content;
-    $(inquiryDTOS).each((i, inquiry) => {
+    let bannerDTOS = list.content;
+    $(bannerDTOS).each((i, banner) => {
         console.log("text 들어옴");
         var text = "";
         text += `
-      <tr>
+      <tr onclick="redirectToDetail(${banner.id})">
         <td>
           <div class="checkbox-wrapper-21">
             <label class="control control--checkbox">
@@ -84,12 +84,12 @@ function listText(list) {
             </label>
           </div>
         </td>
-        <td class="numbers">${inquiry.id}</td>
-        <td>${inquiry.inquiryType}</td>
-         <td>${inquiry.inquiryContent}</td>
-        <td>${inquiry.inquiryEmail}</td>
-        <td>${inquiry.inquiryPhoneNumber}</td>
-        <td>${inquiry.inquiryStatus}</td>
+        <td class="numbers">${banner.id}</td>
+        <td>${banner.memberDTO.memberName}</td>
+         <td>${banner.memberDTO.memberPhone}</td>
+        <td>${banner.bannerRegisterDate}</td>
+        <td>${banner.createdDate}</td>
+        <td>${banner.bannerStatus}</td>
       </tr>
     `;
         $listResults.append(text);
@@ -103,6 +103,7 @@ function getList(page) {
         displayPagination(list.totalPages);
     });
 }
+
 
 
 /*항목 삭제*/
@@ -122,9 +123,9 @@ $(document).ready(function() {
             return;
         }
         $('#delete-modal').show(); //삭제 모달창 열기
-        $('#confirm-btn').click(function() { //모달창의 확인 버튼 눌렀을 경우 데이터 삭제
+        $('#confirm-btn').click(function() {//모달창의 확인 버튼 눌렀을 경우 데이터 삭제
             $.ajax({
-                url: '/admins/inquiry/delete',
+                url: '/admins/banner/delete',
                 type: 'DELETE',
                 contentType: 'application/json',
                 data: JSON.stringify(selectedItems),
@@ -140,3 +141,8 @@ $(document).ready(function() {
         });
     });
 });
+
+// 상세 페이지로 이동하는 함수
+function redirectToDetail(id) {
+    window.location.href = "/admins/banner/detail/" + id;
+}
