@@ -1,14 +1,11 @@
 package com.app.dodamdodam.service.member;
 
-import com.app.dodamdodam.domain.InquiryDTO;
 import com.app.dodamdodam.domain.MemberDTO;
 import com.app.dodamdodam.entity.banner.BannerApply;
-import com.app.dodamdodam.entity.embeddable.Address;
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.point.Point;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
-import com.app.dodamdodam.search.Inquiry.AdminInquirySearch;
 import com.app.dodamdodam.search.member.AdminMemberSearch;
 import com.app.dodamdodam.type.MemberStatus;
 import org.springframework.data.domain.Page;
@@ -57,7 +54,7 @@ public interface MemberService {
 
     /* 캘린더에 일정 띄우기(내가 참가한 모집게시글 전체) */
     public List<RecruitmentBoard> getMyRecruitementedBoardList(Long memberId);
-    
+
 
     /* 관리자 회원 변경*/
     public void setMemberStatus(List<Long> ids, MemberStatus memberStatus);
@@ -73,8 +70,8 @@ public interface MemberService {
 
     default MemberDTO toMemberDTO(Member member){
         return MemberDTO.builder().id(member.getId()).memberId(member.getMemberId()).memberEmail(member.getMemberEmail())
-            .memberName(member.getMemberName()).memberPhone(member.getMemberPhone()).memberPoint(member.getMemberPoint())
-            .memberStatus(member.getMemberStatus()).address(member.getAddress())
+                .memberName(member.getMemberName()).memberPhone(member.getMemberPhone()).memberPoint(member.getMemberPoint())
+                .memberStatus(member.getMemberStatus()).address(member.getAddress())
                 .memberPassword(member.getMemberPassword()).createdDate(member.getCreatedDate()).participationCount(member.getParticipationCount())
                 .build();
     }

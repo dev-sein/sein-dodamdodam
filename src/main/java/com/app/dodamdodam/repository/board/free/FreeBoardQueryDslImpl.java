@@ -15,13 +15,12 @@ import java.util.List;
 import java.util.Optional;
 
 import static com.app.dodamdodam.entity.free.QFreeBoard.freeBoard;
-import static com.app.dodamdodam.entity.recruitment.QRecruitmentBoard.recruitmentBoard;
 
 public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
     @Autowired
     private JPAQueryFactory query;
 
-//    세션에 담긴 id 값 받아와서 내가 작성한 자유 게시글 리스트 가져오기
+    //    세션에 담긴 id 값 받아와서 내가 작성한 자유 게시글 리스트 가져오기
     @Override
     public Page<FreeBoard> findFreeBoardListByMemberId_QueryDSL(Pageable pageable, Long memberId) {
         List<FreeBoard> freeBoards = query.select(freeBoard).from(freeBoard)
@@ -36,7 +35,7 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
         return new PageImpl<>(freeBoards, pageable, count);
     }
 
-//    세션에 담긴 id 값 받아와서 내가 작성한 자유 게시글 리스트 개수 가져오기
+    //    세션에 담긴 id 값 받아와서 내가 작성한 자유 게시글 리스트 개수 가져오기
     @Override
     public Long findFreeBoardListCountByMemberId_QueryDSL(Long memberId) {
         return query.select(freeBoard.count()).from(freeBoard)
@@ -46,7 +45,7 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
     }
 
 
-//    자유 게시글 전체 리스트 가져오기
+    //    자유 게시글 전체 리스트 가져오기
     @Override
     public Page<FreeBoard> findAllFreeBoardList_QueryDSL(Pageable pageable) {
         List<FreeBoard> freeBoards = query.selectFrom(freeBoard)
@@ -62,7 +61,7 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
         return new PageImpl<>(freeBoards, pageable, count);
     }
 
-//    자유 게시글 전체 리스트 Category에 따라 분류해서 가져오기
+    //    자유 게시글 전체 리스트 Category에 따라 분류해서 가져오기
     @Override
     public Page<FreeBoard> findFreeBoardListByCategoryType_QueryDSL(Pageable pageable, CategoryType categoryType) {
         List<FreeBoard> freeBoards = query.select(freeBoard).from(freeBoard)
@@ -78,7 +77,7 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
     }
 
 
-//    내가 작성한 자유 게시글 리스트 Category에 따라 분류해서 가져오기
+    //    내가 작성한 자유 게시글 리스트 Category에 따라 분류해서 가져오기
     @Override
     public Page<FreeBoard> findFreeBoardListByCategoryTypeAndMemberId_QueryDSL(Pageable pageable, CategoryType categoryType, Long memberId) {
         List<FreeBoard> freeBoards = query.select(freeBoard).from(freeBoard)
@@ -94,28 +93,24 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
     }
 
     @Override //관리자 자유게시판 검색
-    public Page<FreeBoard> findAdmindFreeBoardWithPaging_QueryDSL(AdminFreeBoardSearch adminfreeBoardSearch, Pageable pageable) {
-        BooleanExpression searchAll = null;
-        if (adminfreeBoardSearch.getBoardTitle() != null || adminfreeBoardSearch.getMemberName() != null) {
-            BooleanExpression searchTitle = adminfreeBoardSearch.getBoardTitle() != null ? freeBoard.boardTitle.contains(adminfreeBoardSearch.getBoardTitle()) : null;
-            BooleanExpression searchName = adminfreeBoardSearch.getMemberName() != null ? freeBoard.member.memberName.contains(adminfreeBoardSearch.getMemberName()) : null;
+    public Page<FreeBoard> findAdmindFreeBoardWithPaging_QueryDSL(AdminFreeBoardSearch freeBoardSearch, Pageable pageable) {
+        BooleanExpression freeCategoryEq = freeBoardSearch.getFreeCategory() == null ? null : freeBoard.freeCategory.eq(freeBoardSearch.getFreeCategory());
+        BooleanExpression freeTitleEq = freeBoardSearch.getBoardTitle() == null ? null : freeBoard.boardTitle.eq(freeBoardSearch.getBoardTitle());
+        BooleanExpression memberNameEq = freeBoardSearch.getMemberName() == null ? null : freeBoard.member.memberName.eq(freeBoardSearch.getMemberName());
 
-            searchAll = searchTitle.or(searchName);
-        }
-        
         List<FreeBoard> adminFreeBoards = query.select(freeBoard)
                 .from(freeBoard)
-                .where(searchAll)
+                .where(freeCategoryEq, freeTitleEq, memberNameEq)
                 .orderBy(freeBoard.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
-        Long count = query.select(freeBoard.count()).from(freeBoard).where(searchAll).fetchOne();
+        Long count = query.select(freeBoard.count()).from(freeBoard).fetchOne();
 
         return new PageImpl<>(adminFreeBoards, pageable, count);
     }
 
-// 자유게시판 검색
+    // 자유게시판 검색
     @Override
     public Page<FreeBoard> findFreeBoardBySearchWithPaging_QueryDSL(FreeBoardSearch freeBoardSearch, CategoryType categoryType, Pageable pageable) {
         BooleanExpression writerNameEq = freeBoardSearch.getWriterName() == null ? null : freeBoard.member.memberName.contains(freeBoardSearch.getWriterName());
@@ -139,8 +134,17 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
 
     // 자유게시판 좋아요 Top5 가져오기
     @Override
-    public List<FreeBoard> findFreeBoardListByLikeCount() {
+    public List<FreeBoard> findFreeBoardListByLikeCount_QueryDSL() {
         return query.selectFrom(freeBoard).orderBy(freeBoard.likeCount.desc()).limit(5).fetch();
+    }
+
+    @Override
+    public List<FreeBoard> findRecentFreeBoardList_QueryDSL() {
+        return query.selectFrom(freeBoard)
+                .leftJoin(freeBoard.freeFiles).fetchJoin()
+                .orderBy(freeBoard.id.desc())
+                .limit(5)
+                .fetch();
     }
 
     //    게시글 상세페이지 board 정보, 작성자 정보, 첨부파일
@@ -153,7 +157,7 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
                 .fetchOne());
     }
 
-//    게시글 상세페이지 board 정보, reply정보
+    //    게시글 상세페이지 board 정보, reply정보
     @Override
     public Optional<FreeBoard> findFreeBoardAndFreeRepliesById_QueryDSL(Long boardId) {
         return Optional.ofNullable(query.select(freeBoard).from(freeBoard)
@@ -162,5 +166,9 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
                 .fetchOne());
     }
 
+//    @Override
+//    public Page<FreeBoard> findFreeBoardWithPaging_QueryDSL(FreeBoardSearch freeBoardSearch, Pageable pageable) {
+//        return null;
+//    }
 
 }

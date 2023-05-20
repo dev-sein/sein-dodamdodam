@@ -196,10 +196,10 @@ public class BoardRepositoryTests {
     }
 
     /* 자유게시글 좋아요 Top5 */
-    @Test
-    public void findTop5(){
-        freeBoardRepository.findFreeBoardListByLikeCount().stream().map(FreeBoard::toString).forEach(log::info);
-    }
+//    @Test
+//    public void findTop5(){
+//        freeBoardRepository.findFreeBoardListByLikeCount().stream().map(FreeBoard::toString).forEach(log::info);
+//    }
 
     /* 자유 게시글 상세 */
     @Test

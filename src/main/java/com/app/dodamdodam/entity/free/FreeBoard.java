@@ -4,6 +4,7 @@ import com.app.dodamdodam.entity.board.Board;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.type.CategoryType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.sun.istack.NotNull;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
@@ -26,9 +27,11 @@ public class FreeBoard extends Board {
     @Enumerated(EnumType.STRING)
     @NotNull private CategoryType freeCategory;
 
+    @JsonManagedReference
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "freeBoard")
     private List<FreeFile> freeFiles = new ArrayList<>();;
 
+    @JsonManagedReference
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "freeBoard")
     private List<FreeReply> freeReplies = new ArrayList<>();;
 

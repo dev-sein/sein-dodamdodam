@@ -151,61 +151,36 @@ let sel_files = [];  // 전역 변수로 이동
     }
 )('att_zone', 'btnAtt')
 
-$(document).ready(function(){
-    $("#btnAtt").on("change", function(){ // input type file 변경 이벤트
-        var formData = new FormData();
-        var inputFile = $("input[name='eventFiles']");
-        var files = inputFile[0].files;
 
-        $($files).each((i, file) => {
-            files.push(file);
-        })
+$('.submit-btn').on('click', function () {
+    // FormData 객체 생성
+    var formData = new FormData();
 
-        files.forEach((file, e) => {
-            formData.append("file", file);
-        })
+    // 이미지 파일을 formData에 추가
+    var fileInput = document.getElementById('btnAtt');
+    for (var i = 0; i < fileInput.files.length; i++) {
+        formData.append('eventFiles', fileInput.files[i]);
+    }
 
-        $.ajax({
-            url: '/file/upload',
-            processData: false, // 필수
-            contentType: false, // 필수
-            data: formData,
-            type: 'POST',
-            dataType: 'json',
-            success: function(result){
-                alert("파일이 성공적으로 업로드 되었습니다.");
-                //필요한 경우 result 값을 사용하여 성공 처리를 수행합니다.
-            },
-            error: function(e){
-                alert("파일 업로드에 실패하였습니다.");
-                //서버 에러를 처리합니다.
-            }
-        });
-    });
-
-    $(".submit-btn").click(function(e){
-        e.preventDefault();
-        // 다른 폼 요소 검증
-        $("#submit-btn").submit(); // 폼 전송
+    // Ajax를 사용하여 formData를 서버로 전송
+    $.ajax({
+        url: '/upload',  // 업로드를 처리할 서버 엔드포인트 URL
+        type: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+            // 업로드 성공 시 동작할 코드 작성
+            console.log('파일 업로드 성공');
+        },
+        error: function (xhr, status, error) {
+            // 업로드 실패 시 동작할 코드 작성
+            console.error('파일 업로드 실패:', error);
+        }
     });
 });
 
-$(".save-button").click(() => {
-    const $files = $("input[type=file]")[0].files;
-    let text = "";
 
-    FileList.prototype.forEach = Array.prototype.forEach;
-    files.forEach((file, i) => {
-        text +=
-            `
-                <input type="hidden" name="fileDTOS[${i}].fileOriginalName" value="${file.name}">
-                <input type="hidden" name="fileDTOS[${i}].fileUuid" value="${globalThis.uuids[i]}">
-                <input type="hidden" name="fileDTOS[${i}].filePath" value="${toStringByFormatting(new Date())}">
-                `;
-    });
-    $("form[name=eventForm]").append(text);
-    $("form[name=eventForm]").submit();
-})
 
 
 function toStringByFormatting(source, delimiter = '/') {
@@ -215,3 +190,9 @@ function toStringByFormatting(source, delimiter = '/') {
 
     return [year, month, day].join(delimiter);
 }
+
+
+
+
+
+
