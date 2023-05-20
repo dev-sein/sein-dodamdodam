@@ -28,6 +28,11 @@ public interface EventBoardService {
     //    목록 페이징(최신순)
     public Slice<EventBoardDTO> getEventBoards(Pageable pageable);
 
+    // 수정
+    public void update(EventBoardDTO eventBoardDTO);
+    // 삭제
+    public void delete(Long eventBoardId);
+
     default EventBoardDTO eventBoardToDTO(EventBoard eventBoard){
         return EventBoardDTO.builder()
                 .id(eventBoard.getId())
@@ -87,17 +92,17 @@ public interface EventBoardService {
     default List<EventFileDTO> eventFileToDTO(List<EventFile> eventFiles){
         List<EventFileDTO> eventFileDTOS = new ArrayList<>();
         eventFiles.forEach(
-            eventFile ->{
-                EventFileDTO eventFileDTO = EventFileDTO.builder()
-                        .id(eventFile.getId())
-                        .fileOriginalName(eventFile.getFileOriginalName())
-                        .filePath(eventFile.getFilePath())
-                        .fileUuid(eventFile.getFileUuid())
-                        .fileSize(eventFile.getFileSize())
-                        .fileRepresent(eventFile.getFileRepresent())
-                        .build();
-                eventFileDTOS.add(eventFileDTO);
-            }
+                eventFile ->{
+                    EventFileDTO eventFileDTO = EventFileDTO.builder()
+                            .id(eventFile.getId())
+                            .fileOriginalName(eventFile.getFileOriginalName())
+                            .filePath(eventFile.getFilePath())
+                            .fileUuid(eventFile.getFileUuid())
+                            .fileSize(eventFile.getFileSize())
+                            .fileRepresent(eventFile.getFileRepresent())
+                            .build();
+                    eventFileDTOS.add(eventFileDTO);
+                }
         );
         return eventFileDTOS;
     }

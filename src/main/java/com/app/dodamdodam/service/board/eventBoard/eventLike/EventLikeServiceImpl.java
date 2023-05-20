@@ -1,4 +1,5 @@
-package com.app.dodamdodam.service.board.eventBoard.EventLike;
+package com.app.dodamdodam.service.board.eventBoard.eventLike;
+
 
 import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.event.EventLike;
@@ -7,6 +8,8 @@ import com.app.dodamdodam.repository.board.event.board.EventBoardRepository;
 import com.app.dodamdodam.repository.board.event.like.EventLikeRepository;
 import com.app.dodamdodam.repository.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -14,8 +17,10 @@ import java.util.Optional;
 import static org.aspectj.bridge.MessageUtil.fail;
 
 @Service
+@Qualifier("eventLike") @Primary
 @RequiredArgsConstructor
-public class EventLikeServiceImpl implements EventLikeService {
+public class EventLikeServiceImpl implements com.app.dodamdodam.service.board.eventBoard.eventLike.EventLikeService {
+
     private final EventLikeRepository eventLikeRepository;
 
     private final EventBoardRepository eventBoardRepository;

@@ -19,14 +19,14 @@ import org.springframework.web.servlet.view.RedirectView;
 import javax.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping("/event-board/*")
+@RequestMapping("/event/*")
 @RequiredArgsConstructor
 @Slf4j
 public class EventBoardController {
     @Qualifier
     private final EventBoardService eventBoardService;
 
-    @GetMapping("event-board-list")
+    @GetMapping("list")
     public String goList(EventBoardDTO eventBoardDTO){return "event-board/event-board-list";}
 
     //    이벤트 게시판 리스트(최신순)
@@ -39,7 +39,7 @@ public class EventBoardController {
 //    }
 
     //    이벤트 게시판 상세보기
-    @GetMapping("event-board-detail/{id}")
+    @GetMapping("detail/{id}")
     public String goEventDetail(@PathVariable Long id, Model model) {
         model.addAttribute("event", eventBoardService.getDetail(id));
         return "event-board/event-board-detail";

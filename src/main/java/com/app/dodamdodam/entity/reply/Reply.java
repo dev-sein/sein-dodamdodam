@@ -1,7 +1,6 @@
 package com.app.dodamdodam.entity.reply;
 
 import com.app.dodamdodam.audit.Period;
-import com.app.dodamdodam.entity.board.Board;
 import com.app.dodamdodam.entity.member.Member;
 import com.sun.istack.NotNull;
 import lombok.*;
@@ -27,10 +26,6 @@ public class Reply extends Period {
     public Reply(String replyContent, Member member) {
         this.replyContent = replyContent;
         this.member = member;
-    }
-
-    public void setReplyContent(String replyContent) {
-        this.replyContent = replyContent;
     }
 
     public void setMember(Member member) {

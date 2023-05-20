@@ -37,7 +37,7 @@ public interface FreeReplyService {
         return FreeReplyDTO.builder().id(freeReply.getId())
                 .memberDTO(toMemberDTO(freeReply.getMember()))
                 .replyContent(freeReply.getReplyContent())
-                .boardId(freeReply.getFreeBoard().getId())
+                .id(freeReply.getFreeBoard().getId())
                 .createdDate(freeReply.getCreatedDate())
                 .updatedDate(freeReply.getUpdatedDate())
                 .build();

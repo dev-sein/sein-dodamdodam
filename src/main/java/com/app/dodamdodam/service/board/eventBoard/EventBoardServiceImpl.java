@@ -82,4 +82,49 @@ public void write(EventBoardDTO eventBoardDTO, Long memberId) {
 
         return new SliceImpl<>(collect, pageable, eventBoards.hasNext());
     }
+
+
+    @Override
+    public void update(EventBoardDTO eventBoardDTO) {
+
+    }
+
+
+//    @Override @Transactional
+//    public void update(EventBoardDTO eventBoardDTO) {
+//        List<EventFileDTO> fileDTOS = eventBoardDTO.getEventFiles();
+//
+//        eventBoardRepository.findById(eventBoardDTO.getId()).ifPresent(eventBoard -> {
+//            EventBoard updatedEventBoard = EventBoard.builder()
+//                    .id(eventBoard.getId())
+//                    .boardContent(eventBoardDTO.getBoardContent())
+//                    .boardTitle(eventBoardDTO.getBoardTitle())
+//                    .member(eventBoard.getMember())
+//                    .createDate(eventBoard.getCreatedDate())
+//                    .suggestLikeCount(eventBoard.getEventLikeNumber())
+//                    .suggestReplyCount(eventBoard.getEventReviewCount())
+//                    .build();
+//
+//            eventBoardRepository.save(updatedEventBoard;
+//        });
+//
+//        eventFileRepository.deleteBySuggestId(suggestDTO.getId());
+//
+//        if(fileDTOS != null){
+//            for (int i = 0; i < fileDTOS.size(); i++) {
+//                if(i == 0){
+//                    fileDTOS.get(i).setFileType(FileType.REPRESENTATIVE);
+//                }else {
+//                    fileDTOS.get(i).setFileType(FileType.NORMAL);
+//                }
+//                fileDTOS.get(i).setSuggest(getCurrentSequence());
+//                suggestFileRepository.save(toSuggestFileEntity(fileDTOS.get(i)));
+//            }
+//        }
+//    }
+
+    @Override
+    public void delete(Long eventBoardId) {
+
+    }
 }

@@ -1,9 +1,6 @@
 package com.app.dodamdodam.repository.banner;
 
 import com.app.dodamdodam.entity.banner.BannerApply;
-import com.app.dodamdodam.entity.banner.QBannerApply;
-import com.app.dodamdodam.entity.free.FreeBoard;
-import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.search.banner.AdminBannerSearch;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -16,8 +13,7 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 import static com.app.dodamdodam.entity.banner.QBannerApply.bannerApply;
-import static com.app.dodamdodam.entity.free.QFreeBoard.freeBoard;
-import static com.app.dodamdodam.entity.purchase.QPurchaseBoard.purchaseBoard;
+
 
 @RequiredArgsConstructor
 public class BannerqueryDslImpl implements BannerqueryDsl {

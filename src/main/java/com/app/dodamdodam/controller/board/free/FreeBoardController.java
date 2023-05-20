@@ -1,11 +1,8 @@
 package com.app.dodamdodam.controller.board.free;
 
 import com.app.dodamdodam.domain.FreeBoardFileDTO;
-import com.app.dodamdodam.domain.FreeReplyDTO;
-import com.app.dodamdodam.entity.free.FreeReply;
 import com.app.dodamdodam.search.FreeBoardSearch;
 import com.app.dodamdodam.service.board.freeBoard.FreeBoardService;
-import com.app.dodamdodam.service.board.freeBoard.freeReply.FreeReplyService;
 import com.app.dodamdodam.type.CategoryType;
 import com.sun.tools.jconsole.JConsoleContext;
 import lombok.RequiredArgsConstructor;
@@ -25,9 +22,8 @@ import java.util.List;
 @Slf4j
 public class FreeBoardController {
     private final FreeBoardService freeBoardService;
-    private final FreeReplyService freeReplyService;
 
-//    자유 게시판 메인
+//    자유게시판 메인
     @GetMapping("list")
     public String freeBoardList(Model model){
         /* 좋아요 랭킹 5개 freeBoardList */
@@ -36,7 +32,7 @@ public class FreeBoardController {
         return "free-board/free-board-list";
     }
 
-//    자유 게시판 무한 스크롤  // 검색으로 수정하기
+//    자유게시판 무한 스크롤  // 검색으로 수정하기
     @ResponseBody
     @GetMapping("list-search")
     public List<FreeBoardFileDTO> getFreeBoardList(@RequestParam int page, @RequestParam String search, @RequestParam String category){
@@ -70,12 +66,10 @@ public class FreeBoardController {
         return freeBoards;
     }
 
-//    자유 게시판 상세
+    //    자유게시판 상세
     @GetMapping("detail/{boardId}")
-    public String freeBoardDetail(Model model, @PathVariable(value = "boardId") Long boardId, HttpSession session){
-        session.setAttribute("memberId",7L);    /* 임시로 세션에 memberId 값 담아둠 */
-
-        model.addAttribute("freeBoardDetail", freeBoardService.getFreeBoardById(boardId));
+    public String freeBoardDetail(Model model, @PathVariable(value = "boardId") Long boardId){
+        freeBoardService.getFreeBoardById(boardId).ifPresent(freeBoard -> model.addAttribute("freeBoardDetail",freeBoard));
         model.addAttribute("top5",freeBoardService.getTop5FreeBoards());
         /* PageRequest는 뭐 넣어도 상관없이 개수 가져와서 아무렇게나 넣음 */
         model.addAttribute("replyCount",freeReplyService.getFreeRepliesCountByBoardId(PageRequest.of(0, 5), boardId));
@@ -83,44 +77,5 @@ public class FreeBoardController {
 
         return "free-board/free-board-detail";
     }
-
-//    자유 게시판 댓글 작성
-    @PostMapping("write-reply")
-    @ResponseBody
-    public String writeReply(String replyContent, Long boardId, HttpSession session){
-        FreeReply freeReply = new FreeReply(replyContent);
-        log.info("댓글 작성 들어옴@@@@@@@@@@@@@@@@@@@@@@@@2");
-        log.info(replyContent);
-        log.info(boardId + "");
-        Long memberId = (Long)session.getAttribute("memberId");
-        freeReplyService.saveFreeBoardReply(freeReply, boardId, memberId);
-        return "success";
-    }
-
-//    자유 게시판 댓글 수정
-    @PostMapping("update-reply/{replyId}")
-    @ResponseBody
-    public void writeReply(FreeReply updatedFreeReply, @PathVariable(value = "replyId") Long replyId){
-        freeReplyService.setFreeReplyContent(updatedFreeReply, replyId);
-}
-
-//    자유 게시판 댓글 삭제
-    @PostMapping("delete-reply/{replyId}")
-    @ResponseBody
-    public String deleteReply(@PathVariable(value = "replyId") Long replyId){
-        log.info("삭제 컨트롤러 들어옴");
-        freeReplyService.removeFreeReply(replyId);
-        return "success";
-    }
-
-//    자유 게시판 댓글 리스트
-    @GetMapping("replies/{boardId}/{page}")
-    @ResponseBody
-    public List<FreeReplyDTO> getReplies(@PathVariable(value = "boardId") Long boardId , @PathVariable(value = "page") int page){
-        log.info("@@@@@@@@@@@@@@@@@@@들어옴@@@@@@@@@@@@@@@@@@@@");
-        log.info(boardId + " || " + page);
-        Pageable pageable = PageRequest.of(page,5);
-        return freeReplyService.getFreeRepliesByBoardId(pageable, boardId);
-    }
-
+    
 }
