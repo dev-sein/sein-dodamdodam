@@ -1,3 +1,9 @@
+const $boardTitle = $('.input-title'); // 제목
+const $boardContent = $('.content-textarea'); // 내용
+const $productPrice = $('.price-margin'); // 가격
+const $productName = $('#input-name'); // 상품명
+const $productCount = $('.input-count'); // 상품수
+
 
 const fileArray = new Array();
 
@@ -108,6 +114,7 @@ document.querySelector(".btn-attach-thumb").addEventListener("click", function (
 
   /* 모든 항목 입력 확인 js */
   document.querySelector(".button-button").addEventListener("click", function () {
+    console.log("버튼 클릭은 인지함?")
     this.preventDefault();
 
     const imgFiles = document.getElementById("imgFile").files;
@@ -126,9 +133,11 @@ document.querySelector(".btn-attach-thumb").addEventListener("click", function (
         inputPrice.value.trim() === "" ||
         contentTextarea.value.trim() === ""
     ) {
+      console.log("if문 성공");
         showModalWithMessage("필수 항목을 작성해주세요");
     } else {
-        // 저장 로직을 여기에 추가해주세요.
+      console.log("if문 실패");
+      // 저장 로직을 여기에 추가해주세요.
         showModalWithMessage("판매글이 등록되었습니다");
         writeBoard();
     }
@@ -149,11 +158,6 @@ function showModalWithMessage(message) {
 
 
 function writeBoard(){
-  let $boardTitle = $('.input-title'); // 제목
-  let $boardContent = $('.content-textarea'); // 내용
-  let $productPrice = $('.price-margin'); // 가격
-  let $productName = $('#input-name'); // 상품명
-  let $productCount = $('.input-count'); // 상품수
 
   let purchaseBoardDTO = {
   boardTitle : $boardTitle.val(),
