@@ -10,7 +10,6 @@ import javax.persistence.Embeddable;
 @ToString
 @Setter
 //@AllArgsConstructor
-@Setter
 public class Address {
     private String address;
     private String addressDetail;

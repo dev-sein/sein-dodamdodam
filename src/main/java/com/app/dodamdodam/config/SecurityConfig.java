@@ -35,6 +35,15 @@ public class SecurityConfig {
     private static final String PURCHASE_BOARD_LIST_PATH = "/purchase/list/**";
     private static final String PURCHASE_BOARD_DETAIL_PATH = "/purchase/detail/**";
     private static final String PURCHASE_BOARD_WRITE_PATH = "/purchase/write/**";
+//    자유 게시판
+    private static final String FREE_PATH = "/free/**";
+//    모집 게시판
+    private static final String RECRUITMENT_PATH = "/recruitment/**";
+//    이벤트 게시판
+    private static final String EVENT_PATH = "/event/**";
+//    문화공간 소개 게시판
+    private static final String CULTURE_PATH = "/culture/**";
+
 
 
 //    private static final String BOARD_PATH = "/board/**";
@@ -64,6 +73,11 @@ public class SecurityConfig {
                 .mvcMatchers(IGNORE_FAVICON) //favicon은 필터에서 제외
                 .antMatchers(PURCHASE_BOARD_LIST_PATH)
                 .antMatchers(PURCHASE_BOARD_DETAIL_PATH)
+                .antMatchers(FREE_PATH) //임시
+                .antMatchers(RECRUITMENT_PATH) //임시
+                .antMatchers(EVENT_PATH) //임시
+                .antMatchers(CULTURE_PATH) //임시
+                .antMatchers(ADMIN_PATH) //임시
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()); //static 경로도 필터에서 제외
     }
 
@@ -92,7 +106,7 @@ public class SecurityConfig {
                 .csrf().disable()
 
                 .authorizeRequests() // 인가 설정(권한 설정)
-                .antMatchers(ADMIN_PATH).hasRole(Role.ADMIN.name())
+//                .antMatchers(ADMIN_PATH).hasRole(Role.ADMIN.name())
                 .antMatchers(MYPAGE_PATH).hasRole(Role.MEMBER.name())
                 .antMatchers(PURCHASE_BOARD_WRITE_PATH).hasRole(Role.MEMBER.name())
                 .anyRequest().permitAll()
