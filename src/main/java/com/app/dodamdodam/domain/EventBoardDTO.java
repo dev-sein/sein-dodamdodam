@@ -1,9 +1,9 @@
 package com.app.dodamdodam.domain;
 
 import com.app.dodamdodam.type.EventType;
-import com.querydsl.core.annotations.QueryProjection;
 import lombok.Builder;
 import lombok.Data;
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-@Builder
+@Component
 public class EventBoardDTO {
 
     /* 이벤트 보드 정보 다 받아오기*/
@@ -48,11 +48,11 @@ public class EventBoardDTO {
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
 
-    public EventBoardDTO(){
+    public EventBoardDTO() {
         this.eventFiles = new ArrayList<>();
     }
 
-    @QueryProjection
+    @Builder
     public EventBoardDTO(Long id, String eventAddress, String eventAddressDetail, String eventStartDate, String eventEndDate, String eventIntroduction, String boardTitle, String boardContent, int eventLikeNumber, EventType eventStatus, String eventBusinessNumber, String eventBusinessName, String eventBusinessTel, String eventBusinessEmail, MemberDTO memberDTO, List<EventReviewDTO> reviews, List<EventFileDTO> eventFiles, List<MultipartFile> uploadFiles, LocalDateTime createdDate, LocalDateTime updatedDate) {
         this.id = id;
         this.eventAddress = eventAddress;

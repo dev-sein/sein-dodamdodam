@@ -4,7 +4,7 @@ let page = 0;
 listService = (function() {
     function list(page, callback) {
         $.ajax({
-            url: '/admins/banner/list-content',
+            url: '/admins/inquiry/list-content',
             type: 'get',
             data: { page: page }, // 수정: page를 객체 형태로 전달
             success: function(list) {

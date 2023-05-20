@@ -8,10 +8,8 @@ import com.app.dodamdodam.search.board.AdminFreeBoardSearch;
 import com.app.dodamdodam.type.CategoryType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -47,8 +45,9 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 
     /* 자유 게시글 상세 */
     @Override
-    public Optional<FreeBoard> getFreeBoardById(Long boardId) {
-        return freeBoardRepository.findFreeBoardAndFreeFilesById_QueryDSL(boardId);
+    public FreeBoardFileDTO getFreeBoardById(Long boardId) {
+        FreeBoardFileDTO freeBoardFileDTO = toFreeBoardFileDTO(freeBoardRepository.findFreeBoardAndFreeFilesById_QueryDSL(boardId).get());
+        return freeBoardFileDTO;
     }
 
     /* 자유 게시글 수정 */
@@ -67,18 +66,11 @@ public class FreeBoardServiceImpl implements FreeBoardService {
         freeBoardRepository.findById(board.getId()).ifPresent(freeBoard -> freeBoardRepository.delete(freeBoard));
     }
 
-    /* 관리자 자유 게시글 목록 */
-    @Override
-    public Page<FreeBoardFileDTO> getAdminFreeBoardList(Pageable pageable) {
-       Page<FreeBoard> freeBoardPage = freeBoardRepository.findAllFreeBoardList_QueryDSL(pageable);
-       List<FreeBoardFileDTO> freeBoardFileDTOS = freeBoardPage.get().map(this::toFreeBoardFileDTO).collect(Collectors.toList());
-        return new PageImpl<>(freeBoardFileDTOS, pageable, freeBoardPage.getTotalElements());
-    }
 
     /* 자유 게시글 Top5 */
     @Override
     public List<FreeBoardFileDTO> getTop5FreeBoards() {
-        List<FreeBoard> freeBoards = freeBoardRepository.findFreeBoardListByLikeCount();
+        List<FreeBoard> freeBoards = freeBoardRepository.findFreeBoardListByLikeCount_QueryDSL();
         List<FreeBoardFileDTO> freeBoardFileDTOS = freeBoards.stream().map(freeBoard -> toFreeBoardFileDTO(freeBoard)).collect(Collectors.toList());
         return freeBoardFileDTOS;
     }
@@ -87,6 +79,27 @@ public class FreeBoardServiceImpl implements FreeBoardService {
     @Override
     public List<FreeBoardFileDTO> getFreeBoardsBySearch(Pageable pageable, CategoryType categoryType ,FreeBoardSearch freeBoardSearch) {
         return freeBoardRepository.findFreeBoardBySearchWithPaging_QueryDSL(freeBoardSearch, categoryType, pageable).stream().map(freeBoard -> toFreeBoardFileDTO(freeBoard)).collect(Collectors.toList());
+    }
+
+    /* 최근 작성된 자유 게시글 리스트 */
+    @Override
+    public List<FreeBoardFileDTO> getRecentFreeBoardList() {
+        List<FreeBoardFileDTO> freeBoardFileDTOS = freeBoardRepository.findRecentFreeBoardList_QueryDSL().stream().map(freeBoard -> toFreeBoardFileDTO(freeBoard)).collect(Collectors.toList());
+        return freeBoardFileDTOS;
+    }
+
+
+
+
+
+    /*====================== 관리자 ======================*/
+
+    /* 관리자 자유 게시글 목록 */
+    @Override
+    public Page<FreeBoardFileDTO> getAdminFreeBoardList(Pageable pageable) {
+        Page<FreeBoard> freeBoardPage = freeBoardRepository.findAllFreeBoardList_QueryDSL(pageable);
+        List<FreeBoardFileDTO> freeBoardFileDTOS = freeBoardPage.get().map(this::toFreeBoardFileDTO).collect(Collectors.toList());
+        return new PageImpl<>(freeBoardFileDTOS, pageable, freeBoardPage.getTotalElements());
     }
 
     /* 관리자 자유 게시글 삭제*/
@@ -107,13 +120,11 @@ public class FreeBoardServiceImpl implements FreeBoardService {
     /* 관리자 자유 게시글 검색*/
     @Override
     public Page<FreeBoardFileDTO> showAdminFreeWithSearch_QueryDSL(Pageable pageable, AdminFreeBoardSearch adminFreeBoardSearch) {
-            Page<FreeBoard> freeBoardPage = freeBoardRepository.findAdmindFreeBoardWithPaging_QueryDSL(adminFreeBoardSearch, pageable);
-            List<FreeBoardFileDTO> freeBoardFileDTOS = freeBoardPage.getContent().stream()
-                    .map(this::toFreeBoardFileDTO)
-                    .collect(Collectors.toList());
-            return new PageImpl<>(freeBoardFileDTOS, pageable, freeBoardPage.getTotalElements());
-        }
+        Page<FreeBoard> freeBoardPage = freeBoardRepository.findAdmindFreeBoardWithPaging_QueryDSL(adminFreeBoardSearch, pageable);
+        List<FreeBoardFileDTO> freeBoardFileDTOS = freeBoardPage.getContent().stream()
+                .map(this::toFreeBoardFileDTO)
+                .collect(Collectors.toList());
+        return new PageImpl<>(freeBoardFileDTOS, pageable, freeBoardPage.getTotalElements());
+    }
 
 }
-
-

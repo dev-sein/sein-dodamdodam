@@ -28,6 +28,10 @@ public class Reply extends Period {
         this.member = member;
     }
 
+    public void setReplyContent(String replyContent) {
+        this.replyContent = replyContent;
+    }
+
     public void setMember(Member member) {
         this.member = member;
     }

@@ -75,7 +75,7 @@ function listText(list) {
         console.log("text 들어옴");
         var text = "";
         text += `
-            <tr onclick="redirectToDetail(${freeBoard.id})">
+            <tr>
                 <td>
                     <!-- 체크박스 -->
                     <div class="checkbox-wrapper-21">
@@ -107,12 +107,6 @@ function getList(page) {
         displayPagination(list.totalPages);
     });
 }
-
-// 상세 페이지로 이동하는 함수
-function redirectToDetail(id) {
-    window.location.href = "/admins/free-board/detail/" + id;
-}
-
 
 
 /*항목 삭제*/
