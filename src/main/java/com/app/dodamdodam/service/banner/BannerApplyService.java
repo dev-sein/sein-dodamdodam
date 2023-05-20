@@ -1,11 +1,10 @@
 package com.app.dodamdodam.service.banner;
 
-import com.app.dodamdodam.domain.BannerDTO;
-import com.app.dodamdodam.domain.MemberDTO;
-import com.app.dodamdodam.domain.PurchaseBoardDTO;
-import com.app.dodamdodam.domain.RecruitmentBoardFileDTO;
+import com.app.dodamdodam.domain.*;
 import com.app.dodamdodam.entity.banner.BannerApply;
 import com.app.dodamdodam.entity.member.Member;
+import com.app.dodamdodam.search.banner.AdminBannerSearch;
+import com.app.dodamdodam.search.board.AdminFreeBoardSearch;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -19,6 +18,9 @@ public interface BannerApplyService {
 
     //관리자 : 배너 상세 신청 내역
     public BannerDTO getAdminBannerDetail(Long id);
+
+    /* 관리자 자유게시판 검색 */
+    public Page<BannerDTO> showAdminBannerWithSearch_QueryDSL(Pageable pageable, AdminBannerSearch adminBannerSearch);
 
     //관리자 : 배너 삭제
     public void deleteAdminBannerList(List<Long> bannerApplyIds);

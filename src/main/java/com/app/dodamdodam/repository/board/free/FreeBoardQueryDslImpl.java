@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static com.app.dodamdodam.entity.free.QFreeBoard.freeBoard;
+import static com.app.dodamdodam.entity.recruitment.QRecruitmentBoard.recruitmentBoard;
 
 public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
     @Autowired
@@ -93,19 +94,23 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
     }
 
     @Override //관리자 자유게시판 검색
-    public Page<FreeBoard> findAdmindFreeBoardWithPaging_QueryDSL(AdminFreeBoardSearch freeBoardSearch, Pageable pageable) {
-        BooleanExpression freeCategoryEq = freeBoardSearch.getFreeCategory() == null ? null : freeBoard.freeCategory.eq(freeBoardSearch.getFreeCategory());
-        BooleanExpression freeTitleEq = freeBoardSearch.getBoardTitle() == null ? null : freeBoard.boardTitle.eq(freeBoardSearch.getBoardTitle());
-        BooleanExpression memberNameEq = freeBoardSearch.getMemberName() == null ? null : freeBoard.member.memberName.eq(freeBoardSearch.getMemberName());
+    public Page<FreeBoard> findAdmindFreeBoardWithPaging_QueryDSL(AdminFreeBoardSearch adminfreeBoardSearch, Pageable pageable) {
+        BooleanExpression searchAll = null;
+        if (adminfreeBoardSearch.getBoardTitle() != null || adminfreeBoardSearch.getMemberName() != null) {
+            BooleanExpression searchTitle = adminfreeBoardSearch.getBoardTitle() != null ? freeBoard.boardTitle.contains(adminfreeBoardSearch.getBoardTitle()) : null;
+            BooleanExpression searchName = adminfreeBoardSearch.getMemberName() != null ? freeBoard.member.memberName.contains(adminfreeBoardSearch.getMemberName()) : null;
 
+            searchAll = searchTitle.or(searchName);
+        }
+        
         List<FreeBoard> adminFreeBoards = query.select(freeBoard)
                 .from(freeBoard)
-                .where(freeCategoryEq, freeTitleEq, memberNameEq)
+                .where(searchAll)
                 .orderBy(freeBoard.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
-        Long count = query.select(freeBoard.count()).from(freeBoard).fetchOne();
+        Long count = query.select(freeBoard.count()).from(freeBoard).where(searchAll).fetchOne();
 
         return new PageImpl<>(adminFreeBoards, pageable, count);
     }
