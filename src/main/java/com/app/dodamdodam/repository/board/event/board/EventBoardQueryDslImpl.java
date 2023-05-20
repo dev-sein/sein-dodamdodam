@@ -78,7 +78,7 @@ public class EventBoardQueryDslImpl implements EventBoardQueryDsl {
             BooleanExpression searchAddress = adminEventBoardSearch.getMemberName() != null ? eventBoard.eventAddress.contains(adminEventBoardSearch.getEventAddress()) : null;
             BooleanExpression searchAddressDetail = adminEventBoardSearch.getMemberName() != null ? eventBoard.eventAddressDetail.contains(adminEventBoardSearch.getEventAddressDetail()) : null;
 
-            searchAll = searchTitle.or(searchName);
+            searchAll = searchTitle.or(searchName).or(searchAddress).or(searchAddressDetail);
         }
 
         List<EventBoard> adminEventBoards = query.select(eventBoard)

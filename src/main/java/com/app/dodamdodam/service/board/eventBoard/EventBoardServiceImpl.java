@@ -128,6 +128,8 @@ public void write(EventBoardDTO eventBoardDTO, Long memberId) {
     public void delete(Long eventBoardId) {
 
     }
+
+    /* 관리자 이벤트 검색 */
     @Override
     public Page<EventBoardDTO> showAdminEventWithSearch_QueryDSL(Pageable pageable, AdminEventBoardSearch adminEventBoardSearch) {
             Page<EventBoard> eventBoardPage = eventBoardRepository.findAdmindEventBoardWithPaging_QueryDSL(adminEventBoardSearch, pageable);

@@ -280,4 +280,5 @@ public class AdminController {
         log.info(page+"페이지");
         return result;
     }
+
 }
