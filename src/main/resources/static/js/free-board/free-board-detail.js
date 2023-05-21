@@ -59,13 +59,63 @@ $(".btn-like").click(() => {
         $(".none-heart").hide();
         $(".active-heart").show();
         $(".btn-like").addClass("active-heart-button");
+        addLike();
     }else {
         /* 원래 요소 */
         $(".none-heart").show();
         $(".active-heart").hide();
         $(".btn-like").removeClass("active-heart-button");
+        removeLike();
     }
 });
+
+// 좋아요
+function addLike() {
+    let boardId = $('#hidden-id').val();
+    console.log("좋아요 들어옴");
+    console.log(boardId);
+    $.ajax({
+        type: 'POST',
+        url: `/free/like/${boardId}`,
+        success: function(result) {
+            // 성공적으로 요청을 처리한 후 실행할 로직
+            // result <- controller에서 return으로 현재 좋아요 수 담아뒀음
+            console.log(result);
+            // 최신 좋아요 수 가져온걸로 내용 교체
+            $('.like-count').text(result);
+            $('.like-count-span').text(result);
+            console.log('좋아요 성공');
+        },
+        error: function(xhr, status, error) {
+            // 요청 실패 시 실행할 로직
+            console.error('좋아요 요청 실패:', error);
+        }
+    });
+}
+
+// 좋아요 취소
+function removeLike() {
+    let boardId = $('#hidden-id').val();
+    console.log("좋아요 취소 들어옴");
+    console.log(boardId);
+    $.ajax({
+        type: 'POST',
+        url: `/free/cancel-like/${boardId}`,
+        success: function(result) {
+            // 성공적으로 요청을 처리한 후 실행할 로직
+            // result <- controller에서 return으로 현재 좋아요 수 담아뒀음
+            console.log(result);
+            // 최신 좋아요 수 가져온걸로 내용 교체
+            $('.like-count').text(result);
+            $('.like-count-span').text(result);
+            console.log('좋아요 취소 성공');
+        },
+        error: function(xhr, status, error) {
+            // 요청 실패 시 실행할 로직
+            console.error('좋아요 취소 요청 실패:', error);
+        }
+    });
+}
 
 /* 카카오톡 공유하기 API */
 function shareMessage() {

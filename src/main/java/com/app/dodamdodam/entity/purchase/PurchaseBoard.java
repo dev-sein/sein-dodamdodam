@@ -21,7 +21,9 @@ public class PurchaseBoard extends Board {
 //    private Integer purchasePrice;
 //    @NotNull private Integer purchaseCount;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "purchaseBoard", cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
+//    @OneToOne(fetch = FetchType.LAZY, mappedBy = "purchaseBoard", cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
+//    private Product product;
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "purchaseBoard", cascade = {CascadeType.REMOVE, CascadeType.PERSIST, CascadeType.MERGE})
     private Product product;
 //    private Integer purchasePrice;
 
@@ -52,6 +54,5 @@ public class PurchaseBoard extends Board {
     public void setMember(Member member) {
         this.member = member;
     }
-
 
 }

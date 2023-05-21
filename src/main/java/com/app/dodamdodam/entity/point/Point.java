@@ -42,4 +42,5 @@ public class Point extends Period {
         this.pointAmount = pointAmount;
         this.pointStatus = pointStatus;
     }
+    /* 추가 */
 }

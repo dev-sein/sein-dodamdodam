@@ -13,16 +13,18 @@ public class InquiryDTO {
     private InquiryType inquiryType;
     private String inquiryEmail;
     private String inquiryPhoneNumber;
+    private String memberIdentification;
     private String inquiryContent;
     private String inquiryAnswer;
     private InquiryStatus inquiryStatus;
 
     @QueryProjection
-    public InquiryDTO(Long id, InquiryType inquiryType, String inquiryEmail, String inquiryPhoneNumber, String inquiryContent, String inquiryAnswer, InquiryStatus inquiryStatus) {
+    public InquiryDTO(Long id, InquiryType inquiryType, String inquiryEmail, String inquiryPhoneNumber, String memberIdentification, String inquiryContent, String inquiryAnswer, InquiryStatus inquiryStatus) {
         this.id = id;
         this.inquiryType = inquiryType;
         this.inquiryEmail = inquiryEmail;
         this.inquiryPhoneNumber = inquiryPhoneNumber;
+        this.memberIdentification = memberIdentification;
         this.inquiryContent = inquiryContent;
         this.inquiryAnswer = inquiryAnswer;
         this.inquiryStatus = inquiryStatus;

@@ -21,7 +21,6 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class InquiryServiceImpl implements InquiryService {
     private final InquiryRepository inquiryRepository;
-
     //문의사항 등록
     public void register(InquiryDTO inquiryDTO){
         inquiryRepository.save(toInquiryEntity(inquiryDTO));
