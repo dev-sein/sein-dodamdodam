@@ -1,10 +1,11 @@
 package com.app.dodamdodam.service.member;
 
 import com.app.dodamdodam.domain.MemberDTO;
-import com.app.dodamdodam.entity.banner.BannerApply;
+import com.app.dodamdodam.domain.RecruitmentBoardFileDTO;
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.point.Point;
+import com.app.dodamdodam.entity.banner.BannerApply;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
 import com.app.dodamdodam.repository.banner.BannerRepository;
 import com.app.dodamdodam.repository.board.free.FreeBoardRepository;
@@ -23,6 +24,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -140,6 +142,7 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public List<RecruitmentBoard> getMyRecruitementedBoardList(Long memberId) {
         return recruitmentBoardRepository.findAllRecruitmentedBoardListByMemberId_QueryDSL(memberId);
+
     }
 
     /* 멤버 상태 변경*/
@@ -150,6 +153,13 @@ public class MemberServiceImpl implements MemberService{
         }
     }
 
+    /* 캘린더 눌렀을 때 누른 날짜로 내가 참가한 모집게시글 리스트 가져오기 */
+    @Override
+    public List<RecruitmentBoardFileDTO> getRecruitmentBoardListByMemberIdAndDate(Long memberId, LocalDate recruitmentDate) {
+        List<RecruitmentBoard> recruitmentBoards = recruitmentBoardRepository.findRecruitmentBoardListByMemberIdAndDate(memberId, recruitmentDate);
+        List<RecruitmentBoardFileDTO> recruitmentBoardFileDTOS = recruitmentBoards.stream().map(recruitmentBoard -> toRecruitmentBoardFileDto(recruitmentBoard)).collect(Collectors.toList());
+        return recruitmentBoardFileDTOS;
+    }
     /* 관리자 멤버 검색 */
     @Override
     public Page<MemberDTO> showMemberWithSearch_QueryDSL(Pageable pageable, AdminMemberSearch adminMemberSearch) {
@@ -159,6 +169,5 @@ public class MemberServiceImpl implements MemberService{
                 .collect(Collectors.toList());
         return new PageImpl<>(adminMemberSearchDTOS, pageable, memberPage.getTotalElements());
     }
-
 
 }

@@ -63,4 +63,5 @@ public class FreeBoard extends Board {
     public void updateLikeMinus(){
         this.likeCount--;
     }
+    /* 추가 */
 }

@@ -23,4 +23,5 @@ public class FreeBoardReplyDTO {
         this.memberDTO = memberDTO;
         this.freeReplyDTOS = freeReplyDTOS;
     }
+    /* 추가 */
 }
