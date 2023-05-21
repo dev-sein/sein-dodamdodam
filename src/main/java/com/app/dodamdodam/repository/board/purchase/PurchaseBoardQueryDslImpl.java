@@ -133,21 +133,27 @@ public class PurchaseBoardQueryDslImpl implements PurchaseBoardQueryDsl {
 
     }
 
-    @Override //관리자 판매 게시글
+    @Override //관리자 판매 검색 
     public Page<PurchaseBoard> findadminPurchaseSearchWithPaging_QueryDSL(AdminPurchaseBoardSearch adminPurchaseBoardSearch, Pageable pageable) {
-        BooleanExpression boardTitleEq = adminPurchaseBoardSearch.getBoardTitle() == null ? null : purchaseBoard.boardTitle.eq(adminPurchaseBoardSearch.getBoardTitle());
-        BooleanExpression memberNameEq = adminPurchaseBoardSearch.getMemberName() == null ? null : purchaseBoard.member.memberName.eq(adminPurchaseBoardSearch.getMemberName());
-        BooleanExpression productCountEq = adminPurchaseBoardSearch.getProductCount() == null ? null : purchaseBoard.product.productCount.eq(adminPurchaseBoardSearch.getProductCount());
-        BooleanExpression productPriceEq = adminPurchaseBoardSearch.getProductPrice() == null ? null : purchaseBoard.product.productPrice.eq(adminPurchaseBoardSearch.getProductPrice());
+        BooleanExpression searchAll = null;
+        if (adminPurchaseBoardSearch.getBoardTitle() != null || adminPurchaseBoardSearch.getMemberName() != null
+                || adminPurchaseBoardSearch.getProductCount() != null || adminPurchaseBoardSearch.getProductPrice() != null) {
+            BooleanExpression searchTitle = adminPurchaseBoardSearch.getBoardTitle() != null ? purchaseBoard.boardTitle.contains(adminPurchaseBoardSearch.getBoardTitle()) : null;
+            BooleanExpression searchName = adminPurchaseBoardSearch.getMemberName() != null ? purchaseBoard.member.memberName.contains(adminPurchaseBoardSearch.getMemberName()) : null;
+            BooleanExpression searchPrice = adminPurchaseBoardSearch.getProductPrice() != null ? purchaseBoard.product.productPrice.eq(adminPurchaseBoardSearch.getProductPrice()) : null;
+            BooleanExpression searchCount = adminPurchaseBoardSearch.getProductCount() != null ? purchaseBoard.product.productCount.eq(adminPurchaseBoardSearch.getProductCount()) : null;
 
+            searchAll = searchTitle.or(searchName).or(searchPrice).or(searchCount);
+        }
+        
         List<PurchaseBoard> adminPurchaseBoards = query.select(purchaseBoard)
                 .from(purchaseBoard)
-                .where(boardTitleEq, memberNameEq, productCountEq, productPriceEq)
+                .where(searchAll)
                 .orderBy(purchaseBoard.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
-        Long count = query.select(purchaseBoard.count()).from(purchaseBoard).fetchOne();
+        Long count = query.select(purchaseBoard.count()).from(purchaseBoard).where(searchAll).fetchOne();
 
         return new PageImpl<>(adminPurchaseBoards, pageable, count);
     }

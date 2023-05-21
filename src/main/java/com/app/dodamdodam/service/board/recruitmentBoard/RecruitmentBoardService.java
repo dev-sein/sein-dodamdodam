@@ -8,7 +8,9 @@ import com.app.dodamdodam.entity.purchase.PurchaseFile;
 import com.app.dodamdodam.entity.recruitment.Recruitment;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
 import com.app.dodamdodam.entity.recruitment.RecruitmentFile;
+import com.app.dodamdodam.search.Inquiry.AdminInquirySearch;
 import com.app.dodamdodam.search.PurchaseBoardSearch;
+import com.app.dodamdodam.search.board.AdminRecruitmentSearch;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
@@ -29,6 +31,9 @@ public interface RecruitmentBoardService {
 
 //    관리자 목록 게시판
     public Page<RecruitmentBoardFileDTO> showList(Pageable pageable);
+
+//  관리자 검색
+    public Page<RecruitmentBoardFileDTO> showAdminRecruitmentWithSearch_QueryDSL(Pageable pageable, AdminRecruitmentSearch adminRecruitmentSearch);
 
 //    관리자 삭제
     public void deleteRecruitmentBoard(List<Long> recruitmentBoardIds);

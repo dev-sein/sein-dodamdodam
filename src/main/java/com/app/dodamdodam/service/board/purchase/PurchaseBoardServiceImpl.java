@@ -2,11 +2,14 @@ package com.app.dodamdodam.service.board.purchase;
 
 import com.app.dodamdodam.domain.PurchaseBoardDTO;
 import com.app.dodamdodam.domain.PurchaseBoardFileDTO;
+import com.app.dodamdodam.domain.RecruitmentBoardFileDTO;
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.purchase.PurchaseBoard;
+import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
 import com.app.dodamdodam.repository.board.purchase.PurchaseBoardRepository;
 import com.app.dodamdodam.search.Inquiry.AdminInquirySearch;
 import com.app.dodamdodam.search.PurchaseBoardSearch;
+import com.app.dodamdodam.search.board.AdminPurchaseBoardSearch;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
@@ -42,10 +45,20 @@ public class PurchaseBoardServiceImpl implements PurchaseBoardService {
                 .map(purchaseBoard -> toPurchaseBoardFileDto(purchaseBoard)).collect(Collectors.toList());
     }
 
+    /* 관리자 검색 목록 */
+    @Override
+    public Page<PurchaseBoardDTO> findPurchaseBoardWithSearch_QueryDSL(Pageable pageable, AdminPurchaseBoardSearch adminPurchaseBoardSearch) {
+        Page<PurchaseBoard> purchaseBoards = purchaseBoardRepository.findadminPurchaseSearchWithPaging_QueryDSL(adminPurchaseBoardSearch, pageable);
+        List<PurchaseBoardDTO> purchaseBoardDTOS = purchaseBoards.getContent().stream()
+                .map(this::toPurchaseBoardDTO)
+                .collect(Collectors.toList());
+        return new PageImpl<>(purchaseBoardDTOS, pageable, purchaseBoards.getTotalElements());
+    }
+
     /*관리자 목록 */
     @Override
     public Page<PurchaseBoardDTO> showList(Pageable pageable) {
-        Page<PurchaseBoard> purchaseBoardPage = purchaseBoardRepository.findAllWithPaging(PageRequest.of(1,10));
+        Page<PurchaseBoard> purchaseBoardPage = purchaseBoardRepository.findAllWithPaging(pageable);
         List<PurchaseBoardDTO> purchaseBoardDTOS = purchaseBoardPage.get().map(this::toPurchaseBoardDTO).collect(Collectors.toList());
 
         return new PageImpl<>(purchaseBoardDTOS, pageable, purchaseBoardPage.getTotalElements());

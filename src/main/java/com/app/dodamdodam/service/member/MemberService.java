@@ -2,13 +2,13 @@ package com.app.dodamdodam.service.member;
 
 import com.app.dodamdodam.domain.*;
 import com.app.dodamdodam.entity.banner.BannerApply;
-import com.app.dodamdodam.entity.embeddable.Address;
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.point.Point;
 import com.app.dodamdodam.entity.recruitment.Recruitment;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
 import com.app.dodamdodam.entity.recruitment.RecruitmentFile;
+import com.app.dodamdodam.search.member.AdminMemberSearch;
 import com.app.dodamdodam.type.MemberStatus;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -62,7 +62,6 @@ public interface MemberService {
     /* 캘린더 눌렀을 때 누른 날짜로 내가 참가한 모집게시글 리스트 가져오기 */
     public List<RecruitmentBoardFileDTO> getRecruitmentBoardListByMemberIdAndDate(Long memberId, LocalDate recruitmentDate);
     
-
     /* 관리자 회원 변경*/
     public void setMemberStatus(List<Long> ids, MemberStatus memberStatus);
 
@@ -72,10 +71,13 @@ public interface MemberService {
     /* 관리자 멤버 상세 */
     public MemberDTO getAdminMemberDetail(Long id);
 
+    /*관리자 멤버 검색*/
+    public Page<MemberDTO> showMemberWithSearch_QueryDSL(Pageable pageable, AdminMemberSearch adminMemberSearch);
+
     default MemberDTO toMemberDTO(Member member){
         return MemberDTO.builder().id(member.getId()).memberId(member.getMemberId()).memberEmail(member.getMemberEmail())
-            .memberName(member.getMemberName()).memberPhone(member.getMemberPhone()).memberPoint(member.getMemberPoint())
-            .memberStatus(member.getMemberStatus()).address(member.getAddress())
+                .memberName(member.getMemberName()).memberPhone(member.getMemberPhone()).memberPoint(member.getMemberPoint())
+                .memberStatus(member.getMemberStatus()).address(member.getAddress())
                 .memberPassword(member.getMemberPassword()).createdDate(member.getCreatedDate()).participationCount(member.getParticipationCount())
                 .build();
     }

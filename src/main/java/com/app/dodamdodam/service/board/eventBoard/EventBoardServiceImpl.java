@@ -2,22 +2,23 @@ package com.app.dodamdodam.service.board.eventBoard;
 
 import com.app.dodamdodam.domain.EventBoardDTO;
 import com.app.dodamdodam.domain.EventFileDTO;
+import com.app.dodamdodam.domain.FreeBoardFileDTO;
 import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.event.EventFile;
+import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.exception.BoardNotFoundException;
 import com.app.dodamdodam.exception.MemberNotFoundException;
 import com.app.dodamdodam.repository.board.event.board.EventBoardRepository;
 import com.app.dodamdodam.repository.board.event.file.EventFileRepository;
 import com.app.dodamdodam.repository.member.MemberRepository;
+import com.app.dodamdodam.search.board.AdminEventBoardSearch;
+import com.app.dodamdodam.search.board.AdminFreeBoardSearch;
 import com.app.dodamdodam.type.FileRepresent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Slice;
-import org.springframework.data.domain.SliceImpl;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -82,4 +83,59 @@ public void write(EventBoardDTO eventBoardDTO, Long memberId) {
 
         return new SliceImpl<>(collect, pageable, eventBoards.hasNext());
     }
+
+
+    @Override
+    public void update(EventBoardDTO eventBoardDTO) {
+
+    }
+
+
+//    @Override @Transactional
+//    public void update(EventBoardDTO eventBoardDTO) {
+//        List<EventFileDTO> fileDTOS = eventBoardDTO.getEventFiles();
+//
+//        eventBoardRepository.findById(eventBoardDTO.getId()).ifPresent(eventBoard -> {
+//            EventBoard updatedEventBoard = EventBoard.builder()
+//                    .id(eventBoard.getId())
+//                    .boardContent(eventBoardDTO.getBoardContent())
+//                    .boardTitle(eventBoardDTO.getBoardTitle())
+//                    .member(eventBoard.getMember())
+//                    .createDate(eventBoard.getCreatedDate())
+//                    .suggestLikeCount(eventBoard.getEventLikeNumber())
+//                    .suggestReplyCount(eventBoard.getEventReviewCount())
+//                    .build();
+//
+//            eventBoardRepository.save(updatedEventBoard;
+//        });
+//
+//        eventFileRepository.deleteBySuggestId(suggestDTO.getId());
+//
+//        if(fileDTOS != null){
+//            for (int i = 0; i < fileDTOS.size(); i++) {
+//                if(i == 0){
+//                    fileDTOS.get(i).setFileType(FileType.REPRESENTATIVE);
+//                }else {
+//                    fileDTOS.get(i).setFileType(FileType.NORMAL);
+//                }
+//                fileDTOS.get(i).setSuggest(getCurrentSequence());
+//                suggestFileRepository.save(toSuggestFileEntity(fileDTOS.get(i)));
+//            }
+//        }
+//    }
+
+    @Override
+    public void delete(Long eventBoardId) {
+
+    }
+
+    /* 관리자 이벤트 검색 */
+    @Override
+    public Page<EventBoardDTO> showAdminEventWithSearch_QueryDSL(Pageable pageable, AdminEventBoardSearch adminEventBoardSearch) {
+            Page<EventBoard> eventBoardPage = eventBoardRepository.findAdmindEventBoardWithPaging_QueryDSL(adminEventBoardSearch, pageable);
+            List<EventBoardDTO> eventBoardDTOS = eventBoardPage.getContent().stream()
+                    .map(this::toEventSearchBoardDTO)
+                    .collect(Collectors.toList());
+            return new PageImpl<>(eventBoardDTOS, pageable, eventBoardPage.getTotalElements());
+        }
 }

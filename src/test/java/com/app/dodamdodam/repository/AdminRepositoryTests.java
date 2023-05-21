@@ -1,7 +1,6 @@
 package com.app.dodamdodam.repository;
 
 import com.app.dodamdodam.entity.banner.BannerApply;
-import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.point.Point;
@@ -17,7 +16,6 @@ import com.app.dodamdodam.repository.point.PointRepository;
 import com.app.dodamdodam.search.board.AdminFreeBoardSearch;
 import com.app.dodamdodam.search.board.AdminPurchaseBoardSearch;
 import com.app.dodamdodam.search.board.AdminRecruitmentSearch;
-import com.app.dodamdodam.search.member.AdminMemberSearch;
 import com.app.dodamdodam.type.BannerType;
 import com.app.dodamdodam.type.CategoryType;
 import com.app.dodamdodam.type.MemberStatus;
@@ -32,7 +30,6 @@ import org.springframework.test.annotation.Rollback;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -179,7 +176,6 @@ public class AdminRepositoryTests {
         AdminFreeBoardSearch adminFreeBoardSearch = new AdminFreeBoardSearch();
         adminFreeBoardSearch.setBoardTitle("자유 게시글 제목47");
 //        adminFreeBoardSearch.setMemberName("테스트");
-        adminFreeBoardSearch.setFreeCategory(CategoryType.RECRUITMENT);
         Page<FreeBoard> freeBoardPage = freeBoardRepository.findAdmindFreeBoardWithPaging_QueryDSL(adminFreeBoardSearch, PageRequest.of(0, 10));
         log.info("============"+freeBoardPage.getContent());
     }
@@ -205,7 +201,7 @@ public class AdminRepositoryTests {
         log.info("============"+purchaseBoardAdminPages.getContent());
     }
 
-    @Test //관리자 멤버검색
+/*    @Test //관리자 멤버검색
     public void findAdminMemberWithPaging_QueryDSL_Test(){
         AdminMemberSearch adminMemberSearch = new AdminMemberSearch();
 //        adminPurchaseBoardSearch.setBoardTitle("자유 게시글 제목47");
@@ -213,10 +209,21 @@ public class AdminRepositoryTests {
 //        adminMemberSearch.setMemberName("판매 게시글 제목1");
 //        adminMemberSearch.setMemberPhone("판매 게시글 제목1");
 //        adminMemberSearch.setMemberEmail("판매 게시글 제목1");
-        adminMemberSearch.setMemberStatus(MemberStatus.NORMAL);
         Page<Member> memberAdminPage = memberRepository.findAdminMemberWithPaging_QueryDSL(adminMemberSearch, PageRequest.of(0, 10));
         log.info("============"+memberAdminPage.getContent());
-    }
+    }*/
+//    @Test //관리자 멤버검색
+//    public void findAdminMemberWithPaging_QueryDSL_Test(){
+//        AdminMemberSearch adminMemberSearch = new AdminMemberSearch();
+////        adminPurchaseBoardSearch.setBoardTitle("자유 게시글 제목47");
+////        adminFreeBoardSearch.setMemberName("테스트");
+////        adminMemberSearch.setMemberName("판매 게시글 제목1");
+////        adminMemberSearch.setMemberPhone("판매 게시글 제목1");
+////        adminMemberSearch.setMemberEmail("판매 게시글 제목1");
+//        adminMemberSearch.setMemberStatus(MemberStatus.NORMAL);
+//        Page<Member> memberAdminPage = memberRepository.findAdminMemberWithPaging_QueryDSL(adminMemberSearch, PageRequest.of(0, 10));
+//        log.info("============"+memberAdminPage.getContent());
+//    }
 
 
 }

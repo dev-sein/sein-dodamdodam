@@ -249,8 +249,8 @@ public class BoardRepositoryTests {
     /* 자유 게시판에 댓글 달기*/
     @Test
     public void saveFreeReplyTest(){
-        FreeReply freeReply = FreeReply.builder().freeBoard(freeBoardRepository.findById(200L).get()).replyContent("자유게시글 댓글1")
-                .member(memberRepository.findById(6L).get()).build();
+        FreeReply freeReply = new FreeReply("댓글1");
+        freeReply.setFreeBoard(freeBoardRepository.findById(201L).get());
         freeReplyRepository.save(freeReply);
     }
 

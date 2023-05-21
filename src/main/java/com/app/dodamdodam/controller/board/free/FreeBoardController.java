@@ -4,12 +4,10 @@ import com.app.dodamdodam.domain.FreeBoardFileDTO;
 import com.app.dodamdodam.domain.FreeReplyDTO;
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.free.FreeReply;
-import com.app.dodamdodam.repository.board.free.like.FreeBoardLikeRepository;
 import com.app.dodamdodam.search.FreeBoardSearch;
 import com.app.dodamdodam.service.board.freeBoard.FreeBoardService;
 import com.app.dodamdodam.service.board.freeBoard.freeReply.FreeReplyService;
 import com.app.dodamdodam.type.CategoryType;
-import com.sun.tools.jconsole.JConsoleContext;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
@@ -30,7 +28,7 @@ public class FreeBoardController {
     private final FreeBoardService freeBoardService;
     private final FreeReplyService freeReplyService;
 
-//    자유 게시판 메인
+    //    자유 게시판 메인
     @GetMapping("list")
     public String freeBoardList(Model model){
         /* 좋아요 랭킹 5개 freeBoardList */
@@ -39,7 +37,7 @@ public class FreeBoardController {
         return "free-board/free-board-list";
     }
 
-//    자유 게시판 무한 스크롤  // 검색으로 수정하기
+    //    자유 게시판 무한 스크롤  // 검색으로 수정하기
     @ResponseBody
     @GetMapping("list-search")
     public List<FreeBoardFileDTO> getFreeBoardList(@RequestParam int page, @RequestParam String search, @RequestParam String category){
@@ -73,7 +71,7 @@ public class FreeBoardController {
         return freeBoards;
     }
 
-//    자유 게시판 상세
+    //    자유 게시판 상세
     @GetMapping("detail/{boardId}")
     public String freeBoardDetail(Model model, @PathVariable(value = "boardId") Long boardId, HttpSession session){
         session.setAttribute("memberId",6L);    /* 임시로 세션에 memberId 값 담아둠 */
@@ -139,7 +137,7 @@ public class FreeBoardController {
 
 
 
-//    자유 게시판 댓글 작성
+    //    자유 게시판 댓글 작성
     @PostMapping("write-reply")
     @ResponseBody
     public Long writeReply(String replyContent, Long boardId, HttpSession session){
@@ -153,7 +151,7 @@ public class FreeBoardController {
         return replyCount;
     }
 
-//    자유 게시판 댓글 수정
+    //    자유 게시판 댓글 수정
     @PostMapping("update-reply/{replyId}")
     @ResponseBody
     public String updateReply(String updatedFreeReply, @PathVariable(value = "replyId") Long replyId){
@@ -165,7 +163,7 @@ public class FreeBoardController {
         return "success";
     }
 
-//    자유 게시판 댓글 삭제
+    //    자유 게시판 댓글 삭제
     @PostMapping("delete-reply/{replyId}")
     @ResponseBody
     public Integer deleteReply(@PathVariable(value = "replyId") Long replyId){
@@ -175,7 +173,7 @@ public class FreeBoardController {
         return replyCount - 1;
     }
 
-//    자유 게시판 댓글 리스트
+    //    자유 게시판 댓글 리스트
     @GetMapping("replies/{boardId}/{page}")
     @ResponseBody
     public List<FreeReplyDTO> getReplies(@PathVariable(value = "boardId") Long boardId , @PathVariable(value = "page") int page){

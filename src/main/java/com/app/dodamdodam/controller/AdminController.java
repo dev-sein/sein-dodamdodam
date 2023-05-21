@@ -3,6 +3,16 @@ package com.app.dodamdodam.controller;
 import com.app.dodamdodam.domain.*;
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.recruitment.Recruitment;
+import com.app.dodamdodam.search.Inquiry.AdminInquirySearch;
+import com.app.dodamdodam.search.banner.AdminBannerSearch;
+import com.app.dodamdodam.search.board.AdminEventBoardSearch;
+import com.app.dodamdodam.search.board.AdminFreeBoardSearch;
+import com.app.dodamdodam.search.board.AdminPurchaseBoardSearch;
+import com.app.dodamdodam.search.board.AdminRecruitmentSearch;
+import com.app.dodamdodam.search.member.AdminMemberSearch;
+import com.app.dodamdodam.search.point.AdminPointSearch;
+import com.app.dodamdodam.service.banner.BannerApplyService;
+import com.app.dodamdodam.service.board.eventBoard.EventBoardService;
 import com.app.dodamdodam.service.board.freeBoard.FreeBoardService;
 import com.app.dodamdodam.service.board.purchase.PurchaseBoardService;
 import com.app.dodamdodam.service.board.recruitmentBoard.RecruitmentBoardService;
@@ -32,6 +42,10 @@ public class AdminController {
     private final PurchaseBoardService purchaseBoardService;
     private final MemberService memberService;
     private final RecruitmentBoardService recruitmentBoardService;
+    private final BannerApplyService bannerApplyService;
+    private final EventBoardService eventBoardService;
+
+    /* 오류확인 */
 
     /*홈*/
     @GetMapping("/home")
@@ -43,12 +57,14 @@ public class AdminController {
         return "admin/inquiry-list";
     }
 
+
+    @GetMapping("inquiry/list/{page}") //문의 게시판 검색
     @ResponseBody
-    @GetMapping("inquiry/list-content")  //문의 게시판 목록
-    public Page<InquiryDTO> adminInquiryGetListJson(@RequestParam(name = "page") int page) {
-        PageRequest pageRequest = PageRequest.of(page, 10);
-        Page<InquiryDTO> inquiryAdminPages = inquiryService.showList(pageRequest);
-        return inquiryAdminPages;
+    public Page<InquiryDTO> getInquiryBoards(@PathVariable("page") Integer page, AdminInquirySearch adminInquirySearch) {
+        log.info("================================" + adminInquirySearch);
+        Page<InquiryDTO> result = inquiryService.showInquiryWithSearch_QueryDSL(PageRequest.of(page , 10), adminInquirySearch);
+                log.info(page+"페이지");
+        return result;
     }
 
     @DeleteMapping("inquiry/delete") //문의 삭제
@@ -56,12 +72,6 @@ public class AdminController {
     public ResponseEntity<String> deleteAdminInquires(@RequestBody List<Long> inquiryIds){
         inquiryService.deleteInquires(inquiryIds);
         return ResponseEntity.ok("게시물 삭제에 성공했습니다");
-    }
-
-    @ResponseBody
-    @PostMapping("inquiry/search")
-    public Page<AdminInquirySearchDTO> adminInquirySearch(){
-        return null;
     }
 
 
@@ -79,12 +89,14 @@ public class AdminController {
         return "admin/point-list";
     }
 
+
+    @GetMapping("point/list/{page}") //문의 게시판 검색
     @ResponseBody
-    @GetMapping("point/list-content")
-    public Page<PointDTO> getPointList(@RequestParam(value = "page") int page) {
-        PageRequest pageRequest = PageRequest.of(page, 10);
-        Page<PointDTO> pointAdminPage =  pointService.showList(pageRequest);
-        return pointAdminPage;
+    public Page<PointDTO> getPointBoards(@PathVariable("page") Integer page, AdminPointSearch adminPointSearch) {
+        log.info("================================" + adminPointSearch);
+        Page<PointDTO> result = pointService.showAdminPointWithSearch_QueryDSL(PageRequest.of(page , 10), adminPointSearch);
+        log.info(page+"페이지");
+        return result;
     }
 
 
@@ -100,6 +112,15 @@ public class AdminController {
         PageRequest pageRequest = PageRequest.of(page, 10);
         Page<FreeBoardFileDTO> freeBoardAdminPage = freeBoardService.getAdminFreeBoardList(pageRequest);
         return freeBoardAdminPage;
+    }
+
+    @GetMapping("free-board/list/{page}") //자유 게시판 검색
+    @ResponseBody
+    public Page<FreeBoardFileDTO> getFreeBoards(@PathVariable("page") Integer page, AdminFreeBoardSearch adminFreeBoardSearch) {
+        log.info("================================" + adminFreeBoardSearch);
+        Page<FreeBoardFileDTO> result = freeBoardService.showAdminFreeWithSearch_QueryDSL(PageRequest.of(page , 10), adminFreeBoardSearch);
+        log.info(page+"페이지");
+        return result;
     }
 
     @DeleteMapping("free-board/delete") //자유게시글 삭제
@@ -130,6 +151,15 @@ public class AdminController {
         return purchaseBoardAdminPage;
     }
 
+    @GetMapping("purchase-board/list/{page}") //판매 게시판 검색
+    @ResponseBody
+    public Page<PurchaseBoardDTO> getPurchaseBoards(@PathVariable("page") Integer page, AdminPurchaseBoardSearch adminPurchaseBoardSearch) {
+        log.info("================================" + adminPurchaseBoardSearch);
+        Page<PurchaseBoardDTO> result = purchaseBoardService.findPurchaseBoardWithSearch_QueryDSL(PageRequest.of(page , 10), adminPurchaseBoardSearch);
+        log.info(page+"페이지");
+        return result;
+    }
+
     @DeleteMapping("purchase-board/delete") //판매 게시글 삭제
     @ResponseBody
     public ResponseEntity<String> deleteAdminPurchaseBoard(@RequestBody List<Long> purchaseBoardIds){
@@ -149,11 +179,11 @@ public class AdminController {
     public String adminMemberList(){ return "admin/member-list"; }
 
     @ResponseBody
-    @GetMapping("member/list-content") //멤버 목록
-    public Page<MemberDTO> getMemberList(@RequestParam(value = "page") int page){
-        PageRequest pageRequest = PageRequest.of(page, 10);
-        Page<MemberDTO> memberAdminPage = memberService.showList(pageRequest);
-        return memberAdminPage;
+    @GetMapping("member/list/{page}") //멤버 검색
+    public Page<MemberDTO> getMemberList(@PathVariable("page") Integer page, AdminMemberSearch adminMemberSearch) {
+        Page<MemberDTO> result = memberService.showMemberWithSearch_QueryDSL(PageRequest.of(page , 10), adminMemberSearch);
+        log.info(page+"페이지");
+        return result;
     }
 
     @ResponseBody
@@ -179,11 +209,10 @@ public class AdminController {
     public String adminRecruitmentBoardList(){ return "admin/recruitment-board"; }
 
     @ResponseBody
-    @GetMapping("recruitment-board/list-content")  //모집 게시판 목록
-    public Page<RecruitmentBoardFileDTO> adminRecruitmentBoardGetListJson(@RequestParam(name = "page") int page) {
-        PageRequest pageRequest = PageRequest.of(page, 10);
-        Page<RecruitmentBoardFileDTO> recruitmentBoardFileDTOPage = recruitmentBoardService.showList(pageRequest);
-        return recruitmentBoardFileDTOPage;
+    @GetMapping("recruitment-board/list/{page}")  //모집 게시판 검색, 목록
+    public Page<RecruitmentBoardFileDTO> getRecruitmentList(@PathVariable("page") Integer page, AdminRecruitmentSearch adminRecruitmentSearch) {
+        Page<RecruitmentBoardFileDTO> result = recruitmentBoardService.showAdminRecruitmentWithSearch_QueryDSL(PageRequest.of(page , 10), adminRecruitmentSearch);
+        return result;
     }
 
     @DeleteMapping("recruitment-board/delete") //모집 게시글 삭제
@@ -200,16 +229,56 @@ public class AdminController {
         return "admin/recruitment-board-detail";
     }
 
-    /*배너 신청하기*/
-    @GetMapping("banner")
-    public String banner(){return "admin/banner";}
+    /*배너 */
+    @GetMapping("banner/list") //배너 목록
+    public String adminBannerList(){return "admin/banner";}
 
-    /*배너 신청하기*/
-    @GetMapping("banner-detail")
-    public String bannerDetail(){return "admin/banner-detail";}
+    @ResponseBody
+    @GetMapping("banner/list-content") //배너 신청 목록
+    public Page<BannerDTO> adminBannerGetListJson(@RequestParam(name = "page") int page) {
+        PageRequest pageRequest = PageRequest.of(page, 10);
+        Page<BannerDTO> bannerDTOPage = bannerApplyService.showList(pageRequest);
+        return bannerDTOPage;
+    }
 
-    /*배너 신청하기*/
-    @GetMapping("banner-management")
-    public String bannerManagement(){return "admin/banner-management";}
+    @ResponseBody
+    @GetMapping("banner/list/{page}") //배너 검색
+    public Page<BannerDTO> getBannerList(@PathVariable("page") Integer page, AdminBannerSearch adminBannerSearch) {
+        Page<BannerDTO> result = bannerApplyService.showAdminBannerWithSearch_QueryDSL(PageRequest.of(page , 10), adminBannerSearch);
+        log.info(page+"페이지");
+        return result;
+    }
+
+    @GetMapping("banner/detail/{id}")  // 배너 상세 현황
+    public String adminBannerDetail(@PathVariable("id") Long bannerApplyId, Model model) {
+        BannerDTO bannerDTO = bannerApplyService.getAdminBannerDetail(bannerApplyId);
+        model.addAttribute("bannerDTO", bannerDTO);
+        return "admin/banner-detail";
+    }
+
+    @DeleteMapping("banner/delete") //모집 게시글 삭제
+    @ResponseBody
+    public ResponseEntity<String> deleteAdminBanner(@RequestBody List<Long> bannerIds){
+        bannerApplyService.deleteAdminBannerList(bannerIds);
+        return ResponseEntity.ok("게시물 삭제에 성공했습니다");
+    }
+
+    @GetMapping("banner-management") // 배너 관리하기
+    public String bannerManagement(){ return "admin/banner-management"; }
+
+
+    /* 이벤트 게시판 */
+    @GetMapping("event-board")
+    public String eventBoard(){
+        return "admin/event-board";
+    }
+
+    @ResponseBody
+    @GetMapping("event-board/list/{page}") //이벤트 게시판 검색
+    public Page<EventBoardDTO> getdBannerList(@PathVariable("page") Integer page, AdminEventBoardSearch adminEventBoardSearch) {
+        Page<EventBoardDTO> result = eventBoardService.showAdminEventWithSearch_QueryDSL(PageRequest.of(page , 10), adminEventBoardSearch);
+        log.info(page+"페이지");
+        return result;
+    }
 
 }

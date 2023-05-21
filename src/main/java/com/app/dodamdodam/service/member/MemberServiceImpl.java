@@ -1,16 +1,11 @@
 package com.app.dodamdodam.service.member;
 
 import com.app.dodamdodam.domain.MemberDTO;
-import com.app.dodamdodam.domain.PurchaseBoardDTO;
 import com.app.dodamdodam.domain.RecruitmentBoardFileDTO;
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.point.Point;
-import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.entity.banner.BannerApply;
-import com.app.dodamdodam.entity.free.FreeBoard;
-import com.app.dodamdodam.entity.member.Member;
-import com.app.dodamdodam.entity.point.Point;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
 import com.app.dodamdodam.repository.banner.BannerRepository;
 import com.app.dodamdodam.repository.board.free.FreeBoardRepository;
@@ -18,6 +13,7 @@ import com.app.dodamdodam.repository.board.purchase.PurchaseBoardRepository;
 import com.app.dodamdodam.repository.board.recruitment.RecruitmentBoardRepository;
 import com.app.dodamdodam.repository.member.MemberRepository;
 import com.app.dodamdodam.repository.point.PointRepository;
+import com.app.dodamdodam.search.member.AdminMemberSearch;
 import com.app.dodamdodam.type.MemberStatus;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +24,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.swing.text.html.Option;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -99,7 +94,7 @@ public class MemberServiceImpl implements MemberService{
     }
 
     /* 관리자 멤버 목록*/
-    @Override 
+    @Override
     public Page<MemberDTO> showList(Pageable pageable) {
         Page<Member> memberPage = memberRepository.findAllMemberList_QueryDSL(PageRequest.of(1,10));
         List<MemberDTO> memberDTOS = memberPage.get().map(this::toMemberDTO).collect(Collectors.toList());
@@ -165,4 +160,14 @@ public class MemberServiceImpl implements MemberService{
         List<RecruitmentBoardFileDTO> recruitmentBoardFileDTOS = recruitmentBoards.stream().map(recruitmentBoard -> toRecruitmentBoardFileDto(recruitmentBoard)).collect(Collectors.toList());
         return recruitmentBoardFileDTOS;
     }
+    /* 관리자 멤버 검색 */
+    @Override
+    public Page<MemberDTO> showMemberWithSearch_QueryDSL(Pageable pageable, AdminMemberSearch adminMemberSearch) {
+        Page<Member> memberPage = memberRepository.findAdminMemberWithPaging_QueryDSL(adminMemberSearch, pageable);
+        List<MemberDTO> adminMemberSearchDTOS = memberPage.getContent().stream()
+                .map(this::toMemberDTO)
+                .collect(Collectors.toList());
+        return new PageImpl<>(adminMemberSearchDTOS, pageable, memberPage.getTotalElements());
+    }
+
 }
