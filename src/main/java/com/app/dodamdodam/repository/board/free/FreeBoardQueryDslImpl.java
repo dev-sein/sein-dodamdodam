@@ -134,8 +134,23 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
 
     // 자유게시판 좋아요 Top5 가져오기
     @Override
-    public List<FreeBoard> findFreeBoardListByLikeCount() {
+    public List<FreeBoard> findFreeBoardListByLikeCount_QueryDSL() {
         return query.selectFrom(freeBoard).orderBy(freeBoard.likeCount.desc()).limit(5).fetch();
+    }
+
+    @Override
+    public List<FreeBoard> findRecentFreeBoardList_QueryDSL() {
+        return query.selectFrom(freeBoard)
+                .leftJoin(freeBoard.freeFiles).fetchJoin()
+                .orderBy(freeBoard.id.desc())
+                .limit(5)
+                .fetch();
+    }
+
+//    댓글 id로 자유게시글 접근해서 그 안에 달린 댓글 개수 가져오기
+    @Override
+    public Integer findReplyCountByReplyId_QueryDSL(Long replyId) {
+        return query.select(freeBoard.freeReplies.size()).from(freeBoard).where(freeBoard.freeReplies.any().id.eq(replyId)).fetchOne();
     }
 
     //    게시글 상세페이지 board 정보, 작성자 정보, 첨부파일

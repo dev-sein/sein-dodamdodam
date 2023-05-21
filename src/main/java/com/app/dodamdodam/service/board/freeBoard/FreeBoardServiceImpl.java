@@ -2,18 +2,18 @@ package com.app.dodamdodam.service.board.freeBoard;
 
 import com.app.dodamdodam.domain.FreeBoardFileDTO;
 import com.app.dodamdodam.entity.free.FreeBoard;
-import com.app.dodamdodam.entity.free.FreeReply;
+import com.app.dodamdodam.entity.free.FreeLike;
 import com.app.dodamdodam.repository.board.free.FreeBoardRepository;
+import com.app.dodamdodam.repository.board.free.like.FreeBoardLikeRepository;
 import com.app.dodamdodam.search.FreeBoardSearch;
 import com.app.dodamdodam.type.CategoryType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,9 +21,12 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class FreeBoardServiceImpl implements FreeBoardService {
     @Autowired
     private FreeBoardRepository freeBoardRepository;
+    @Autowired
+    private FreeBoardLikeRepository freeBoardLikeRepository;
 
     /* 자유 게시글 전체 목록 */
     @Override
@@ -54,25 +57,25 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 
     /* 자유 게시글 수정 */
     @Override
-    public void updateFreeBoard(FreeBoard board) {
-        freeBoardRepository.findById(board.getId()).ifPresent(freeBoard -> {
-            freeBoard.setBoardContent(board.getBoardContent());
-            freeBoard.setBoardTitle(board.getBoardTitle());
-            freeBoard.setFreeFiles(board.getFreeFiles());
+    public void updateFreeBoard(FreeBoard updatedBoard, Long boardId) {
+        freeBoardRepository.findById(boardId).ifPresent(freeBoard -> {
+            freeBoard.setBoardContent(updatedBoard.getBoardContent());
+            freeBoard.setBoardTitle(updatedBoard.getBoardTitle());
+            freeBoard.setFreeFiles(updatedBoard.getFreeFiles());
         });
     }
 
     /* 자유 게시글 삭제 */
     @Override
-    public void deleteFreeBoard(FreeBoard board) {
-        freeBoardRepository.findById(board.getId()).ifPresent(freeBoard -> freeBoardRepository.delete(freeBoard));
+    public void deleteFreeBoard(Long boardId) {
+        freeBoardRepository.findById(boardId).ifPresent(freeBoard -> freeBoardRepository.delete(freeBoard));
     }
 
 
     /* 자유 게시글 Top5 */
     @Override
     public List<FreeBoardFileDTO> getTop5FreeBoards() {
-        List<FreeBoard> freeBoards = freeBoardRepository.findFreeBoardListByLikeCount();
+        List<FreeBoard> freeBoards = freeBoardRepository.findFreeBoardListByLikeCount_QueryDSL();
         List<FreeBoardFileDTO> freeBoardFileDTOS = freeBoards.stream().map(freeBoard -> toFreeBoardFileDTO(freeBoard)).collect(Collectors.toList());
         return freeBoardFileDTOS;
     }
@@ -83,13 +86,31 @@ public class FreeBoardServiceImpl implements FreeBoardService {
         return freeBoardRepository.findFreeBoardBySearchWithPaging_QueryDSL(freeBoardSearch, categoryType, pageable).stream().map(freeBoard -> toFreeBoardFileDTO(freeBoard)).collect(Collectors.toList());
     }
 
-
-    /* 자유 게시글 댓글 작성 */
+    /* 최근 작성된 자유 게시글 리스트 */
     @Override
-    public void saveFreeBoardReply(FreeReply freeReply, Long boardId, Long memberId) {
-
+    public List<FreeBoardFileDTO> getRecentFreeBoardList() {
+        List<FreeBoardFileDTO> freeBoardFileDTOS = freeBoardRepository.findRecentFreeBoardList_QueryDSL().stream().map(freeBoard -> toFreeBoardFileDTO(freeBoard)).collect(Collectors.toList());
+        return freeBoardFileDTOS;
     }
 
+    /* 좋아요 추가 */
+    public void setLikeCountPlus(Long boardId, Long memberId){
+        FreeLike freeLike = new FreeLike(memberId,freeBoardRepository.findById(boardId).get());
+        freeBoardLikeRepository.save(freeLike);
+        freeBoardRepository.findById(boardId).get().updateLikePlus();
+    }
+
+    /* 좋아요 취소 */
+    public void setLikeCountMinus(Long boardId, Long memberId){
+        freeBoardLikeRepository.deleteByBoardIdAndMemberId_QueryDSL(boardId,memberId);
+        freeBoardRepository.findById(boardId).get().updateLikeMinus();
+    }
+
+    /* 좋아요 눌렀는지 체크 */
+    @Override
+    public boolean checkFreeLikeByBoardIdAndMemberId(Long boardId, Long memberId) {
+        return freeBoardLikeRepository.checkLikeByBoardIdAndMemberId_QueryDSL(boardId,memberId);
+    }
 
 
     /*====================== 관리자 ======================*/

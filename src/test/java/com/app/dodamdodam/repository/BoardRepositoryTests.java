@@ -198,7 +198,7 @@ public class BoardRepositoryTests {
     /* 자유게시글 좋아요 Top5 */
     @Test
     public void findTop5(){
-        freeBoardRepository.findFreeBoardListByLikeCount().stream().map(FreeBoard::toString).forEach(log::info);
+        freeBoardRepository.findFreeBoardListByLikeCount_QueryDSL().stream().map(FreeBoard::toString).forEach(log::info);
     }
 
     /* 자유 게시글 상세 */
@@ -243,7 +243,7 @@ public class BoardRepositoryTests {
 //        log.info(freeReply.getReplyContent());
 //        freeReplyRepository.findById(700L).ifPresent(freeReply -> log.info(freeReply.toString()));
         Pageable pageable = PageRequest.of(0,5);
-        freeReplyRepository.findFreeRepliesByBoardId(pageable, 204L).stream().map(FreeReply::toString).forEach(log::info);
+        freeReplyRepository.findFreeRepliesByBoardId_QueryDSL(pageable, 204L).stream().map(FreeReply::toString).forEach(log::info);
     }
 
     /* 자유 게시판에 댓글 달기*/
@@ -265,5 +265,23 @@ public class BoardRepositoryTests {
     @Test
     public void deleteFreeReplyTest(){
         freeBoardRepository.findById(201L).ifPresent(freeBoard -> freeReplyRepository.delete(freeBoard.getFreeReplies().get(0)));
+    }
+
+    /* 자유 게시판 댓글 id로 board 조회해서 총 댓글 수 가져오기 */
+    @Test
+    public void findReplyCountByReplyId_QueryDSLTest(){
+        log.info(freeBoardRepository.findReplyCountByReplyId_QueryDSL(1025L).toString());
+    }
+
+    /* 내가 참여한 모집 게시글 날짜로 검색*/
+    @Test
+    public void findRecruitmentBoardListByMemberIdAndDateTest(){
+        recruitmentBoardRepository.findRecruitmentBoardListByMemberIdAndDate(5L,LocalDate.of(2023,05,14)).stream().map(RecruitmentBoard::toString).forEach(log::info);
+    }
+
+    /* 내가 구매한 판매 게시글 검색 */
+    @Test
+    public void findBoughtPurchaseBoardListByMemberId_QueryDSLTest(){
+        purchaseBoardRepository.findBoughtPurchaseBoardListByMemberId_QueryDSL(PageRequest.of(0,5),5L).stream().map(PurchaseBoard::toString).forEach(log::info);
     }
 }

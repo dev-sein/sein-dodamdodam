@@ -20,21 +20,34 @@
                 <div class="detail-title">
                     <div class="detail-info">
                         <p class="board">자유게시판</p>
-                        <em class="type">
-                            <span th:if="${#strings.equals(freeBoardDetail.freeCategory, 'ALL')}">전체</span>
-                            <span th:if="${#strings.equals(freeBoardDetail.freeCategory, 'CULTURE')}">문화</span>
-                            <span th:if="${#strings.equals(freeBoardDetail.freeCategory, 'EVENT')}">이벤트</span>
-                            <span th:if="${#strings.equals(freeBoardDetail.freeCategory, 'RECRUITMENT')}">모집</span>
-                            <span th:if="${#strings.equals(freeBoardDetail.freeCategory, 'PURCHASE')}">판매</span>
-                            <span th:if="${#strings.equals(freeBoardDetail.freeCategory, 'DAILY')}">일상</span>
-                        </em>
+                        <!-- 수정 중인 부분 -->
+                        <div class="top-button-wrapper">
+                            <em class="type">
+                                <span th:if="${#strings.equals(freeBoardDetail.freeCategory, 'ALL')}">전체</span>
+                                <span th:if="${#strings.equals(freeBoardDetail.freeCategory, 'CULTURE')}">문화</span>
+                                <span th:if="${#strings.equals(freeBoardDetail.freeCategory, 'EVENT')}">이벤트</span>
+                                <span th:if="${#strings.equals(freeBoardDetail.freeCategory, 'RECRUITMENT')}">모집</span>
+                                <span th:if="${#strings.equals(freeBoardDetail.freeCategory, 'PURCHASE')}">판매</span>
+                                <span th:if="${#strings.equals(freeBoardDetail.freeCategory, 'DAILY')}">일상</span>
+                            </em>
+                            <span th:if="${session.memberId == freeBoardDetail.memberDTO.id}">
+                                <em class="type inner-buttons">
+                                    <span th:attr="data-id=${freeBoardDetail.id}" onclick="location.href = '/free/update-board/' + this.getAttribute('data-id')">수정</span>
+                                </em>
+                                <em class="type inner-buttons">
+                                    <span th:attr="data-id=${freeBoardDetail.id}" onclick="location.href = '/free/delete-board/' + this.getAttribute('data-id')">삭제</span>
+                                </em>
+                            </span>
+                        </div>
+                        <!-- 수정 중인 부분 -->
                         <p class="title" th:text="${freeBoardDetail.boardTitle}">리바운드 본 사람??</p>
                         <p class="info">
-                            <em class="writer">박다예</em>
+                            <em class="writer" th:text="${freeBoardDetail.memberDTO.memberName}">박다예</em>
 <!--                            <em class="date" th:text="${freeBoardDetail.createdDate}">2023.04.23</em>-->
                             <em class="date" th:text="${#temporals.format(freeBoardDetail.createdDate, 'yyyy.MM.dd HH:mm')}">2023.04.23</em>
                             <em class="like-count" th:text="${freeBoardDetail.likeCount}">10</em>
                         </p>
+                        <input type="hidden" id="hidden-id" th:value="${freeBoardDetail.id}">
                     </div>
                 </div>
                 <div class="detail-content">
@@ -98,10 +111,15 @@
         <div class="board-detail-bottom">
             <div class="board-comment">
                 <div class="like-share-area">
-                    <button type="button" class="btn-like">
+                    <button type="button" class="btn-like active-heart-button" th:if="${checkLike}">
+                        <img src="/images/free-board/icon_gray_heart.png" style="display: none;" class="none-heart">
+                        <img src="/images/free-board/icon_red_heart.png" class="active-heart">
+                        <span class="like-count-span" th:text="${freeBoardDetail.likeCount}">10</span>
+                    </button>
+                    <button type="button" class="btn-like" th:if="${checkLike == false}">
                         <img src="/images/free-board/icon_gray_heart.png" class="none-heart">
                         <img src="/images/free-board/icon_red_heart.png" style="display: none;" class="active-heart">
-                        <span th:text="${freeBoardDetail.likeCount}">10</span>
+                        <span class="like-count-span" th:text="${freeBoardDetail.likeCount}">10</span>
                     </button>
                     <div class="btn-share">
                         <a id="kakaotalk-sharing-btn" href="javascript:shareMessage()">
@@ -117,11 +135,11 @@
                         </p>
                     </div>
                     <p class="comment-count">
-                        <em><span th:text="${replyCount}"></span></em>개의 댓글이 달려있습니다.
+                        <em><span id="reply-count" th:text="${replyCount}"></span></em>개의 댓글이 달려있습니다.
                     </p>
                     <div class="main-comment">
                         <form action="/free/write-reply" id="reply-form" method="post" name="replyForm" style="height: 100%; width: 100%">
-                            <textarea name="replyContent" id="" placeholder="댓글을 입력하세요."></textarea>
+                            <textarea name="replyContent" id="replyContent" placeholder="댓글을 입력하세요."></textarea>
                             <input type="hidden" name="boardId" id="boardId" th:value="${freeBoardDetail.id}">
                             <div class="btn-complete">
                                 <button class="btn-color" type="button" onclick="sendData()">댓글달기</button>
@@ -169,8 +187,8 @@
             </div>
             <div class="free-board-other">
                 <h4>
-                    <em>수다</em>
-                    카테고리의 최신글
+                    <em>자유</em>
+                    게시판의 최신글
                 </h4>
                 <div class="other-list">
                     <ul>
@@ -178,12 +196,17 @@
                             <a href="#">
                                 <div class="other-story">
                                     <div class="story-info">
-                                        <em class="category">수다</em>
-                                        <p class="other-title">[4팀 점심메뉴] 네모 오징어</p>
-                                        <p class="other-content">여기 볶음밥 맛있데요. 가보신 분??</p>
+                                        <em class="category" th:if="${#strings.equals(recentFreeBoards[0].freeCategory, 'ALL')}">전체</em>
+                                        <em class="category" th:if="${#strings.equals(recentFreeBoards[0].freeCategory, 'CULTURE')}">문화</em>
+                                        <em class="category" th:if="${#strings.equals(recentFreeBoards[0].freeCategory, 'EVENT')}">이벤트</em>
+                                        <em class="category" th:if="${#strings.equals(recentFreeBoards[0].freeCategory, 'RECRUITMENT')}">모집</em>
+                                        <em class="category" th:if="${#strings.equals(recentFreeBoards[0].freeCategory, 'PURCHASE')}">판매</em>
+                                        <em class="category" th:if="${#strings.equals(recentFreeBoards[0].freeCategory, 'DAILY')}">일상</em>
+                                        <p class="other-title" th:text="${recentFreeBoards[0].boardTitle}">[4팀 점심메뉴] 네모 오징어</p>
+                                        <p class="other-content" th:text="${recentFreeBoards[0].boardContent}">여기 볶음밥 맛있데요. 가보신 분??</p>
                                         <p class="info">
-                                            <em class="date">23.04.24</em>
-                                            <em class="like-count">25</em>
+                                            <em class="date" th:text="${#temporals.format(recentFreeBoards[0].createdDate, 'yy.MM.dd')}">23.04.24</em>
+                                            <em class="like-count" th:text="${recentFreeBoards[0].likeCount}">25</em>
                                         </p>
                                     </div>
                                     <div class="img-wrap">
@@ -196,12 +219,17 @@
                             <a href="#">
                                 <div class="other-story">
                                     <div class="story-info">
-                                        <em class="category">수다</em>
-                                        <p class="other-title">[4팀 점심메뉴] 네모 오징어</p>
-                                        <p class="other-content">여기 볶음밥 맛있데요. 가보신 분??</p>
+                                        <em class="category" th:if="${#strings.equals(recentFreeBoards[1].freeCategory, 'ALL')}">전체</em>
+                                        <em class="category" th:if="${#strings.equals(recentFreeBoards[1].freeCategory, 'CULTURE')}">문화</em>
+                                        <em class="category" th:if="${#strings.equals(recentFreeBoards[1].freeCategory, 'EVENT')}">이벤트</em>
+                                        <em class="category" th:if="${#strings.equals(recentFreeBoards[1].freeCategory, 'RECRUITMENT')}">모집</em>
+                                        <em class="category" th:if="${#strings.equals(recentFreeBoards[1].freeCategory, 'PURCHASE')}">판매</em>
+                                        <em class="category" th:if="${#strings.equals(recentFreeBoards[1].freeCategory, 'DAILY')}">일상</em>
+                                        <p class="other-title" th:text="${recentFreeBoards[1].boardTitle}">[4팀 점심메뉴] 네모 오징어</p>
+                                        <p class="other-content" th:text="${recentFreeBoards[1].boardContent}">여기 볶음밥 맛있데요. 가보신 분??</p>
                                         <p class="info">
-                                            <em class="date">23.04.24</em>
-                                            <em class="like-count">25</em>
+                                            <em class="date" th:text="${#temporals.format(recentFreeBoards[1].createdDate, 'yy.MM.dd')}">23.04.24</em>
+                                            <em class="like-count" th:text="${recentFreeBoards[1].likeCount}">25</em>
                                         </p>
                                     </div>
                                     <div class="img-wrap">
@@ -234,6 +262,10 @@
 
     let nextPage = 0;
     let boardId = $('#boardId').val();
+    let memberId = null;
+    if ([[${session.memberId}]] != null){
+        memberId = [[${session.memberId}]];
+    }
     let checkStatus = false;
 
     console.log(boardId);
@@ -280,6 +312,8 @@
             data: $('#reply-form').serialize(),
             success: function (result) {
                 console.log(result);
+                $('#replyContent').val('');
+                $('#reply-count').text(result);
                 $(".comment-list-wrapper").empty();
                 nextPage = 0;
                 fetchData();
@@ -314,6 +348,7 @@
             success: function (result) {
                 console.log(result);
                 $(".comment-list-wrapper").empty();
+                $('#reply-count').text(result);
                 nextPage = 0;
                 fetchData();
             },
@@ -329,7 +364,7 @@
         console.log($(e).next().val());
         let replyId = $(e).next().val();
         /**/
-        let $form = $(e.target).closest('.comment-wrap').find('.update-form');
+        let $form = $(e).closest('.comment-wrap').find('.update-form');
         console.log($form);
         /**/
 
@@ -367,7 +402,14 @@
                                     <div class="comment-info">
                                         <img src="/images/badge/medal_gold_winner_badge_reward_icon.png">
                                         <span class="name">${result[i].memberDTO.memberName}</span>
+                                        `;
+                            /* 내가 작성한 댓글일 때에만 수정, 삭제 버튼 볼수있게 */
+                            if (memberId == result[i].memberDTO.id) {
+                                text += `
                                         <button class="comment-util" onclick="showUtil(this)"></button>
+                                        `;
+                            }
+                                text += `
                                         <ul class="comment-util-list">
                                             <li>
                                                 <button type="button" class="modify-button" onclick="showUpdate(this)">수정</button>

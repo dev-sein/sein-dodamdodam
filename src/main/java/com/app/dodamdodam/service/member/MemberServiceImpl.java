@@ -2,6 +2,7 @@ package com.app.dodamdodam.service.member;
 
 import com.app.dodamdodam.domain.MemberDTO;
 import com.app.dodamdodam.domain.PurchaseBoardDTO;
+import com.app.dodamdodam.domain.RecruitmentBoardFileDTO;
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.point.Point;
@@ -28,6 +29,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.swing.text.html.Option;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -145,6 +147,7 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public List<RecruitmentBoard> getMyRecruitementedBoardList(Long memberId) {
         return recruitmentBoardRepository.findAllRecruitmentedBoardListByMemberId_QueryDSL(memberId);
+
     }
 
     /* 멤버 상태 변경*/
@@ -155,5 +158,11 @@ public class MemberServiceImpl implements MemberService{
         }
     }
 
-
+    /* 캘린더 눌렀을 때 누른 날짜로 내가 참가한 모집게시글 리스트 가져오기 */
+    @Override
+    public List<RecruitmentBoardFileDTO> getRecruitmentBoardListByMemberIdAndDate(Long memberId, LocalDate recruitmentDate) {
+        List<RecruitmentBoard> recruitmentBoards = recruitmentBoardRepository.findRecruitmentBoardListByMemberIdAndDate(memberId, recruitmentDate);
+        List<RecruitmentBoardFileDTO> recruitmentBoardFileDTOS = recruitmentBoards.stream().map(recruitmentBoard -> toRecruitmentBoardFileDto(recruitmentBoard)).collect(Collectors.toList());
+        return recruitmentBoardFileDTOS;
+    }
 }

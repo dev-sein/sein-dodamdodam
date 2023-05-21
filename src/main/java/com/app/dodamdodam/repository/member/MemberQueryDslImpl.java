@@ -95,5 +95,5 @@ public class MemberQueryDslImpl implements MemberQueryDsl{
         return new PageImpl<>(members, pageable, count);
     }
 
-
+    /* 추가 */
 }

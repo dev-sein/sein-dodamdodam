@@ -33,6 +33,9 @@ public interface FreeReplyService {
     /* 총 댓글수 조회 */
     public Long getFreeRepliesCountByBoardId(Pageable pageable, Long boardId);
 
+    /* 댓글 지운 후 그 board에 남아있는 댓글수 조회 */
+    public Integer getFreeRepliesCountByReplyId(Long replyId);
+
     default FreeReplyDTO toFreeReplyDTO(FreeReply freeReply){
         return FreeReplyDTO.builder().id(freeReply.getId())
                 .memberDTO(toMemberDTO(freeReply.getMember()))

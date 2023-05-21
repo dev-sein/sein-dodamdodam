@@ -20,14 +20,24 @@ public class Product {
 //    상품개수
     @NotNull private Long productCount;
 
-
-
-    @OneToOne(fetch = FetchType.LAZY)
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "PURCHASE_BOARD_ID")
+//    private PurchaseBoard purchaseBoard;
+    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.REMOVE, CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "PURCHASE_BOARD_ID")
     private PurchaseBoard purchaseBoard;
 
-    @OneToOne(fetch = FetchType.LAZY)
+//    @OneToOne(fetch = FetchType.LAZY)
+//    private Purchase purchase;
+    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.REMOVE, CascadeType.PERSIST, CascadeType.MERGE})
     private Purchase purchase;
+
+
+    public Product(String productName, Integer productPrice, Long productCount) {
+        this.productName = productName;
+        this.productPrice = productPrice;
+        this.productCount = productCount;
+    }
 
     public Product(String productName, Integer productPrice, Long productCount, PurchaseBoard purchaseBoard) {
         this.productName = productName;

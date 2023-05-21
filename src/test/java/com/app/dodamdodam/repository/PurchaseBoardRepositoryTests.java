@@ -2,10 +2,7 @@ package com.app.dodamdodam.repository;
 
 import com.app.dodamdodam.entity.embeddable.Address;
 import com.app.dodamdodam.entity.member.Member;
-import com.app.dodamdodam.entity.purchase.Product;
-import com.app.dodamdodam.entity.purchase.PurchaseBoard;
-import com.app.dodamdodam.entity.purchase.PurchaseFile;
-import com.app.dodamdodam.entity.purchase.PurchaseReview;
+import com.app.dodamdodam.entity.purchase.*;
 import com.app.dodamdodam.repository.board.purchase.PurchaseBoardRepository;
 import com.app.dodamdodam.repository.file.purchase.PurchaseFileRepository;
 import com.app.dodamdodam.repository.member.MemberRepository;
@@ -50,13 +47,12 @@ PurchaseBoardRepositoryTests {
     @Test
     public void saveTest(){
         Address address = new Address("test-address", "test-detail");
-        Member member = new Member( 1000L, "test1234", "1234", "구매테스트", "test1234@gmail.com", "01012345678", address, MemberStatus.NORMAL, MemberType.GENERAL, Role.MEMBER);
+//        Member member = new Member( 1000L, "test1234", "1234", "구매테스트", "test1234@gmail.com", "01012345678", address, MemberStatus.NORMAL, MemberType.GENERAL, Role.MEMBER);
 
-        memberRepository.save(member);
+        Member member = memberRepository.findById(5L).get();
+//        memberRepository.save(member);
 
         for (int i = 0; i < 10; i++) {
-
-
             PurchaseBoard purchaseBoard = new PurchaseBoard("판매 게시글" + i, "판매 게시글 내용" + i);
             purchaseBoard.setMember(member);
 
@@ -71,7 +67,17 @@ PurchaseBoardRepositoryTests {
 
             purchaseBoardRepository.save(purchaseBoard);
         }
-
+    }
+    
+//    구매내역 추가
+    @Test
+    public void savePurchase(){
+        Product product = new Product("시계",500000,5L);
+        productRepository.save(product);
+        Purchase purchase = new Purchase(product, memberRepository.findById(5L).get());
+        Address address = new Address("강남구","역삼역");
+        purchase.setAddress(address);
+        purchaseRepository.save(purchase);
     }
 
     @Test

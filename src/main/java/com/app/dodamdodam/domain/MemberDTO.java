@@ -55,4 +55,5 @@ public class MemberDTO {
         this.createdDate = createdDate;
         this.memberRole = memberRole;
     }
+    /* 추가 */
 }

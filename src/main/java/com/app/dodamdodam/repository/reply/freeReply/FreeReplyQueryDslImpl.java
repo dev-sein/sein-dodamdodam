@@ -25,7 +25,7 @@ public class FreeReplyQueryDslImpl implements FreeReplyQueryDsl {
 
 //    boardId로 그 board에 달린 댓글 가져오기
     @Override
-    public Page<FreeReply> findFreeRepliesByBoardId(Pageable pageable, Long boardId) {
+    public Page<FreeReply> findFreeRepliesByBoardId_QueryDSL(Pageable pageable, Long boardId) {
         List<FreeReply> freeReplies = query.select(freeReply).from(freeReply)
                 .join(freeReply.member).fetchJoin()
                 .where(freeReply.freeBoard.id.eq(boardId))

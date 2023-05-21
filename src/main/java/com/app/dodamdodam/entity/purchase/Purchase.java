@@ -29,6 +29,12 @@ public class Purchase extends Period {
     @Embedded
     @NotNull private Address address;
 
+    public Purchase(Product product, Member member) {
+        this.product = product;
+        this.member = member;
+    }
 
-
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 }
