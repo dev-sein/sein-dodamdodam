@@ -39,7 +39,7 @@ public class EventBoard extends Board{
     private Integer eventReviewCount;
 
     //    진행전, 진행중, 진행마감
-    @ColumnDefault("'APPLYING'")
+    @ColumnDefault("'HOLD'")
     @Enumerated(EnumType.STRING)
      private EventType eventStatus;
 

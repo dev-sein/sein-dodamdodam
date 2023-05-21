@@ -49,7 +49,9 @@ public class AdminController {
 
     /*홈*/
     @GetMapping("/home")
-    public String adminHome(){return "admin/home";}
+    public String adminHome(Model model){
+//        List<MemberDTO> memberDTOS = memberService.showList(pageable);
+        return "admin/home";}
 
     /*문의 게시판*/
     @GetMapping("inquiry/list") //문의 게시판 목록

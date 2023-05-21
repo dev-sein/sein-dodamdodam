@@ -53,7 +53,7 @@ public class EventBoardController {
     }
 
 
-  /*  @PostMapping("write")
+    @PostMapping("write")
     public RedirectView write(EventBoardDTO eventBoardDTO, HttpSession session) {
         Long memberId = (Long)session.getAttribute("memberId");
         log.info(eventBoardDTO.toString());
@@ -61,6 +61,6 @@ public class EventBoardController {
         eventBoardService.write(eventBoardDTO, memberId);
         return new RedirectView("/event/list");
     }
-*/
+
 
 }
