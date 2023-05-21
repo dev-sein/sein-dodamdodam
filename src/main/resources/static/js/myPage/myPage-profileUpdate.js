@@ -132,3 +132,4 @@ $('#ok-button').on('click', function(){
 $('#closeModalBtn').on('click', function () {
     $('.modal').hide();
 })
+/* 추가 */

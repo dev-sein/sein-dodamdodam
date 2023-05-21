@@ -271,4 +271,6 @@ public class MyPageController {
         memberService.setMemberPasswordById(memberId,memberPassword);
         return new RedirectView("/mypage/change-password?update=ok");
     }
+
+    /* 추가 */
 }

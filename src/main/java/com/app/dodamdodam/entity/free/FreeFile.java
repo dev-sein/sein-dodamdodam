@@ -28,4 +28,5 @@ public class FreeFile extends BoardFile {
     public void setFreeBoard(FreeBoard freeBoard) {
         this.freeBoard = freeBoard;
     }
+    /* 추가 */
 }

@@ -1,25 +1,19 @@
 package com.app.dodamdodam.service.board.freeBoard.freeReply;
 
-import com.app.dodamdodam.domain.FreeBoardFileDTO;
 import com.app.dodamdodam.domain.FreeReplyDTO;
-import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.free.FreeReply;
 import com.app.dodamdodam.repository.board.free.FreeBoardRepository;
 import com.app.dodamdodam.repository.member.MemberRepository;
 import com.app.dodamdodam.repository.reply.freeReply.FreeReplyRepository;
-import com.app.dodamdodam.search.FreeBoardSearch;
-import com.app.dodamdodam.type.CategoryType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -59,7 +53,7 @@ public class FreeReplyServiceImpl implements FreeReplyService {
     /* 자유 게시글 boardId로 댓글 리스트 뿌려주기*/
     @Override
     public List<FreeReplyDTO> getFreeRepliesByBoardId(Pageable pageable, Long boardId) {
-        Page<FreeReply> freeReplies = freeReplyRepository.findFreeRepliesByBoardId(pageable,boardId);
+        Page<FreeReply> freeReplies = freeReplyRepository.findFreeRepliesByBoardId_QueryDSL(pageable,boardId);
         List<FreeReplyDTO> freeReplyDTOS = freeReplies.get().map(freeReply -> toFreeReplyDTO(freeReply)).collect(Collectors.toList());
         return freeReplyDTOS;
     }
@@ -67,7 +61,13 @@ public class FreeReplyServiceImpl implements FreeReplyService {
     /* 자유게시글 boardId로 그 게시글에 달린 댓글 총 개수 구하기*/
     @Override
     public Long getFreeRepliesCountByBoardId(Pageable pageable, Long boardId) {
-        Page<FreeReply> freeReplies = freeReplyRepository.findFreeRepliesByBoardId(pageable,boardId);
+        Page<FreeReply> freeReplies = freeReplyRepository.findFreeRepliesByBoardId_QueryDSL(pageable,boardId);
         return freeReplies.getTotalElements();
+    }
+
+    /* 댓글 지운 후 그 board에 남아있는 댓글수 조회 */
+    @Override
+    public Integer getFreeRepliesCountByReplyId(Long replyId) {
+        return freeBoardRepository.findReplyCountByReplyId_QueryDSL(replyId);
     }
 }

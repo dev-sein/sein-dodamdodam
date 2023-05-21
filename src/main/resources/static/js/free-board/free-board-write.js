@@ -111,3 +111,4 @@ const fileInput = document.getElementById("photo-picker");
 fileInput.addEventListener("change", function(event) {
     handleFiles(event.target.files);
 });
+ /* 추가 */
