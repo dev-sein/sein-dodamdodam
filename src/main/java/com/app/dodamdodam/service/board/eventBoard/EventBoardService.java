@@ -26,11 +26,13 @@ public interface EventBoardService {
     // 저장
     public void write(EventBoardDTO eventBoardDTO, Long memberId);
 
+
     //    현재 시퀀스 가져오기
     public EventBoard getCurrentSequence();
 
     //    목록 페이징(최신순)
     public Slice<EventBoardDTO> getEventBoards(Pageable pageable);
+
 
     // 수정
     public void update(EventBoardDTO eventBoardDTO);
