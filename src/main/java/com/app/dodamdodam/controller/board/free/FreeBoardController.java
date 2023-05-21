@@ -27,7 +27,7 @@ public class FreeBoardController {
     private final FreeBoardService freeBoardService;
     private final FreeReplyService freeReplyService;
 
-//    자유 게시판 메인
+    //    자유 게시판 메인
     @GetMapping("list")
     public String freeBoardList(Model model){
         /* 좋아요 랭킹 5개 freeBoardList */
@@ -36,7 +36,7 @@ public class FreeBoardController {
         return "free-board/free-board-list";
     }
 
-//    자유 게시판 무한 스크롤  // 검색으로 수정하기
+    //    자유 게시판 무한 스크롤  // 검색으로 수정하기
     @ResponseBody
     @GetMapping("list-search")
     public List<FreeBoardFileDTO> getFreeBoardList(@RequestParam int page, @RequestParam String search, @RequestParam String category){
@@ -70,7 +70,7 @@ public class FreeBoardController {
         return freeBoards;
     }
 
-//    자유 게시판 상세
+    //    자유 게시판 상세
     @GetMapping("detail/{boardId}")
     public String freeBoardDetail(Model model, @PathVariable(value = "boardId") Long boardId, HttpSession session){
         session.setAttribute("memberId",7L);    /* 임시로 세션에 memberId 값 담아둠 */
@@ -79,12 +79,13 @@ public class FreeBoardController {
         model.addAttribute("top5",freeBoardService.getTop5FreeBoards());
         /* PageRequest는 뭐 넣어도 상관없이 개수 가져와서 아무렇게나 넣음 */
         model.addAttribute("replyCount",freeReplyService.getFreeRepliesCountByBoardId(PageRequest.of(0, 5), boardId));
-        
+        model.addAttribute("recentFreeBoards",freeBoardService.getRecentFreeBoardList());
+
 
         return "free-board/free-board-detail";
     }
 
-//    자유 게시판 댓글 작성
+    //    자유 게시판 댓글 작성
     @PostMapping("write-reply")
     @ResponseBody
     public String writeReply(String replyContent, Long boardId, HttpSession session){
@@ -97,14 +98,19 @@ public class FreeBoardController {
         return "success";
     }
 
-//    자유 게시판 댓글 수정
+    //    자유 게시판 댓글 수정
     @PostMapping("update-reply/{replyId}")
     @ResponseBody
-    public void writeReply(FreeReply updatedFreeReply, @PathVariable(value = "replyId") Long replyId){
-        freeReplyService.setFreeReplyContent(updatedFreeReply, replyId);
-}
+    public String writeReply(String updatedFreeReply, @PathVariable(value = "replyId") Long replyId){
+        log.info("수정 들어옴");
+        log.info(updatedFreeReply);
 
-//    자유 게시판 댓글 삭제
+        FreeReply updatedReply = new FreeReply(updatedFreeReply);
+        freeReplyService.setFreeReplyContent(updatedReply, replyId);
+        return "success";
+    }
+
+    //    자유 게시판 댓글 삭제
     @PostMapping("delete-reply/{replyId}")
     @ResponseBody
     public String deleteReply(@PathVariable(value = "replyId") Long replyId){
@@ -113,7 +119,7 @@ public class FreeBoardController {
         return "success";
     }
 
-//    자유 게시판 댓글 리스트
+    //    자유 게시판 댓글 리스트
     @GetMapping("replies/{boardId}/{page}")
     @ResponseBody
     public List<FreeReplyDTO> getReplies(@PathVariable(value = "boardId") Long boardId , @PathVariable(value = "page") int page){

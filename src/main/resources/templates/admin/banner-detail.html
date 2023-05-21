@@ -8,136 +8,140 @@
     <title>배너신청 상세페이지</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700;800&display=swap"
+          rel="stylesheet">
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
-    <link rel="stylesheet" href="/static/css/admin/admin.css">
-    <link rel="stylesheet" href="/static/css/admin/home.css">
-    <link rel="stylesheet" href="/static/css/admin/board-detail.css">
+    <link rel="stylesheet" href="/css/admin/admin.css">
+    <link rel="stylesheet" href="/css/admin/home.css">
+    <link rel="stylesheet" href="/css/admin/board-detail.css">
 </head>
 <body>
-    <!-- 모달 -->
-    <!-- 삭제 모달창 -->
-    <div id="delete-modal" class="delete-modal">
-        <div class="modal-content">
+<!-- 모달 -->
+<!-- 삭제 모달창 -->
+<div id="delete-modal" class="delete-modal">
+    <div class="modal-content">
         <p>정말로 삭제하시겠습니까?</p>
         <div class="modal-buttons">
             <button id="cancel-btn">취소</button>
             <button id="confirm-btn">확인</button>
         </div>
-        </div>
     </div>
-    <!-- 모달 -->
-    <!-- 헤더 -->
-    <header>
-        <div class="logo-wrapper">
-            <div class="logo">도담 도담</div>
+</div>
+<!-- 모달 -->
+<!-- 헤더 -->
+<header>
+    <div class="logo-wrapper">
+        <div class="logo">도담 도담</div>
+    </div>
+    <div class="time-wrapper">
+        <div class="time-left">현재 시간 :</div>
+        <!-- 현재 시간 js로 들어감 -->
+        <div class="time"></div>
+    </div>
+</header>
+<main>
+    <!-- 사이드 바 메뉴 -->
+    <nav>
+        <div class="menu-bar">
+            <ul>
+                <li class="menu">
+                    <a class="menus" href="/admins/home">홈</a>
+                </li>
+                <li class="menu">
+                    <a class="menus" href="/admins/member/list">회원 목록</a>
+                </li>
+                <li class="menu">
+                    <a class="menus" href="/admins/event-board-list">이벤트 게시글</a>
+                </li>
+                <li class="menu">
+                    <a class="menus" href="/admins/recruitment-board/list">모집 게시글</a>
+                </li>
+                <li class="menu">
+                    <a class="menus" href="/admins/purchase-board/list">판매 게시글</a>
+                </li>
+                <li class="menu">
+                    <a class="menus" href="/admins/free-board/list">자유 게시글</a>
+                </li>
+                <li class="menu">
+                    <a class="menus" href="/admins/inquiry/list">문의사항 관리</a>
+                </li>
+                <li class="menu">
+                    <a class="menus" href="/admins/point/list">포인트 내역</a>
+                </li>
+                <li class="menu">
+                    <a class="menus" href="/admins/banner/list">배너신청 현황</a>
+                </li>
+                <!--<li class="menu">
+                    <a class="menus" href="#">배너관리</a>
+                </li>-->
+            </ul>
         </div>
-        <div class="time-wrapper">
-            <div class="time-left">현재 시간 : </div>
-            <!-- 현재 시간 js로 들어감 -->
-            <div class="time"></div>
-        </div>
-    </header>
-    <main>
-        <!-- 사이드 바 메뉴 -->
-        <nav>
-            <div class="menu-bar">
-                <ul>
-                    <li class="menu">
-                        <a class="menus" href="#">홈</a>
-                    </li>
-                    <li class="menu">
-                        <a class="menus" href="#">회원 목록</a>
-                    </li>
-                    <li class="menu">
-                        <a class="menus" href="#">이벤트 게시글</a>
-                    </li>
-                    <li class="menu">
-                        <a class="menus" href="#">모집 게시글</a>
-                    </li>
-                    <li class="menu">
-                        <a class="menus" href="#">판매 게시글</a>
-                    </li>
-                    <li class="menu">
-                        <a class="menus" href="#">자유 게시글</a>
-                    </li>
-                    <li class="menu">
-                        <a class="menus" href="#">문의사항 관리</a>
-                    </li>
-                    <li class="menu">
-                        <a class="menus" href="#">포인트 내역</a>
-                    </li>
-                    <li class="menu">
-                        <a class="menus" href="#">배너신청 현황</a>
-                    </li>
-                    <li class="menu">
-                        <a class="menus" href="#">배너관리</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <!-- 사이드 바 메뉴 -->
-        <!-- contents -->
-        <content>
-            <div class="inner-wrapper">
-                <div class="page-title">배너신청 상세</div>
-                <button type="submit" class="delete-button" id="ok-button" style="right: calc(6% + 105px);">수락하기</button> 
-                <button type="submit" class="delete-button" id="delete-button">삭제하기</button> 
-                <div class="inner-box-wrapper">
-                    <div class="inner-left-wrapper">
-                        <div class="inner-right-title">이미지</div>
-                        <!-- 이미지 첨부 슬라이드 배너 -->
-                        <div class="image-wrapper">
-                            <!-- 페이지 표시 -->
-                            <!-- <div class="page-wrapper">
-                                <span class="now-page">1</span>
-                                <span> / </span>
-                                <span class="total-page">3</span>
-                            </div> -->
-                            <!-- 페이지 표시 -->
-                            <div class="slider">
-                                <div class="slider__container">
-                                  <div class="slider__item">
-                                    <img src="/static/images/admin/banner1.png" >
-                                    <a href="/static/images/admin/banner1.png" download="image.png" style="display: none;">이미지 다운로드</a>
-                                  </div>
+    </nav>
+    <!-- 사이드 바 메뉴 -->
+    <!-- contents -->
+    <content>
+        <div class="inner-wrapper">
+            <div class="page-title">배너신청 상세</div>
+            <button type="submit" class="delete-button" id="ok-button" style="right: calc(6% + 105px);">수락하기</button>
+            <button type="submit" class="delete-button" id="delete-button">삭제하기</button>
+            <div class="inner-box-wrapper">
+                <div class="inner-left-wrapper">
+                    <div class="inner-right-title">이미지</div>
+                    <!-- 이미지 첨부 슬라이드 배너 -->
+                    <div class="image-wrapper">
+                        <!-- 페이지 표시 -->
+                        <!-- <div class="page-wrapper">
+                            <span class="now-page">1</span>
+                            <span> / </span>
+                            <span class="total-page">3</span>
+                        </div> -->
+                        <!-- 페이지 표시 -->
+                        <div class="slider">
+                            <div class="slider__container">
+                                <div class="slider__item">
+                                    <img src="/images/admin/banner1.png">
+                                    <a href="/images/admin/banner1.png" download="image.png" style="display: none;">이미지
+                                        다운로드</a>
                                 </div>
                             </div>
-                            <!-- img src의 부분과 똑같이 a 태그의 href에 파일 경로 써주면 눌렀을 때 이미지 다운로드 됨 -->
                         </div>
-                        <!-- 이미지 첨부 슬라이드 배너 -->
+                        <!-- img src의 부분과 똑같이 a 태그의 href에 파일 경로 써주면 눌렀을 때 이미지 다운로드 됨 -->
                     </div>
-                    <div class="inner-right-wrapper">
-                        <div class="inner-right-title">신청 정보</div>
-                        <div class="right-info-wrapper">
-                            <div class="classification-wrapper">
-                                <div class="classification">신청자</div>
-                                <div class="event-title info">윤민우</div>
-                            </div>
-                            <div class="classification-wrapper">
-                                <div class="classification">상태</div>
-                                <div class="writer info">수락완료</div>
-                            </div>
-                            <div class="classification-wrapper">
-                                <div class="classification">결제 금액</div>
-                                <div class="date info"><span class="money-amount">500,000</span>원</div>
-                            </div>
-                            <div class="classification-wrapper">
-                                <div class="classification">등록 요청일</div>
-                                <div class="recruit-numbers info"><span class="like-count">30</span>일</div>
+                    <!-- 이미지 첨부 슬라이드 배너 -->
+                </div>
+                <div class="inner-right-wrapper">
+                    <div class="inner-right-title">신청 정보</div>
+                    <div class="right-info-wrapper">
+                        <div class="classification-wrapper">
+                            <div class="classification">신청자</div>
+                            <div class="event-title info"><span th:text="${bannerDTO.memberDTO.memberName}"></div>
+                        </div>
+                        <div class="classification-wrapper">
+                            <div class="classification">상태</div>
+                            <div class="writer info"><span th:text="${bannerDTO.bannerStatus}"></div>
+                        </div>
+                        <div class="classification-wrapper">
+                            <div class="classification">결제 금액</div>
+                            <div class="date info"><span class="money-amount">500,000</span>원</div>
+                        </div>
+                        <div class="classification-wrapper">
+                            <div class="classification">등록 요청일</div>
+                            <div class="recruit-numbers info"><span th:text="${bannerDTO.bannerRegisterDate}">/div>
                             </div>
                             <div class="classification-wrapper">
                                 <div class="classification">신청일자</div>
-                                <div class="date info">2023년 4월 25일 오후 5시 20분</div>
+                                <div class="date info"><span
+                                        th:text="${#temporals.format(bannerDTO.createdDate, 'yyyy-MM-dd')}"></span>
+                                </div>
                             </div>
                             <div class="classification-wrapper">
                                 <div class="classification">내용</div>
                                 <div class="contents">
                                     <div class="contents-inner">
+                                        <!--배너 신청 내용 배너 신청 내용 배너 신청 내용 배너 신청 내용 배너 신청 내용
                                         배너 신청 내용 배너 신청 내용 배너 신청 내용 배너 신청 내용 배너 신청 내용
                                         배너 신청 내용 배너 신청 내용 배너 신청 내용 배너 신청 내용 배너 신청 내용
-                                        배너 신청 내용 배너 신청 내용 배너 신청 내용 배너 신청 내용 배너 신청 내용
-                                        배너 신청 내용 배너 신청 내용 배너 신청 내용 배너 신청 내용 배너 신청 내용
+                                        배너 신청 내용 배너 신청 내용 배너 신청 내용 배너 신청 내용 배너 신청 내용-->
                                     </div>
                                 </div>
                             </div>
@@ -145,11 +149,11 @@
                     </div>
                 </div>
             </div>
-        </content>
-        <!-- contents -->
-    </main>
+    </content>
+    <!-- contents -->
+</main>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="../../static/js/admin/admin.js"></script>
-<script src="../../static/js/admin/banner-detail.js"></script>
+<script src="/js/admin/admin.js"></script>
+<script src="/js/admin/banner-detail.js"></script>
 </html>

@@ -1,17 +1,17 @@
 package com.app.dodamdodam.domain;
 
 import com.app.dodamdodam.type.EventType;
-import com.querydsl.core.annotations.QueryProjection;
-import lombok.*;
+import lombok.Builder;
+import lombok.Data;
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
-@Builder
+@Component
 public class EventBoardDTO {
 
     /* 이벤트 보드 정보 다 받아오기*/
@@ -42,18 +42,18 @@ public class EventBoardDTO {
     List<EventReviewDTO> reviews;
     /*파일*/
     private List<EventFileDTO> eventFiles;
+    private List<MultipartFile> uploadFiles;
 
     /*만든날짜, 업뎃일*/
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
 
-    public EventBoardDTO(){
+    public EventBoardDTO() {
         this.eventFiles = new ArrayList<>();
     }
 
-
-    @QueryProjection
-    public EventBoardDTO(Long id, String eventAddress, String eventAddressDetail, String eventStartDate, String eventEndDate, String eventIntroduction, String boardTitle, String boardContent, int eventLikeNumber, EventType eventStatus, String eventBusinessNumber, String eventBusinessName, String eventBusinessTel, String eventBusinessEmail, MemberDTO memberDTO, List<EventReviewDTO> reviews, List<EventFileDTO> eventFiles, LocalDateTime createdDate, LocalDateTime updatedDate) {
+    @Builder
+    public EventBoardDTO(Long id, String eventAddress, String eventAddressDetail, String eventStartDate, String eventEndDate, String eventIntroduction, String boardTitle, String boardContent, int eventLikeNumber, EventType eventStatus, String eventBusinessNumber, String eventBusinessName, String eventBusinessTel, String eventBusinessEmail, MemberDTO memberDTO, List<EventReviewDTO> reviews, List<EventFileDTO> eventFiles, List<MultipartFile> uploadFiles, LocalDateTime createdDate, LocalDateTime updatedDate) {
         this.id = id;
         this.eventAddress = eventAddress;
         this.eventAddressDetail = eventAddressDetail;
@@ -71,9 +71,15 @@ public class EventBoardDTO {
         this.memberDTO = memberDTO;
         this.reviews = reviews;
         this.eventFiles = eventFiles;
+        this.uploadFiles = uploadFiles;
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;
     }
+
+
+
+
+
 
     public void setMemberDTO(MemberDTO memberDTO) {
         this.memberDTO = memberDTO;

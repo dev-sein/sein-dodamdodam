@@ -1,7 +1,6 @@
-package com.app.dodamdodam.service.board.eventBoard.EventReview;
+package com.app.dodamdodam.service.board.eventBoard.eventReview;
 
 import com.app.dodamdodam.domain.EventReviewDTO;
-import com.app.dodamdodam.entity.event.EventReview;
 import com.app.dodamdodam.entity.reply.Reply;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;

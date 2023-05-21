@@ -2,10 +2,14 @@ package com.app.dodamdodam.service.board.eventBoard;
 
 import com.app.dodamdodam.domain.EventBoardDTO;
 import com.app.dodamdodam.domain.EventFileDTO;
+import com.app.dodamdodam.domain.FreeBoardFileDTO;
 import com.app.dodamdodam.domain.MemberDTO;
 import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.event.EventFile;
 import com.app.dodamdodam.entity.member.Member;
+import com.app.dodamdodam.search.board.AdminEventBoardSearch;
+import com.app.dodamdodam.search.board.AdminFreeBoardSearch;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 
@@ -28,6 +32,14 @@ public interface EventBoardService {
     //    목록 페이징(최신순)
     public Slice<EventBoardDTO> getEventBoards(Pageable pageable);
 
+    // 수정
+    public void update(EventBoardDTO eventBoardDTO);
+    // 삭제
+    public void delete(Long eventBoardId);
+    //     관리자 : 게시글 검색
+    public Page<EventBoardDTO> showAdminEventWithSearch_QueryDSL(Pageable pageable, AdminEventBoardSearch adminEventBoardSearch);
+
+
     default EventBoardDTO eventBoardToDTO(EventBoard eventBoard){
         return EventBoardDTO.builder()
                 .id(eventBoard.getId())
@@ -36,6 +48,14 @@ public interface EventBoardService {
                 .memberDTO(toMemberDTO(eventBoard.getMember()))
                 .eventFiles(eventFileToDTO(eventBoard.getEventFiles()))
                 .build();
+    }
+
+    default EventBoardDTO toEventSearchBoardDTO(EventBoard eventBoard){
+        return EventBoardDTO.builder().id(eventBoard.getId()).boardTitle(eventBoard.getBoardTitle())
+                .boardContent(eventBoard.getBoardContent()).createdDate(eventBoard.getCreatedDate())
+                .eventAddress(eventBoard.getEventAddress()).eventAddressDetail(eventBoard.getEventAddressDetail())
+                .eventStatus(eventBoard.getEventStatus()).memberDTO(toMemberDTO(eventBoard.getMember()))
+                .eventFiles(eventFileToDTO(eventBoard.getEventFiles())).build();
     }
 
     default MemberDTO toMemberDTO(Member member){
@@ -87,17 +107,17 @@ public interface EventBoardService {
     default List<EventFileDTO> eventFileToDTO(List<EventFile> eventFiles){
         List<EventFileDTO> eventFileDTOS = new ArrayList<>();
         eventFiles.forEach(
-            eventFile ->{
-                EventFileDTO eventFileDTO = EventFileDTO.builder()
-                        .id(eventFile.getId())
-                        .fileOriginalName(eventFile.getFileOriginalName())
-                        .filePath(eventFile.getFilePath())
-                        .fileUuid(eventFile.getFileUuid())
-                        .fileSize(eventFile.getFileSize())
-                        .fileRepresent(eventFile.getFileRepresent())
-                        .build();
-                eventFileDTOS.add(eventFileDTO);
-            }
+                eventFile ->{
+                    EventFileDTO eventFileDTO = EventFileDTO.builder()
+                            .id(eventFile.getId())
+                            .fileOriginalName(eventFile.getFileOriginalName())
+                            .filePath(eventFile.getFilePath())
+                            .fileUuid(eventFile.getFileUuid())
+                            .fileSize(eventFile.getFileSize())
+                            .fileRepresent(eventFile.getFileRepresent())
+                            .build();
+                    eventFileDTOS.add(eventFileDTO);
+                }
         );
         return eventFileDTOS;
     }

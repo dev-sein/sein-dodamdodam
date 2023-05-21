@@ -1,7 +1,6 @@
 package com.app.dodamdodam.entity.reply;
 
 import com.app.dodamdodam.audit.Period;
-import com.app.dodamdodam.entity.board.Board;
 import com.app.dodamdodam.entity.member.Member;
 import com.sun.istack.NotNull;
 import lombok.*;
