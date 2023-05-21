@@ -34,12 +34,12 @@ spring:
     ansi:
       enabled: always
 
+  #Redis
+  redis:
+    host: localhost
+    port: 6379
   session:
     store-type: redis
-
-#  #Redis
-#  session:
-#    store-type: redis
 
   # 이미지 용량
   servlet:
@@ -49,5 +49,4 @@ spring:
 
       location: c:\\upload
       enabled: true
-
 

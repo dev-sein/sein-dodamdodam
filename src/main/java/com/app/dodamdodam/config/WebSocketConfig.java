@@ -2,24 +2,26 @@ package com.app.dodamdodam.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.messaging.simp.config.MessageBrokerRegistry;
 import org.springframework.web.socket.WebSocketHandler;
-import org.springframework.web.socket.config.annotation.EnableWebSocket;
-import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
-import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
+import org.springframework.web.socket.config.annotation.*;
 
 @Configuration
-@EnableWebSocket
-@RequiredArgsConstructor
-public class WebSocketConfig implements WebSocketConfigurer {
-    private final WebSocketHandler webSocketHandler;
+@EnableWebSocketMessageBroker
+public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
-    public void registerWebSocketHandlers(WebSocketHandlerRegistry registry){
-        /*.setAllowedOrigins("*")
-            : ws프로토콜 /ws/chat 하위의 모든 uri에서 chatHandler를 사용한다는 의미*/
-        registry.addHandler(webSocketHandler, "/ws/chat").setAllowedOrigins("*");
-        /*.addInterceptors(new HttpSessionHandshakeInterceptor())
-            : 핸드 쉐이크를 할 때, http의 session을 가져오기 위한 인터셉터를 추가, 없어도 상관없다.*/
+    public void registerStompEndpoints(StompEndpointRegistry registry) {
+        // stomp 접속 url -> /ws-stomp
+        registry.addEndpoint("ws-stomp")//연결될 엔드포인트
+                .withSockJS(); //SocketJS를 연결한다는 설정
     }
 
+    @Override
+    public void configureMessageBroker(MessageBrokerRegistry registry) {
+        // 메시지를 구독하는 요청 url -> 메시지를 받을 때
+        registry.enableSimpleBroker("/sub");
+        // 메시지를 발행하는 요청 url -> 메시지를 보낼 때
+        registry.setApplicationDestinationPrefixes("/pub");
+    }
 }
