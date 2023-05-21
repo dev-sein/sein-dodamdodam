@@ -268,7 +268,7 @@ public class AdminController {
 
 
     /* 이벤트 게시판 */
-    @GetMapping("event-board")
+    @GetMapping("event-board/list")
     public String eventBoard(){
         return "admin/event-board";
     }
