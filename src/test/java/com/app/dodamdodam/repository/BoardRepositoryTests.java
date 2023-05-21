@@ -1,5 +1,6 @@
 package com.app.dodamdodam.repository;
 
+import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.free.FreeFile;
 import com.app.dodamdodam.entity.free.FreeReply;
@@ -7,6 +8,7 @@ import com.app.dodamdodam.entity.purchase.Product;
 import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.entity.recruitment.Recruitment;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
+import com.app.dodamdodam.repository.board.event.board.EventBoardRepository;
 import com.app.dodamdodam.repository.board.free.FreeBoardRepository;
 import com.app.dodamdodam.repository.board.purchase.PurchaseBoardRepository;
 import com.app.dodamdodam.repository.board.recruitment.RecruitmentBoardRepository;
@@ -57,6 +59,9 @@ public class BoardRepositoryTests {
     @Autowired
     private FreeReplyRepository freeReplyRepository;
 
+    @Autowired
+            private EventBoardRepository eventBoardRepository;
+
     ArrayList<CategoryType> categoryTypes = new ArrayList<CategoryType>(Arrays.asList(CategoryType.ALL, CategoryType.CULTURE, CategoryType.DAILY, CategoryType.EVENT, CategoryType.PURCHASE, CategoryType.RECRUITMENT));
 
     /*모집 게시글 등록*/
@@ -72,6 +77,14 @@ public class BoardRepositoryTests {
 //        recruitmentBoard.addRecruitment();
         recruitmentBoardRepository.save(recruitmentBoard);
     }
+    
+    @Test
+    public void saveTest6(){
+        EventBoard eventBoard = new EventBoard("이벤트 게시글 제목1","테스트1");
+        memberRepository.findById(201L).ifPresent(member -> eventBoard.setMember(member));
+        eventBoardRepository.save(eventBoard);
+    }
+    
 
     /*자유 게시글 등록*/
     @Test

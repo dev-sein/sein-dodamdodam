@@ -1,4 +1,4 @@
-package com.app.dodamdodam.controller;
+package com.app.projectjar.controller.file;
 
 import lombok.RequiredArgsConstructor;
 import net.coobird.thumbnailator.Thumbnailator;
@@ -60,4 +60,3 @@ public class FileRestController {
     }
 
 }
-

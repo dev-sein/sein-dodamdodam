@@ -13,17 +13,25 @@ import javax.persistence.*;
 @Inheritance(strategy = InheritanceType.JOINED)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-@Table(name="TBL_BOARD_FILE")
+@Table(name = "TBL_BOARD_FILE")
 @DynamicInsert
 @DynamicUpdate
 public abstract class BoardFile {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
-    @NotNull private String fileOriginalName;
-    @NotNull private String fileUuid;
-    @NotNull private String filePath;
-     private Long fileSize;
+
+    @NotNull
+    private String fileOriginalName;
+
+    @NotNull
+    private String fileUuid;
+
+    @NotNull
+    private String filePath;
+
+    private Long fileSize;
 
     public BoardFile(String fileOriginalName, String fileUuid, String filePath, Long fileSize) {
         this.fileOriginalName = fileOriginalName;

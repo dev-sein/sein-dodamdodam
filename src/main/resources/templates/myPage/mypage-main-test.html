@@ -10,12 +10,17 @@
             href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
             rel="stylesheet"
     />
-    <link rel="stylesheet" href="/css/myPage/myPage-main.css" />
+    <link rel="stylesheet" href="../../static/css/myPage/myPage-main.css" />
     <!--    <link rel="stylesheet" href="/css/myPage/myPage-main.css" />-->
     <link rel="shortcut icon" href="/static/images/components/dodam-favicon.png">
-    <link rel="stylesheet" href="/css/myPage/myPage-rankModal.css" />
+    <link rel="stylesheet" href="../../static/css/myPage/myPage-rankModal.css" />
     <!-- 캘린더 누르면 나오는 박스 css -->
-    <link rel="stylesheet" href="/css/myPage/new-calendar.css" />
+    <link rel="stylesheet" href="../../static/css/myPage/MyCalendar.css" />
+    <link rel="stylesheet" href="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.css"/>
+    <link rel="stylesheet" href="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.css"/>
+    <link rel="stylesheet" href="https://uicdn.toast.com/tui.pagination/latest/tui-pagination.css"/>
+    <link rel="stylesheet" href="https://uicdn.toast.com/calendar/latest/toastui-calendar.min.css"/>
+    <link rel="stylesheet" href="https://uicdn.toast.com/tui-grid/latest/tui-grid.css"/>
 </head>
 <body>
 <div class="MainWrapper_content__GZkTa">
@@ -95,53 +100,194 @@
                             </div>
                         </div>
                     </div>
+                    
                     <div class="MyWadizSupporter_contents__1TmJ_">
-                        <!-- 캘린더 -->
-                        <div class="calender-content-wrapper">
-                            <div class="lecture-list">
-                            </div>
-                            <div class="calender-wrapper">
-                                <div class="calender">
-                                    <section>
-                                        <div class="calendar-box">
-                                            <div style="display: flex; justify-content: space-around;padding:15px;font-size: 23px;padding-top:40px;">
-                                                <div class="calendar-button-box">
-                                                    <button type="button" id="calender-prev" class="btn">
-                                              <span class="auto-flex">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M15.5 5.5l-6 6.5 6 6.5L14 20l-7.5-8L14 4l1.5 1.5z" fill="#ccc"></path></svg>
-                                              </span>
-                                                    </button>
-                                                </div>
-                                                <div class="calendar-button-box">
-                                                    <button type="button" class="btn btn-padding" id="today">
-                                                        <div style="display:flex; justify-content: center;">
-                                                            <h3 class="calendar-year year"></h3>
-                                                            <h3 class="calendar-year month"></h3>
+                        <div class="MyWadizSection_section__3FCv1">
+                            <!-- 캘린더 -->
+                            <div id="container">
+                                <div id="mypageWrap">
+                                    <div class="myprofile-wrap">
+                                        <div class="mypage-project bg">
+                                            <div class="calender-content-wrapper">
+                                                <!-- 캘린더 옆의 내용박스 -->
+                                                <div class="lecture-list">
+                                                    <div class="lecture">
+                                                        <div class="lecture-wrap">
+                                                        <span class="lecture-image visible">
+                                                            <img src="https://cdn.wadiz.kr/ft/images/green001/2023/0313/20230313133752303_null.jpg/wadiz/thumbnail/253/format/jpg/quality/95/) 1x, url(https://cdn.wadiz.kr/ft/images/green001/2023/0313/20230313133752303_null.jpg/wadiz/thumbnail/506/format/jpg/quality/95/" alt="">
+                                                        </span>
+                                                        
+                                                        <div class="lecture-wrapper">
+                                                          <div class="lecture-content">
+                                                            <p class="lecture-type">
+                                                              <span><i class="reward" style='background:${iconBackground}'></i>입문</span>
+                                                            </p>
+                                                            <p class="lecture-title">
+                                                              ${eventTitle}
+                                                            </p>
+                                                            <p class="lecture-subtitle">
+                                                              ${eventBody}
+                                                            </p>
+                                                            <p class="lecture-info">
+                                                              시작 : ${startFormat}
+                                                              <br> 
+                                                              종료 : ${endFormat}
+                                                              <br />장소 : ${location}
+                                                              라이브
+                                                            </p>
+                                                            <p class="lecture-number">
+                                                              <em><strong>${passText}</strong></em>
+                                                            </p>
+                                                          </div>
                                                         </div>
-                                                    </button>
+                                                      </div>
+                                                      <div class="table-wrapper">
+                                                        <table class="children-table">
+                                                          <thead>
+                                                            <tr>
+                                                              <th class="num">No.</th>
+                                                              <th class="nickname">닉네임</th>
+                                                              <th class="name">이름</th>
+                                                              <th class="place">체험 이름</th>
+                                                              <th class="participant">체험 날짜</th>
+                                                            </tr>
+                                                          </thead>
+                                                          <tbody>
+                                                            <tr>
+                                                              <td class="num">1</td>
+                                                              <td class="nickname">lovelyU</td>
+                                                              <td class="name">한동석</td>
+                                                              <td class="place">진흙놀이</td>
+                                                              <td class="participant">2023-04-22 18:26:00</td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td class="num">1</td>
+                                                              <td class="nickname">lovelyU</td>
+                                                              <td class="name">한동석</td>
+                                                              <td class="place">진흙놀이</td>
+                                                              <td class="participant">2023-04-22 18:26:00</td>
+                                                            </tr>
+                                                          </tbody>
+                                                        </table>
+                                                        </div>
+                                                      </div>
                                                 </div>
-                                                <div>
-                                                    <button type="button" id="calender-next" class="btn">
-                                              <span class="auto-flex">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M8.5 18.5l6-6.5-6-6.5L10 4l7.5 8-7.5 8-1.5-1.5z" fill="#ccc"></path></svg>
-                                              </span>
-                                                    </button>
+                                                <!-- 캘린더 옆의 내용박스 끝-->
+                                                <!-- 캘린더 옆의 내용박스 -->
+                                                <div class="lecture-list">
+                                                    <div class="lecture">
+                                                        <div class="lecture-wrap">
+                                                        <span class="lecture-image visible">
+                                                            <img src="https://cdn.wadiz.kr/ft/images/green001/2023/0313/20230313133752303_null.jpg/wadiz/thumbnail/253/format/jpg/quality/95/) 1x, url(https://cdn.wadiz.kr/ft/images/green001/2023/0313/20230313133752303_null.jpg/wadiz/thumbnail/506/format/jpg/quality/95/" alt="">
+                                                        </span>
+                                                        
+                                                        <div class="lecture-wrapper">
+                                                          <div class="lecture-content">
+                                                            <p class="lecture-type">
+                                                              <span><i class="reward" style='background:${iconBackground}'></i>입문</span>
+                                                            </p>
+                                                            <p class="lecture-title">
+                                                              ${eventTitle}
+                                                            </p>
+                                                            <p class="lecture-subtitle">
+                                                              ${eventBody}
+                                                            </p>
+                                                            <p class="lecture-info">
+                                                              시작 : ${startFormat}
+                                                              <br> 
+                                                              종료 : ${endFormat}
+                                                              <br />장소 : ${location}
+                                                              라이브
+                                                            </p>
+                                                            <p class="lecture-number">
+                                                              <em><strong>${passText}</strong></em>
+                                                            </p>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                      <div class="table-wrapper">
+                                                        <table class="children-table">
+                                                          <thead>
+                                                            <tr>
+                                                              <th class="num">No.</th>
+                                                              <th class="nickname">닉네임</th>
+                                                              <th class="name">이름</th>
+                                                              <th class="place">체험 이름</th>
+                                                              <th class="participant">체험 날짜</th>
+                                                            </tr>
+                                                          </thead>
+                                                          <tbody>
+                                                            <tr>
+                                                              <td class="num">1</td>
+                                                              <td class="nickname">lovelyU</td>
+                                                              <td class="name">한동석</td>
+                                                              <td class="place">진흙놀이</td>
+                                                              <td class="participant">2023-04-22 18:26:00</td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td class="num">1</td>
+                                                              <td class="nickname">lovelyU</td>
+                                                              <td class="name">한동석</td>
+                                                              <td class="place">진흙놀이</td>
+                                                              <td class="participant">2023-04-22 18:26:00</td>
+                                                            </tr>
+                                                          </tbody>
+                                                        </table>
+                                                        </div>
+                                                      </div>
+                                                </div>
+                                                <!-- 캘린더 옆의 내용박스 끝-->
+                                                <div class="calender-wrapper">
+                            
+                                                    <div class="calender">
+                                                        <section style="background: #fff;
+                                                        width: 62em;">
+                                                            <div class="calendar-box">
+                                                                <div style="display: flex;
+                                                                font-size: 22px;
+                                                                padding: 0px 0px 12px 0px;
+                                                                position: relative;
+                                                                left: -30em;">
+                                                                    <div class="calendar-button-box">
+                                                                        <button type="button" id="calender-prev" class="btn">
+                                                                          <span class="auto-flex">
+                                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M15.5 5.5l-6 6.5 6 6.5L14 20l-7.5-8L14 4l1.5 1.5z" fill="#ccc"></path></svg>
+                                                                          </span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="calendar-button-box">
+                                                                        <button type="button" class="btn btn-padding" id="today">
+                                                                            <div style="display:flex; justify-content: center;">
+                                                                                <h3 class="calendar-year year"></h3>
+                                                                                <h3 class="calendar-year month"></h3>
+                                                                            </div>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div>
+                                                                        <button type="button" id="calender-next" class="btn">
+                                                                          <span class="auto-flex">
+                                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M8.5 18.5l6-6.5-6-6.5L10 4l7.5 8-7.5 8-1.5-1.5z" fill="#ccc"></path></svg>
+                                                                          </span>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="calendar"></div>
+                                                        </section>
+                                                    </div>
+                            
                                                 </div>
                                             </div>
+                            
                                         </div>
-                                        <div id="calendar"></div>
-                                    </section>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         <!-- 캘린더 -->
-
-                        <div class="MyWadizSection_section__3FCv1">
-
-
                         </div>
 
-                        <div class="MyWadizSection_section__3FCv1">
+                        <div class="MyWadizSection_section__3FCv1"  style="margin-top: 12px;
+                        padding-top: 8em;">
                             <h4 class="MyWadizSection_title__2pnV3">나의 활동</h4>
                             <div>
                                 <ul>
@@ -188,7 +334,8 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="MyWadizSection_section__3FCv1">
+                        <div class="MyWadizSection_section__3FCv1" style=" margin-top: 12px;
+                        padding-top: 13em;">
                             <h4 class="MyWadizSection_title__2pnV3">내 정보</h4>
                             <div>
                                 <ul>
@@ -223,7 +370,8 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="MyWadizSection_section__3FCv1">
+                        <div class="MyWadizSection_section__3FCv1" style=" margin-top: 12px;
+                        padding-top: 13em;">
                             <h4 class="MyWadizSection_title__2pnV3">고객센터</h4>
                             <div>
                                 <ul>
@@ -290,6 +438,7 @@
 <!--                            </div>-->
 <!--                        </div>-->
                     </div>
+
                 </div>
             </div>
         </div>
@@ -321,7 +470,7 @@
                             <!-- 배지 이미지 들어가는 곳 -->
                             <th><img src="/images/myPage/seed.png" style="width: 15px;" alt=""></th>
                             <th style="    background-color: #ff6b6b1f;
-                                        border-radius: 99px;">씨앗</th>
+                                        border-radius: 99px;"><p>씨앗</p></th>
                             <th>참여,모집횟수 1~5회</th>
                             <th>-</th>
                         </tr>
@@ -365,7 +514,7 @@
                         <div>
                             <span>당신의 등급는 현재 "씨앗" 등급 입니다.</span>
                             <div>
-                                <img src="/images/myPage/bigseed.png" style="width: 80px;
+                                <img src="../../static/images/myPage/bigseed.png" style="width: 80px;
                                         position: relative;
                                         top: 14px;" alt="">
                             </div>
@@ -389,6 +538,6 @@
 <script src="https://uicdn.toast.com/calendar/latest/toastui-calendar.min.js"></script>
 <script src="https://uicdn.toast.com/tui-grid/latest/tui-grid.js"></script>
 <script src="https://uicdn.toast.com/tui.pagination/latest/tui-pagination.js"></script>
-<script src="/js/myPage/myPage-main.js"></script>
-<script src="/js/myPage/new-calendar.js"></script>
+<script src="../../static/js/myPage/myPage-main.js"></script>
+<script src="../../static/js/myPage/MyCalendar.js"></script>
 </html>

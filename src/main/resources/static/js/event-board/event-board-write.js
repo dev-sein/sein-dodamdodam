@@ -92,8 +92,8 @@ let sel_files = [];  // 전역 변수로 이동
 
         btnAtt.onchange = function(e){
             var files = e.target.files;
-            var fileArr = Array.prototype.slice.call(files)
-            for(f of fileArr){
+            var fileArr = Array.prototype.slice.call(files);
+            for (f of fileArr) {
                 imageLoader(f);
             }
         }
@@ -103,8 +103,8 @@ let sel_files = [];  // 전역 변수로 이동
             sel_files.push(file);
             var reader = new FileReader();
             reader.onload = function(ee){
-                let img = document.createElement('img')
-                img.setAttribute('style', img_style)
+                let img = document.createElement('img');
+                img.setAttribute('style', img_style);
                 img.src = ee.target.result;
                 attZone.appendChild(makeDiv(img, file));
             }
@@ -151,7 +151,6 @@ let sel_files = [];  // 전역 변수로 이동
     }
 )('att_zone', 'btnAtt')
 
-
 $('.submit-btn').on('click', function () {
     // FormData 객체 생성
     var formData = new FormData();
@@ -164,17 +163,15 @@ $('.submit-btn').on('click', function () {
 
     // Ajax를 사용하여 formData를 서버로 전송
     $.ajax({
-        url: '/upload',  // 업로드를 처리할 서버 엔드포인트 URL
+        url: '/file/upload',
         type: 'POST',
         data: formData,
         processData: false,
         contentType: false,
         success: function (response) {
-            // 업로드 성공 시 동작할 코드 작성
             console.log('파일 업로드 성공');
         },
         error: function (xhr, status, error) {
-            // 업로드 실패 시 동작할 코드 작성
             console.error('파일 업로드 실패:', error);
         }
     });
@@ -182,14 +179,6 @@ $('.submit-btn').on('click', function () {
 
 
 
-
-function toStringByFormatting(source, delimiter = '/') {
-    const year = source.getFullYear();
-    const month = leftPad(source.getMonth() + 1);
-    const day = leftPad(source.getDate());
-
-    return [year, month, day].join(delimiter);
-}
 
 
 
