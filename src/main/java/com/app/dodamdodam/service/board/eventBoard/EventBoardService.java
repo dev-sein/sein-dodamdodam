@@ -39,7 +39,7 @@ public interface EventBoardService {
                 .createdDate(eventBoard.getCreatedDate())
                 .updatedDate(eventBoard.getUpdatedDate())
                 .memberDTO(toMemberDTO(eventBoard.getMember()))
-                .eventFiles(eventFileToDTO(eventBoard.getEventFiles()))
+                .fileDTOS(eventFileToDTO(eventBoard.getEventFiles()))
                 .build();
     }
 
@@ -62,7 +62,7 @@ public interface EventBoardService {
         return EventBoard.builder()
                 .boardTitle(eventBoardDTO.getBoardTitle())
                 .boardContent(eventBoardDTO.getBoardContent())
-                .eventFiles(eventBoardDTO.getEventFiles().stream().map(file -> toEventFileEntity(file)).collect(Collectors.toList()))
+                .eventFiles(eventBoardDTO.getFileDTOS().stream().map(file -> toEventFileEntity(file)).collect(Collectors.toList()))
                 .member(toMemberEntity(eventBoardDTO.getMemberDTO()))
                 .eventBusinessName(eventBoardDTO.getEventBusinessName())
                 .eventBusinessNumber(eventBoardDTO.getEventBusinessNumber())
