@@ -163,26 +163,25 @@
 
                             <div class="waffle helper mb"></div>
                         </div>
-                    </div>                  
+                    </div>
 
-                   <!-- 파일 첨부 -->
-                   <div id="plus_picture">
-                    <div class="waffle field">
-                        <div class="waffle label">
-                            파일 첨부
+                    <!-- 파일 첨부 -->
+                    <div id="plus_picture">
+                        <div class="waffle field">
+                            <div class="waffle label">
+                                파일 첨부
+                            </div>
+                            <button class="file-button" type="button">
+                                <input class="file-input" id='btnAtt' type="file" multiple="multiple" name="eventFiles" accept="application/pdf,image/jpg,image/jpeg,image/png" required>등록
+                            </button>
+                            <label id="btnAtt-error" class="error" for="btnAtt">필수 항목입니다.</label>
+                            <div id='att_zone'></div>
                         </div>
-                    <button class="file-button" type="button">
-                        <input class="file-input" id='btnAtt' type="file" multiple="multiple" name="eventFiles1" accept="application/pdf,image/jpg,image/jpeg,image/png" required>등록
-                    </button>
-                    <label id="btnAtt-error" class="error" for="btnAtt">필수 항목입니다.</label>
-                    <div id='att_zone'></div>
-                </div>                  
-                <div class="waffle helper mb">10MB 이내 pdf, jpeg, png 파일을 등록하세요.</div>
-                
-                <div class="submit-container">
-                    <button class="submit-btn btn" type="button">제출</button>
-<!--                    <button type="button"></button>-->
-                <p class="submit-notice">* 잘못된 정보를 등록하시면 요청이 반려될 수 있습니다.</p>
+                        <div class="waffle helper mb">10MB 이내 pdf, jpeg, png 파일을 등록하세요.</div>
+
+                        <div class="submit-container">
+                            <button class="submit-btn btn" type="button">제출</button>
+                            <p class="submit-notice">* 잘못된 정보를 등록하시면 요청이 반려될 수 있습니다.</p>
                 </div>
                 </section>
             </form>
@@ -194,5 +193,13 @@
 <script src="/js/event-board/event-board-write.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script th:inline="javascript">
+    let fileDTOS = null;
+    let eventBoardDTO = [[${eventBoardDTO}]];
+    if(eventBoardDTO == null || eventBoardDTO == undefined){
+    }else {
+        fileDTOS = eventBoardDTO.fileDTOS;
+    }
+</script>
 </html>
 

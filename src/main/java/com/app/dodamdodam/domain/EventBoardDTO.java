@@ -41,19 +41,21 @@ public class EventBoardDTO {
     /*댓글 정보*/
     List<EventReviewDTO> reviews;
     /*파일*/
-    private List<EventFileDTO> eventFiles;
-    private List<MultipartFile> uploadFiles;
+    private List<EventFileDTO> fileDTOS;
+    private List<MultipartFile> eventFiles;
+    private List<String> fileUrls;
+
 
     /*만든날짜, 업뎃일*/
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
 
     public EventBoardDTO() {
-        this.eventFiles = new ArrayList<>();
+        this.fileDTOS = new ArrayList<>();
     }
 
     @Builder
-    public EventBoardDTO(Long id, String eventAddress, String eventAddressDetail, String eventStartDate, String eventEndDate, String eventIntroduction, String boardTitle, String boardContent, int eventLikeNumber, EventType eventStatus, String eventBusinessNumber, String eventBusinessName, String eventBusinessTel, String eventBusinessEmail, MemberDTO memberDTO, List<EventReviewDTO> reviews, List<EventFileDTO> eventFiles, List<MultipartFile> uploadFiles, LocalDateTime createdDate, LocalDateTime updatedDate) {
+    public EventBoardDTO(Long id, String eventAddress, String eventAddressDetail, String eventStartDate, String eventEndDate, String eventIntroduction, String boardTitle, String boardContent, int eventLikeNumber, EventType eventStatus, String eventBusinessNumber, String eventBusinessName, String eventBusinessTel, String eventBusinessEmail, MemberDTO memberDTO, List<EventReviewDTO> reviews, List<EventFileDTO> fileDTOS, List<MultipartFile> eventFiles, LocalDateTime createdDate, LocalDateTime updatedDate) {
         this.id = id;
         this.eventAddress = eventAddress;
         this.eventAddressDetail = eventAddressDetail;
@@ -70,19 +72,38 @@ public class EventBoardDTO {
         this.eventBusinessEmail = eventBusinessEmail;
         this.memberDTO = memberDTO;
         this.reviews = reviews;
+        this.fileDTOS = fileDTOS;
         this.eventFiles = eventFiles;
-        this.uploadFiles = uploadFiles;
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;
     }
 
+    public List<EventFileDTO> getFileDTOS() {
+        return fileDTOS;
+    }
 
+    public void setFileDTOS(List<EventFileDTO> fileDTOS) {
+        this.fileDTOS = fileDTOS;
+    }
 
+    public List<MultipartFile> getEventFiles() {
+        return eventFiles;
+    }
 
-
+    public void setEventFiles(List<MultipartFile> eventFiles) {
+        this.eventFiles = eventFiles;
+    }
 
     public void setMemberDTO(MemberDTO memberDTO) {
         this.memberDTO = memberDTO;
+    }
+
+    public List<String> getFileUrls() {
+        return fileUrls;
+    }
+
+    public void setFileUrls(List<String> fileUrls) {
+        this.fileUrls = fileUrls;
     }
 
 }
