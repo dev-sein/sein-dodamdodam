@@ -1,20 +1,13 @@
 package com.app.dodamdodam.service.board.freeBoard.freeReply;
 
-import com.app.dodamdodam.domain.*;
-import com.app.dodamdodam.entity.free.FreeBoard;
-import com.app.dodamdodam.entity.free.FreeFile;
+import com.app.dodamdodam.domain.FreeReplyDTO;
+import com.app.dodamdodam.domain.MemberDTO;
 import com.app.dodamdodam.entity.free.FreeReply;
 import com.app.dodamdodam.entity.member.Member;
-import com.app.dodamdodam.entity.recruitment.Recruitment;
-import com.app.dodamdodam.search.FreeBoardSearch;
-import com.app.dodamdodam.type.CategoryType;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public interface FreeReplyService {

@@ -5,18 +5,14 @@ import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.free.FreeFile;
 import com.app.dodamdodam.entity.free.FreeReply;
 import com.app.dodamdodam.entity.member.Member;
-import com.app.dodamdodam.entity.purchase.Product;
-import com.app.dodamdodam.entity.purchase.PurchaseBoard;
-import com.app.dodamdodam.entity.purchase.PurchaseFile;
 import com.app.dodamdodam.search.FreeBoardSearch;
+import com.app.dodamdodam.search.board.AdminFreeBoardSearch;
 import com.app.dodamdodam.type.CategoryType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 @Service
@@ -46,8 +42,8 @@ public interface FreeBoardService {
     /* 자유 게시글 검색 */
     public List<FreeBoardFileDTO> getFreeBoardsBySearch(Pageable pageable, CategoryType categoryType, FreeBoardSearch freeBoardSearch);
 
-    /* 댓글 작성 */
-    public void saveFreeBoardReply(FreeReply freeReply, Long boardId, Long memberId);
+    /* 최근 작성된 자유 게시글 리스트 */
+    public List<FreeBoardFileDTO> getRecentFreeBoardList();
 
     /* ========================== 관리자 ========================== */
 
@@ -59,6 +55,10 @@ public interface FreeBoardService {
 
     /* 관리자 자유게시판 상세보기 */
     public FreeBoardFileDTO getAdminFreeBoardDetail(Long id);
+
+    /* 관리자 자유게시판 검색 */
+    public Page<FreeBoardFileDTO> showAdminFreeWithSearch_QueryDSL(Pageable pageable, AdminFreeBoardSearch adminFreeBoardSearch);
+
 
     /* toDTO */
     default FreeBoardFileDTO toFreeBoardFileDTO(FreeBoard freeBoard){

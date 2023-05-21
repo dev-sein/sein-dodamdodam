@@ -117,7 +117,7 @@ function showList(data) {
         console.log("text 들어옴");
         var text = "";
         text += `
-                 <tr>
+                <tr onclick="redirectToDetail(${recruitmentBoard.id})">
                 <td>
                     <!-- 체크박스 -->
                     <div class="checkbox-wrapper-21">
@@ -145,3 +145,7 @@ function showList(data) {
 
 getList();
 
+// 상세 페이지로 이동하는 함수
+function redirectToDetail(id) {
+    window.location.href = "/admins/recruitment-board/detail/" + id;
+}

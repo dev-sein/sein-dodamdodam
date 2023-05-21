@@ -2,8 +2,6 @@ package com.app.dodamdodam.handler;
 
 import com.app.dodamdodam.domain.ChattingDTO;
 import com.app.dodamdodam.domain.RoomDTO;
-import com.app.dodamdodam.entity.chatting.QRoom;
-import com.app.dodamdodam.entity.member.QMember;
 import com.app.dodamdodam.repository.chatting.ChattingRepository;
 import com.app.dodamdodam.repository.room.RoomRepository;
 import com.app.dodamdodam.service.chatting.ChatService;
@@ -17,7 +15,6 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
-import static com.app.dodamdodam.entity.chatting.QRoom.room;
 
 @Slf4j
 @RequiredArgsConstructor

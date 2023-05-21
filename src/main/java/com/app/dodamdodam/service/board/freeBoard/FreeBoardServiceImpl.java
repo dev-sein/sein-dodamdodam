@@ -2,16 +2,14 @@ package com.app.dodamdodam.service.board.freeBoard;
 
 import com.app.dodamdodam.domain.FreeBoardFileDTO;
 import com.app.dodamdodam.entity.free.FreeBoard;
-import com.app.dodamdodam.entity.free.FreeReply;
 import com.app.dodamdodam.repository.board.free.FreeBoardRepository;
 import com.app.dodamdodam.search.FreeBoardSearch;
+import com.app.dodamdodam.search.board.AdminFreeBoardSearch;
 import com.app.dodamdodam.type.CategoryType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -72,7 +70,7 @@ public class FreeBoardServiceImpl implements FreeBoardService {
     /* 자유 게시글 Top5 */
     @Override
     public List<FreeBoardFileDTO> getTop5FreeBoards() {
-        List<FreeBoard> freeBoards = freeBoardRepository.findFreeBoardListByLikeCount();
+        List<FreeBoard> freeBoards = freeBoardRepository.findFreeBoardListByLikeCount_QueryDSL();
         List<FreeBoardFileDTO> freeBoardFileDTOS = freeBoards.stream().map(freeBoard -> toFreeBoardFileDTO(freeBoard)).collect(Collectors.toList());
         return freeBoardFileDTOS;
     }
@@ -83,12 +81,14 @@ public class FreeBoardServiceImpl implements FreeBoardService {
         return freeBoardRepository.findFreeBoardBySearchWithPaging_QueryDSL(freeBoardSearch, categoryType, pageable).stream().map(freeBoard -> toFreeBoardFileDTO(freeBoard)).collect(Collectors.toList());
     }
 
-
-    /* 자유 게시글 댓글 작성 */
+    /* 최근 작성된 자유 게시글 리스트 */
     @Override
-    public void saveFreeBoardReply(FreeReply freeReply, Long boardId, Long memberId) {
-
+    public List<FreeBoardFileDTO> getRecentFreeBoardList() {
+        List<FreeBoardFileDTO> freeBoardFileDTOS = freeBoardRepository.findRecentFreeBoardList_QueryDSL().stream().map(freeBoard -> toFreeBoardFileDTO(freeBoard)).collect(Collectors.toList());
+        return freeBoardFileDTOS;
     }
+
+
 
 
 
@@ -115,6 +115,16 @@ public class FreeBoardServiceImpl implements FreeBoardService {
     public FreeBoardFileDTO getAdminFreeBoardDetail(Long id) {
         Optional<FreeBoard> freeBoard = freeBoardRepository.findById(id);
         return toFreeBoardFileDTO(freeBoard.get());
+    }
+
+    /* 관리자 자유 게시글 검색*/
+    @Override
+    public Page<FreeBoardFileDTO> showAdminFreeWithSearch_QueryDSL(Pageable pageable, AdminFreeBoardSearch adminFreeBoardSearch) {
+        Page<FreeBoard> freeBoardPage = freeBoardRepository.findAdmindFreeBoardWithPaging_QueryDSL(adminFreeBoardSearch, pageable);
+        List<FreeBoardFileDTO> freeBoardFileDTOS = freeBoardPage.getContent().stream()
+                .map(this::toFreeBoardFileDTO)
+                .collect(Collectors.toList());
+        return new PageImpl<>(freeBoardFileDTOS, pageable, freeBoardPage.getTotalElements());
     }
 
 }

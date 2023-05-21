@@ -23,7 +23,7 @@ public class FreeReplyQueryDslImpl implements FreeReplyQueryDsl {
     @Autowired
     private JPAQueryFactory query;
 
-//    boardId로 그 board에 달린 댓글 가져오기
+    //    boardId로 그 board에 달린 댓글 가져오기
     @Override
     public Page<FreeReply> findFreeRepliesByBoardId(Pageable pageable, Long boardId) {
         List<FreeReply> freeReplies = query.select(freeReply).from(freeReply)

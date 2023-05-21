@@ -2,7 +2,6 @@ package com.app.dodamdodam.entity.free;
 
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.reply.Reply;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
 import javax.persistence.*;

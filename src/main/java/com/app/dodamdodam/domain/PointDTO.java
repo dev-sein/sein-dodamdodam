@@ -17,9 +17,10 @@ public class PointDTO {
     private String memberId;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
+    private MemberDTO memberDTO;
 
     @QueryProjection
-    public PointDTO(Long id, Integer pointAmount, PointStatus pointStatus, String memberName, String memberId, LocalDateTime createdDate, LocalDateTime updatedDate) {
+    public PointDTO(Long id, Integer pointAmount, PointStatus pointStatus, String memberName, String memberId, LocalDateTime createdDate, LocalDateTime updatedDate, MemberDTO memberDTO) {
         this.id = id;
         this.pointAmount = pointAmount;
         this.pointStatus = pointStatus;
@@ -27,5 +28,6 @@ public class PointDTO {
         this.memberId = memberId;
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;
+        this.memberDTO = memberDTO;
     }
 }

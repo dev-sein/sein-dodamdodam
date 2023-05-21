@@ -12,6 +12,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface FreeReplyQueryDsl {
-//    boardId로 댓글 리스트 가져오기
+    //    boardId로 댓글 리스트 가져오기
     public Page<FreeReply> findFreeRepliesByBoardId(Pageable pageable, Long boardId);
 }
