@@ -43,6 +43,18 @@ public class MyPageController {
         return"myPage/myPage-Main";
     }
 
+    /*마이 페이지 메인 테스트*/
+    @GetMapping("main-test")
+    public String myPageInfoTest(Model model, HttpSession session) {
+        /* calendar 작업 추가로 해야함 */
+//        임의로 세션에 memberId값 담아둠
+        session.setAttribute("memberId", 5L);
+        Long memberId =  (Long)session.getAttribute("memberId");
+        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
+        model.addAttribute("point",memberService.getMyPointList(memberId));
+        return"myPage/mypage-main-test";
+    }
+
     /* 마이페이지 프로필*/
 
     /* 내가 작성한 자유 게시글*/
