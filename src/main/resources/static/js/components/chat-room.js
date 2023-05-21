@@ -1,10 +1,10 @@
 let usernamePage = document.querySelector('#username-page');
-let chatPage = document.querySelector('#chat-page');
+let chatPage = document.querySelector('#chat-chat-message-containerpage');
 let usernameForm = document.querySelector('#usernameForm');
-let messageForm = document.querySelector('#messageForm');//ok
+let messageForm = document.querySelector('#messageForm');
 let $exitForm = $("#roomExitForm");
-let messageInput = document.querySelector('#message');//ok
-let messageArea = $(".chat-message-container");//ok
+let messageInput = document.querySelector('#message');
+let messageArea = $(".chat-message-container")
 let connectingElement = $(".chat-connection-container");
 
 let stompClient = null;
@@ -125,7 +125,7 @@ function sendMessage(event) {
 // 메시지를 받을 때도 마찬가지로 JSON 타입으로 받으며,
 // 넘어온 JSON 형식의 메시지를 parse 해서 사용한다.
 function onMessageReceived(payload) {
-    //console.log("payload 들어오냐? :"+payload);
+    console.log("payload 들어오냐? :"+payload);
     let chat = JSON.parse(payload.body);
 
     let text = "";
@@ -139,14 +139,9 @@ function onMessageReceived(payload) {
         getUserList();
 
     } else { // chatType 이 talk 라면 아래 내용
-        text += `
-                <div class="sender-message">
-                    <div class="sender-name">${chat.sender}</div>
-                    <div class="sender-message-box">
-                        <div class="sender-content">${chat.message}</div>
-                        <div class="chat-date">${chat.time}</div>
-                    </div>
-                </div>
+        text += `<p>
+                    <span>${chat.sender} : </span>${chat.message}
+                 </p>
         `
     }
 
