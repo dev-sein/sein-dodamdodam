@@ -2,15 +2,13 @@ package com.app.dodamdodam.service.board.eventBoard;
 
 import com.app.dodamdodam.domain.EventBoardDTO;
 import com.app.dodamdodam.domain.EventFileDTO;
-import com.app.dodamdodam.domain.FreeBoardFileDTO;
 import com.app.dodamdodam.domain.MemberDTO;
 import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.event.EventFile;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.search.EventBoardSearch;
-import com.app.dodamdodam.type.EventType;
 import com.app.dodamdodam.search.board.AdminEventBoardSearch;
-import com.app.dodamdodam.search.board.AdminFreeBoardSearch;
+import com.app.dodamdodam.type.EventType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -61,7 +59,7 @@ public interface EventBoardService {
                 .boardContent(eventBoard.getBoardContent()).createdDate(eventBoard.getCreatedDate())
                 .eventAddress(eventBoard.getEventAddress()).eventAddressDetail(eventBoard.getEventAddressDetail())
                 .eventStatus(eventBoard.getEventStatus()).memberDTO(toMemberDTO(eventBoard.getMember()))
-                .eventFiles(eventFileToDTO(eventBoard.getEventFiles())).build();
+                .build();
     }
 
     default MemberDTO toMemberDTO(Member member){

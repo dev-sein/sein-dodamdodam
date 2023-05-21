@@ -2,7 +2,6 @@ package com.app.dodamdodam.service.board.eventBoard;
 
 import com.app.dodamdodam.domain.EventBoardDTO;
 import com.app.dodamdodam.domain.EventFileDTO;
-import com.app.dodamdodam.domain.FreeBoardFileDTO;
 import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.event.EventFile;
 import com.app.dodamdodam.exception.BoardNotFoundException;
@@ -10,14 +9,15 @@ import com.app.dodamdodam.repository.board.event.board.EventBoardRepository;
 import com.app.dodamdodam.repository.board.event.file.EventFileRepository;
 import com.app.dodamdodam.repository.member.MemberRepository;
 import com.app.dodamdodam.search.EventBoardSearch;
-import com.app.dodamdodam.type.EventType;
 import com.app.dodamdodam.search.board.AdminEventBoardSearch;
+import com.app.dodamdodam.type.EventType;
 import com.app.dodamdodam.type.FileRepresent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
