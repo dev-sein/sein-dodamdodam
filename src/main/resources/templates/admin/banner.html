@@ -9,8 +9,11 @@
     <link rel="stylesheet" href="/css/admin/admin.css">
     <link rel="stylesheet" href="/css/admin/user.css">
     <link rel="stylesheet" href="/css/admin/banner.css">
+    <link rel="stylesheet" href="/css/components/header.css">
+    <link rel="stylesheet" href="/css/components/footer.css">
 </head>
 <body>
+<div th:insert="~{/components/header :: header-dodam}"></div>
     <!-- 모달 -->
     <!-- 삭제 모달창 -->
     <div id="delete-modal" class="delete-modal">
@@ -136,6 +139,8 @@
         </content>
         <!-- contents -->
     </main>
+<div th:insert="~{/components/footer :: footer}"></div>
+
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/js/admin/admin.js"></script>

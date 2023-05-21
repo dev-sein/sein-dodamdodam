@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/boards/purchase/*")
+    @RequestMapping("/boards/purchase/*")
 @RequiredArgsConstructor
 public class PurchaseBoardController {
     private final PurchaseBoardService purchaseBoardService;

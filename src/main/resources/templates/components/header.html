@@ -7,12 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/css/components/header.css">
+    <link rel="stylesheet" href="/css/components/header.css">
     <title>header</title>
 </head>
 <body>
-    <!-- main-header(logout) -->
-    <header>
+        <header th:fragment="header-dodam" class="header">
         <div class="web-header">
             <div class="web-header-large">
                 <header class="header-wrapper">
@@ -25,26 +24,26 @@
                                     </h1>
                             </a></li>
                             <li class="header-menu-category-li"><a
-                                class="header-menu-category-a" href="">
+                                class="header-menu-category-a" onclick="location.href='/introduce'">
                                     <span>사업소개</span>
                             </a></li>
                             <li class="header-menu-category-li"><a
                                 class="header-menu-category-a" href=""> <span>문화공간</span>
                             </a></li>
                             <li class="header-menu-category-li"><a
-                                class="header-menu-category-a" href=""> <span>이벤트 정보</span>
+                                class="header-menu-category-a" onclick="location.href='/event/list'"> <span>이벤트 정보</span>
                             </a></li>
                             <li class="header-menu-category-li"><a
-                                class="header-menu-category-a" href=""> <span>도담게시판</span>
+                                class="header-menu-category-a"onclick="location.href='/recruitment/free'"> <span>도담게시판</span>
                             </a></li>
                             <li class="header-menu-category-li"><a
-                                class="header-menu-category-a" href=""> <span>자유게시판</span>
+                                class="header-menu-category-a" onclick="location.href='/free/list'"> <span>자유게시판</span>
                             </a></li>
                             <li class="header-menu-category-li"><a
-                                class="header-menu-category-a" href=""> <span>판매게시판</span>
+                                class="header-menu-category-a" onclick="location.href='/boards/purchase/list'"> <span>판매게시판</span>
                             </a></li>
                             <li class="header-menu-category-li"><a
-                                class="header-menu-category-a" href=""> <span>고객센터</span>
+                                class="header-menu-category-a" onclick="location.href='/helpcenter'"> <span>고객센터</span>
                             </a></li>
                         </ul>
                         <div class="web-header-utils">
