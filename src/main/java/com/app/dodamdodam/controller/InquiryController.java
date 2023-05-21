@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/inquires/*")
+@RequestMapping("/inquiry/*")
 @Slf4j
 public class InquiryController {
     private final InquiryService inquiryService;
@@ -29,8 +29,9 @@ public class InquiryController {
     public String inquiryRegister(){ return "helpcenter/inquiry-register"; }
 
     @PostMapping("/register")
-    public String inquiryRegisterFinish(@ModelAttribute InquiryDTO inquiryDTO) {
+    public RedirectView inquiryRegisterFinish(@ModelAttribute InquiryDTO inquiryDTO) {
         inquiryService.register(inquiryDTO);
-        return "redirect:/inquiry/success";
+        log.info(inquiryDTO.toString());
+        return new RedirectView("/inquiry/register");
     }
 }

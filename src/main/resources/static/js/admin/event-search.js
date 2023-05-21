@@ -131,7 +131,7 @@ function showList(data) {
                 <td>${eventBoard.boardTitle}</td>
                 <td>${eventBoard.memberDTO.memberName}</td>
                 <td>${eventBoard.eventAddress}</td>
-                <td>${eventBoard.eventStatus}</td>
+                <td>${eventBoard.eventType}</td>
                  <td>${formatDate(new Date(eventBoard.createdDate))}</td>
                 <!-- <td>{point.pointStatus}</td> -->
                 <!-- <td>2000.01.01 21:05:04</td>-->
