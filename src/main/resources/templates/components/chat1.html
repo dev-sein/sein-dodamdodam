@@ -1,0 +1,253 @@
+<!--<!doctype html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport"-->
+<!--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>footer</title>-->
+<!--    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">-->
+<!--    <link rel="stylesheet" href="/css/components/footer.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--<div>-->
+<!--    <button class="create_chat">채팅방 생성</button>-->
+<!--</div>-->
+<!--<div id="footer">-->
+<!--    <div class="channel_chat_container">-->
+<!--        <button type="button"></button>-->
+<!--    </div>-->
+<!--    <div id="chat_modal">-->
+<!--        <header class="flex" id="chat_header_container">-->
+<!--            <div class="flex chat_header_logo_conatainer">-->
+<!--                <div class="chat_header_logo">-->
+<!--                    <img width="30" height="30" src="/images/components/dodam-favicon.png" alt="">-->
+<!--                </div>-->
+<!--                <span class="chat_header_name" id="memberId" th:href="${member.memberId}" th:text="${member.memberName}">-->
+<!--                        도담도담 채팅-->
+<!--                    </span>-->
+<!--            </div>-->
+<!--            <div class="close_modal_container">-->
+<!--                <button class="close_modal">-->
+<!--                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" foundation="[object Object]" class="close_modal_svg" defaultopacity="1" hoveredopacity="1" margintop="0" marginright="0" marginbottom="0" marginleft="0" withtheme="true">-->
+<!--                        <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M16.4818 4.69668L15.3033 3.51817L10 8.82147L4.69671 3.51817L3.5182 4.69668L8.8215 9.99998L3.51819 15.3033L4.6967 16.4818L10 11.1785L15.3033 16.4818L16.4818 15.3033L11.1785 9.99998L16.4818 4.69668Z"></path>-->
+<!--                    </svg>-->
+<!--                </button>-->
+<!--            </div>-->
+<!--        </header>-->
+<!--        <p class="introduce_chat">-->
+<!--            도담인들의 원활한 소통을 위한 공간입니다.-->
+<!--        </p>-->
+<!--        <div class="search_chat_container flex">-->
+<!--            <input type="text" class="search_chat_input" placeholder="주고받은 메시지 검색">-->
+<!--        </div>-->
+<!--        <main id="chat_modal_li_container">-->
+<!--            <ol>-->
+
+<!--            </ol>-->
+<!--        </main>-->
+<!--    </div>-->
+<!--    <div id="chat_room">-->
+<!--        <header class="flex" id="header-chat-container">-->
+<!--            <div class="flex chat_header_logo_conatainer">-->
+<!--                    <span class="chat_header_name" >-->
+<!--                        정세인-->
+<!--                    </span>-->
+<!--            </div>-->
+<!--            <div class="back_list_container">-->
+<!--                <button class="back_list">-->
+<!--                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 48 48" width="24">-->
+<!--                        <path d="M0 0h48v48h-48z" fill="none"/>-->
+<!--                        <path d="M40 22h-24.34l11.17-11.17-2.83-2.83-16 16 16 16 2.83-2.83-11.17-11.17h24.34v-4z"/>-->
+<!--                    </svg>-->
+<!--                </button>-->
+<!--            </div>-->
+<!--        </header>-->
+<!--        <div class="search_chat_container">-->
+<!--            <input type="text" class="search_chat_input" placeholder="주고받은 메시지 검색" style="width: 90%;">-->
+<!--        </div>-->
+<!--        <main id="main-chat-container">-->
+<!--            <li>-->
+<!--                <div class="sender-message">-->
+<!--                    <div class="sender-name">박다예</div>-->
+<!--                    <div class="sender-message-box">-->
+<!--                        <div class="sender-content">졸려</div>-->
+<!--                        <div class="chat-date">13:58</div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="receiver-message">-->
+<!--                    <div class="receiver-name">정세인</div>-->
+<!--                    <div class="receiver-message-box">-->
+<!--                        <div class="receiver-content">깨워줄까?</div>-->
+<!--                        <div class="chat-date">13:58</div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--        </main>-->
+<!--        <footer class="input_msg_container">-->
+<!--            <input type="text" class="input_msg" id="send-button">-->
+<!--            <button type="button" class="msg_submit_button">-->
+<!--                <svg class="submit_btn_svg" xmlns="http://www.w3.org/2000/svg" width="24px" xmlns:xlink="http://www.w3.org/1999/xlink" style="enable-background:new 0 0 24 24;" version="1.1" viewBox="0 0 24 24" xml:space="preserve">-->
+<!--                        <g id="info"/>-->
+<!--                    <g id="icons">-->
+<!--                            <path d="M21.5,11.1l-17.9-9C2.7,1.7,1.7,2.5,2.1,3.4l2.5,6.7L16,12L4.6,13.9l-2.5,6.7c-0.3,0.9,0.6,1.7,1.5,1.2l17.9-9   C22.2,12.5,22.2,11.5,21.5,11.1z" id="send"/>-->
+<!--                        </g>-->
+<!--                    </svg>-->
+<!--            </button>-->
+<!--        </footer>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</body>-->
+<!--<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>-->
+<!--<script src="/js/components/chat-modal.js"></script>-->
+<!--&lt;!&ndash;<script src="/js/components/chat-websocket.js"></script>&ndash;&gt;-->
+<!--<script th:inline="javascript">-->
+<!--    member = [[${member}]];-->
+<!--    let nextPage = 0;-->
+<!--    console.log(member);-->
+
+<!--    /* 날짜 변환 (년, 월, 일) */-->
+<!--    function changeDateToString(e){-->
+<!--        let month = "";-->
+<!--        date = new Date(e.createdDate);-->
+<!--        month = date.getMonth() + 1;-->
+<!--        if (month < 10){-->
+<!--            month = "0" + month;-->
+<!--        }-->
+<!--        return date.getFullYear() + "." + month + "." + date.getDate();-->
+<!--    }-->
+
+<!--    // ajax로 게시글 목록 불러오기(8개씩 가져옴)-->
+<!--    const fetchData = () => {-->
+<!--        let page = nextPage;-->
+<!--        nextPage++;-->
+<!--        console.log("nextPage : " + nextPage);-->
+<!--        $.ajax({-->
+<!--            type: 'GET',-->
+<!--            url: `/chat/room/${page}`,-->
+<!--            success: function (result) {-->
+<!--                console.log(result);-->
+<!--                showList(result); // 새로운 값을 담기-->
+<!--            },-->
+<!--            error: function (error) {-->
+<!--                console.log('Error fetching data:', error);-->
+<!--            }-->
+<!--        });-->
+<!--    };-->
+
+<!--    // 처음에 화면에 목록 뿌려주기-->
+<!--    $(document).ready(function () {-->
+<!--        fetchData();-->
+<!--    });-->
+
+<!--    // 무한 스크롤 이벤트-->
+<!--    $(window).scroll(function () {-->
+<!--        if (Math.ceil($(window).scrollTop()) >= $(document).height() - $(window).height() - 50) {-->
+<!--            fetchData();-->
+<!--        }-->
+<!--    });-->
+
+<!--    function showList(result) {-->
+<!--        const $listResults = $("#chat_modal_li_container ol")-->
+<!--        for (let i = 0; i < result.length; i++) {-->
+<!--            let text = "";-->
+<!--            /* 날짜 변환해서 담아둠*/-->
+<!--            let date = changeDateToString(result[i]);-->
+<!--            console.log("*****************************들어옴******************************")-->
+<!--            text += `-->
+<!--                <li class="chat_li flex">-->
+<!--                    <div class="li_profile_img">-->
+<!--                        <img src="/images/components/dodam-favicon.png" alt="" width="45px" height="45px">-->
+<!--                    </div>-->
+<!--                    <div class="li_chat_name_and_history flex">-->
+<!--                        <div class="li_profile_nickname">${result[i].memberName}-->
+<!--                        </div>-->
+<!--                        <div class="li_chat_history">-->
+<!--                            도담도담에 오신 것을 환영합니다!-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="li_chat_history_and_date flex">-->
+<!--                        <div class="li_date">-->
+<!--                            <span class="current_msg_date">${date}</span>-->
+<!--                        </div>-->
+<!--                        <div class="li_unchecked_msg_container">-->
+<!--                            <div class="li_unchecked_msg"></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--            `;-->
+<!--            $listResults.append(text);-->
+<!--        }-->
+<!--    }-->
+
+<!--    //     let memberName = document.getElementById("memberId").innerText;-->
+<!--    //     let memberId = document.getElementById("memberId").getAttribute("href");-->
+<!--    //-->
+<!--    //-->
+<!--    //-->
+<!--    // socket.onmessage = async function (e) {-->
+<!--    //     console.log("*************들어옴*************")-->
+<!--    //     let result;-->
+<!--    //     try {-->
+<!--    //         if (e !== null && e !== undefined) {-->
+<!--    //             //수신한 메시지의 데이터 부분을 JSON으로 파싱하여 result 변수에 저장합니다.-->
+<!--    //             result = await JSON.parse(e.data);-->
+<!--    //             console.log(result);-->
+<!--    //         }-->
+<!--    //     } catch (err) {-->
+<!--    //         console.log(err);-->
+<!--    //     }-->
+<!--    // };-->
+<!--    //-->
+<!--    // $createChat.on("click", function () {-->
+<!--    //     $.ajax({-->
+<!--    //         type: "POST",-->
+<!--    //         url: "/chat/create",-->
+<!--    //         data: {},-->
+<!--    //         dataType: "json",-->
+<!--    //         success: function (result) {-->
+<!--    //             let data = {-->
+<!--    //                 messageType: "ENTER",-->
+<!--    //                 roomId: result.roomId,-->
+<!--    //                 receiverMemberId: memberId,-->
+<!--    //                 receiverMemberName: memberName-->
+<!--    //             }-->
+<!--    //             // WebSocket을 통해 서버로 데이터 전송-->
+<!--    //             socket.send(JSON.stringify(data));-->
+<!--    //         }-->
+<!--    //     });-->
+<!--    // });-->
+<!--    //-->
+<!--    // $sendBtn.on("click", function () {-->
+<!--    //     // 메시지 입력란에서 입력된 내용 가져오기-->
+<!--    //     let message = $inputMsg.val();-->
+<!--    //-->
+<!--    //     // 입력된 메시지가 비어있지 않은 경우에만 처리-->
+<!--    //     if (message !== "") {-->
+<!--    //         // 서버로 전송할 메시지 데이터 구성-->
+<!--    //         $.ajax({-->
+<!--    //             type: "POST",-->
+<!--    //             url: "/chat/create",-->
+<!--    //             data: {},-->
+<!--    //             dataType: "json",-->
+<!--    //             success: function (result) {-->
+<!--    //                 let data = {-->
+<!--    //                     messageType: "TALK",  // 메시지 타입: "TALK"-->
+<!--    //                     roomId: result.roomId,  // 채팅방 ID-->
+<!--    //                     receiverMemberId: memberId,-->
+<!--    //                     receiverMemberName: memberName,-->
+<!--    //                     chattingContent: message  // 메시지 내용-->
+<!--    //                 }-->
+<!--    //-->
+<!--    //                 // 메시지 입력란 비우기-->
+<!--    //                 $inputMsg.val("");-->
+<!--    //-->
+<!--    //                 // WebSocket을 통해 서버로 데이터 전송-->
+<!--    //                 socket.send(JSON.stringify(data));-->
+<!--    //             }-->
+<!--    //         });-->
+<!--    //     }-->
+<!--    // });-->
+
+<!--</script>-->
+<!--</html>-->

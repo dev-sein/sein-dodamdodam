@@ -2,18 +2,25 @@ package com.app.dodamdodam.service.board.eventBoard;
 
 import com.app.dodamdodam.domain.EventBoardDTO;
 import com.app.dodamdodam.domain.EventFileDTO;
+import com.app.dodamdodam.domain.FreeBoardFileDTO;
 import com.app.dodamdodam.entity.event.EventBoard;
+import com.app.dodamdodam.entity.event.EventFile;
+import com.app.dodamdodam.entity.free.FreeBoard;
+import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.exception.BoardNotFoundException;
 import com.app.dodamdodam.repository.board.event.board.EventBoardRepository;
 import com.app.dodamdodam.repository.board.event.file.EventFileRepository;
 import com.app.dodamdodam.repository.member.MemberRepository;
 import com.app.dodamdodam.search.EventBoardSearch;
 import com.app.dodamdodam.type.EventType;
+import com.app.dodamdodam.search.board.AdminEventBoardSearch;
+import com.app.dodamdodam.search.board.AdminFreeBoardSearch;
 import com.app.dodamdodam.type.FileRepresent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -119,4 +126,14 @@ public void write(EventBoardDTO eventBoardDTO, Long memberId) {
     public void delete(Long eventBoardId) {
 
     }
+
+    /* 관리자 이벤트 검색 */
+    @Override
+    public Page<EventBoardDTO> showAdminEventWithSearch_QueryDSL(Pageable pageable, AdminEventBoardSearch adminEventBoardSearch) {
+            Page<EventBoard> eventBoardPage = eventBoardRepository.findAdmindEventBoardWithPaging_QueryDSL(adminEventBoardSearch, pageable);
+            List<EventBoardDTO> eventBoardDTOS = eventBoardPage.getContent().stream()
+                    .map(this::toEventSearchBoardDTO)
+                    .collect(Collectors.toList());
+            return new PageImpl<>(eventBoardDTOS, pageable, eventBoardPage.getTotalElements());
+        }
 }

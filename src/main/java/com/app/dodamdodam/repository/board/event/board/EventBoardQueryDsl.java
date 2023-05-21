@@ -1,8 +1,11 @@
 package com.app.dodamdodam.repository.board.event.board;
 
 import com.app.dodamdodam.entity.event.EventBoard;
+import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.search.EventBoardSearch;
 import com.app.dodamdodam.type.EventType;
+import com.app.dodamdodam.search.board.AdminEventBoardSearch;
+import com.app.dodamdodam.search.board.AdminFreeBoardSearch;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -21,6 +24,9 @@ public interface EventBoardQueryDsl {
 
     // 현재 시퀀스 가져오기
     public EventBoard getCurrentSequence_QueryDsl();
+
+    //  어드민 자유게시판 검색
+    public Page<EventBoard> findAdmindEventBoardWithPaging_QueryDSL(AdminEventBoardSearch adminEventBoardSearch, Pageable pageable);
 
 
 

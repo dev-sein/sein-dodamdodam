@@ -5,12 +5,14 @@ import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.recruitment.Recruitment;
 import com.app.dodamdodam.search.Inquiry.AdminInquirySearch;
 import com.app.dodamdodam.search.banner.AdminBannerSearch;
+import com.app.dodamdodam.search.board.AdminEventBoardSearch;
 import com.app.dodamdodam.search.board.AdminFreeBoardSearch;
 import com.app.dodamdodam.search.board.AdminPurchaseBoardSearch;
 import com.app.dodamdodam.search.board.AdminRecruitmentSearch;
 import com.app.dodamdodam.search.member.AdminMemberSearch;
 import com.app.dodamdodam.search.point.AdminPointSearch;
 import com.app.dodamdodam.service.banner.BannerApplyService;
+import com.app.dodamdodam.service.board.eventBoard.EventBoardService;
 import com.app.dodamdodam.service.board.freeBoard.FreeBoardService;
 import com.app.dodamdodam.service.board.purchase.PurchaseBoardService;
 import com.app.dodamdodam.service.board.recruitmentBoard.RecruitmentBoardService;
@@ -41,6 +43,9 @@ public class AdminController {
     private final MemberService memberService;
     private final RecruitmentBoardService recruitmentBoardService;
     private final BannerApplyService bannerApplyService;
+    private final EventBoardService eventBoardService;
+
+    /* 오류확인 */
 
     /*홈*/
     @GetMapping("/home")
@@ -260,5 +265,20 @@ public class AdminController {
 
     @GetMapping("banner-management") // 배너 관리하기
     public String bannerManagement(){ return "admin/banner-management"; }
+
+
+    /* 이벤트 게시판 */
+    @GetMapping("event-board")
+    public String eventBoard(){
+        return "admin/event-board";
+    }
+
+    @ResponseBody
+    @GetMapping("event-board/list/{page}") //이벤트 게시판 검색
+    public Page<EventBoardDTO> getdBannerList(@PathVariable("page") Integer page, AdminEventBoardSearch adminEventBoardSearch) {
+        Page<EventBoardDTO> result = eventBoardService.showAdminEventWithSearch_QueryDSL(PageRequest.of(page , 10), adminEventBoardSearch);
+        log.info(page+"페이지");
+        return result;
+    }
 
 }
