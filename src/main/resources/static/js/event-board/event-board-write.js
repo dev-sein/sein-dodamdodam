@@ -151,7 +151,6 @@ let sel_files = [];  // 전역 변수로 이동
     }
 )('att_zone', 'btnAtt')
 
-
 $('.submit-btn').on('click', function () {
     // FormData 객체 생성
     var formData = new FormData();

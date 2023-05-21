@@ -6,8 +6,9 @@ import com.app.dodamdodam.domain.MemberDTO;
 import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.event.EventFile;
 import com.app.dodamdodam.entity.member.Member;
+import com.app.dodamdodam.search.EventBoardSearch;
+import com.app.dodamdodam.type.EventType;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Slice;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -18,16 +19,12 @@ public interface EventBoardService {
 
 //    상세보기
     public EventBoardDTO getDetail(Long id);
-
     // 저장
     public void write(EventBoardDTO eventBoardDTO, Long memberId);
-
     //    현재 시퀀스 가져오기
     public EventBoard getCurrentSequence();
-
-    //    목록 페이징(최신순)
-    public Slice<EventBoardDTO> getEventBoards(Pageable pageable);
-
+    /* 자유 게시글 검색 */
+    public List<EventBoardDTO> getEventBoardsBySearch(Pageable pageable, EventBoardSearch eventBoardSearch, EventType eventStatus);
     // 수정
     public void update(EventBoardDTO eventBoardDTO);
     // 삭제
@@ -38,6 +35,9 @@ public interface EventBoardService {
                 .id(eventBoard.getId())
                 .boardTitle(eventBoard.getBoardTitle())
                 .boardContent(eventBoard.getBoardContent())
+                .eventStatus(eventBoard.getEventStatus())
+                .createdDate(eventBoard.getCreatedDate())
+                .updatedDate(eventBoard.getUpdatedDate())
                 .memberDTO(toMemberDTO(eventBoard.getMember()))
                 .eventFiles(eventFileToDTO(eventBoard.getEventFiles()))
                 .build();
