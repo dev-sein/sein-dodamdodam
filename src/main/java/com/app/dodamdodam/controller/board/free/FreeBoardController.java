@@ -82,7 +82,6 @@ public class FreeBoardController {
         model.addAttribute("replyCount",freeReplyService.getFreeRepliesCountByBoardId(PageRequest.of(0, 5), boardId));
         model.addAttribute("recentFreeBoards",freeBoardService.getRecentFreeBoardList());
         model.addAttribute("checkLike",freeBoardService.checkFreeLikeByBoardIdAndMemberId(boardId, memberId));
-
         return "free-board/free-board-detail";
     }
 
