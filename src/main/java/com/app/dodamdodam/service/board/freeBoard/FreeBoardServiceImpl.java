@@ -1,14 +1,21 @@
 package com.app.dodamdodam.service.board.freeBoard;
 
-import com.app.dodamdodam.domain.FreeBoardFileDTO;
+import com.app.dodamdodam.domain.*;
 import com.app.dodamdodam.entity.free.FreeBoard;
+import com.app.dodamdodam.entity.free.FreeFile;
 import com.app.dodamdodam.entity.free.FreeLike;
+import com.app.dodamdodam.entity.purchase.Product;
+import com.app.dodamdodam.entity.purchase.PurchaseBoard;
+import com.app.dodamdodam.entity.purchase.PurchaseFile;
 import com.app.dodamdodam.repository.board.free.FreeBoardRepository;
 import com.app.dodamdodam.repository.board.free.like.FreeBoardLikeRepository;
+import com.app.dodamdodam.repository.file.freeFile.FreeFileRepository;
+import com.app.dodamdodam.repository.member.MemberRepository;
 import com.app.dodamdodam.search.FreeBoardSearch;
 import com.app.dodamdodam.search.board.AdminFreeBoardSearch;
 import com.app.dodamdodam.type.CategoryType;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -23,11 +30,12 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 @Transactional
+@Slf4j
 public class FreeBoardServiceImpl implements FreeBoardService {
-    @Autowired
-    private FreeBoardRepository freeBoardRepository;
-    @Autowired
-    private FreeBoardLikeRepository freeBoardLikeRepository;
+    private final FreeBoardRepository freeBoardRepository;
+    private final FreeBoardLikeRepository freeBoardLikeRepository;
+    private final FreeFileRepository freeFileRepository;
+    private final MemberRepository memberRepository;
 
     /* 자유 게시글 전체 목록 */
     @Override
@@ -70,6 +78,34 @@ public class FreeBoardServiceImpl implements FreeBoardService {
     @Override
     public void deleteFreeBoard(Long boardId) {
         freeBoardRepository.findById(boardId).ifPresent(freeBoard -> freeBoardRepository.delete(freeBoard));
+    }
+
+    /* 자유 게시글 저장 */
+    @Override
+    public void register(FreeBoardDTO freeBoardDTO, Long memberId) {
+        List<FreeFileDTO> freeFileDTOS = freeBoardDTO.getFreeFileDTOS();
+
+
+        memberRepository.findById(memberId).ifPresent(
+                member -> freeBoardDTO.setMemberDTO(toMemberDTO(member))
+        );
+
+
+
+
+        FreeBoard freeBoard = freeBoardRepository.save(toFreeBoardEntity(freeBoardDTO));
+
+        log.info(freeFileDTOS.size() + "");
+        if(freeFileDTOS != null){
+            for (int i = 0; i < freeFileDTOS.size(); i++) {
+                FreeFileDTO freeFileDTO = freeFileDTOS.get(i);
+                FreeFile freeFile = toFreeFileEntity(freeFileDTO);
+                freeFile.setFreeBoard(freeBoard);
+
+                freeFileRepository.save(freeFile);
+            }
+        }
+
     }
 
 

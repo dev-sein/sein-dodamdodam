@@ -1,7 +1,9 @@
 package com.app.dodamdodam.controller.board.free;
 
+import com.app.dodamdodam.domain.FreeBoardDTO;
 import com.app.dodamdodam.domain.FreeBoardFileDTO;
 import com.app.dodamdodam.domain.FreeReplyDTO;
+import com.app.dodamdodam.domain.PurchaseBoardDTO;
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.free.FreeReply;
 import com.app.dodamdodam.search.FreeBoardSearch;
@@ -105,6 +107,15 @@ public class FreeBoardController {
     @GetMapping("write-board")
     public String writeFreeBoard(){
         return "free-board/free-board-write";
+    }
+
+//    자유 게시글 작성 페이지
+    @ResponseBody
+    @PostMapping("write-board")
+    public void writeFreeBoardForm(@RequestBody FreeBoardDTO freeBoardDTO, HttpSession session){
+        Long memberId = (Long) session.getAttribute("id");
+        log.info(memberId + "");
+        freeBoardService.register(freeBoardDTO, memberId);
     }
 
 //    자유 게시글 수정 페이지

@@ -48,7 +48,13 @@ const file = document.querySelector('input[type=file]');
 const imgButton = document.querySelector("#plus_button");
 console.log(imgButton);
 
+const fileArray = new Array();
+
 function handleFiles(files) {
+    console.log("files");
+    console.log(files);
+
+    let formData = new FormData(); // input 태그 담는 폼
     /* 썸네일 담을 div의 부모 */
     const thumbnailList = document.getElementById("thumbnail-list");
 
@@ -57,6 +63,10 @@ function handleFiles(files) {
         /* 파일절대경로얻기 */  
         const file = files[i];
         const reader = new FileReader();
+
+        formData.append("file", file);
+
+
         /* reader가 onload 할때 */
         reader.onload = function(event) {
             /* 썸네일 담을 div와 그 자식의 span 선언 */   
@@ -99,6 +109,31 @@ function handleFiles(files) {
         };
         /* result 속성(attribute)에 담기 */
         reader.readAsDataURL(file);
+
+        console.log("formData");
+        console.log(formData);
+
+        $.ajax({
+            url: '/file/upload',
+            data: formData,
+            method: 'post',
+            processData: false,
+            contentType: false,
+            success: function (result) {
+                if(result){
+                    console.log(result);
+                    for (let i = 0; i < result.uuids.length; i++) {
+                        let file = new Object();
+
+                        file.filePath = result.paths[i];
+                        file.fileUuid = result.uuids[i];
+                        file.fileOriginalName = result.fileOriginalNames[i];
+
+                        fileArray.push(file);
+                    }
+                }
+            }
+        });
            
     }
 
@@ -110,5 +145,40 @@ const fileInput = document.getElementById("photo-picker");
 /* 버튼을 감싸고있는 label객체 클릭하면 위에 function handleFiles 실행 */
 fileInput.addEventListener("change", function(event) {
     handleFiles(event.target.files);
+    if (this.files.length > 3) {
+        this.value = ''; // 선택한 파일 초기화
+    }
+
 });
  /* 추가 */
+
+
+$('#regist_btn').on('click', function(e){
+    e.preventDefault();
+
+    let freeBoardDTO = {
+        boardTitle : $('#title_textarea').val(),
+        boardContent : $('#content_textarea').val(),
+        freeBoardFileDTOS : fileArray,
+        freeCategory : $('.active').val(),
+    }
+
+    console.log("freeBoardDTO");
+    console.log(freeBoardDTO);
+
+    $.ajax({
+        url: '/free/write-board',
+        data: JSON.stringify(purchaseBoardDTO),
+        method: 'post',
+        processData: false,
+        contentType: 'application/json',
+        success: function() {
+            console.log("write ajax 성공")
+            // location.href='/free/list';
+        }
+    });
+
+
+})
+
+
