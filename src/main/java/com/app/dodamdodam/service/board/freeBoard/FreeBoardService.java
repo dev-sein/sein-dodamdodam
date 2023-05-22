@@ -36,6 +36,9 @@ public interface FreeBoardService {
     /* 자유 게시글 삭제 */
     public void deleteFreeBoard(Long boardId);
 
+    /* 자유 게시글 저장 */
+    public void register(FreeBoardDTO freeBoardDTO, Long memberId);
+
     /* 자유게시글 좋아요 Top5 */
     public List<FreeBoardFileDTO> getTop5FreeBoards();
 
@@ -123,6 +126,38 @@ public interface FreeBoardService {
                 .filePath(freeFile.getFilePath())
                 .fileUuid(freeFile.getFileUuid())
                 .fileSize(freeFile.getFileSize())
+                .build();
+    }
+
+    default FreeBoard toFreeBoardEntity(FreeBoardDTO freeBoardDTO){
+        return FreeBoard.builder().id(freeBoardDTO.getId())
+                .boardTitle(freeBoardDTO.getBoardTitle())
+                .boardContent(freeBoardDTO.getBoardContent())
+                .freeCategory(freeBoardDTO.getFreeCategory())
+                .member(toMemberEntity(freeBoardDTO.getMemberDTO()))
+                .build();
+    }
+
+    default FreeFile toFreeFileEntity(FreeFileDTO freeFileDTO){
+        return FreeFile.builder().id(freeFileDTO.getId())
+                .fileOriginalName(freeFileDTO.getFileOriginalName())
+                .filePath(freeFileDTO.getFilePath())
+                .fileUuid(freeFileDTO.getFileUuid())
+                .fileSize(freeFileDTO.getFileSize())
+                .build();
+    }
+
+    default Member toMemberEntity(MemberDTO memberDTO){
+        return Member.builder().id(memberDTO.getId())
+                .memberId(memberDTO.getMemberId())
+                .memberPassword(memberDTO.getMemberPassword())
+                .memberEmail(memberDTO.getMemberEmail())
+                .memberName(memberDTO.getMemberName())
+                .memberPhone(memberDTO.getMemberPhone())
+                .memberStatus(memberDTO.getMemberStatus())
+                .memberRole(memberDTO.getMemberRole())
+                .memberType(memberDTO.getMemberType())
+                .address(memberDTO.getAddress())
                 .build();
     }
 
