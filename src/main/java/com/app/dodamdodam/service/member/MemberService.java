@@ -132,9 +132,26 @@ public interface MemberService extends UserDetailsService {
                 .address(memberDTO.getAddress())
                 .memberType(memberDTO.getMemberType())
                 .build();
-
-
     }
+
+    default Member toMemberEntityWithFoundMember(Member member, MemberDTO memberDTO){
+        return Member.builder().id(member.getId())
+                .memberPoint(member.getMemberPoint())
+                .memberEmail(memberDTO.getMemberEmail())
+                .memberName(memberDTO.getMemberName())
+                .memberId(memberDTO.getMemberId())
+                .memberPassword(memberDTO.getMemberPassword())
+                .memberEmail(memberDTO.getMemberEmail())
+                .memberName(memberDTO.getMemberName())
+                .memberPhone(memberDTO.getMemberPhone())
+                .memberStatus(memberDTO.getMemberStatus())
+                .memberRole(memberDTO.getMemberRole())
+                .memberType(memberDTO.getMemberType())
+                .address(memberDTO.getAddress())
+                .memberType(memberDTO.getMemberType())
+                .build();
+    }
+
 
     default RecruitmentBoardFileDTO toRecruitmentBoardFileDto(RecruitmentBoard recruitmentBoard){
         return RecruitmentBoardFileDTO.builder()

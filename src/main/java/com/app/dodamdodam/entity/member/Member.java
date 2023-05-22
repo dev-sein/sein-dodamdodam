@@ -67,9 +67,8 @@ public class Member extends Period {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "member", cascade = CascadeType.REMOVE)
     private List<EventBoard> eventBoards;
 
-
     @Builder
-    public Member(Long id, String memberId, String memberPassword, String memberName, String memberEmail, String memberPhone, Address address, MemberStatus memberStatus, Integer memberPoint, int participationCount, MemberType memberType, Role memberRole, List<EventBoard> eventBoards) {
+    public Member(Long id, String memberId, String memberPassword, String memberName, String memberEmail, String memberPhone, Address address, MemberStatus memberStatus, Integer memberPoint, int participationCount, MemberType memberType, Role memberRole) {
         this.id = id;
         this.memberId = memberId;
         this.memberPassword = memberPassword;
@@ -82,8 +81,9 @@ public class Member extends Period {
         this.participationCount = participationCount;
         this.memberType = memberType;
         this.memberRole = memberRole;
-        this.eventBoards = eventBoards;
     }
+
+
 
 //    @Builder
 //    public Member(String memberName, String memberPhone, String memberEmail, Role memberRole, MemberStatus memberStatus, MemberType memberType) {
@@ -142,6 +142,18 @@ public class Member extends Period {
 
     public void setParticipationCountMinus(){
         this.participationCount--;
+    }
+
+    public void setMemberId(String memberId) {
+        this.memberId = memberId;
+    }
+
+    public void setMemberType(MemberType memberType) {
+        this.memberType = memberType;
+    }
+
+    public void setMemberRole(Role memberRole) {
+        this.memberRole = memberRole;
     }
 
     public Integer getParticipationCount() {

@@ -24,7 +24,11 @@ public class MemberController {
     private final HttpSession httpSession;
 
     @GetMapping("join")
-    public String goToJoinForm(/*HttpSession httpSession, Model model*/){
+    public String goToJoinForm(/*HttpSession session, Model model*/){
+//        MemberDTO member = (MemberDTO) session.getAttribute("member");
+//        log.info("member.toString() ================================================================");
+//        log.info(member.toString());
+//        model.addAttribute(member);
         return "/member/join";
     }
 
