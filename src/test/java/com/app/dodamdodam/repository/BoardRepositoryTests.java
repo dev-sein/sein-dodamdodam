@@ -68,7 +68,7 @@ public class BoardRepositoryTests {
 //            recruitmentBoardRepository.save(recruitmentBoard);
 //        }
         RecruitmentBoard recruitmentBoard = new RecruitmentBoard("모집 게시글 제목", LocalDate.now(),10, "https://open.kakao.com/o/ggmF0Jkf", "1234", "경기도 성남시 분당구 수내동", "탄천앞");
-        memberRepository.findById(201L).ifPresent(member -> recruitmentBoard.setMember(member));
+        memberRepository.findById(1L).ifPresent(member -> recruitmentBoard.setMember(member));
 //        recruitmentBoard.addRecruitment();
         recruitmentBoardRepository.save(recruitmentBoard);
     }
@@ -140,7 +140,7 @@ public class BoardRepositoryTests {
     @Test
     public void saveFreeBoardTest(){
         FreeBoard freeBoard = new FreeBoard("자유게시글 제목2", "자유게시글 내용2", categoryTypes.get(1));
-        memberRepository.findById(2L).ifPresent(member -> freeBoard.setMember(member));
+        memberRepository.findById(1L).ifPresent(member -> freeBoard.setMember(member));
         freeBoardRepository.save(freeBoard);
 
         List<FreeFile> freeFiles = new ArrayList<FreeFile>();

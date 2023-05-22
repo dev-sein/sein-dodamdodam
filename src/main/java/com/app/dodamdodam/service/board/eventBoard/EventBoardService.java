@@ -1,9 +1,6 @@
 package com.app.dodamdodam.service.board.eventBoard;
 
-import com.app.dodamdodam.domain.EventBoardDTO;
-import com.app.dodamdodam.domain.EventFileDTO;
-import com.app.dodamdodam.domain.FreeBoardFileDTO;
-import com.app.dodamdodam.domain.MemberDTO;
+import com.app.dodamdodam.domain.*;
 import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.event.EventFile;
 import com.app.dodamdodam.entity.member.Member;
@@ -41,6 +38,8 @@ public interface EventBoardService {
     //     관리자 : 게시글 검색
     public Page<EventBoardDTO> showAdminEventWithSearch_QueryDSL(Pageable pageable, AdminEventBoardSearch adminEventBoardSearch);
 
+    //    관리자 상세보기 : 게시글 상세
+    public EventBoardDTO getAdminEventBoardDetail(Long id);
 
     default EventBoardDTO eventBoardToDTO(EventBoard eventBoard){
         return EventBoardDTO.builder()
@@ -56,6 +55,7 @@ public interface EventBoardService {
         return EventBoardDTO.builder().id(eventBoard.getId()).boardTitle(eventBoard.getBoardTitle())
                 .boardContent(eventBoard.getBoardContent()).createdDate(eventBoard.getCreatedDate())
                 .eventAddress(eventBoard.getEventAddress()).eventAddressDetail(eventBoard.getEventAddressDetail())
+                .eventBusinessNumber(eventBoard.getEventBusinessNumber())
                 .eventStatus(eventBoard.getEventStatus()).memberDTO(toMemberDTO(eventBoard.getMember()))
                 .eventFiles(eventFileToDTO(eventBoard.getEventFiles())).build();
     }

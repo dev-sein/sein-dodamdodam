@@ -115,6 +115,7 @@ function showList(data) {
     console.log("showList 들어옴");
     let eventBoards = data.content;
     eventBoards.forEach(eventBoard => {
+        var text ="";
         text += `
          <tr onclick="redirectToDetail(${eventBoard.id})">
                 <td>
@@ -130,16 +131,15 @@ function showList(data) {
                 <td class="numbers">${eventBoard.id}</td>
                 <td>${eventBoard.boardTitle}</td>
                 <td>${eventBoard.memberDTO.memberName}</td>
-                <td>${eventBoard.eventAddress}</td>
-                <td>${eventBoard.eventType}</td>
                  <td>${formatDate(new Date(eventBoard.createdDate))}</td>
+                <td>${eventBoard.eventAddress}+${eventBoard.eventAddressDetail}</td>
+                <td>${eventBoard.eventStatus}</td>
                 <!-- <td>{point.pointStatus}</td> -->
                 <!-- <td>2000.01.01 21:05:04</td>-->
                 <!-- <td><button class="show-detail" onclick="showModal()">상세보기</button></td> -->
             </tr>
         `;
         console.log("text 들어옴");
-        var text = "";
         $listResults.append(text);
 
     });

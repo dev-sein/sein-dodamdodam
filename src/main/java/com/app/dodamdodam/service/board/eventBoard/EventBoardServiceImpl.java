@@ -3,10 +3,12 @@ package com.app.dodamdodam.service.board.eventBoard;
 import com.app.dodamdodam.domain.EventBoardDTO;
 import com.app.dodamdodam.domain.EventFileDTO;
 import com.app.dodamdodam.domain.FreeBoardFileDTO;
+import com.app.dodamdodam.domain.RecruitmentBoardFileDTO;
 import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.event.EventFile;
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.member.Member;
+import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
 import com.app.dodamdodam.exception.BoardNotFoundException;
 import com.app.dodamdodam.exception.MemberNotFoundException;
 import com.app.dodamdodam.repository.board.event.board.EventBoardRepository;
@@ -24,6 +26,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.io.File;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -138,4 +141,12 @@ public void write(EventBoardDTO eventBoardDTO, Long memberId) {
                     .collect(Collectors.toList());
             return new PageImpl<>(eventBoardDTOS, pageable, eventBoardPage.getTotalElements());
         }
+
+    /* 관리자 이벤트 상세 */
+    @Override
+    public EventBoardDTO getAdminEventBoardDetail(Long id) {
+            Optional<EventBoard> eventBoards = eventBoardRepository.findById(id);
+            return toEventSearchBoardDTO(eventBoards.get());
+        }
+
 }

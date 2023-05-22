@@ -56,6 +56,7 @@ public class Member extends Period {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "member", cascade = CascadeType.REMOVE)
     private List<EventBoard> eventBoards;
 
+
     @Builder
     public Member(Long id, String memberId, String memberPassword, String memberName, String memberEmail, String memberPhone, Address address, MemberStatus memberStatus, Integer memberPoint, int participationCount, MemberType memberType, Role memberRole, List<EventBoard> eventBoards) {
         this.id = id;
@@ -72,6 +73,7 @@ public class Member extends Period {
         this.memberRole = memberRole;
         this.eventBoards = eventBoards;
     }
+
 
     public void setMemberEmail(String memberEmail) {
         this.memberEmail = memberEmail;
