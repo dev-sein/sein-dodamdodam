@@ -1,7 +1,9 @@
 package com.app.dodamdodam.entity.event;
 
 import com.app.dodamdodam.entity.board.Board;
+import com.app.dodamdodam.entity.free.FreeReply;
 import com.app.dodamdodam.entity.member.Member;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.sun.istack.NotNull;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
@@ -45,7 +47,12 @@ public class EventBoard extends Board{
      private String eventBusinessTel;
      private String eventBusinessEmail;
 
-//    댓글
+    /* 댓글 */
+    @JsonManagedReference
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "eventBoard")
+    private List<EventReply> eventReplies = new ArrayList<>();;
+
+    /* 파일 */
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy = "eventBoard")
     private List<EventFile> eventFiles = new ArrayList<>();
 

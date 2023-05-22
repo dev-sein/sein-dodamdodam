@@ -1,6 +1,7 @@
 package com.app.dodamdodam.repository.board.event.reply;
 
 import com.app.dodamdodam.entity.event.EventReply;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 
@@ -14,4 +15,6 @@ public interface EventReplyQueryDsl {
     public Long getReplyCount_QueryDsl(Long eventBoardId);
     // 삭제
     public void deleteByEventBoardId(Long eventBoardId);
+    //boardId로 댓글 리스트 가져오기
+    public Page<EventReply> findEventRepliesByBoardId_QueryDsl(Pageable pageable, Long boardId);
  }

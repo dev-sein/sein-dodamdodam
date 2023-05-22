@@ -39,7 +39,7 @@ public class EventBoardDTO {
     /*멤버 정보 */
     private MemberDTO memberDTO;
     /*댓글 정보*/
-    List<EventReviewDTO> reviews;
+    List<EventReplyDTO> reviews;
     /*파일*/
     private List<EventFileDTO> fileDTOS;
     private List<MultipartFile> eventFiles;
@@ -55,7 +55,7 @@ public class EventBoardDTO {
     }
 
     @Builder
-    public EventBoardDTO(Long id, String eventAddress, String eventAddressDetail, String eventStartDate, String eventEndDate, String eventIntroduction, String boardTitle, String boardContent, int eventLikeNumber, EventType eventStatus, String eventBusinessNumber, String eventBusinessName, String eventBusinessTel, String eventBusinessEmail, MemberDTO memberDTO, List<EventReviewDTO> reviews, List<EventFileDTO> fileDTOS, List<MultipartFile> eventFiles, LocalDateTime createdDate, LocalDateTime updatedDate) {
+    public EventBoardDTO(Long id, String eventAddress, String eventAddressDetail, String eventStartDate, String eventEndDate, String eventIntroduction, String boardTitle, String boardContent, int eventLikeNumber, EventType eventStatus, String eventBusinessNumber, String eventBusinessName, String eventBusinessTel, String eventBusinessEmail, MemberDTO memberDTO, List<EventReplyDTO> reviews, List<EventFileDTO> fileDTOS, List<MultipartFile> eventFiles, LocalDateTime createdDate, LocalDateTime updatedDate) {
         this.id = id;
         this.eventAddress = eventAddress;
         this.eventAddressDetail = eventAddressDetail;
