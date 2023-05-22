@@ -34,7 +34,6 @@ public class EventReply extends Reply {
         this.member = member1;
     }
 
-
     public void setEventReplyContent(String replyContent) {
         super.setReplyContent(replyContent);
     }
@@ -46,6 +45,5 @@ public class EventReply extends Reply {
     public void setMember(Member member){
         this.member = member;
     }
-
 
 }
