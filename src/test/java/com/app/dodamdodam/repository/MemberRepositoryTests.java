@@ -54,15 +54,15 @@ public class MemberRepositoryTests {
     @Test
     public void saveTest(){
         for (int i=1; i<=100; i++) {
+
             Address address = new Address("서울시","강남구");
 //            회원 정보 입력
 
-//            Member member = new Member("test1234", "1234", "테스트", "test1234@gmail.com", "01012341234", address, MemberStatus.NORMAL, MemberType.GENERAL, Role.MEMBER);
-            Member member = Member.builder().memberName("테스트" + i).memberEmail("test" + i + "@naver.com").memberId("testId" + i)
-                    .memberPassword("1234").memberPhone("01012341234").memberPoint(0).address(address)
-                    .memberRole(Role.MEMBER).memberType(MemberType.GENERAL).memberStatus(MemberStatus.NORMAL)
-                    .build();
+/*
+
+            Member member = new Member("test1234", "1234", "테스트", "test1234@gmail.com", "01012341234", address, MemberStatus.NORMAL, MemberType.GENERAL, Role.MEMBER);
             memberRepository.save(member);
+*/
 
 //            모집 게시글 입력
 //            2번 회원이 모집게시글 100개 작성

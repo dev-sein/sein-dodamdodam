@@ -22,8 +22,7 @@ import java.util.stream.Collectors;
 @Service
 public interface MemberService {
     /* 로그인 된 유저 정보 가져오기 */
-    public MemberDTO getMemberInfo(Long memberId);
-//    public Optional<Member> getMemberInfo(Long memberId);
+    public Optional<Member> getMemberInfo(Long memberId);
 
     /* 내 포인트 내역 */
     public List<Point> getMyPointList(Long memberId);
@@ -80,7 +79,6 @@ public interface MemberService {
                 .memberName(member.getMemberName()).memberPhone(member.getMemberPhone()).memberPoint(member.getMemberPoint())
                 .memberStatus(member.getMemberStatus()).address(member.getAddress())
                 .memberPassword(member.getMemberPassword()).createdDate(member.getCreatedDate()).participationCount(member.getParticipationCount())
-                .memberType(member.getMemberType())
                 .build();
     }
 
@@ -92,7 +90,6 @@ public interface MemberService {
                 .memberPassword(memberDTO.getMemberPassword())
                 .memberPhone(memberDTO.getMemberPhone())
                 .address(memberDTO.getAddress())
-                .memberType(memberDTO.getMemberType())
                 .build();
     }
 
