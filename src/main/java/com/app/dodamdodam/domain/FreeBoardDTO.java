@@ -3,13 +3,11 @@ package com.app.dodamdodam.domain;
 import com.app.dodamdodam.type.CategoryType;
 import lombok.Builder;
 import lombok.Data;
-import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
-@Component
 public class FreeBoardDTO {
     private Long id;
     private String boardTitle;

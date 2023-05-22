@@ -48,7 +48,6 @@ public class EventBoardQueryDslImpl implements EventBoardQueryDsl {
                 .from(eventBoard)
                 .leftJoin(eventBoard.eventFiles, eventFile)
                 .fetchJoin()
-                .orderBy(sort.equals("recent") ? eventBoard.id.desc() : eventBoard.eventLikeCount.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize() + 1)
                 .fetch();
@@ -90,8 +89,8 @@ public class EventBoardQueryDslImpl implements EventBoardQueryDsl {
         if (adminEventBoardSearch.getBoardTitle() != null || adminEventBoardSearch.getMemberName() != null || adminEventBoardSearch.getEventAddress() != null || adminEventBoardSearch.getEventAddressDetail() != null) {
             BooleanExpression searchTitle = adminEventBoardSearch.getBoardTitle() != null ? eventBoard.boardTitle.contains(adminEventBoardSearch.getBoardTitle()) : null;
             BooleanExpression searchName = adminEventBoardSearch.getMemberName() != null ? eventBoard.member.memberName.contains(adminEventBoardSearch.getMemberName()) : null;
-            BooleanExpression searchAddress = adminEventBoardSearch.getMemberName() != null ? eventBoard.eventAddress.contains(adminEventBoardSearch.getEventAddress()) : null;
-            BooleanExpression searchAddressDetail = adminEventBoardSearch.getMemberName() != null ? eventBoard.eventAddressDetail.contains(adminEventBoardSearch.getEventAddressDetail()) : null;
+            BooleanExpression searchAddress = adminEventBoardSearch.getMemberName() != null ? eventBoard.address.address.contains(adminEventBoardSearch.getEventAddress()) : null;
+            BooleanExpression searchAddressDetail = adminEventBoardSearch.getMemberName() != null ? eventBoard.address.addressDetail.contains(adminEventBoardSearch.getEventAddressDetail()) : null;
 
             searchAll = searchTitle.or(searchName).or(searchAddress).or(searchAddressDetail);
         }
