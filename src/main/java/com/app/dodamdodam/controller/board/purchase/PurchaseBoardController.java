@@ -33,14 +33,14 @@ public class PurchaseBoardController {
 
     @ResponseBody
     @PostMapping("write")
-    public RedirectView getPurchaseWriteForm(@RequestBody PurchaseBoardDTO purchaseBoardDTO, HttpSession session){
+    public void getPurchaseWriteForm(@RequestBody PurchaseBoardDTO purchaseBoardDTO, HttpSession session){
 //        MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
 //        Long memberId = memberDTO.getId();
-        Long memberId = (Long) session.getAttribute("id");
+        Long memberId = (Long) session.getAttribute("memberId");
         log.info(memberId + "");
         purchaseBoardService.register(purchaseBoardDTO, memberId);
 
-        return new RedirectView("/purchase/list");
+//        return new RedirectView("/purchase/list");
     }
 
     

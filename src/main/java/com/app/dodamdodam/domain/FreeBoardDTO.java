@@ -3,13 +3,11 @@ package com.app.dodamdodam.domain;
 import com.app.dodamdodam.type.CategoryType;
 import lombok.Builder;
 import lombok.Data;
-import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
-@Component
 public class FreeBoardDTO {
     private Long id;
     private String boardTitle;
@@ -18,7 +16,7 @@ public class FreeBoardDTO {
     private CategoryType freeCategory;
     private int likeCount;
 
-    private List<FreeBoardFileDTO> freeBoardFileDTOS;
+    private List<FreeFileDTO> freeFileDTOS;
     private List<FreeBoardReplyDTO> freeBoardReplyDTOS;
 
 
@@ -26,14 +24,14 @@ public class FreeBoardDTO {
     private LocalDateTime updatedDate;
 
     @Builder
-    public FreeBoardDTO(Long id, String boardTitle, String boardContent, MemberDTO memberDTO, CategoryType freeCategory, int likeCount, List<FreeBoardFileDTO> freeBoardFileDTOS, List<FreeBoardReplyDTO> freeBoardReplyDTOS, LocalDateTime createdDate, LocalDateTime updatedDate) {
+    public FreeBoardDTO(Long id, String boardTitle, String boardContent, MemberDTO memberDTO, CategoryType freeCategory, int likeCount, List<FreeFileDTO> freeFileDTOS, List<FreeBoardReplyDTO> freeBoardReplyDTOS, LocalDateTime createdDate, LocalDateTime updatedDate) {
         this.id = id;
         this.boardTitle = boardTitle;
         this.boardContent = boardContent;
         this.memberDTO = memberDTO;
         this.freeCategory = freeCategory;
         this.likeCount = likeCount;
-        this.freeBoardFileDTOS = freeBoardFileDTOS;
+        this.freeFileDTOS = freeFileDTOS;
         this.freeBoardReplyDTOS = freeBoardReplyDTOS;
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;
