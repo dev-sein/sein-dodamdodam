@@ -77,14 +77,14 @@ public class BoardRepositoryTests {
 //        recruitmentBoard.addRecruitment();
         recruitmentBoardRepository.save(recruitmentBoard);
     }
-    
-    @Test
-    public void saveTest6(){
-        EventBoard eventBoard = new EventBoard("이벤트 게시글 제목1","테스트1");
-        memberRepository.findById(201L).ifPresent(member -> eventBoard.setMember(member));
-        eventBoardRepository.save(eventBoard);
-    }
-    
+
+//    @Test
+//    public void saveTest6(){
+//        EventBoard eventBoard = new EventBoard("이벤트 게시글 제목1","테스트1");
+//        memberRepository.findById(201L).ifPresent(member -> eventBoard.setMember(member));
+//        eventBoardRepository.save(eventBoard);
+//    }
+
 
     /*자유 게시글 등록*/
     @Test
@@ -242,7 +242,7 @@ public class BoardRepositoryTests {
     public void findFreeBoardAndFreeFilesByIdTest(){
         log.info(freeBoardRepository.findFreeBoardAndFreeFilesById_QueryDSL(201L).toString());
     }
-    
+
     /* 자유 게시글 상세, 댓글 */
     @Test
     public void findFreeBoardAndFreeRepliesByIdTest(){
