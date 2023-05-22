@@ -120,15 +120,19 @@ function handleFiles(files) {
 
 }
 
+function handleFileSelection(event) {
+    var input = event.target;
+    var maxFiles = 3; // 최대 파일 개수
+    if (input.files.length > maxFiles) {
+        input.value = ""; // 선택한 파일 초기화
+    }
+ }
 /* 버튼을 감싸고있는 label객체 들고오기 */
 const fileInput = document.getElementById("photo-picker");
 
 /* 버튼을 감싸고있는 label객체 클릭하면 위에 function handleFiles 실행 */
 fileInput.addEventListener("change", function(event) {
     handleFiles(event.target.files);
-    if (this.files.length > 3) {
-        this.value = ''; // 선택한 파일 초기화
-    }
 
     $.ajax({
         url: '/file/upload',
@@ -176,7 +180,7 @@ $('#regist_btn').on('click', function(e){
         contentType: 'application/json',
         success: function() {
             console.log("write ajax 성공")
-            // location.href='/free/list';
+            location.href='/free/list';
         }
     });
 
