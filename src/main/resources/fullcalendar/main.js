@@ -6522,7 +6522,7 @@ var FullCalendar = (function (exports) {
             if ((customButtonProps = calendarCustomButtons[buttonName])) {
                 buttonClick = function (ev) {
                     if (customButtonProps.click) {
-                        customButtonProps.click.call(ev.target, ev, ev.target); // TODO: use Calendar this context?
+                        customButtonProps.click.call(ev.target, ev, ev.target); // TODO: use MyCalendar this context?
                     }
                 };
                 (buttonIcon = theme.getCustomButtonIconClass(customButtonProps)) ||
@@ -14659,7 +14659,7 @@ var FullCalendar = (function (exports) {
                 requestJson('GET', url, requestParams_1, function (body, xhr) {
                     if (body.error) {
                         onFailure({
-                            message: 'Google Calendar API: ' + body.error.message,
+                            message: 'Google MyCalendar API: ' + body.error.message,
                             errors: body.error.errors,
                             xhr: xhr,
                         });

@@ -9,9 +9,10 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-@ToString
+@ToString(callSuper = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Inheritance(strategy = InheritanceType.JOINED)
+@AllArgsConstructor
 public class Reply extends Period {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
@@ -28,6 +29,10 @@ public class Reply extends Period {
         this.member = member;
     }
 
+    public Reply(String replyContent) {
+        this.replyContent = replyContent;
+    }
+
     public void setReplyContent(String replyContent) {
         this.replyContent = replyContent;
     }
@@ -35,5 +40,5 @@ public class Reply extends Period {
     public void setMember(Member member) {
         this.member = member;
     }
-    /* 추가 */
+
 }

@@ -41,5 +41,7 @@ public class FreeReply extends Reply {
         super(replyContent, member);
         this.freeBoard = freeBoard;
     }
+
+
     /* 추가 */
 }

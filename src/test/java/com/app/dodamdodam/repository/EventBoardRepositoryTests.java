@@ -1,28 +1,17 @@
 package com.app.dodamdodam.repository;
 
-import com.app.dodamdodam.entity.embeddable.Address;
 import com.app.dodamdodam.entity.event.EventBoard;
-import com.app.dodamdodam.entity.event.EventFile;
-import com.app.dodamdodam.entity.event.EventReview;
-import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.repository.board.event.board.EventBoardRepository;
 import com.app.dodamdodam.repository.board.event.file.EventFileRepository;
 import com.app.dodamdodam.repository.member.MemberRepository;
-import com.app.dodamdodam.search.EventBoardSearch;
-import com.app.dodamdodam.type.MemberStatus;
-import com.app.dodamdodam.type.MemberType;
-import com.app.dodamdodam.type.Role;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Slice;
 import org.springframework.test.annotation.Rollback;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
-import java.util.UUID;
 
 @SpringBootTest
 @Slf4j

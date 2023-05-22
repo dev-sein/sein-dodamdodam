@@ -11,6 +11,8 @@ import com.app.dodamdodam.entity.recruitment.RecruitmentFile;
 import com.app.dodamdodam.search.member.AdminMemberSearch;
 import com.app.dodamdodam.type.MemberStatus;
 import org.springframework.data.domain.Page;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -20,12 +22,28 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public interface MemberService {
+public interface MemberService extends UserDetailsService {
     /* 로그인 된 유저 정보 가져오기 */
-    public Optional<Member> getMemberInfo(Long memberId);
+    public MemberDTO getMemberInfo(Long memberId);
+//    public Optional<Member> getMemberInfo(Long memberId);
 
     /* 내 포인트 내역 */
     public List<Point> getMyPointList(Long memberId);
+
+    //    회원가입
+    public void join(MemberDTO memberDTO, PasswordEncoder passwordEncoder);
+
+    /* 아이디 중복검사 */
+    public String checkMemberId(String memberId);
+
+    /* 이메일 중복검사 */
+    public String checkMemberEmail(String memberEmail);
+
+    /* 휴대폰 중복검사 */
+    public String checkMemberPhone(String memberPhone);
+
+//    public Optional<Member> getMemberByMemberEmail(String memberEmail);
+
 
     /* 내가 작성한 자유 게시글 목록 */
     public Page<FreeBoard> getMyFreeBoardList(Pageable pageable, Long memberId);
@@ -75,10 +93,27 @@ public interface MemberService {
     public Page<MemberDTO> showMemberWithSearch_QueryDSL(Pageable pageable, AdminMemberSearch adminMemberSearch);
 
     default MemberDTO toMemberDTO(Member member){
-        return MemberDTO.builder().id(member.getId()).memberId(member.getMemberId()).memberEmail(member.getMemberEmail())
-                .memberName(member.getMemberName()).memberPhone(member.getMemberPhone()).memberPoint(member.getMemberPoint())
-                .memberStatus(member.getMemberStatus()).address(member.getAddress())
-                .memberPassword(member.getMemberPassword()).createdDate(member.getCreatedDate()).participationCount(member.getParticipationCount())
+        return MemberDTO.builder().id(member.getId())
+                .memberId(member.getMemberId())
+                .memberEmail(member.getMemberEmail())
+                .memberName(member.getMemberName())
+                .memberPhone(member.getMemberPhone())
+                .memberPoint(member.getMemberPoint())
+                .memberStatus(member.getMemberStatus())
+                .build();
+    }
+
+    default MemberDTO toMemberDTOForJoin(Member member){
+        return MemberDTO.builder().id(member.getId())
+                .memberId(member.getMemberId())
+                .memberEmail(member.getMemberEmail())
+                .memberName(member.getMemberName())
+                .memberPassword(member.getMemberPassword())
+                .memberPhone(member.getMemberPhone())
+                .memberPoint(member.getMemberPoint())
+                .memberStatus(member.getMemberStatus())
+                .participationCount(member.getParticipationCount())
+                .address(member.getAddress())
                 .build();
     }
 
@@ -88,9 +123,17 @@ public interface MemberService {
                 .memberName(memberDTO.getMemberName())
                 .memberId(memberDTO.getMemberId())
                 .memberPassword(memberDTO.getMemberPassword())
+                .memberEmail(memberDTO.getMemberEmail())
+                .memberName(memberDTO.getMemberName())
                 .memberPhone(memberDTO.getMemberPhone())
+                .memberStatus(memberDTO.getMemberStatus())
+                .memberRole(memberDTO.getMemberRole())
+                .memberType(memberDTO.getMemberType())
                 .address(memberDTO.getAddress())
+                .memberType(memberDTO.getMemberType())
                 .build();
+
+
     }
 
     default RecruitmentBoardFileDTO toRecruitmentBoardFileDto(RecruitmentBoard recruitmentBoard){

@@ -886,6 +886,7 @@ input::placeholder {
     font-size: 15px;
     font-weight: 500;
     font-family: inherit;
+    cursor: pointer;
 }
 
 .waffle.button {

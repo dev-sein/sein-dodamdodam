@@ -9,7 +9,6 @@ import javax.persistence.*;
 @Entity
 @Getter @ToString
 @Inheritance(strategy = InheritanceType.JOINED)
-@Table(name = "TBL_BOARD")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DynamicInsert
 public class Board extends Period {
@@ -27,7 +26,6 @@ public class Board extends Period {
         this.boardContent = boardContent;
     }
 
-
     public Board(String boardTitle, String boardContent) {
         this.boardTitle = boardTitle;
         this.boardContent = boardContent;
@@ -38,5 +36,4 @@ public class Board extends Period {
         this.boardTitle = boardTitle;
         this.boardContent = boardContent;
     }
-    /* 추가 */
 }

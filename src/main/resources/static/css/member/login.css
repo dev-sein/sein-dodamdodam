@@ -10,6 +10,9 @@ body{
     font-weight: 400;
     overflow: scroll;
 }
+a {
+    text-decoration: none;
+}
 
 input::placeholder {
 	color: #b2b2b2;
@@ -249,6 +252,8 @@ input{
     font-weight: 500px;
     line-height: 1.75px;
     font-family: 'Noto Sans KR';
+
+    cursor: pointer;
 }
 
 .kakaobutton{
