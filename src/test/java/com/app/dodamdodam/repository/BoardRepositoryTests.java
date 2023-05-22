@@ -68,7 +68,7 @@ public class BoardRepositoryTests {
 //            recruitmentBoardRepository.save(recruitmentBoard);
 //        }
         RecruitmentBoard recruitmentBoard = new RecruitmentBoard("모집 게시글 제목", LocalDate.now(),10, "https://open.kakao.com/o/ggmF0Jkf", "1234", "경기도 성남시 분당구 수내동", "탄천앞");
-        memberRepository.findById(201L).ifPresent(member -> recruitmentBoard.setMember(member));
+        memberRepository.findById(5L).ifPresent(member -> recruitmentBoard.setMember(member));
 //        recruitmentBoard.addRecruitment();
         recruitmentBoardRepository.save(recruitmentBoard);
     }
@@ -121,11 +121,11 @@ public class BoardRepositoryTests {
     /* 200번 모집 게시글에 임의로 5번 유저 참석 시켰음*/
     @Test
     public void saveTest4(){
-        memberRepository.findById(52L).ifPresent(member ->
+        memberRepository.findById(8L).ifPresent(member ->
 //        memberRepository.findById(5L).ifPresent(member ->
         {
             Recruitment recruitment = new Recruitment(member);
-            recruitmentBoardRepository.findById(608L).ifPresent(recruitmentBoard -> recruitment.setRecruitmentBoard(recruitmentBoard));
+            recruitmentBoardRepository.findById(403L).ifPresent(recruitmentBoard -> recruitment.setRecruitmentBoard(recruitmentBoard));
             recruitmentRepository.save(recruitment);
         });
     }
