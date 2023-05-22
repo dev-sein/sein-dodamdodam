@@ -11,7 +11,7 @@ import com.app.dodamdodam.repository.member.MemberRepository;
 import com.app.dodamdodam.search.EventBoardSearch;
 import com.app.dodamdodam.search.board.AdminEventBoardSearch;
 import com.app.dodamdodam.type.EventType;
-import com.app.dodamdodam.type.FileRepresent;
+import com.app.dodamdodam.type.FileType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -61,9 +61,9 @@ public void write(EventBoardDTO eventBoardDTO, Long memberId) {
             EventFileDTO fileDTO = fileDTOS.get(i);
 
             if (i == 0) {
-                fileDTO.setFileRepresent(FileRepresent.REPRESENT);
+                fileDTO.setFileType(FileType.REPRESENT);
             } else {
-                fileDTO.setFileRepresent(FileRepresent.ORDINARY);
+                fileDTO.setFileType(FileType.ORDINARY);
             }
 
             EventFile eventFile = toEventFileEntity(fileDTO);

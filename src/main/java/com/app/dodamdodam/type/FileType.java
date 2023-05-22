@@ -1,6 +1,6 @@
 package com.app.dodamdodam.type;
 
 
-public enum FileRepresent {
+public enum FileType {
     REPRESENT, ORDINARY
 }

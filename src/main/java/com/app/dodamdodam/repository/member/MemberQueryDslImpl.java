@@ -13,6 +13,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
+import java.util.Optional;
 
 import static com.app.dodamdodam.entity.free.QFreeBoard.freeBoard;
 import static com.app.dodamdodam.entity.inquiry.QInquiry.inquiry;
@@ -47,6 +48,15 @@ public class MemberQueryDslImpl implements MemberQueryDsl{
         return true;
     }
 
+    @Override
+    public Optional<Member> findMemberByMemberId_QueryDSL(String memberId) {
+        return Optional.ofNullable(query.select(member).from(member).where(member.memberId.eq(memberId)).fetchOne());
+    }
+
+    @Override
+    public Optional<Member> findMemberByMemberEmail_QueryDSL(String memberEmail){
+        return Optional.ofNullable(query.select(member).from(member).where(member.memberEmail.eq(memberEmail)).fetchOne());
+    }
     @Override //관리자 멤버 검색
     public Page<Member> findAdminMemberWithPaging_QueryDSL(AdminMemberSearch adminMemberSearch, Pageable pageable) {
         BooleanExpression searchAll = null;

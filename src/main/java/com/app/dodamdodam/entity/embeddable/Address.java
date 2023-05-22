@@ -11,7 +11,6 @@ import javax.persistence.Embeddable;
 @Setter
 //@AllArgsConstructor
 public class Address {
-//    private String postcode;
     private String address;
     private String addressDetail;
 

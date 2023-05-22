@@ -1,6 +1,8 @@
 package com.app.dodamdodam.entity.purchase;
 
 import com.app.dodamdodam.entity.file.BoardFile;
+import lombok.*;
+import com.app.dodamdodam.type.FileType;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,9 +21,14 @@ public class PurchaseFile extends BoardFile {
     @JoinColumn(name = "PURCHASE_BOARD_ID")
     private PurchaseBoard purchaseBoard;
 
-    public PurchaseFile(String fileOriginalName, String fileUuid, String filePath, Long fileSize, PurchaseBoard purchaseBoard) {
-        super(fileOriginalName, fileUuid, filePath, fileSize);
+    public void setPurchaseBoard(PurchaseBoard purchaseBoard) {
         this.purchaseBoard = purchaseBoard;
     }
 
+
+    @Builder
+    public PurchaseFile(Long id, String fileOriginalName, String fileUuid, String filePath, FileType fileType, Long fileSize, PurchaseBoard purchaseBoard) {
+        super(id, fileOriginalName, fileUuid, filePath, fileType, fileSize);
+        this.purchaseBoard = purchaseBoard;
+    }
 }
