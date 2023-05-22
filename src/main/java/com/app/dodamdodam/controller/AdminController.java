@@ -45,7 +45,6 @@ public class AdminController {
     private final BannerApplyService bannerApplyService;
     private final EventBoardService eventBoardService;
 
-    /* 오류확인 */
 
     /*홈*/
     @GetMapping("/home")
@@ -281,6 +280,13 @@ public class AdminController {
         Page<EventBoardDTO> result = eventBoardService.showAdminEventWithSearch_QueryDSL(PageRequest.of(page , 10), adminEventBoardSearch);
         log.info(page+"페이지");
         return result;
+    }
+
+    @GetMapping("event-board/detail/{id}")  // 이벤트 상세 현황
+    public String adminEventBoardDetail(@PathVariable("id") Long boardId, Model model) {
+        EventBoardDTO eventBoardDTO = eventBoardService.getAdminEventBoardDetail(boardId);
+        model.addAttribute("eventBoardDTO", eventBoardDTO);
+        return "admin/event-board-detail";
     }
 
 }

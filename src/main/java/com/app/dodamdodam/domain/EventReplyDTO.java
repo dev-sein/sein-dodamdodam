@@ -7,25 +7,20 @@ import java.time.LocalDateTime;
 
 @Data
 @Builder
-public class EventReviewDTO {
+public class EventReplyDTO {
     private Long id;
-    private String memberName;
-    /*등급별 이미지*/
-    private String gradeTitle;
-
+    private MemberDTO memberDTO;
     private String replyContent;
-    private Integer eventReviewCount;
-
+    private Long boardId;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
 
     @QueryProjection
-    public EventReviewDTO(Long id, String memberName, String gradeTitle, String replyContent, Integer eventReviewCount, LocalDateTime createdDate, LocalDateTime updatedDate) {
+    public EventReplyDTO(Long id, MemberDTO memberDTO, String replyContent, Long boardId, LocalDateTime createdDate, LocalDateTime updatedDate) {
         this.id = id;
-        this.memberName = memberName;
-        this.gradeTitle = gradeTitle;
+        this.memberDTO = memberDTO;
         this.replyContent = replyContent;
-        this.eventReviewCount = eventReviewCount;
+        this.boardId = boardId;
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;
     }

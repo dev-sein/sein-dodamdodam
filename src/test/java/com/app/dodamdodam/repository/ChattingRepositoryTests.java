@@ -24,6 +24,7 @@
 //@Slf4j
 //public class ChattingRepositoryTests {
 //    @Autowired
+//    private ChattingRepository chattingRepository;
 //    private ChattingRepositor chattingRepository;
 //
 //    @Autowired
