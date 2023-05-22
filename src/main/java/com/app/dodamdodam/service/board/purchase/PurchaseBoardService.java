@@ -25,7 +25,7 @@ public interface PurchaseBoardService {
     public List<PurchaseBoardFileDTO> getPurchaseBoardListByMemberId(Pageable pageable, Long memberId);
 
 //    저장
-    public void register(PurchaseBoardDTO purchaseBoardDTO, ProductDTO productDTO, Long memberId);
+    public void register(PurchaseBoardDTO purchaseBoardDTO, Long memberId);
 
 //    관리자 게시글 검색
     public Page<PurchaseBoardDTO> findPurchaseBoardWithSearch_QueryDSL(Pageable pageable, AdminPurchaseBoardSearch adminPurchaseBoardSearch);
@@ -136,7 +136,6 @@ public interface PurchaseBoardService {
                 .fileUuid(purchaseFileDTO.getFileUuid())
                 .filePath(purchaseFileDTO.getFilePath())
                 .fileSize(purchaseFileDTO.getFileSize())
-                .purchaseBoard(purchaseFileDTO.getPurchaseBoard())
                 .build();
     }
 

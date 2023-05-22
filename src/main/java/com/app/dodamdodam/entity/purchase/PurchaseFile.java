@@ -16,7 +16,11 @@ public class PurchaseFile extends BoardFile {
     @JoinColumn(name = "PURCHASE_BOARD_ID")
     private PurchaseBoard purchaseBoard;
 
-//    public PurchaseFile(Long id, String fileOriginalName, String fileUuid, String filePath, Long fileSize, PurchaseBoard purchaseBoard) {
+    public void setPurchaseBoard(PurchaseBoard purchaseBoard) {
+        this.purchaseBoard = purchaseBoard;
+    }
+
+    //    public PurchaseFile(Long id, String fileOriginalName, String fileUuid, String filePath, Long fileSize, PurchaseBoard purchaseBoard) {
 //        super(id, fileOriginalName, fileUuid, filePath, fileSize);
 //        this.purchaseBoard = purchaseBoard;
 //    }

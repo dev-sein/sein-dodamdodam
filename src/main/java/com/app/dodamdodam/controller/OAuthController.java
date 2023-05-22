@@ -27,12 +27,14 @@ public class OAuthController {
     public RedirectView oAuthLogin(HttpSession session, RedirectAttributes redirectAttributes){
         log.info(" ------------------- 로그인 처리 후 맨 마지막 컨트롤러 ------------------------------------- ");
         MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+        Long memberId = (Long) session.getAttribute("id");
+        log.info("==================================================");
+        log.info(memberDTO + "");
+        log.info(memberId + "");
         if (memberDTO.getId() == null) {
             redirectAttributes.addFlashAttribute("member", memberDTO);
             return new RedirectView("/member/join");
         }
-        log.info("==================================================");
-        log.info(memberDTO.toString());
         return new RedirectView("/main");
 
     }

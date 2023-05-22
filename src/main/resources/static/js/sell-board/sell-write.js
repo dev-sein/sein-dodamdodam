@@ -2,8 +2,9 @@ const $boardTitle = $('.input-title'); // 제목
 const $boardContent = $('.content-textarea'); // 내용
 const $productPrice = $('.price-margin'); // 가격
 const $productName = $('#input-name'); // 상품명
-const $productCount = $('.input-count'); // 상품수
-
+const $productCount = $('#input-count'); // 상품수
+HTMLCollection.prototype.forEach = Array.prototype.forEach;
+Object.prototype.forEach = Array.prototype.forEach;
 
 const fileArray = new Array();
 
@@ -79,21 +80,33 @@ document.querySelector(".btn-attach-thumb").addEventListener("click", function (
 
     $.ajax({
       url: '/file/upload',
-      data: data,
+      data: formData,
       method: 'post',
       processData: false,
       contentType: false,
       success: function (result) {
         if(result){
-          result.forEach((result, i) => {
+          console.log(result);
+          for (let i = 0; i < result.uuids.length; i++) {
             let file = new Object();
 
             file.filePath = result.paths[i];
             file.fileUuid = result.uuids[i];
-            file.fileOrgName = result.orgNames[i];
+            file.fileOriginalName = result.fileOriginalNames[i];
 
             fileArray.push(file);
-          });
+          }
+          // result.forEach((result, i) => {
+          //   let file = new Object();
+          //
+          //   file.filePath = result.paths[i];
+          //   file.fileUuid = result.uuids[i];
+          //   file.fileOrgName = result.orgNames[i];
+          //
+          //   fileArray.push(file);
+          //   console.log("fileArray");
+          //   console.log(fileArray);
+          // });
         }
       }
     });
@@ -113,9 +126,9 @@ document.querySelector(".btn-attach-thumb").addEventListener("click", function (
 
 
   /* 모든 항목 입력 확인 js */
-  document.querySelector(".button-button").addEventListener("click", function () {
+  document.querySelector(".button-button").addEventListener("click", function (event) {
     console.log("버튼 클릭은 인지함?")
-    this.preventDefault();
+    event.preventDefault();
 
     const imgFiles = document.getElementById("imgFile").files;
     const inputTitle = document.querySelector(".input-content");
@@ -133,10 +146,8 @@ document.querySelector(".btn-attach-thumb").addEventListener("click", function (
         inputPrice.value.trim() === "" ||
         contentTextarea.value.trim() === ""
     ) {
-      console.log("if문 성공");
         showModalWithMessage("필수 항목을 작성해주세요");
     } else {
-      console.log("if문 실패");
       // 저장 로직을 여기에 추가해주세요.
         showModalWithMessage("판매글이 등록되었습니다");
         writeBoard();
@@ -159,16 +170,22 @@ function showModalWithMessage(message) {
 
 function writeBoard(){
 
+  console.log(fileArray);
   let purchaseBoardDTO = {
   boardTitle : $boardTitle.val(),
   boardContent : $boardContent.val(),
+  purchaseFileDTOs : fileArray,
   productDTO : {
-      productPrice : $productPrice.val().replaceAll(",", "").replaceAll(".", "").replaceAll("-", "").replaceAll(" ", ""),
+      productPrice : $productPrice.val() * 1.0,
       productName : $productName.val(),
-      productCount : $productCount.val().replaceAll(",", "").replaceAll(".", "").replaceAll("-", "").replaceAll(" ", "")
+      productCount : $productCount.val() * 1.0
     }
   };
-
+  console.log(purchaseBoardDTO.boardTitle);
+  console.log(purchaseBoardDTO.boardTitle);
+  console.log(purchaseBoardDTO.productDTO.productName);
+  console.log(purchaseBoardDTO.productDTO.productCount);
+  console.log(purchaseBoardDTO.productDTO.productPrice);
   $.ajax({
     url: '/purchase/write',
     data: JSON.stringify(purchaseBoardDTO),
@@ -176,7 +193,7 @@ function writeBoard(){
     processData: false,
     contentType: 'application/json',
     success: function() {
-      location.href='/purchase/list';
+      // location.href='/purchase/list';
     }
   });
 }

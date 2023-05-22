@@ -26,7 +26,15 @@ public class Product {
     @JoinColumn(name = "PURCHASE_BOARD_ID")
     private PurchaseBoard purchaseBoard;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    public void setPurchaseBoard(PurchaseBoard purchaseBoard) {
+        this.purchaseBoard = purchaseBoard;
+    }
+
+    public void setPurchase(Purchase purchase) {
+        this.purchase = purchase;
+    }
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "product")
     private Purchase purchase;
 
     public Product(String productName, Integer productPrice, Long productCount, PurchaseBoard purchaseBoard) {

@@ -68,6 +68,7 @@ public class MemberOAuthService implements OAuth2UserService<OAuth2UserRequest, 
         if (foundMemberOptional.isPresent()) {
 //            이미 가입된 회원이 있는 경우, 회원 정보 업데이트
             foundMember = foundMemberOptional.get();
+            session.setAttribute("id", foundMember.getId());
             session.setAttribute("member",
                     MemberDTO.builder().id(foundMember.getId())
 //                            .memberId(foundMember.getMemberId())
@@ -81,6 +82,7 @@ public class MemberOAuthService implements OAuth2UserService<OAuth2UserRequest, 
 //                            .memberStatus(foundMember.getMemberStatus())
                             .build()
             );
+
 
         } else {
             // 첫 오어스 로그인 시 진입

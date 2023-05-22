@@ -1,11 +1,13 @@
 package com.app.dodamdodam.controller.board.purchase;
 
+import com.app.dodamdodam.domain.MemberDTO;
 import com.app.dodamdodam.domain.ProductDTO;
 import com.app.dodamdodam.domain.PurchaseBoardDTO;
 import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.search.PurchaseBoardSearch;
 import com.app.dodamdodam.service.board.purchase.PurchaseBoardService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Controller;
@@ -21,6 +23,7 @@ import java.util.Map;
 @Controller
 @RequestMapping("/purchase/*")
 @RequiredArgsConstructor
+@Slf4j
 public class PurchaseBoardController {
     private final PurchaseBoardService purchaseBoardService;
 
@@ -30,9 +33,11 @@ public class PurchaseBoardController {
     @ResponseBody
     @PostMapping("write")
     public RedirectView getPurchaseWriteForm(@RequestBody PurchaseBoardDTO purchaseBoardDTO, HttpSession session){
+//        MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
+//        Long memberId = memberDTO.getId();
         Long memberId = (Long) session.getAttribute("id");
-
-        purchaseBoardService.register(purchaseBoardDTO, purchaseBoardDTO.getProductDTO(), memberId);
+        log.info(memberId + "");
+        purchaseBoardService.register(purchaseBoardDTO, memberId);
 
         return new RedirectView("/purchase/list");
     }

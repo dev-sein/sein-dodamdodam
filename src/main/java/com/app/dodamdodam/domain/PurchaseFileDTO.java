@@ -8,7 +8,6 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-
 public class PurchaseFileDTO {
     private Long id;
     private String fileOriginalName;
@@ -17,7 +16,6 @@ public class PurchaseFileDTO {
     private Long fileSize;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
-    private PurchaseBoard purchaseBoard;
 
     @QueryProjection @Builder
     public PurchaseFileDTO(Long id, String fileOriginalName, String fileUuid, String filePath, Long fileSize, LocalDateTime createdDate, LocalDateTime updatedDate) {

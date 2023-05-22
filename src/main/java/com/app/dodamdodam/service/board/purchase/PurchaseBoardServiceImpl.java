@@ -4,13 +4,17 @@ import com.app.dodamdodam.domain.ProductDTO;
 import com.app.dodamdodam.domain.PurchaseBoardDTO;
 import com.app.dodamdodam.domain.PurchaseBoardFileDTO;
 import com.app.dodamdodam.domain.PurchaseFileDTO;
+import com.app.dodamdodam.entity.purchase.Product;
 import com.app.dodamdodam.entity.purchase.PurchaseBoard;
+import com.app.dodamdodam.entity.purchase.PurchaseFile;
 import com.app.dodamdodam.repository.board.purchase.PurchaseBoardRepository;
 import com.app.dodamdodam.repository.file.purchase.PurchaseFileRepository;
 import com.app.dodamdodam.repository.member.MemberRepository;
+import com.app.dodamdodam.repository.product.ProductRepository;
 import com.app.dodamdodam.search.PurchaseBoardSearch;
 import com.app.dodamdodam.search.board.AdminPurchaseBoardSearch;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.*;
@@ -25,25 +29,46 @@ import java.util.stream.Collectors;
 @Qualifier("purchaseBoard") @Primary
 @RequiredArgsConstructor
 @Transactional
+@Slf4j
 public class PurchaseBoardServiceImpl implements PurchaseBoardService {
     private final PurchaseBoardRepository purchaseBoardRepository;
     private final MemberRepository memberRepository;
     private final PurchaseFileRepository purchaseFileRepository;
+    private final ProductRepository productRepository;
 
     @Override
-    public void register(PurchaseBoardDTO purchaseBoardDTO, ProductDTO productDTO, Long memberId) {
+    public void register(PurchaseBoardDTO purchaseBoardDTO, Long memberId) {
+        ProductDTO productDTO = purchaseBoardDTO.getProductDTO();
         List<PurchaseFileDTO> purchaseFileDTOs = purchaseBoardDTO.getPurchaseFileDTOs();
+
+        log.info("==============================");
+        log.info("purchaseFileDTOs.toString()");
+        log.info(purchaseFileDTOs.toString());
+        log.info("==============================");
 
         memberRepository.findById(memberId).ifPresent(
                 member -> purchaseBoardDTO.setMemberDTO(toMemberDTO(member))
         );
 
-        purchaseBoardRepository.save(toPurchaseBoardEntity(purchaseBoardDTO));
+        PurchaseBoard purchaseBoard = purchaseBoardRepository.save(toPurchaseBoardEntity(purchaseBoardDTO));
+
+        log.info("purchaseFileDTOs.size()");
+        log.info(purchaseFileDTOs.size() + "");
         if(purchaseFileDTOs != null){
             for (int i = 0; i < purchaseFileDTOs.size(); i++) {
-                purchaseFileRepository.save(toPurchaseFileEntity(purchaseFileDTOs.get(i)));
+                PurchaseFile purchaseFile = toPurchaseFileEntity(purchaseFileDTOs.get(i));
+                purchaseFile.setPurchaseBoard(purchaseBoard);
+
+                log.info("purchaseFile.toString()");
+                log.info(purchaseFile.toString());
+                purchaseFileRepository.save(purchaseFile);
             }
         }
+        Product product = toProductEntity(productDTO);
+        product.setPurchaseBoard(purchaseBoard);
+
+        log.info("product");
+        productRepository.save(product);
     }
 
     @Override
