@@ -50,6 +50,7 @@ public interface FreeReplyService {
                 .memberPoint(member.getMemberPoint())
                 .participationCount(member.getParticipationCount())
                 .address(member.getAddress())
+                .memberType(member.getMemberType())
                 .build();
     }
 }

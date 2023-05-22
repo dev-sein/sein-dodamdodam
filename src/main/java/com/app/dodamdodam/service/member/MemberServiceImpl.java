@@ -53,9 +53,12 @@ public class MemberServiceImpl implements MemberService{
 
     /* 로그인 된 유저 정보 */
     @Override
-    public Optional<Member> getMemberInfo(Long memberId) {
-        return memberRepository.findById(memberId);
+    public MemberDTO getMemberInfo(Long memberId) {
+        return toMemberDTO(memberRepository.findById(memberId).get());
     }
+//    public Optional<Member> getMemberInfo(Long memberId) {
+//        return memberRepository.findById(memberId);
+//    }
 
     /* 내 포인트 내역 */
     @Override
