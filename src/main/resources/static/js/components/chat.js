@@ -1,11 +1,11 @@
 let usernamePage = document.querySelector('#username-page');
 let chatPage = document.querySelector('#chat-page');
 let usernameForm = document.querySelector('#usernameForm');
-let messageForm = document.querySelector('#messageForm');
+let messageForm = document.querySelector('#messageForm');//ok
 let $exitForm = $("#roomExitForm");
-let messageInput = document.querySelector('#message');
-let messageArea = $(".chat-message-container")
-let connectingElement = $(".chat-connection-container");
+let messageInput = document.querySelector('#message');//ok
+let messageArea = $(".chat-message-container");//ok
+let connectingElement = $(".chat-connection-container");//ok
 
 let stompClient = null;
 let username = null;
@@ -17,6 +17,94 @@ let colors = [
 
 // roomId 파라미터 가져오기
 let roomId;
+
+let chatRoomList;
+
+$.ajax({
+    type: "GET",
+    url: "/chat/list",
+    data: {},
+    dataType: "json",
+    success: function (chatRooms) {
+        chatRoomList = chatRooms;
+        console.log(chatRooms)
+        if (chatRooms.length == 0) {
+            return;
+        }
+        chatRooms.forEach(room => showChatRoom(room));
+    }
+});
+
+$("button[name='createRoom']").on("click", function () {
+
+    let roomName = $("input[name='roomName']").val();
+
+    if (roomName === "" || roomName == null) {
+        return;
+    }
+
+    $.ajax({
+        type: "POST",
+        url: "/chat/createroom",
+        data: JSON.stringify({roomName: roomName}),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (chatRoom) {
+            showChatRoom(chatRoom);
+        }
+    });
+});
+
+// 채팅내역 조회
+$("button[name='historyRoomId']").on("click", function () {
+
+    let roomId = $("input[name='historyRoomId']").val();
+
+    if (roomId === "" || roomId == null) {
+        return;
+    }
+
+    $.ajax({
+        type: "GET",
+        url: "/chat/history",
+        data: {roomId: roomId},
+        dataType: "json",
+        success: function (chatList) {
+            console.log(chatList);
+            chatList.forEach(chat => {
+                let text = `
+                          <p>${chat}</p>
+                    `
+                $(".chat-history").append(text);
+            })
+        }
+    });
+});
+
+function showChatRoom(chatRoom) {
+    let text = `
+                <li class="chat_li flex">
+                    <div class="li_profile_img">
+                        <img src="" alt="" width="45px" height="45px">
+                    </div>
+                    <div class="li_chat_name_and_history flex">
+                        <div class="li_profile_nickname">RoomName : ${chatRoom.roomName}</div>
+                        <div class="li_chat_history">
+                            도담도담에 오신 것을 환영합니다!
+                        </div>
+                    </div>
+                    <div class="li_chat_history_and_date flex">
+                        <div class="li_date">
+                            <span class="current_msg_date">RoomId : ${chatRoom.roomId}</span>
+                        </div>
+                        <div class="li_unchecked_msg_container">
+                            <div class="li_unchecked_msg"></div>
+                        </div>
+                    </div>
+                </li>
+        `
+    $(".chat-list").append(text);
+}
 
 function connect(event) {
     event.preventDefault();
@@ -53,7 +141,8 @@ function onConnected() {
             type: 'ENTER'
         })
     )
-
+    console.log("룸ID : " + roomId);
+    console.log("이름 : " + username);
     // connectingElement.classList.add('hidden');
 
 }
@@ -139,9 +228,14 @@ function onMessageReceived(payload) {
         getUserList();
 
     } else { // chatType 이 talk 라면 아래 내용
-        text += `<p>
-                    <span>${chat.sender} : </span>${chat.message}
-                 </p>
+        text += `
+                <div class="sender-message">
+                    <div class="sender-name">${chat.sender}</div>
+                    <div class="sender-message-box">
+                        <div class="sender-content">${chat.message}</div>
+                        <div class="chat-date">${chat.time}</div>
+                    </div>
+                </div>
         `
     }
 
@@ -167,7 +261,7 @@ function onMessageReceived(payload) {
     //
     // } else {
     //     // 만약 s3DataUrl 의 값이 null 이라면
-    //     // 이전에 넘어온 채팅 내용 보여주기기
+    //     // 이전에 넘어온 채팅 내용 보여주기
     //     let messageText = document.createTextNode(chat.message);
     //     contentElement.appendChild(messageText);
     // }

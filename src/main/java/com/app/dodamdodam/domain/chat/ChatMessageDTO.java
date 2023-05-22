@@ -1,14 +1,12 @@
 package com.app.dodamdodam.domain.chat;
 
 import com.app.dodamdodam.type.MessageType;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
 @Setter
 @ToString
+@NoArgsConstructor
 public class ChatMessageDTO {
 
     private MessageType type; //메시지 타입
