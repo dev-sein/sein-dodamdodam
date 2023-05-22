@@ -10,9 +10,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="/css/free-board/free-board-list.css">
+    <link rel="stylesheet" href="/css/free-board/modal.css">
     <link rel="shortcut icon" href="/images/components/dodam-favicon.png">
 </head>
 <body>
+    <!--모달창-->
+    <div id="myModal" class="modal" th:if="${#strings.equals(param.login, 'false')}">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>로그인 후 이용해주세요.</p>
+            <button id="closeModalBtn">확인</button>
+        </div>
+    </div>
+    <!--모달창-->
     <div class="main-content">
         <div class="free-board-container">
             <!-- 자유게시판 헤더 시작 -->
@@ -202,7 +212,7 @@
                         <button class="btn-search"></button>
                     </div>
                     <div class="btn-wrap">
-                        <button class="btn-write">작성 바로가기</button>
+                        <button class="btn-write" onclick="location.href='/free/write-board-check'">작성 바로가기</button>
                     </div>
                     <div class="best-list detail">
                         <img src="/images/free-board/trophy_icon.png" alt="">
@@ -249,6 +259,7 @@
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/js/free-board/modal.js"></script>
 <script th:inline="javascript">
     let nextPage = 0;
     let checkStatus = false;

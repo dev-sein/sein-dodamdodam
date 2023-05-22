@@ -65,8 +65,7 @@ public interface PurchaseBoardService {
                 .memberPoint(member.getMemberPoint())
                 .participationCount(member.getParticipationCount())
                 .address(member.getAddress())
-//                .address(member.getAddress().getAddress())
-//                .addressDetail(member.getAddress().getAddressDetail())
+                .memberType(member.getMemberType())
                 .build();
     }
 

@@ -2,27 +2,25 @@ package com.app.dodamdodam.service.board.eventBoard;
 
 import com.app.dodamdodam.domain.EventBoardDTO;
 import com.app.dodamdodam.domain.EventFileDTO;
-import com.app.dodamdodam.domain.FreeBoardFileDTO;
 import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.event.EventFile;
-import com.app.dodamdodam.entity.free.FreeBoard;
-import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.exception.BoardNotFoundException;
-import com.app.dodamdodam.exception.MemberNotFoundException;
 import com.app.dodamdodam.repository.board.event.board.EventBoardRepository;
 import com.app.dodamdodam.repository.board.event.file.EventFileRepository;
 import com.app.dodamdodam.repository.member.MemberRepository;
+import com.app.dodamdodam.search.EventBoardSearch;
 import com.app.dodamdodam.search.board.AdminEventBoardSearch;
-import com.app.dodamdodam.search.board.AdminFreeBoardSearch;
-import com.app.dodamdodam.type.FileRepresent;
+import com.app.dodamdodam.type.EventType;
+import com.app.dodamdodam.type.FileType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.data.domain.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.io.File;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -46,25 +44,32 @@ public class EventBoardServiceImpl implements EventBoardService {
 // 저장하기
 @Override
 public void write(EventBoardDTO eventBoardDTO, Long memberId) {
-    List<EventFileDTO> fileDTOS = eventBoardDTO.getEventFiles();
+    List<EventFileDTO> fileDTOS = eventBoardDTO.getFileDTOS();
 
     memberRepository.findById(memberId).ifPresent(
             member -> eventBoardDTO.setMemberDTO(toMemberDTO(member))
     );
-    log.info("들어옴@@@@@@@@@@@@@@@@@@");
-    log.info(eventBoardDTO.toString());
-    log.info(toEventBoardEntity(eventBoardDTO).toString());
 
-    eventBoardRepository.save(toEventBoardEntity(eventBoardDTO));
-    if(fileDTOS != null){
+    EventBoard eventBoard = toEventBoardEntity(eventBoardDTO);
+
+    // 이벤트 게시글 저장
+    EventBoard savedEventBoard = eventBoardRepository.save(eventBoard);
+
+    // 파일 정보 저장
+    if (fileDTOS != null) {
         for (int i = 0; i < fileDTOS.size(); i++) {
-            if(i == 0){
-                fileDTOS.get(i).setFileRepresent(FileRepresent.REPRESENT);
-            }else {
-                fileDTOS.get(i).setFileRepresent(FileRepresent.ORDINARY);
+            EventFileDTO fileDTO = fileDTOS.get(i);
+
+            if (i == 0) {
+                fileDTO.setFileType(FileType.REPRESENT);
+            } else {
+                fileDTO.setFileType(FileType.ORDINARY);
             }
-            fileDTOS.get(i).setEventBoard(getCurrentSequence());
-            eventFileRepository.save(toEventFileEntity(fileDTOS.get(i)));
+
+            EventFile eventFile = toEventFileEntity(fileDTO);
+            eventFile.setEventBoard(savedEventBoard); // 이벤트 게시글과 파일 연관 설정
+
+            eventFileRepository.save(eventFile);
         }
     }
 }
@@ -75,13 +80,10 @@ public void write(EventBoardDTO eventBoardDTO, Long memberId) {
     }
 
 
+    /* 이벤트 게시글 검색 */
     @Override
-    public Slice<EventBoardDTO> getEventBoards(Pageable pageable) {
-        Slice<EventBoard> eventBoards =
-                eventBoardRepository.findAllByIdDescWithPaging_QueryDSL(PageRequest.of(0, 10));
-        List<EventBoardDTO> collect = eventBoards.get().map(board -> eventBoardToDTO(board)).collect(Collectors.toList());
-
-        return new SliceImpl<>(collect, pageable, eventBoards.hasNext());
+    public List<EventBoardDTO> getEventBoardsBySearch(Pageable pageable, EventBoardSearch eventBoardSearch, EventType eventStatus) {
+        return eventBoardRepository.findEventBoardBySearchWithPaging_QueryDSL(eventBoardSearch, pageable, eventStatus).stream().map(eventBoard -> eventBoardToDTO(eventBoard)).collect(Collectors.toList());
     }
 
 

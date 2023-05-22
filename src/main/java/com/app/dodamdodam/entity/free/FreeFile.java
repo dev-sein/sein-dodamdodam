@@ -1,6 +1,7 @@
 package com.app.dodamdodam.entity.free;
 
 import com.app.dodamdodam.entity.file.BoardFile;
+import com.app.dodamdodam.type.FileType;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -21,11 +22,13 @@ public class FreeFile extends BoardFile {
     private FreeBoard freeBoard;
 
 
-    public FreeFile(Long id, String fileOriginalName, String fileUuid, String filePath, Long fileSize) {
-        super(id, fileOriginalName, fileUuid, filePath, fileSize);
+    public FreeFile(Long id, String fileOriginalName, String fileUuid, String filePath, FileType fileType, Long fileSize, FreeBoard freeBoard) {
+        super(id, fileOriginalName, fileUuid, filePath, fileType, fileSize);
+        this.freeBoard = freeBoard;
     }
 
     public void setFreeBoard(FreeBoard freeBoard) {
         this.freeBoard = freeBoard;
     }
+    /* 추가 */
 }

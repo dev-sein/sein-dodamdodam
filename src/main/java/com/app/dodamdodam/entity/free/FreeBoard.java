@@ -47,7 +47,7 @@ public class FreeBoard extends Board {
         this.freeFiles = freeFiles;
     }
 
-    public FreeBoard(Long id,String boardTitle, String boardContent, CategoryType freeCategory) {
+    public FreeBoard(Long id, String boardTitle, String boardContent, CategoryType freeCategory) {
         super(id, boardTitle, boardContent);
         this.freeCategory = freeCategory;
     }
@@ -63,4 +63,5 @@ public class FreeBoard extends Board {
     public void updateLikeMinus(){
         this.likeCount--;
     }
+    /* 추가 */
 }

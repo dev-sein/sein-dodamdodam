@@ -10,8 +10,10 @@ $('.close_modal_container').on('click', function(){
     $('#chat_modal').fadeOut(300);
 });
 
-$('.chat_li').each((i, e) => {
+$('li.chat_li').each((i, e) => {
+    console.log("들어오니1")
     $(e).on('click', function(){
+        console.log("들어오니2")
         $('#chat_room').show();
     })
 })
@@ -33,12 +35,12 @@ $(document).on('keydown', 'textarea.input_msg', function(e){
         clearTextarea();
     }
 });
- 
+
 // 메세지 입력박스 내용 지우기
 function clearTextarea() {
     $('textarea.input_msg').val('');
 }
- 
+
 $(document).ready(function() {
     /* 스크롤바 항상 아래로 내리기 */
     $('#chat_room #chat_modal_li_container').scrollTop($('#chat_room #chat_modal_li_container')[0].scrollHeight);

@@ -13,19 +13,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpSession;
 
 @Controller
-//@RequestMapping("")
+@RequestMapping("/")
 @RequiredArgsConstructor
 @Slf4j
 public class MainController {
 
     private final MemberService memberService;
 
-    @GetMapping("/main")
-    public String gotoMain(@AuthenticationPrincipal UserDetail userDetail, HttpSession session, Model model){
+    @GetMapping("home")
+    public String main(HttpSession session, Model model){
         log.info("==================== main controller =====================");
         log.info(session.getAttribute("member") + "");
         log.info("=========================================");
         model.addAttribute("id", session.getId());
-        return "/main/main";
+        return  "main/main";
+    }
+
+    @GetMapping("introduce")
+    public String introduce(){
+        return "introduce/introduce";
+    }
+
+    @GetMapping("helpcenter")
+    public String helpcenter(){
+        return "helpcenter/inquiry-home";
     }
 }

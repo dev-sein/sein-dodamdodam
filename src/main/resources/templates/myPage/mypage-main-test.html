@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>마이페이지-메인</title>
+    <!--css 연결하는곳-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../static/css/myPage/myPage-main.css" />
+    <!--    <link rel="stylesheet" href="/css/myPage/myPage-main.css" />-->
+    <link rel="shortcut icon" href="/static/images/components/dodam-favicon.png">
+    <link rel="stylesheet" href="../../static/css/myPage/myPage-rankModal.css" />
+    <!-- 캘린더 누르면 나오는 박스 css -->
+    <link rel="stylesheet" href="../../static/css/myPage/MyCalendar.css" />
+    <link rel="stylesheet" href="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.css"/>
+    <link rel="stylesheet" href="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.css"/>
+    <link rel="stylesheet" href="https://uicdn.toast.com/tui.pagination/latest/tui-pagination.css"/>
+    <link rel="stylesheet" href="https://uicdn.toast.com/calendar/latest/toastui-calendar.min.css"/>
+    <link rel="stylesheet" href="https://uicdn.toast.com/tui-grid/latest/tui-grid.css"/>
+</head>
+<body>
+<div class="MainWrapper_content__GZkTa">
+    <div class="MyWadizPage_myWadizPage__wOTdS">
+        <div class="MyWadizPage_profileBackground__T_LTr" aria-hidden="true"></div>
+        <h2 class="BlindText_textHidden__ovQb4">마이와디즈</h2>
+        <div class="MyWadizPage_inner__1oq9M">
+            <div class="MyWadizPage_popperBox__113hj">
+                <div class="MyWadizHeader_wadizHeader__8fJ9f">
+                </div>
+            </div>
+            <!-- 여기까지 작업 했음 -->
+            <div class="MyWadizPage_contentsWrapper__1dzMJ">
+                <div
+                        class="MyWadizSupporter_supporterMode__2XDQZ"
+                        role="tabpanel"
+                        id="myWadizPanel_supporter"
+                        aria-labelledby="myWadizTab_supporter"
+                >
+                    <div class="MyWadizSupporterProfile_profileContainer__1q7eh">
+                        <div style="position: relative; top: -46px; left: -12px;" id="rankModalButton">
+                   <span style="background-color: #ff6b6b1f;
+                   border-radius: 99px;">씨앗</span>등급 <img id="myImg" src="/images/myPage/bigseed.png" alt="Bigseed" style="position: absolute; right: 3.5em; top: 3em; cursor: pointer;">
+                            <button >
+                            </button>
+                        </div>
+
+                        <div class="MyWadizSupporterProfile_setting__n8-M7" style="position: relative;
+                top: 50px;">
+                            <div class="MyWadizSupporterProfile_profileUser__a_r1P">
+                                <button data-event="profile">
+                                    <b class="MyWadizSupporterProfile_userName__3hSE4">
+                                        <span th:text="${member.memberName}"></span>
+                                        <span aria-label="프로필 상세 보기"> 님</span>
+                                        <img src="/images/myPage/arrowRight.png" class="arrowImg">
+                                    </b>
+                                </button>
+                            </div>
+                            <button
+                                    class="Button_button__1HNjI Button_md__2Tyci Button_circular__3BLWf Button_block__3-IpL"
+                                    type="button"
+                            >
+                                <span><span class="Button_children__lqBGI">로그아웃</span></span>
+                            </button>
+                        </div>
+                        <div class="MyWadizSupporterProject_container__2uWcZ">
+                            <div class="MyWadizSupporterProject_title__1IOfu">
+                                <div class="MyWadizSupporterProject_accumulate__1nyx5">
+                                    <div class="MyWadizSupporterProject_value__7aQ4B">
+                                        <a
+                                                class="MyWadizSupporterAccumulate_container__h_OVK"
+                                                href="/web/wmypage/mybenefit/pointlist"
+                                        >
+                                            <dl class="MyWadizSupporterAccumulate_info__2_7Is">
+                                                <dt class="MyWadizSupporterAccumulate_title__3CiIs">
+                                                    <span class="MyWadizSupporterAccumulate_name__1mWXC">포인트</span>
+                                                </dt>
+                                                <dd class="MyWadizSupporterAccumulate_value__1oBSj"><span th:text="${member.memberPoint}"></span><span>P</span></dd>
+                                            </dl>
+                                        </a>
+                                        <hr
+                                                class="Divider_divider__ToZaf Divider_horizontal__3W5eD Divider_lightBG__3bAAk Divider_spacing5__C3W8V Divider_caption2__3b6Dr MyWadizSupporterProject_accumulateDivider__1qDCv"
+                                        />
+                                        <a
+                                                class="MyWadizSupporterAccumulate_container__h_OVK"
+                                                href="/web/coupon-zone"
+                                        >
+                                            <dl class="MyWadizSupporterAccumulate_info__2_7Is">
+                                                <dt class="MyWadizSupporterAccumulate_title__3CiIs">
+                                                    <span class="MyWadizSupporterAccumulate_name__1mWXC">결제 내역</span>
+                                                </dt>
+                                                <dd class="MyWadizSupporterAccumulate_value__1oBSj"><span th:text="${point.size()}"></span>건</dd>
+                                            </dl>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="MyWadizSupporter_contents__1TmJ_">
+                        <div class="MyWadizSection_section__3FCv1">
+                            <!-- 캘린더 -->
+                            <div id="container">
+                                <div id="mypageWrap">
+                                    <div class="myprofile-wrap">
+                                        <div class="mypage-project bg">
+                                            <div class="calender-content-wrapper">
+                                                <!-- 캘린더 옆의 내용박스 -->
+                                                <div class="lecture-list">
+                                                    <div class="lecture">
+                                                        <div class="lecture-wrap">
+                                                        <span class="lecture-image visible">
+                                                            <img src="https://cdn.wadiz.kr/ft/images/green001/2023/0313/20230313133752303_null.jpg/wadiz/thumbnail/253/format/jpg/quality/95/) 1x, url(https://cdn.wadiz.kr/ft/images/green001/2023/0313/20230313133752303_null.jpg/wadiz/thumbnail/506/format/jpg/quality/95/" alt="">
+                                                        </span>
+                                                        
+                                                        <div class="lecture-wrapper">
+                                                          <div class="lecture-content">
+                                                            <p class="lecture-type">
+                                                              <span><i class="reward" style='background:${iconBackground}'></i>입문</span>
+                                                            </p>
+                                                            <p class="lecture-title">
+                                                              ${eventTitle}
+                                                            </p>
+                                                            <p class="lecture-subtitle">
+                                                              ${eventBody}
+                                                            </p>
+                                                            <p class="lecture-info">
+                                                              시작 : ${startFormat}
+                                                              <br> 
+                                                              종료 : ${endFormat}
+                                                              <br />장소 : ${location}
+                                                              라이브
+                                                            </p>
+                                                            <p class="lecture-number">
+                                                              <em><strong>${passText}</strong></em>
+                                                            </p>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                      <div class="table-wrapper">
+                                                        <table class="children-table">
+                                                          <thead>
+                                                            <tr>
+                                                              <th class="num">No.</th>
+                                                              <th class="nickname">닉네임</th>
+                                                              <th class="name">이름</th>
+                                                              <th class="place">체험 이름</th>
+                                                              <th class="participant">체험 날짜</th>
+                                                            </tr>
+                                                          </thead>
+                                                          <tbody>
+                                                            <tr>
+                                                              <td class="num">1</td>
+                                                              <td class="nickname">lovelyU</td>
+                                                              <td class="name">한동석</td>
+                                                              <td class="place">진흙놀이</td>
+                                                              <td class="participant">2023-04-22 18:26:00</td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td class="num">1</td>
+                                                              <td class="nickname">lovelyU</td>
+                                                              <td class="name">한동석</td>
+                                                              <td class="place">진흙놀이</td>
+                                                              <td class="participant">2023-04-22 18:26:00</td>
+                                                            </tr>
+                                                          </tbody>
+                                                        </table>
+                                                        </div>
+                                                      </div>
+                                                </div>
+                                                <!-- 캘린더 옆의 내용박스 끝-->
+                                                <!-- 캘린더 옆의 내용박스 -->
+                                                <div class="lecture-list">
+                                                    <div class="lecture">
+                                                        <div class="lecture-wrap">
+                                                        <span class="lecture-image visible">
+                                                            <img src="https://cdn.wadiz.kr/ft/images/green001/2023/0313/20230313133752303_null.jpg/wadiz/thumbnail/253/format/jpg/quality/95/) 1x, url(https://cdn.wadiz.kr/ft/images/green001/2023/0313/20230313133752303_null.jpg/wadiz/thumbnail/506/format/jpg/quality/95/" alt="">
+                                                        </span>
+                                                        
+                                                        <div class="lecture-wrapper">
+                                                          <div class="lecture-content">
+                                                            <p class="lecture-type">
+                                                              <span><i class="reward" style='background:${iconBackground}'></i>입문</span>
+                                                            </p>
+                                                            <p class="lecture-title">
+                                                              ${eventTitle}
+                                                            </p>
+                                                            <p class="lecture-subtitle">
+                                                              ${eventBody}
+                                                            </p>
+                                                            <p class="lecture-info">
+                                                              시작 : ${startFormat}
+                                                              <br> 
+                                                              종료 : ${endFormat}
+                                                              <br />장소 : ${location}
+                                                              라이브
+                                                            </p>
+                                                            <p class="lecture-number">
+                                                              <em><strong>${passText}</strong></em>
+                                                            </p>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                      <div class="table-wrapper">
+                                                        <table class="children-table">
+                                                          <thead>
+                                                            <tr>
+                                                              <th class="num">No.</th>
+                                                              <th class="nickname">닉네임</th>
+                                                              <th class="name">이름</th>
+                                                              <th class="place">체험 이름</th>
+                                                              <th class="participant">체험 날짜</th>
+                                                            </tr>
+                                                          </thead>
+                                                          <tbody>
+                                                            <tr>
+                                                              <td class="num">1</td>
+                                                              <td class="nickname">lovelyU</td>
+                                                              <td class="name">한동석</td>
+                                                              <td class="place">진흙놀이</td>
+                                                              <td class="participant">2023-04-22 18:26:00</td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td class="num">1</td>
+                                                              <td class="nickname">lovelyU</td>
+                                                              <td class="name">한동석</td>
+                                                              <td class="place">진흙놀이</td>
+                                                              <td class="participant">2023-04-22 18:26:00</td>
+                                                            </tr>
+                                                          </tbody>
+                                                        </table>
+                                                        </div>
+                                                      </div>
+                                                </div>
+                                                <!-- 캘린더 옆의 내용박스 끝-->
+                                                <div class="calender-wrapper">
+                            
+                                                    <div class="calender">
+                                                        <section style="background: #fff;
+                                                        width: 62em;">
+                                                            <div class="calendar-box">
+                                                                <div style="display: flex;
+                                                                font-size: 22px;
+                                                                padding: 0px 0px 12px 0px;
+                                                                position: relative;
+                                                                left: -30em;">
+                                                                    <div class="calendar-button-box">
+                                                                        <button type="button" id="calender-prev" class="btn">
+                                                                          <span class="auto-flex">
+                                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M15.5 5.5l-6 6.5 6 6.5L14 20l-7.5-8L14 4l1.5 1.5z" fill="#ccc"></path></svg>
+                                                                          </span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="calendar-button-box">
+                                                                        <button type="button" class="btn btn-padding" id="today">
+                                                                            <div style="display:flex; justify-content: center;">
+                                                                                <h3 class="calendar-year year"></h3>
+                                                                                <h3 class="calendar-year month"></h3>
+                                                                            </div>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div>
+                                                                        <button type="button" id="calender-next" class="btn">
+                                                                          <span class="auto-flex">
+                                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M8.5 18.5l6-6.5-6-6.5L10 4l7.5 8-7.5 8-1.5-1.5z" fill="#ccc"></path></svg>
+                                                                          </span>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="calendar"></div>
+                                                        </section>
+                                                    </div>
+                            
+                                                </div>
+                                            </div>
+                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <!-- 캘린더 -->
+                        </div>
+
+                        <div class="MyWadizSection_section__3FCv1"  style="margin-top: 12px;
+                        padding-top: 8em;">
+                            <h4 class="MyWadizSection_title__2pnV3">나의 활동</h4>
+                            <div>
+                                <ul>
+                                    <li class="MyWadizMenu_menu__3b-H-">
+                                        <a href="/mypage/free"
+                                        ><span
+                                                class="MyWadizMenu_icon__1sqne" aria-hidden="true">
+                        </span><span class="MyWadizMenu_text__9ryGW">내가 쓴 자유게시글</span
+                                        ><span class="arrowImg2" ><img src="/images/myPage/moreThan.png" style="width: 22px;"></span
+                                        ></a>
+                                    </li>
+                                    <li class="MyWadizMenu_menu__3b-H-">
+                                        <a href="/mypage/recruitment"
+                                        ><span class="MyWadizMenu_icon__1sqne" aria-hidden="true"
+                                        ></span
+                                        ><span class="MyWadizMenu_text__9ryGW">내가 쓴 도담 모집글</span
+                                        ><span class="arrowImg2" ><img src="/images/myPage/moreThan.png" style="width: 22px;"></span
+                                        ></a>
+                                    </li>
+                                    <li class="MyWadizMenu_menu__3b-H-">
+                                        <a href="/mypage/recruitmented"
+                                        ><span class="MyWadizMenu_icon__1sqne" aria-hidden="true"
+                                        ></span
+                                        ><span class="MyWadizMenu_text__9ryGW">내가 참여한 모집글</span
+                                        ><span class="arrowImg2" ><img src="/images/myPage/moreThan.png" style="width: 22px;"></span
+                                        ></a>
+                                    </li>
+                                    <li class="MyWadizMenu_menu__3b-H-">
+                                        <a href="/mypage/purchase"
+                                        ><span class="MyWadizMenu_icon__1sqne" aria-hidden="true"
+                                        ></span
+                                        ><span class="MyWadizMenu_text__9ryGW">내가 판매한 글</span
+                                        ><span class="arrowImg2" ><img src="/images/myPage/moreThan.png" style="width: 22px;"></span
+                                        ></a>
+                                    </li>
+                                    <li class="MyWadizMenu_menu__3b-H-">
+                                        <a href="/mypage/purchase"
+                                        ><span class="MyWadizMenu_icon__1sqne" aria-hidden="true"
+                                        ></span
+                                        ><span class="MyWadizMenu_text__9ryGW">내가 구매한 글</span
+                                        ><span class="arrowImg2" ><img src="/images/myPage/moreThan.png" style="width: 22px;"></span
+                                        ></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="MyWadizSection_section__3FCv1" style=" margin-top: 12px;
+                        padding-top: 13em;">
+                            <h4 class="MyWadizSection_title__2pnV3">내 정보</h4>
+                            <div>
+                                <ul>
+                                    <li class="MyWadizMenu_menu__3b-H-">
+                                        <a href="/web/board/personalMessage/inbox">
+                                            <span class="MyWadizMenu_icon__1sqne" aria-hidden="true"></span>
+                                            <span class="MyWadizMenu_text__9ryGW">내 정보 수정</span>
+                                            <span class="arrowImg2" ><img src="/images/myPage/moreThan.png" style="width: 22px;"></span>
+                                        </a>
+                                    </li>
+                                    <li class="MyWadizMenu_menu__3b-H-">
+                                        <a href="/web/board/personalMessage/inbox">
+                                            <span class="MyWadizMenu_icon__1sqne" aria-hidden="true"></span>
+                                            <span class="MyWadizMenu_text__9ryGW">비밀번호 변경</span>
+                                            <span class="arrowImg2" ><img src="/images/myPage/moreThan.png" style="width: 22px;"></span>
+                                        </a>
+                                    </li>
+                                    <li class="MyWadizMenu_menu__3b-H-">
+                                        <a href="/web/board/personalMessage/inbox">
+                                            <span class="MyWadizMenu_icon__1sqne" aria-hidden="true"></span>
+                                            <span class="MyWadizMenu_text__9ryGW">내 포인트 내역</span>
+                                            <span class="arrowImg2" ><img src="/images/myPage/moreThan.png" style="width: 22px;"></span>
+                                        </a>
+                                    </li>
+                                    <li class="MyWadizMenu_menu__3b-H-">
+                                        <a href="/web/board/personalMessage/inbox">
+                                            <span class="MyWadizMenu_icon__1sqne" aria-hidden="true"></span>
+                                            <span class="MyWadizMenu_text__9ryGW">내 현재 등급</span>
+                                            <span class="arrowImg2" ><img src="/images/myPage/moreThan.png" style="width: 22px;"></span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="MyWadizSection_section__3FCv1" style=" margin-top: 12px;
+                        padding-top: 13em;">
+                            <h4 class="MyWadizSection_title__2pnV3">고객센터</h4>
+                            <div>
+                                <ul>
+                                    <li class="MyWadizMenu_menu__3b-H-">
+                                        <a href="/web/board/personalMessage/inbox">
+                                            <span class="MyWadizMenu_icon__1sqne" aria-hidden="true"></span>
+                                            <span class="MyWadizMenu_text__9ryGW">배너 신청</span>
+                                            <span class="arrowImg2" ><img src="/images/myPage/moreThan.png" style="width: 22px;"></span>
+                                        </a>
+                                    </li>
+                                    <li class="MyWadizMenu_menu__3b-H-">
+                                        <a href="/web/board/personalMessage/inbox">
+                                            <span class="MyWadizMenu_icon__1sqne" aria-hidden="true"></span>
+                                            <span class="MyWadizMenu_text__9ryGW">공지 사항</span>
+                                            <span class="arrowImg2" ><img src="/images/myPage/moreThan.png" style="width: 22px;"></span>
+                                        </a>
+                                    </li>
+                                    <li class="MyWadizMenu_menu__3b-H-">
+                                        <a href="/web/board/personalMessage/inbox">
+                                            <span class="MyWadizMenu_icon__1sqne" aria-hidden="true"></span>
+                                            <span class="MyWadizMenu_text__9ryGW">사업 소개</span>
+                                            <span class="arrowImg2" ><img src="/images/myPage/moreThan.png" style="width: 22px;"></span>
+                                        </a>
+                                    </li>
+                                    <li class="MyWadizMenu_menu__3b-H-">
+                                        <a href="/web/board/personalMessage/inbox">
+                                            <span class="MyWadizMenu_icon__1sqne" aria-hidden="true"></span>
+                                            <span class="MyWadizMenu_text__9ryGW">회원 탈퇴</span>
+                                            <span class="arrowImg2" ><img src="/images/myPage/moreThan.png" style="width: 22px;"></span>
+                                        </a>
+                                    </li>
+<!--                                    <li class="MyWadizMenu_menu__3b-H-">-->
+<!--                                        <a href="https://helpcenter.wadiz.kr/hc/ko"-->
+<!--                                        ><span class="MyWadizMenu_icon__1sqne" aria-hidden="true"-->
+<!--                                        ><img class="follower-icon" src="/images/myPage/question.png"></span-->
+<!--                                        ><span class="MyWadizMenu_text__9ryGW">도움말 센터</span-->
+<!--                                        ><span class="arrowImg2" ><img src="/images/myPage/moreThan.png" style="width: 22px;"></span-->
+<!--                                        ></a>-->
+<!--                                    </li>-->
+                                </ul>
+                            </div>
+                        </div>
+<!--                        <div class="MyWadizSection_section__3FCv1">-->
+<!--                            <div>-->
+<!--                                <ul class="MyWadizOtherMenu_otherMenu__2GlwQ">-->
+<!--                                    <li class="MyWadizMenu_menu__3b-H-">-->
+<!--                                        <a href="/web/wboard/newsBoardList"-->
+<!--                                        ><span class="MyWadizMenu_icon__1sqne" aria-hidden="true"-->
+<!--                                        ><img class="follower-icon" src="/images/myPage/megaphone.png"></span-->
+<!--                                        ><span class="MyWadizMenu_text__9ryGW">공지사항</span-->
+<!--                                        ><span class="arrowImg2" ><img src="/images/myPage/moreThan.png" style="width: 22px;"></span-->
+<!--                                        ></a>-->
+<!--                                    </li>-->
+<!--                                    <li class="MyWadizMenu_menu__3b-H-">-->
+<!--                                        <a href="/web/waccount/wAccountUpdateBasicInfoIntro">-->
+<!--                                            <span class="MyWadizMenu_icon__1sqne" aria-hidden="true">-->
+<!--                                                <img class="follower-icon" src="/images/myPage/wheel.png">-->
+<!--                                            </span>-->
+<!--                                            <span class="MyWadizMenu_text__9ryGW">내 정보 수정</span>-->
+<!--                                            <span class="arrowImg2" ><img src="/images/myPage/moreThan.png" style="width: 22px;"></span>-->
+<!--                                        </a>-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 모달 -->
+<div id="myModal" class="modal">
+    <div class="modal-background">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <h3>내 등급</h3>
+            </div>
+            <div class="content-container">
+                <h4 class="detail-title">등급 정보</h4>
+                <!-- 뱃지 정보들이 담길 테이블 -->
+                <div class="content-wrap">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>항목</th>
+                            <th>등급</th>
+                            <th>참여도</th>
+                            <th>혜택</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <!-- 배지 이미지 들어가는 곳 -->
+                            <th><img src="/images/myPage/seed.png" style="width: 15px;" alt=""></th>
+                            <th style="    background-color: #ff6b6b1f;
+                                        border-radius: 99px;"><p>씨앗</p></th>
+                            <th>참여,모집횟수 1~5회</th>
+                            <th>-</th>
+                        </tr>
+                        <tr>
+                            <th><img src="/images/myPage/seedling.png" style="width: 15px;" alt=""></th>
+                            <th style="background-color: #ff89001f;
+                                        border-radius: 99px;">새싹</th>
+                            <th>참여,모집횟수 6~10회</th>
+                            <th>-</th>
+                        </tr>
+                        <tr>
+                            <th><img src="/images/myPage/plant.png" style="width: 15px;" alt=""></th>
+                            <th style="background-color: #f7ff001f;
+                                        border-radius: 99px;">묘목</th>
+                            <th>참여,모집횟수 11~15회</th>
+                            <th>배너 등록시 10%</th>
+                        </tr>
+                        <tr>
+                            <th><img src="/images/myPage/tree.png" style="width: 15px;" alt=""></th>
+                            <th style="background-color: #00ff431f;
+                                        border-radius: 99px;">나무</th>
+                            <th>참여,모집횟수 16~20회</th>
+                            <th>배너 등록시 20%</th>
+                        </tr>
+                        <tr>
+                            <th><img src="/images/myPage/dodam.png" style="width: 15px;" alt=""></th>
+                            <th style="background-color: #004dff1f;
+                                        border-radius: 99px;">도담</th>
+                            <th>참여,모집횟수 21회 이상</th>
+                            <th>배너 이용시 30%</th>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- 사용자의 배지 정보가 나오는 곳 -->
+            <div class="content-container">
+                <h4 class="detail-title">나의 등급</h4>
+                <div class="content-wrap">
+                    <div class="user-info">
+                        <div>
+                            <span>당신의 등급는 현재 "씨앗" 등급 입니다.</span>
+                            <div>
+                                <img src="../../static/images/myPage/bigseed.png" style="width: 80px;
+                                        position: relative;
+                                        top: 14px;" alt="">
+                            </div>
+                            <br>
+                            <span style="position: relative;
+                                    top: 7px;">다음 등급까지 참여,모집 3회 남았습니다.</span>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- 모달 끝 -->
+</body>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script src="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.js"></script>
+<script src="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.js"></script>
+<script src="https://uicdn.toast.com/calendar/latest/toastui-calendar.min.js"></script>
+<script src="https://uicdn.toast.com/tui-grid/latest/tui-grid.js"></script>
+<script src="https://uicdn.toast.com/tui.pagination/latest/tui-pagination.js"></script>
+<script src="../../static/js/myPage/myPage-main.js"></script>
+<script src="../../static/js/myPage/MyCalendar.js"></script>
+</html>

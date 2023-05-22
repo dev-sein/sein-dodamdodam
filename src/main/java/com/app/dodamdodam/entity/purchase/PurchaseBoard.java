@@ -14,17 +14,10 @@ import java.util.List;
 @Table(name = "TBL_PURCHASE_BOARD")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class PurchaseBoard extends Board {
-//    @Id
-//    @GeneratedValue
-//    @EqualsAndHashCode.Include
-//    private Long id;
-//    private Integer purchasePrice;
-//    @NotNull private Integer purchaseCount;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
+    @OneToOne(fetch = FetchType.LAZY,  cascade = {CascadeType.REMOVE, CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "PRODUCT_ID")
     private Product product;
-//    private Integer purchasePrice;
 
     @OneToMany(fetch = FetchType.LAZY,
             mappedBy = "purchaseBoard",
@@ -65,4 +58,5 @@ public class PurchaseBoard extends Board {
     public void setPurchaseFiles(List<PurchaseFile> purchaseFiles) {
         this.purchaseFiles = purchaseFiles;
     }
+
 }

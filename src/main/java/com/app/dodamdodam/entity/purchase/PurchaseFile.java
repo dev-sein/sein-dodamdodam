@@ -2,6 +2,11 @@ package com.app.dodamdodam.entity.purchase;
 
 import com.app.dodamdodam.entity.file.BoardFile;
 import lombok.*;
+import com.app.dodamdodam.type.FileType;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -20,12 +25,10 @@ public class PurchaseFile extends BoardFile {
         this.purchaseBoard = purchaseBoard;
     }
 
+
     @Builder
-    public PurchaseFile(Long id, String fileOriginalName, String fileUuid, String filePath, Long fileSize, PurchaseBoard purchaseBoard) {
-        super(id, fileOriginalName, fileUuid, filePath, fileSize);
+    public PurchaseFile(Long id, String fileOriginalName, String fileUuid, String filePath, FileType fileType, Long fileSize, PurchaseBoard purchaseBoard) {
+        super(id, fileOriginalName, fileUuid, filePath, fileType, fileSize);
         this.purchaseBoard = purchaseBoard;
     }
-
-
-
 }

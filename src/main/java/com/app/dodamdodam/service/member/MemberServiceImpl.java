@@ -1,10 +1,11 @@
 package com.app.dodamdodam.service.member;
 
 import com.app.dodamdodam.domain.MemberDTO;
-import com.app.dodamdodam.entity.banner.BannerApply;
+import com.app.dodamdodam.domain.RecruitmentBoardFileDTO;
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.point.Point;
+import com.app.dodamdodam.entity.banner.BannerApply;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
 import com.app.dodamdodam.provider.UserDetail;
 import com.app.dodamdodam.repository.banner.BannerRepository;
@@ -29,6 +30,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpSession;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -50,9 +52,12 @@ public class MemberServiceImpl implements MemberService/*, OAuth2UserService<OAu
 
     /* 로그인 된 유저 정보 */
     @Override
-    public Optional<Member> getMemberInfo(Long memberId) {
-        return memberRepository.findById(memberId);
+    public MemberDTO getMemberInfo(Long memberId) {
+        return toMemberDTO(memberRepository.findById(memberId).get());
     }
+//    public Optional<Member> getMemberInfo(Long memberId) {
+//        return memberRepository.findById(memberId);
+//    }
 
     @Override
     public void join(MemberDTO memberDTO, PasswordEncoder passwordEncoder) {
@@ -195,6 +200,7 @@ public class MemberServiceImpl implements MemberService/*, OAuth2UserService<OAu
     @Override
     public List<RecruitmentBoard> getMyRecruitementedBoardList(Long memberId) {
         return recruitmentBoardRepository.findAllRecruitmentedBoardListByMemberId_QueryDSL(memberId);
+
     }
 
 
@@ -231,6 +237,13 @@ public class MemberServiceImpl implements MemberService/*, OAuth2UserService<OAu
         }
     }
 
+    /* 캘린더 눌렀을 때 누른 날짜로 내가 참가한 모집게시글 리스트 가져오기 */
+    @Override
+    public List<RecruitmentBoardFileDTO> getRecruitmentBoardListByMemberIdAndDate(Long memberId, LocalDate recruitmentDate) {
+        List<RecruitmentBoard> recruitmentBoards = recruitmentBoardRepository.findRecruitmentBoardListByMemberIdAndDate(memberId, recruitmentDate);
+        List<RecruitmentBoardFileDTO> recruitmentBoardFileDTOS = recruitmentBoards.stream().map(recruitmentBoard -> toRecruitmentBoardFileDto(recruitmentBoard)).collect(Collectors.toList());
+        return recruitmentBoardFileDTOS;
+    }
     /* 관리자 멤버 검색 */
     @Override
     public Page<MemberDTO> showMemberWithSearch_QueryDSL(Pageable pageable, AdminMemberSearch adminMemberSearch) {
@@ -240,6 +253,5 @@ public class MemberServiceImpl implements MemberService/*, OAuth2UserService<OAu
                 .collect(Collectors.toList());
         return new PageImpl<>(adminMemberSearchDTOS, pageable, memberPage.getTotalElements());
     }
-
 
 }

@@ -196,6 +196,7 @@ p.info em {
     font-size: 13px;
     color: #e4e4e4;
     border: 1px solid #e4e4e4;
+    outline: none;
 }
 
 .like-share-area .btn-like img {
@@ -418,6 +419,29 @@ button.btn-comment {
     border: 1px solid #e4e4e4;
     cursor: pointer;
 }
+
+/* 수정, 삭제 버튼 */
+.top-button-wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+
+.inner-buttons{
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 0px 8px !important;
+    height: 26px !important;
+    line-height: 24px !important;
+    font-size: 13px;
+    color: #000000bd!important;
+    background: #fff !important;
+    border: 1px solid #000000bd!important;
+    border-radius: 2px;
+    cursor: pointer;
+    margin-right: 4px;
+}
+
+/* 수정, 삭제 버튼 끝 */
 
 /* 카테고리 별 다른글 */
 .free-board-other {

@@ -31,10 +31,10 @@ public interface FreeBoardService {
     public FreeBoardFileDTO getFreeBoardById(Long boardId);
 
     /* 자유 게시글 수정 */
-    public void updateFreeBoard(FreeBoard freeBoard);
+    public void updateFreeBoard(FreeBoard updateBoard, Long boardId);
 
     /* 자유 게시글 삭제 */
-    public void deleteFreeBoard(FreeBoard freeBoard);
+    public void deleteFreeBoard(Long boardId);
 
     /* 자유게시글 좋아요 Top5 */
     public List<FreeBoardFileDTO> getTop5FreeBoards();
@@ -44,6 +44,15 @@ public interface FreeBoardService {
 
     /* 최근 작성된 자유 게시글 리스트 */
     public List<FreeBoardFileDTO> getRecentFreeBoardList();
+
+    /* 좋아요 추가 */
+    public void setLikeCountPlus(Long boardId, Long memberId);
+
+    /* 좋아요 취소 */
+    public void setLikeCountMinus(Long boardId, Long memberId);
+
+    /* 좋아요 눌렀는지 체크 */
+    public boolean checkFreeLikeByBoardIdAndMemberId(Long boardId, Long memberId);
 
     /* ========================== 관리자 ========================== */
 
@@ -104,6 +113,7 @@ public interface FreeBoardService {
                 .memberPoint(member.getMemberPoint())
                 .participationCount(member.getParticipationCount())
                 .address(member.getAddress())
+                .memberType(member.getMemberType())
                 .build();
     }
 

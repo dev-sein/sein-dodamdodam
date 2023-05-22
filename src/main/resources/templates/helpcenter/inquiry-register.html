@@ -50,10 +50,6 @@
                         </li>
                     </ol>
                     <div class="search-container">
-                        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon">
-                            <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"></circle>
-                            <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"></path>
-                        </svg> -->
                         <form role="search" class="search" action="" accept-charset="UTF-8" method="get">
                             <input name="utf8" type="hidden" value="✓" autocomplete="off">
                             <input type="search" name="query" id="query" placeholder="검색" aria-label="검색" style="visibility: hidden;">
@@ -70,62 +66,42 @@
             </h1>
 
             <div id="main-content" class="form">
-                <form id="new_request" class="request-form" data-form="" data-form-type="request" action="/hc/ko/requests" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓" autocomplete="off">
+                <form id="new_request" class="request-form" data-form-type="request" action="/inquiry/register" accept-charset="UTF-8" method="post">
+                    <input name="utf8" type="hidden" autocomplete="off">
                     <input name="utf8" type="hidden" value="✓" autocomplete="off">
                     <div class="select-div form-field select optional request_ticket_form_id">
                         <label for="request_issue_type_select">문의 접수하실 내용을 선택해주세요:)</label>
                         <a class="nesty-input" style="max-width: 96%;" id="request_ticket_form_id">
                             -
                         </a>
-                        <select name="request[ticket_form_id]" id="request_issue_type_select" >
-                            <option value="펀딩 서비스 문의하기" selected>판매 서비스 문의하기</option>
-                            <option value="스토어 서비스 문의하기">이벤트 모집 서비스 문의하기</option>
-                            <option value="파이낸스 서비스 문의하기">이벤트 참여 서비스 문의하기</option>
-                            <option value="파이낸스 서비스 문의하기">기타</option>
+                        <select name="inquiryType" id="request_issue_type_select" onchange="updateValue(this)" >
+                            <option value="PURCHASE" selected>판매 서비스 문의하기</option>
+                            <option value="RECRUITMENT">도담 모집 서비스 문의하기</option>
+                            <option value="APPLY">이벤트 참여 서비스 문의하기</option>
+                            <option value="ETC">기타</option>
                         </select>
                     </div>
                     <div class="form-field string required request_anonymous_requester_email">
                         <label for="request_anonymous_requester_email">이메일 주소</label>
-                        <input type="text" name="request[anonymous_requester_email]" id="request_anonymous_requester_email" aria-required="true">
+                        <input type="text" name="inquiryEmail" id="request_anonymous_requester_email" aria-required="true">
                     </div>
-                    <!-- <div class="select-div form-field string  required  request_custom_fields_help_type">
-                        <label for="request_custom_fields_help_type" id="request_custom_fields_help_type_label">
-                            문의자 유형
-                        </label>
-                        <input type="hidden" name="request[custom_fields][help_type]" id="request_custom_fields_help_type" autocomplete="off">
-                        <a class="nesty-input" style="max-width: 96%;">
-                            -
-                        </a>
-                        <select name="request[ticket_form_id]" id="request_custom_fields_help_type">
-                            <option value="-" selected>-</option>
-                            <option value="프로젝트를 개설한 메이커 입니다.">프로젝트를 개설한 메이커 입니다.</option>
-                            <option value="프로젝트에 참여한 서포터 입니다.">프로젝트에 참여한 서포터 입니다.</option>
-                        </select>
-                    </div> -->
+
+                    <input type="hidden" name="inquiryStatus" value="HOLD">
                     <div class="form-field string request_custom_fields_id">
                         <label id="request_custom_fields_id_label" for="request_custom_fields_id">도담도담 계정</label>
-                        <input type="text" name="request[custom_fields][id]" id="request_custom_fields_id">
+                        <input name="memberIdentification" id="request_custom_fields_id">
                         <p id="request_custom_fields_id_hint">도담도담 로그인 시 사용하시는 도담도담 계정을 알려주세요.</p>
                     </div>
                     <div class="form-field string request_custom_fields_phone required">
                         <label id="request_custom_fields_phone_label" for="request_custom_fields_phone">연락처</label>
-                        <input type="number" name="request[custom_fields][phone]" id="request_custom_fields_phone">
+                        <input type="number" name="inquiryPhoneNumber" id="request_custom_fields_phone" maxlength="11">
                         <p id="request_custom_fields_phone_hint">필요 시 상담 받으실 수 있는 연락처를 입력해주세요.</p>
                     </div>
-                    <!-- <div class="form-field string optional request_custom_fields_project_number">
-                        <label id="request_custom_fields_project_number_label" for="request_custom_fields_project_number">
-                            프로젝트 번호 <span class="optional">(선택 사항)</span>
-                        </label>
-                        <input type="text" name="request[custom_fields][project_number]" id="request_custom_fields_project_number">
-                        <p id="request_custom_fields_project_number_hint">
-                            프로젝트 번호 또는 제목을 입력해주세요.
-                            ⚡프로젝트 번호 확인 방법 : 마이와디즈 &gt; 메이커스튜디오 &gt; 화면 왼쪽 상단 아래 숫자 5~6자리
-                        </p>
-                    </div> -->
-                    <div class="form-field text  required  request_description">
+
+                    <div class="form-field text required request_description">
                         <label id="request_description_label" for="request_description">문의사항을 알려주세요.</label>
-                        <textarea name="request[description]" id="request_description"></textarea>
-                        <input type="hidden" name="request[description_mimetype]" id="request_description_mimetype" value="text/plain" style="display: none;" autocomplete="off">
+                        <textarea name="inquiryContent" id="request_description"></textarea>
+                        <input type="hidden" name="inquiryContents" id="request_description_mimetype" style="display: none;" autocomplete="off">
                         <p id="request_description_hint">궁금하신 내용을 상세하게 설명해주세요.
                         </p>
                     </div>
@@ -143,21 +119,6 @@
                             개인정보 수집 동의를 거부할 수 있으나, 거부할 경우 연락 수단의 부재로 답변 알림 및 상담이 제한될 수 있습니다.
                         </p>
                     </div>
-                    <!-- <div class="form-field">
-                        <label for="request-attachments">
-                          첨부 파일<span class="optional">(선택 사항)</span>
-                        </label>
-                        <div id="upload-dropzone" class="upload-dropzone" data-hc-focus="false">
-                            <input type="file" multiple="true" id="request-attachments" data-fileupload="true" data-dropzone="upload-dropzone" data-error="upload-error" data-create-url="/hc/ko/request_uploads" data-name="request[attachments][]" data-pool="request-attachments-pool" data-delete-confirm-msg="" aria-describedby="upload-error">
-                            <span>
-                                <a>파일 추가</a> 또는 파일을 여기로 드래그
-                            </span>
-                        </div>
-                        <div id="upload-error" class="notification notification-error notification-inline" style="display: none;">
-                            <span data-upload-error-message=""></span>
-                        </div>
-                        <ul id="request-attachments-pool" class="upload-pool" data-template="upload-template"></ul>
-                    </div> -->
                     <footer>
                         <input type="submit" name="commit" value="제출">
                     </footer>
@@ -168,4 +129,10 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/js/helpcenter/inquiry-register.js"></script>
+<script>c
+        function updateValue(select) {
+            var selectedValue = select.options[select.selectedIndex].value;
+            document.getElementById("request_issue_type_select").value = selectedValue;
+        }
+</script>
 </html>

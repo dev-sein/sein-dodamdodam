@@ -36,12 +36,14 @@ public class SecurityConfig {
     private static final String PURCHASE_BOARD_LIST_PATH = "/purchase/list/**";
     private static final String PURCHASE_BOARD_DETAIL_PATH = "/purchase/detail/**";
     private static final String PURCHASE_BOARD_WRITE_PATH = "/purchase/write/**";
+
 //    자유 게시판
 //    private static final String FREE_PATH = "/free/**";
     private static final String FREE_BOARD_LIST_PATH = "/free/list/**";
     private static final String FREE_BOARD_DETAIL_PATH = "/free/detail/**";
     private static final String FREE_BOARD_WRITE_PATH = "/free/write-board";
     private static final String FREE_BOARD_UPDATE_PATH = "/free/update-board/**";
+
 //    모집 게시판
 //    private static final String RECRUITMENT_PATH = "/recruitment/**";
     private static final String RECRUITMENT_BOARD_LIST_PATH = "/recruitment/list/**";
@@ -54,6 +56,7 @@ public class SecurityConfig {
     private static final String EVENT_BOARD_DETAIL_PATH = "/event/detail/**";
     private static final String EVENT_BOARD_WRITE_PATH = "/event/write";
     private static final String EVENT_BOARD_UPDATE_PATH = "/event/update/**";
+
 //    문화공간 소개 게시판
 //    private static final String CULTURE_PATH = "/culture/**";
     private static final String CULTURE_BOARD_LIST_PATH = "/culture/list/**";
@@ -63,7 +66,6 @@ public class SecurityConfig {
 
 
 
-//    private static final String BOARD_PATH = "/board/**";
     private static final String IGNORE_FAVICON = "/favicon.ico";
     private static final String LOGIN_PAGE = "/member/login";
     private static final String LOGIN_PROCESSING_URL = "/member/login";

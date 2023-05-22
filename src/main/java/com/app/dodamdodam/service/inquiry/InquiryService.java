@@ -30,6 +30,7 @@ public interface InquiryService {
     default Inquiry toInquiryEntity(InquiryDTO inquiryDTO){
         return Inquiry.builder().id(inquiryDTO.getId()).inquiryEmail(inquiryDTO.getInquiryEmail()).inquiryContent(inquiryDTO.getInquiryContent())
                 .inquiryPhoneNumber(inquiryDTO.getInquiryPhoneNumber()).inquiryType(inquiryDTO.getInquiryType()).inquiryStatus(inquiryDTO.getInquiryStatus())
+                .memberIdentification(inquiryDTO.getMemberIdentification())
                 .inquiryAnswer(inquiryDTO.getInquiryAnswer()).build();
     }
 
@@ -37,6 +38,7 @@ public interface InquiryService {
         return InquiryDTO.builder().id(inquiry.getId()).inquiryContent(inquiry.getInquiryContent())
                 .inquiryEmail(inquiry.getInquiryEmail()).inquiryPhoneNumber(inquiry.getInquiryPhoneNumber())
                 .inquiryStatus(inquiry.getInquiryStatus()).inquiryType(inquiry.getInquiryType())
+                .memberIdentification(inquiry.getMemberIdentification())
                 .inquiryAnswer(inquiry.getInquiryAnswer()).build();
     }
 

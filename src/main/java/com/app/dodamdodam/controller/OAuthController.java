@@ -35,7 +35,7 @@ public class OAuthController {
             redirectAttributes.addFlashAttribute("member", memberDTO);
             return new RedirectView("/member/join");
         }
-        return new RedirectView("/main");
+        return new RedirectView("/home");
 
     }
 }

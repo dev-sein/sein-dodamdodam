@@ -39,9 +39,12 @@ public interface FreeBoardQueryDsl {
     public Page<FreeBoard> findFreeBoardBySearchWithPaging_QueryDSL(FreeBoardSearch freeBoardSearch, CategoryType categoryType, Pageable pageable);
 //    public Page<FreeBoard> findFreeBoardWithPaging_QueryDSL(FreeBoardSearch freeBoardSearch, Pageable pageable);
 
-    //    자유게시판 좋아요 Top5
+//    자유게시판 좋아요 Top5
     public List<FreeBoard> findFreeBoardListByLikeCount_QueryDSL();
 
-    //    자유 게시판 최근 게시물 5개
+//    자유 게시판 최근 게시물 5개
     public List<FreeBoard> findRecentFreeBoardList_QueryDSL();
+
+//    댓글 id로 자유게시글 접근해서 그 안에 달린 댓글 개수 가져오기
+    public Integer findReplyCountByReplyId_QueryDSL(Long replyId);
 }

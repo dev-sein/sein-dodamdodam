@@ -9,7 +9,6 @@ import javax.persistence.*;
 @Entity
 @Getter @ToString
 @Inheritance(strategy = InheritanceType.JOINED)
-@Table(name = "TBL_BOARD")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DynamicInsert
 public class Board extends Period {

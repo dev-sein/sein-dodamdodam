@@ -33,4 +33,5 @@ public class FreeBoardFileDTO {
         this.likeCount = likeCount;
         this.freeFileDTOS = freeFileDTOS;
     }
+    /* 추가 */
 }

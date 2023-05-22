@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "TBL_FREE_BOARD_LIKE")
 @Getter @ToString
-@NoArgsConstructor/*(access = AccessLevel.PROTECTED)*/
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class FreeLike {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
@@ -34,4 +34,10 @@ public class FreeLike {
     public void setFreeBoard(FreeBoard freeBoard) {
         this.freeBoard = freeBoard;
     }
+
+    public FreeLike(Long memberId, FreeBoard freeBoard) {
+        this.memberId = memberId;
+        this.freeBoard = freeBoard;
+    }
+    /* 추가 */
 }

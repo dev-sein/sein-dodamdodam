@@ -33,7 +33,15 @@ spring:
   output:
     ansi:
       enabled: always
-# 이미지 용량
+
+  #Redis
+  redis:
+    host: localhost
+    port: 6379
+  session:
+    store-type: redis
+
+  # 이미지 용량
   servlet:
     multipart:
       maxFileSize: 10MB
@@ -41,10 +49,6 @@ spring:
 
       location: c:\\upload
       enabled: true
-
-  #Redis
-  session:
-    store-type: redis
 
     #mail
     spring:

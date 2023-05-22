@@ -86,7 +86,7 @@ body {
     top: -9px;
 }
 
-#btn_span{
+.btn_span{
     width: 100%;
     cursor: pointer;
 }

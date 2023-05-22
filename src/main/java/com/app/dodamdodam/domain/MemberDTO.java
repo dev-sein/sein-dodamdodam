@@ -5,6 +5,7 @@ import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.type.MemberStatus;
 import com.app.dodamdodam.type.MemberType;
 import com.app.dodamdodam.type.Role;
+import com.querydsl.core.annotations.QueryProjection;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,7 +14,6 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
-@Builder
 @NoArgsConstructor
 public class MemberDTO implements Serializable {
     private Long id;
@@ -30,9 +30,9 @@ public class MemberDTO implements Serializable {
     private MemberType memberType;
     private Role memberRole;
 
+    @QueryProjection
     @Builder
-    public MemberDTO(Long id, String memberId, String memberPassword, String memberName, String memberEmail, String memberPhone, Address address, MemberStatus memberStatus, Integer memberPoint, Integer participationCount, LocalDateTime createdDate, MemberType memberType, Role memberRole) {
-//    public MemberDTO(Long id, String memberId, String memberPassword, String memberName, String memberEmail, String memberPhone, String address, String addressDetail, MemberStatus memberStatus, Integer memberPoint, Integer participationCount, LocalDateTime createdDate) {
+    public MemberDTO(Long id, String memberId, String memberPassword, String memberName, String memberEmail, String memberPhone, Address address, MemberStatus memberStatus, Integer memberPoint, Integer participationCount, LocalDateTime createdDate, Role memberRole, MemberType memberType) {
         this.id = id;
         this.memberId = memberId;
         this.memberPassword = memberPassword;
@@ -46,6 +46,7 @@ public class MemberDTO implements Serializable {
         this.createdDate = createdDate;
         this.memberType = memberType;
         this.memberRole = memberRole;
+        this.memberType = memberType;
     }
 
     public MemberDTO(Member member) {

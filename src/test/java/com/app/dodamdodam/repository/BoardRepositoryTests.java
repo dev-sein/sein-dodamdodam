@@ -1,5 +1,6 @@
 package com.app.dodamdodam.repository;
 
+import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.free.FreeFile;
 import com.app.dodamdodam.entity.free.FreeReply;
@@ -7,6 +8,7 @@ import com.app.dodamdodam.entity.purchase.Product;
 import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.entity.recruitment.Recruitment;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
+import com.app.dodamdodam.repository.board.event.board.EventBoardRepository;
 import com.app.dodamdodam.repository.board.free.FreeBoardRepository;
 import com.app.dodamdodam.repository.board.purchase.PurchaseBoardRepository;
 import com.app.dodamdodam.repository.board.recruitment.RecruitmentBoardRepository;
@@ -57,6 +59,9 @@ public class BoardRepositoryTests {
     @Autowired
     private FreeReplyRepository freeReplyRepository;
 
+    @Autowired
+            private EventBoardRepository eventBoardRepository;
+
     ArrayList<CategoryType> categoryTypes = new ArrayList<CategoryType>(Arrays.asList(CategoryType.ALL, CategoryType.CULTURE, CategoryType.DAILY, CategoryType.EVENT, CategoryType.PURCHASE, CategoryType.RECRUITMENT));
 
     /*모집 게시글 등록*/
@@ -68,10 +73,18 @@ public class BoardRepositoryTests {
 //            recruitmentBoardRepository.save(recruitmentBoard);
 //        }
         RecruitmentBoard recruitmentBoard = new RecruitmentBoard("모집 게시글 제목", LocalDate.now(),10, "https://open.kakao.com/o/ggmF0Jkf", "1234", "경기도 성남시 분당구 수내동", "탄천앞");
-        memberRepository.findById(201L).ifPresent(member -> recruitmentBoard.setMember(member));
+        memberRepository.findById(5L).ifPresent(member -> recruitmentBoard.setMember(member));
 //        recruitmentBoard.addRecruitment();
         recruitmentBoardRepository.save(recruitmentBoard);
     }
+    
+    @Test
+    public void saveTest6(){
+        EventBoard eventBoard = new EventBoard("이벤트 게시글 제목1","테스트1");
+        memberRepository.findById(201L).ifPresent(member -> eventBoard.setMember(member));
+        eventBoardRepository.save(eventBoard);
+    }
+    
 
     /*자유 게시글 등록*/
     @Test
@@ -121,11 +134,11 @@ public class BoardRepositoryTests {
     /* 200번 모집 게시글에 임의로 5번 유저 참석 시켰음*/
     @Test
     public void saveTest4(){
-        memberRepository.findById(52L).ifPresent(member ->
+        memberRepository.findById(8L).ifPresent(member ->
 //        memberRepository.findById(5L).ifPresent(member ->
         {
             Recruitment recruitment = new Recruitment(member);
-            recruitmentBoardRepository.findById(608L).ifPresent(recruitmentBoard -> recruitment.setRecruitmentBoard(recruitmentBoard));
+            recruitmentBoardRepository.findById(403L).ifPresent(recruitmentBoard -> recruitment.setRecruitmentBoard(recruitmentBoard));
             recruitmentRepository.save(recruitment);
         });
     }
@@ -196,10 +209,10 @@ public class BoardRepositoryTests {
     }
 
     /* 자유게시글 좋아요 Top5 */
-//    @Test
-//    public void findTop5(){
-//        freeBoardRepository.findFreeBoardListByLikeCount().stream().map(FreeBoard::toString).forEach(log::info);
-//    }
+    @Test
+    public void findTop5(){
+        freeBoardRepository.findFreeBoardListByLikeCount_QueryDSL().stream().map(FreeBoard::toString).forEach(log::info);
+    }
 
     /* 자유 게시글 상세 */
     @Test
@@ -236,6 +249,16 @@ public class BoardRepositoryTests {
         log.info(freeBoardRepository.findFreeBoardAndFreeRepliesById_QueryDSL(201L).toString());
     }
 
+    /* 자유 게시판 댓글 조회 */
+    @Test
+    public void findReplyTest(){
+//        FreeReply freeReply = new FreeReply("테스트 댓글555",memberRepository.findById(7L).get(),freeBoardRepository.findById(200L).get());
+//        log.info(freeReply.getReplyContent());
+//        freeReplyRepository.findById(700L).ifPresent(freeReply -> log.info(freeReply.toString()));
+        Pageable pageable = PageRequest.of(0,5);
+        freeReplyRepository.findFreeRepliesByBoardId_QueryDSL(pageable, 204L).stream().map(FreeReply::toString).forEach(log::info);
+    }
+
     /* 자유 게시판에 댓글 달기*/
     @Test
     public void saveFreeReplyTest(){
@@ -255,5 +278,23 @@ public class BoardRepositoryTests {
     @Test
     public void deleteFreeReplyTest(){
         freeBoardRepository.findById(201L).ifPresent(freeBoard -> freeReplyRepository.delete(freeBoard.getFreeReplies().get(0)));
+    }
+
+    /* 자유 게시판 댓글 id로 board 조회해서 총 댓글 수 가져오기 */
+    @Test
+    public void findReplyCountByReplyId_QueryDSLTest(){
+        log.info(freeBoardRepository.findReplyCountByReplyId_QueryDSL(1025L).toString());
+    }
+
+    /* 내가 참여한 모집 게시글 날짜로 검색*/
+    @Test
+    public void findRecruitmentBoardListByMemberIdAndDateTest(){
+        recruitmentBoardRepository.findRecruitmentBoardListByMemberIdAndDate(5L,LocalDate.of(2023,05,14)).stream().map(RecruitmentBoard::toString).forEach(log::info);
+    }
+
+    /* 내가 구매한 판매 게시글 검색 */
+    @Test
+    public void findBoughtPurchaseBoardListByMemberId_QueryDSLTest(){
+        purchaseBoardRepository.findBoughtPurchaseBoardListByMemberId_QueryDSL(PageRequest.of(0,5),5L).stream().map(PurchaseBoard::toString).forEach(log::info);
     }
 }

@@ -34,18 +34,27 @@ public class MyPageController {
     /*마이 페이지 메인*/
     @GetMapping("main")
     public String myPageInfo(Model model, HttpSession session) {
-        log.info("==================mypage main========================");
-        log.info(session.getAttribute("member").toString());
-        MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
-//        Long id = (Long) session.getAttribute("member");
-        Long memberId = memberDTO.getId();
         /* calendar 작업 추가로 해야함 */
 //        임의로 세션에 memberId값 담아둠
-//        session.setAttribute("memberId", 5L);
-//        Long memberId =  (Long)session.getAttribute("memberId");
-        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
+        session.setAttribute("memberId", 5L);
+        Long memberId =  (Long)session.getAttribute("memberId");
+        model.addAttribute("member",memberService.getMemberInfo(memberId));
+//        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
         model.addAttribute("point",memberService.getMyPointList(memberId));
         return"myPage/myPage-Main";
+    }
+
+    /*마이 페이지 메인 테스트*/
+    @GetMapping("main-test")
+    public String myPageInfoTest(Model model, HttpSession session) {
+        /* calendar 작업 추가로 해야함 */
+//        임의로 세션에 memberId값 담아둠
+        session.setAttribute("memberId", 5L);
+        Long memberId =  (Long)session.getAttribute("memberId");
+        model.addAttribute("member",memberService.getMemberInfo(memberId));
+//        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
+        model.addAttribute("point",memberService.getMyPointList(memberId));
+        return"myPage/mypage-main-test";
     }
 
     /* 마이페이지 프로필*/
@@ -53,6 +62,7 @@ public class MyPageController {
     /* 내가 작성한 자유 게시글*/
     @GetMapping("free-board")
     public String myPageFreeBoard(Model model, HttpSession session) {
+        log.info("들어옴@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         Pageable pageable = PageRequest.of(0, 10);
         model.addAttribute("freeBoard",freeBoardService.getAllFreeBoards(pageable));
 
@@ -62,9 +72,11 @@ public class MyPageController {
     /* 포인트 내역 */
     @GetMapping("point")
     public String myPointList(Model model, HttpSession session) {
+        log.info("들어옴@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         session.setAttribute("memberId", 5L);
         Long memberId = (Long)session.getAttribute("memberId");
-        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
+        model.addAttribute("member",memberService.getMemberInfo(memberId));
+//        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
         model.addAttribute("points",memberService.getMyPointList(memberId));
 
         return"myPage/myPage-point";  /*테스트로 아무 페이지에나 보내봄*/
@@ -76,7 +88,8 @@ public class MyPageController {
         session.setAttribute("memberId", 5L);
         Long memberId = (Long)session.getAttribute("memberId");
 
-        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
+        model.addAttribute("member",memberService.getMemberInfo(memberId));
+//        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
 
         /* 내가 작성한 자유 게시글 개수 */
         model.addAttribute("freeBoardCount",memberService.getMyFreeBoardListCount(memberId));
@@ -112,7 +125,8 @@ public class MyPageController {
         session.setAttribute("memberId", 5L);
         Long memberId = (Long)session.getAttribute("memberId");
 
-        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
+        model.addAttribute("member",memberService.getMemberInfo(memberId));
+//        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
 
         /* 내가 작성한 자유 게시글 개수 */
         model.addAttribute("freeBoardCount",memberService.getMyFreeBoardListCount(memberId));
@@ -147,7 +161,8 @@ public class MyPageController {
         session.setAttribute("memberId", 5L);
         Long memberId = (Long)session.getAttribute("memberId");
 
-        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
+        model.addAttribute("member",memberService.getMemberInfo(memberId));
+//        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
 
         /* 내가 작성한 자유 게시글 개수 */
         model.addAttribute("freeBoardCount",memberService.getMyFreeBoardListCount(memberId));
@@ -192,7 +207,8 @@ public class MyPageController {
         session.setAttribute("memberId", 5L);
         Long memberId = (Long)session.getAttribute("memberId");
 
-        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
+        model.addAttribute("member",memberService.getMemberInfo(memberId));
+//        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
 
         /* 내가 작성한 자유 게시글 개수 */
         model.addAttribute("freeBoardCount",memberService.getMyFreeBoardListCount(memberId));
@@ -226,7 +242,8 @@ public class MyPageController {
     public String getMyInfo(HttpSession session, Model model){
         session.setAttribute("memberId", 5L);
         Long memberId = (Long)session.getAttribute("memberId");
-        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member",member));
+        model.addAttribute("member",memberService.getMemberInfo(memberId));
+//        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member",member));
 
         return "myPage/myPage-profileUpdate";
     }
@@ -274,4 +291,6 @@ public class MyPageController {
         memberService.setMemberPasswordById(memberId,memberPassword);
         return new RedirectView("/mypage/change-password?update=ok");
     }
+
+    /* 추가 */
 }
