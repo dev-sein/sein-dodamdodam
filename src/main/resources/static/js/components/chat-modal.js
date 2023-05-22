@@ -10,8 +10,10 @@ $('.close_modal_container').on('click', function(){
     $('#chat_modal').fadeOut(300);
 });
 
-$('.chat_li').each((i, e) => {
+$('li.chat_li').each((i, e) => {
+    console.log("들어오니1")
     $(e).on('click', function(){
+        console.log("들어오니2")
         $('#chat_room').show();
     })
 })

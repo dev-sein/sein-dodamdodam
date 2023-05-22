@@ -1,142 +1,142 @@
-<!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>채팅방</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
-</head>
-<body>
-<!-- 채팅방 입장 -->
-<div>
-    <h2>채팅방 입장</h2>
-    <form id="usernameForm">
-        <p>아이디</p>
-        <input type="text" id="name">
-        <p>채팅방 UUID</p>
-        <input type="text" id="roomId">
-        <button type="submit" name="userNameSubmit">전송</button>
-    </form>
-</div>
-<!-- 채팅하기 -->
-<div>
-    <h2>채팅하기</h2>
-    <form id="messageForm">
-        <input type="text" id="message">
-        <button type="submit" name="messageSubmit">전송</button>
-    </form>
-</div>
-<div>
-    <h2>채팅방 나가기</h2>
-    <form id="roomExitForm">
-        <p>나갈려는 RoomId 입력.</p>
-        <input type="text" name="exit">
-        <button type="submit">전송</button>
-    </form>
-</div>
-<div class="chat-connection-container">
-</div>
-<div class="chat-message-container">
+<!--<!doctype html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport"-->
+<!--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>채팅방</title>-->
+<!--    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">-->
+<!--</head>-->
+<!--<body>-->
+<!--&lt;!&ndash; 채팅방 입장 &ndash;&gt;-->
+<!--<div>-->
+<!--    <h2>채팅방 입장</h2>-->
+<!--    <form id="usernameForm">-->
+<!--        <p>아이디</p>-->
+<!--        <input type="text" id="name">-->
+<!--        <p>채팅방 UUID</p>-->
+<!--        <input type="text" id="roomId">-->
+<!--        <button type="submit" name="userNameSubmit">전송</button>-->
+<!--    </form>-->
+<!--</div>-->
+<!--&lt;!&ndash; 채팅하기 &ndash;&gt;-->
+<!--<div>-->
+<!--    <h2>채팅하기</h2>-->
+<!--    <form id="messageForm">-->
+<!--        <input type="text" id="message">-->
+<!--        <button type="submit" name="messageSubmit">전송</button>-->
+<!--    </form>-->
+<!--</div>-->
+<!--<div>-->
+<!--    <h2>채팅방 나가기</h2>-->
+<!--    <form id="roomExitForm">-->
+<!--        <p>나갈려는 RoomId 입력.</p>-->
+<!--        <input type="text" name="exit">-->
+<!--        <button type="submit">전송</button>-->
+<!--    </form>-->
+<!--</div>-->
+<!--<div class="chat-connection-container">-->
+<!--</div>-->
+<!--<div class="chat-message-container">-->
 
-</div>
-<div class="chat-history-container">
-    <h3>채팅 내역 보기</h3>
-    <input type="text" name="historyRoomId">
-    <button type="button" name="historyRoomId">내역 확인</button>
-    <div class="chat-history">
+<!--</div>-->
+<!--<div class="chat-history-container">-->
+<!--    <h3>채팅 내역 보기</h3>-->
+<!--    <input type="text" name="historyRoomId">-->
+<!--    <button type="button" name="historyRoomId">내역 확인</button>-->
+<!--    <div class="chat-history">-->
 
-    </div>
-</div>
-<div>
-    <h3>채팅방 생성</h3>
-    <input type="text" name="roomName">
-    <button type="button" name="createRoom">생성</button>
-</div>
-<div>
-    <ul class="chat-list">
-        <h3>채팅방 목록</h3>
-    </ul>
-</div>
-<ul id="list"></ul>
-</body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
-    let chatRoomList;
-    $.ajax({
-        type: "GET",
-        url: "/chat/list",
-        data: {},
-        dataType: "json",
-        success: function (chatRooms) {
-            chatRoomList = chatRooms;
-            console.log(chatRooms)
-            if (chatRooms.length == 0) {
-                return;
-            }
-            chatRooms.forEach(room => showChatRoom(room));
-        }
-    });
+<!--    </div>-->
+<!--</div>-->
+<!--<div>-->
+<!--    <h3>채팅방 생성</h3>-->
+<!--    <input type="text" name="roomName">-->
+<!--    <button type="button" name="createRoom">생성</button>-->
+<!--</div>-->
+<!--<div>-->
+<!--    <ul class="chat-list">-->
+<!--        <h3>채팅방 목록</h3>-->
+<!--    </ul>-->
+<!--</div>-->
+<!--<ul id="list"></ul>-->
+<!--</body>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>-->
+<!--<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>-->
+<!--<script>-->
+<!--    let chatRoomList;-->
+<!--    $.ajax({-->
+<!--        type: "GET",-->
+<!--        url: "/chat/list",-->
+<!--        data: {},-->
+<!--        dataType: "json",-->
+<!--        success: function (chatRooms) {-->
+<!--            chatRoomList = chatRooms;-->
+<!--            console.log(chatRooms)-->
+<!--            if (chatRooms.length == 0) {-->
+<!--                return;-->
+<!--            }-->
+<!--            chatRooms.forEach(room => showChatRoom(room));-->
+<!--        }-->
+<!--    });-->
 
-    $("button[name='createRoom']").on("click", function () {
+<!--    $("button[name='createRoom']").on("click", function () {-->
 
-        let roomName = $("input[name='roomName']").val();
+<!--        let roomName = $("input[name='roomName']").val();-->
 
-        if (roomName === "" || roomName == null) {
-            return;
-        }
+<!--        if (roomName === "" || roomName == null) {-->
+<!--            return;-->
+<!--        }-->
 
-        $.ajax({
-            type: "POST",
-            url: "/chat/createroom",
-            data: JSON.stringify({roomName: roomName}),
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (chatRoom) {
-                showChatRoom(chatRoom);
-            }
-        });
-    });
+<!--        $.ajax({-->
+<!--            type: "POST",-->
+<!--            url: "/chat/createroom",-->
+<!--            data: JSON.stringify({roomName: roomName}),-->
+<!--            contentType: "application/json; charset=utf-8",-->
+<!--            dataType: "json",-->
+<!--            success: function (chatRoom) {-->
+<!--                showChatRoom(chatRoom);-->
+<!--            }-->
+<!--        });-->
+<!--    });-->
 
-    // 채팅내역 조회
-    $("button[name='historyRoomId']").on("click", function () {
+<!--    // 채팅내역 조회-->
+<!--    $("button[name='historyRoomId']").on("click", function () {-->
 
-        let roomId = $("input[name='historyRoomId']").val();
+<!--        let roomId = $("input[name='historyRoomId']").val();-->
 
-        if (roomId === "" || roomId == null) {
-            return;
-        }
+<!--        if (roomId === "" || roomId == null) {-->
+<!--            return;-->
+<!--        }-->
 
-        $.ajax({
-            type: "GET",
-            url: "/chat/history",
-            data: {roomId: roomId},
-            dataType: "json",
-            success: function (chatList) {
-                console.log(chatList);
-                chatList.forEach(chat => {
-                    let text = `
-                          <p>${chat}</p>
-                    `
-                    $(".chat-history").append(text);
-                })
-            }
-        });
-    });
+<!--        $.ajax({-->
+<!--            type: "GET",-->
+<!--            url: "/chat/history",-->
+<!--            data: {roomId: roomId},-->
+<!--            dataType: "json",-->
+<!--            success: function (chatList) {-->
+<!--                console.log(chatList);-->
+<!--                chatList.forEach(chat => {-->
+<!--                    let text = `-->
+<!--                          <p>${chat}</p>-->
+<!--                    `-->
+<!--                    $(".chat-history").append(text);-->
+<!--                })-->
+<!--            }-->
+<!--        });-->
+<!--    });-->
 
-    function showChatRoom(chatRoom) {
-        let text = `
-            <li>
-                <p>RoomId : ${chatRoom.roomId}</p>
-                <p>RoomName : ${chatRoom.roomName}</p>
-            </li>
-        `
-        $(".chat-list").append(text);
-    }
-</script>
-<script src="/js/components/chat-room.js"></script>
-<script src="/js/components/common.js"></script>
-</html>
+<!--    function showChatRoom(chatRoom) {-->
+<!--        let text = `-->
+<!--            <li>-->
+<!--                <p>RoomId : ${chatRoom.roomId}</p>-->
+<!--                <p>RoomName : ${chatRoom.roomName}</p>-->
+<!--            </li>-->
+<!--        `-->
+<!--        $(".chat-list").append(text);-->
+<!--    }-->
+<!--</script>-->
+<!--<script src="/js/components/chat-room.js"></script>-->
+<!--<script src="/js/components/common.js"></script>-->
+<!--</html>-->
