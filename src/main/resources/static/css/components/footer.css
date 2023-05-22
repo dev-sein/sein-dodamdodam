@@ -1076,7 +1076,7 @@ input:focus {
     justify-content: space-between;
 }    
 
-.chat_header_logo_conatainer {
+.chat_header_logo_container {
     display: flex;
 }
 .chat_header_name {
@@ -1236,14 +1236,14 @@ input:focus {
 }
 
 /* 메시지 입력창 */
-.input_msg_container {
+#messageForm {
     position: absolute;
     bottom: -5px;
     width: 100%;
     /* left: 5%; */
     
 }
-.input_msg {
+#message {
     width: 100%;
     height: 60px;
     border: 1px solid var(--main-color);
