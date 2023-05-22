@@ -174,17 +174,26 @@ let sel_files = [];  // 전역 변수로 이동
 //     }
 //
 // })
+var formData = new FormData();
+
+document.getElementById("btnAtt").addEventListener("change", function (e) {
+    const files = e.target.files;
+
+    for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        formData.append("file", file);
+    }
+    console.log(formData);
+});
 
 $('.submit-btn').on('click', function (e) {
     e.preventDefault();
     // FormData 객체 생성
-    var formData = new FormData();
+
 
     // 이미지 파일을 formData에 추가
-    var fileInput = document.getElementById('btnAtt');
-    for (var i = 0; i < fileInput.files.length; i++) {
-        formData.append('eventFiles', fileInput.files[i]);
-    }
+
+
 
     // Ajax를 사용하여 formData를 서버로 전송
     $.ajax({

@@ -11,7 +11,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
 
@@ -45,14 +44,14 @@ public class EventBoardController {
 
     @ResponseBody
     @PostMapping("write")
-    public RedirectView getEventWriteForm(@RequestBody EventBoardDTO eventBoardDTO, HttpSession session){
+    public void getEventWriteForm(@RequestBody EventBoardDTO eventBoardDTO, HttpSession session){
 //        MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
 //        Long memberId = memberDTO.getId();
-        Long memberId = (Long) session.getAttribute("id");
+        Long memberId = (Long) session.getAttribute("memberId");
         log.info(memberId + "");
         eventBoardService.register(eventBoardDTO, memberId);
 
-        return new RedirectView("/event/list");
+//        return new RedirectView("/event/list");
     }
 
 
