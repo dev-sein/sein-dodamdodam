@@ -23,7 +23,7 @@ public abstract class BoardFile {
     @NotNull private String fileOriginalName;
     @NotNull private String fileUuid;
     @NotNull private String filePath;
-     private Long fileSize;
+    private Long fileSize;
 
     public BoardFile(Long id, String fileOriginalName, String fileUuid, String filePath, Long fileSize) {
         this.id = id;

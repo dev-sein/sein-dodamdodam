@@ -20,10 +20,6 @@ public class PurchaseFile extends BoardFile {
         this.purchaseBoard = purchaseBoard;
     }
 
-    //    public PurchaseFile(Long id, String fileOriginalName, String fileUuid, String filePath, Long fileSize, PurchaseBoard purchaseBoard) {
-//        super(id, fileOriginalName, fileUuid, filePath, fileSize);
-//        this.purchaseBoard = purchaseBoard;
-//    }
     @Builder
     public PurchaseFile(Long id, String fileOriginalName, String fileUuid, String filePath, Long fileSize, PurchaseBoard purchaseBoard) {
         super(id, fileOriginalName, fileUuid, filePath, fileSize);

@@ -26,6 +26,8 @@ import org.springframework.data.domain.Slice;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @SpringBootTest
@@ -73,6 +75,34 @@ PurchaseBoardRepositoryTests {
         }
 
     }*/
+
+    @Test
+    public void purchaseFileSaveTest(){
+        PurchaseBoard purchaseBoard = purchaseBoardRepository.findById(23L).get();
+        Member member = memberRepository.findById(16L).get();
+        List<PurchaseFile> purchaseFiles = new ArrayList<>();
+        Product product = Product.builder()
+                .productName("test상품")
+                .productCount(10L)
+                .productPrice(20)
+                .build();
+
+        for (int i = 0; i < 5; i++) {
+            PurchaseFile purchaseFile = PurchaseFile.builder()
+                    .fileOriginalName("test" + i)
+                    .filePath("testPath")
+                    .fileUuid(UUID.randomUUID().toString())
+//                .purchaseBoard(purchaseBoard)
+                    .build();
+
+            purchaseFiles.add(purchaseFile);
+        }
+
+
+        purchaseBoard.setProduct(product);
+        purchaseBoard.setPurchaseFiles(purchaseFiles);
+        purchaseBoardRepository.save(purchaseBoard);
+    }
 
     @Test
     public void findAllWithSearch_QueryDSLTest() {

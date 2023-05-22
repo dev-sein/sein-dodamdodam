@@ -28,21 +28,38 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Slf4j
 public class SecurityConfig {
 //    관리자
-    private static final String ADMIN_PATH = "/admin/**";
+    private static final String ADMIN_PATH = "/admins/**";
 //    마이페이지
     private static final String MYPAGE_PATH = "/mypage/**";
 //    판매 게시판
+//    private static final String PURCHASE_PATH = "/purchase/**";
     private static final String PURCHASE_BOARD_LIST_PATH = "/purchase/list/**";
     private static final String PURCHASE_BOARD_DETAIL_PATH = "/purchase/detail/**";
     private static final String PURCHASE_BOARD_WRITE_PATH = "/purchase/write/**";
 //    자유 게시판
-    private static final String FREE_PATH = "/free/**";
+//    private static final String FREE_PATH = "/free/**";
+    private static final String FREE_BOARD_LIST_PATH = "/free/list/**";
+    private static final String FREE_BOARD_DETAIL_PATH = "/free/detail/**";
+    private static final String FREE_BOARD_WRITE_PATH = "/free/write-board";
+    private static final String FREE_BOARD_UPDATE_PATH = "/free/update-board/**";
 //    모집 게시판
-    private static final String RECRUITMENT_PATH = "/recruitment/**";
+//    private static final String RECRUITMENT_PATH = "/recruitment/**";
+    private static final String RECRUITMENT_BOARD_LIST_PATH = "/recruitment/list/**";
+    private static final String RECRUITMENT_BOARD_DETAIL_PATH = "/recruitment/detail/**";
+    private static final String RECRUITMENT_BOARD_WRITE_PATH = "/recruitment/write-board";
+    private static final String RECRUITMENT_BOARD_UPDATE_PATH = "/recruitment/update-board/**";
 //    이벤트 게시판
-    private static final String EVENT_PATH = "/event/**";
+//    private static final String EVENT_PATH = "/event/**";
+    private static final String EVENT_BOARD_LIST_PATH = "/event/list/**";
+    private static final String EVENT_BOARD_DETAIL_PATH = "/event/detail/**";
+    private static final String EVENT_BOARD_WRITE_PATH = "/event/write";
+    private static final String EVENT_BOARD_UPDATE_PATH = "/event/update/**";
 //    문화공간 소개 게시판
-    private static final String CULTURE_PATH = "/culture/**";
+//    private static final String CULTURE_PATH = "/culture/**";
+    private static final String CULTURE_BOARD_LIST_PATH = "/culture/list/**";
+    private static final String CULTURE_BOARD_DETAIL_PATH = "/culture/detail/**";
+//    private static final String CULTURE_BOARD_WRITE_PATH = "/culture/write-board";
+//    private static final String CULTURE_BOARD_UPDATE_PATH = "/culture/update-board/**";
 
 
 
@@ -73,11 +90,11 @@ public class SecurityConfig {
                 .mvcMatchers(IGNORE_FAVICON) //favicon은 필터에서 제외
                 .antMatchers(PURCHASE_BOARD_LIST_PATH)
                 .antMatchers(PURCHASE_BOARD_DETAIL_PATH)
-                .antMatchers(FREE_PATH) //임시
-                .antMatchers(RECRUITMENT_PATH) //임시
-                .antMatchers(EVENT_PATH) //임시
-                .antMatchers(CULTURE_PATH) //임시
-                .antMatchers(ADMIN_PATH) //임시
+//                .antMatchers(FREE_PATH) //임시
+//                .antMatchers(RECRUITMENT_PATH) //임시
+//                .antMatchers(EVENT_PATH) //임시
+//                .antMatchers(CULTURE_PATH) //임시
+//                .antMatchers(ADMIN_PATH) //임시
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()); //static 경로도 필터에서 제외
     }
 
@@ -106,9 +123,12 @@ public class SecurityConfig {
                 .csrf().disable()
 
                 .authorizeRequests() // 인가 설정(권한 설정)
-//                .antMatchers(ADMIN_PATH).hasRole(Role.ADMIN.name())
+                .antMatchers(ADMIN_PATH).hasRole(Role.ADMIN.name())
                 .antMatchers(MYPAGE_PATH).hasRole(Role.MEMBER.name())
                 .antMatchers(PURCHASE_BOARD_WRITE_PATH).hasRole(Role.MEMBER.name())
+                .antMatchers(RECRUITMENT_BOARD_WRITE_PATH).hasRole(Role.MEMBER.name())
+                .antMatchers(FREE_BOARD_WRITE_PATH).hasRole(Role.MEMBER.name())
+                .antMatchers(EVENT_BOARD_WRITE_PATH).hasRole(Role.MEMBER.name())
                 .anyRequest().permitAll()
 
                 .and()

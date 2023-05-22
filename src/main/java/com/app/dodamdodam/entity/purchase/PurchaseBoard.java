@@ -60,4 +60,8 @@ public class PurchaseBoard extends Board {
         this.purchaseFiles = purchaseFiles;
         this.member = member;
     }
+
+    public void setPurchaseFiles(List<PurchaseFile> purchaseFiles) {
+        this.purchaseFiles = purchaseFiles;
+    }
 }
