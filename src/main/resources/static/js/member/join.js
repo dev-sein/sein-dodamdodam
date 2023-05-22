@@ -54,9 +54,9 @@ function checkId() {
 				$('#id_ok').css("display", "none");
 				identificationFlag = false;
 			}
-			if (!identificationFlag) {
-				$identificationInput.focus();
-			}
+			// if (!identificationFlag) {
+			// 	$identificationInput.focus();
+			// }
 		}
 	});
 }
@@ -99,9 +99,9 @@ function checkPassword() {
 		$passwordInput.css("border-color", "#dde2e6");
 		passwordFlag = true;
 	}
-	if (!passwordFlag) {
-		$passwordInput.focus();
-	}
+	// if (!passwordFlag) {
+	// 	$passwordInput.focus();
+	// }
 }
 
 // 비밀번호 확인 변수
@@ -140,9 +140,9 @@ function reCheckPassword() {
 		passwordCheckFlag = false;
 	}
 
-	if(!passwordCheckFlag) {
-		$passwordCheckInput.focus();
-	}
+	// if(!passwordCheckFlag) {
+	// 	$passwordCheckInput.focus();
+	// }
 }
 
 
@@ -231,9 +231,9 @@ function checkName() {
 		nameFlag = true;
 	}
 
-	if(!nameFlag) {
-		$nameInput.focus();
-	}
+	// if(!nameFlag) {
+	// 	$nameInput.focus();
+	// }
 }
 
 
@@ -285,9 +285,9 @@ function checkPhone() {
 		}
 	});
 
-	if(!phoneFlag) {
-		$phoneInput.focus();
-	}
+	// if(!phoneFlag) {
+	// 	$phoneInput.focus();
+	// }
 }
 
 

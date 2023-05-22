@@ -65,15 +65,32 @@ public class MemberServiceImpl implements MemberService/*, OAuth2UserService<OAu
 
     @Override
     public void join(MemberDTO memberDTO, PasswordEncoder passwordEncoder) {
+        Optional<Member> optionalMember = memberRepository.findByMemberEmail(memberDTO.getMemberEmail());
+
         memberDTO.setMemberPassword(passwordEncoder.encode(memberDTO.getMemberPassword()));
         memberDTO.setMemberRole(Role.MEMBER);
-//        if (memberDTO.getMemberType() == null) {
-//            memberDTO.setMemberType(MemberType.GENERAL);
-//        } else {
-//            memberDTO.setMemberType(memberDTO.getMemberType());
-//        }
         memberDTO.setMemberStatus(MemberStatus.NORMAL);
-        memberRepository.save(toMemberEntity(memberDTO));
+
+        Member member;
+
+        if (optionalMember.isPresent()) {
+            Member foundMember = optionalMember.get();
+            foundMember.setMemberId(memberDTO.getMemberId());
+            foundMember.setMemberPassword(memberDTO.getMemberPassword());
+            foundMember.setMemberName(memberDTO.getMemberName());
+            foundMember.setAddress(memberDTO.getAddress());
+            foundMember.setMemberRole(memberDTO.getMemberRole());
+            foundMember.setMemberPhone(memberDTO.getMemberPhone());
+
+            memberRepository.save(foundMember);
+        } else {
+            member = toMemberEntity(memberDTO);
+
+            memberRepository.save(member);
+        }
+
+
+
     }
 
     /* 아이디 중복 검사 */
