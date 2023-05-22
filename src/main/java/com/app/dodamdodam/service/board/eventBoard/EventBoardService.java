@@ -40,6 +40,8 @@ public interface EventBoardService {
     //     관리자 : 게시글 검색
     public Page<EventBoardDTO> showAdminEventWithSearch_QueryDSL(Pageable pageable, AdminEventBoardSearch adminEventBoardSearch);
 
+    //    관리자 상세보기 : 게시글 상세
+    public EventBoardDTO getAdminEventBoardDetail(Long id);
 
     default EventBoardDTO eventBoardToDTO(EventBoard eventBoard){
         return EventBoardDTO.builder()
@@ -57,6 +59,10 @@ public interface EventBoardService {
         return EventBoardDTO.builder().id(eventBoard.getId()).boardTitle(eventBoard.getBoardTitle())
                 .boardContent(eventBoard.getBoardContent()).createdDate(eventBoard.getCreatedDate())
                 .eventAddress(eventBoard.getEventAddress()).eventAddressDetail(eventBoard.getEventAddressDetail())
+                .eventBusinessNumber(eventBoard.getEventBusinessNumber())
+                .eventStatus(eventBoard.getEventStatus())
+                .memberDTO(toMemberDTO(eventBoard.getMember()))
+                .fileDTOS(eventFileToDTO(eventBoard.getEventFiles()))
                 .build();
     }
 

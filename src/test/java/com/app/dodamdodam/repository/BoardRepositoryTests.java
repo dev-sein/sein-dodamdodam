@@ -73,18 +73,19 @@ public class BoardRepositoryTests {
 //            recruitmentBoardRepository.save(recruitmentBoard);
 //        }
         RecruitmentBoard recruitmentBoard = new RecruitmentBoard("모집 게시글 제목", LocalDate.now(),10, "https://open.kakao.com/o/ggmF0Jkf", "1234", "경기도 성남시 분당구 수내동", "탄천앞");
-        memberRepository.findById(5L).ifPresent(member -> recruitmentBoard.setMember(member));
+        memberRepository.findById(1L).ifPresent(member -> recruitmentBoard.setMember(member));
+//        memberRepository.findById(5L).ifPresent(member -> recruitmentBoard.setMember(member));
 //        recruitmentBoard.addRecruitment();
         recruitmentBoardRepository.save(recruitmentBoard);
     }
-    
+
     @Test
     public void saveTest6(){
-        EventBoard eventBoard = new EventBoard("이벤트 게시글 제목1","테스트1");
-        memberRepository.findById(201L).ifPresent(member -> eventBoard.setMember(member));
-        eventBoardRepository.save(eventBoard);
+//        EventBoard eventBoard = new EventBoard("이벤트 게시글 제목1","테스트1");
+//        memberRepository.findById(201L).ifPresent(member -> eventBoard.setMember(member));
+//        eventBoardRepository.save(eventBoard);
     }
-    
+
 
     /*자유 게시글 등록*/
     @Test
@@ -152,6 +153,22 @@ public class BoardRepositoryTests {
     /* 자유 게시글 작성 */
     @Test
     public void saveFreeBoardTest(){
+//        FreeBoard freeBoard = new FreeBoard("자유게시글 제목2", "자유게시글 내용2", categoryTypes.get(1));
+//        memberRepository.findById(1L).ifPresent(member -> freeBoard.setMember(member));
+//        freeBoardRepository.save(freeBoard);
+//
+//        List<FreeFile> freeFiles = new ArrayList<FreeFile>();
+//        FreeFile freeFile = new FreeFile("fileName1", UUID.randomUUID().toString(),"filePath1",500L);
+//        FreeFile freeFile2 = new FreeFile("fileName2", UUID.randomUUID().toString(),"filePath2",500L);
+//        freeFile.setFreeBoard(freeBoard);
+//        freeFile2.setFreeBoard(freeBoard);
+//
+//        freeFiles.add(freeFile);
+//        freeFiles.add(freeFile2);
+//        log.info(freeFile.toString());
+//        log.info(freeFile2.toString());
+//        log.info(freeFiles.toString());
+//        freeFileRepository.saveAll(freeFiles);
 //        FreeBoard freeBoard = new FreeBoard("자유게시글 제목2", "자유게시글 내용2", categoryTypes.get(1));
 //        memberRepository.findById(2L).ifPresent(member -> freeBoard.setMember(member));
 //        freeBoardRepository.save(freeBoard);
@@ -242,7 +259,7 @@ public class BoardRepositoryTests {
     public void findFreeBoardAndFreeFilesByIdTest(){
         log.info(freeBoardRepository.findFreeBoardAndFreeFilesById_QueryDSL(201L).toString());
     }
-    
+
     /* 자유 게시글 상세, 댓글 */
     @Test
     public void findFreeBoardAndFreeRepliesByIdTest(){
