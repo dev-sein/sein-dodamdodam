@@ -113,7 +113,7 @@ public class FreeBoardController {
     @ResponseBody
     @PostMapping("write-board")
     public void writeFreeBoardForm(@RequestBody FreeBoardDTO freeBoardDTO, HttpSession session){
-        Long memberId = (Long) session.getAttribute("id");
+        Long memberId = (Long) session.getAttribute("memberId");
         log.info(memberId + "");
         freeBoardService.register(freeBoardDTO, memberId);
     }

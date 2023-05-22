@@ -36,7 +36,7 @@ public class PurchaseBoardController {
     public void getPurchaseWriteForm(@RequestBody PurchaseBoardDTO purchaseBoardDTO, HttpSession session){
 //        MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
 //        Long memberId = memberDTO.getId();
-        Long memberId = (Long) session.getAttribute("id");
+        Long memberId = (Long) session.getAttribute("memberId");
         log.info(memberId + "");
         purchaseBoardService.register(purchaseBoardDTO, memberId);
 

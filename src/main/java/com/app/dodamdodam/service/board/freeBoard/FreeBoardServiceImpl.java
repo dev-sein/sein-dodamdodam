@@ -85,14 +85,9 @@ public class FreeBoardServiceImpl implements FreeBoardService {
     public void register(FreeBoardDTO freeBoardDTO, Long memberId) {
         List<FreeFileDTO> freeFileDTOS = freeBoardDTO.getFreeFileDTOS();
 
-
         memberRepository.findById(memberId).ifPresent(
                 member -> freeBoardDTO.setMemberDTO(toMemberDTO(member))
         );
-
-
-
-
         FreeBoard freeBoard = freeBoardRepository.save(toFreeBoardEntity(freeBoardDTO));
 
         log.info(freeFileDTOS.size() + "");

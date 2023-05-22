@@ -49,12 +49,13 @@ const imgButton = document.querySelector("#plus_button");
 console.log(imgButton);
 
 const fileArray = new Array();
+let formData = new FormData(); // input 태그 담는 폼
 
 function handleFiles(files) {
     console.log("files");
     console.log(files);
 
-    let formData = new FormData(); // input 태그 담는 폼
+
     /* 썸네일 담을 div의 부모 */
     const thumbnailList = document.getElementById("thumbnail-list");
 
@@ -113,27 +114,7 @@ function handleFiles(files) {
         console.log("formData");
         console.log(formData);
 
-        $.ajax({
-            url: '/file/upload',
-            data: formData,
-            method: 'post',
-            processData: false,
-            contentType: false,
-            success: function (result) {
-                if(result){
-                    console.log(result);
-                    for (let i = 0; i < result.uuids.length; i++) {
-                        let file = new Object();
 
-                        file.filePath = result.paths[i];
-                        file.fileUuid = result.uuids[i];
-                        file.fileOriginalName = result.fileOriginalNames[i];
-
-                        fileArray.push(file);
-                    }
-                }
-            }
-        });
            
     }
 
@@ -149,6 +130,27 @@ fileInput.addEventListener("change", function(event) {
         this.value = ''; // 선택한 파일 초기화
     }
 
+    $.ajax({
+        url: '/file/upload',
+        data: formData,
+        method: 'post',
+        processData: false,
+        contentType: false,
+        success: function (result) {
+            if(result){
+                console.log(result);
+                for (let i = 0; i < result.uuids.length; i++) {
+                    let file = new Object();
+
+                    file.filePath = result.paths[i];
+                    file.fileUuid = result.uuids[i];
+                    file.fileOriginalName = result.fileOriginalNames[i];
+
+                    fileArray.push(file);
+                }
+            }
+        }
+    });
 });
  /* 추가 */
 
@@ -159,8 +161,8 @@ $('#regist_btn').on('click', function(e){
     let freeBoardDTO = {
         boardTitle : $('#title_textarea').val(),
         boardContent : $('#content_textarea').val(),
-        freeBoardFileDTOS : fileArray,
-        freeCategory : $('.active').val(),
+        freeFileDTOS : fileArray,
+        freeCategory : $('.active').next().text(),
     }
 
     console.log("freeBoardDTO");
@@ -168,7 +170,7 @@ $('#regist_btn').on('click', function(e){
 
     $.ajax({
         url: '/free/write-board',
-        data: JSON.stringify(purchaseBoardDTO),
+        data: JSON.stringify(freeBoardDTO),
         method: 'post',
         processData: false,
         contentType: 'application/json',
