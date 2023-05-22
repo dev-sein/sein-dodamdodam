@@ -135,7 +135,7 @@ function showDetail(member) {
     console.log("showdetail");
     text += `
         <div class="modal-whole">
-            <div class="modal">
+            <div class="modal" style="display:block;">
                 <div class="modal-header">
                     <h2 class="modal-title">회원 정보</h2>
                     <span class="close" onclick="closeModal()">&times;</span>
@@ -160,15 +160,15 @@ function showDetail(member) {
                             </div>
                             <div class="info-row">
                                 <div class="info-label">핸드폰번호:</div>
-                                <div class="info-value">${member.phone}</div>
+                                <div class="info-value">${member.memberPhone}</div>
                             </div>
                             <div class="info-row">
                                 <div class="info-label">이메일:</div>
                                 <div class="info-value">${member.memberEmail}</div>
                             </div>
                             <div class="info-row">
-                                <div class="info-label">주소:</div>
-                                <div class="info-value">${member.address}+${member.addressDetail}</div>
+                                <div class="info-label">포인트:</div>
+                                <div class="info-value">${member.memberPoint}</div>
                             </div>
                         </div>
                     </div>

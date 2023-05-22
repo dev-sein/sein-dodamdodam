@@ -117,7 +117,7 @@ function showList(data) {
         console.log("text 들어옴");
         var text = "";
         text += `
-                <tr onclick="redirectToDetail(${recruitmentBoard.id})">
+                <tr>
                 <td>
                     <!-- 체크박스 -->
                     <div class="checkbox-wrapper-21">
@@ -128,14 +128,12 @@ function showList(data) {
                     </div>
                     <!-- 체크박스 -->
                 </td>
-                <td class="numbers">${recruitmentBoard.id}</td>
-                <td>${recruitmentBoard.boardTitle}</td>
-                <td>${recruitmentBoard.memberDTO.memberName}</td>
-                <td>${recruitmentBoard.recruitmentAddress}</td>
-                <td>${recruitmentBoard.recruitmentDate}</td>
-                <td>${recruitmentBoard.recruitmentStatus}</td>
-                <!-- <td>2000.01.01 21:05:04</td>-->
-                <!-- <td><button class="show-detail" onclick="showModal()">상세보기</button></td> -->
+                <td onclick="redirectToDetail(${recruitmentBoard.id})" class="numbers">${recruitmentBoard.id}</td>
+                <td onclick="redirectToDetail(${recruitmentBoard.id})">${recruitmentBoard.boardTitle}</td>
+                <td onclick="redirectToDetail(${recruitmentBoard.id})">${recruitmentBoard.memberDTO.memberName}</td>
+                <td onclick="redirectToDetail(${recruitmentBoard.id})">${recruitmentBoard.recruitmentAddress}</td>
+                <td onclick="redirectToDetail(${recruitmentBoard.id})">${recruitmentBoard.recruitmentDate}</td>
+                <td onclick="redirectToDetail(${recruitmentBoard.id})">${recruitmentBoard.recruitmentStatus}</td>
             </tr>
     `;
         $listResults.append(text);

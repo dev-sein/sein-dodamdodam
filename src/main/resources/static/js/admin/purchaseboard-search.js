@@ -118,7 +118,7 @@ function showList(data) {
         console.log("text 들어옴");
         var text = "";
         text += `
-            <tr onclick="redirectToDetail(${purchaseBoard.id})">
+            <tr>
                 <td>
                     <!-- 체크박스 -->
                     <div class="checkbox-wrapper-21">
@@ -129,12 +129,12 @@ function showList(data) {
                     </div>
                     <!-- 체크박스 -->
                 </td>
-                <td class="numbers">${purchaseBoard.id}</td>
-                <td>${purchaseBoard.boardTitle}</td>
-                <td>${purchaseBoard.memberDTO.memberName}</td>
-                <td>${purchaseBoard.productDTO.productCount}개</td>
-                <td>${purchaseBoard.productDTO.productPrice}원</td>
-                 <td>${formatDate(new Date(purchaseBoard.createdDate))}</td>
+                <td onclick="redirectToDetail(${purchaseBoard.id})" class="numbers">${purchaseBoard.id}</td>
+                <td onclick="redirectToDetail(${purchaseBoard.id})">${purchaseBoard.boardTitle}</td>
+                <td onclick="redirectToDetail(${purchaseBoard.id})">${purchaseBoard.memberDTO.memberName}</td>
+                <td onclick="redirectToDetail(${purchaseBoard.id})">${purchaseBoard.productDTO.productCount}개</td>
+                <td onclick="redirectToDetail(${purchaseBoard.id})">${purchaseBoard.productDTO.productPrice}원</td>
+                <td onclick="redirectToDetail(${purchaseBoard.id})">${formatDate(new Date(purchaseBoard.createdDate))}</td>
                 <!-- <td>2000.01.01 21:05:04</td>-->
                 <!-- <td><button class="show-detail" onclick="showModal()">상세보기</button></td> -->
             </tr>
@@ -150,3 +150,40 @@ getList();
 function redirectToDetail(id) {
     window.location.href = "/admins/purchase-board/detail/" + id;
 }
+
+
+/*항목 삭제*/
+$(document).ready(function() {
+    // 삭제 버튼 클릭 시
+    $('.delete-button').click(function() {
+        var selectedItems = [];
+        // 체크된 항목의 ID를 배열에 추가
+        $('input.substituted.select-member:checked').each(function() {
+            var purchaseId = $(this).closest('tr').find('.numbers').text();
+            selectedItems.push(parseInt(purchaseId));
+        });
+
+        // 선택된 항목이 없는 경우 경고창을 표시하고 함수를 종료
+        if (selectedItems.length === 0) {
+            alert('삭제할 항목을 선택해주세요.');
+            return;
+        }
+        $('#delete-modal').show(); //삭제 모달창 열기
+        $('#confirm-btn').click(function() { //모달창의 확인 버튼 눌렀을 경우 데이터 삭제
+            $.ajax({
+                url: '/admins/purchase-board/delete',
+                type: 'DELETE',
+                contentType: 'application/json',
+                data: JSON.stringify(selectedItems),
+                success: function (response) {
+                    // alert(response); // 서버로부터의 응답 메시지를 알림으로 표시(모달로 바꾸기)
+                    location.reload() //삭제완료 후 새로고침
+                },
+                error: function (xhr, status, error) {
+                    alert('오류가 발생했습니다. 다시 시도해주세요.');
+                    console.log(error);
+                }
+            });
+        });
+    });
+});

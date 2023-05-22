@@ -25,6 +25,7 @@ public class BannerApply extends Period {
     private Long id;
     private LocalDate bannerRegisterDate;
     private int period;
+
     // 수락대기, 수락, 수락거절
     @ColumnDefault("'WAITING'")
     @Enumerated(EnumType.STRING)

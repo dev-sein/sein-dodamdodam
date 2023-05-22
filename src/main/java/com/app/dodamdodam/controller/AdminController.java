@@ -19,6 +19,7 @@ import com.app.dodamdodam.service.board.recruitmentBoard.RecruitmentBoardService
 import com.app.dodamdodam.service.inquiry.InquiryService;
 import com.app.dodamdodam.service.member.MemberService;
 import com.app.dodamdodam.service.point.PointService;
+import com.app.dodamdodam.type.BannerType;
 import com.app.dodamdodam.type.MemberStatus;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -255,6 +256,18 @@ public class AdminController {
         BannerDTO bannerDTO = bannerApplyService.getAdminBannerDetail(bannerApplyId);
         model.addAttribute("bannerDTO", bannerDTO);
         return "admin/banner-detail";
+    }
+
+
+    @PatchMapping("banner/complete")
+    @ResponseBody // 배너 수락(상태 변경)
+    public ResponseEntity<String> setBannerStatus(@RequestBody List<Long> ids, BannerType bannerStatus){
+        log.info(ids+"");
+        bannerApplyService.setBannerStatus(ids, bannerStatus);
+        bannerApplyService.setBannerStatus(ids, bannerStatus);
+        log.info(bannerStatus+"");
+        log.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@22");
+        return ResponseEntity.ok("회원 상태 변경 완료하였습니다");
     }
 
     @DeleteMapping("banner/delete") //모집 게시글 삭제
