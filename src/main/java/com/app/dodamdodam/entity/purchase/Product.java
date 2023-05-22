@@ -20,11 +20,9 @@ public class Product {
 //    상품개수
     @NotNull private Long productCount;
 
-//    @OneToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "PURCHASE_BOARD_ID")
-//    private PurchaseBoard purchaseBoard;
-    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.REMOVE, CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name = "PURCHASE_BOARD_ID")
+
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.REMOVE, CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "product")
     private PurchaseBoard purchaseBoard;
 
 //    @OneToOne(fetch = FetchType.LAZY)
@@ -44,5 +42,19 @@ public class Product {
         this.productPrice = productPrice;
         this.productCount = productCount;
         this.purchaseBoard = purchaseBoard;
+    }
+
+    @Builder
+    public Product(Long id, String productName, Integer productPrice, Long productCount, PurchaseBoard purchaseBoard, Purchase purchase) {
+        this.id = id;
+        this.productName = productName;
+        this.productPrice = productPrice;
+        this.productCount = productCount;
+        this.purchaseBoard = purchaseBoard;
+        this.purchase = purchase;
+    }
+
+    public void setPurchase(Purchase purchase) {
+        this.purchase = purchase;
     }
 }

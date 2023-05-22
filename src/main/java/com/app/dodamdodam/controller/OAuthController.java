@@ -1,0 +1,41 @@
+package com.app.dodamdodam.controller;
+
+import com.app.dodamdodam.domain.MemberDTO;
+import com.app.dodamdodam.entity.member.Member;
+import com.app.dodamdodam.provider.UserDetail;
+import com.app.dodamdodam.service.member.MemberService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
+
+import javax.servlet.http.HttpSession;
+import java.util.Optional;
+
+@Controller
+@Slf4j
+@RequiredArgsConstructor
+public class OAuthController {
+
+    private final MemberService memberService;
+
+    @GetMapping("/")
+    public RedirectView oAuthLogin(HttpSession session, RedirectAttributes redirectAttributes){
+        log.info(" ------------------- 로그인 처리 후 맨 마지막 컨트롤러 ------------------------------------- ");
+        MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+        Long memberId = (Long) session.getAttribute("id");
+        log.info("==================================================");
+        log.info(memberDTO + "");
+        log.info(memberId + "");
+        if (memberDTO.getId() == null) {
+            redirectAttributes.addFlashAttribute("member", memberDTO);
+            return new RedirectView("/member/join");
+        }
+        return new RedirectView("/home");
+
+    }
+}

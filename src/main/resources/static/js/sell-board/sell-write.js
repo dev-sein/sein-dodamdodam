@@ -1,3 +1,13 @@
+const $boardTitle = $('.input-title'); // 제목
+const $boardContent = $('.content-textarea'); // 내용
+const $productPrice = $('.price-margin'); // 가격
+const $productName = $('#input-name'); // 상품명
+const $productCount = $('#input-count'); // 상품수
+HTMLCollection.prototype.forEach = Array.prototype.forEach;
+Object.prototype.forEach = Array.prototype.forEach;
+
+const fileArray = new Array();
+
 document.querySelector(".btn-attach-thumb").addEventListener("click", function () {
     const currentImageCount = document.querySelectorAll(".file-add-boxes img").length;
     if (currentImageCount < 5) {
@@ -13,11 +23,14 @@ document.querySelector(".btn-attach-thumb").addEventListener("click", function (
       document.getElementById("imgFile").value = "";
     });
   }
-  
+
+
   document.getElementById("imgFile").addEventListener("change", function (e) {
     const files = e.target.files;
     const fileBoxWrap = document.getElementById("fileBoxWrap");
-  
+    let formData = new FormData(); // input 태그 담는 폼
+
+
     for (let i = 0; i < files.length; i++) {
       const currentImageCount = document.querySelectorAll(".file-add-boxes img").length;
       const remainingImageSlots = 5 - currentImageCount;
@@ -26,9 +39,11 @@ document.querySelector(".btn-attach-thumb").addEventListener("click", function (
         showModal();
         break;
       }
-  
+
       const file = files[i];
       const reader = new FileReader();
+
+      formData.append("file", file);
   
       reader.onload = function (e) {
         const fileAddBox = document.createElement("div");
@@ -62,6 +77,41 @@ document.querySelector(".btn-attach-thumb").addEventListener("click", function (
         break;
       }
     }
+
+    $.ajax({
+      url: '/file/upload',
+      data: formData,
+      method: 'post',
+      processData: false,
+      contentType: false,
+      success: function (result) {
+        if(result){
+          console.log(result);
+          for (let i = 0; i < result.uuids.length; i++) {
+            let file = new Object();
+
+            file.filePath = result.paths[i];
+            file.fileUuid = result.uuids[i];
+            file.fileOriginalName = result.fileOriginalNames[i];
+
+            fileArray.push(file);
+          }
+          // result.forEach((result, i) => {
+          //   let file = new Object();
+          //
+          //   file.filePath = result.paths[i];
+          //   file.fileUuid = result.uuids[i];
+          //   file.fileOrgName = result.orgNames[i];
+          //
+          //   fileArray.push(file);
+          //   console.log("fileArray");
+          //   console.log(fileArray);
+          // });
+        }
+      }
+    });
+
+
   });
   
   function showModal() {
@@ -76,24 +126,31 @@ document.querySelector(".btn-attach-thumb").addEventListener("click", function (
 
 
   /* 모든 항목 입력 확인 js */
-  document.querySelector(".button-button").addEventListener("click", function () {
+  document.querySelector(".button-button").addEventListener("click", function (event) {
+    console.log("버튼 클릭은 인지함?")
+    event.preventDefault();
+
     const imgFiles = document.getElementById("imgFile").files;
     const inputTitle = document.querySelector(".input-content");
     const inputCount = document.querySelector(".input-content");
+    const inputName = document.querySelector("#input-name");
     const inputPrice = document.querySelector(".input-content.price-margin");
     const contentTextarea = document.querySelector(".content-textarea");
+
 
     if (
         imgFiles.length === 0 ||
         inputTitle.value.trim() === "" ||
         inputCount.value.trim() === "" ||
+        inputName.value.trim() === "" ||
         inputPrice.value.trim() === "" ||
         contentTextarea.value.trim() === ""
     ) {
         showModalWithMessage("필수 항목을 작성해주세요");
     } else {
-        // 저장 로직을 여기에 추가해주세요.
+      // 저장 로직을 여기에 추가해주세요.
         showModalWithMessage("판매글이 등록되었습니다");
+        writeBoard();
     }
 });
 
@@ -109,4 +166,35 @@ function showModalWithMessage(message) {
     };
 }
 
+
+
+function writeBoard(){
+
+  console.log(fileArray);
+  let purchaseBoardDTO = {
+  boardTitle : $boardTitle.val(),
+  boardContent : $boardContent.val(),
+  purchaseFileDTOs : fileArray,
+  productDTO : {
+      productPrice : $productPrice.val() * 1.0,
+      productName : $productName.val(),
+      productCount : $productCount.val() * 1.0
+    }
+  };
+  console.log(purchaseBoardDTO.boardTitle);
+  console.log(purchaseBoardDTO.boardTitle);
+  console.log(purchaseBoardDTO.productDTO.productName);
+  console.log(purchaseBoardDTO.productDTO.productCount);
+  console.log(purchaseBoardDTO.productDTO.productPrice);
+  $.ajax({
+    url: '/purchase/write',
+    data: JSON.stringify(purchaseBoardDTO),
+    method: 'post',
+    processData: false,
+    contentType: 'application/json',
+    success: function() {
+      location.href='/purchase/list';
+    }
+  });
+}
   

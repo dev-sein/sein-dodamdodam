@@ -7,6 +7,7 @@ import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.point.Point;
 import com.app.dodamdodam.entity.banner.BannerApply;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
+import com.app.dodamdodam.provider.UserDetail;
 import com.app.dodamdodam.repository.banner.BannerRepository;
 import com.app.dodamdodam.repository.board.free.FreeBoardRepository;
 import com.app.dodamdodam.repository.board.purchase.PurchaseBoardRepository;
@@ -15,41 +16,39 @@ import com.app.dodamdodam.repository.member.MemberRepository;
 import com.app.dodamdodam.repository.point.PointRepository;
 import com.app.dodamdodam.search.member.AdminMemberSearch;
 import com.app.dodamdodam.type.MemberStatus;
+import com.app.dodamdodam.type.Role;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+
 @Service
 @RequiredArgsConstructor
+@Slf4j
 @Transactional
-public class MemberServiceImpl implements MemberService{
-    @Autowired
-    private MemberRepository memberRepository;
+public class MemberServiceImpl implements MemberService/*, OAuth2UserService<OAuth2UserRequest, OAuth2User>*/ {
 
-    @Autowired
-    private PointRepository pointRepository;
-
-    @Autowired
-    private FreeBoardRepository freeBoardRepository;
-
-    @Autowired
-    private PurchaseBoardRepository purchaseBoardRepository;
-
-    @Autowired
-    private RecruitmentBoardRepository recruitmentBoardRepository;
-
-    @Autowired
-    private BannerRepository bannerRepository;
+    private final HttpSession httpSession;
+    private final MemberRepository memberRepository;
+    private final PointRepository pointRepository;
+    private final FreeBoardRepository freeBoardRepository;
+    private final PurchaseBoardRepository purchaseBoardRepository;
+    private final RecruitmentBoardRepository recruitmentBoardRepository;
+    private final BannerRepository bannerRepository;
 
     /* 로그인 된 유저 정보 */
     @Override
@@ -58,6 +57,62 @@ public class MemberServiceImpl implements MemberService{
     }
 //    public Optional<Member> getMemberInfo(Long memberId) {
 //        return memberRepository.findById(memberId);
+//    }
+
+    @Override
+    public void join(MemberDTO memberDTO, PasswordEncoder passwordEncoder) {
+        memberDTO.setMemberPassword(passwordEncoder.encode(memberDTO.getMemberPassword()));
+        memberDTO.setMemberRole(Role.MEMBER);
+//        if (memberDTO.getMemberType() == null) {
+//            memberDTO.setMemberType(MemberType.GENERAL);
+//        } else {
+//            memberDTO.setMemberType(memberDTO.getMemberType());
+//        }
+        memberDTO.setMemberStatus(MemberStatus.NORMAL);
+        memberRepository.save(toMemberEntity(memberDTO));
+    }
+
+    /* 아이디 중복 검사 */
+    @Override
+    public String checkMemberId(String memberId) {
+        String result = null;
+
+        Optional<Member> optionalMember = memberRepository.findMemberByMemberId_QueryDSL(memberId);
+        if (!optionalMember.isPresent()){
+            result = "available";
+        }
+
+        return result;
+    }
+
+    /* 이메일 중복 검사 */
+    @Override
+    public String checkMemberEmail(String memberEmail) {
+        String result = null;
+
+        Optional<Member> optionalMember = memberRepository.findByMemberEmail(memberEmail);
+        if (!optionalMember.isPresent()){
+            result = "available";
+        }
+
+        return result;
+    }
+
+    /* 이메일 중복 검사 */
+    @Override
+    public String checkMemberPhone(String memberPhone) {
+        String result = null;
+
+        Optional<Member> optionalMember = memberRepository.findByMemberPhone(memberPhone);
+        if (!optionalMember.isPresent()){
+            result = "available";
+        }
+
+        return result;
+    }
+//    @Override
+//    public Optional<Member> getMemberByMemberEmail(String memberEmail){
+//        return memberRepository.findByMemberEmail(memberEmail);
 //    }
 
     /* 내 포인트 내역 */
@@ -148,6 +203,32 @@ public class MemberServiceImpl implements MemberService{
 
     }
 
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//        화면에서 입력한 회원 아이디를 통해 조회된 정보 (로그인 검사에 사용된다.)
+        log.info("loadUserByUsername 진입");
+//        Member member = memberRepository.findMemberByMemberId_QueryDSL(username).orElseThrow(() -> new UsernameNotFoundException(username + " not found"));
+        log.info(username);
+        Member member = memberRepository.findByMemberId(username).orElseThrow(() -> new UsernameNotFoundException(username + " not found"));
+
+        log.info("==================================");
+        log.info(String.valueOf(member.getId()));
+        log.info(String.valueOf(member.getMemberId()));
+        log.info(String.valueOf(member.getMemberPassword()));
+        log.info(String.valueOf(member.getMemberEmail()));
+        log.info(member.getMemberRole().toString());
+        log.info(String.valueOf(member.getRoleKey()));
+        log.info(member.getAddress().toString());
+        log.info("==================================");
+
+        return UserDetail.builder()
+                .id(member.getId())
+                .memberId(member.getMemberId())
+                .memberPassword(member.getMemberPassword())
+                .memberRole(member.getMemberRole())
+                .build();
+    }
     /* 멤버 상태 변경*/
     @Override
     public void setMemberStatus(List<Long> ids, MemberStatus memberStatus) {

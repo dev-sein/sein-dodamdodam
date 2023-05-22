@@ -53,6 +53,17 @@ public class Member extends Period {
 //    @OneToMany(fetch = FetchType.LAZY, mappedBy = "member", cascade = CascadeType.REMOVE)
 //    private List<Recruitment> recruitments = new ArrayList<>();
 
+//    public Member(String memberId, String memberPassword, String memberName, String memberEmail, String memberPhone, Address address, MemberStatus memberStatus, MemberType memberType, Role memberRole) {
+//        this.memberId = memberId;
+//        this.memberPassword = memberPassword;
+//        this.memberName = memberName;
+//        this.memberEmail = memberEmail;
+//        this.memberPhone = memberPhone;
+//        this.address = address;
+//        this.memberStatus = memberStatus;
+//        this.memberType = memberType;
+//        this.memberRole = memberRole;
+//    }
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "member", cascade = CascadeType.REMOVE)
     private List<EventBoard> eventBoards;
 
@@ -73,6 +84,28 @@ public class Member extends Period {
         this.eventBoards = eventBoards;
     }
 
+//    @Builder
+//    public Member(String memberName, String memberPhone, String memberEmail, Role memberRole, MemberStatus memberStatus, MemberType memberType) {
+//        this.memberName = memberName;
+//        this.memberPhone = memberPhone;
+//        this.memberEmail = memberEmail;
+//        this.memberRole = memberRole;
+//        this.memberStatus = memberStatus;
+//        this.memberType = memberType;
+//    }
+
+    public Member update(String memberName, String memberPhone, String memberEmail, MemberType memberType){
+        this.memberName = memberName;
+        this.memberPhone = memberPhone;
+        this.memberEmail = memberEmail;
+        this.memberType = memberType;
+
+        return this;
+    }
+
+    public String getRoleKey() {
+        return this.memberRole.getSecurityRole();
+    }
     public void setMemberEmail(String memberEmail) {
         this.memberEmail = memberEmail;
     }
@@ -112,5 +145,4 @@ public class Member extends Period {
     public Integer getParticipationCount() {
         return participationCount;
     }
-    /* 추가 */
 }

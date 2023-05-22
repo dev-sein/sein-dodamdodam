@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,8 +9,8 @@
      <link rel="preconnect" href="https://fonts.googleapis.com">
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-     <link rel="stylesheet" href="../../static/css/sell/sell-write.css">
-     <link rel="shortcut icon" href="/static/images/components/dodam-favicon.png">
+     <link rel="stylesheet" href="/css/sell/sell-write.css">
+     <link rel="shortcut icon" href="/images/components/dodam-favicon.png">
 </head>
 <body>
 
@@ -36,7 +36,7 @@
                 <h2 class="goodsContainer-title">상품 등록</h2>
                 <p class="goodsContainer-description">등록하시는 상품을 소개해 주세요</p>
             </div>
-            <form action="">
+            <form>
                 <!-- 소개하는 사진 등록하는 섹션 -->
                 <section>
                     <div>
@@ -60,20 +60,29 @@
                 <!-- 제목이 들어갈 섹션 -->
                 <section>
                     <div>
-                        <h2 class="section-title">상품 판매 제목</h2>
+                        <h2 class="section-title">상품 판매 게시글 제목</h2>
                         <div class="section-description">상품의 제목으로 써지는 글이에요. 상품을 소개해 주세요.</div>
                         <div class="content-section">
-                            <input class="input-title" type="text" name="" placeholder="제목을 입력해 주세요.">
+                            <input class="input-title" type="text" name="purchaseBoardDTO.boardTitle" placeholder="제목을 입력해 주세요.">
                         </div>
                     </div>
                 </section>
                 <!-- 개수가 들어갈 섹션 -->
                 <section>
                     <div>
+                        <h2 class="section-title">상품명</h2>
+                        <div class="section-description">회원님이 판매하시는 상품명을 적어주세요.</div>
+                        <div class="content-section">
+                            <input class="input-count" id="input-name" type="text" name="puchaseBoardDTO.productName" placeholder="판매하시는 상품의 이름을 적어주세요.">
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div>
                         <h2 class="section-title">상품 개수</h2>
                         <div class="section-description">회원님이 원하시는 판매수량을 적어주세요.</div>
                         <div class="content-section">
-                            <input class="input-count" type="text" name="" placeholder="판매하시는 상품의 개수를 적어주세요.">
+                            <input class="input-count" id="input-count" type="text" name="productDTO.productCount" placeholder="판매하시는 상품의 개수를 적어주세요." onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
                             <span class="text-field">개</span>
                         </div>
                     </div>
@@ -82,9 +91,9 @@
                 <section>
                     <div>
                         <h2 class="section-title">가격 등록</h2>
-                        <div class="section-description">최소 50만 원 ~ 최대 1억 원 사이에서 설정해 주세요.</div>
+                        <div class="section-description">상품 하나당 가격을 설정해 주세요.</div>
                         <div class="content-section">
-                            <input class="input-content price-margin" type="text" name="" placeholder="가격을 설정해 주세요.">
+                            <input class="input-content price-margin" type="text" name="productDTO.productPrice" placeholder="가격을 설정해 주세요." onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
                             <span class="text-field">원</span>
                         </div>
                     </div>
@@ -93,7 +102,7 @@
                 <section>
                     <h2 class="section-title">상품 스토리</h2>
                     <div class="section-description">스토리를 작성하면 내외부 포털 검색 결과에 상위 노출될 확률이 높아져요.</div>
-                    <textarea name="" class="content-textarea" placeholder="내용을 입력해주세요."></textarea>
+                    <textarea name="purchaseBoardDTO.boardContent" class="content-textarea" placeholder="내용을 입력해주세요."></textarea>
                 </section>
                 <!-- 버튼 -->
                 <div class="button-wrapper">
@@ -106,5 +115,5 @@
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-<script src="../../static/js/sell-board/sell-wright.js"></script>
+<script src="/js/sell-board/sell-write.js"></script>
 </html>

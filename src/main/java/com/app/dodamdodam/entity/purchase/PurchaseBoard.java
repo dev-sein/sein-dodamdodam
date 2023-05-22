@@ -14,18 +14,10 @@ import java.util.List;
 @Table(name = "TBL_PURCHASE_BOARD")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class PurchaseBoard extends Board {
-//    @Id
-//    @GeneratedValue
-//    @EqualsAndHashCode.Include
-//    private Long id;
-//    private Integer purchasePrice;
-//    @NotNull private Integer purchaseCount;
 
-//    @OneToOne(fetch = FetchType.LAZY, mappedBy = "purchaseBoard", cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
-//    private Product product;
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "purchaseBoard", cascade = {CascadeType.REMOVE, CascadeType.PERSIST, CascadeType.MERGE})
+    @OneToOne(fetch = FetchType.LAZY,  cascade = {CascadeType.REMOVE, CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name = "PRODUCT_ID")
     private Product product;
-//    private Integer purchasePrice;
 
     @OneToMany(fetch = FetchType.LAZY,
             mappedBy = "purchaseBoard",
@@ -43,8 +35,8 @@ public class PurchaseBoard extends Board {
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
-    public PurchaseBoard(String boardTitle, String boardContent) {
-        super(boardTitle, boardContent);
+    public PurchaseBoard(Long id, String boardTitle, String boardContent) {
+        super(id, boardTitle, boardContent);
     }
 
     public void setProduct(Product product) {
@@ -53,6 +45,18 @@ public class PurchaseBoard extends Board {
 
     public void setMember(Member member) {
         this.member = member;
+    }
+
+    @Builder
+    public PurchaseBoard(Long id, String boardTitle, String boardContent, Product product, List<PurchaseFile> purchaseFiles, Member member) {
+        super(id, boardTitle, boardContent);
+        this.product = product;
+        this.purchaseFiles = purchaseFiles;
+        this.member = member;
+    }
+
+    public void setPurchaseFiles(List<PurchaseFile> purchaseFiles) {
+        this.purchaseFiles = purchaseFiles;
     }
 
 }

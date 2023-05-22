@@ -122,7 +122,7 @@ public class FreeBoardController {
         log.info("수정 들어옴");
         log.info(updatedBoard.toString());
 
-        FreeBoard updatedFreeBoard = new FreeBoard(updatedBoard.getBoardTitle(), updatedBoard.getBoardContent(), updatedBoard.getFreeCategory());
+        FreeBoard updatedFreeBoard = new FreeBoard(updatedBoard.getId(), updatedBoard.getBoardTitle(), updatedBoard.getBoardContent(), updatedBoard.getFreeCategory());
         freeBoardService.updateFreeBoard(updatedFreeBoard, boardId);
         return new RedirectView("/free/detail/{boardId}");
     }
