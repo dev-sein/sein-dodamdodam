@@ -21,17 +21,33 @@ public class EventReply extends Reply {
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
+//    @Builder
+//    public EventReply(Long id, String replyContent, Member member, EventBoard eventBoard, Member member1) {
+//        super(id, replyContent, member);
+//        this.eventBoard = eventBoard;
+//        this.member = member1;
+//    }
+//
+//    public EventReply(String replyContent, Member member, EventBoard eventBoard, Member member1) {
+//        super(replyContent, member);
+//        this.eventBoard = eventBoard;
+//        this.member = member1;
+//    }
+
     @Builder
-    public EventReply(Long id, String replyContent, Member member, EventBoard eventBoard, Member member1) {
-        super(id, replyContent, member);
+    public EventReply(EventBoard eventBoard) {
         this.eventBoard = eventBoard;
-        this.member = member1;
     }
 
-    public EventReply(String replyContent, Member member, EventBoard eventBoard, Member member1) {
+    @Builder
+    public EventReply(String replyContent) {
+        super.setReplyContent(replyContent);
+    }
+
+    @Builder
+    public EventReply(String replyContent, Member member, EventBoard eventBoard) {
         super(replyContent, member);
         this.eventBoard = eventBoard;
-        this.member = member1;
     }
 
     public void setEventReplyContent(String replyContent) {
