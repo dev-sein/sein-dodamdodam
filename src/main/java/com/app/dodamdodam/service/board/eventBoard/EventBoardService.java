@@ -118,7 +118,7 @@ public interface EventBoardService {
                             .filePath(eventFile.getFilePath())
                             .fileUuid(eventFile.getFileUuid())
                             .fileSize(eventFile.getFileSize())
-                            .fileRepresent(eventFile.getFileRepresent())
+                            .fileType(eventFile.getFileType())
                             .build();
                     eventFileDTOS.add(eventFileDTO);
                 }
@@ -131,7 +131,7 @@ public interface EventBoardService {
                 .id(eventFileDTO.getId())
                 .fileOriginalName(eventFileDTO.getFileOriginalName())
                 .filePath(eventFileDTO.getFilePath())
-                .fileRepresent(eventFileDTO.getFileRepresent())
+                .fileRepresent(eventFileDTO.getFileType())
                 .fileSize(eventFileDTO.getFileSize())
                 .fileUuid(eventFileDTO.getFileUuid())
                 .build();

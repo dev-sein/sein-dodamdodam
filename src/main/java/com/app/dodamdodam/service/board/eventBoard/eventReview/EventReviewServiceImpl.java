@@ -1,9 +1,9 @@
 package com.app.dodamdodam.service.board.eventBoard.eventReview;
 
 import com.app.dodamdodam.domain.EventReviewDTO;
-import com.app.dodamdodam.entity.event.EventReview;
+import com.app.dodamdodam.entity.event.EventReply;
 import com.app.dodamdodam.entity.reply.Reply;
-import com.app.dodamdodam.repository.board.event.review.EventReviewRepository;
+import com.app.dodamdodam.repository.board.event.reply.EventReplyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Pageable;
@@ -18,12 +18,12 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Qualifier("eventBoard")
 public class EventReviewServiceImpl implements EventReviewService {
-    private final EventReviewRepository eventReviewRepository;
+    private final EventReplyRepository eventReviewRepository;
 
     @Override
     public Slice<EventReviewDTO> findAllByEventReviewId(Pageable pageable, Long id, Boolean isOrderByDate) {
         // 최신순
-        Slice<EventReview> eventReviewSlice = null;
+        Slice<EventReply> eventReviewSlice = null;
         isOrderByDate = isOrderByDate == null ? true : isOrderByDate;
 
         if(isOrderByDate) {
