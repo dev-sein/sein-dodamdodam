@@ -2,6 +2,7 @@ package com.app.dodamdodam.domain;
 
 import com.app.dodamdodam.entity.embeddable.Address;
 import com.app.dodamdodam.type.MemberStatus;
+import com.app.dodamdodam.type.MemberType;
 import com.app.dodamdodam.type.Role;
 import com.querydsl.core.annotations.QueryProjection;
 import lombok.Builder;
@@ -26,9 +27,11 @@ public class MemberDTO {
     private Integer participationCount;
     private LocalDateTime createdDate;
     private Role memberRole;
+    private MemberType memberType;
 
     @QueryProjection
-    public MemberDTO(Long id, String memberId, String memberPassword, String memberName, String memberEmail, String memberPhone, Address address, MemberStatus memberStatus, Integer memberPoint, Integer participationCount, LocalDateTime createdDate, Role memberRole) {
+
+    public MemberDTO(Long id, String memberId, String memberPassword, String memberName, String memberEmail, String memberPhone, Address address, MemberStatus memberStatus, Integer memberPoint, Integer participationCount, LocalDateTime createdDate, Role memberRole, MemberType memberType) {
         this.id = id;
         this.memberId = memberId;
         this.memberPassword = memberPassword;
@@ -41,6 +44,7 @@ public class MemberDTO {
         this.participationCount = participationCount;
         this.createdDate = createdDate;
         this.memberRole = memberRole;
+        this.memberType = memberType;
     }
     /* 추가 */
 }
