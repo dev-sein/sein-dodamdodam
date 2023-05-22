@@ -22,17 +22,18 @@ public class EventReply extends Reply {
     private Member member;
 
     @Builder
-    public EventReply(Long id, String replyContent, EventBoard eventBoard, Member member) {
-        super(id, replyContent);
+    public EventReply(Long id, String replyContent, Member member, EventBoard eventBoard, Member member1) {
+        super(id, replyContent, member);
         this.eventBoard = eventBoard;
-        this.member = member;
+        this.member = member1;
     }
 
-    public EventReply(String replyContent, EventBoard eventBoard, Member member) {
-        super(replyContent);
+    public EventReply(String replyContent, Member member, EventBoard eventBoard, Member member1) {
+        super(replyContent, member);
         this.eventBoard = eventBoard;
-        this.member = member;
+        this.member = member1;
     }
+
 
     public void setEventReplyContent(String replyContent) {
         super.setReplyContent(replyContent);

@@ -46,7 +46,6 @@ public interface EventBoardService {
                 .id(eventBoard.getId())
                 .boardTitle(eventBoard.getBoardTitle())
                 .boardContent(eventBoard.getBoardContent())
-                .eventStatus(eventBoard.getEventStatus())
                 .createdDate(eventBoard.getCreatedDate())
                 .updatedDate(eventBoard.getUpdatedDate())
                 .memberDTO(toMemberDTO(eventBoard.getMember()))
@@ -58,7 +57,6 @@ public interface EventBoardService {
         return EventBoardDTO.builder().id(eventBoard.getId()).boardTitle(eventBoard.getBoardTitle())
                 .boardContent(eventBoard.getBoardContent()).createdDate(eventBoard.getCreatedDate())
                 .eventAddress(eventBoard.getEventAddress()).eventAddressDetail(eventBoard.getEventAddressDetail())
-                .eventStatus(eventBoard.getEventStatus()).memberDTO(toMemberDTO(eventBoard.getMember()))
                 .build();
     }
 
@@ -91,8 +89,6 @@ public interface EventBoardService {
                 .eventEndDate(LocalDate.parse(eventBoardDTO.getEventEndDate()))
                 .eventAddressDetail(eventBoardDTO.getEventAddressDetail())
                 .eventAddress(eventBoardDTO.getEventAddress())
-                .eventLikeNumber(eventBoardDTO.getEventLikeNumber())
-                .eventReviewCount(eventBoardDTO.getEventLikeNumber())
                 .build();
     }
 
@@ -131,8 +127,6 @@ public interface EventBoardService {
                 .id(eventFileDTO.getId())
                 .fileOriginalName(eventFileDTO.getFileOriginalName())
                 .filePath(eventFileDTO.getFilePath())
-                .fileRepresent(eventFileDTO.getFileType())
-                .fileSize(eventFileDTO.getFileSize())
                 .fileUuid(eventFileDTO.getFileUuid())
                 .build();
     }

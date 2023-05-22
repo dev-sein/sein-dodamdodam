@@ -16,14 +16,13 @@ public class EventFile extends BoardFile {
     @ManyToOne(fetch = FetchType.LAZY)
     private EventBoard eventBoard;
 
-    @Builder
-    public EventFile(Long id, String fileOriginalName, String fileUuid, String filePath, FileType fileType, EventBoard eventBoard) {
-        super(id, fileOriginalName, fileUuid, filePath, fileType);
+    public EventFile(EventBoard eventBoard) {
         this.eventBoard = eventBoard;
     }
 
-    public EventFile(String fileOriginalName, String fileUuid, String filePath, FileType fileType, EventBoard eventBoard) {
-        super(fileOriginalName, fileUuid, filePath, fileType);
+    @Builder
+    public EventFile(Long id, String fileOriginalName, String fileUuid, String filePath, FileType fileType, Long fileSize, EventBoard eventBoard) {
+        super(id, fileOriginalName, fileUuid, filePath, fileType, fileSize);
         this.eventBoard = eventBoard;
     }
 
