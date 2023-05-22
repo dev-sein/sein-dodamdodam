@@ -2,8 +2,11 @@ package com.app.dodamdodam.controller.board.event;
 
 import com.app.dodamdodam.domain.EventBoardDTO;
 import com.app.dodamdodam.domain.EventFileDTO;
+import com.app.dodamdodam.entity.event.EventBoard;
+import com.app.dodamdodam.entity.event.EventReply;
 import com.app.dodamdodam.search.EventBoardSearch;
 import com.app.dodamdodam.service.board.eventBoard.EventBoardService;
+import com.app.dodamdodam.service.board.eventBoard.eventReply.EventReplyService;
 import com.app.dodamdodam.type.EventType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -30,8 +33,9 @@ import java.util.UUID;
 public class EventBoardController {
     @Qualifier
     private final EventBoardService eventBoardService;
+    private final EventReplyService eventReplyService;
 
-
+    /* 이벤트 게시판 메인 */
     @GetMapping("list")
     public String goList(Model model){
         log.info("@LLllllllllllllll");
@@ -79,7 +83,7 @@ public class EventBoardController {
         return "event-board/event-board-detail";
     }
 
-// 작성하기
+    // 작성하기
     @GetMapping("write")
     public String goToWriteForm(HttpSession session) {
         /*임시로 세션에 memberId 담아둠*/
@@ -137,5 +141,21 @@ public class EventBoardController {
             return null; // 예외 발생 시 null 반환 또는 예외 처리 방식에 맞게 수정
         }
     }
+
+    /* 이벤트 게시판 댓글 작성 */
+    @PostMapping("write-reply")
+    @ResponseBody
+    public Long writeReply(String replyContent, Long boardId, HttpSession session){
+        EventReply eventReply = new EventReply(replyContent);
+        log.info("=============================댓글작성들어옴=====================================");
+        log.info("이벤트 게시판 댓글 : " + replyContent);
+        log.info("게시판 ID : " + boardId);
+        Long memberId = (Long)session.getAttribute("memberId");
+        eventReplyService.saveEventBoardReply(eventReply, boardId, memberId);
+        Long replyCount = eventReplyService.getEventRepliesCountByBoardId(PageRequest.of(0, 5), boardId);
+        return replyCount;
+    }
+
+
 
 }

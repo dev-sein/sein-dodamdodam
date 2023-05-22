@@ -124,5 +124,11 @@ public class EventBoardQueryDslImpl implements EventBoardQueryDsl {
         return eventSearchs;
     }
 
+    /* 댓글 id로 자유게시글 접근해서 그 안에 달린 댓글 개수 가져오기 */
+    @Override
+    public Integer findReplyCountByReplyId_QueryDsl(Long replyId) {
+        return query.select(eventBoard.eventReplies.size()).from(eventBoard).where(eventBoard.eventReplies.any().id.eq(replyId)).fetchOne();
+    }
+
 
 }

@@ -60,7 +60,7 @@ public class BoardRepositoryTests {
     private FreeReplyRepository freeReplyRepository;
 
     @Autowired
-            private EventBoardRepository eventBoardRepository;
+    private EventBoardRepository eventBoardRepository;
 
     ArrayList<CategoryType> categoryTypes = new ArrayList<CategoryType>(Arrays.asList(CategoryType.ALL, CategoryType.CULTURE, CategoryType.DAILY, CategoryType.EVENT, CategoryType.PURCHASE, CategoryType.RECRUITMENT));
 
