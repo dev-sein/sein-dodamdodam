@@ -307,9 +307,9 @@ $(container).on({
     $(this).css("border-radius", "50%");
     $(this).css("background-color", "#135de6");
     $(this).css("display", "inline-block");
-    $(this).css("width", "35px");
-    $(this).css("height", "35px");
-    $(this).css("line-height", "35px");
+    $(this).css("width", "100%");
+    $(this).css("height", "100%");
+    // $(this).css("line-height", "35px");
     $(this).css("color", "white");
   }, "mouseout":function(){
     if(check) {return;}
@@ -332,9 +332,9 @@ $(container).on({
     $(this).css("border-radius", "50%");
     $(this).css("background-color", "#135de6");
     $(this).css("display", "inline-block");
-    $(this).css("width", "35px");
-    $(this).css("height", "35px");
-    $(this).css("line-height", "35px");
+    $(this).css("width", "100%");
+    $(this).css("height", "100%");
+    // $(this).css("line-height", "35px");
     $(this).css("color", "white");
   });
 

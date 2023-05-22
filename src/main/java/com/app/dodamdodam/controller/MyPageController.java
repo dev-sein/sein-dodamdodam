@@ -41,6 +41,7 @@ public class MyPageController {
         model.addAttribute("member",memberService.getMemberInfo(memberId));
 //        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
         model.addAttribute("point",memberService.getMyPointList(memberId));
+        model.addAttribute("myGrade",memberService.getMemberGrade(memberId));
         return"myPage/myPage-Main";
     }
 
@@ -54,6 +55,7 @@ public class MyPageController {
         model.addAttribute("member",memberService.getMemberInfo(memberId));
 //        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
         model.addAttribute("point",memberService.getMyPointList(memberId));
+        model.addAttribute("myGrade",memberService.getMemberGrade(memberId));
         return"myPage/mypage-main-test";
     }
 

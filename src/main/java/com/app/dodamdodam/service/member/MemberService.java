@@ -63,6 +63,9 @@ public interface MemberService {
     /* 캘린더 눌렀을 때 누른 날짜로 내가 참가한 모집게시글 리스트 가져오기 */
     public List<RecruitmentBoardFileDTO> getRecruitmentBoardListByMemberIdAndDate(Long memberId, LocalDate recruitmentDate);
     
+    /* 내 등급 가져오기 */
+    public String getMemberGrade(Long memberId);
+    
     /* 관리자 회원 변경*/
     public void setMemberStatus(List<Long> ids, MemberStatus memberStatus);
 

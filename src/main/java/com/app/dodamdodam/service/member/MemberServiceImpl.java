@@ -163,6 +163,13 @@ public class MemberServiceImpl implements MemberService{
         List<RecruitmentBoardFileDTO> recruitmentBoardFileDTOS = recruitmentBoards.stream().map(recruitmentBoard -> toRecruitmentBoardFileDto(recruitmentBoard)).collect(Collectors.toList());
         return recruitmentBoardFileDTOS;
     }
+
+    /* 내 등급 가져오기 */
+    @Override
+    public String getMemberGrade(Long memberId) {
+        return memberRepository.findAdminMemberDetail_QueryDSL(memberId);
+    }
+
     /* 관리자 멤버 검색 */
     @Override
     public Page<MemberDTO> showMemberWithSearch_QueryDSL(Pageable pageable, AdminMemberSearch adminMemberSearch) {
