@@ -1,9 +1,8 @@
 package com.app.dodamdodam.service.board.eventBoard;
 
 import com.app.dodamdodam.domain.EventBoardDTO;
-import com.app.dodamdodam.domain.EventFileDTO;
+import com.app.dodamdodam.domain.FileDTO;
 import com.app.dodamdodam.entity.event.EventBoard;
-import com.app.dodamdodam.entity.event.EventFile;
 import com.app.dodamdodam.exception.BoardNotFoundException;
 import com.app.dodamdodam.repository.board.event.board.EventBoardRepository;
 import com.app.dodamdodam.repository.board.event.file.EventFileRepository;
@@ -15,6 +14,7 @@ import com.app.dodamdodam.type.FileType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -27,9 +27,8 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-@Qualifier("eventBoard")
+@Qualifier("eventBoard") @Primary
 @Slf4j
-@Transactional
 public class EventBoardServiceImpl implements EventBoardService {
     private final EventBoardRepository eventBoardRepository;
     private final MemberRepository memberRepository;
@@ -42,38 +41,29 @@ public class EventBoardServiceImpl implements EventBoardService {
         });
         return eventBoardToDTO(eventBoard);
     }
-// 저장하기
-@Override
-public void write(EventBoardDTO eventBoardDTO, Long memberId) {
-    List<EventFileDTO> fileDTOS = eventBoardDTO.getFileDTOS();
 
-    memberRepository.findById(memberId).ifPresent(
-            member -> eventBoardDTO.setMemberDTO(toMemberDTO(member))
-    );
+    // 이벤트 게시판 등록
+    @Override @Transactional
+    public void register(EventBoardDTO eventBoardDTO, Long memberId) {
+        List<FileDTO> fileDTOS = eventBoardDTO.getFileDTOS();
 
-    EventBoard eventBoard = toEventBoardEntity(eventBoardDTO);
+        memberRepository.findById(memberId).ifPresent(
+                member -> eventBoardDTO.setMemberDTO(toMemberDTO(member))
+        );
 
-    // 이벤트 게시글 저장
-    EventBoard savedEventBoard = eventBoardRepository.save(eventBoard);
-
-    // 파일 정보 저장
-    if (fileDTOS != null) {
-        for (int i = 0; i < fileDTOS.size(); i++) {
-            EventFileDTO fileDTO = fileDTOS.get(i);
-
-            if (i == 0) {
-                fileDTO.setFileType(FileType.REPRESENT);
-            } else {
-                fileDTO.setFileType(FileType.ORDINARY);
+        eventBoardRepository.save(toEventBoardEntity(eventBoardDTO));
+        if(fileDTOS != null){
+            for (int i = 0; i < fileDTOS.size(); i++) {
+                if(i == 0){
+                    fileDTOS.get(i).setFileType(FileType.REPRESENTATIVE);
+                }else {
+                    fileDTOS.get(i).setFileType(FileType.NORMAL);
+                }
+                fileDTOS.get(i).setEventBoard(getCurrentSequence());
+                eventFileRepository.save(toEventFileEntity(fileDTOS.get(i)));
             }
-
-            EventFile eventFile = toEventFileEntity(fileDTO);
-            eventFile.setEventBoard(savedEventBoard); // 이벤트 게시글과 파일 연관 설정
-
-            eventFileRepository.save(eventFile);
         }
     }
-}
 //    현재 시퀀스 가져오기
     @Override
     public EventBoard getCurrentSequence() {
