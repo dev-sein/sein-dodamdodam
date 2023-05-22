@@ -13,20 +13,12 @@ $identificationInput.on('blur', function(){
 
 });
 $identificationInput.on("blur", function() {
-	// $.ajax({
-	// 	url: contextPath + "/user/checkIdOk.user",
-	// 	data: {userIdentification: $identificationInput.val()},
-	// 	success: function(result) {
-	// 		result = JSON.parse(result);
-	// 		/*console.log(result);*/
-	// 		if (result.check) {
-	// 			/*	alert("성공");*/
-	// 			$identificationWarning.text("중복된 아이디입니다.");
-	// 			$identificationWarning.css("display", "block");
-	// 			$identificationInput.css("border-color", "#f66");
-	// 			identificationFlag = false;
-	// 		}
-	var currentId = $identificationInput.val();
+	checkId();
+	completeAllCheck();
+});
+
+function checkId() {
+	let currentId = $identificationInput.val();
 	$.ajax({
 		url: '/member/check-id',
 		type: 'post',
@@ -42,12 +34,14 @@ $identificationInput.on("blur", function() {
 					$identificationWarning.css("display", "block");
 					$identificationInput.css("border-color", "#ff6666");
 					identificationFlag = false;
+					$identificationInput.focus();
 					// !isPhoneNum.test(mobile.value)
 				} else if (!regExp.test($identificationInput.val())) {
 					$identificationWarning.text("6~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.");
 					$identificationWarning.css("display", "block");
 					$identificationInput.css("border-color", "#f66");
 					identificationFlag = false;
+					$identificationInput.focus();
 				} else {
 					$identificationWarning.css("display", "none");
 					$identificationInput.css("border-color", "#dde2e6");
@@ -61,11 +55,11 @@ $identificationInput.on("blur", function() {
 				$('#id_already').css("display", "block");
 				$('#id_ok').css("display", "none");
 				identificationFlag = false;
+				$identificationInput.focus();
 			}
 		}
 	});
-	completeAllCheck();
-});
+}
 
 // 비밀번호 변수
 const $passwordInput = $("#password-input");
@@ -139,74 +133,6 @@ $passwordCheckInput.on("blur", function() {
 	completeAllCheck();
 });
 
-// const $nicknameInput = $("#nickname");
-// const $nicknameWarning = $(".nickname-error");
-// let nicknameFlag = false;
-// // 닉네임 확인 정규식 이벤트 사용 및 함수
-// $nicknameInput.on("blur", function() {
-// 	var $nicknameInputVal = $nicknameInput.val();
-// 	var $nicknameWarningVal = $nicknameWarning.val();
-
-// 	// $nicknameInput.css("border-color", "#f66");
-// 	// $nicknameInput.css("border-color", "#dde2e6");
-// 	if ($nicknameInputVal.length < 2) {
-// 		$nicknameWarning.text("최소 2자입니다.");
-// 		$nicknameWarning.css("display", "block");
-// 		$nicknameInput.css("border-color", "#f66");
-// 		nicknameFlag = false;
-// 	} else if ($nicknameInputVal.length > 20) {
-// 		$nicknameWarning.text("닉네임 최대 길이는 20자 입니다. 확인해 주세요.");
-// 		$nicknameWarning.css("display", "block");
-// 		$nicknameInput.css("border-color", "#f66");
-// 		nicknameFlag = false;
-// 	} else {
-// 		$nicknameWarning.css("display", "none");
-// 		$nicknameInput.css("border-color", "#dde2e6");
-// 		nicknameFlag = true;
-// 	}
-// 	completeAllCheck();
-// });
-
-
-// // 이메일 변수
-// const $emailInput = $("#email-input");
-// // 이메일 에러 변수
-// const $emailWarning = $(".email-error");
-// let emailFlag = false;
-// var emailPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-// // 이메일 정규식 이벤트 사용 및 함수
-// $emailInput.on("blur", function() {
-// 	$.ajax({
-// 		url: contextPath + "/user/checkEmailOk.user",
-// 		data: {userEmail: $emailInput.val()},
-// 		success: function(result) {
-// 			result = JSON.parse(result);
-// 			/*console.log(result);*/
-// 			if (result.check) {
-// 				$emailWarning.text("중복된 이메일입니다.");
-// 				$emailWarning.css("display", "block");
-// 				$emailInput.css("border-color", "#f66");
-// 				emailFlag = false;
-// 			} else if ($emailInput.val() < 1) {
-// 				$emailWarning.text("이메일을 입력해주세요.");
-// 				$emailWarning.css("display", "block");
-// 				$emailInput.css("border-color", "#f66");
-// 				emailFlag = false;
-
-// 			} else if (!emailPattern.test($emailInput.val())) {
-// 				$emailWarning.text("이메일 주소를 다시 확인해주세요.");
-// 				$emailWarning.css("display", "block");
-// 				$emailInput.css("border-color", "#f66");
-// 				emailFlag = false;
-// 			} else {
-// 				$emailWarning.css("display", "none");
-// 				$emailInput.css("border-color", "#dde2e6");
-// 				emailFlag = true;
-// 			}
-// 			completeAllCheck();
-// 			}
-// })
-// });
 
 // 이메일 변수
 const $emailInput = $("#email-input");
@@ -348,6 +274,8 @@ $checkBox.on("click", function() {
 		// $("#check-box").css("display", "block");
 		$checkBoxImage.css("display", "block");
 		check = true;
+		// checkId();
+		emailFlag = true;
 		completeAllCheck();
 		return false;
 	} else {

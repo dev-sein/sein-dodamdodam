@@ -75,6 +75,19 @@ PurchaseBoardRepositoryTests {
         }
 
     }*/
+    @Test
+    public void productSaveTest(){
+        PurchaseBoard purchaseBoard = purchaseBoardRepository.findById(23L).get();
+        Product product = Product.builder()
+                .productName("test상품")
+                .productCount(10L)
+                .productPrice(20)
+                .build();
+        purchaseBoard.setProduct(product);
+        product.setPurchaseBoard(purchaseBoard);
+
+        productRepository.save(product);
+    }
 
     @Test
     public void purchaseFileSaveTest(){

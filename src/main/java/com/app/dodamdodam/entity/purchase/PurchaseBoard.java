@@ -21,7 +21,8 @@ public class PurchaseBoard extends Board {
 //    private Integer purchasePrice;
 //    @NotNull private Integer purchaseCount;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "purchaseBoard", cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
+    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
+    @JoinColumn(name = "PRODUCT_ID")
     private Product product;
 //    private Integer purchasePrice;
 

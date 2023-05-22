@@ -22,13 +22,9 @@ public class Product {
 
 
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "PURCHASE_BOARD_ID")
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "product")
     private PurchaseBoard purchaseBoard;
 
-    public void setPurchaseBoard(PurchaseBoard purchaseBoard) {
-        this.purchaseBoard = purchaseBoard;
-    }
 
     public void setPurchase(Purchase purchase) {
         this.purchase = purchase;

@@ -50,7 +50,20 @@ public class PurchaseBoardServiceImpl implements PurchaseBoardService {
                 member -> purchaseBoardDTO.setMemberDTO(toMemberDTO(member))
         );
 
+        Product product = toProductEntity(productDTO);
+
+        log.info("product");
+        log.info(product + "");
+
+//        productRepository.save(product);
+
         PurchaseBoard purchaseBoard = purchaseBoardRepository.save(toPurchaseBoardEntity(purchaseBoardDTO));
+
+        log.info(purchaseBoard.getId() + "");
+//        Optional<PurchaseBoard> optionalPurchaseBoard = purchaseBoardRepository.findById(purchaseBoard.getId());
+//        optionalPurchaseBoard.ifPresent(purchaseBoard1 -> log.info(purchaseBoard1.toString()));
+
+
 
         log.info("purchaseFileDTOs.size()");
         log.info(purchaseFileDTOs.size() + "");
@@ -64,11 +77,7 @@ public class PurchaseBoardServiceImpl implements PurchaseBoardService {
                 purchaseFileRepository.save(purchaseFile);
             }
         }
-        Product product = toProductEntity(productDTO);
-        product.setPurchaseBoard(purchaseBoard);
 
-        log.info("product");
-        productRepository.save(product);
     }
 
     @Override

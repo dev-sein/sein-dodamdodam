@@ -193,7 +193,7 @@ function writeBoard(){
     processData: false,
     contentType: 'application/json',
     success: function() {
-      // location.href='/purchase/list';
+      location.href='/purchase/list';
     }
   });
 }
