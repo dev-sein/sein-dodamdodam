@@ -86,4 +86,7 @@ public class EventBoard extends Board{
         this.eventReplyCount = eventReplyCount;
     }
 
+    public void setMember(Member member) {
+        this.member = member;
+    }
 }
