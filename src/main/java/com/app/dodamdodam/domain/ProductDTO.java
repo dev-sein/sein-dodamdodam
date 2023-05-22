@@ -1,5 +1,6 @@
 package com.app.dodamdodam.domain;
 
+import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.querydsl.core.annotations.QueryProjection;
 import com.sun.istack.NotNull;
 import lombok.Builder;
@@ -12,6 +13,7 @@ public class ProductDTO {
     private String productName;
     private Integer productPrice;
     private Long productCount;
+//    private PurchaseBoard purchaseBoard;
 
     @QueryProjection
     public ProductDTO(Long id, String productName, Integer productPrice, Long productCount) {

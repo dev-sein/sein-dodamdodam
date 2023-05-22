@@ -24,6 +24,9 @@ public interface PurchaseBoardService {
 //    내가 작성한 판매 게시글 목록
     public List<PurchaseBoardFileDTO> getPurchaseBoardListByMemberId(Pageable pageable, Long memberId);
 
+//    저장
+    public void register(PurchaseBoardDTO purchaseBoardDTO, Long memberId);
+
 //    관리자 게시글 검색
     public Page<PurchaseBoardDTO> findPurchaseBoardWithSearch_QueryDSL(Pageable pageable, AdminPurchaseBoardSearch adminPurchaseBoardSearch);
 
@@ -41,7 +44,7 @@ public interface PurchaseBoardService {
                 .boardTitle(purchaseBoard.getBoardTitle())
                 .boardContent(purchaseBoard.getBoardContent())
                 .memberDTO(toMemberDTO(purchaseBoard.getMember()))
-                .productDTO(toProductDto(purchaseBoard.getProduct()))
+                .productDTO(toProductDTO(purchaseBoard.getProduct()))
                 .purchaseFileDTOs(
                         purchaseBoard.getPurchaseFiles().stream().map(e -> toPurchaseFileDTO(e)).collect(Collectors.toList())
                 )
@@ -66,7 +69,7 @@ public interface PurchaseBoardService {
                 .build();
     }
 
-    default ProductDTO toProductDto(Product product){
+    default ProductDTO toProductDTO(Product product){
         return ProductDTO.builder().id(product.getId())
                 .productName(product.getProductName())
                 .productPrice(product.getProductPrice())
@@ -83,7 +86,7 @@ public interface PurchaseBoardService {
                 .build();
     }
 
-    default PurchaseBoardFileDTO toPurchaseBoardFileDto(PurchaseBoard purchaseBoard){
+    default PurchaseBoardFileDTO toPurchaseBoardFileDTO(PurchaseBoard purchaseBoard){
         return PurchaseBoardFileDTO.builder()
                 .boardContent(purchaseBoard.getBoardContent())
                 .boardTitle(purchaseBoard.getBoardTitle())
@@ -94,4 +97,46 @@ public interface PurchaseBoardService {
                 .purchaseFileDTOS(purchaseBoard.getPurchaseFiles().stream().map(purchaseFile -> toPurchaseFileDTO(purchaseFile)).collect(Collectors.toList()))
                 .build();
     }
+
+    default Member toMemberEntity(MemberDTO memberDTO){
+        return Member.builder().id(memberDTO.getId())
+                .memberId(memberDTO.getMemberId())
+                .memberPassword(memberDTO.getMemberPassword())
+                .memberEmail(memberDTO.getMemberEmail())
+                .memberName(memberDTO.getMemberName())
+                .memberPhone(memberDTO.getMemberPhone())
+                .memberStatus(memberDTO.getMemberStatus())
+                .memberRole(memberDTO.getMemberRole())
+                .memberType(memberDTO.getMemberType())
+                .address(memberDTO.getAddress())
+                .build();
+
+
+    }
+    default Product toProductEntity(ProductDTO productDTO) {
+        return Product.builder().id(productDTO.getId())
+                .productName(productDTO.getProductName())
+                .productPrice(productDTO.getProductPrice())
+                .productCount(productDTO.getProductCount())
+                .build();
+    }
+    default PurchaseBoard toPurchaseBoardEntity(PurchaseBoardDTO purchaseBoardDTO){
+        return PurchaseBoard.builder().id(purchaseBoardDTO.getId())
+                .boardTitle(purchaseBoardDTO.getBoardTitle())
+                .boardContent(purchaseBoardDTO.getBoardContent())
+                .member(toMemberEntity(purchaseBoardDTO.getMemberDTO()))
+                .product(toProductEntity(purchaseBoardDTO.getProductDTO()))
+                .build();
+    }
+
+    default PurchaseFile toPurchaseFileEntity(PurchaseFileDTO purchaseFileDTO){
+        return PurchaseFile.builder().id(purchaseFileDTO.getId())
+                .fileOriginalName(purchaseFileDTO.getFileOriginalName())
+                .fileUuid(purchaseFileDTO.getFileUuid())
+                .filePath(purchaseFileDTO.getFilePath())
+                .fileSize(purchaseFileDTO.getFileSize())
+                .build();
+    }
+
+
 }

@@ -1,9 +1,9 @@
 package com.app.dodamdodam.entity.event;
 
 import com.app.dodamdodam.entity.board.Board;
-import com.app.dodamdodam.entity.free.FreeReply;
 import com.app.dodamdodam.entity.member.Member;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.app.dodamdodam.type.EventType;
 import com.sun.istack.NotNull;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
@@ -18,11 +18,10 @@ import java.util.List;
 @Entity
 @Getter @ToString(exclude = "member", callSuper = true)
 @Table(name = "TBL_EVENT_BOARD")
-@NoArgsConstructor
-        (access = AccessLevel.PROTECTED)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DynamicInsert
 @DynamicUpdate
-public class EventBoard extends Board{
+public class EventBoard extends Board {
 
 //    이벤트 게시글 비지니스 작성
     @NotNull private String eventAddress;
@@ -37,10 +36,10 @@ public class EventBoard extends Board{
     @ColumnDefault(value="0")
     private Integer eventReplyCount;
 
-//    //    진행전, 진행중, 진행마감
-//    @ColumnDefault("'HOLD'")
-//    @Enumerated(EnumType.STRING)
-//     private EventType eventStatus;
+//   진행전, 진행중, 진행마감
+    @ColumnDefault("'HOLD'")
+    @Enumerated(EnumType.STRING)
+     private EventType eventStatus;
 
      private String eventBusinessNumber;
      private String eventBusinessName;
@@ -61,8 +60,10 @@ public class EventBoard extends Board{
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
+
+
     @Builder
-    public EventBoard(Long id, String boardTitle, String boardContent, String eventAddress, String eventAddressDetail, LocalDate eventStartDate, LocalDate eventEndDate, Integer eventLikeCount, Integer eventReplyCount, String eventBusinessNumber, String eventBusinessName, String eventBusinessTel, String eventBusinessEmail, List<EventFile> eventFiles, Member member) {
+    public EventBoard(Long id, String boardTitle, String boardContent, String eventAddress, String eventAddressDetail, LocalDate eventStartDate, LocalDate eventEndDate, Integer eventLikeCount, Integer eventReplyCount, EventType eventStatus, String eventBusinessNumber, String eventBusinessName, String eventBusinessTel, String eventBusinessEmail, List<EventFile> eventFiles, Member member) {
         super(id, boardTitle, boardContent);
         this.eventAddress = eventAddress;
         this.eventAddressDetail = eventAddressDetail;
@@ -70,6 +71,7 @@ public class EventBoard extends Board{
         this.eventEndDate = eventEndDate;
         this.eventLikeCount = eventLikeCount;
         this.eventReplyCount = eventReplyCount;
+        this.eventStatus = eventStatus;
         this.eventBusinessNumber = eventBusinessNumber;
         this.eventBusinessName = eventBusinessName;
         this.eventBusinessTel = eventBusinessTel;
@@ -77,6 +79,8 @@ public class EventBoard extends Board{
         this.eventFiles = eventFiles;
         this.member = member;
     }
+
+
 
     public void setEventLikeCount(Integer eventLikeCount){
         this.eventLikeCount = eventLikeCount;

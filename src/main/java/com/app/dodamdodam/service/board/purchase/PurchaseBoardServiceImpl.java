@@ -1,20 +1,25 @@
 package com.app.dodamdodam.service.board.purchase;
 
+import com.app.dodamdodam.domain.ProductDTO;
 import com.app.dodamdodam.domain.PurchaseBoardDTO;
 import com.app.dodamdodam.domain.PurchaseBoardFileDTO;
-import com.app.dodamdodam.domain.RecruitmentBoardFileDTO;
-import com.app.dodamdodam.entity.free.FreeBoard;
+import com.app.dodamdodam.domain.PurchaseFileDTO;
+import com.app.dodamdodam.entity.purchase.Product;
 import com.app.dodamdodam.entity.purchase.PurchaseBoard;
-import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
+import com.app.dodamdodam.entity.purchase.PurchaseFile;
 import com.app.dodamdodam.repository.board.purchase.PurchaseBoardRepository;
-import com.app.dodamdodam.search.Inquiry.AdminInquirySearch;
+import com.app.dodamdodam.repository.file.purchase.PurchaseFileRepository;
+import com.app.dodamdodam.repository.member.MemberRepository;
+import com.app.dodamdodam.repository.product.ProductRepository;
 import com.app.dodamdodam.search.PurchaseBoardSearch;
 import com.app.dodamdodam.search.board.AdminPurchaseBoardSearch;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,8 +28,57 @@ import java.util.stream.Collectors;
 @Service
 @Qualifier("purchaseBoard") @Primary
 @RequiredArgsConstructor
+@Transactional
+@Slf4j
 public class PurchaseBoardServiceImpl implements PurchaseBoardService {
     private final PurchaseBoardRepository purchaseBoardRepository;
+    private final MemberRepository memberRepository;
+    private final PurchaseFileRepository purchaseFileRepository;
+    private final ProductRepository productRepository;
+
+    @Override
+    public void register(PurchaseBoardDTO purchaseBoardDTO, Long memberId) {
+        ProductDTO productDTO = purchaseBoardDTO.getProductDTO();
+        List<PurchaseFileDTO> purchaseFileDTOs = purchaseBoardDTO.getPurchaseFileDTOs();
+
+        log.info("==============================");
+        log.info("purchaseFileDTOs.toString()");
+        log.info(purchaseFileDTOs.toString());
+        log.info("==============================");
+
+        memberRepository.findById(memberId).ifPresent(
+                member -> purchaseBoardDTO.setMemberDTO(toMemberDTO(member))
+        );
+
+        Product product = toProductEntity(productDTO);
+
+        log.info("product");
+        log.info(product + "");
+
+//        productRepository.save(product);
+
+        PurchaseBoard purchaseBoard = purchaseBoardRepository.save(toPurchaseBoardEntity(purchaseBoardDTO));
+
+        log.info(purchaseBoard.getId() + "");
+//        Optional<PurchaseBoard> optionalPurchaseBoard = purchaseBoardRepository.findById(purchaseBoard.getId());
+//        optionalPurchaseBoard.ifPresent(purchaseBoard1 -> log.info(purchaseBoard1.toString()));
+
+
+
+        log.info("purchaseFileDTOs.size()");
+        log.info(purchaseFileDTOs.size() + "");
+        if(purchaseFileDTOs != null){
+            for (int i = 0; i < purchaseFileDTOs.size(); i++) {
+                PurchaseFile purchaseFile = toPurchaseFileEntity(purchaseFileDTOs.get(i));
+                purchaseFile.setPurchaseBoard(purchaseBoard);
+
+                log.info("purchaseFile.toString()");
+                log.info(purchaseFile.toString());
+                purchaseFileRepository.save(purchaseFile);
+            }
+        }
+
+    }
 
     @Override
     public Slice<PurchaseBoardDTO> getPurchaseBoardsWithSearch(PurchaseBoardSearch purchaseBoardSearch, Pageable pageable) {
@@ -42,7 +96,7 @@ public class PurchaseBoardServiceImpl implements PurchaseBoardService {
     @Override
     public List<PurchaseBoardFileDTO> getPurchaseBoardListByMemberId(Pageable pageable, Long memberId) {
         return purchaseBoardRepository.findPurchaseBoardListByMemberId_QueryDSL(pageable,memberId).stream()
-                .map(purchaseBoard -> toPurchaseBoardFileDto(purchaseBoard)).collect(Collectors.toList());
+                .map(purchaseBoard -> toPurchaseBoardFileDTO(purchaseBoard)).collect(Collectors.toList());
     }
 
     /* 관리자 검색 목록 */

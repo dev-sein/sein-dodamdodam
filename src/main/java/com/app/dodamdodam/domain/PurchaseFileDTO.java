@@ -1,5 +1,6 @@
 package com.app.dodamdodam.domain;
 
+import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.querydsl.core.annotations.QueryProjection;
 import lombok.Builder;
 import lombok.Data;
@@ -7,7 +8,6 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-@Builder
 public class PurchaseFileDTO {
     private Long id;
     private String fileOriginalName;
@@ -17,7 +17,7 @@ public class PurchaseFileDTO {
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
 
-    @QueryProjection
+    @QueryProjection @Builder
     public PurchaseFileDTO(Long id, String fileOriginalName, String fileUuid, String filePath, Long fileSize, LocalDateTime createdDate, LocalDateTime updatedDate) {
         this.id = id;
         this.fileOriginalName = fileOriginalName;
