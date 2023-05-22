@@ -1,9 +1,17 @@
 package com.app.dodamdodam.repository;
 
+import com.app.dodamdodam.entity.embeddable.Address;
 import com.app.dodamdodam.entity.event.EventBoard;
+import com.app.dodamdodam.entity.event.EventFile;
+import com.app.dodamdodam.entity.event.EventReply;
+import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.repository.board.event.board.EventBoardRepository;
 import com.app.dodamdodam.repository.board.event.file.EventFileRepository;
+import com.app.dodamdodam.repository.board.event.reply.EventReplyRepository;
 import com.app.dodamdodam.repository.member.MemberRepository;
+import com.app.dodamdodam.type.MemberStatus;
+import com.app.dodamdodam.type.MemberType;
+import com.app.dodamdodam.type.Role;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +20,7 @@ import org.springframework.test.annotation.Rollback;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
+import java.util.UUID;
 
 @SpringBootTest
 @Slf4j
@@ -24,18 +33,25 @@ public class EventBoardRepositoryTests {
     private MemberRepository memberRepository;
     @Autowired
     private EventFileRepository eventFileRepository;
+    @Autowired
+    private EventReplyRepository eventReplyRepository;
 
-
-
+    /* 이벤트 게시글 추가 */
     @Test
     public void saveTest(){
-//        Address address = new Address("test-address", "test-detail");
-//        Member member = new Member("test1234", "1234", "테스트", "test1234@gmail.com", "01012341234", address, MemberStatus.NORMAL, MemberType.GENERAL, Role.MEMBER);
+        /* 회원 추가 */
+//        for (int i=1; i<=10; i++) {
+//            Address address = new Address("서울시", "강남구");
 //
-//        memberRepository.save(member);
+//            Member member = Member.builder().memberName("테스트" + i).memberEmail("test" + i + "@naver.com").memberId("testId" + i)
+//                    .memberPassword("1234").memberPhone("01012341234").memberPoint(0).address(address)
+//                    .memberRole(Role.MEMBER).memberType(MemberType.GENERAL).memberStatus(MemberStatus.NORMAL)
+//                    .build();
+//            memberRepository.save(member);
+//        }
 
+        /* 이벤트 게시글 추가 */
         for(int i= 1; i<= 10; i ++){
-//            EventBoard eventBoard = new EventBoard("테스트제목" + i, "테스트내용"+ i);
             EventBoard eventBoard1 = EventBoard.builder()
                     .boardTitle("이벤트 게시글 제목" + i)
                     .boardContent("이벤트 게시글 내용" + i)
@@ -47,13 +63,14 @@ public class EventBoardRepositoryTests {
                     .eventBusinessTel("01012341234")
                     .eventStartDate((LocalDate.now()))
                     .eventEndDate(LocalDate.of(2023,6,20))
-                    .eventLikeNumber(0)
+                    .eventLikeCount(0)
+                    .eventReplyCount(0)
                     .build();
             memberRepository.findById(1L).ifPresent(member1 -> eventBoard1.setMember(member1));
 //            eventBoard.setMember(member);
 
 //            for(int j = 0; j < 5; j ++){
-//                EventFile eventFile = new EventFile(UUID.randomUUID().toString(), "test" + i+1, 10L, eventBoard,500, "");
+//                EventFile eventFile = new EventFile(UUID.randomUUID().toString(), "test" + i+1, 10L, eventBoard, 500, "");
 //                eventFileRepository.save(eventFile);
 //            }
 
@@ -61,16 +78,13 @@ public class EventBoardRepositoryTests {
         }
     }
 
-//
-
-
-    /*상세글 보기*/
+    /* 이벤트 게시글 상세글 */
     @Test
     public void findByIdTest(){
-        eventBoardRepository.findById(101L).map(EventBoard::toString).ifPresent(log::info);
+        eventBoardRepository.findById(1L).map(EventBoard::toString).ifPresent(log::info);
     }
 
-    /* 삭제*/
+    /* 이벤트 게시글 삭제 */
     @Test
     public void deleteTest(){
         eventBoardRepository.findById(101L).ifPresent(eventBoardRepository::delete);
@@ -78,19 +92,19 @@ public class EventBoardRepositoryTests {
 
     @Test
     public void findEventBoardById_QueryDSLTest(){
-        eventBoardRepository.findEventBoardById_QueryDSL(101L)
+        eventBoardRepository.findEventBoardById_QueryDSL(1L)
                 .ifPresent(eventBoard -> log.info(eventBoard.toString()));
     }
-//
-//    /*리뷰 저장*/
-//    @Test
-//    public void reviewSaveTest(){
-//        EventBoard eventBoard = eventBoardRepository.findById(101L).get();
-//        Member member = memberRepository.findById(101L).get();
-//        for(int i = 0; i<20; i++){
-//            EventReview eventReview = new EventReview("test" + (i+1),eventBoard, member);
-//        }
-//    }
+
+    /* 이벤트 게시글 댓글 추가 */
+    @Test
+    public void eventReplySaveTest(){
+        for(int i= 1; i<= 10; i ++) {
+            EventReply eventReply = new EventReply("댓글1" + i);
+            eventReply.setEventBoard(eventBoardRepository.findById(201L).get());
+            eventReplyRepository.save(eventReply);
+        }
+    }
 
 //    /*리뷰 저장*/
 //    @Test
