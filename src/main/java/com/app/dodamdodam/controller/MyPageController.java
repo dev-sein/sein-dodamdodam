@@ -38,7 +38,8 @@ public class MyPageController {
 //        임의로 세션에 memberId값 담아둠
         session.setAttribute("memberId", 5L);
         Long memberId =  (Long)session.getAttribute("memberId");
-        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
+        model.addAttribute("member",memberService.getMemberInfo(memberId));
+//        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
         model.addAttribute("point",memberService.getMyPointList(memberId));
         return"myPage/myPage-Main";
     }
@@ -50,7 +51,8 @@ public class MyPageController {
 //        임의로 세션에 memberId값 담아둠
         session.setAttribute("memberId", 5L);
         Long memberId =  (Long)session.getAttribute("memberId");
-        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
+        model.addAttribute("member",memberService.getMemberInfo(memberId));
+//        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
         model.addAttribute("point",memberService.getMyPointList(memberId));
         return"myPage/mypage-main-test";
     }
@@ -73,7 +75,8 @@ public class MyPageController {
         log.info("들어옴@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         session.setAttribute("memberId", 5L);
         Long memberId = (Long)session.getAttribute("memberId");
-        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
+        model.addAttribute("member",memberService.getMemberInfo(memberId));
+//        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
         model.addAttribute("points",memberService.getMyPointList(memberId));
 
         return"myPage/myPage-point";  /*테스트로 아무 페이지에나 보내봄*/
@@ -85,7 +88,8 @@ public class MyPageController {
         session.setAttribute("memberId", 5L);
         Long memberId = (Long)session.getAttribute("memberId");
 
-        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
+        model.addAttribute("member",memberService.getMemberInfo(memberId));
+//        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
 
         /* 내가 작성한 자유 게시글 개수 */
         model.addAttribute("freeBoardCount",memberService.getMyFreeBoardListCount(memberId));
@@ -121,7 +125,8 @@ public class MyPageController {
         session.setAttribute("memberId", 5L);
         Long memberId = (Long)session.getAttribute("memberId");
 
-        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
+        model.addAttribute("member",memberService.getMemberInfo(memberId));
+//        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
 
         /* 내가 작성한 자유 게시글 개수 */
         model.addAttribute("freeBoardCount",memberService.getMyFreeBoardListCount(memberId));
@@ -156,7 +161,8 @@ public class MyPageController {
         session.setAttribute("memberId", 5L);
         Long memberId = (Long)session.getAttribute("memberId");
 
-        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
+        model.addAttribute("member",memberService.getMemberInfo(memberId));
+//        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
 
         /* 내가 작성한 자유 게시글 개수 */
         model.addAttribute("freeBoardCount",memberService.getMyFreeBoardListCount(memberId));
@@ -201,7 +207,8 @@ public class MyPageController {
         session.setAttribute("memberId", 5L);
         Long memberId = (Long)session.getAttribute("memberId");
 
-        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
+        model.addAttribute("member",memberService.getMemberInfo(memberId));
+//        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
 
         /* 내가 작성한 자유 게시글 개수 */
         model.addAttribute("freeBoardCount",memberService.getMyFreeBoardListCount(memberId));
@@ -235,7 +242,8 @@ public class MyPageController {
     public String getMyInfo(HttpSession session, Model model){
         session.setAttribute("memberId", 5L);
         Long memberId = (Long)session.getAttribute("memberId");
-        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member",member));
+        model.addAttribute("member",memberService.getMemberInfo(memberId));
+//        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member",member));
 
         return "myPage/myPage-profileUpdate";
     }
