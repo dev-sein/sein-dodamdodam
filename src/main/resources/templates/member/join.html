@@ -152,8 +152,8 @@
                             <label class="EmailAuthField">이메일</label>
                             <div class="email-field-input-continer">
                                 <div class="EmailAuthField_inputField">
-                                    <input th:if="${member == null}" name="memberEmail" placeholder="이메일 입력" type="text" class="email-field" id="email-input">
-                                    <input th:unless="${member == null}" name="memberEmail" placeholder="이메일 입력" type="text" class="email-field" id="email-input" th:value="${member.memberEmail}" readonly>
+                                    <input th:if="${member.memberEmail != null}" name="memberEmail" placeholder="이메일 입력" type="text" class="email-field" id="email-input" th:value="${member.memberEmail}" readonly>
+                                    <input th:unless="${member.memberEmail != null}" name="memberEmail" placeholder="이메일 입력" type="text" class="email-field" id="email-input">
                                 </div>
                             </div>
                             <em class="email-error error-message">이메일을 입력해주세요.</em>

@@ -53,7 +53,11 @@ public class MemberServiceImpl implements MemberService/*, OAuth2UserService<OAu
     /* 로그인 된 유저 정보 */
     @Override
     public MemberDTO getMemberInfo(Long memberId) {
-        return toMemberDTO(memberRepository.findById(memberId).get());
+        Optional<Member> foundMember = memberRepository.findById(memberId);
+        if(foundMember.isPresent()){
+            return toMemberDTO(foundMember.get());
+        }
+        return null;
     }
 //    public Optional<Member> getMemberInfo(Long memberId) {
 //        return memberRepository.findById(memberId);
