@@ -1,6 +1,7 @@
 package com.app.dodamdodam.entity.event;
 
 import com.app.dodamdodam.entity.board.Board;
+import com.app.dodamdodam.entity.embeddable.Address;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.type.EventType;
 import com.sun.istack.NotNull;
@@ -24,8 +25,10 @@ import java.util.List;
 public class EventBoard extends Board{
 
 //    이벤트 게시글 비지니스 작성
-    @NotNull private String eventAddress;
-    @NotNull private String eventAddressDetail;
+//    @NotNull private String eventAddress;
+//    @NotNull private String eventAddressDetail;
+    @Embedded
+    @NotNull private Address address;
     @NotNull private LocalDate eventStartDate;
     @NotNull private LocalDate eventEndDate;
 //    좋아요 수
@@ -55,13 +58,10 @@ public class EventBoard extends Board{
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
-
-
     @Builder
-    public EventBoard(Long id, String boardTitle, String boardContent, String eventAddress, String eventAddressDetail, LocalDate eventStartDate, LocalDate eventEndDate, Integer eventLikeCount, Integer eventReplyCount, EventType eventStatus, String eventBusinessNumber, String eventBusinessName, String eventBusinessTel, String eventBusinessEmail, List<EventFile> eventFiles, Member member) {
+    public EventBoard(Long id, String boardTitle, String boardContent, Address address, LocalDate eventStartDate, LocalDate eventEndDate, Integer eventLikeCount, Integer eventReplyCount, EventType eventStatus, String eventBusinessNumber, String eventBusinessName, String eventBusinessTel, String eventBusinessEmail, List<EventFile> eventFiles, Member member) {
         super(id, boardTitle, boardContent);
-        this.eventAddress = eventAddress;
-        this.eventAddressDetail = eventAddressDetail;
+        this.address = address;
         this.eventStartDate = eventStartDate;
         this.eventEndDate = eventEndDate;
         this.eventLikeCount = eventLikeCount;
@@ -74,8 +74,6 @@ public class EventBoard extends Board{
         this.eventFiles = eventFiles;
         this.member = member;
     }
-
-
 
     public void setEventLikeCount(Integer eventLikeCount){
         this.eventLikeCount = eventLikeCount;
