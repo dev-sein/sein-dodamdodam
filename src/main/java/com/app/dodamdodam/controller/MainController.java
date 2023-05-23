@@ -1,6 +1,7 @@
 package com.app.dodamdodam.controller;
 
 import com.app.dodamdodam.provider.UserDetail;
+import com.app.dodamdodam.service.board.freeBoard.FreeBoardService;
 import com.app.dodamdodam.service.member.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,6 +20,7 @@ import javax.servlet.http.HttpSession;
 public class MainController {
 
     private final MemberService memberService;
+    private final FreeBoardService freeBoardService;
 
     @GetMapping("home")
     public String main(HttpSession session, Model model){
@@ -26,6 +28,9 @@ public class MainController {
         log.info(session.getAttribute("member") + "");
         log.info("=========================================");
         model.addAttribute("id", session.getId());
+
+
+        model.addAttribute("freeBoards", freeBoardService.getRecentFreeBoardList());
         return  "main/main";
     }
 

@@ -2,6 +2,8 @@ package com.app.dodamdodam.controller;
 
 import com.app.dodamdodam.domain.*;
 import com.app.dodamdodam.entity.free.FreeBoard;
+import com.app.dodamdodam.entity.inquiry.Inquiry;
+import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.recruitment.Recruitment;
 import com.app.dodamdodam.search.Inquiry.AdminInquirySearch;
 import com.app.dodamdodam.search.banner.AdminBannerSearch;
@@ -20,6 +22,7 @@ import com.app.dodamdodam.service.inquiry.InquiryService;
 import com.app.dodamdodam.service.member.MemberService;
 import com.app.dodamdodam.service.point.PointService;
 import com.app.dodamdodam.type.BannerType;
+import com.app.dodamdodam.type.InquiryStatus;
 import com.app.dodamdodam.type.MemberStatus;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,8 +31,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Controller
@@ -81,16 +88,102 @@ public class AdminController {
     public String adminInquiryDetail(@PathVariable("id") Long inquiryId, Model model){
         InquiryDTO inquiryDTO = inquiryService.getAdminInquiryDetail(inquiryId);
         model.addAttribute("inquiryDTO", inquiryDTO);
+        model.addAttribute("id", inquiryId);
         return "admin/inquiry-detail";
     }
 
+    /* 정보 수정 */
+//    @PostMapping("inquiry/detail")
+//    public RedirectView inquiryAnswerFinish(@RequestParam("inquiryId") Long inquiryId, InquiryDTO inquiryDTO, Model model, RedirectAttributes redirectAttributes){
+//        redirectAttributes.addFlashAttribute("inquiryId", inquiryId);
+//        model.addAttribute("inquiryid", inquiryId);
+//        log.info("inquiryid 출력 : "+ inquiryId);
+//        inquiryDTO.setId(inquiryId);
+//        log.info(inquiryDTO.toString());
+//        Inquiry updatedInquiry = inquiryService.toInquiryEntity(inquiryDTO);
+//        inquiryService.setInquiryStatus(inquiryDTO.getId(),updatedInquiry);
+//        log.info(inquiryId+"id출력 ");
+//        return new RedirectView("/inquiry/detail/{id}");
+//    }
+//    @PostMapping("inquiry/detail")
+//    public RedirectView inquiryAnswerFinish(Inquiry updatedInquiries, @PathVariable(value = "inquiryId") Long inquiryId){
+////        InquiryDTO inquiryDTO1 = inquiryService.getAdminInquiryDetail(inquiryId);
+//        log.info(updatedInquiries.toString());
+////        log.info(inquiryDTO.toString());
+////        inquiryService.sendAnswerMail(inquiryId, mailDTO);
+////        Inquiry updatedInquiry = inquiryService.toInquiryEntity(inquiryDTO);
+////        inquiryService.setInquiryStatus(inquiryDTO.getId(),updatedInquiry);
+////        log.info(inquiryId+"id출력 ");
+////        return new RedirectView("/inquiry/detail/{id}");
+//
+//        Inquiry updatedInquiry = new Inquiry(updatedInquiries.getInquiryEmail(), updatedInquiries.getMemberIdentification(),
+//                updatedInquiries.getInquiryContent(), updatedInquiries.getInquiryPhoneNumber());
+//
+//        Inquiry updatedInquiry = new Inquiry(updatedInquiries.getInquiryEmail(),
+//                updatedInquiries.getMemberIdentification(), updatedInquiries.getInquiryContent(), updatedInquiries.getInquiryPhoneNumber());
+//        inquiryService.updateInquiryAnsewrStatus(updatedInquiry, inquiryId);
+//        return new RedirectView("/inquiry/detail/{inquiryId}");
+//    }
+
+//
+//    @PostMapping("inquiry/detail")
+//    public RedirectView inquiryAnswerFinish(@PathVariable(value = "inquiryId") Long inquiryId, InquiryDTO inquiryDTO, Model model) {
+//        model.addAttribute("inquiryId", inquiryId);
+//        Inquiry updatedInquiry = inquiryService.toInquiryEntity(inquiryDTO);
+//        log.info(updatedInquiry.toString());
+//        updatedInquiry.setId(inquiryId);
+//        inquiryService.updateInquiryAnsewrStatus(updatedInquiry, inquiryId);
+//        return new RedirectView("/inquiry/detail/" + inquiryId);
+//    }
+
+//    @PostMapping("inquiry/detail/{inquiryId}") // 수정: PathVariable에 inquiryId 추가
+//    public RedirectView inquiryAnswerFinishs(@PathVariable("inquiryId") Long inquiryId, InquiryDTO inquiryDTO, Model model) {
+//        Inquiry updatedInquiry = inquiryService.toInquiryEntity(inquiryDTO);
+//        updatedInquiry.setId(inquiryId);
+//        inquiryService.updateInquiryAnsewrStatus(updatedInquiry, inquiryId);
+//        return new RedirectView("/inquiry/detail/" + inquiryId);
+//    }
+
+    @PostMapping("inquiry/detail")
+    public RedirectView adminInquiryModify(@PathVariable Long inquiryId, String inquiryAnswer, InquiryStatus inquiryStatus) {
+        InquiryDTO inquiryDTO = InquiryDTO.builder()
+//                .id()
+                .inquiryAnswer(inquiryAnswer)
+                .inquiryStatus(inquiryStatus)
+                .build();
+
+        inquiryService.updateInquiryAnsewrStatus(inquiryId, inquiryDTO);
+        return new RedirectView("/admin/inquiry/detail");
+    }
+
+//    @PostMapping("board/notice/modify/{noticeId}")
+  /*  public RedirectView adminNoticeModifyPost(@PathVariable Long noticeId, String noticeTitle, String noticeContent) {
+        NoticeDTO noticeDTO = NoticeDTO.builder()
+                .noticeContent(noticeContent)
+                .noticeTitle(noticeTitle)
+                .build();
+
+        noticeService.updateNotice(noticeId, noticeDTO);
+        return new RedirectView("/admin/board/notice/list");
+    }
+*/
+/*
+    @PatchMapping("inquiry/detail")
+    @ResponseBody
+    public ResponseEntity<String> inquiryAnswer(@RequestBody Long id, InquiryDTO inquiryDTO, Model model) {
+        Inquiry updatedInquiry = inquiryService.toInquiryEntity(inquiryDTO);
+        inquiryService.setInquiryStatus(id, updatedInquiry);
+//        inquiryService.setInquiryStatus(inquiryDTO.getId(), updatedInquiry); // inquiryId로 상태 수정
+        log.info("@@@@@@@@@@@@@@@@@@@@@@@ update 쿼리");
+        return ResponseEntity.ok("변경 완료하였습니다");
+//        return new RedirectView("/admin/inquiry//detail?update=ok"); // 수정 완료 후 상세 페이지로 리다이렉트
+    }*/
 
     /*포인트 게시판 */
     @GetMapping("point/list") //포인트 게시판 목록
     public String adminPointList(){
         return "admin/point-list";
     }
-
 
     @GetMapping("point/list/{page}") //문의 게시판 검색
     @ResponseBody

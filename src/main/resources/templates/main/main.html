@@ -86,7 +86,7 @@
                     <div class="introduce_header">
                         도전이 쉬워지는 곳,
                         <br>
-                        와디즈 메이커센터입니다.
+                        도담도담 입니다.
                     </div>
                     <div class="search_form">
                         <input class="search_banner" value="" disabled/>
@@ -397,7 +397,9 @@
                     </div>
                     <div class="plus-menu">
                         <div class="plus">
+                            <a href="/free/list">
                             더보기
+                            </a>
                         </div>
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M6 13L11 8L6 3" stroke="#495057" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -409,11 +411,11 @@
                     <div class="board-li">
                         <div class="board-title">
                             <div class="board-title-context">
-                                한 달간의 와디즈 소식을 모아보는, 월간와디즈
+                                <span th:text ="${freeBoards[0].boardTitle}"></span>
                             </div>
                         </div>
                         <div class="board-register-date">
-                            2023.04.04
+                                <span th:text="${#temporals.format(freeBoards[0].updatedDate, 'yyyy-MM-dd')}"></span>
                         </div>
                     </div>
                     <!-- 게시글 1개 끝 -->
@@ -421,11 +423,11 @@
                     <div class="board-li">
                         <div class="board-title">
                             <div class="board-title-context">
-                                2023 와디즈 콘텐츠 파트너 모집 안내(~2/26)
+                                <span th:text ="${freeBoards[1].boardTitle}"></span>
                             </div>
                         </div>
                         <div class="board-register-date">
-                            2023.02.06
+                            <span th:text="${#temporals.format(freeBoards[1].updatedDate, 'yyyy-MM-dd')}"></span>
                         </div>
                     </div>
                     <!-- 게시글 1개 끝 -->
@@ -433,11 +435,11 @@
                     <div class="board-li">
                         <div class="board-title">
                             <div class="board-title-context">
-                                [서비스 안내] 프리오더 서비스 정책 변경 안내
+                                <span th:text ="${freeBoards[2].boardTitle}"></span>
                             </div>
                         </div>
                         <div class="board-register-date">
-                            2023.02.03
+                            <span th:text="${#temporals.format(freeBoards[2].updatedDate, 'yyyy-MM-dd')}"></span>
                         </div>
                     </div>
                     <!-- 게시글 1개 끝 -->
@@ -450,7 +452,9 @@
                     </div>
                     <div class="plus-menu">
                         <div class="plus">
+                            <a href="/event/list">
                             더보기
+                            </a>
                         </div>
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M6 13L11 8L6 3" stroke="#495057" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>

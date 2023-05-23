@@ -38,6 +38,19 @@ public class Inquiry extends Period {
         this.inquiryStatus = inquiryStatus;
     }
 
+
+    public Inquiry(String inquiryEmail, String memberIdentification, String inquiryContent, String inquiryPhoneNumber, InquiryType inquiryType) {
+        this.inquiryEmail = inquiryEmail;
+        this.inquiryContent = inquiryContent;
+        this.inquiryPhoneNumber = inquiryPhoneNumber;
+        this.memberIdentification = memberIdentification;
+        this.inquiryType = inquiryType;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public void setInquiryAnswer(String inquiryAnswer) {
         this.inquiryAnswer = inquiryAnswer;
     }
