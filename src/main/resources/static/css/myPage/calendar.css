@@ -590,7 +590,7 @@ a.Mint {
     background: #f4f4f4;
     width: 100%;
     height: 130vh;
-    
+
 }
 
 
@@ -848,12 +848,12 @@ max-width: 60%;
     height: 450px;
     background: #fff;
   }
-  
+
   .tui-full-calendar {
     width: 100%;
     height: 100%;
   }
-  
+
   ::-webkit-scrollbar {
     display: none;
   }
@@ -921,7 +921,7 @@ max-width: 60%;
   .children-table td:first-child {
     border-left: none;
   }
-  
+
   .children-table th:last-child,
   .children-table td:last-child {
     border-right: none;
