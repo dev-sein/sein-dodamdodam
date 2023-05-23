@@ -122,5 +122,14 @@ public class EventBoardQueryDslImpl implements EventBoardQueryDsl {
                 .fetch();
     }
 
+    /* 게시글 상세페이지 board 정보, reply정보 */
+    @Override
+    public Optional<EventBoard> findEventBoardAndEventRepliesById_QueryDSL(Long boardId) {
+        return Optional.ofNullable(query.select(eventBoard).from(eventBoard)
+                .leftJoin(eventBoard.eventReplies).fetchJoin()
+                .where(eventBoard.id.eq(boardId))
+                .fetchOne());
+    }
+
 
 }
