@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/admin/admin.css">
     <link rel="stylesheet" href="/css/admin/home.css">
+    <link rel="shortcut icon" href="/images/components/dodam-favicon.png">
 </head>
 <body>
     <!-- 헤더 -->
@@ -53,9 +54,9 @@
                     <li class="menu">
                         <a class="menus" href="/admins/point/list">포인트 내역</a>
                     </li>
-                    <li class="menu">
+          <!--          <li class="menu">
                         <a class="menus" href="/admins/banner/list">배너신청 현황</a>
-                    </li>
+                    </li>-->
                     <!--<li class="menu">
                         <a class="menus" href="#">배너관리</a>
                     </li>-->
@@ -100,47 +101,47 @@
                                             <th class="title">이름</th>
                                             <th class="writer">휴대폰 번호</th>
                                             <th class="seen-count">이메일</th>
-                                            <th>주소</th>
+                                            <th>포인트</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr class="member-tr">
                                             <td class="numbers">1</td>
-                                            <td class="titles">박다예</td>
-                                            <td class="writers">2000.01.01</td>
-                                            <td class="seen-counts">010-1234-1234</td>
-                                            <td class="region">경기도 성남시 분당구 수내동</td>
+                                            <td class="titles"><span th:text ="${members[0].memberName}"></td>
+                                            <td class="writers"><span th:text ="${members[0].memberPhone}"></td>
+                                            <td class="seen-counts"><span th:text ="${members[0].memberEmail}"></td>
+                                            <td class="region"><span th:text ="${members[0].memberPoint}"></td>
                                         </tr>
                                         <tr class="member-tr">
                                             <td class="numbers">2</td>
-                                            <td class="titles">정세인</td>
-                                            <td class="writers">2000.01.01</td>
-                                            <td class="seen-counts">010-1234-1234</td>
-                                            <td class="region">경기도 성남시 분당구 수내동</td>
+                                            <td class="titles"><span th:text ="${members[1].memberName}"></td>
+                                            <td class="writers"><span th:text ="${members[1].memberPhone}"></td>
+                                            <td class="seen-counts"><span th:text ="${members[1].memberEmail}"></td>
+                                            <td class="region"><span th:text ="${members[1].memberPoint}"></td>
 
                                         </tr>
                                         <tr class="member-tr">
                                             <td class="numbers">3</td>
-                                            <td class="titles">김세윤</td>
-                                            <td class="writers">2000.01.01</td>
-                                            <td class="seen-counts">010-1234-1234</td>
-                                            <td class="region">경기도 성남시 분당구 수내동</td>
+                                            <td class="titles"><span th:text ="${members[2].memberName}"></td>
+                                            <td class="writers"><span th:text ="${members[2].memberPhone}"></td>
+                                            <td class="seen-counts"><span th:text ="${members[2].memberEmail}"></td>
+                                            <td class="region"><span th:text ="${members[2].memberPoint}"></td>
 
                                         </tr>
                                         <tr class="member-tr">
                                             <td class="numbers">4</td>
-                                            <td class="titles">김욱성</td>
-                                            <td class="writers">2000.01.01</td>
-                                            <td class="seen-counts">010-1234-1234</td>
-                                            <td class="region">경기도 성남시 분당구 수내동</td>
+                                            <td class="titles"><span th:text ="${members[3].memberName}"></td>
+                                            <td class="writers"><span th:text ="${members[3].memberPhone}"></td>
+                                            <td class="seen-counts"><span th:text ="${members[3].memberEmail}"></td>
+                                            <td class="region"><span th:text ="${members[3].memberPoint}"></td>
 
                                         </tr>
                                         <tr class="member-tr">
                                             <td class="numbers">5</td>
-                                            <td class="titles">윤민우</td>
-                                            <td class="writers">2000.01.01</td>
-                                            <td class="seen-counts">010-1234-1234</td>
-                                            <td class="region">경기도 성남시 분당구 수내동</td>
+                                            <td class="titles"><span th:text ="${members[4].memberName}"></td>
+                                            <td class="writers"><span th:text ="${members[4].memberPhone}"></td>
+                                            <td class="seen-counts"><span th:text ="${members[4].memberEmail}"></td>
+                                            <td class="region"><span th:text ="${members[4].memberPoint}"></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -170,38 +171,38 @@
                                     <tbody>
                                         <tr class="event-board">
                                             <td class="numbers">1</td>
-                                            <td class="titles">이벤트게시판 제목1</td>
-                                            <td class="writers">서울특별시 강남구</td>
-                                            <td class="seen-counts">작성자1</td>
-                                            <td class="like-count">10</td>
+                                            <td class="titles"><span th:text ="${eventBoards[0].boardTitle}"></span> </td>
+                                            <td class="seen-counts"><span th:text ="${eventBoards[0].memberDTO.memberName}"></span></td>
+                                            <td class="writers"><span th:text ="${eventBoards[0].eventStartDate}"></span></td>
+                                            <td class="like-count"><span th:text ="${eventBoards[0].eventStatus}"></span></td>
                                         </tr>
                                         <tr class="event-board">
                                             <td class="numbers">2</td>
-                                            <td class="titles">이벤트게시판 제목2</td>
-                                            <td class="writers">서울특별시 송파구</td>
-                                            <td class="seen-counts">작성자2</td>
-                                            <td class="like-count">25</td>
+                                            <td class="titles"><span th:text ="${eventBoards[1].boardTitle}"></span> </td>
+                                            <td class="seen-counts"><span th:text ="${eventBoards[1].memberDTO.memberName}"></span></td>
+                                            <td class="writers"><span th:text ="${eventBoards[1].eventAddress}"></span></td>
+                                            <td class="like-count"><span th:text ="${eventBoards[1].eventStatus}"></span></td>
                                         </tr>
                                         <tr class="event-board">
                                             <td class="numbers">3</td>
-                                            <td class="titles">이벤트게시판 제목3</td>
-                                            <td class="writers">서울특별시 강북구</td>
-                                            <td class="seen-counts">작성자3</td>
-                                            <td class="like-count">10</td>
+                                            <td class="titles"><span th:text ="${eventBoards[2].boardTitle}"></span> </td>
+                                            <td class="seen-counts"><span th:text ="${eventBoards[2].memberDTO.memberName}"></span></td>
+                                            <td class="writers"><span th:text ="${eventBoards[2].eventAddress}"></span></td>
+                                            <td class="like-count"><span th:text ="${eventBoards[2].eventStatus}"></span></td>
                                         </tr>
                                         <tr class="event-board">
                                             <td class="numbers">4</td>
-                                            <td class="titles">이벤트게시판 제목4</td>
-                                            <td class="writers">서울특별시 노원구</td>
-                                            <td class="seen-counts">작성자4</td>
-                                            <td class="like-count">100</td>
+                                            <td class="titles"><span th:text ="${eventBoards[3].boardTitle}"></span> </td>
+                                            <td class="seen-counts"><span th:text ="${eventBoards[3].memberDTO.memberName}"></span></td>
+                                            <td class="writers"><span th:text ="${eventBoards[3].eventAddress}"></span></td>
+                                            <td class="like-count"><span th:text ="${eventBoards[3].eventStatus}"></span></td>
                                         </tr>
                                         <tr class="event-board">
                                             <td class="numbers">5</td>
-                                            <td class="titles">이벤트게시판 제목5</td>
-                                            <td class="writers">서울특별시 동작구</td>
-                                            <td class="seen-counts">작성자5</td>
-                                            <td class="like-count">99</td>
+                                            <td class="titles"><span th:text ="${eventBoards[4].boardTitle}"></span> </td>
+                                            <td class="seen-counts"><span th:text ="${eventBoards[4].memberDTO.memberName}"></span></td>
+                                            <td class="writers"><span th:text ="${eventBoards[4].eventAddress}"></span></td>
+                                            <td class="like-count"><span th:text ="${eventBoards[4].eventStatus}"></span></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -210,73 +211,12 @@
                         </a>
                     </div>
                     <!-- part2 끝 -->
-                    <!-- part3 시작 -->
-                    <div class="inner-box">
-                        <a onclick="location.href='/admins/recruitment-board/list'">
-                        <div class="inner-box-title">
-                            모집 게시판
-                        </div>
-                        <div class="inner-box-list-wrapper">
-                            <div class="inner-box-list">
-                                <table>
-                                    <thead>
-                                        <tr class="event-board">
-                                            <th class="number">번호</th>
-                                            <th class="title">모집글 제목</th>
-                                            <th class="writer">작성자</th>
-                                            <th class="seen-count">모집 장소</th>
-                                            <th class="like-count">진행상태</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="event-board">
-                                            <td class="numbers">1</td>
-                                            <td class="titles">모집게시판 제목1</td>
-                                            <td class="writers">서울특별시 강남구</td>
-                                            <td class="seen-counts">작성자1</td>
-                                            <td class="like-count">10</td>
-                                        </tr>
-                                        <tr class="event-board">
-                                            <td class="numbers">2</td>
-                                            <td class="titles">모집게시판 제목2</td>
-                                            <td class="writers">서울특별시 송파구</td>
-                                            <td class="seen-counts">작성자2</td>
-                                            <td class="like-count">25</td>
-                                        </tr>
-                                        <tr class="event-board">
-                                            <td class="numbers">3</td>
-                                            <td class="titles">모집게시판 제목3</td>
-                                            <td class="writers">서울특별시 강북구</td>
-                                            <td class="seen-counts">작성자3</td>
-                                            <td class="like-count">10</td>
-                                        </tr>
-                                        <tr class="event-board">
-                                            <td class="numbers">4</td>
-                                            <td class="titles">모집게시판 제목4</td>
-                                            <td class="writers">서울특별시 노원구</td>
-                                            <td class="seen-counts">작성자4</td>
-                                            <td class="like-count">100</td>
-                                        </tr>
-                                        <tr class="event-board">
-                                            <td class="numbers">5</td>
-                                            <td class="titles">모집게시판 제목5</td>
-                                            <td class="writers">서울특별시 동작구</td>
-                                            <td class="seen-counts">작성자5</td>
-                                            <td class="like-count">99</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        </a>
-                    </div>
-                    <!-- part3 끝 -->
                     <!-- part4 시작 -->
                     <div class="inner-box">
                         <a onclick="location.href='/admins/banner/list'">
                         <!-- <div class="inner-box-title-wrapper"> -->
                             <div class="inner-box-title">
-                                배너신청 현황
+                                자유게시판
                             </div>
                         <!-- </div> -->
                         <div class="inner-box-list-wrapper">
@@ -285,41 +225,41 @@
                                     <thead>
                                         <tr class="banner">
                                             <th class="number">번호</th>
-                                            <th class="title">신청자</th>
-                                            <th class="writer">신청일자</th>
-                                            <th class="seen-count">상태</th>
+                                            <th class="title">글제목</th>
+                                            <th class="writer">작성자</th>
+                                            <th class="seen-count">작성일자</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr class="banner">
                                             <td class="numbers">1</td>
-                                            <td class="titles">신청자1</td>
-                                            <td class="writers">2023.04.23 15:21</td>
-                                            <td class="seen-counts">대기중</td>
+                                            <td class="titles"><span th:text ="${freeBoards[0].boardTitle}"></td>
+                                            <td class="writers"><span th:text ="${freeBoards[0].memberDTO.memberName}"></td>
+                                            <td class="seen-counts"><span th:text ="${freeBoards[0].createdDate}"></td>
                                         </tr>
                                         <tr class="banner">
                                             <td class="numbers">2</td>
-                                            <td class="titles">신청자2</td>
-                                            <td class="writers">2023.04.22 10:24</td>
-                                            <td class="seen-counts">수락</td>
+                                            <td class="titles"><span th:text ="${freeBoards[1].boardTitle}"></td>
+                                            <td class="writers"><span th:text ="${freeBoards[1].memberDTO.memberName}"></td>
+                                            <td class="seen-counts"><span th:text ="${freeBoards[1].createdDate}"></td>
                                         </tr>
                                         <tr class="banner">
                                             <td class="numbers">3</td>
-                                            <td class="titles">신청자3</td>
-                                            <td class="writers">2023.04.21 19:24</td>
-                                            <td class="seen-counts">대기중</td>
+                                            <td class="titles"><span th:text ="${freeBoards[2].boardTitle}"></td>
+                                            <td class="writers"><span th:text ="${freeBoards[2].memberDTO.memberName}"></td>
+                                            <td class="seen-counts"><span th:text ="${freeBoards[2].createdDate}"></td>
                                         </tr>
                                         <tr class="banner">
                                             <td class="numbers">4</td>
-                                            <td class="titles">신청자4</td>
-                                            <td class="writers">2023.04.21 07:24</td>
-                                            <td class="seen-counts">대기중</td>
+                                            <td class="titles"><span th:text ="${freeBoards[3].boardTitle}"></td>
+                                            <td class="writers"><span th:text ="${freeBoards[3].memberDTO.memberName}"></td>
+                                            <td class="seen-counts"><span th:text ="${freeBoards[3].createdDate}"></td>
                                         </tr>
                                         <tr class="banner">
                                             <td class="numbers">5</td>
-                                            <td class="titles">신청자5</td>
-                                            <td class="writers">2023.04.20 15:24</td>
-                                            <td class="seen-counts">수락</td>
+                                            <td class="titles"><span th:text ="${freeBoards[4].boardTitle}"></td>
+                                            <td class="writers"><span th:text ="${freeBoards[4].memberDTO.memberName}"></td>
+                                            <td class="seen-counts"><span th:text ="${freeBoards[4].createdDate}"></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -328,6 +268,67 @@
                         </a>
                     </div>
                     <!-- part4 끝 -->
+                    <!-- part3 시작 -->
+                    <div class="inner-box">
+                        <a onclick="location.href='/admins/recruitment-board/list'">
+                            <div class="inner-box-title">
+                                모집 게시판
+                            </div>
+                            <div class="inner-box-list-wrapper">
+                                <div class="inner-box-list">
+                                    <table>
+                                        <thead>
+                                        <tr class="event-board">
+                                            <th class="number">번호</th>
+                                            <th class="title">모집글 제목</th>
+                                            <th class="writer">작성자</th>
+                                            <th class="seen-count">모집 장소</th>
+                                            <th class="like-count">진행상태</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr class="event-board">
+                                            <td class="numbers">1</td>
+                                            <td class="titles"><span th:text ="${recruitmentBoards[0].boardTitle}"></td>
+                                            <td class="seen-counts"><span th:text ="${recruitmentBoards[0].memberDTO.memberName}"></td>
+                                            <td class="writers"><span th:text ="${recruitmentBoards[0].recruitmentAddress}"></td>
+                                            <td class="like-count"><span th:text ="${recruitmentBoards[0].recruitmentStatus}"></td>
+                                        </tr>
+                                        <tr class="event-board">
+                                            <td class="numbers">2</td>
+                                            <td class="titles"><span th:text ="${recruitmentBoards[1].boardTitle}"></td>
+                                            <td class="seen-counts"><span th:text ="${recruitmentBoards[1].memberDTO.memberName}"></td>
+                                            <td class="writers"><span th:text ="${recruitmentBoards[1].recruitmentAddress}"></td>
+                                            <td class="like-count"><span th:text ="${recruitmentBoards[1].recruitmentStatus}"></td>
+                                        </tr>
+                                        <tr class="event-board">
+                                            <td class="numbers">3</td>
+                                            <td class="titles"><span th:text ="${recruitmentBoards[2].boardTitle}"></td>
+                                            <td class="seen-counts"><span th:text ="${recruitmentBoards[2].memberDTO.memberName}"></td>
+                                            <td class="writers"><span th:text ="${recruitmentBoards[2].recruitmentAddress}"></td>
+                                            <td class="like-count"><span th:text ="${recruitmentBoards[2].recruitmentStatus}"></td>
+                                        </tr>
+                                        <tr class="event-board">
+                                            <td class="numbers">4</td>
+                                            <td class="titles"><span th:text ="${recruitmentBoards[3].boardTitle}"></td>
+                                            <td class="seen-counts"><span th:text ="${recruitmentBoards[3].memberDTO.memberName}"></td>
+                                            <td class="writers"><span th:text ="${recruitmentBoards[3].recruitmentAddress}"></td>
+                                            <td class="like-count"><span th:text ="${recruitmentBoards[3].recruitmentStatus}"></td>
+                                        </tr>
+                                        <tr class="event-board">
+                                            <td class="numbers">5</td>
+                                            <td class="titles"><span th:text ="${recruitmentBoards[4].boardTitle}"></td>
+                                            <td class="seen-counts"><span th:text ="${recruitmentBoards[4].memberDTO.memberName}"></td>
+                                            <td class="writers"><span th:text ="${recruitmentBoards[4].recruitmentAddress}"></td>
+                                            <td class="like-count"><span th:text ="${recruitmentBoards[4].recruitmentStatus}"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- part3 끝 -->
                 </div>
             </div>
         </content>

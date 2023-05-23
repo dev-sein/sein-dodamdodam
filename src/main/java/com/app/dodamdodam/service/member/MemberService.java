@@ -102,6 +102,9 @@ public interface MemberService extends UserDetailsService {
     /*관리자 멤버 검색*/
     public Page<MemberDTO> showMemberWithSearch_QueryDSL(Pageable pageable, AdminMemberSearch adminMemberSearch);
 
+    /* 최근 가입한 멤버 리스트 */
+    public List<MemberDTO> getRecentMemberList();
+
     default MemberDTO toMemberDTO(Member member){
         return MemberDTO.builder().id(member.getId())
                 .memberId(member.getMemberId())

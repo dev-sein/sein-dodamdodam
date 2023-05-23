@@ -51,6 +51,10 @@ public interface MemberQueryDsl {
 //  관리자 회원 목록 가져오기
     public Page<Member> findAllMemberList_QueryDSL(Pageable pageable);
 
+    //관리자 회원 목록
+    public List<Member> findRecentMemberList_QueryDSL();
+
+
     /* 추가 */
 }
 

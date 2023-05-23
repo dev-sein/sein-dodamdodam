@@ -707,27 +707,27 @@
             </div>
         </div>-->
         <!-- 세번째 배너 -->
-        <div class="events-bar">
-            <div class="event-container">
-                <div class="event-banner-container">
-                    <div class="event-title">
-                        <div class="event-title-container">
-                            도담 모집
-                        </div>
-                        <div class="plus-menu">
-                            <div class="plus">
-                                <a href="/recruitment/list">
-                                더보기
-                                </a>
-                            </div>
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M6 13L11 8L6 3" stroke="#495057" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    <section class="third-banner-container">
+<!--        <div class="events-bar">-->
+<!--            <div class="event-container">-->
+<!--                <div class="event-banner-container">-->
+<!--                    <div class="event-title">-->
+<!--                        <div class="event-title-container">-->
+<!--                            도담 모집-->
+<!--                        </div>-->
+<!--                        <div class="plus-menu">-->
+<!--                            <div class="plus">-->
+<!--                                <a href="/recruitment/list">-->
+<!--                                더보기-->
+<!--                                </a>-->
+<!--                            </div>-->
+<!--                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--                                <path d="M6 13L11 8L6 3" stroke="#495057" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>-->
+<!--                            </svg>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <section class="third-banner-container">-->
                         <!-- 이벤트 배너 -->
-                        <div class="third-banner">
+<!--                        <div class="third-banner">-->
 <!--                            <div class="third-banner1 third-banners">-->
 <!--                                <div class="third-banner-image-wrapper">-->
 <!--                                    <div class="third-banner-image"></div>-->
@@ -991,18 +991,18 @@
         return year + '-' + month + '-' + day;
     };
 
-    console.log(purchaseBoard);
-
-    var firstFile = purchaseBoard.purchaseFileDTOS[0];
-    if (firstFile) {
-        var imageUrl = `/file/display?fileName=${encodeURIComponent(firstFile.filePath)}/${firstFile.fileUuid}_${firstFile.fileOriginalName}`;
-        var imageElement = `<img src="${imageUrl}">`;
+   console.log(recruitmentBoard);
+    recruitmentBoard.forEach(recruitmentBoard => {
+        console.log("foreach 들어옴");
+        var imageUrls = recruitmentBoard.recruitmentFileDTOS.map(file => `/file/display?fileName=${encodeURIComponent(file.filePath)}/${file.fileUuid}_${file.fileOriginalName}`);
+        var imageElements = imageUrls.map(url => `<img src="${url}">`);
+        var imageElementsString = imageElements.join('');
 
         var text = `
         <div class="sell-swiper1 sell-swiper-box">
             <div class="sell-swiper-image-container">
                 <div class="sell-swiper-image">
-                   ${imageElement}
+                   ${imageElementsString}
                 </div>
                 <div class="sell-status">
                     <div></div>
@@ -1012,22 +1012,21 @@
                     </div>
                 </div>
                 <div class="sell-box-title-container">
-                    <div class="sell-box-title">${purchaseBoard.boardTitle}</div>
+                    <div class="sell-box-title">${recruitmentBoard.boardTitle}</div>
                 </div>
                 <div class="sell-box-context-container">
-                    <div class="sell-box-context">${purchaseBoard.boardContent}</div>
+                    <div class="sell-box-context">${recruitmentBoard.boardContent}</div>
                 </div>
                 <div class="sell-box-date-container">
-                    ${formatDate(new Date(purchaseBoard.updatedDate))}
+                    ${formatDate(new Date(recruitmentBoard.updatedDate))}
                 </div>
             </div>
         </div>
     `;
-
         $(".swiper-wrapper").append(text);
-    }
+    });
+/*
 
-    console.log("foreach 끝");
     console.log(recruitmentBoard);
     recruitmentBoard.forEach((recruitmentBoard) => {
         console.log("recruitmentBoard 시작");
@@ -1049,6 +1048,7 @@
         $(".third-banner").append(text);
     });
 
+*/
 
     // // JavaScript 코드
     // const recruitmentFileDTOS = recruitmentBoard.recruitmentFileDTOS; /* 이미지 파일 데이터를 담고 있는 배열 */;

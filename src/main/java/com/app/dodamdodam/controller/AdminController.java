@@ -57,7 +57,11 @@ public class AdminController {
     /*홈*/
     @GetMapping("/home")
     public String adminHome(Model model){
-//        List<MemberDTO> memberDTOS = memberService.showList(pageable);
+        model.addAttribute("members", memberService.getRecentMemberList());
+        model.addAttribute("freeBoards", freeBoardService.getRecentFreeBoardList());
+        model.addAttribute("eventBoards", eventBoardService.getRecentEventBoardList());
+        model.addAttribute("purchaseBoards", purchaseBoardService.getRecentPurchaseBoardList());
+        model.addAttribute("recruitmentBoards", recruitmentBoardService.getRecentRecruitmentBoardList());
         return "admin/home";}
 
     /*문의 게시판*/
@@ -91,58 +95,6 @@ public class AdminController {
         model.addAttribute("id", inquiryId);
         return "admin/inquiry-detail";
     }
-
-    /* 정보 수정 */
-//    @PostMapping("inquiry/detail")
-//    public RedirectView inquiryAnswerFinish(@RequestParam("inquiryId") Long inquiryId, InquiryDTO inquiryDTO, Model model, RedirectAttributes redirectAttributes){
-//        redirectAttributes.addFlashAttribute("inquiryId", inquiryId);
-//        model.addAttribute("inquiryid", inquiryId);
-//        log.info("inquiryid 출력 : "+ inquiryId);
-//        inquiryDTO.setId(inquiryId);
-//        log.info(inquiryDTO.toString());
-//        Inquiry updatedInquiry = inquiryService.toInquiryEntity(inquiryDTO);
-//        inquiryService.setInquiryStatus(inquiryDTO.getId(),updatedInquiry);
-//        log.info(inquiryId+"id출력 ");
-//        return new RedirectView("/inquiry/detail/{id}");
-//    }
-//    @PostMapping("inquiry/detail")
-//    public RedirectView inquiryAnswerFinish(Inquiry updatedInquiries, @PathVariable(value = "inquiryId") Long inquiryId){
-////        InquiryDTO inquiryDTO1 = inquiryService.getAdminInquiryDetail(inquiryId);
-//        log.info(updatedInquiries.toString());
-////        log.info(inquiryDTO.toString());
-////        inquiryService.sendAnswerMail(inquiryId, mailDTO);
-////        Inquiry updatedInquiry = inquiryService.toInquiryEntity(inquiryDTO);
-////        inquiryService.setInquiryStatus(inquiryDTO.getId(),updatedInquiry);
-////        log.info(inquiryId+"id출력 ");
-////        return new RedirectView("/inquiry/detail/{id}");
-//
-//        Inquiry updatedInquiry = new Inquiry(updatedInquiries.getInquiryEmail(), updatedInquiries.getMemberIdentification(),
-//                updatedInquiries.getInquiryContent(), updatedInquiries.getInquiryPhoneNumber());
-//
-//        Inquiry updatedInquiry = new Inquiry(updatedInquiries.getInquiryEmail(),
-//                updatedInquiries.getMemberIdentification(), updatedInquiries.getInquiryContent(), updatedInquiries.getInquiryPhoneNumber());
-//        inquiryService.updateInquiryAnsewrStatus(updatedInquiry, inquiryId);
-//        return new RedirectView("/inquiry/detail/{inquiryId}");
-//    }
-
-//
-//    @PostMapping("inquiry/detail")
-//    public RedirectView inquiryAnswerFinish(@PathVariable(value = "inquiryId") Long inquiryId, InquiryDTO inquiryDTO, Model model) {
-//        model.addAttribute("inquiryId", inquiryId);
-//        Inquiry updatedInquiry = inquiryService.toInquiryEntity(inquiryDTO);
-//        log.info(updatedInquiry.toString());
-//        updatedInquiry.setId(inquiryId);
-//        inquiryService.updateInquiryAnsewrStatus(updatedInquiry, inquiryId);
-//        return new RedirectView("/inquiry/detail/" + inquiryId);
-//    }
-
-//    @PostMapping("inquiry/detail/{inquiryId}") // 수정: PathVariable에 inquiryId 추가
-//    public RedirectView inquiryAnswerFinishs(@PathVariable("inquiryId") Long inquiryId, InquiryDTO inquiryDTO, Model model) {
-//        Inquiry updatedInquiry = inquiryService.toInquiryEntity(inquiryDTO);
-//        updatedInquiry.setId(inquiryId);
-//        inquiryService.updateInquiryAnsewrStatus(updatedInquiry, inquiryId);
-//        return new RedirectView("/inquiry/detail/" + inquiryId);
-//    }
 
     @PostMapping("inquiry/detail/{inquiryId}")
     @ResponseBody
