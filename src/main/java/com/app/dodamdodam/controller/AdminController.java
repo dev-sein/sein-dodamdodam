@@ -144,15 +144,23 @@ public class AdminController {
 //        return new RedirectView("/inquiry/detail/" + inquiryId);
 //    }
 
-    @PostMapping("inquiry/detail")
-    public RedirectView adminInquiryModify(@PathVariable Long inquiryId, String inquiryAnswer, InquiryStatus inquiryStatus) {
+    @PostMapping("inquiry/detail/{inquiryId}")
+    @ResponseBody
+    public RedirectView adminInquiryModify(@PathVariable(value = "inquiryId") Long inquiryId, String inquiryAnswer, InquiryStatus inquiryStatus, Model model, String inquiryEmail) {
         InquiryDTO inquiryDTO = InquiryDTO.builder()
-//                .id()
+                .inquiryEmail(inquiryEmail)
                 .inquiryAnswer(inquiryAnswer)
                 .inquiryStatus(inquiryStatus)
                 .build();
-
+        model.addAttribute("inquiryId", inquiryId);
+        model.addAttribute("inquiryDTO", inquiryDTO);
         inquiryService.updateInquiryAnsewrStatus(inquiryId, inquiryDTO);
+        MailDTO mailDTO = new MailDTO();
+        mailDTO.setAddress(inquiryEmail);
+        mailDTO.setTitle("[도담도담] 문의하신 내용에 대한 답변입니다.");
+        mailDTO.setMessage(inquiryAnswer);
+        inquiryService.sendAnswerMail(mailDTO);
+
         return new RedirectView("/admin/inquiry/detail");
     }
 
