@@ -79,9 +79,14 @@
                 </div>
                 </div>
                 <div class="my-board">
-                    <button class="btn list"><a href="">목록</a></button>
-                    <button class="btn"><a href="">수정</a></button>
-                    <button class="btn delete"><a class="delete-a" href="">삭제</a></button>
+                    <button class="btn list"><a href="/recruitment/list">목록</a></button>
+                    <button class="btn" th:attr="data-id=${boardDetail.id}" onclick="location.href = '/recruitment/update/' + this.getAttribute('data-id')">
+                        <a>수정</a>
+                    </button>
+                    <button class="btn delete" th:attr="data-id=${boardDetail.id}" onclick="location.href = '/recruitment/delete-board/' + this.getAttribute('data-id')">
+                        <a class="delete-a">삭제</a>
+                    </button>
+<!--                    <span th:attr="data-id=${freeBoardDetail.id}" onclick="location.href = '/free/delete-board/' + this.getAttribute('data-id')">삭제</span>-->
                 </div>
 
                 <div class="board-detail-bottom-container">
@@ -93,7 +98,7 @@
                                 </p>
                             </div>
                             <p class="comment-count">
-                                <em>3</em>개의 댓글이 달려있습니다.
+                                <em th:text="${replyCount}">3</em>개의 댓글이 달려있습니다.
                             </p>
                             <div class="main-comment">
                                 <textarea name="" id="" placeholder="댓글을 입력하세요."></textarea>

@@ -1,21 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모집 게시글 수정</title>
-    <link rel="stylesheet" href="../../static/css/event-board/event-board-write.css">
+    <link rel="stylesheet" href="/css/event-board/event-board-write.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">  
-    <link rel="shortcut icon" href="/static/images/components/dodam-favicon.png">
+    <link rel="shortcut icon" href="/images/components/dodam-favicon.png">
 </head>
 <body>
     <div id="page-container">
         <main id="container">
-            <form id="submit-btn" class="event-register">
-                <!-- 회원 유형 선택 -->                
+<!--            <form id="submit-btn" class="event-register" th:action="/update-board/${board.id}" method="post">-->
+            <form id="submit-btn" class="event-register" th:action="@{/recruitment/update-board/{boardId}(boardId=${board.id})}" th:method="post" name="updateForm">
+                <!-- 회원 유형 선택 -->
                 <section class="info-register">
 
                     <h3 class="h3-text">모집 정보 입력하기</h3>
@@ -29,7 +30,7 @@
                         </div>
                         <div class="input-container">
                             <div class="waffle input">
-                                <input placeholder="모집 게시글 제목을 적어주세요" required>
+                                <input placeholder="모집 게시글 제목을 적어주세요" name="boardTitle" required th:value="${board.boardTitle}">
                             </div>
                             <div class="waffle helper mb"></div>
                         </div>
@@ -41,13 +42,12 @@
                         </div>
                         <div class="input-container">
                             <div class="waffle input">
-                                <input placeholder="모집 게시글 소제목을 적어주세요" required>
+                                <input placeholder="모집 게시글 소제목을 적어주세요" name="recruitmentSubtitle" required th:value="${board.recruitmentSubtitle}">
                             </div>
                             <div class="waffle helper mb"></div>
                         </div>
                     </div>
 
-                    
                    <!-- 이벤트 장소  -->
                    <div class="waffle field">
                     <div class="waffle label">
@@ -55,14 +55,14 @@
                     </div>
                     <div class="action-input">
                         <div class="input-container mb13">
-                            <input name="eventAddress" id="address" class="address" placeholder="주소검색" required>
+                            <input name="recruitmentAddress" id="address" class="address" placeholder="주소검색" required th:value="${board.recruitmentAddress}">
                             <button class="address-btn" id="detailAddress" type="button" onclick="searchAddress()">주소검색</button>
                             </div>
                        </div>
                     </div>
                     <div class="input-container">
                         <div class="waffle input address-input">
-                            <input name="eventAddressDetail" placeholder="상세주소">
+                            <input name="recruitmentAddressDetail" placeholder="상세주소"  th:value="${board.recruitmentAddressDetail}">
                         </div>
                         <label id="address-error" class="error" for="address">필수 항목입니다.</label>
                         <div class="waffle helper mb"></div>
@@ -75,7 +75,7 @@
                     </div>
                     <div class="input-container">
                         <div class="waffle input">
-                            <input type="date" name="startDate" id="startDate" required>
+                            <input type="date" name="date" id="startDate" required th:value="${board.recruitmentDate}">
                         </div>
                         <div class="waffle helper mb"></div>
                     </div>
@@ -89,7 +89,7 @@
                         </div>
                         <div class="input-container">
                             <div class="waffle input nu">
-                                <input class="people-count number" placeholder="모집 인원수를 적어주세요" maxlength="5" name="people-count" required>
+                                <input class="people-count number" placeholder="모집 인원수를 적어주세요" maxlength="5" name="recruitmentPeopleCount" required  th:value="${board.recruitmentPeopleCount}">
                             </div>
                             <div class="waffle helper mb"></div>
                             <div class="people-count-error error"></div>
@@ -102,8 +102,7 @@
                         <label>모집글 소개</label>
                     </div>
                     <div class="input-container">
-                            <textarea rows="5"placeholder="모집글 소개를 적어주세요" name="recruitment-introduction" required></textarea>
-
+                            <textarea rows="5"placeholder="모집글 소개를 적어주세요" name="boardContent" required th:text="${board.boardContent}"></textarea>
                         <div class="waffle helper mb"></div>
                     </div>
                 </div>       
@@ -115,7 +114,7 @@
                     </div>
                     <div class="input-container">
                         <div class="waffle input">
-                            <input class="open-kakao url" placeholder="오픈채팅 링크를 적어주세요" name="openKakao" required>
+                            <input class="open-kakao url" placeholder="오픈채팅 링크를 적어주세요" name="recruitmentOpenChatting" required th:value="${board.recruitmentOpenChatting}">
                         </div>
                         <div class="waffle helper mb"></div>
                         <div class="open-kakao-error error"> </div>
@@ -124,7 +123,7 @@
 
 
                 <!-- 오픈채팅 비밀번호 -->
-                <div class="waffle field">
+                <div class="waffle field" style="display: none">
                     <div class="waffle label">
                         <label>오픈채팅 비밀번호</label>
                     </div>
@@ -140,20 +139,22 @@
                                   <!-- 파일 첨부 -->
                 <div id="plus_picture">
                     <div class="waffle field">
-                        <div class="waffle label">
-                            <label>파일 첨부</div>
+                        <label class="waffle label">
+                            <label>파일 첨부</label>
                                 <button class="file-button" type="button">
                                     <input class="file-input" id='btnAtt' type="file" multiple="multiple" name="fileNames" accept="application/pdf,image/jpg,image/jpeg,image/png" required>등록
                                     </button>
                             <label id="btnAtt-error" class="error" for="btnAtt">필수 항목입니다.</label>
-                                <div id='att_zone'></div></label>   
-                                </div>                  
-                                <div class="waffle helper mb">10MB 이내 pdf, jpeg, png 파일을 등록하세요.</div>
-                <div class="submit-container">
-                <button class="submit-btn btn back-btn" type="button" onClick="javascript:backmodal();">돌아가기</button>
-                <input class="submit-btn btn update-btn" type="submit" value="수정하기" onClick="javascript:modifymodal();">
-                <p class="submit-notice"></p>
-            </div>
+                            <div id='att_zone'></div>
+                        </label>
+                    </div>
+                    <div class="waffle helper mb">10MB 이내 pdf, jpeg, png 파일을 등록하세요.</div>
+                    <div class="submit-container" style="width: 118%; display: flex; justify-content: space-between;">
+                    <button class="submit-btn btn back-btn" type="button" onClick="javascript:backmodal();">돌아가기</button>
+<!--                    <input class="submit-btn btn update-btn" type="submit" value="수정하기">-->
+                    <input class="submit-btn btn update-btn" type="button" value="수정하기" onClick="javascript:modifymodal();">
+                    <p class="submit-notice"></p>
+                </div>
 
              <!-- 이전으로 돌아가기  modal 영역 -->
         <div class="modal-bg" onClick="javascript:popCopyClose();"></div>
@@ -161,31 +162,28 @@
           <span>이전화면으로 돌아가시겠습니까?<br>
                 작성한 내용은 저장되지 않습니다</span>
           <button type="button" class="modal-close submit-btn modal white-btn" onClick="javascript:popCopyClose();">이전</button>
-          <button type="button" class="modal-close submit-btn modal" onClick="javascript:popCopyClose();">닫기</button>
+          <button type="button" class="modal-close submit-btn modal" onClick="location.href='/recruitment/list'">닫기</button>
               </div>
               <!-- //modal 영역 -->
 
             <!-- 수정완료 modal 영역 -->
         <div class="modify-modal-bg" onClick="javascript:popClose();"></div>
         <div class="modal-wrap">
-          <span><br>작성한 내용으로 수정하시겠습니까?</span>
-          <button type="button" class="modal-close submit-btn modal white-btn" onClick="javascript:popClose();">이전</button>
-            <button type="button" class="modal-close submit-btn modal" onClick="javascript:popClose();">수정</button>
-              </div>
+            <span><br>작성한 내용으로 수정하시겠습니까?</span>
+            <button type="button" class="modal-close submit-btn modal white-btn" onclick="javascript:popClose();">이전</button>
+            <button type="submit" class="modal-close submit-btn modal">수정</button>
+        </div>
               <!-- //modal 영역 -->
-           
-
-                </section>
-
-
-            </form>
+    </div>
+</section>
+</form>
 
         </main>
     </div><!-- page container -->
 
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="../../static/js/recruitment-board/recruitment-board-write.js"></script>
+<script src="/js/recruitment-board/recruitment-board-write.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>

@@ -120,5 +120,15 @@ public class MemberQueryDslImpl implements MemberQueryDsl{
         return new PageImpl<>(members, pageable, count);
     }
 
+    /* 관리자 홈 회원 조회*/
+    @Override
+    public List<Member> findRecentMemberList_QueryDSL() {
+        return query.selectFrom(member)
+                .orderBy(member.id.desc())
+                .limit(5)
+                .fetch();
+
+    }
+
     /* 추가 */
 }
