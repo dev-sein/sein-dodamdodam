@@ -14,6 +14,8 @@
     <link rel="shortcut icon" href="/images/components/dodam-favicon.png">
 </head>
 <body>
+    <!--맨위로 가기 버튼-->
+    <button class="back-to-top"></button>
     <!--모달창-->
     <div id="myModal" class="modal" th:if="${#strings.equals(param.login, 'false')}">
         <div class="modal-content">
@@ -385,6 +387,7 @@
         }
     }
 </script>
+<script src="/js/free-board/free-board-list.js"></script>
 <script>
     // $('bar-button').on();
     function changeStatus(e) {

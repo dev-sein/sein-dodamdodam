@@ -35,7 +35,7 @@ public class MyPageController {
 
     private final RecruitmentBoardService recruitmentBoardService;
 
-    /*마이 페이지 메인*/
+    /*마이 페이지 메인 테스트*/
     @GetMapping("main-test")
     public String myPageInfo(Model model, HttpSession session) {
         /* calendar 작업 추가로 해야함 */
@@ -50,7 +50,7 @@ public class MyPageController {
         return"myPage/myPage-Main";
     }
 
-    /*마이 페이지 메인 테스트*/
+    /*마이 페이지 메인*/
     @GetMapping("main")
     public String myPageInfoTest(Model model, HttpSession session) {
         /* calendar 작업 추가로 해야함 */
@@ -268,7 +268,9 @@ public class MyPageController {
 
     /* 회원탈퇴 페이지 */
     @GetMapping("withDrawl")
-    public String memberWithDrawl(){
+    public String memberWithDrawl(Model model, HttpSession session){
+        Long memberId =  (Long)session.getAttribute("memberId");
+        model.addAttribute("member",memberService.getMemberInfo(memberId));
         return "myPage/myPage-withDrawl";
     }
 
@@ -284,8 +286,6 @@ public class MyPageController {
     /* 비밀번호 변경 페이지 */
     @GetMapping("change-password")
     public String changePasswordPage(HttpSession session){
-//        session.setAttribute("memberId", 11L);
-
         return "myPage/myPage-password";
     }
 
@@ -322,7 +322,6 @@ public class MyPageController {
     /* 배너 신청 페이지 */
     @GetMapping("banner")
     public String registerBannerPage(){
-
         return "/myPage/myPage-banner";
     }
 
@@ -333,7 +332,6 @@ public class MyPageController {
         memberService.saveBannerApply(memberId, bannerApply);
         return new RedirectView("/mypage/main?banner=ok");
     }
-
 
 
     /* 추가 */

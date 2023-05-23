@@ -485,7 +485,7 @@ $(document).ready(function () {
               <br> 
               모집 현황 : ${result[i].recruitmentDTOS.length} / ${result[i].recruitmentPeopleCount} 명
               <br />장소 : ${result[i].recruitmentAddress} <span>${result[i].recruitmentAddressDetail}</span>
-              <div><strong><span onclick="window.open(${result[i].recruitmentOpenChatting})">오픈 채팅방 참여하기</span></strong></div>
+              <div><strong><span onclick="window.open('${result[i].recruitmentOpenChatting}')">오픈 채팅방 참여하기</span></strong></div>
             </p>
             <p class="lecture-number">
               
