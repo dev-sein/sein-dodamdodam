@@ -31,23 +31,27 @@
                     <div class="info-sum">
                         <dl>
                             <dt>모집인</dt>
-                            <dd>고용노동부</dd>
+                            <dd th:text ="${eventBoardDTO.memberDTO.memberName}"></dd>
                         </dl>
                         <dl>
                             <dt>이벤트 날짜</dt>
-                            <dd><span>2023-04-24 ~ 2023-04-25</span></dd>
+                            <dd><span th:text="${eventBoardDTO.eventStartDate + ' ~ ' + eventBoardDTO.eventEndDate}"></span></dd>
                         </dl>
                         <dl>
                             <dt>이벤트 장소</dt>
-                            <dd>aT센터 제1전시장</dd>
+                            <dd th:text ="${eventBoardDTO.address.address + eventBoardDTO.address.addressDetail}"></dd>
                         </dl>
                         <dl>
                             <dt>문의 번호</dt>
-                            <dd>02-2186-9043</dd>
+                            <span th:if="${eventBoardDTO.eventBusinessTel}" th:text="${eventBoardDTO.eventBusinessTel}"></span>
+                            <span th:unless="${eventBoardDTO.eventBusinessTel}" th:text="${eventBoardDTO.memberDTO.memberPhone}"></span>
                         </dl>
                         <dl>
                             <dt>문의 이메일</dt>
-                            <dd>job@korea.kr</dd>
+                            <dd>
+                                <span th:if="${eventBoardDTO.eventBusinessEmail}" th:text="${eventBoardDTO.memberEmail}"></span>
+                                <span th:unless="${eventBoardDTO.eventBusinessEmail}" th:text="${eventBoardDTO.memberDTO.memberEmail}"></span>
+                            </dd>
                         </dl>
                         <div class="wish-button-box">
                             <button type="button" class="wish-button"  aria-pressed="false">
@@ -60,7 +64,7 @@
                                         </div>
                                         </span>
                                     </span></button>
-                                    <p class="recruitment-status d-day"><strong>D-50</strong></p>
+                                    <p class="recruitment-status d-day"><strong th:text="${eventBoardDTO.eventEndDate.minusDays(eventBoardDTO.eventStartDate.toEpochDay())}">D-50</strong></p>
                         </div>
                     </div>
                     <div class="sns-share">
@@ -93,7 +97,9 @@
                                 <td class="business-tel-num">123-123-123</td>
                         </table>
 
-                    <img src="https://www.wadiz.kr/ft/images/green001/2023/0313/20230313132659562_1164.png">
+                        <div th:each="fileDTO : ${fileDTOS}" th:if="${fileDTO != null}">
+                            <img th:src="@{/file/display(fileName=${fileDTO.filePath}/${fileDTO.fileUuid}_${fileDTO.fileOriginalName})}">
+                        </div>
                 </div>
                 </div>
                 <div class="my-board">
@@ -194,6 +200,7 @@
         </div>
     </div>
 <textarea style="display:none;"></textarea>
+>>>>>>> a8053b9a945c810d1abec504f5a2525204a09ddb
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/js/recruitment-board/recruitment-board-detail.js"></script>
@@ -208,7 +215,11 @@
 $(function(){
     $('.wish-button').click(function(e){
         if($('.wish-button').attr('aria-pressed') == 'false'){
+<<<<<<< HEAD
+            $(".heart-icon").attr("src", "images/recruitment-board/heart-background.png");
+=======
             $(".heart-icon").attr("src", "/images/recruitment-board/heart-background.png");
+>>>>>>> a8053b9a945c810d1abec504f5a2525204a09ddb
             $('.wish-button').attr('aria-pressed','true') //하트 색 채우기
             $('.like-cancel-text').hide(); //해제 문구
             $('#like-modal').fadeIn();
@@ -220,7 +231,11 @@ $(function(){
             $('#like-modal').delay(500).fadeOut(); //사라지기
         
         }else{
+<<<<<<< HEAD
+            $(".heart-icon").attr("src", "images/recruitment-board/non-heart-icon.png");
+=======
             $(".heart-icon").attr("src", "/images/recruitment-board/non-heart-icon.png");
+>>>>>>> a8053b9a945c810d1abec504f5a2525204a09ddb
             $('.wish-button').attr('aria-pressed','false') //색 비우기
             $('.like-text').hide();  //찜 추가 문구
             // $('#like-modal').css({right: '-30%'}); //오->왼 슬라이드 등장
