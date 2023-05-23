@@ -224,10 +224,11 @@ const secondNext = document.querySelector('.second-next');
 let secondCheckArrow = false;
 let secondCount = 1;
 
-secondImageDiv.forEach((div, i) => {
-  // div.style.backgroundImage = `url(../../static/css/main/images/second-00${i + 1}.jpg)`;
-  div.style.backgroundImage = `url(/static/images/main/recruit-00${i + 1}.jpg)`;
-});
+// secondImageDiv.forEach((div, i) => {
+//   // div.style.backgroundImage = `url(../../static/css/main/images/second-00${i + 1}.jpg)`;
+//   div.style.backgroundImage = `url(/static/images/main/recruit-00${i + 1}.jpg)`;
+// });
+
 
 const clonedsecondBanners = document.querySelectorAll('.second-banner > div').values();
 

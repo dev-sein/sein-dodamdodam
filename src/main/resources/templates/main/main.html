@@ -1052,7 +1052,18 @@
     // });
 
 
+    // JavaScript 코드
+    const recruitmentFileDTOS = recruitmentBoard.recruitmentFileDTOS; /* 이미지 파일 데이터를 담고 있는 배열 */;
+    const secondImageDiv = document.querySelectorAll(".second-banner-image");
 
+    recruitmentFileDTOS.forEach((file, i) => {
+        const filePath = file.filePath;
+        const fileUuid = file.fileUuid;
+        const fileOriginalName = file.fileOriginalName;
+
+        const imageUrl = `/file/display?fileName=${filePath}/${fileUuid}_${fileOriginalName}`;
+        secondImageDiv[i].style.backgroundImage = `url(${imageUrl})`;
+    });
 
 
 </script>
