@@ -110,39 +110,47 @@ h3 {
 }
 
 .space-name{
-position: absolute;
-top: 13%;
-left: 3%;
-text-align: center;
-font-size: 24px;
-font-family: 'Noto Sans KR';
-font-weight: 700;
+    position: absolute;
+    top: 13%;
+    left: 3%;
+    text-align: center;
+    font-size: 24px;
+    font-family: 'Noto Sans KR';
+    font-weight: 700;
 }
 
 .mouseover{
-position: absolute;
-font-size: 14px;
-top: 83%;
-left: 3%;
+    position: absolute;
+    font-size: 14px;
+    top: 83%;
+    left: 3%;
 }
 
 .photo-img{
+    position: absolute;
+    /* margin: 0px auto; */
     width: 100px;
     height: 80px;
+    margin-top: 5px;
+    /* margin-bottom: 18px; */
+    /* margin-top: 3px; */
 }
 
 .space-info{
     position: absolute;
     top: 35%;
     left: 6%;
+    white-space: nowrap;
 }
 
 .space-text-info{
-display: inline-block;
-text-align: left;
-margin-left: 20px;
-left:0%;
-font-size:12px;
+    display: inline-block;
+    text-align: left;
+    margin-left: 115px;
+    /* left:0%; */
+    font-size:12px;
+    width: 200px;
+    white-space: normal;
 }
 
 
@@ -181,11 +189,11 @@ font-size:12px;
 
 
 .img:first-child {
-  /* display: block; */
-  opacity: 1;
+    /* display: block; */
+    opacity: 1;
 }
 
-/* top 버튼 */
+/* top ë²„íŠ¼ */
 button {
     writing-mode: horizontal-tb !important;
     text-rendering: auto;
