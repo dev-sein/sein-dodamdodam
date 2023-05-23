@@ -7,7 +7,10 @@ import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
 import com.app.dodamdodam.repository.banner.BannerRepository;
 import com.app.dodamdodam.search.banner.AdminBannerSearch;
+import com.app.dodamdodam.type.BannerType;
+import com.app.dodamdodam.type.MemberStatus;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -19,6 +22,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class BannerApplyServiceImpl implements BannerApplyService {
     private final BannerRepository bannerRepository;
 
@@ -57,5 +61,20 @@ public class BannerApplyServiceImpl implements BannerApplyService {
             bannerRepository.deleteById(bannerApplyId);
         }
     }
+
+    /*관리자 상태 변경*/
+    public void setBannerStatus(List<Long> ids, BannerType bannerStatus) {
+        for (Long id : ids) {
+            bannerRepository.findById(id).ifPresent(bannerApply -> {
+                bannerApply.setBannerStatus(BannerType.COMPLETE);
+                bannerRepository.save(bannerApply); // 변경된 상태를 저장
+            });
+            log.info("set 변경");
+        }
+    }
+
+
+
+
 
 }

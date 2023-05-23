@@ -75,7 +75,7 @@ function listText(list) {
         console.log("text 들어옴");
         var text = "";
         text += `
-            <tr onclick="redirectToDetail(${freeBoard.id})">
+            <tr>
                 <td>
                     <!-- 체크박스 -->
                     <div class="checkbox-wrapper-21">
@@ -86,11 +86,11 @@ function listText(list) {
                     </div>
                     <!-- 체크박스 -->
                 </td>
-                <td class="numbers">${freeBoard.id}</td>
-                <td>${freeBoard.boardTitle}</td>
-                <td>${freeBoard.memberDTO.memberName}</td>
-                <td>${freeBoard.freeCategory}</td>
-                <td>${freeBoard.createdDate}</td>
+                <td onclick="redirectToDetail(${freeBoard.id})" class="numbers">${freeBoard.id}</td>
+                <td onclick="redirectToDetail(${freeBoard.id})">${freeBoard.boardTitle}</td>
+                <td onclick="redirectToDetail(${freeBoard.id})">${freeBoard.memberDTO.memberName}</td>
+                <td onclick="redirectToDetail(${freeBoard.id})">${freeBoard.freeCategory}</td>
+                <td onclick="redirectToDetail(${freeBoard.id})">${freeBoard.createdDate}</td>
                 <!-- <td>{point.pointStatus}</td> -->
                 <!-- <td>2000.01.01 21:05:04</td>-->
                 <!-- <td><button class="show-detail" onclick="showModal()">상세보기</button></td> -->

@@ -96,13 +96,7 @@
                             <!-- 페이지 표시 -->
                             <div class="slider">
                                 <div class="slider__container">
-                                  <div class="slider__item">
-                                    <!-- <img src="/images/admin/1.png" > -->
-                                    <img src="https://cdn.wadiz.kr/wwwwadiz/green001/2023/0112/20230112203341104_181833.jpeg/wadiz/format/jpg/quality/80/" >
-                                  </div>
-                                  <div class="slider__item">
-                                    <img src="https://cdn.wadiz.kr/wwwwadiz/green001/2023/0129/20230129210936952_181833.jpg/wadiz/format/jpg/quality/80/">
-                                  </div>
+
                                 </div>
                                 <button class="slider__arrow slider__arrow--left">&lt;</button>
                                 <button class="slider__arrow slider__arrow--right">&gt;</button>
@@ -157,7 +151,7 @@
     const freeBoardFileDTO = [[${freeBoardFileDTO}]];
     console.log("파일 들어옴");
     console.log(freeBoardFileDTO);
-    let fileDTOS = freeBoardFileDTO.freeFiles;
+    let fileDTOS = freeBoardFileDTO.freeFileDTOS;
     fileDTOS.forEach((fileDTO, i) => {
         console.log("파일 들어옴");
         console.log(fileDTO);

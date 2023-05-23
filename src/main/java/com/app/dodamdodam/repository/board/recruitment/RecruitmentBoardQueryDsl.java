@@ -1,5 +1,6 @@
 package com.app.dodamdodam.repository.board.recruitment;
 
+import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
 import com.app.dodamdodam.search.board.AdminRecruitmentSearch;
@@ -28,12 +29,24 @@ public interface RecruitmentBoardQueryDsl {
 //    내가 참여 모집 게시글 전체 개수 가져오기
     public Long findRecruitmentedBoardListCountByMemberId_QueryDSL(Long memberId);
 
+//    모집 게시글 전체 리스트 가져오기
+    public Page<RecruitmentBoard> findRecruitmentBoardList_QueryDSL(Pageable pageable);
+
 //    관리자 도담 게시판 검색
     public Page<RecruitmentBoard> findAdminRecruitmentBoardWithPaging_QueryDSL (AdminRecruitmentSearch adminRecruitmentSearch, Pageable pageable);
 
 //    관리자 도담 게시판 페이징
     public Page<RecruitmentBoard> findAllWithPaging(Pageable pageable);
 
-//    내가 참여한 모집 게시글 날짜로 검색
-    public List<RecruitmentBoard> findRecruitmentBoardListByMemberIdAndDate(Long memberId, LocalDate recruitmentDate);
+////    내가 참여한 모집 게시글 날짜로 검색
+//    public List<RecruitmentBoard> findRecruitmentBoardListByMemberIdAndDate(Long memberId, LocalDate recruitmentDate);
+
+
+    //    모집 게시판 최근 게시물 5개
+    public List<RecruitmentBoard> findRecentRecruitmentBoardList_QueryDSL();
+    public List<RecruitmentBoard> findRecruitmentBoardListByMemberIdAndDate_QueryDSL(Long memberId, LocalDate recruitmentDate);
+
+//    내가 참여한 모집 게시글들의 날짜 가져오기
+    public List<LocalDate> findRecruimentDateByMemberId_QueryDSL(Long memberId);
+    
 }

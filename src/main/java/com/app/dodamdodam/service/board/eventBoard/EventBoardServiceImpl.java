@@ -2,6 +2,7 @@ package com.app.dodamdodam.service.board.eventBoard;
 
 import com.app.dodamdodam.domain.EventBoardDTO;
 import com.app.dodamdodam.domain.EventFileDTO;
+import com.app.dodamdodam.domain.FreeBoardFileDTO;
 import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.event.EventFile;
 import com.app.dodamdodam.repository.board.event.board.EventBoardRepository;
@@ -136,5 +137,11 @@ public class EventBoardServiceImpl implements EventBoardService {
             Optional<EventBoard> eventBoards = eventBoardRepository.findById(id);
             return toEventSearchBoardDTO(eventBoards.get());
         }
+
+    @Override
+    public List<EventBoardDTO> getRecentEventBoardList() {
+        List<EventBoardDTO> eventBoardDTOS = eventBoardRepository.findRecentEventBoardList_QueryDSL().stream().map(freeBoard -> eventBoardToDTO(freeBoard)).collect(Collectors.toList());
+        return eventBoardDTOS;
+    }
 
 }

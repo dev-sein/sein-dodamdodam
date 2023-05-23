@@ -2,6 +2,7 @@ package com.app.dodamdodam.service.board.eventBoard;
 
 import com.app.dodamdodam.domain.EventBoardDTO;
 import com.app.dodamdodam.domain.EventFileDTO;
+import com.app.dodamdodam.domain.FreeBoardFileDTO;
 import com.app.dodamdodam.domain.MemberDTO;
 import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.event.EventFile;
@@ -35,11 +36,15 @@ public interface EventBoardService {
     public void update(EventBoardDTO eventBoardDTO);
     // 삭제
     public void delete(Long eventBoardId);
+
     //     관리자 : 게시글 검색
     public Page<EventBoardDTO> showAdminEventWithSearch_QueryDSL(Pageable pageable, AdminEventBoardSearch adminEventBoardSearch);
 
     //    관리자 상세보기 : 게시글 상세
     public EventBoardDTO getAdminEventBoardDetail(Long id);
+
+    /* 최근 작성된 이벤트 게시글 리스트 */
+    public List<EventBoardDTO> getRecentEventBoardList();
 
     default EventBoardDTO eventBoardToDTO(EventBoard eventBoard){
         return EventBoardDTO.builder()

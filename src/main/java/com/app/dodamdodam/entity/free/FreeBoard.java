@@ -28,11 +28,11 @@ public class FreeBoard extends Board {
     @NotNull private CategoryType freeCategory;
 
     @JsonManagedReference
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "freeBoard")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "freeBoard", cascade = CascadeType.REMOVE)
     private List<FreeFile> freeFiles = new ArrayList<>();;
 
     @JsonManagedReference
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "freeBoard")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "freeBoard", cascade = CascadeType.REMOVE)
     private List<FreeReply> freeReplies = new ArrayList<>();;
 
     @NotNull

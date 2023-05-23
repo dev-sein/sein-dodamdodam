@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,7 +18,7 @@
         <main class="account-drop wzui">
               <div class="wrap">
                 <h1>회원 탈퇴</h1>
-                <p><strong>린먕</strong>님, 와디즈를 이용하시는데 혹시 아래와 같은 불편함이 있으셨으면, 아래 방법을 한번 이용해보세요.</p>
+                <p><strong th:text="${member.memberName}">린먕</strong>님, 와디즈를 이용하시는데 혹시 아래와 같은 불편함이 있으셨으면, 아래 방법을 한번 이용해보세요.</p>
                 <div class="message-box">
                   <dl>
                     <dt>문자 메시지 / 이메일 수신이 불편하신가요?</dt>

@@ -1,6 +1,7 @@
 package com.app.dodamdodam.controller;
 
 import com.app.dodamdodam.domain.*;
+import com.app.dodamdodam.entity.banner.BannerApply;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.service.board.freeBoard.FreeBoardService;
 import com.app.dodamdodam.service.board.purchase.PurchaseBoardService;
@@ -10,12 +11,15 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Controller
@@ -31,29 +35,33 @@ public class MyPageController {
 
     private final RecruitmentBoardService recruitmentBoardService;
 
-    /*마이 페이지 메인*/
-    @GetMapping("main")
+    /*마이 페이지 메인 테스트*/
+    @GetMapping("main-test")
     public String myPageInfo(Model model, HttpSession session) {
         /* calendar 작업 추가로 해야함 */
 //        임의로 세션에 memberId값 담아둠
-        session.setAttribute("memberId", 5L);
+//        session.setAttribute("memberId", 5L);
         Long memberId =  (Long)session.getAttribute("memberId");
         model.addAttribute("member",memberService.getMemberInfo(memberId));
 //        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
         model.addAttribute("point",memberService.getMyPointList(memberId));
+//        model.addAttribute("myGrade",memberService.getMemberGrade(memberId));
+        model.addAttribute("myGrade",memberService.getMyGradeByMemberId(memberId));
         return"myPage/myPage-Main";
     }
 
-    /*마이 페이지 메인 테스트*/
-    @GetMapping("main-test")
+    /*마이 페이지 메인*/
+    @GetMapping("main")
     public String myPageInfoTest(Model model, HttpSession session) {
         /* calendar 작업 추가로 해야함 */
 //        임의로 세션에 memberId값 담아둠
-        session.setAttribute("memberId", 5L);
+//        session.setAttribute("memberId", 5L);
         Long memberId =  (Long)session.getAttribute("memberId");
         model.addAttribute("member",memberService.getMemberInfo(memberId));
 //        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
         model.addAttribute("point",memberService.getMyPointList(memberId));
+//        model.addAttribute("myGrade",memberService.getMemberGrade(memberId));
+        model.addAttribute("myGrade",memberService.getMyGradeByMemberId(memberId));
         return"myPage/mypage-main-test";
     }
 
@@ -73,7 +81,7 @@ public class MyPageController {
     @GetMapping("point")
     public String myPointList(Model model, HttpSession session) {
         log.info("들어옴@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-        session.setAttribute("memberId", 5L);
+//        session.setAttribute("memberId", 5L);
         Long memberId = (Long)session.getAttribute("memberId");
         model.addAttribute("member",memberService.getMemberInfo(memberId));
 //        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
@@ -85,7 +93,7 @@ public class MyPageController {
     /* 내가 작성한 자유게시글 목록 */
     @GetMapping("free")
     public String myBoardList(HttpSession session, Model model){
-        session.setAttribute("memberId", 5L);
+//        session.setAttribute("memberId", 5L);
         Long memberId = (Long)session.getAttribute("memberId");
 
         model.addAttribute("member",memberService.getMemberInfo(memberId));
@@ -107,7 +115,7 @@ public class MyPageController {
     @ResponseBody
     @GetMapping("free-board/{page}")
     public List<FreeBoardFileDTO> myFreeBoardList(HttpSession session, @PathVariable(value = "page") Integer page){
-        session.setAttribute("memberId", 5L);
+//        session.setAttribute("memberId", 5L);
         Long memberId = (Long)session.getAttribute("memberId");
 
         /* 한번에 12개씩 */
@@ -122,7 +130,7 @@ public class MyPageController {
     /* 내가 작성한 판매게시글 목록 */
     @GetMapping("purchase")
     public String myPurchaseBoardList(HttpSession session, Model model){
-        session.setAttribute("memberId", 5L);
+//        session.setAttribute("memberId", 5L);
         Long memberId = (Long)session.getAttribute("memberId");
 
         model.addAttribute("member",memberService.getMemberInfo(memberId));
@@ -144,7 +152,7 @@ public class MyPageController {
     @ResponseBody
     @GetMapping("purchase-board/{page}")
     public List<PurchaseBoardFileDTO> myPurchaseBoardList(HttpSession session, @PathVariable(value = "page") Integer page){
-        session.setAttribute("memberId", 5L);
+//        session.setAttribute("memberId", 5L);
         Long memberId = (Long)session.getAttribute("memberId");
 
         /* 한번에 12개씩 */
@@ -158,8 +166,9 @@ public class MyPageController {
     /* 내가 작성한 모집게시글 목록 */
     @GetMapping("recruitment")
     public String myRecruitmentBoardList(HttpSession session, Model model){
-        session.setAttribute("memberId", 5L);
-        Long memberId = (Long)session.getAttribute("memberId");
+//        session.setAttribute("memberId", 5L);
+        Long memberId = (Long)session.
+                getAttribute("memberId");
 
         model.addAttribute("member",memberService.getMemberInfo(memberId));
 //        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
@@ -180,7 +189,7 @@ public class MyPageController {
     @ResponseBody
     @GetMapping("recruitment-board/{page}")
     public List<RecruitmentBoardFileDTO> myRecruitmentBoardList(HttpSession session, @PathVariable(value = "page") Integer page){
-        session.setAttribute("memberId", 5L);
+//        session.setAttribute("memberId", 5L);
         Long memberId = (Long)session.getAttribute("memberId");
 
         /* 한번에 12개씩 */
@@ -204,7 +213,7 @@ public class MyPageController {
     /* 내가 참가한 모집게시글 목록 */
     @GetMapping("recruitmented")
     public String myRecruitmentedBoardList(HttpSession session, Model model){
-        session.setAttribute("memberId", 5L);
+//        session.setAttribute("memberId", 5L);
         Long memberId = (Long)session.getAttribute("memberId");
 
         model.addAttribute("member",memberService.getMemberInfo(memberId));
@@ -226,7 +235,7 @@ public class MyPageController {
     @ResponseBody
     @GetMapping("recruitmented-board/{page}")
     public List<RecruitmentBoardFileDTO> myRecruitmentedBoardList(HttpSession session, @PathVariable(value = "page") Integer page){
-        session.setAttribute("memberId", 5L);
+//        session.setAttribute("memberId", 5L);
         Long memberId = (Long)session.getAttribute("memberId");
 
         /* 한번에 12개씩 */
@@ -240,7 +249,7 @@ public class MyPageController {
     /* 회원 정보 수정 페이지 */
     @GetMapping("info")
     public String getMyInfo(HttpSession session, Model model){
-        session.setAttribute("memberId", 5L);
+//        session.setAttribute("memberId", 5L);
         Long memberId = (Long)session.getAttribute("memberId");
         model.addAttribute("member",memberService.getMemberInfo(memberId));
 //        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member",member));
@@ -259,10 +268,9 @@ public class MyPageController {
 
     /* 회원탈퇴 페이지 */
     @GetMapping("withDrawl")
-    public String memberWithDrawl(HttpSession session){
-        session.setAttribute("memberId", 10L);
-//        Long memberId = (Long)session.getAttribute("memberId");
-
+    public String memberWithDrawl(Model model, HttpSession session){
+        Long memberId =  (Long)session.getAttribute("memberId");
+        model.addAttribute("member",memberService.getMemberInfo(memberId));
         return "myPage/myPage-withDrawl";
     }
 
@@ -272,14 +280,12 @@ public class MyPageController {
         Long memberId = (Long)session.getAttribute("memberId");
         memberService.setMemberStatusById(memberId);
         session.invalidate();
-        return new RedirectView("/main");
+        return new RedirectView("/home");
     }
 
     /* 비밀번호 변경 페이지 */
     @GetMapping("change-password")
     public String changePasswordPage(HttpSession session){
-        session.setAttribute("memberId", 11L);
-
         return "myPage/myPage-password";
     }
 
@@ -291,6 +297,42 @@ public class MyPageController {
         memberService.setMemberPasswordById(memberId,memberPassword);
         return new RedirectView("/mypage/change-password?update=ok");
     }
+
+
+    /* 날짜로 내가 그 날짜에 참가한 모집 게시글 가져오기 */
+    @GetMapping("get-recruitment/{date}")
+    @ResponseBody
+    public List<RecruitmentBoardFileDTO> getRecruitmentByDate(HttpSession session, @PathVariable(value = "date") String date){
+        Long memberId = (Long)session.getAttribute("memberId");
+        LocalDate localDate = LocalDate.parse(date, DateTimeFormatter.BASIC_ISO_DATE);
+
+        log.info(memberId.toString());
+        log.info(localDate.toString());
+        return memberService.getRecruitmentBoardListByMemberIdAndDate(memberId, localDate);
+    }
+
+    /* 내가 참여한 모집 게시글 모집 날짜 리스트 가져오기 */
+    @GetMapping("get-recruitment-dates")
+    @ResponseBody
+    public List<LocalDate> getDates(HttpSession session){
+        Long memberId = (Long)session.getAttribute("memberId");
+        return memberService.getMyRecruimentDateByMemberId(memberId);
+    }
+
+    /* 배너 신청 페이지 */
+    @GetMapping("banner")
+    public String registerBannerPage(){
+        return "/myPage/myPage-banner";
+    }
+
+    /* 배너 등록 */
+    @PostMapping("banner-register")
+    public RedirectView registerBanner(HttpSession session, BannerApply bannerApply){
+        Long memberId = (Long)session.getAttribute("memberId");
+        memberService.saveBannerApply(memberId, bannerApply);
+        return new RedirectView("/mypage/main?banner=ok");
+    }
+
 
     /* 추가 */
 }

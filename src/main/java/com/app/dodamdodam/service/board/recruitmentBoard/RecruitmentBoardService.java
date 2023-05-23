@@ -32,7 +32,7 @@ public interface RecruitmentBoardService {
 //    관리자 목록 게시판
     public Page<RecruitmentBoardFileDTO> showList(Pageable pageable);
 
-//  관리자 검색
+//    관리자 검색
     public Page<RecruitmentBoardFileDTO> showAdminRecruitmentWithSearch_QueryDSL(Pageable pageable, AdminRecruitmentSearch adminRecruitmentSearch);
 
 //    관리자 삭제
@@ -40,6 +40,12 @@ public interface RecruitmentBoardService {
 
 //    관리자 상세보기
     public RecruitmentBoardFileDTO getAdminRecruitmentBoardDetail(Long id);
+
+//    모집 게시글 목록
+    public List<RecruitmentBoardFileDTO> getRecruitmentBoardListByPaging(Pageable pageable);
+
+    /* 최근 작성된 자유 게시글 리스트 */
+    public List<RecruitmentBoardFileDTO> getRecentRecruitmentBoardList();
 
     default RecruitmentBoardFileDTO toRecruitmentBoardFileDto(RecruitmentBoard recruitmentBoard){
         return RecruitmentBoardFileDTO.builder()

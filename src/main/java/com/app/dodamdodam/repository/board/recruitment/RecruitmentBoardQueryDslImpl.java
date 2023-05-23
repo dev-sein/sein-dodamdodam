@@ -18,6 +18,7 @@ import org.springframework.data.domain.Pageable;
 import java.time.LocalDate;
 import java.util.List;
 
+import static com.app.dodamdodam.entity.free.QFreeBoard.freeBoard;
 import static com.app.dodamdodam.entity.inquiry.QInquiry.inquiry;
 import static com.app.dodamdodam.entity.recruitment.QRecruitmentBoard.recruitmentBoard;
 public class RecruitmentBoardQueryDslImpl implements RecruitmentBoardQueryDsl {
@@ -94,11 +95,27 @@ public class RecruitmentBoardQueryDslImpl implements RecruitmentBoardQueryDsl {
                 .fetchOne();
     }
 
+    /* 내가 참가한 모집게시글 개수 가져오기 */
     @Override
     public Long findRecruitmentedBoardListCountByMemberId_QueryDSL(Long memberId) {
         return query.select(recruitmentBoard.count()).from(recruitmentBoard)
                 .where(recruitmentBoard.recruitments.any().member.id.eq(memberId))
                 .fetchOne();
+    }
+
+    /* 모집 게시글 전체 리스트 가져오기 */
+    @Override
+    public Page<RecruitmentBoard> findRecruitmentBoardList_QueryDSL(Pageable pageable) {
+        List<RecruitmentBoard> recruitmentBoards = query.select(recruitmentBoard).from(recruitmentBoard)
+                .join(recruitmentBoard.member).fetchJoin()
+                .leftJoin(recruitmentBoard.recruitmentFiles).fetchJoin()
+                .orderBy(recruitmentBoard.id.desc())
+                .offset(pageable.getOffset()).limit(pageable.getPageSize())
+                .fetch();
+
+        Long count = query.select(recruitmentBoard.count()).from(recruitmentBoard).fetchOne();
+
+        return new PageImpl<>(recruitmentBoards, pageable, count);
     }
 
     //관리자 모집 게시판 검색
@@ -142,9 +159,11 @@ public class RecruitmentBoardQueryDslImpl implements RecruitmentBoardQueryDsl {
 
     }
 
+
+
     /* 내가 참가한 모집 날짜로 검색 */
     @Override
-    public List<RecruitmentBoard> findRecruitmentBoardListByMemberIdAndDate(Long memberId, LocalDate recruitmentDate) {
+    public List<RecruitmentBoard> findRecruitmentBoardListByMemberIdAndDate_QueryDSL(Long memberId, LocalDate recruitmentDate) {
         List<RecruitmentBoard> recruitmentBoards = query.select(recruitmentBoard).from(recruitmentBoard)
                 .where(recruitmentBoard.recruitments.any().member.id.eq(memberId).and(recruitmentBoard.recruitmentDate.eq(recruitmentDate)))
                 .leftJoin(recruitmentBoard.recruitmentFiles).fetchJoin()
@@ -153,5 +172,24 @@ public class RecruitmentBoardQueryDslImpl implements RecruitmentBoardQueryDsl {
                 .fetch();
 
         return recruitmentBoards;
+    }
+
+    /* 도담 모집 게시판 최근 게시글 5개 불러오기 */
+    @Override
+    public List<RecruitmentBoard> findRecentRecruitmentBoardList_QueryDSL() {
+        return query.selectFrom(recruitmentBoard)
+                .leftJoin(recruitmentBoard.recruitmentFiles).fetchJoin()
+                .orderBy(recruitmentBoard.id.desc())
+                .limit(5)
+                .fetch();
+
+    }
+    /* 내가 참가한 모집게시글 날짜 가져오기 */
+    @Override
+    public List<LocalDate> findRecruimentDateByMemberId_QueryDSL(Long memberId) {
+        return query.select(recruitmentBoard.recruitmentDate).from(recruitmentBoard)
+                .where(recruitmentBoard.recruitments.any().member.id.eq(memberId))
+                .orderBy(recruitmentBoard.recruitmentDate.desc())
+                .fetch();
     }
 }

@@ -2,6 +2,10 @@
 body {
     line-height: 1.33;
     font-family: 'Noto Sans KR' !important;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none
 }
 
 a, em, div {

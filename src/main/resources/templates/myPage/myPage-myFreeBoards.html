@@ -81,7 +81,7 @@
                             </dl>
                         </div>
                         <!-- 프로필 설정 버튼 -->
-                        <a href="https://www.wadiz.kr/web/wmypage/myprofile/modifyprofile" class="ProfileSet Mint" id="apply">
+                        <a href="https://www.wadiz.kr/web/wmypage/myprofile/modifyprofile" class="ProfileSet Mint" id="apply" style="display: none">
                                 <span>
                                     <span class="ProfileSet_button">배너 신청하기</span>
                                 </span>
@@ -357,6 +357,9 @@
             let date = changeDateToString(result[i]);
             /* 자유게시글 카테고리 변환해서 담아둠 */
             let category = changeTypeToString(result[i]);
+            if (result[i].freeFileDTOS.length != 0){
+                globalThis.filePath = '/file/display?fileName=' + result[i].freeFileDTOS[0].filePath + '/t_' + result[i].freeFileDTOS[0].fileUuid + '_' + result[i].freeFileDTOS[0].fileOriginalName;
+            }
             /* 리스트 하나하나의 내용 */
             /* background-image 쪽 추가로 작업해야함, 밋밋하면 likeCount 추가 DTO에 만들어 둠 */
             text += `
@@ -364,7 +367,18 @@
                         <div>
                             <div class="project-card">
                                 <div class="card-img-section" style="cursor: pointer" onclick="window.open('/free/detail/${result[i].id}')">
-                                      <em class="project-img" style="background-image:url(https://cdn.wadiz.kr/wwwwadiz/green001/2023/0320/20230320212007743_200034.png/wadiz/format/jpg/quality/80)"></em>
+                    `;
+            if (result[i].freeFileDTOS.length != 0) {
+                text += `
+                                      <em class="project-img" style="background-image:url(${filePath})"></em>
+                    `;
+            } else {
+                text += `
+                                      <em class="project-img" style="background-image:url(/images/free-board/basic-image.png)"></em>
+                    `;
+            }
+
+            text += `
                                     <em class="project-type reward">내가 쓴 자유글</em>
                                 </div>
                                 <div class="card-info-section">

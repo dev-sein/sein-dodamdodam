@@ -30,8 +30,13 @@ public interface EventBoardQueryDsl {
     //  어드민 자유게시판 검색
     public Page<EventBoard> findAdmindEventBoardWithPaging_QueryDSL(AdminEventBoardSearch adminEventBoardSearch, Pageable pageable);
 
+    // 자유게시글 상세 페이지 댓글
+    public Optional<EventBoard> findEventBoardAndEventRepliesById_QueryDSL(Long boardId);
+
     // 댓글 id로 자유게시글 접근해서 그 안에 달린 댓글 갯수 가져오기
     public Integer findReplyCountByReplyId_QueryDsl(Long replyId);
 
+    //    자유 게시판 최근 게시물 5개
+    public List<EventBoard> findRecentEventBoardList_QueryDSL();
 
 }

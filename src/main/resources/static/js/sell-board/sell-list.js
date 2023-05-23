@@ -1,127 +1,148 @@
-// $(document).ready(function() {
-//     // 검색창에서 키보드를 눌렀을 때
-//     $('.search__searchbox__form').on('keydown', function(e) {
-//         if (e.keyCode == 13) { // Enter 키를 눌렀을 때
-//             e.preventDefault(); // 기본 이벤트 막기
-//         }
-//     });
-// });
-
-
-let page = 1;
+globalThis.page = 1;
+let purchaseBoardSearch = {
+    boardTitle : null,
+    memberName : null
+};
 let keyword;
-load();
+const $listResults = $(".event-content");
 
-function load() {
+load(page, purchaseBoardSearch); // 시작하자마자 실행
 
+function keyDownEnter() {
+    // 검색창에서 키보드를 눌렀을 때
+    $('.input-keyword').on('keydown', function(e) {
+        if (e.keyCode == 13) { // Enter 키를 눌렀을 때
+            e.preventDefault(); // 기본 이벤트 막기
+            keyDownEnterOrClickSearchButtonAfter();
+        }
+    });
+}
+
+function keyDownEnterOrClickSearchButtonAfter() {
+    $listResults.empty(); // 기존 내용 비우기
+    page = 1;
+    showKeyword(); // purchaseBoardSearch에 키워드 담아주는 메소드
+    load(page, purchaseBoardSearch);
+}
+
+
+window.addEventListener('scroll', function() {
+    // 현재 스크롤 위치 확인
+    var scrollPosition = window.pageYOffset;
+    var windowSize = window.innerHeight;
+    var bodyHeight = document.body.offsetHeight;
+
+    page ++;
+
+    // 스크롤이 페이지 맨 아래에 도달할 때 데이터 로드
+    if (scrollPosition + windowSize >= bodyHeight) {
+        load(page, purchaseBoardSearch);
+    }
+});
+
+function changeDate(e) {
+    var date = new Date(e);
+    var year = date.getFullYear();
+    var month = ("0" + (1 + date.getMonth())).slice(-2);
+    var day = ("0" + date.getDate()).slice(-2);
+
+    return year + "." + month + "." + day;
+}
+
+function calculateDate(inputDate) {
+    // 현재 날짜를 가져옵니다.
+    var currentDate = new Date();
+    // 입력 받은 날짜를 파싱합니다.
+    var parsedInputDate = new Date(inputDate);
+    // 리턴 결과값
+    let result = "";
+
+    if (currentDate >= parsedInputDate) {
+        // 현재 날짜가 입력 받은 날짜보다 같거나 지났을 때
+        result = "진행중";
+
+    } else/* (currentDate < parsedInputDate) */{
+        // 현재 날짜가 아직 입력 받은 날짜가 되지 않았을 때
+        result = "진행예정"
+    }
+
+    return result;
+}
+
+function load(page, purchaseBoardSearch) {
+
+    console.log(purchaseBoardSearch);
     console.log(page);
-    $.ajax({
-        url: "/boards/puchase/list",
-        type: "post",
-        contentType: 'application/json',
-        dataType : 'json',       // 데이터 타입 (html, xml, json, text 등등)
-        data : JSON.stringify({  // 보낼 데이터 (Object , String, Array)
-            "purchaseBoardSearch" : purchaseBoardSearch,
-            "pageable" : pageable
-        }),
-        success: function(result) {
-            // console.log(page);
-            // console.log(keyword);
-            // console.log(result.pagination.realEnd);
-            // console.log(result.pagination.endPage);
-            // console.log(result.pagination.prev);
-            // console.log(result.pagination.next);
-            showList(result.members);
-            showPage(result.pagination);
 
+    $.ajax({
+        url: `/purchase/list-content/${globalThis.page}`,
+        type: "get",
+        data : purchaseBoardSearch,
+        success: function(purchaseBoardDTOs) {
+            console.log("ajax success");
+            showList(purchaseBoardDTOs);
         },
         error: function (error) {
             console.log('Error fetching data:', error);
         }
     })
 };
-/* 핸드폰 자동 하이픈 */
-function autoHyphen(number) {
-    const regex = /^01(0|1|[6-9])\-?\d{3,4}\-?\d{4}$/;
-    if (regex.test(number)) {
-        return number.replace(/^01(0|1|[6-9])/, "01$1-").replace(/(\d{3,4})(\d{4})/, "$1-$2");
-    }
-    return "Invalid number";
-}
-/*신청 목록*/
-function showList(members){
-    const $listResults = $("#scroll");
+
+/*목록*/
+function showList(list){
+    let purchaseBoardDTOs = list.content;
+
     var text = "";
-    members.forEach(member => {
-        var date = member.memberDriveRegisterDate;
-        var memberType = member.memberType == 0 ? "초보자" : "베테랑";
-        var memberPhone = autoHyphen(member.memberPhone);
-        var realDate = changeDate(date);
-        text +=`
-            <div class="user-list__info-container">
-                <div class="user-list__info-unit">
-                    <input type="checkbox" class="user__checkbox" id="" name="checkbox" data-id="${member.memberId}" onclick="isChecked(this)"/>
-                    <label for="" class="user__checkbox--label">
-                        <ul class="user-list__info">
-                            <li class="user__id" name="memberId">${member.memberId}</li>
-							<li class="user__type" name="memberType">${memberType}</li>
-							<li class="user__user-id" name="memberIdentification">${member.memberIdentification}</li>
-							<li class="user__name" name="memberName">${member.memberName}</li>
-							<li class="user__email" name="memberEmail">${member.memberEmail}</li>
-							<li class="user__phone" name="memberPhone">${memberPhone}</li>
-							<li class="user__point" name="memberPoint">${member.memberPoint}</li>
-							<li class="user__join" name="memberDriveRegisterDate">${realDate}</li>
-                            <li class="user__detail" name="userDetail">
-                                <button class="custom-btn btn-16 show" data-id="${member.memberId}" id="show" onclick="show(this)">상세 정보</button>
-                            </li>
-                        </ul>
-                    </label>
+    if (list != null || $listResults.hasChildNodes()) {
+        purchaseBoardDTOs.forEach(purchaseBoardsDTO => {
+            console.log(purchaseBoardsDTO);
+            var date = purchaseBoardsDTO.createdDate;
+            var realDate = changeDate(date);
+            let presentFileDTO = purchaseBoardsDTO.purchaseFileDTOs[0];
+            let filePath = '/file/display?fileName=' + presentFileDTO.filePath + '/t_' + presentFileDTO.fileUuid + '_' + presentFileDTO.fileOriginalName;
+            text +=`
+            <li class="event-instance" >
+                <div class="instance">
+                    <img class="thumbnail" src="${filePath}" onclick="location.href='/purchase/detail/${purchaseBoardsDTO.id}'">
+                    <div class="instance-detail">
+    
+                        <div class="detail-title">${purchaseBoardsDTO.boardTitle}</div>
+                        <div class="detail-writer">${purchaseBoardsDTO.memberDTO.memberName}</div>
+                        <div class="detail-date">${realDate}</div>
+                    </div>
                 </div>
-            </div>
+            </li>
         `
-    });
-
-    $listResults.html(text);
-}
-
-
-/*페이지 버튼*/
-function showPage(pagination){
-    const $btnResults = $(".desktop-only");
-    page = pagination.criteria.page;
-    var text = `
-            <button class="prev-page icon-chevron-left" data-page="${pagination.startPage - 1}" onclick="findPage(this)" ${pagination.prev ? '' : 'disabled'}>
-                <span class="text-hidden">이전</span>
-            </button>`;
-    for (let i = pagination.startPage; i <= pagination.endPage; i++) {
-        text += `<a class="pages ${pagination.criteria.page === i ? 'current' : ''}" data-page="${i}" onclick="findPage(this)">${i}</a>`;
+        });
+    } else {
+        text += `
+            <li class="event-instance" >
+                <div class="instance">
+                    <div class="instance-detail">
+                        <div class="detail-title">검색 결과가 없습니다.</div>
+                    </div>
+                </div>
+            </li>
+        `;
     }
-    text += `
-            <button class="next-page icon-chevron-right" data-page="${pagination.endPage + 1}" onclick="findPage(this)" ${pagination.next ? '' : 'disabled'}>
-                <span class="text-hidden">다음</span>
-            </button>`;
 
-
-
-    $btnResults.html(text);
-}
-
-function findPage(currentPage) {
-    page = currentPage.dataset.page;
-    page *= 1;
-    // console.log(typeof page);
-    load();
+    $listResults.append(text);
 }
 
 
-$('.search__searchbox__button').on('click', showKeyword)
-$('#searchbox').on('keyup', showKeyword)
+$('.search-button').on('click', keyDownEnterOrClickSearchButtonAfter);
+// $('#searchbox').on('keyup', showKeyword)
 
 function showKeyword() {
-    keyword = $('#searchbox').val();
-    page = 1
-    console.log(keyword);
-    load();
+    let $selectedVal = $(".total-inner select").val();
+    if($selectedVal === "boardTitle") {
+        purchaseBoardSearch.boardTitle = $('.search-input').val();
+        console.log("showKeyworkd() if문 들어옴");
+    } else {
+        purchaseBoardSearch.memberName = $('.search-input').val();
+        console.log("showKeyworkd() else문 들어옴");
+    }
+    console.log(purchaseBoardSearch);
 }
 
 

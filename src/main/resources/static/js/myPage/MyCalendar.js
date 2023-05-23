@@ -130,23 +130,54 @@ $("#today").click(() => {
     id는 무조거 달라야함
     *무조건 있어야함
 */
-calendar.createEvents([
-  {
-    id: 'event3',
-    calendarId: 'cal1',
-    title: 'Lunch appointment',
-    start: '2023-05-06T12:00:00',
-    end: '2023-05-06T13:00:00',
-  },
-  {
-    id: 'event2',
-    calendarId: 'cal1',
-    title: 'Lunch appointment',
-    start: '2023-05-05T12:00:00',
-    end: '2023-05-05T13:00:00',
-  }
-]);
+// calendar.createEvents([
+//   {
+//     // id: 'event3',
+//     // calendarId: 'cal1',
+//     // title: 'Lunch appointment',
+//     start: '2023-05-20',
+//     end: '2023-05-20'
+//     // start: '2023-05-06T12:00:00',
+//     // end: '2023-05-06T13:00:00',
+//   },
+//   {
+//     // id: 'event2',
+//     // calendarId: 'cal1',
+//     // title: 'Lunch appointment',
+//     start: '2023-05-05T12:00:00',
+//     end: '2023-05-05T13:00:00',
+//   }
+// ]);
 
+
+
+// ajax로 그날 참여한 모집 가져오기
+const getDate = () => {
+  console.log("getDate 들어옴@@@@");
+  $.ajax({
+    type: 'GET',
+    url: `/mypage/get-recruitment-dates`,
+    success: function (result) {
+      console.log(result);
+      /* caledar에 일정 있는 날 점 찍기*/
+      for (var i = 0; i < result.length; i++){
+        calendar.createEvents([
+          {
+            start: result[i],
+            end: result[i]
+          }
+        ]);
+      }
+    },
+    error: function (error) {
+      console.log('Error fetching data:', error);
+    }
+  });
+};
+$(document).ready(function () {
+  console.log("여기로 들어왔어!!!!!!!!!!");
+  getDate();
+});
 
 
   /* 상세 일정을 띄워주는 코드 */
@@ -182,13 +213,13 @@ calendar.createEvents([
       let kstOffset = -540; // UTC+9
       start.setMinutes(start.getMinutes() + kstOffset); // 시작 시간을 한국 시간대로 변경
       end.setMinutes(end.getMinutes() + kstOffset); // 끝 시간을 한국 시간대로 변경
-      
+
 
       // start와 end를 db에 넘기고 이 사이 정보를 받아온 다음
       // 그걸 반복문 돌려서 아래의 코드를 실행
       console.log('start : ' + start)
       console.log('end : ' + end)
-      console.log('now :' + now )
+      console.log('now :' + now)
       /* 날짜 한국어로 변경하는 코드 */
       let startFormat = eventStart.toLocaleString('ko-KR', {
         month: 'long',
@@ -206,156 +237,201 @@ calendar.createEvents([
 
 
 
-      if(end < now ){
-        /* status 받기? */
-        passText = '이미 지나간 체험학습 입니다'
+//  날짜 마우스 오버, 마우스 아웃 이벤트
+      let $temp;
+      let check = false;
+      DOMTokenList.prototype.filter = Array.prototype.filter;
+      $(container).on({
+        "mouseover": function () {
+          check = this.classList.contains('clicked');
+          $(this).css("border-radius", "50%");
+          $(this).css("background-color", "#135de6");
+          $(this).css("display", "inline-block");
+          $(this).css("width", "100%");
+          $(this).css("height", "100%");
+          // $(this).css("line-height", "35px");
+          $(this).css("color", "white");
+        }, "mouseout": function () {
+          if (check) {
+            return;
+          }
+          $(this).css("border-radius", "100%");
+          $(this).css("background-color", "#fff");
+          $(this).css("color", "rgb(51, 51, 51)");
+        }
+      }, ".toastui-calendar-weekday-grid-date");
+
+//  날짜 클릭 시 이벤트
+      $(container).on("click", ".toastui-calendar-weekday-grid-date", function () {
+        $(this).addClass("clicked");
+        check = true;
+        /* 김세윤 추가 */
+        let fullDate = "";
+        // fullDate <- 내가 누른 날 가져오기 ex)20230522
+        fullDate += removeHangleYear() + removeHangleMonth() + plusZeroToLenghtOne($(this).text());
+        console.log(fullDate);
+
+        // ajax로 그날 참여한 모집 가져오기
+        const sendData = () => {
+          console.log("sendData 들어옴@@@@");
+          let date = fullDate;
+          $.ajax({
+            type: 'GET',
+            url: `/mypage/get-recruitment/${date}`,
+            // data: $('#reply-form').serialize(),
+            success: function (result) {
+              console.log(result);
+              uploadBoard(result);
+
+              // $('#reply-count').text(result);
+              // $(".comment-list-wrapper").empty();
+              // nextPage = 0;
+              // fetchData();
+            },
+            error: function (error) {
+              console.log('Error fetching data:', error);
+            }
+          });
+        };
+        sendData();
+
+        /* 김세윤 추가 */
+
+        if ($temp) {
+          $temp.removeClass("clicked");
+          $temp.css("border-radius", "100%");
+          $temp.css("background-color", "#fff");
+          $temp.css("color", "rgb(51, 51, 51)");
+        }
+        $temp = $(this);
+        $(this).css("border-radius", "50%");
+        $(this).css("background-color", "#135de6");
+        $(this).css("display", "inline-block");
+        $(this).css("width", "100%");
+        $(this).css("height", "100%");
+        // $(this).css("line-height", "35px");
+        $(this).css("color", "white");
+      });
+
+      /* 클릭시마다 월 바뀌기 */
+      $('#calender-next').on('click', function () {
+        check = true;
+        if ($temp) {
+          $temp.css("border-radius", "100%");
+          $temp.css("background-color", "#fff");
+          $temp.css("color", "rgb(51, 51, 51)");
+        }
+        $('.lecture-list-month').html($('.month').text());
+      })
+
+      $('#calender-prev').on('click', function () {
+        check = true;
+        if ($temp) {
+          $temp.css("border-radius", "100%");
+          $temp.css("background-color", "#fff");
+          $temp.css("color", "rgb(51, 51, 51)");
+        }
+        $('.lecture-list-month').html($('.month').text());
+      })
+
+// '1~9' 한글자인 텍스트에 0 붙여주기
+    function plusZeroToLenghtOne(e) {
+      var number = e;
+
+      if (e.length == 1) {
+        return "0" + number;
       } else {
-        passText = '현재 진행가능한 체험학습 입니다'
+        return number;
+      }
+    }
+
+// '1~12월' 텍스트에서 월 지우기
+      function removeHangleMonth() {
+        var monthElement = $('.month');
+        var monthText = monthElement.text();
+        var monthNumber = monthText.replace(/[^0-9]/g, ''); // 숫자만 남기기
+
+        if (monthNumber.length == 1) {
+          return "0" + monthNumber;
+        } else {
+          return monthNumber;
+        }
       }
 
-      /* 바뀐 시간 및 이미 지나간 체험학습인지 확인 */
-      console.log('passText : ' + passText)
-      console.log('startFormat : ' + startFormat)
-      console.log('endFormat : ' + endFormat)
+// '2023년' 텍스트에서 년 지우기
+      function removeHangleYear() {
+        var yearElement = $('.year');
+        var yearText = yearElement.text();
+        var yearNumber = yearText.replace(/[^0-9]/g, ''); // 숫자만 남기기
 
-      if(category == '농촌'){
-        iconBackground = '#2e51ef'
-      } else if(category == '스포츠'){
-        iconBackground = '#9f867';
-      } else if(category == '전통'){
-        iconBackground = '#705f53'
-      } else if(category == '박물관'){
-        iconBackground = '#90949c'
+        return yearNumber;
       }
-      let eventAll =
-      `
+
+      function uploadBoard(result) {
+        // $(".lecture-list").empty();
+        let eventAll = "";
+
+        if (result.length == 0){
+          eventAll += `
+            <div class="lecture">
+                <div class="lecture-wrap">
+                   <div style="width: 100%; height: 100px; text-align: center; padding: 35px; font-size: 18px; font-family: inherit;">참가한 일정이 없습니다.</div>
+                </div>
+            </div>
+          `;
+        }
+
+        for (var i = 0; i < result.length; i++) {
+          console.log("들어옴" + i);
+          if (result[i].recruitmentFileDTOS.length != 0){
+            globalThis.filePath = '/file/display?fileName=' + result[i].recruitmentFileDTOS[0].filePath + '/t_' + result[i].recruitmentFileDTOS[0].fileUuid + '_' + result[i].recruitmentFileDTOS[0].fileOriginalName;
+          }
+          eventAll +=
+              `
       <!-- 왼쪽 컨텐츠 한개 -->
       <div class="lecture">
         <div class="lecture-wrap">
         <span class="lecture-image visible">
-            <img src="https://cdn.wadiz.kr/ft/images/green001/2023/0313/20230313133752303_null.jpg/wadiz/thumbnail/253/format/jpg/quality/95/) 1x, url(https://cdn.wadiz.kr/ft/images/green001/2023/0313/20230313133752303_null.jpg/wadiz/thumbnail/506/format/jpg/quality/95/" alt="">
+        `;
+          if (result[i].recruitmentFileDTOS.length != 0) {
+            eventAll += `
+            <img src="${filePath}" alt="/images/free-board/basic-image.png">
+                      `;
+          } else {
+            eventAll += `
+            <img src="/images/free-board/basic-image.png" alt="">
+                      `;
+          }
+          eventAll += `
         </span>
         
         <div class="lecture-wrapper">
           <div class="lecture-content">
             <p class="lecture-type">
-              <span><i class="reward" style='background:${iconBackground}'></i>입문</span>
+              <span><i class="reward" style='background: #006633;'></i>참여</span>
             </p>
             <p class="lecture-title">
-              ${eventTitle}
-            </p>
-            <p class="lecture-subtitle">
-              ${eventBody}
+              ${result[i].recruitmentSubtitle}
             </p>
             <p class="lecture-info">
-              시작 : ${startFormat}
+              모집일 : ${result[i].recruitmentDate}
               <br> 
-              종료 : ${endFormat}
-              <br />장소 : ${location}
-              라이브
+              모집 현황 : ${result[i].recruitmentDTOS.length} / ${result[i].recruitmentPeopleCount} 명
+              <br />장소 : ${result[i].recruitmentAddress} <span>${result[i].recruitmentAddressDetail}</span>
+              <div><strong><span onclick="window.open('${result[i].recruitmentOpenChatting}')">오픈 채팅방 참여하기</span></strong></div>
             </p>
             <p class="lecture-number">
-              <em><strong>${passText}</strong></em>
+              
             </p>
           </div>
         </div>
       </div>
-      <div class="table-wrapper">
-        <table class="children-table">
-          <thead>
-            <tr>
-              <th class="num">No.</th>
-              <th class="nickname">닉네임</th>
-              <th class="name">이름</th>
-              <th class="place">체험 이름</th>
-              <th class="participant">체험 날짜</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="num">1</td>
-              <td class="nickname">lovelyU</td>
-              <td class="name">한동석</td>
-              <td class="place">진흙놀이</td>
-              <td class="participant">2023-04-22 18:26:00</td>
-            </tr>
-            <tr>
-              <td class="num">1</td>
-              <td class="nickname">lovelyU</td>
-              <td class="name">한동석</td>
-              <td class="place">진흙놀이</td>
-              <td class="participant">2023-04-22 18:26:00</td>
-            </tr>
-          </tbody>
-        </table>
-        </div>
-      </div>
 <!-- 한개 끝 -->
       `
-      $(".lecture-list").html(eventAll)
-      
-    });
-  });
-
-//  날짜 마우스 오버, 마우스 아웃 이벤트
-let $temp;
-let check = false;
-DOMTokenList.prototype.filter = Array.prototype.filter;
-$(container).on({
-  "mouseover": function(){
-    check = this.classList.contains('clicked');
-    $(this).css("border-radius", "50%");
-    $(this).css("background-color", "#135de6");
-    $(this).css("display", "inline-block");
-    $(this).css("width", "35px");
-    $(this).css("height", "35px");
-    $(this).css("line-height", "35px");
-    $(this).css("color", "white");
-  }, "mouseout":function(){
-    if(check) {return;}
-    $(this).css("border-radius", "100%");
-    $(this).css("background-color", "#fff");
-    $(this).css("color", "rgb(51, 51, 51)");
-  }}, ".toastui-calendar-weekday-grid-date");
-
-//  날짜 클릭 시 이벤트
-  $(container).on("click", ".toastui-calendar-weekday-grid-date", function(){
-    $(this).addClass("clicked");
-    check = true;
-    if($temp){
-      $temp.removeClass("clicked");
-      $temp.css("border-radius", "100%");
-      $temp.css("background-color", "#fff");
-      $temp.css("color", "rgb(51, 51, 51)");
-    }
-    $temp = $(this);
-    $(this).css("border-radius", "50%");
-    $(this).css("background-color", "#135de6");
-    $(this).css("display", "inline-block");
-    $(this).css("width", "35px");
-    $(this).css("height", "35px");
-    $(this).css("line-height", "35px");
-    $(this).css("color", "white");
-  });
-
-/* 클릭시마다 월 바뀌기 */
-      $('#calender-next').on('click', function(){
-        check = true;
-        if($temp){
-          $temp.css("border-radius", "100%");
-          $temp.css("background-color", "#fff");
-          $temp.css("color", "rgb(51, 51, 51)");
         }
-        $('.lecture-list-month').html($('.month').text());
-      })
+        $(".lecture-list").html(eventAll);
+      }
+    })})
 
-      $('#calender-prev').on('click', function(){
-        check = true;
-        if($temp){
-          $temp.css("border-radius", "100%");
-          $temp.css("background-color", "#fff");
-          $temp.css("color", "rgb(51, 51, 51)");
-        }
-        $('.lecture-list-month').html($('.month').text());
-      })
+
 

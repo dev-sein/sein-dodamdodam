@@ -1,9 +1,6 @@
 package com.app.dodamdodam.service.board.recruitmentBoard;
 
-import com.app.dodamdodam.domain.InquiryDTO;
-import com.app.dodamdodam.domain.RecruitmentBoardFileDTO;
-import com.app.dodamdodam.domain.RecruitmentFileDTO;
-import com.app.dodamdodam.domain.RecruitmentMemberDTO;
+import com.app.dodamdodam.domain.*;
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.inquiry.Inquiry;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
@@ -82,5 +79,18 @@ public class RecruitmentBoardServiceImpl implements RecruitmentBoardService {
         return toRecruitmentBoardFileDto(recruitmentBoard.get());
     }
 
+
+    // 모집 게시글 목록
+    @Override
+    public List<RecruitmentBoardFileDTO> getRecruitmentBoardListByPaging(Pageable pageable) {
+        return recruitmentBoardRepository.findRecruitmentBoardList_QueryDSL(pageable).stream().map(recruitmentBoard -> toRecruitmentBoardFileDto(recruitmentBoard)).collect(Collectors.toList());
+    }
+
+    /* 모집 게시판 최근 게시글 5개 */
+    @Override
+    public List<RecruitmentBoardFileDTO> getRecentRecruitmentBoardList() {
+        List<RecruitmentBoardFileDTO> recruitmentBoardFileDTOS = recruitmentBoardRepository.findRecentRecruitmentBoardList_QueryDSL().stream().map(recentRecruitmentBoardList -> toRecruitmentBoardFileDto(recentRecruitmentBoardList)).collect(Collectors.toList());
+        return recruitmentBoardFileDTOS;
+    }
 
 }
