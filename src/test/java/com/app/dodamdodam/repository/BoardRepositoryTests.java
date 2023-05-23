@@ -69,10 +69,9 @@ public class BoardRepositoryTests {
     @Test
     public void saveTest(){
         for (int i=1; i<=100; i++){
-            RecruitmentBoard recruitmentBoard = new RecruitmentBoard("모집 게시글 제목" + i, LocalDate.now(),10 + i, "www.naver.com", "1234", "경기도 성남시", "분당구 수내동");
-            memberRepository.findById(2L).ifPresent(member -> recruitmentBoard.setMember(member));
-            recruitmentBoardRepository.save(recruitmentBoard);
-        }
+//            RecruitmentBoard recruitmentBoard = new RecruitmentBoard("모집 게시글 제목" + i, LocalDate.now(),10 + i, "www.naver.com", "1234", "경기도 성남시", "분당구 수내동");
+//            memberRepository.findById(2L).ifPresent(member -> recruitmentBoard.setMember(member));
+//            recruitmentBoardRepository.save(recruitmentBoard);
        /* RecruitmentBoard recruitmentBoard = new RecruitmentBoard("모집 게시글 제목", LocalDate.now(),10, "https://open.kakao.com/o/ggmF0Jkf", "1234", "경기도 성남시 분당구 수내동", "탄천앞");
         memberRepository.findById(1L).ifPresent(member -> recruitmentBoard.setMember(member));*/
 //        memberRepository.findById(5L).ifPresent(member -> recruitmentBoard.setMember(member));
@@ -80,6 +79,19 @@ public class BoardRepositoryTests {
 //        memberRepository.findById(5L).ifPresent(member -> recruitmentBoard.setMember(member));
 //        recruitmentBoard.addRecruitment();
 //        recruitmentBoardRepository.save(recruitmentBoard);
+//        for (int i=1; i<=100; i++){
+//            RecruitmentBoard recruitmentBoard = new RecruitmentBoard("모집 게시글 제목" + i, LocalDate.now(),10 + i, "www.naver.com", "1234", "경기도 성남시", "분당구 수내동");
+//            memberRepository.findById(2L).ifPresent(member -> recruitmentBoard.setMember(member));
+//            recruitmentBoardRepository.save(recruitmentBoard);
+//        }
+//        RecruitmentBoard recruitmentBoard = new RecruitmentBoard("모집 게시글 제목", LocalDate.now(),10, "https://open.kakao.com/o/ggmF0Jkf", "1234", "경기도 성남시 분당구 수내동", "탄천앞");
+//        memberRepository.findById(1L).ifPresent(member -> recruitmentBoard.setMember(member));
+//        memberRepository.findById(5L).ifPresent(member -> recruitmentBoard.setMember(member));
+        RecruitmentBoard recruitmentBoard = new RecruitmentBoard("욱성이의 시그니엘 체험", LocalDate.of(2023,5,25),20, "https://open.kakao.com/o/ggmF0Jkf", "1234", "서울특별시 송파구", "롯데타워 앞");
+        memberRepository.findById(5L).ifPresent(member -> recruitmentBoard.setMember(member));
+
+        recruitmentBoardRepository.save(recruitmentBoard);
+        }
     }
 
     @Test
@@ -115,17 +127,13 @@ public class BoardRepositoryTests {
 /*    @Test
     public void saveTest3(){
         for (int i=1; i<=100; i++){
-<<<<<<< HEAD
             PurchaseBoard purchaseBoard = new PurchaseBoard("판매 게시글 제목" + i, "판매 게시글 내용"+ i);
             Product product = new Product("상품" + i, 1000 * i, (long)i, purchaseBoard);
-=======
             PurchaseBoard purchaseBoard = PurchaseBoard.builder().boardContent("판매 게시글 내용" + i)
                     .boardTitle("판매 게시글 제목" + i)
                     .build();
             Product product = new Product("상품" + i, 1000 * i, (long)i, purchaseBoard);
             productRepository.save(product);
->>>>>>> project/master
-
             memberRepository.findById(2L).ifPresent(member -> {
                 purchaseBoard.setMember(member);
                 purchaseBoard.setProduct(product);
@@ -133,7 +141,6 @@ public class BoardRepositoryTests {
 
             purchaseBoardRepository.save(purchaseBoard);
         }
-<<<<<<< HEAD
     }*/
 
     /* id로 내가 작성한 자유게시글 목록 가져오기*/
@@ -155,11 +162,11 @@ public class BoardRepositoryTests {
     /* 200번 모집 게시글에 임의로 5번 유저 참석 시켰음*/
     @Test
     public void saveTest4(){
-        memberRepository.findById(405L).ifPresent(member ->
+        memberRepository.findById(404L).ifPresent(member ->
 //        memberRepository.findById(5L).ifPresent(member ->
         {
             Recruitment recruitment = new Recruitment(member);
-            recruitmentBoardRepository.findById(413L).ifPresent(recruitmentBoard -> recruitment.setRecruitmentBoard(recruitmentBoard));
+            recruitmentBoardRepository.findById(401L).ifPresent(recruitmentBoard -> recruitment.setRecruitmentBoard(recruitmentBoard));
             recruitmentRepository.save(recruitment);
         });
     }
@@ -313,9 +320,10 @@ public class BoardRepositoryTests {
 
     /* 자유 게시판 댓글 삭제 */
     @Test
-    public void deleteFreeReplyTest(){
+    public void deleteFreeReplyTest() {
         freeBoardRepository.findById(201L).ifPresent(freeBoard -> freeReplyRepository.delete(freeBoard.getFreeReplies().get(0)));
 
+    }
     /* 자유 게시판 댓글 id로 board 조회해서 총 댓글 수 가져오기 */
     @Test
     public void findReplyCountByReplyId_QueryDSLTest(){

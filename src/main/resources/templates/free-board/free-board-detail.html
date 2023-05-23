@@ -52,8 +52,9 @@
                 </div>
                 <div class="detail-content">
                     <p>
-                        <img src="/images/free-board/slamdunk.jpg" >
-                        <img src="/images/free-board/rebound.jpg" >
+<!--                        <li th:each="item : ${items}" th:text="${item}"></li>-->
+                        <img th:each="freeFileDTO : ${freeBoardDetail.freeFileDTOS}" th:src="'/file/display?fileName=' + ${freeFileDTO.filePath} + '/t_' + ${freeFileDTO.fileUuid} + '_' + ${freeFileDTO.fileOriginalName}" >
+<!--                        <img th:src="'/file/display?fileName=' + ${freeBoardDetail.freeFileDTOS[0].filePath} + '/t_' + ${freeBoardDetail.freeFileDTOS[0].fileUuid} + '_' + ${freeBoardDetail.freeFileDTOS[0].fileOriginalName}" >-->
                     </p>
                     <div th:text="${freeBoardDetail.boardContent}"></div>
 <!--                    <p th:text="${freeBoardDetail.boardContent}"></p>-->
