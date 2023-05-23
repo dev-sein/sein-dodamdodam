@@ -23,8 +23,8 @@
         <div id="recruitment-container">
             <div class="container-form">
                 <div class="recruitment-title">
-                    <h3>LG트윈스VS삼성라이온즈 잠실 경기 보러가실 분</h3>
-                    <p class="sub-text">소제목 칸입니다 외쳐라 무적엘지</p>
+                    <h3 th:text="${boardDetail.boardTitle}" >LG트윈스VS삼성라이온즈 잠실 경기 보러가실 분</h3>
+                    <p class="sub-text"  th:text="${boardDetail.recruitmentSubtitle}">소제목 칸입니다 외쳐라 무적엘지</p>
                 </div>
                 <div class="recruitment-info">
                     <div class="info-img">
@@ -32,24 +32,24 @@
                     <div class="info-sum">
                         <dl>
                             <dt>모집인</dt>
-                            <dd>정세인</dd>
+                            <dd th:text="${boardDetail.memberDTO.memberName}">정세인</dd>
                         </dl>
                         <dl>
                             <dt>이벤트 날짜</dt>
-                            <dd>2023-06-12</dd>
+                            <dd th:text="${boardDetail.recruitmentDate}">2023-06-12</dd>
                         </dl>
                         <dl>
                             <dt>이벤트 장소</dt>
-                            <dd>종합운동장역 6번 출구</dd>
+                            <dd th:text="${boardDetail.recruitmentAddress}">종합운동장역 6번 출구 <span th:text="${boardDetail.recruitmentAddressDetail}"></span></dd>
                         </dl>
                         <dl>
-                            <dt>모집/제한 인원</dt>
-                            <dd><span>6명</span> / 10명</dd>
+                            <dt>현재 / 총 모집 인원</dt>
+                            <dd><span th:text="${boardDetail.recruitmentDTOS.size}"></span>명 / <span th:text="${boardDetail.recruitmentPeopleCount}"></span>명</dd>
                         </dl>
          
 
                         <div class="wish-button-box">
-                            <button type="button" class="wish-button"  aria-pressed="false">
+                            <button type="button" class="wish-button"  aria-pressed="false" style="display: none">
                                 <span>
                                     <span class="wish-button-children">
                                         <img class="heart-icon" src ="/images/recruitment-board/non-heart-icon.png">
@@ -57,8 +57,9 @@
                                         </div>
                                         </span>
                                     </span></button>
+                            <dt style="float: left; width: 120px; height: 50px; line-height: 50px; padding-left: 20px; font-size: 14px; line-height: 3;">모집 상태</dt>
                         </div>
-                        <p class="recruitment-status"><strong>모집중</strong></p>
+                        <p class="recruitment-status"><strong th:text="${boardDetail.recruitmentStatus.toString == 'APPLYING' ? '모집중' : '모집완료'}">모집중</strong></p>
                         <div class="recruitment-btn-apply">
                             <button type="button" class="submit-btn" onClick="javascript:popOpen();">신청하기</button></div>
 
