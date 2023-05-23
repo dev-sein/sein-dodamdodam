@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+
 public interface InquiryService {
 
     //문의사항 등록
@@ -32,7 +32,7 @@ public interface InquiryService {
     public InquiryDTO getAdminInquiryDetail(Long id);
     
     //관리자 : 메일 답장 보내기 - 메일
-    public void sendAnswerMail(Long id, MailDTO mailDTO);
+    public void sendAnswerMail(MailDTO mailDTO);
 
     //관리자 : 문의사항 답장 보내기
     public void updateInquiryAnsewrStatus(Long inquiryId, InquiryDTO inquiryDTO);

@@ -31,7 +31,7 @@
                                     <span>사업소개</span>
                             </a></li>
                             <li class="header-menu-category-li"><a
-                                class="header-menu-category-a" href=""> <span>문화공간</span>
+                                class="header-menu-category-a" href="/culture/culture-space"> <span>문화공간</span>
                             </a></li>
                             <li class="header-menu-category-li"><a
                                 class="header-menu-category-a" href="/event/list"> <span>이벤트 정보</span>
@@ -56,19 +56,19 @@
                             </div>
                             <div class="header-user-div">
                             <div class="header-user-container">
-                                <button type="button" class="header-user-button">로그인</button>
-                                <button data-event="iam.signup" class="header-user-button" onclick="location.href='/templates/member/join.html'">회원가입</button>
+                                <button type="button" class="header-user-button" onclick="location.href='//member/join.html'">로그인</button>
+                                <button data-event="iam.signup" class="header-user-button" onclick="location.href='//member/join.html'">회원가입</button>
                             </div>
                             </div>
                             <div class="web-header-funding-open funding-open">
                                 <div>
                                     <div>
                                         <button class="header-make-button header-make-button2 header-make-button3 funding-open-button" type="button">
-                                            <a href="/recruitment/list"><span>
-                                                <span class="header-make-project-span">
+                                            <a href="/recruitment/list">
+                                                <span>
+                                                    <span class="header-make-project-span">
                                                     이벤트 참여하기
                                                 </span>
-                                            </a>
                                             </span>
                                         </button>
                                     </div>
@@ -202,7 +202,7 @@
                     Quick! 바로가기
                 </div>
                 <div class="quick-menu-list">
-                    <a href="" target="_blank" class="quick-menu">
+                    <a href="/event/culture-space" target="_blank" class="quick-menu">
                         <svg width="54" height="36" viewBox="0 0 57 38" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 5px;">
                             <path d="M49.5962 1H6.90385C5.44423 1 4.25 2.05 4.25 3.33333V31H52.25V3.33333C52.25 2.05 51.0558 1 49.5962 1Z" fill="white" stroke="#212529" stroke-width="2" stroke-miterlimit="10"></path><path d="M9.25 26V6H47.25V26H9.25Z" fill="#aed7c3" stroke="#212529" stroke-width="2"></path>
                             <path d="M1.25 31C1.25 34.3075 3.39049 36.985 7.0611 36.985L18.6611 37H35.8389L49.4389 36.985C53.1095 36.985 55.25 34.3075 55.25 31H1.25Z" fill="var(--main-sub3)" stroke="#212529" stroke-width="2" stroke-miterlimit="10"></path><path d="M24.25 34H32.25" stroke="#212529" stroke-width="2" stroke-miterlimit="10"></path>
@@ -410,6 +410,7 @@
                 <div class="board-ul">
                     <!-- 게시글 1개 시작 -->
                     <div class="board-li">
+                        <input type="hidden" id="freeBoardId" th:value="${freeBoards[0].id}">
                         <div class="board-title">
                             <div class="board-title-context">
                                 <span th:text ="${freeBoards[0].boardTitle}"></span>
@@ -424,6 +425,7 @@
                     <div class="board-li">
                         <div class="board-title">
                             <div class="board-title-context">
+                                <input type="hidden" id="freeBoardId" th:value="${freeBoards[1].id}">
                                 <span th:text ="${freeBoards[1].boardTitle}"></span>
                             </div>
                         </div>
@@ -436,6 +438,7 @@
                     <div class="board-li">
                         <div class="board-title">
                             <div class="board-title-context">
+                                <input type="hidden" id="freeBoardId" th:value="${freeBoards[2].id}">
                                 <span th:text ="${freeBoards[2].boardTitle}"></span>
                             </div>
                         </div>
@@ -467,6 +470,7 @@
                     <div class="board-li">
                         <div class="board-title">
                             <div class="board-title-context">
+                                <input type="hidden" id="eventBoardId" th:value="${eventBoards[0].id}">
                                 <span th:text ="${eventBoards[0].boardTitle}"></span>
                             </div>
                         </div>
@@ -479,6 +483,7 @@
                     <div class="board-li">
                         <div class="board-title">
                             <div class="board-title-context">
+                                <input type="hidden" id="eventBoardId" th:value="${eventBoards[1].id}">
                                 <span th:text ="${eventBoards[1].boardTitle}"></span>
                             </div>
                         </div>
@@ -491,6 +496,7 @@
                     <div class="board-li">
                         <div class="board-title">
                             <div class="board-title-context">
+                                <input type="hidden" id="eventBoardId" th:value="${eventBoards[2].id}">
                                 <span th:text ="${eventBoards[2].boardTitle}"></span>
                             </div>
                         </div>
@@ -535,149 +541,14 @@
                     </div>
                     <div class="sell-swiper-container">
                         <div class="swiper-wrapper">
-                            <!-- 판매 박스 1개 시작 -->
-<!--                            <div class="sell-swiper1 sell-swiper-box">-->
-<!--                                <div class="sell-swiper-image-container">-->
-<!--                                    <div class="sell-swiper-image">-->
-<!--                                    </div>-->
-<!--                                    <div class="sell-status">-->
-<!--                                        <div></div>-->
-<!--                                        <div class="status-container">-->
-<!--                                            <div class="important-status">중요</div>-->
-<!--                                            <div class="finish-status">종료</div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div class="sell-box-title-container">-->
-<!--                                        <div class="sell-box-title">-->
-<!--                                            <span th:text ="${purchaseBoards[0].boardTitle}"></span>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div class="sell-box-context-container">-->
-<!--                                        <div class="sell-box-context">-->
-<!--                                            <span th:text ="${purchaseBoards[0].boardContent}"></span>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div class="sell-box-date-container">-->
-<!--                                        <span th:text="${#temporals.format(purchaseBoards[0].updatedDate, 'yyyy-MM-dd')}"></span>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            &lt;!&ndash; 판매 박스 1개 끝 &ndash;&gt;-->
-<!--                            &lt;!&ndash; 판매 박스 1개 시작 &ndash;&gt;-->
-<!--                            <div class="sell-swiper-box">-->
-<!--                                <div class="sell-swiper2 sell-swiper-image-container">-->
-<!--                                    <div class="sell-swiper-image"></div>-->
-<!--                                    <div class="sell-status">-->
-<!--                                        <div></div>-->
-<!--                                        <div class="status-container">-->
-<!--                                            <div class="important-status">중요</div>-->
-<!--                                            <div class="finish-status">종료</div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div class="sell-box-title-container">-->
-<!--                                        <div class="sell-box-title">-->
-<!--                                            <span th:text ="${purchaseBoards[1].boardTitle}"></span>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div class="sell-box-context-container">-->
-<!--                                        <div class="sell-box-context">-->
-<!--                                            <span th:text ="${purchaseBoards[1].boardContent}"></span>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div class="sell-box-date-container">-->
-<!--                                        <span th:text="${#temporals.format(purchaseBoards[1].updatedDate, 'yyyy-MM-dd')}"></span>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            &lt;!&ndash; 판매 박스 1개 끝 &ndash;&gt;-->
-<!--                            &lt;!&ndash; 판매 박스 1개 시작 &ndash;&gt;-->
-<!--                            <div class="sell-swiper-box">-->
-<!--                                <div class="sell-swiper3 sell-swiper-image-container">-->
-<!--                                    <div class="sell-swiper-image"></div>-->
-<!--                                    <div class="sell-status">-->
-<!--                                        <div></div>-->
-<!--                                        <div class="status-container">-->
-<!--                                            <div class="important-status">중요</div>-->
-<!--                                            <div class="finish-status">종료</div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div class="sell-box-title-container">-->
-<!--                                        <div class="sell-box-title">-->
-<!--                                            <span th:text ="${purchaseBoards[2].boardTitle}"></span>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div class="sell-box-context-container">-->
-<!--                                        <div class="sell-box-context">-->
-<!--                                            <span th:text ="${purchaseBoards[2].boardContent}"></span>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div class="sell-box-date-container">-->
-<!--                                        <span th:text="${#temporals.format(purchaseBoards[2].updatedDate, 'yyyy-MM-dd')}"></span>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            &lt;!&ndash; 판매 박스 1개 끝 &ndash;&gt;-->
-<!--                            &lt;!&ndash; 판매 박스 1개 시작 &ndash;&gt;-->
-<!--                            <div class="sell-swiper-box">-->
-<!--                                <div class="sell-swiper4 sell-swiper-image-container">-->
-<!--                                    <div class="sell-swiper-image"></div>-->
-<!--                                    <div class="sell-status">-->
-<!--                                        <div></div>-->
-<!--                                        <div class="status-container">-->
-<!--                                            <div class="important-status">중요</div>-->
-<!--                                            <div class="finish-status">종료</div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div class="sell-box-title-container">-->
-<!--                                        <div class="sell-box-title">-->
-<!--                                            <span th:text ="${purchaseBoards[3].boardTitle}"></span>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div class="sell-box-context-container">-->
-<!--                                        <div class="sell-box-context">-->
-<!--                                            <span th:text ="${purchaseBoards[3].boardContent}"></span>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div class="sell-box-date-container">-->
-<!--                                        <span th:text="${#temporals.format(purchaseBoards[3].updatedDate, 'yyyy-MM-dd')}"></span>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            &lt;!&ndash; 판매 박스 1개 끝 &ndash;&gt;-->
-<!--                            &lt;!&ndash; 판매 박스 1개 시작 &ndash;&gt;-->
-<!--                            <div class="sell-swiper-box">-->
-<!--                                <div class="sell-swiper5 sell-swiper-image-container">-->
-<!--                                    <div class="sell-swiper-image"></div>-->
-<!--                                    <div class="sell-status">-->
-<!--                                        <div></div>-->
-<!--                                        <div class="status-container">-->
-<!--                                            <div class="important-status">중요</div>-->
-<!--                                            <div class="finish-status">종료</div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div class="sell-box-title-container">-->
-<!--                                        <div class="sell-box-title">-->
-<!--                                            <span th:text ="${purchaseBoards[4].boardTitle}"></span>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div class="sell-box-context-container">-->
-<!--                                        <div class="sell-box-context">-->
-<!--                                            <span th:text ="${purchaseBoards[4].boardContent}"></span>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div class="sell-box-date-container">-->
-<!--                                        <span th:text="${#temporals.format(purchaseBoards[4].updatedDate, 'yyyy-MM-dd')}"></span>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-                            <!-- 판매 박스 1개 끝 -->
+                            <!--판매 게시판-->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- 배너 위치 -->
-        <section class="container">
+<!--        <section class="container">-->
             <!-- 신청 배너 -->
 <!--            <div class="banner">-->
 <!--                <div></div>-->
@@ -746,13 +617,13 @@
                     <section class="second-banner-container">
                         <!-- 두번째 배너 -->
                         <div class="second-banner">
-                          <!--  <div class="second-banner1 second-banners">
+                           <div class="second-banner1 second-banners">
                                 <div class="second-banner-image-wrapper">
                                     <div class="second-banner-image"></div>
                                 </div>
                                 <div class="recruit-box-context">
                                     <div class="recruit-box-title">
-                                        <span th:text ="${recruitmentBoards[0].boardTitle}"></span>
+                                        <span th:text ="${recruitmentBoards[0].memberDTO.memberName}"></span>
                                     </div>
                                     <div class="recruit-box-writer">
                                         와디즈 메이커
@@ -765,7 +636,7 @@
                                 </div>
                                 <div class="recruit-box-context">
                                     <div class="recruit-box-title">
-                                        <span th:text ="${recruitmentBoards[1].boardTitle}"></span>
+                                        <span th:text ="${recruitmentBoards[0].memberDTO.memberName}"></span>
                                     </div>
                                     <div class="recruit-box-writer">
                                         와디즈 메이커
@@ -778,7 +649,7 @@
                                 </div>
                                 <div class="recruit-box-context">
                                     <div class="recruit-box-title">
-                                        <span th:text ="${recruitmentBoards[2].boardTitle}"></span>
+                                        <span th:text ="${recruitmentBoards[0].memberDTO.memberName}"></span>
                                     </div>
                                     <div class="recruit-box-writer">
                                         와디즈 메이커
@@ -791,7 +662,7 @@
                                 </div>
                                 <div class="recruit-box-context">
                                     <div class="recruit-box-title">
-                                        <span th:text ="${recruitmentBoards[3].boardTitle}"></span>
+                                        <span th:text ="${recruitmentBoards[0].memberDTO.memberName}"></span>
                                     </div>
                                     <div class="recruit-box-writer">
                                         와디즈 메이커
@@ -804,13 +675,13 @@
                                 </div>
                                 <div class="recruit-box-context">
                                     <div class="recruit-box-title">
-                                        <span th:text ="${recruitmentBoards[4].boardTitle}"></span>
+                                        <span th:text ="${recruitmentBoards[0].memberDTO.memberName}"></span>
                                     </div>
                                     <div class="recruit-box-writer">
                                         와디즈 메이커
                                     </div>
                                 </div>
-                            </div>-->
+                            </div>
                         </div> <!-- recruitment -->
                     </section>
                 </div>
@@ -931,12 +802,6 @@
         </div>
         
     </main>
-<!--    <div id="footer">-->
-<!--        <div class="channel_chat_container">-->
-<!--            <button type="button" onclick="openChant()">-->
-
-<!--            </button>-->
-<!--        </div>-->
         <footer id="footer" class="web-footer inner-utils">
             <div class="footer-container">
                 <!-- 정책약관, 개인정보처리방침 바 -->
@@ -1013,7 +878,6 @@
                             <address>
                                 <ul class="footer-info-ul">
                                     <li>도담도담</li>
-                                    <li>대표이사 박다예</li>
                                     <li>사업자등록번호 123-45-67899</li>
                                     <li>서울특별시 강남구 테헤란로 146</li>
                                 </ul>
@@ -1103,24 +967,20 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script th:inline="javascript">
-   //  const purchaseBoardDTO = [[${purchaseBoards}]];
-   //  console.log("파일 들어옴");
-   //  console.log(purchaseBoardDTO);
-   //  let fileDTOS = purchaseBoardDTO.purchaseFiles;
-   //  console.log(fileDTOS);
-   //  fileDTOS.forEach((fileDTO, i) => {
-   //      console.log("파일 들어옴");
-   //      console.log(fileDTO);
-   //      let text = `
-   //          <img src="/file/display?fileName=${fileDTO.filePath}/${fileDTO.fileUuid}_${fileDTO.fileOriginalName}">
-   // `;
-   //      $(".sell-swiper-image").append(text);
-   //  });
    FileList.prototype.forEach = Array.prototype.forEach;
     let purchaseBoard = [[${purchaseBoards}]];
     let recruitmentBoard = [[${recruitmentBoards}]];
 </script>
 <script th:inline="javascript">
+
+    $('.board-li').on('click', function() {
+        console.log("onclick 들어옴");
+        var freeBoardId = $("#freeBoardId").val();
+        var detailUrl = '/free/detail/' + freeBoardId;
+        window.location.href = detailUrl;
+    });
+
+
     /* date format*/
     function formatDate(date) {
         var year = date.getFullYear();
@@ -1129,7 +989,7 @@
         return year + '-' + month + '-' + day;
     };
 
-    console.log(purchaseBoard);
+   console.log(purchaseBoard);
     purchaseBoard.forEach(purchaseBoard => {
         console.log("foreach 들어옴");
         var imageUrls = purchaseBoard.purchaseFileDTOS.map(file => `/file/display?fileName=${encodeURIComponent(file.filePath)}/${file.fileUuid}_${file.fileOriginalName}`);
@@ -1164,35 +1024,46 @@
         $(".swiper-wrapper").append(text);
     });
 
-    console.log(recruitmentBoard);
-    let fileDTOs = recruitmentBoard.recruitmentFileDTOS;
-    recruitmentBoard.forEach((recruitmentBoards) => {
-        console.log("recruitmentBoard 시작");
+    // console.log(recruitmentBoard);
+    // recruitmentBoard.forEach((recruitmentBoard) => {
+    //     console.log("recruitmentBoard 시작");
+    //     var imageUrls = recruitmentBoard.recruitmentFileDTOS.map(file => `/file/display?fileName=${encodeURIComponent(file.filePath)}/${file.fileUuid}_${file.fileOriginalName}`);
+    //     var imageElements = imageUrls.map(url => `<img src="${url}">`);
+    //     var imageElementsString = imageElements.join('');
+    //     var text = `
+    //             텍스트
+    //             <div class="second-banner1 second-banners">
+    //                 <div class="second-banner-image-wrapper">
+    //                     <div class="second-banner-image">
+    //                       ${imageElementsString}
+    //                     </div>
+    //                 </div>
+    //                 <div class="recruit-box-context">
+    //                     <div class="recruit-box-title">
+    //                         <span th:text="${recruitmentBoard.memberDTO.memberName}"></span>
+    //                     </div>
+    //                     <div class="recruit-box-writer">
+    //                         와디즈 메이커
+    //                     </div>
+    //                 </div>
+    //             </div>
+    // `;
+    //     $(".second-banner").append(text);
+    // });
 
-        var fileDTO = fileDTOs[i]; // 해당 인덱스의 fileDTO 가져오기
 
-        var text = `
-        <div class="second-banner1 second-banners">
-            <div class="second-banner-image-wrapper">
-                <div class="second-banner-image">
-                    <img src="/file/display?fileName=${fileDTO.filePath}/${fileDTO.fileUuid}_${fileDTO.fileOriginalName}">
-                </div>
-            </div>
-            <div class="recruit-box-context">
-                <div class="recruit-box-title">
-                    <span th:text="${recruitmentBoards.memberDTO.memberName}"></span>
-                </div>
-                <div class="recruit-box-writer">
-                    와디즈 메이커
-                </div>
-            </div>
-        </div>
-    `;
-        $(".second-banner").append(text);
+    // JavaScript 코드
+    const recruitmentFileDTOS = recruitmentBoard.recruitmentFileDTOS; /* 이미지 파일 데이터를 담고 있는 배열 */;
+    const secondImageDiv = document.querySelectorAll(".second-banner-image");
+
+    recruitmentFileDTOS.forEach((file, i) => {
+        const filePath = file.filePath;
+        const fileUuid = file.fileUuid;
+        const fileOriginalName = file.fileOriginalName;
+
+        const imageUrl = `/file/display?fileName=${filePath}/${fileUuid}_${fileOriginalName}`;
+        secondImageDiv[i].style.backgroundImage = `url(${imageUrl})`;
     });
-
-
-
 
 
 </script>

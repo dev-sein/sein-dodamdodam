@@ -18,13 +18,15 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-@Qualifier("inquiry") @Primary
+@Qualifier("inquiry")
 @RequiredArgsConstructor
+@Transactional
 public class InquiryServiceImpl implements InquiryService {
     private final InquiryRepository inquiryRepository;
     //문의사항 등록
@@ -71,7 +73,7 @@ public class InquiryServiceImpl implements InquiryService {
     private JavaMailSender mailSender;
 
     @Override
-    public void sendAnswerMail(Long id, MailDTO mailDTO) {
+    public void sendAnswerMail(MailDTO mailDTO) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(mailDTO.getAddress());
 //      message.setFrom(""); from 값을 설정하지 않으면 application.yml의 username값이 설정됩니다.
