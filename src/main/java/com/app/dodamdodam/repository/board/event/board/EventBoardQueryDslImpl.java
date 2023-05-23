@@ -113,5 +113,14 @@ public class EventBoardQueryDslImpl implements EventBoardQueryDsl {
         return query.select(eventBoard.eventReplies.size()).from(eventBoard).where(eventBoard.eventReplies.any().id.eq(replyId)).fetchOne();
     }
 
+    @Override
+    public List<EventBoard> findRecentEventBoardList_QueryDSL() {
+        return query.selectFrom(eventBoard)
+                .leftJoin(eventBoard.eventFiles).fetchJoin()
+                .orderBy(eventBoard.id.desc())
+                .limit(5)
+                .fetch();
+    }
+
 
 }

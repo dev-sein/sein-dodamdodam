@@ -466,11 +466,11 @@
                     <div class="board-li">
                         <div class="board-title">
                             <div class="board-title-context">
-                                한 달간의 와디즈 소식을 모아보는, 월간와디즈
+                                <span th:text ="${eventBoards[0].boardTitle}"></span>
                             </div>
                         </div>
                         <div class="board-register-date">
-                            2023.04.04
+                            <span th:text="${#temporals.format(eventBoards[0].updatedDate, 'yyyy-MM-dd')}"></span>
                         </div>
                     </div>
                     <!-- 게시글 1개 끝 -->
@@ -478,11 +478,11 @@
                     <div class="board-li">
                         <div class="board-title">
                             <div class="board-title-context">
-                                2023 와디즈 콘텐츠 파트너 모집 안내(~2/26)
+                                <span th:text ="${eventBoards[1].boardTitle}"></span>
                             </div>
                         </div>
                         <div class="board-register-date">
-                            2023.02.06
+                            <span th:text="${#temporals.format(eventBoards[1].updatedDate, 'yyyy-MM-dd')}"></span>
                         </div>
                     </div>
                     <!-- 게시글 1개 끝 -->
@@ -490,11 +490,11 @@
                     <div class="board-li">
                         <div class="board-title">
                             <div class="board-title-context">
-                                [서비스 안내] 프리오더 서비스 정책 변경 안내
+                                <span th:text ="${eventBoards[2].boardTitle}"></span>
                             </div>
                         </div>
                         <div class="board-register-date">
-                            2023.02.03
+                            <span th:text="${#temporals.format(eventBoards[2].updatedDate, 'yyyy-MM-dd')}"></span>
                         </div>
                     </div>
                     <!-- 게시글 1개 끝 -->
@@ -523,7 +523,9 @@
                         </div>
                         <div class="plus-menu">
                             <div class="plus">
+                                <a href="/purchase/list">
                                 더보기
+                                 </a>
                             </div>
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M6 13L11 8L6 3" stroke="#495057" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -545,18 +547,16 @@
                                     </div>
                                     <div class="sell-box-title-container">
                                         <div class="sell-box-title">
-                                            [기획전]4월 기획전 참여 메이커 모집
+<!--                                            <span th:text ="${purchaseBoards[0].boardTitle}"></span>-->
                                         </div>
                                     </div>
                                     <div class="sell-box-context-container">
                                         <div class="sell-box-context">
-                                            봄 맞이 인테리어, 가정의달 선물, 건강/다이어트 프로젝트를 메이커님이라면 꼭 확인해 주세요.
+                                            <span th:text ="${purchaseBoards[0].boardContent}"></span>
                                         </div>
                                     </div>
                                     <div class="sell-box-date-container">
-                                        2023.03.20
-                                        &nbsp;~&nbsp;
-                                        2023.04.16
+                                        <span th:text="${#temporals.format(purchaseBoards[0].updatedDate, 'yyyy-MM-dd')}"></span>
                                     </div>
                                 </div>
                             </div>
@@ -574,18 +574,16 @@
                                     </div>
                                     <div class="sell-box-title-container">
                                         <div class="sell-box-title">
-                                            [기획전]4월 기획전 참여 메이커 모집
+                                            <span th:text ="${purchaseBoards[1].boardTitle}"></span>
                                         </div>
                                     </div>
                                     <div class="sell-box-context-container">
                                         <div class="sell-box-context">
-                                            봄 맞이 인테리어, 가정의달 선물, 건강/다이어트 프로젝트를 메이커님이라면 꼭 확인해 주세요.
+                                            <span th:text ="${purchaseBoards[1].boardContent}"></span>
                                         </div>
                                     </div>
                                     <div class="sell-box-date-container">
-                                        2023.03.20
-                                        &nbsp;~&nbsp;
-                                        2023.04.16
+                                        <span th:text="${#temporals.format(purchaseBoards[1].updatedDate, 'yyyy-MM-dd')}"></span>
                                     </div>
                                 </div>
                             </div>
@@ -603,18 +601,16 @@
                                     </div>
                                     <div class="sell-box-title-container">
                                         <div class="sell-box-title">
-                                            [기획전]4월 기획전 참여 메이커 모집
+                                            <span th:text ="${purchaseBoards[2].boardTitle}"></span>
                                         </div>
                                     </div>
                                     <div class="sell-box-context-container">
                                         <div class="sell-box-context">
-                                            봄 맞이 인테리어, 가정의달 선물, 건강/다이어트 프로젝트를 메이커님이라면 꼭 확인해 주세요.
+                                            <span th:text ="${purchaseBoards[2].boardContent}"></span>
                                         </div>
                                     </div>
                                     <div class="sell-box-date-container">
-                                        2023.03.20
-                                        &nbsp;~&nbsp;
-                                        2023.04.16
+                                        <span th:text="${#temporals.format(purchaseBoards[2].updatedDate, 'yyyy-MM-dd')}"></span>
                                     </div>
                                 </div>
                             </div>
@@ -632,18 +628,16 @@
                                     </div>
                                     <div class="sell-box-title-container">
                                         <div class="sell-box-title">
-                                            [기획전]4월 기획전 참여 메이커 모집
+                                            <span th:text ="${purchaseBoards[3].boardTitle}"></span>
                                         </div>
                                     </div>
                                     <div class="sell-box-context-container">
                                         <div class="sell-box-context">
-                                            봄 맞이 인테리어, 가정의달 선물, 건강/다이어트 프로젝트를 메이커님이라면 꼭 확인해 주세요.
+                                            <span th:text ="${purchaseBoards[3].boardContent}"></span>
                                         </div>
                                     </div>
                                     <div class="sell-box-date-container">
-                                        2023.03.20
-                                        &nbsp;~&nbsp;
-                                        2023.04.16
+                                        <span th:text="${#temporals.format(purchaseBoards[3].updatedDate, 'yyyy-MM-dd')}"></span>
                                     </div>
                                 </div>
                             </div>
@@ -661,18 +655,16 @@
                                     </div>
                                     <div class="sell-box-title-container">
                                         <div class="sell-box-title">
-                                            [기획전]4월 기획전 참여 메이커 모집
+                                            <span th:text ="${purchaseBoards[4].boardTitle}"></span>
                                         </div>
                                     </div>
                                     <div class="sell-box-context-container">
                                         <div class="sell-box-context">
-                                            봄 맞이 인테리어, 가정의달 선물, 건강/다이어트 프로젝트를 메이커님이라면 꼭 확인해 주세요.
+                                            <span th:text ="${purchaseBoards[4].boardContent}"></span>
                                         </div>
                                     </div>
                                     <div class="sell-box-date-container">
-                                        2023.03.20
-                                        &nbsp;~&nbsp;
-                                        2023.04.16
+                                        <span th:text="${#temporals.format(purchaseBoards[4].updatedDate, 'yyyy-MM-dd')}"></span>
                                     </div>
                                 </div>
                             </div>

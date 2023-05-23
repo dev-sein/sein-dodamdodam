@@ -1,7 +1,10 @@
 package com.app.dodamdodam.controller;
 
+import com.app.dodamdodam.entity.purchase.Purchase;
 import com.app.dodamdodam.provider.UserDetail;
+import com.app.dodamdodam.service.board.eventBoard.EventBoardService;
 import com.app.dodamdodam.service.board.freeBoard.FreeBoardService;
+import com.app.dodamdodam.service.board.purchase.PurchaseBoardService;
 import com.app.dodamdodam.service.member.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +24,8 @@ public class MainController {
 
     private final MemberService memberService;
     private final FreeBoardService freeBoardService;
+    private final EventBoardService eventBoardService;
+    private final PurchaseBoardService purchaseBoardService;
 
     @GetMapping("home")
     public String main(HttpSession session, Model model){
@@ -31,6 +36,8 @@ public class MainController {
 
 
         model.addAttribute("freeBoards", freeBoardService.getRecentFreeBoardList());
+        model.addAttribute("eventBoards", eventBoardService.getRecentEventBoardList());
+        model.addAttribute("purchaseBoards", purchaseBoardService.getRecentPurchaseBoardList());
         return  "main/main";
     }
 

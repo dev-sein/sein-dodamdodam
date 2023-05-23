@@ -1,5 +1,6 @@
 package com.app.dodamdodam.repository.board.purchase;
 
+import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.entity.purchase.PurchaseReview;
@@ -37,5 +38,8 @@ public interface PurchaseBoardQueryDsl {
 
     //  관리자 판매 게시판 검색
     public Page<PurchaseBoard> findAllWithPaging(Pageable pageable);
+
+    //    판매 게시판 최근 게시물 5개
+    public List<PurchaseBoard> findRecentFreeBoardList_QueryDSL();
 
 }

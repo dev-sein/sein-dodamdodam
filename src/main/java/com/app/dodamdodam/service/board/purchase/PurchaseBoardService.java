@@ -39,6 +39,9 @@ public interface PurchaseBoardService {
     //관리자 : 판매 게시판 상세
     public PurchaseBoardDTO getAdminPurchaseBoardDetail(Long id);
 
+    //메인 : 판매 게시판 최근 게시글
+    public List<PurchaseBoardFileDTO> getRecentPurchaseBoardList();
+
     default PurchaseBoardDTO toPurchaseBoardDTO(PurchaseBoard purchaseBoard){
         return PurchaseBoardDTO.builder().id(purchaseBoard.getId())
                 .boardTitle(purchaseBoard.getBoardTitle())
