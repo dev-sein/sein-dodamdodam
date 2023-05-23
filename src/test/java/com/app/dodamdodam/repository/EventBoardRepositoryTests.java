@@ -38,7 +38,7 @@ public class EventBoardRepositoryTests {
 
     /* 이벤트 게시글 추가 */
     @Test
-    public void saveTest(){
+    public void saveTest() {
         /* 회원 추가 */
         for (int i=1; i<=10; i++) {
             Address address = new Address("서울시", "강남구");
@@ -51,7 +51,7 @@ public class EventBoardRepositoryTests {
         }
 
         /* 이벤트 게시글 추가 */
-        for(int i= 1; i<= 10; i ++){
+        for (int i = 1; i <= 10; i++) {
             EventBoard eventBoard1 = EventBoard.builder()
                     .boardTitle("이벤트 게시글 제목" + i)
                     .boardContent("이벤트 게시글 내용" + i)
@@ -62,7 +62,7 @@ public class EventBoardRepositoryTests {
                     .eventBusinessNumber("10000" + i)
                     .eventBusinessTel("01012341234")
                     .eventStartDate((LocalDate.now()))
-                    .eventEndDate(LocalDate.of(2023,6,20))
+                    .eventEndDate(LocalDate.of(2023, 6, 20))
                     .eventLikeCount(0)
                     .eventReplyCount(0)
                     .build();
@@ -79,41 +79,31 @@ public class EventBoardRepositoryTests {
 
     /* 이벤트 게시글 상세글 */
     @Test
-    public void findByIdTest(){
-        eventBoardRepository.findById(201L).map(EventBoard::toString).ifPresent(log::info);
+    public void findByIdTest() {
+        eventBoardRepository.findById(1L).map(EventBoard::toString).ifPresent(log::info);
     }
 
     /* 이벤트 게시글 삭제 */
     @Test
-    public void deleteTest(){
-        eventBoardRepository.findById(201L).ifPresent(eventBoardRepository::delete);
+    public void deleteTest() {
+        eventBoardRepository.findById(101L).ifPresent(eventBoardRepository::delete);
     }
 
     @Test
-    public void findEventBoardById_QueryDSLTest(){
-        eventBoardRepository.findEventBoardById_QueryDSL(201L)
+    public void findEventBoardById_QueryDSLTest() {
+        eventBoardRepository.findEventBoardById_QueryDSL(1L)
                 .ifPresent(eventBoard -> log.info(eventBoard.toString()));
     }
 
     /* 이벤트 게시글 댓글 추가 */
     @Test
-    public void eventReplySaveTest(){
-        for(int i= 1; i<= 10; i ++) {
+    public void eventReplySaveTest() {
+        for (int i = 1; i <= 10; i++) {
             EventReply eventReply = new EventReply("댓글1" + i);
             eventReply.setEventBoard(eventBoardRepository.findById(31L).get());
             eventReplyRepository.save(eventReply);
         }
     }
-
-//    /*리뷰 저장*/
-//    @Test
-//    public void reviewSaveTest(){
-//        EventBoard eventBoard = eventBoardRepository.findById(101L).get();
-//        Member member = memberRepository.findById(101L).get();
-//        for(int i = 0; i<20; i++){
-//            EventReview eventReview = new EventReview("test" + (i+1),eventBoard, member);
-//        }
-//    }
 
     @Test
     public void updateTest(){
@@ -128,5 +118,4 @@ public class EventBoardRepositoryTests {
     public void updateEventReplyTest(){
         eventBoardRepository.findById(45L).ifPresent(eventBoard -> eventBoard.getEventReplies().get(0).setReplyContent("수정된 댓글"));
     }
-
 }
