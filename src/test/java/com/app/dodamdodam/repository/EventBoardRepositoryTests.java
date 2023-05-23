@@ -117,10 +117,16 @@ public class EventBoardRepositoryTests {
 
     @Test
     public void updateTest(){
-        eventBoardRepository.findById(101L).ifPresent(eventBoard -> {
+        eventBoardRepository.findById(31L).ifPresent(eventBoard -> {
             eventBoard.setBoardTitle("수정제목1");
             eventBoard.setBoardContent("수정내용1");
         });
+    }
+
+    /* 자유 게시판 댓글 수정 */
+    @Test
+    public void updateEventReplyTest(){
+        eventBoardRepository.findById(45L).ifPresent(eventBoard -> eventBoard.getEventReplies().get(0).setReplyContent("수정된 댓글"));
     }
 
 }

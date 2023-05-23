@@ -180,11 +180,12 @@ public class EventBoardController {
         log.info("댓글 수정 들어옴");
         log.info("댓글 : " + updatedEventReply);
         log.info("댓글 : " + replyId);
-        session.setAttribute("boardId", 31L);
-        Long boardId = (Long)session.getAttribute("boardId");
+//        session.setAttribute("boardId", 31L);
+//        Long boardId = (Long)session.getAttribute("boardId");
+
         EventReply updatedReply = new EventReply(updatedEventReply);
         eventReplyService.setEventReplyContent(updatedReply, replyId);
-        return "success";
+        return "success##";
     }
 
     /* 이벤트 게시판 댓글 삭제 */

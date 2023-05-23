@@ -391,6 +391,7 @@ $('.top-btn').click( function() {
         /**/
         let $form = $(e).closest('.comment-wrap').find('.update-form');
         console.log($form);
+        console.log(replyId);
         /**/
 
         $.ajax({
@@ -447,7 +448,7 @@ $('.top-btn').click( function() {
                                     </div>
                                     <p class="comment-content">${result[i].replyContent}</p>
                                     <form class="update-form" name="updateForm" style="width: 100%; height: 100%; display: none">
-                                        <textarea class="modify-textarea" name="updatedFreeReply">${result[i].replyContent}</textarea>
+                                        <textarea class="modify-textarea" name="updatedEventReply">${result[i].replyContent}</textarea>
                                     </form>
                                     <div class="comment-date">
                                         ${date}
