@@ -113,8 +113,6 @@ public interface PurchaseBoardService {
                 .memberType(memberDTO.getMemberType())
                 .address(memberDTO.getAddress())
                 .build();
-
-
     }
     default Product toProductEntity(ProductDTO productDTO) {
         return Product.builder().id(productDTO.getId())

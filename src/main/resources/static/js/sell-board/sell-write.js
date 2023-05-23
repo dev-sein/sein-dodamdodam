@@ -78,6 +78,9 @@ document.querySelector(".btn-attach-thumb").addEventListener("click", function (
       }
     }
 
+    console.log("formData");
+    console.log(formData);
+
     $.ajax({
       url: '/file/upload',
       data: formData,
@@ -96,17 +99,6 @@ document.querySelector(".btn-attach-thumb").addEventListener("click", function (
 
             fileArray.push(file);
           }
-          // result.forEach((result, i) => {
-          //   let file = new Object();
-          //
-          //   file.filePath = result.paths[i];
-          //   file.fileUuid = result.uuids[i];
-          //   file.fileOrgName = result.orgNames[i];
-          //
-          //   fileArray.push(file);
-          //   console.log("fileArray");
-          //   console.log(fileArray);
-          // });
         }
       }
     });

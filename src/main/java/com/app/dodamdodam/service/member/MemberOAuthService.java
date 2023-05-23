@@ -68,18 +68,18 @@ public class MemberOAuthService implements OAuth2UserService<OAuth2UserRequest, 
         if (foundMemberOptional.isPresent()) {
 //            이미 가입된 회원이 있는 경우, 회원 정보 업데이트
             foundMember = foundMemberOptional.get();
-            session.setAttribute("id", foundMember.getId());
+            session.setAttribute("memberId", foundMember.getId());
             session.setAttribute("member",
                     MemberDTO.builder().id(foundMember.getId())
-//                            .memberId(foundMember.getMemberId())
-//                            .memberPassword(foundMember.getMemberPassword())
-//                            .memberEmail(foundMember.getMemberEmail())
-//                            .memberName(foundMember.getMemberName())
-//                            .memberPhone(foundMember.getMemberPhone())
-//                            .memberPoint(foundMember.getMemberPoint())
-//                            .memberType(foundMember.getMemberType())
-//                            .memberRole(foundMember.getMemberRole())
-//                            .memberStatus(foundMember.getMemberStatus())
+                            .memberId(foundMember.getMemberId())
+                            .memberPassword(foundMember.getMemberPassword())
+                            .memberEmail(foundMember.getMemberEmail())
+                            .memberName(foundMember.getMemberName())
+                            .memberPhone(foundMember.getMemberPhone())
+                            .memberPoint(foundMember.getMemberPoint())
+                            .memberType(foundMember.getMemberType())
+                            .memberRole(foundMember.getMemberRole())
+                            .memberStatus(foundMember.getMemberStatus())
                             .build()
             );
 
@@ -90,6 +90,7 @@ public class MemberOAuthService implements OAuth2UserService<OAuth2UserRequest, 
             foundMember = foundMemberOptional.map(member -> member.update(attributes.getName(), attributes.getMobile(), attributes.getEmail(), attributes.getMemberType()))
                     .orElse(attributes.toEntity());
             session.setAttribute("member", new MemberDTO(foundMember));
+            memberRepository.save(foundMember);
         }
 
         return foundMember;
