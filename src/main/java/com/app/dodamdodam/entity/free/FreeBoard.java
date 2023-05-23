@@ -52,6 +52,16 @@ public class FreeBoard extends Board {
         this.freeCategory = freeCategory;
     }
 
+    @Builder
+    public FreeBoard(Long id, String boardTitle, String boardContent, CategoryType freeCategory, List<FreeFile> freeFiles, List<FreeReply> freeReplies, int likeCount, Member member) {
+        super(id, boardTitle, boardContent);
+        this.freeCategory = freeCategory;
+        this.freeFiles = freeFiles;
+        this.freeReplies = freeReplies;
+        this.likeCount = likeCount;
+        this.member = member;
+    }
+
     public void setMember(Member member) {
         this.member = member;
     }

@@ -1,4 +1,4 @@
-package com.app.projectjar.controller.file;
+package com.app.dodamdodam.controller;
 
 import lombok.RequiredArgsConstructor;
 import net.coobird.thumbnailator.Thumbnailator;

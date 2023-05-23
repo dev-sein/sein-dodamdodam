@@ -57,6 +57,11 @@ public class MemberRepositoryTests {
             Address address = new Address("서울시","강남구");
 //            회원 정보 입력
 
+
+
+//            Member member = new Member(3L,"test1234", "1234", "테스트", "test1234@gmail.com", "01012341234", address, MemberStatus.NORMAL, 0, 0, MemberType.GENERAL, Role.MEMBER);
+//            memberRepository.save(member);
+
 //            Member member = new Member("test1234", "1234", "테스트", "test1234@gmail.com", "01012341234", address, MemberStatus.NORMAL, MemberType.GENERAL, Role.MEMBER);
             Member member = Member.builder().memberName("테스트" + i).memberEmail("test" + i + "@naver.com").memberId("testId" + i)
                     .memberPassword("1234").memberPhone("01012341234").memberPoint(0).address(address)
@@ -72,7 +77,7 @@ public class MemberRepositoryTests {
 
 //            포인트 내역 입력(없어서 목록 불러오기 위해 임의로 넣어놓음)
 //            Point point = new Point(10000 * i, pointStatuses.get((i % 3)));
-//            memberRepository.findById(2L).ifPresent(member -> point.setMember(member));
+//            memberRepository.findById(1L).ifPresent(member -> point.setMember(member));
 //            pointRepository.save(point);
         }
     }
