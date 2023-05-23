@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모집 게시글 작성</title>
-    <link rel="stylesheet" href="../../static/css/event-board/event-board-write.css">
+    <link rel="stylesheet" href="/css/event-board/event-board-write.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">  
@@ -29,7 +29,7 @@
                         </div>
                         <div class="input-container">
                             <div class="waffle input">
-                                <input placeholder="모집 게시글 제목을 적어주세요" name="recruitmentTitle" required>
+                                <input placeholder="모집 게시글 제목을 적어주세요" class="boardTitle" name="boardTitle" required>
                             </div>
                             <div class="waffle helper mb"></div>
                         </div>
@@ -41,7 +41,7 @@
                         </div>
                         <div class="input-container">
                             <div class="waffle input">
-                                <input placeholder="모집 게시글 소제목을 적어주세요" name="recruitmentSubtitle" required>
+                                <input placeholder="모집 게시글 소제목을 적어주세요" class="boardContent" name="recruitmentSubtitle" required>
                             </div>
                             <div class="waffle helper mb"></div>
                         </div>
@@ -55,14 +55,14 @@
                         </div>
                         <div class="action-input">
                             <div class="input-container mb13">
-                                <input name="eventAddress" id="address" class="address" placeholder="주소검색" required>
+                                <input name="recruitmentAddress" id="address" class="address" placeholder="주소검색" required>
                                 <button class="address-btn" id="detailAddress" type="button" onclick="searchAddress()">주소검색</button>
                                 </div>
                            </div>
                         </div>
                         <div class="input-container">
                             <div class="waffle input address-input">
-                                <input name="eventAddressDetail" placeholder="상세주소">
+                                <input name="recruitmentAddressDetail" class="addressDetail" placeholder="상세주소">
                             </div>
                             <label id="address-error" class="error" for="address">필수 항목입니다.</label>
                             <div class="waffle helper mb"></div>
@@ -76,7 +76,7 @@
                         </div>
                         <div class="input-container">
                             <div class="waffle input">
-                                <input type="date" name="startDate" id="startDate" required>
+                                <input type="date" name="recruitmentDate" id="startDate" required>
                             </div>
                             <div class="waffle helper mb"></div>
                         </div>
@@ -90,7 +90,7 @@
                             </div>
                             <div class="input-container">
                                 <div class="waffle input nu">
-                                    <input class="people-count number" placeholder="모집 인원수를 적어주세요" maxlength="5" name="people-count" required>
+                                    <input class="people-count number recruitmentPeopleCount" placeholder="모집 인원수를 적어주세요" maxlength="5" name="recruitmentPeopleCount" required>
                                 </div>
                                 <div class="waffle helper mb"></div>
                                 <div class="people-count-error error"></div>
@@ -103,7 +103,7 @@
                             <label>모집글 소개</label>
                         </div>
                         <div class="input-container">
-                                <textarea rows="5"placeholder="모집글 소개를 적어주세요" name="recruitment-introduction" required></textarea>
+                                <textarea rows="5"placeholder="모집글 소개를 적어주세요" name="boardContent" required></textarea>
 
                             <div class="waffle helper mb"></div>
                         </div>
@@ -116,7 +116,7 @@
                         </div>
                         <div class="input-container">
                             <div class="waffle input">
-                                <input class="open-kakao url" placeholder="오픈채팅 링크를 적어주세요" name="openKakao" required>
+                                <input class="open-kakao url recruitmentOpenChatting" placeholder="오픈채팅 링크를 적어주세요" name="recruitmentOpenChatting" required>
                             </div>
                             <div class="waffle helper mb"></div>
                             <div class="open-kakao-error error"> </div>
@@ -124,50 +124,49 @@
                     </div>
 
 
-                    <!-- 오픈채팅 비밀번호 -->
-                    <div class="waffle field">
-                        <div class="waffle label">
-                            <label>오픈채팅 비밀번호</label>
-                        </div>
-                        <div class="input-container">
-                            <div class="waffle input">
-                                <input class="open-kakao-password number" placeholder="오픈채팅 비밀번호를 입력해주세요" name="openKakaoPassword" required>
-                            </div>
-                            <div class="waffle helper mb"></div>
-                            <div class="open-password-error error"></div>
-                        </div>
-                    </div>
+<!--                    &lt;!&ndash; 오픈채팅 비밀번호 &ndash;&gt;-->
+<!--                    <div class="waffle field">-->
+<!--                        <div class="waffle label">-->
+<!--                            <label>오픈채팅 비밀번호</label>-->
+<!--                        </div>-->
+<!--                        <div class="input-container">-->
+<!--                            <div class="waffle input">-->
+<!--                                <input class="open-kakao-password number" placeholder="오픈채팅 비밀번호를 입력해주세요" name="openKakaoPassword" required>-->
+<!--                            </div>-->
+<!--                            <div class="waffle helper mb"></div>-->
+<!--                            <div class="open-password-error error"></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
                     <!-- 파일 첨부 -->
                     <div id="plus_picture">
                     <div class="waffle field">
                         <div class="waffle label">
-                            <label>파일 첨부
+                            <label>파일 첨부</label>
                         </div>
                     <button class="file-button" type="button">
-                        <input class="file-input" id='btnAtt' type="file" multiple="multiple" name="fileNames" accept="application/pdf,image/jpg,image/jpeg,image/png" required>등록
+                        <input class="file-input" id='btnAtt' type="file" multiple="multiple" name="recruitmentFileDTOS" accept="application/pdf,image/jpg,image/jpeg,image/png" required>등록
                     </button>
                     <label id="btnAtt-error" class="error" for="btnAtt">필수 항목입니다.</label>
                     <div id='att_zone'></div></label>   
                 </div>                  
-                <div class="waffle helper mb">10MB 이내 pdf, jpeg, png 파일을 등록하세요.</div>
-          
+                <div class="waffle helper mb">
+                    ※처음으로 올리는 사진은 대표사진입니다.※
+                    <br>10MB 이내 pdf, jpeg, png 파일을 등록하세요.</div>
+
                 <div class="submit-container">
-                <input class="submit-btn btn" type="submit"></button>
+                <input class="submit-btn btn button-button" type="submit"></button>
                 <p class="submit-notice"></p>
             </div>
         </div>
                 </section>
-
-
             </form>
-
         </main>
     </div><!-- page container -->
 
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="../../static/js/recruitment-board/recruitment-board-write.js"></script>
+<script src="/js/recruitment-board/recruitment-board-write.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </html>

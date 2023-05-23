@@ -1,3 +1,17 @@
+const $boardTitle = $('.boardTitle'); // 제목
+const $boardContent = $('.boardContent'); // 내용
+const $eventAddress = $('.address'); // 주소
+const $eventAddressDetail = $('.addressDetail'); // 상세주소
+const $eventStartDate = $('#startDate'); // 시작일
+const $eventEndDate = $('#endDate'); // 끝날일
+const $eventBusinessNumber = $('.businessRegNumber'); // 상품수
+const $eventBusinessName = $('.eventBusinessName'); // 상품수
+const $eventBusinessTel = $('.eventBusinessTel'); // 상품수
+const $eventBusinessEmail = $('.eventBusinessEmail'); // 상품수
+
+const fileArray = new Array();
+let formData = new FormData(); // input 태그 담는 폼
+
 /* 신청 유형 선택, 개인과 기업  */
 $(function(){
     $('.personal').click(function(){
@@ -67,9 +81,9 @@ $(function() {
     });
 });
 
-$('.submit-btn').on('click', function () {
-    document.eventForm.submit();
-})
+// $('.submit-btn').on('click', function () {
+//     document.eventForm.submit();
+// })
 
 
 /* 파일 */
@@ -151,31 +165,104 @@ let sel_files = [];  // 전역 변수로 이동
     }
 )('att_zone', 'btnAtt')
 
-$('.submit-btn').on('click', function () {
-    // FormData 객체 생성
-    var formData = new FormData();
+// $('.file-input').on("change", function(e){
+//     const files = e.target.files;
+//
+//     for (let i = 0; i < files.length; i++) {
+//         const file = files[i];
+//
+//         formData.append("file", file);
+//     }
+//
+// })
 
-    // 이미지 파일을 formData에 추가
-    var fileInput = document.getElementById('btnAtt');
-    for (var i = 0; i < fileInput.files.length; i++) {
-        formData.append('eventFiles', fileInput.files[i]);
+document.getElementById("btnAtt").addEventListener("change", function (e) {
+    const files = e.target.files;
+
+    console.log("files");
+    console.log(files);
+
+    formData = new FormData();
+    for (let i = 0; i < files.length; i++) {
+        formData.append("file", files[i]);
     }
 
-    // Ajax를 사용하여 formData를 서버로 전송
+    console.log(formData);
+
     $.ajax({
         url: '/file/upload',
-        type: 'POST',
         data: formData,
+        method: 'post',
         processData: false,
         contentType: false,
-        success: function (response) {
-            console.log('파일 업로드 성공');
-        },
-        error: function (xhr, status, error) {
-            console.error('파일 업로드 실패:', error);
+        success: function (result) {
+            console.log("success@@@@@@@@@@@@@@@@@@@@");
+            if(result){
+                console.log(result);
+                for (let i = 0; i < result.uuids.length; i++) {
+                    let file = new Object();
+
+                    file.filePath = result.paths[i];
+                    file.fileUuid = result.uuids[i];
+                    file.fileOriginalName = result.fileOriginalNames[i];
+
+                    fileArray.push(file);
+                }
+            }
         }
     });
 });
+
+$('.submit-btn').on('click', function (e) {
+    e.preventDefault();
+    writeBoard();
+});
+
+function writeBoard(){
+
+    console.log(fileArray);
+    console.log($boardTitle.val());
+    console.log($boardContent.val());
+    console.log($eventAddress.val());
+    console.log($eventAddressDetail.val());
+    console.log($eventStartDate.val());
+    console.log($eventEndDate.val());
+    console.log($eventBusinessNumber.val());
+    console.log($eventBusinessName.val());
+    console.log($eventBusinessTel.val());
+    console.log($eventBusinessEmail.val());
+
+    let eventBoardDTO = {
+        boardTitle : $boardTitle.val(),
+        boardContent : $boardContent.val(),
+        address : {
+            address : $eventAddress.val(),
+            addressDetail : $eventAddressDetail.val(),
+        },
+        eventStartDate : $eventStartDate.val(),
+        eventEndDate : $eventEndDate.val(),
+        eventBusinessNumber : $eventBusinessNumber.val() * 1.0,
+        eventBusinessName : $eventBusinessName.val(),
+        eventBusinessTel : $eventBusinessTel.val(),
+        eventBusinessEmail : $eventBusinessEmail.val(),
+        eventFileDTOS : fileArray
+    };
+
+    console.log("eventBoardDTO");
+    console.log(eventBoardDTO);
+
+    $.ajax({
+        url: '/event/write',
+        data: JSON.stringify(eventBoardDTO),
+        method: 'post',
+        processData: false,
+        contentType: 'application/json',
+        success: function() {
+            console.log("event/write ajax 성공");
+            location.href='/event/list';
+        }
+    });
+}
 
 
 

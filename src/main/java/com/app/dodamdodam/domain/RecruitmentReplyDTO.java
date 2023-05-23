@@ -26,6 +26,4 @@ public class RecruitmentReplyDTO {
         this.updatedDate = updatedDate;
     }
 
-
-
 }
