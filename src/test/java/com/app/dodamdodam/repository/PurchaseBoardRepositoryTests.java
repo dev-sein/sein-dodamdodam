@@ -84,7 +84,6 @@ PurchaseBoardRepositoryTests {
                 .productPrice(20)
                 .build();
         purchaseBoard.setProduct(product);
-        product.setPurchaseBoard(purchaseBoard);
 
         productRepository.save(product);
     }*/
