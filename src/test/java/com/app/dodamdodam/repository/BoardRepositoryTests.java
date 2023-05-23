@@ -4,6 +4,7 @@ import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.free.FreeFile;
 import com.app.dodamdodam.entity.free.FreeReply;
+import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.purchase.Product;
 import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.entity.recruitment.Recruitment;
@@ -103,17 +104,23 @@ public class BoardRepositoryTests {
     /*판매 게시글 등록*/
     @Test
     public void saveTest3(){
-//        for (int i=1; i<=100; i++){
-//            PurchaseBoard purchaseBoard = new PurchaseBoard("판매 게시글 제목" + i, "판매 게시글 내용"+ i);
-//            Product product = new Product("상품" + i, 1000 * i, (long)i, purchaseBoard);
-//
-//            memberRepository.findById(2L).ifPresent(member -> {
+        for (int i=1; i<=100; i++){
+            Product product = new Product("상품" + i, 1000 * i, (long)i);
+            Member member = memberRepository.findById(30L).get();
+            PurchaseBoard purchaseBoard = PurchaseBoard.builder()
+                    .boardTitle("test" + i)
+                    .boardContent("test" + i)
+                    .product(product)
+                    .member(member)
+                    .build();
+
+//            memberRepository.findById(30L).ifPresent(member -> {
 //                purchaseBoard.setMember(member);
 //                purchaseBoard.setProduct(product);
 //            });
-//
-//            purchaseBoardRepository.save(purchaseBoard);
-//        }
+
+            purchaseBoardRepository.save(purchaseBoard);
+        }
     }
 
     /* id로 내가 작성한 자유게시글 목록 가져오기*/
