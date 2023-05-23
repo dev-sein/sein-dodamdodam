@@ -160,32 +160,8 @@ public class AdminController {
         mailDTO.setTitle("[도담도담] 문의하신 내용에 대한 답변입니다.");
         mailDTO.setMessage(inquiryAnswer);
         inquiryService.sendAnswerMail(mailDTO);
-
-        return new RedirectView("/admin/inquiry/detail");
+        return new RedirectView("/admin/inquiry/detail/{inquiryId}");
     }
-
-//    @PostMapping("board/notice/modify/{noticeId}")
-  /*  public RedirectView adminNoticeModifyPost(@PathVariable Long noticeId, String noticeTitle, String noticeContent) {
-        NoticeDTO noticeDTO = NoticeDTO.builder()
-                .noticeContent(noticeContent)
-                .noticeTitle(noticeTitle)
-                .build();
-
-        noticeService.updateNotice(noticeId, noticeDTO);
-        return new RedirectView("/admin/board/notice/list");
-    }
-*/
-/*
-    @PatchMapping("inquiry/detail")
-    @ResponseBody
-    public ResponseEntity<String> inquiryAnswer(@RequestBody Long id, InquiryDTO inquiryDTO, Model model) {
-        Inquiry updatedInquiry = inquiryService.toInquiryEntity(inquiryDTO);
-        inquiryService.setInquiryStatus(id, updatedInquiry);
-//        inquiryService.setInquiryStatus(inquiryDTO.getId(), updatedInquiry); // inquiryId로 상태 수정
-        log.info("@@@@@@@@@@@@@@@@@@@@@@@ update 쿼리");
-        return ResponseEntity.ok("변경 완료하였습니다");
-//        return new RedirectView("/admin/inquiry//detail?update=ok"); // 수정 완료 후 상세 페이지로 리다이렉트
-    }*/
 
     /*포인트 게시판 */
     @GetMapping("point/list") //포인트 게시판 목록
