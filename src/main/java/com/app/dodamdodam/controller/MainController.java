@@ -33,7 +33,7 @@ public class MainController {
     @GetMapping("home")
     public String main(HttpSession session, Model model){
         log.info("==================== main controller =====================");
-        log.info(session.getAttribute("member") + "");
+//        log.info(session.getAttribute("member") + "");
         log.info("=========================================");
         model.addAttribute("id", session.getId());
         purchaseBoardService.getRecentPurchaseBoardList().stream().map(PurchaseBoardFileDTO::getPurchaseFileDTOS);
@@ -43,6 +43,7 @@ public class MainController {
         model.addAttribute("purchaseBoards", purchaseBoardService.getRecentPurchaseBoardList());
         model.addAttribute("purchaseBoardsFile", purchaseBoardService.getRecentPurchaseBoardList().stream().map(PurchaseBoardFileDTO::getBoardContent));
         model.addAttribute("recruitmentBoards", recruitmentBoardService.getRecentRecruitmentBoardList());
+//        model.addAttribute("id", session.getId());
         return  "main/main";
     }
 
