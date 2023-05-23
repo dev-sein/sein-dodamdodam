@@ -71,4 +71,11 @@ public class RecruitmentBoardController {
         return "recruitment-board/recruitment-board-detail";
     }
 
+    @PostMapping("recruit")
+    @ResponseBody
+    public void getRecruit(@RequestBody Long boardId, HttpSession session) {
+        Long memberId = (Long)session.getAttribute("memberId");
+        recruitmentBoardService.getRecruitment(memberId, boardId);
+    }
+
 }

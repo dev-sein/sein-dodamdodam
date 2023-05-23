@@ -182,9 +182,37 @@
   Kakao.init('e21d13e33dbb10932785f7663d4603f1'); // 사용하려는 앱의 JavaScript 키 입력
 </script>
 <script th:inline="javascript">
+    let boardDetail = [[${boardDetail}]];
+    let memberId = [[${session.memberId}]];
 
+    // 현재 경로를 가져오기
+    let currentPath = window.location.pathname;
+
+    // 경로를 "/"로 분할하여 배열로 저장
+    let pathArray = currentPath.split("/");
+
+    // boardId 값을 추출
+    let boardId = pathArray[3];
+
+    // number 타입으로 변경
+    boardId *= 1;
+
+    $('.submit-btn').on('click', function(){
+        $.ajax({
+            url: `/recruitment/recruit`,
+            type: "post",
+            data : boardId,
+            success: function() {
+                // location.reload();
+            },
+            error: function (error) {
+                console.log('Error fetching data:', error);
+            }
+        })
+    })
 </script>
 <script>
+
 
 /* 좋아요 */
 $(function(){

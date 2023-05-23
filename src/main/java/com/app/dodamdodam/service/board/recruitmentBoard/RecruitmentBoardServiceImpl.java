@@ -3,8 +3,12 @@ package com.app.dodamdodam.service.board.recruitmentBoard;
 import com.app.dodamdodam.domain.*;
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.inquiry.Inquiry;
+import com.app.dodamdodam.entity.member.Member;
+import com.app.dodamdodam.entity.recruitment.Recruitment;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
 import com.app.dodamdodam.repository.board.recruitment.RecruitmentBoardRepository;
+import com.app.dodamdodam.repository.member.MemberRepository;
+import com.app.dodamdodam.repository.recruitment.RecruitmentRepository;
 import com.app.dodamdodam.search.Inquiry.AdminInquirySearch;
 import com.app.dodamdodam.search.board.AdminRecruitmentSearch;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +18,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,9 +26,11 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class RecruitmentBoardServiceImpl implements RecruitmentBoardService {
-    @Autowired
-    private RecruitmentBoardRepository recruitmentBoardRepository;
+    private final RecruitmentBoardRepository recruitmentBoardRepository;
+    private final RecruitmentRepository recruitmentRepository;
+    private final MemberRepository memberRepository;
 
 //    내가 작성한 모집 게시글 목록
     @Override
@@ -98,6 +105,31 @@ public class RecruitmentBoardServiceImpl implements RecruitmentBoardService {
     public List<RecruitmentBoardFileDTO> getRecentRecruitmentBoardList() {
         List<RecruitmentBoardFileDTO> recruitmentBoardFileDTOS = recruitmentBoardRepository.findRecentRecruitmentBoardList_QueryDSL().stream().map(recentRecruitmentBoardList -> toRecruitmentBoardFileDto(recentRecruitmentBoardList)).collect(Collectors.toList());
         return recruitmentBoardFileDTOS;
+    }
+
+    //    모집 신청
+    @Override
+    public void getRecruitment(Long boardId, Long memberId){
+        Optional<Member> optionalMember = memberRepository.findById(memberId);
+        Optional<RecruitmentBoard> optionalRecruitmentBoard = recruitmentBoardRepository.findById(boardId);
+
+        Member member = null;
+        RecruitmentBoard recruitmentBoard = null;
+
+        if (optionalMember.isPresent()) {
+            member = optionalMember.get();
+        }
+
+        if (optionalRecruitmentBoard.isPresent()) {
+            recruitmentBoard = optionalRecruitmentBoard.get();
+        }
+
+        Recruitment recruitment = Recruitment.builder()
+                .member(member)
+                .recruitmentBoard(recruitmentBoard)
+                .build();
+
+        recruitmentRepository.save(recruitment);
     }
 
 }

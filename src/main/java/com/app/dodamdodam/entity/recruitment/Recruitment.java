@@ -1,5 +1,6 @@
 package com.app.dodamdodam.entity.recruitment;
 
+import com.app.dodamdodam.audit.Period;
 import com.app.dodamdodam.entity.member.Member;
 import lombok.*;
 import org.hibernate.annotations.DynamicInsert;
@@ -17,7 +18,7 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DynamicInsert
 @DynamicUpdate
-public class Recruitment {
+public class Recruitment extends Period {
     @Id
     @GeneratedValue
     @EqualsAndHashCode.Include
@@ -38,6 +39,13 @@ public class Recruitment {
     }
 
     public void setRecruitmentBoard(RecruitmentBoard recruitmentBoard) {
+        this.recruitmentBoard = recruitmentBoard;
+    }
+
+    @Builder
+    public Recruitment(Long id, Member member, RecruitmentBoard recruitmentBoard) {
+        this.id = id;
+        this.member = member;
         this.recruitmentBoard = recruitmentBoard;
     }
 }
