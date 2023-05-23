@@ -65,7 +65,7 @@ public class EventBoardController {
     @GetMapping("write")
     public String goToWriteForm(HttpSession session) {
         /* 임시로 세션에 memberId 담아둠 */
-        session.setAttribute("memberId", 1L);
+        Long memberId = (Long) session.getAttribute("memberId");
         return "event-board/event-board-write";
     }
 
