@@ -280,7 +280,7 @@ public class MyPageController {
         Long memberId = (Long)session.getAttribute("memberId");
         memberService.setMemberStatusById(memberId);
         session.invalidate();
-        return new RedirectView("/main");
+        return new RedirectView("/home");
     }
 
     /* 비밀번호 변경 페이지 */
