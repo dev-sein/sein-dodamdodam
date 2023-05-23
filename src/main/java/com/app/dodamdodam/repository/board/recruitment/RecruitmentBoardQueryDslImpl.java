@@ -144,7 +144,7 @@ public class RecruitmentBoardQueryDslImpl implements RecruitmentBoardQueryDsl {
 
     /* 내가 참가한 모집 날짜로 검색 */
     @Override
-    public List<RecruitmentBoard> findRecruitmentBoardListByMemberIdAndDate(Long memberId, LocalDate recruitmentDate) {
+    public List<RecruitmentBoard> findRecruitmentBoardListByMemberIdAndDate_QueryDSL(Long memberId, LocalDate recruitmentDate) {
         List<RecruitmentBoard> recruitmentBoards = query.select(recruitmentBoard).from(recruitmentBoard)
                 .where(recruitmentBoard.recruitments.any().member.id.eq(memberId).and(recruitmentBoard.recruitmentDate.eq(recruitmentDate)))
                 .leftJoin(recruitmentBoard.recruitmentFiles).fetchJoin()
@@ -153,5 +153,14 @@ public class RecruitmentBoardQueryDslImpl implements RecruitmentBoardQueryDsl {
                 .fetch();
 
         return recruitmentBoards;
+    }
+
+    /* 내가 참가한 모집게시글 날짜 가져오기 */
+    @Override
+    public List<LocalDate> findRecruimentDateByMemberId_QueryDSL(Long memberId) {
+        return query.select(recruitmentBoard.recruitmentDate).from(recruitmentBoard)
+                .where(recruitmentBoard.recruitments.any().member.id.eq(memberId))
+                .orderBy(recruitmentBoard.recruitmentDate.desc())
+                .fetch();
     }
 }
