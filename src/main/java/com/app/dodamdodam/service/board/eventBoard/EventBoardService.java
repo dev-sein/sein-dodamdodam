@@ -13,17 +13,15 @@ import com.app.dodamdodam.type.EventType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public interface EventBoardService {
 
 //    상세보기
-    public EventBoardDTO getDetail(Long id);
+    public EventBoardDTO getDetail(Long eventBoardId);
     // 저장
-    public void write(EventBoardDTO eventBoardDTO, Long memberId);
+    public void register(EventBoardDTO eventBoardDTO, Long memberId);
 
     /* 자유 게시글 검색 */
     public List<EventBoardDTO> getEventBoardsBySearch(Pageable pageable, EventBoardSearch eventBoardSearch, EventType eventStatus);
@@ -54,20 +52,31 @@ public interface EventBoardService {
                 .boardTitle(eventBoard.getBoardTitle())
                 .boardContent(eventBoard.getBoardContent())
                 .createdDate(eventBoard.getCreatedDate())
-                .updatedDate(eventBoard.getUpdatedDate())
+                .address(eventBoard.getAddress())
+                .eventBusinessNumber(eventBoard.getEventBusinessNumber())
+                .eventBusinessEmail(eventBoard.getEventBusinessEmail())
+                .eventBusinessName(eventBoard.getEventBusinessName())
+                .eventBusinessTel(eventBoard.getEventBusinessTel())
+                .eventStartDate(eventBoard.getEventStartDate())
+                .eventEndDate(eventBoard.getEventEndDate())
                 .memberDTO(toMemberDTO(eventBoard.getMember()))
-                .fileDTOS(eventFileToDTO(eventBoard.getEventFiles()))
                 .build();
     }
 
     default EventBoardDTO toEventSearchBoardDTO(EventBoard eventBoard){
-        return EventBoardDTO.builder().id(eventBoard.getId()).boardTitle(eventBoard.getBoardTitle())
-                .boardContent(eventBoard.getBoardContent()).createdDate(eventBoard.getCreatedDate())
-                .eventAddress(eventBoard.getEventAddress()).eventAddressDetail(eventBoard.getEventAddressDetail())
+        return EventBoardDTO.builder()
+                .id(eventBoard.getId())
+                .boardTitle(eventBoard.getBoardTitle())
+                .boardContent(eventBoard.getBoardContent())
+                .createdDate(eventBoard.getCreatedDate())
+                .address(eventBoard.getAddress())
                 .eventBusinessNumber(eventBoard.getEventBusinessNumber())
-                .eventStatus(eventBoard.getEventStatus())
+                .eventBusinessEmail(eventBoard.getEventBusinessEmail())
+                .eventBusinessName(eventBoard.getEventBusinessName())
+                .eventBusinessTel(eventBoard.getEventBusinessTel())
+                .eventStartDate(eventBoard.getEventStartDate())
+                .eventEndDate(eventBoard.getEventEndDate())
                 .memberDTO(toMemberDTO(eventBoard.getMember()))
-                .fileDTOS(eventFileToDTO(eventBoard.getEventFiles()))
                 .build();
     }
 
@@ -90,16 +99,14 @@ public interface EventBoardService {
         return EventBoard.builder()
                 .boardTitle(eventBoardDTO.getBoardTitle())
                 .boardContent(eventBoardDTO.getBoardContent())
-                .eventFiles(eventBoardDTO.getFileDTOS().stream().map(file -> toEventFileEntity(file)).collect(Collectors.toList()))
                 .member(toMemberEntity(eventBoardDTO.getMemberDTO()))
                 .eventBusinessName(eventBoardDTO.getEventBusinessName())
                 .eventBusinessNumber(eventBoardDTO.getEventBusinessNumber())
                 .eventBusinessEmail(eventBoardDTO.getEventBusinessEmail())
                 .eventBusinessTel(eventBoardDTO.getEventBusinessTel())
-                .eventStartDate(LocalDate.parse(eventBoardDTO.getEventStartDate()))
-                .eventEndDate(LocalDate.parse(eventBoardDTO.getEventEndDate()))
-                .eventAddressDetail(eventBoardDTO.getEventAddressDetail())
-                .eventAddress(eventBoardDTO.getEventAddress())
+                .eventStartDate(eventBoardDTO.getEventStartDate())
+                .eventEndDate(eventBoardDTO.getEventEndDate())
+                .address(eventBoardDTO.getAddress())
                 .build();
     }
 
@@ -137,8 +144,9 @@ public interface EventBoardService {
         return EventFile.builder()
                 .id(eventFileDTO.getId())
                 .fileOriginalName(eventFileDTO.getFileOriginalName())
-                .filePath(eventFileDTO.getFilePath())
                 .fileUuid(eventFileDTO.getFileUuid())
+                .filePath(eventFileDTO.getFilePath())
+                .eventBoard(eventFileDTO.getEventBoard())
                 .build();
     }
 
