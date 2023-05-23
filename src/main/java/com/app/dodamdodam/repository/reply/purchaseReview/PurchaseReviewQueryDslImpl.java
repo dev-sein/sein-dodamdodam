@@ -41,11 +41,17 @@ public class PurchaseReviewQueryDslImpl implements PurchaseReviewQueryDsl {
 
     @Override
     public Long findReviewCountByBoardId_QueryDSL(Long boardId) {
+//        return query.select(purchaseReview.id.count())
+//                .from(purchaseReview)
+//                .join(purchaseReview.purchaseBoard)
+//                .fetchJoin()
+//                .where(purchaseReview.purchaseBoard.id.eq(boardId))
+//                .fetchOne();
+
         return query.select(purchaseReview.id.count())
                 .from(purchaseReview)
-                .join(purchaseReview.purchaseBoard)
-                .fetchJoin()
-                .where(purchaseReview.purchaseBoard.id.eq(boardId))
+                .join(purchaseReview.purchaseBoard, purchaseBoard)
+                .where(purchaseBoard.id.eq(boardId))
                 .fetchOne();
     }
 
