@@ -69,6 +69,38 @@ public class RecruitmentBoard extends Board {
         this.recruitmentAddressDetail = recruitmentAddressDetail;
     }
 
+    public void setRecruitmentSubtitle(String recruitmentSubtitle) {
+        this.recruitmentSubtitle = recruitmentSubtitle;
+    }
+
+    public void setRecruitmentDate(LocalDate recruitmentDate) {
+        this.recruitmentDate = recruitmentDate;
+    }
+
+    public void setRecruitmentPeopleCount(int recruitmentPeopleCount) {
+        this.recruitmentPeopleCount = recruitmentPeopleCount;
+    }
+
+    public void setRecruitmentOpenChatting(String recruitmentOpenChatting) {
+        this.recruitmentOpenChatting = recruitmentOpenChatting;
+    }
+
+    public void setRecruitmentPassword(String recruitmentPassword) {
+        this.recruitmentPassword = recruitmentPassword;
+    }
+
+    public void setRecruitmentStatus(RecruitmentType recruitmentStatus) {
+        this.recruitmentStatus = recruitmentStatus;
+    }
+
+    public void setRecruitmentAddress(String recruitmentAddress) {
+        this.recruitmentAddress = recruitmentAddress;
+    }
+
+    public void setRecruitmentAddressDetail(String recruitmentAddressDetail) {
+        this.recruitmentAddressDetail = recruitmentAddressDetail;
+    }
+
     public void setMember(Member member) {
         this.member = member;
     }
