@@ -4,6 +4,7 @@ import com.app.dodamdodam.domain.MemberDTO;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.provider.UserDetail;
 import com.app.dodamdodam.service.member.MemberService;
+import com.app.dodamdodam.type.Role;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -27,15 +28,19 @@ public class OAuthController {
     public RedirectView oAuthLogin(HttpSession session, RedirectAttributes redirectAttributes){
         log.info(" ------------------- 로그인 처리 후 맨 마지막 컨트롤러 ------------------------------------- ");
         MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
-        Long memberId = (Long) session.getAttribute("id");
+        Long memberId = (Long) session.getAttribute("memberId");
         log.info("==================================================");
         log.info(memberDTO + "");
         log.info(memberId + "");
-        if (memberDTO.getId() == null) {
+        if (memberDTO.getMemberId() == null) {
             redirectAttributes.addFlashAttribute("member", memberDTO);
             return new RedirectView("/member/join");
         }
-        return new RedirectView("/home");
-
+        MemberDTO memberInfo = memberService.getMemberInfo(memberId);
+        if (memberInfo.getMemberRole() == Role.ADMIN){
+            return new RedirectView("/admins/home");
+        } else {
+            return new RedirectView("/home");
+        }
     }
 }

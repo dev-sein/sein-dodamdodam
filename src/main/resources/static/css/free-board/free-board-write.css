@@ -176,6 +176,7 @@ body {
     font-weight: 700;
 }
 #plus_button{
+    cursor: pointer;
     position: absolute;
     right: 38px;
     bottom: 60px;

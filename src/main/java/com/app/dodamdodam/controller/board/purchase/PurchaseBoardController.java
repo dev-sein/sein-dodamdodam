@@ -6,6 +6,7 @@ import com.app.dodamdodam.domain.PurchaseBoardDTO;
 import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.search.PurchaseBoardSearch;
 import com.app.dodamdodam.service.board.purchase.PurchaseBoardService;
+import com.sun.net.httpserver.HttpsServer;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
@@ -32,37 +33,34 @@ public class PurchaseBoardController {
 
     @ResponseBody
     @PostMapping("write")
-    public RedirectView getPurchaseWriteForm(@RequestBody PurchaseBoardDTO purchaseBoardDTO, HttpSession session){
+    public void getPurchaseWriteForm(@RequestBody PurchaseBoardDTO purchaseBoardDTO, HttpSession session){
 //        MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
 //        Long memberId = memberDTO.getId();
-        Long memberId = (Long) session.getAttribute("id");
+        Long memberId = (Long) session.getAttribute("memberId");
         log.info(memberId + "");
         purchaseBoardService.register(purchaseBoardDTO, memberId);
 
-        return new RedirectView("/purchase/list");
+//        return new RedirectView("/purchase/list");
     }
-
 
     
     @GetMapping("list")
-    public String goPurchaseBoardList(){
+    public String goPurchaseBoardList(HttpSession session, Model model){
+//        sess
+//        model.addAttribute()
         return "/sell-board/sell-list";
     }
     
     @PostMapping("list")
     @ResponseBody
-//    public Map<String, Object> getPurchaseBoardList(@RequestBody Map<String, Object> requestData){
-    public Slice<PurchaseBoardDTO> getPurchaseBoardList(@RequestBody Map<String, Object> requestData){
-//        Map<String, Object> result = new HashMap<>();
-        
-//        ("purchaseBoardSearch") PurchaseBoardSearch purchaseBoardSearch, @RequestParam("pageable") Pageable pageable
-        PurchaseBoardSearch purchaseBoardSearch = (PurchaseBoardSearch) requestData.get("purchaseBoardSearch");
-        Pageable pageable = (Pageable) requestData.get("pageable"); 
-        
-//        result.put("purchaseBoards", purchaseBoardService.getPurchaseBoardsWithSearch(purchaseBoardSearch, pageable));
-        Slice<PurchaseBoardDTO> purchaseBoardDTOs = purchaseBoardService.getPurchaseBoardsWithSearch(purchaseBoardSearch, pageable);
+    public Slice<PurchaseBoardDTO> getPurchaseBoardList(@RequestBody PurchaseBoardDTO purchaseBoardDTO, HttpSession session){
 
-        return purchaseBoardDTOs;
+
+//        Slice<PurchaseBoardDTO> purchaseBoardDTOs = purchaseBoardService.getPurchaseBoardsWithSearch(purchaseBoardSearch, pageable);
+
+
+//        return purchaseBoardDTOs;
+        return null;
     }
 
 
