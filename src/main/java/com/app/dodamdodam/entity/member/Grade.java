@@ -17,5 +17,6 @@ public class Grade {
     @NotNull private String gradeTitle;
     @NotNull private int gradeStartNumber;
     @NotNull private int gradeEndNumber;
+    @NotNull private String gradeName;
 
 }

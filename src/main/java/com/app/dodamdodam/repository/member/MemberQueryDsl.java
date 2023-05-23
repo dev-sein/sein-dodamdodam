@@ -2,6 +2,7 @@ package com.app.dodamdodam.repository.member;
 
 import com.app.dodamdodam.domain.MemberDTO;
 import com.app.dodamdodam.entity.free.FreeBoard;
+import com.app.dodamdodam.entity.member.Grade;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.point.Point;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
@@ -28,11 +29,14 @@ public interface MemberQueryDsl {
 //  아이디 중복검사
     public boolean findCheckMemberIdByMemberEmail_QueryDSL(String memberEmail);
 
-    //    로그인 후 회원 정보 조회
+//    로그인 후 회원 정보 조회
     public Optional<Member> findMemberByMemberId_QueryDSL(String memberId);
 
 //    이메일로 회원 조회
     public Optional<Member> findMemberByMemberEmail_QueryDSL(String memberEmail);
+
+//    참여 회수로 멤버 등급 조회
+    public Grade findMemberGradeByMemberId_QueryDSL(Long memberId);
 
 
 //  관리자 멤버 게시판 검색 조회

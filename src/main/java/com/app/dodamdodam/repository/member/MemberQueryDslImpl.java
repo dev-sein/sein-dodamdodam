@@ -3,6 +3,7 @@ package com.app.dodamdodam.repository.member;
 import com.app.dodamdodam.domain.MemberDTO;
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.inquiry.Inquiry;
+import com.app.dodamdodam.entity.member.Grade;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.search.member.AdminMemberSearch;
 import com.querydsl.core.types.dsl.BooleanExpression;
@@ -57,6 +58,15 @@ public class MemberQueryDslImpl implements MemberQueryDsl{
     public Optional<Member> findMemberByMemberEmail_QueryDSL(String memberEmail){
         return Optional.ofNullable(query.select(member).from(member).where(member.memberEmail.eq(memberEmail)).fetchOne());
     }
+
+    @Override
+    public Grade findMemberGradeByMemberId_QueryDSL(Long memberId) {
+            return query.select(grade).from(member).join(grade).fetchJoin()
+                    .on(member.participationCount.between(grade.gradeStartNumber, grade.gradeEndNumber))
+                    .where(member.id.eq(memberId))
+                    .fetchOne();
+    }
+
     @Override //관리자 멤버 검색
     public Page<Member> findAdminMemberWithPaging_QueryDSL(AdminMemberSearch adminMemberSearch, Pageable pageable) {
         BooleanExpression searchAll = null;
