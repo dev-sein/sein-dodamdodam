@@ -105,8 +105,7 @@ public class PurchaseBoardQueryDslImpl implements PurchaseBoardQueryDsl {
     @Override
     public Slice<PurchaseBoard> findAllWithSearch_QueryDSL(PurchaseBoardSearch purchaseBoardSearch, Pageable pageable){
         BooleanExpression boardTitleContains = purchaseBoardSearch.getBoardTitle() == null ? null : purchaseBoard.boardTitle.contains(purchaseBoardSearch.getBoardTitle());
-        BooleanExpression boardContentContains = purchaseBoardSearch.getBoardContent() == null ? null : purchaseBoard.boardContent.contains(purchaseBoardSearch.getBoardContent());
-        BooleanExpression productNameContains = purchaseBoardSearch.getProductName() == null ? null : purchaseBoard.product.productName.contains(purchaseBoardSearch.getProductName());
+        BooleanExpression memberNameContains = purchaseBoardSearch.getMemberName() == null ? null : purchaseBoard.member.memberName.contains(purchaseBoardSearch.getMemberName());
 
         boolean hasNext = false;
 
@@ -118,7 +117,7 @@ public class PurchaseBoardQueryDslImpl implements PurchaseBoardQueryDsl {
                 .fetchJoin()
                 .join(purchaseBoard.member)
                 .fetchJoin()
-                .where(boardTitleContains, boardContentContains, productNameContains)
+                .where(boardTitleContains, memberNameContains)
                 .orderBy(purchaseBoard.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize() + 1)

@@ -6,9 +6,11 @@ import com.app.dodamdodam.domain.PurchaseBoardDTO;
 import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.search.PurchaseBoardSearch;
 import com.app.dodamdodam.service.board.purchase.PurchaseBoardService;
+import com.app.dodamdodam.service.member.MemberService;
 import com.sun.net.httpserver.HttpsServer;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Controller;
@@ -27,6 +29,7 @@ import java.util.Map;
 @Slf4j
 public class PurchaseBoardController {
     private final PurchaseBoardService purchaseBoardService;
+    private final MemberService memberService;
 
     @GetMapping("write")
     public String goPurchaseBoardWrite(){ return "sell-board/sell-write"; }
@@ -46,21 +49,41 @@ public class PurchaseBoardController {
     
     @GetMapping("list")
     public String goPurchaseBoardList(HttpSession session, Model model){
-//        sess
-//        model.addAttribute()
+        log.info("@@@");
+
+//        if (session.getAttribute("memberId") != null) {
+//            Long memberId = (Long) session.getAttribute("memberId");
+//            MemberDTO member = memberService.getMemberInfo(memberId);
+//            model.addAttribute("member", member);
+//        }
+
         return "/sell-board/sell-list";
     }
     
-    @PostMapping("list")
+    @GetMapping("list-content/{page}")
     @ResponseBody
-    public Slice<PurchaseBoardDTO> getPurchaseBoardList(@RequestBody PurchaseBoardDTO purchaseBoardDTO, HttpSession session){
+    public Slice<PurchaseBoardDTO> getPurchaseBoardList(PurchaseBoardSearch purchaseBoardSearch, @PathVariable("page") Integer page){
+        log.info("@@@@@@");
 
+        PageRequest pageRequest = PageRequest.of(page - 1, 12);
+        log.info("purchaseBoardSearch.toString() ========================");
+        log.info(purchaseBoardSearch + "");
+        log.info(pageRequest + "");
+        Slice<PurchaseBoardDTO> purchaseBoardDTOs = purchaseBoardService.getPurchaseBoardsWithSearch(purchaseBoardSearch, pageRequest);
 
-//        Slice<PurchaseBoardDTO> purchaseBoardDTOs = purchaseBoardService.getPurchaseBoardsWithSearch(purchaseBoardSearch, pageable);
+        log.info("purchaseBoardDTOs.toString() =============================");
+        log.info(purchaseBoardDTOs.toString());
 
+        return purchaseBoardDTOs;
+    }
 
-//        return purchaseBoardDTOs;
-        return null;
+    @GetMapping("detail/{id}")
+    public String getPurchaseBoardDetail(@PathVariable("id") Long boardId, Model model){
+
+//        purchaseBoardService.get
+//        model.addAttribute()
+
+        return "sell-board/sell-detail";
     }
 
 

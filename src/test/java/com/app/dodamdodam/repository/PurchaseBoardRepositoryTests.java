@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package com.app.dodamdodam.repository;
 
 import com.app.dodamdodam.entity.embeddable.Address;
@@ -85,7 +84,6 @@ PurchaseBoardRepositoryTests {
                 .productPrice(20)
                 .build();
         purchaseBoard.setProduct(product);
-        product.setPurchaseBoard(purchaseBoard);
 
         productRepository.save(product);
     }
@@ -135,8 +133,6 @@ PurchaseBoardRepositoryTests {
 ////        purchaseBoardRepository.findAll().stream().map(PurchaseBoard::toString).forEach(log::info);
 //        Pageable pageable = Pageable.ofSize(1);
 //        purchaseBoardRepository.findAllPurchaseBoard_QueryDSL(pageable);
-=======
->>>>>>> master
 //package com.app.dodamdodam.repository;
 //
 //import com.app.dodamdodam.entity.embeddable.Address;
