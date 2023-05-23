@@ -29,10 +29,13 @@ public interface RecruitmentBoardService {
 //    내가 참가한 모집 게시글 목록
     public List<RecruitmentBoardFileDTO> getRecruimentedBoardListByMemberId(Pageable pageable, Long memberId);
 
+//    모집 게시글 상세 보기
+    public RecruitmentBoardFileDTO getRecruitmentBoardDetailByBoardId(Long boardId);
+
 //    관리자 목록 게시판
     public Page<RecruitmentBoardFileDTO> showList(Pageable pageable);
 
-//  관리자 검색
+//    관리자 검색
     public Page<RecruitmentBoardFileDTO> showAdminRecruitmentWithSearch_QueryDSL(Pageable pageable, AdminRecruitmentSearch adminRecruitmentSearch);
 
 //    관리자 삭제
@@ -40,6 +43,9 @@ public interface RecruitmentBoardService {
 
 //    관리자 상세보기
     public RecruitmentBoardFileDTO getAdminRecruitmentBoardDetail(Long id);
+
+//    모집 게시글 목록
+    public List<RecruitmentBoardFileDTO> getRecruitmentBoardListByPaging(Pageable pageable);
 
     /* 최근 작성된 자유 게시글 리스트 */
     public List<RecruitmentBoardFileDTO> getRecentRecruitmentBoardList();

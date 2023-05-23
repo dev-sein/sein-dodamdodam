@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모집 게시판 상세</title>
-    <link rel="stylesheet" href="../../static/css/recruitment-board/recruitment-board-detail.css">
+    <link rel="stylesheet" href="/css/recruitment-board/recruitment-board-detail.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">  
-    <link rel="shortcut icon" href="/static/images/components/dodam-favicon.png">
+    <link rel="shortcut icon" href="/images/components/dodam-favicon.png">
 </head>
 <body>
     <div id="wrap">
@@ -23,8 +23,8 @@
         <div id="recruitment-container">
             <div class="container-form">
                 <div class="recruitment-title">
-                    <h3>LG트윈스VS삼성라이온즈 잠실 경기 보러가실 분</h3>
-                    <p class="sub-text">소제목 칸입니다 외쳐라 무적엘지</p>
+                    <h3 th:text="${boardDetail.boardTitle}" >LG트윈스VS삼성라이온즈 잠실 경기 보러가실 분</h3>
+                    <p class="sub-text"  th:text="${boardDetail.recruitmentSubtitle}">소제목 칸입니다 외쳐라 무적엘지</p>
                 </div>
                 <div class="recruitment-info">
                     <div class="info-img">
@@ -32,33 +32,34 @@
                     <div class="info-sum">
                         <dl>
                             <dt>모집인</dt>
-                            <dd>정세인</dd>
+                            <dd th:text="${boardDetail.memberDTO.memberName}">정세인</dd>
                         </dl>
                         <dl>
                             <dt>이벤트 날짜</dt>
-                            <dd>2023-06-12</dd>
+                            <dd th:text="${boardDetail.recruitmentDate}">2023-06-12</dd>
                         </dl>
                         <dl>
                             <dt>이벤트 장소</dt>
-                            <dd>종합운동장역 6번 출구</dd>
+                            <dd th:text="${boardDetail.recruitmentAddress}">종합운동장역 6번 출구 <span th:text="${boardDetail.recruitmentAddressDetail}"></span></dd>
                         </dl>
                         <dl>
-                            <dt>모집/제한 인원</dt>
-                            <dd><span>6명</span> / 10명</dd>
+                            <dt>현재 / 총 모집 인원</dt>
+                            <dd><span th:text="${boardDetail.recruitmentDTOS.size}"></span>명 / <span th:text="${boardDetail.recruitmentPeopleCount}"></span>명</dd>
                         </dl>
          
 
                         <div class="wish-button-box">
-                            <button type="button" class="wish-button"  aria-pressed="false">
+                            <button type="button" class="wish-button"  aria-pressed="false" style="display: none">
                                 <span>
                                     <span class="wish-button-children">
-                                        <img class="heart-icon" src ="../../static/images/recruitment-board/non-heart-icon.png">
+                                        <img class="heart-icon" src ="/images/recruitment-board/non-heart-icon.png">
                                         <div>
                                         </div>
                                         </span>
                                     </span></button>
+                            <dt style="float: left; width: 120px; height: 50px; line-height: 50px; padding-left: 20px; font-size: 14px; line-height: 3;">모집 상태</dt>
                         </div>
-                        <p class="recruitment-status"><strong>모집중</strong></p>
+                        <p class="recruitment-status"><strong th:text="${boardDetail.recruitmentStatus.toString == 'APPLYING' ? '모집중' : '모집완료'}">모집중</strong></p>
                         <div class="recruitment-btn-apply">
                             <button type="button" class="submit-btn" onClick="javascript:popOpen();">신청하기</button></div>
 
@@ -66,7 +67,7 @@
                     <div class="sns-share">
                         <span>주변 분들과 함께 참가하고 싶으신가요? 페이지를 공유해보세요!</span>
                         <a class="icon_sns_fb" target="_blank" href="https://www.facebook.com/sharer/sharer.php?app_id=190622721088710&amp;u=http://127.0.0.1:5500/templates/recruitment-board/recruitment-board-detail.html" title="facebook">facebook</a>
-                        <a class="icon_sns_tw" target="_blank" href="https://twitter.com/intent/tweet?text=글제목글제목%20https://127.0.0.1:5500/templates/recruitment-board/recruitment-board-detail.html title="twitter">twitter</a>
+                        <a class="icon_sns_tw" target="_blank" href="https://twitter.com/intent/tweet?text=글제목글제목%20https://127.0.0.1:5500/templates/recruitment-board/recruitment-board-detail.html">twitter</a>
                         <a href="#" onclick="clip(); return false;"><button class="icon_sns_share" id="urlCopyBtn" data-clipboard-target="#shareLink" title="공유하기"  onClick="javascript:popCopyOpen();">공유하기</button>
                         </a>
                     </div>
@@ -105,7 +106,7 @@
                                     <li class="top" style="display: list-item;">
                                         <div class="comment-wrap">
                                             <div class="comment-info">
-                                                <img src="/static/images/badge/medal_gold_winner_badge_reward_icon.png">
+                                                <img src="/images/badge/medal_gold_winner_badge_reward_icon.png">
                                                 <span class="name">김욱성</span>
                                                 <button class="comment-util" onclick="showList(this)"></button>
                                                 <ul class="comment-util-list">
@@ -118,7 +119,7 @@
                                                 </ul>
                                             </div>
                                             <p class="comment-content">둘 다 재밌음 [스포]</p>
-                                            <textarea id="" class="modify-textarea" style="display: none;">둘 다 재밌음 [스포]</textarea>
+                                            <textarea class="modify-textarea" style="display: none;">둘 다 재밌음 [스포]</textarea>
                                             <div class="comment-date">
                                                 2023.04.23 23:56
                                             </div>
@@ -165,19 +166,23 @@
                     <!-- //modal 영역 -->
 
 
+                </div>
+            </div> <!--wrap -->
         </div>
-    </div> <!--wrap -->
-</div>
-<textarea style="display:none;">
-</textarea>
+        <textarea style="display:none;">
+        </textarea>
+    </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="/static/js/recruitment-board/recruitment-board-detail.js"></script>
+<script src="/js/recruitment-board/recruitment-board-detail.js"></script>
 <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.min.js"
   integrity="sha384-dpu02ieKC6NUeKFoGMOKz6102CLEWi9+5RQjWSV0ikYSFFd8M3Wp2reIcquJOemx" crossorigin="anonymous">
 </script>
 <script>
   Kakao.init('e21d13e33dbb10932785f7663d4603f1'); // 사용하려는 앱의 JavaScript 키 입력
+</script>
+<script th:inline="javascript">
+
 </script>
 <script>
 
@@ -185,7 +190,7 @@
 $(function(){
     $('.wish-button').click(function(e){
         if($('.wish-button').attr('aria-pressed') == 'false'){
-            $(".heart-icon").attr("src", "../../static/images/recruitment-board/heart-background.png");
+            $(".heart-icon").attr("src", "/images/recruitment-board/heart-background.png");
             $('.wish-button').attr('aria-pressed','true') //하트 색 채우기
             $('.like-cancel-text').hide(); //해제 문구
             $('#like-modal').fadeIn();
@@ -197,7 +202,7 @@ $(function(){
             $('#like-modal').delay(500).fadeOut(); //사라지기
         
         }else{
-            $(".heart-icon").attr("src", "../../static/images/recruitment-board/non-heart-icon.png");
+            $(".heart-icon").attr("src", "/images/recruitment-board/non-heart-icon.png");
             $('.wish-button').attr('aria-pressed','false') //색 비우기
             $('.like-text').hide();  //찜 추가 문구
             // $('#like-modal').css({right: '-30%'}); //오->왼 슬라이드 등장

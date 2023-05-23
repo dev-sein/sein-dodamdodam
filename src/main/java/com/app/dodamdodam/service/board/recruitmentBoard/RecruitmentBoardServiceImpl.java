@@ -46,6 +46,13 @@ public class RecruitmentBoardServiceImpl implements RecruitmentBoardService {
                 .stream().map(recruitmentBoard -> toRecruitmentBoardFileDto(recruitmentBoard)).collect(Collectors.toList());
     }
 
+//    모집 게시글 상세 보기
+    @Override
+    public RecruitmentBoardFileDTO getRecruitmentBoardDetailByBoardId(Long boardId) {
+        RecruitmentBoardFileDTO recruitmentBoardFileDTO = toRecruitmentBoardFileDto(recruitmentBoardRepository.findById(boardId).get());
+        return recruitmentBoardFileDTO;
+    }
+
     //  관리자 목록
     @Override
     public Page<RecruitmentBoardFileDTO> showList(Pageable pageable) {
@@ -77,6 +84,13 @@ public class RecruitmentBoardServiceImpl implements RecruitmentBoardService {
     public RecruitmentBoardFileDTO getAdminRecruitmentBoardDetail(Long id) {
         Optional<RecruitmentBoard> recruitmentBoard = recruitmentBoardRepository.findById(id);
         return toRecruitmentBoardFileDto(recruitmentBoard.get());
+    }
+
+
+    // 모집 게시글 목록
+    @Override
+    public List<RecruitmentBoardFileDTO> getRecruitmentBoardListByPaging(Pageable pageable) {
+        return recruitmentBoardRepository.findRecruitmentBoardList_QueryDSL(pageable).stream().map(recruitmentBoard -> toRecruitmentBoardFileDto(recruitmentBoard)).collect(Collectors.toList());
     }
 
     /* 모집 게시판 최근 게시글 5개 */
