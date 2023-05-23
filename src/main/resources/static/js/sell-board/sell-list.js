@@ -1,17 +1,21 @@
-let page = 1;
-let purchaseBoardSearch;
+globalThis.page = 1;
+let purchaseBoardSearch = {
+    boardTitle : null,
+    memberName : null
+};
 let keyword;
+const $listResults = $(".event-content");
 
-$(document).ready(function() {
-    load(page, purchaseBoardSearch);
-    keyDownEnter();
-});
+load(page, purchaseBoardSearch); // 시작하자마자 실행
 
 function keyDownEnter() {
     // 검색창에서 키보드를 눌렀을 때
     $('.input-keyword').on('keydown', function(e) {
         if (e.keyCode == 13) { // Enter 키를 눌렀을 때
             e.preventDefault(); // 기본 이벤트 막기
+            $listResults.empty(); // 기존 내용 비우기
+            page = 1;
+            showKeyword(); // purchaseBoardSearch에 키워드 담아주는 메소드
             load(page, purchaseBoardSearch);
         }
     });
@@ -22,6 +26,8 @@ window.addEventListener('scroll', function() {
     var scrollPosition = window.pageYOffset;
     var windowSize = window.innerHeight;
     var bodyHeight = document.body.offsetHeight;
+
+    page ++;
 
     // 스크롤이 페이지 맨 아래에 도달할 때 데이터 로드
     if (scrollPosition + windowSize >= bodyHeight) {
@@ -64,16 +70,12 @@ function load(page, purchaseBoardSearch) {
     console.log(page);
 
     $.ajax({
-        url: "/purchase/list",
+        url: `/purchase/list-content/${globalThis.page}`,
         type: "get",
-        data : {
-            purchaseBoardSearch : purchaseBoardSearch,
-            page : page
-        },
-        success: function(list) {
+        data : purchaseBoardSearch,
+        success: function(purchaseBoardDTOs) {
             console.log("ajax success");
-            showList(list);
-            page ++;
+            showList(purchaseBoardDTOs);
         },
         error: function (error) {
             console.log('Error fetching data:', error);
@@ -82,22 +84,24 @@ function load(page, purchaseBoardSearch) {
 };
 
 /*목록*/
-function showList(purchaseBoardsDTOs){
+function showList(list){
+    let purchaseBoardDTOs = list.content;
 
-    const $listResults = $(".event-content");
     var text = "";
-    purchaseBoardsDTOs.forEach((purchaseBoardsDTO, i) => {
-        var date = purchaseBoardsDTO[i].createdDate;
+    purchaseBoardDTOs.forEach(purchaseBoardsDTO => {
+        console.log(purchaseBoardsDTO);
+        var date = purchaseBoardsDTO.createdDate;
         var realDate = changeDate(date);
-        let filePath = '/file/display/' + purchaseBoardsDTO[i].purchaseFileDTOs[0].filePath + '/t_' + purchaseBoardsDTO[i].purchaseFileDTOs[0].fileUuid + '_' + purchaseBoardsDTO[i].purchaseFileDTOs[0].fileOriginalName;
+        let presentFileDTO = purchaseBoardsDTO.purchaseFileDTOs[0];
+        let filePath = '/file/display?fileName=' + presentFileDTO.filePath + '/t_' + presentFileDTO.fileUuid + '_' + presentFileDTO.fileOriginalName;
         text +=`
-            <li class="event-instance">
+            <li class="event-instance" >
                 <div class="instance">
-                    <img class="thumbnail" src="${filePath}">
+                    <img class="thumbnail" src="${filePath}" onclick="location.href='/purchase/detail/${purchaseBoardsDTO.id}'">
                     <div class="instance-detail">
     
-                        <div class="detail-title">${purchaseBoardsDTO[i].boardTitle}</div>
-                        <div class="detail-writer">${purchaseBoardsDTO[i].memberDTO.memberName}</div>
+                        <div class="detail-title">${purchaseBoardsDTO.boardTitle}</div>
+                        <div class="detail-writer">${purchaseBoardsDTO.memberDTO.memberName}</div>
                         <div class="detail-date">${realDate}</div>
                     </div>
                 </div>
@@ -115,12 +119,11 @@ $('#searchbox').on('keyup', showKeyword)
 function showKeyword() {
     let $selectedVal = $(".total-inner select").val();
     if($selectedVal === "boardTitle") {
-        purchaseBoardSearch = {boardTitle: $('.search-input').val()};
+        purchaseBoardSearch.boardTitle = $('.search-input').val();
     } else {
-        purchaseBoardSearch = {memberName: $('.search-input').val()};
+        purchaseBoardSearch.memberName = $('.search-input').val();
     }
-    console.log(keyword);
-    load(page, purchaseBoardSearch);
+    console.log(purchaseBoardSearch);
 }
 
 

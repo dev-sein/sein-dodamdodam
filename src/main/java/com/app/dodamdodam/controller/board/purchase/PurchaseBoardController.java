@@ -49,19 +49,37 @@ public class PurchaseBoardController {
     
     @GetMapping("list")
     public String goPurchaseBoardList(HttpSession session, Model model){
-        Long memberId = (Long) session.getAttribute("memberId");
-        MemberDTO member = memberService.getMemberInfo(memberId);
-        model.addAttribute("member", member);
+        log.info("@@@");
+        if (session.getAttribute("memberId") != null) {
+            Long memberId = (Long) session.getAttribute("memberId");
+            MemberDTO member = memberService.getMemberInfo(memberId);
+            model.addAttribute("member", member);
+        }
         return "/sell-board/sell-list";
     }
     
-    @PostMapping("list")
+    @GetMapping("list-content/{page}")
     @ResponseBody
-    public Slice<PurchaseBoardDTO> getPurchaseBoardList(@RequestParam("purchaseBoardSearch") PurchaseBoardSearch purchaseBoardSearch, @RequestParam(defaultValue = "1", name = "page") int page){
+    public Slice<PurchaseBoardDTO> getPurchaseBoardList(PurchaseBoardSearch purchaseBoardSearch, @PathVariable("page") Integer page){
+        log.info("@@@@@@");
+
         PageRequest pageRequest = PageRequest.of(page - 1, 12);
+        log.info(pageRequest + "");
         Slice<PurchaseBoardDTO> purchaseBoardDTOs = purchaseBoardService.getPurchaseBoardsWithSearch(purchaseBoardSearch, pageRequest);
 
+        log.info("purchaseBoardDTOs.toString() =============================");
+        log.info(purchaseBoardDTOs.toString());
+
         return purchaseBoardDTOs;
+    }
+
+    @GetMapping("detail/{id}")
+    public String getPurchaseBoardDetail(@PathVariable("id") Long boardId, Model model){
+
+//        purchaseBoardService.get
+//        model.addAttribute()
+
+        return "sell-board/sell-detail";
     }
 
 
