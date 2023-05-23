@@ -184,3 +184,85 @@ font-size:12px;
   /* display: block; */
   opacity: 1;
 }
+
+/* top 버튼 */
+button {
+    writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+}
+
+html.scroll-top.scroll-apex .top-btn {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.top-btn-container{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: fixed;
+    right: 16px;
+    bottom: 64px;
+    transition-property: transform,scale;
+    transition-duration: .25s;
+    z-index: 1200;
+}
+
+
+.top-btn{
+    display: block;
+    position: relative;
+    border-radius: 50%;
+    background: rgba(255,255,255,.8);
+    padding: 0 0 env(safe-area-inset-bottom);
+    color: #babdc0;
+    box-sizing: border-box;
+    border: 1px solid #babdc0;
+}
+
+
+button:not(:disabled) {
+    cursor: pointer;
+}
+
+html.scroll-top .top-btn-container {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.top-btn svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition: transform .3s ease-out;
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}
+
+.write-btn{
+    position: fixed;
+    top: 14%;
+    right: 16px;
+    cursor: pointer;
+}
+
+.write-btn img{
+    width: 60px;
+    height: 60px;
+}
+
+@media screen and (min-width: 1097px) {
+    .top-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 32px;
+    }
+}
