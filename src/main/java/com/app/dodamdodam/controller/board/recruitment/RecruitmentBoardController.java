@@ -66,7 +66,7 @@ public class RecruitmentBoardController {
     @GetMapping("write")
     public String goToWriteForm(HttpSession session) {
         /* 임시로 세션에 memberId 담아둠 */
-        session.setAttribute("memberId", 1L);
+        Long memberId = (Long) session.getAttribute("memberId");
         return "recruitment-board/recruitment-board-write";
     }
 

@@ -1,4 +1,13 @@
+const $boardTitle = $('.boardTitle'); // 제목
+const $boardContent = $('.boardContent'); // 내용
+const $recruitmentAddress = $('.address'); // 주소
+const $recruitmentAddressDetail = $('.addressDetail'); // 상세주소
+const $recruitmentDate = $('#startDate'); // 모집일
+const $recruitmentPeopleCount = $('.recruitmentPeopleCount'); // 모집인원
+const $recruitmentOpenChatting = $('.recruitmentOpenChatting'); // 오픈채팅 링크
 
+const fileArray = new Array();
+let formData = new FormData(); // input 태그 담는 폼
 
 /* 필수항목 체크  */
 $(function() {
@@ -56,14 +65,13 @@ $(function() {
    
 
 /* 파일 */
-
+let sel_files = [];  // 전역 변수로 이동
 ( /* att_zone : 이미지들이 들어갈 위치 id, btn : file tag id */
   imageView = function imageView(att_zone, btn){
 
     var attZone = document.getElementById(att_zone);
     var btnAtt = document.getElementById(btn)
-    var sel_files = [];
-    
+
     // 이미지와 체크 박스를 감싸고 있는 div 속성
     var div_style = 'display:inline-block;position:relative;padding:10px;'
                   + 'width:120px;height:120px;margin:5px;z-index:1;';
@@ -107,28 +115,110 @@ $(function() {
       btn.onclick = function(ev){
         var ele = ev.srcElement;
         var delFile = ele.getAttribute('delFile');
-        for(var i=0 ;i<sel_files.length; i++){
-          if(delFile== sel_files[i].name){
-            sel_files.splice(i, 1);      
+          for(var i=0 ;i<sel_files.length; i++){
+              if(delFile== sel_files[i].name){
+                  sel_files.splice(i, 1);
+              }
           }
-        }
-        
-        dt = new DataTransfer();
-        for(f in sel_files) {
-          var file = sel_files[f];
-          dt.items.add(file);
-        }
-        btnAtt.files = dt.files;
-        var p = ele.parentNode;
-        attZone.removeChild(p)
+
+          if($('#att_zone').children().length > 5){
+              $(".file-button").hide();
+              return;
+          }
+
+          dt = new DataTransfer();
+          for(f in sel_files) {
+              var file = sel_files[f];
+              dt.items.add(file);
+          }
+          btnAtt.files = dt.files;
+          var p = ele.parentNode;
+          attZone.removeChild(p)
       }
-      div.appendChild(img)
-      div.appendChild(btn)
-      return div
+        div.appendChild(img)
+        div.appendChild(btn)
+        return div
     }
   }
 )('att_zone', 'btnAtt')
 
+document.getElementById("btnAtt").addEventListener("change", function (e) {
+    const files = e.target.files;
+
+    console.log("files");
+    console.log(files);
+
+    formData = new FormData();
+    for (let i = 0; i < files.length; i++) {
+        formData.append("file", files[i]);
+    }
+
+    console.log(formData);
+
+    $.ajax({
+        url: '/file/upload',
+        data: formData,
+        method: 'post',
+        processData: false,
+        contentType: false,
+        success: function (result) {
+            console.log("success@@@@@@@@@@@@@@@@@@@@");
+            if(result){
+                console.log(result);
+                for (let i = 0; i < result.uuids.length; i++) {
+                    let file = new Object();
+
+                    file.filePath = result.paths[i];
+                    file.fileUuid = result.uuids[i];
+                    file.fileOriginalName = result.fileOriginalNames[i];
+
+                    fileArray.push(file);
+                }
+            }
+        }
+    });
+});
+
+$('.submit-btn').on('click', function (e) {
+    e.preventDefault();
+    writeBoard();
+});
+
+function writeBoard(){
+
+    console.log(fileArray);
+    console.log($boardTitle.val());
+    console.log($boardContent.val());
+    console.log($recruitmentAddress.val());
+    console.log($recruitmentAddressDetail.val());
+    console.log($recruitmentDate.val());
+    console.log($recruitmentPeopleCount.val());
+    console.log($recruitmentOpenChatting.val());
+
+    let recruitmentBoardDTO = {
+        boardTitle : $boardTitle.val(),
+        boardContent : $boardContent.val(),
+        recruitmentAddress : $recruitmentAddress.val(),
+        recruitmentAddressDetail : $recruitmentAddressDetail.val(),
+        recruitmentDate : $recruitmentDate.val(),
+        recruitmentPeopleCount : $recruitmentPeopleCount.val() * 1.0,
+        recruitmentOpenChatting : $recruitmentOpenChatting.val()
+    };
+    console.log("recruitmentBoardDTO");
+    console.log(recruitmentBoardDTO);
+
+    $.ajax({
+        url: '/recruitment/write',
+        data: JSON.stringify(recruitmentBoardDTO),
+        method: 'post',
+        processData: false,
+        contentType: 'application/json',
+        success: function() {
+            console.log("event/write ajax 성공");
+            location.href='/recruitment/list';
+        }
+    });
+}
 
 
     

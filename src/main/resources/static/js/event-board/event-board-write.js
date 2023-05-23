@@ -1,9 +1,9 @@
 const $boardTitle = $('.boardTitle'); // 제목
 const $boardContent = $('.boardContent'); // 내용
-const $eventAddress = $('.address'); // 가격
-const $eventAddressDetail = $('.addressDetail'); // 상품명
-const $eventStartDate = $('#startDate'); // 상품수
-const $eventEndDate = $('#endDate'); // 상품수
+const $eventAddress = $('.address'); // 주소
+const $eventAddressDetail = $('.addressDetail'); // 상세주소
+const $eventStartDate = $('#startDate'); // 시작일
+const $eventEndDate = $('#endDate'); // 끝날일
 const $eventBusinessNumber = $('.businessRegNumber'); // 상품수
 const $eventBusinessName = $('.eventBusinessName'); // 상품수
 const $eventBusinessTel = $('.eventBusinessTel'); // 상품수
