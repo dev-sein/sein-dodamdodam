@@ -3,6 +3,7 @@ package com.app.dodamdodam.controller.board.purchase;
 import com.app.dodamdodam.domain.MemberDTO;
 import com.app.dodamdodam.domain.ProductDTO;
 import com.app.dodamdodam.domain.PurchaseBoardDTO;
+import com.app.dodamdodam.domain.PurchaseDTO;
 import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.search.PurchaseBoardSearch;
 import com.app.dodamdodam.service.board.purchase.PurchaseBoardService;
@@ -77,10 +78,24 @@ public class PurchaseBoardController {
         return purchaseBoardDTOs;
     }
 
-    @GetMapping("detail/{id}")
-    public String getPurchaseBoardDetail(@PathVariable("id") Long boardId, Model model){
-        PurchaseBoardDTO purchaseBoardDTO = purchaseBoardService.getPurchaseBoard(boardId);
-        model.addAttribute(purchaseBoardDTO);
+    @GetMapping("detail/{boardId}")
+    public String getPurchaseBoardDetail(@PathVariable("boardId") Long boardId, Model model){
+        Map<String, Object> result = purchaseBoardService.getPurchaseBoard(boardId);
+        PurchaseBoardDTO purchaseBoardDTO = (PurchaseBoardDTO) result.get("purchaseBoardDTO");
+        Long purchaseCount = (Long) result.get("purchaseCount");
+        Long purchaseReviewCount = (Long) result.get("purchaseReviewCount");
+//        PurchaseDTO purchaseDTO =
+
+        log.info("#################################################");
+        log.info(purchaseBoardDTO.toString());
+        log.info(String.valueOf(purchaseCount));
+        log.info(String.valueOf(purchaseReviewCount));
+
+
+        model.addAttribute("purchaseBoardDTO", purchaseBoardDTO);
+        model.addAttribute("purchaseCount", purchaseCount);
+        model.addAttribute("purchaseReviewCount", purchaseReviewCount);
+//        model.addAttribute("purchaseDTO", purchaseDTO);
 
         return "sell-board/sell-detail";
     }

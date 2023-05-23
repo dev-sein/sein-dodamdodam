@@ -15,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -26,7 +27,7 @@ public interface PurchaseBoardService {
     public List<PurchaseBoardFileDTO> getPurchaseBoardListByMemberId(Pageable pageable, Long memberId);
 
 //    게시글 상세보기
-    public PurchaseBoardDTO getPurchaseBoard(Long boardId);
+    public Map<String, Object> getPurchaseBoard(Long boardId);
 
 //    저장
     public void register(PurchaseBoardDTO purchaseBoardDTO, Long memberId);

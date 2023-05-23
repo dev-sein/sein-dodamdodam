@@ -13,9 +13,9 @@
   rel="stylesheet"
 />
 <link rel="shortcut icon" href="/static/images/components/dodam-favicon.png">
-<link rel="stylesheet" href="../../static/css/sell/sell-detail.css" >
-<link rel="stylesheet" href="../../static/css/sell/sell-detail-second.css" >
-<link rel="stylesheet" href="../../static/css/sell/sell-review.css">
+<link rel="stylesheet" href="/css/sell/sell-detail.css" >
+<link rel="stylesheet" href="/css/sell/sell-detail-second.css" >
+<link rel="stylesheet" href="/css/sell/sell-review.css">
 
   </head>
   <body>
@@ -104,7 +104,7 @@
                     </div>
                   </div>
                   <div class="DetailInfoHeader_titleInfo__2nx8Q">
-                    <h3 class="DetailInfoHeader_title__i0kaY" th:text="${boardTitle}">
+                    <h3 class="DetailInfoHeader_title__i0kaY" th:text="${purchaseBoardDTO.boardTitle}">
 <!--                      블루라이트 차단 렌즈+풀 티타늄 티에어 명품 안경테-->
                     </h3>
                   </div>
@@ -123,12 +123,12 @@
                       >
                     </div>
                     <div class="DetailInfoHeader_orderInfo__3SR8a">
-                      <span class="DetailInfoHeader_text__2P224">12명 이것도 나중에</span>구매
+                      <span class="DetailInfoHeader_text__2P224" th:text="${purchaseCount}"></span>명 구매
                     </div>
                   </div>
                   <div class="DetailInfoHeader_buyInfo__160ZZ">
                     <em class="DetailInfoHeader_price__2PVzf"
-                      ><span th:text="productDTO.productPrice">65,000</span><span class="DetailInfoHeader_unit__2s2Vz">원</span></em
+                      ><span th:text="${purchaseBoardDTO.productDTO.productPrice}">65,000</span><span class="DetailInfoHeader_unit__2s2Vz">원</span></em
                     >
                   </div>
                   <div class="DetailInfoHeader_productInfo__2Sqwq">
@@ -138,8 +138,8 @@
                         <dd class="DetailInfoHeader_termsDescription__rTnUJ">
                           <div class="WaDelivery_container__1rUdD WaDelivery_md__3zQ7U">
                             <div class="WaDelivery_infoBox__-KOnU">
-                              <span class="WaDelivery_text__2E3D-"
-                                >15개 남았습니다. 나중에</span
+                              <span class="WaDelivery_text__2E3D-" th:text="${purchaseBoardDTO.productDTO.productCount} - ${purchaseCount}"
+                                ></span
                               >
                               <div class="WaDelivery_infoFree__2vg5K">
                                 <div class="DetailInfoHeader_shippingChargeContainer__1VbQ9">
@@ -169,7 +169,7 @@
                   </div>
                 </div>
                 <!-- 구매하기 -->
-                <div class="ProductBuyInfo_container__1nPti undefined" style=" position:relative; top: 132px;">
+                <div class="ProductBuyInfo_container__1nPti undefined" style=" position:relative; top: 63px;">
                   <div class="ProductFloatButton_container__2jWfi">
                     <button
                       rel="noreferrer noopener"
@@ -231,8 +231,8 @@
                   </li>
                   <li class="">
                     <a>
-                      <span>만족도
-                        <span class="DetailTab_badge__2oSI4">554</span>
+                      <span>리뷰
+                        <span class="DetailTab_badge__2oSI4" th:text="${purchaseReviewCount}"></span>
                       </span>
                     </a>
                   </li>
@@ -276,11 +276,11 @@
                         </div>
                       </div>
                     </div>
-                    <div class="StoreGuide_storeGuide__1xzFN">
+                    <div th:each="purchaseFileDTO : ${purchaseFileDTOs}" class="StoreGuide_storeGuide__1xzFN">
                       <img
-                        th:alt="${purchaseFileDTOs[1].fileOriginalName}"
+                        th:alt="${purchaseFileDTO.fileOriginalName}"
                         class="StoreGuide_image__Lk8Bn"
-                        th:src=""
+                        th:src="'/file/display?fileName=' + ${purchaseFileDTO.filePath} + '/t_' + ${purchaseFileDTO.fileUuid} + '_' + ${purchaseFileDTO.fileOriginalName}"
                       />
                     </div>
                     <div class="ProjectChangeNotice_container__3tNIH">
@@ -313,7 +313,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="ContentFoldHeight_foldContainer__38f2_">
+                          <!--<div class="ContentFoldHeight_foldContainer__38f2_">
                             <div
                               class="MoreButton_button__3qNcH ProjectChangeNotice_foldButton__3lKOM"
                             >
@@ -330,7 +330,7 @@
                                 ></path>
                               </svg>
                             </div>
-                          </div>
+                          </div>-->
                         </section>
                       </div>
                     </div>
@@ -360,15 +360,15 @@
                                   </legend>
                                   <!-- 별점  -->
                                   <div class="rating">
-                                      <input type="radio" id="star5" name="reviewGrade" value="5" th:field="${reviewDTO.reviewGrade}">
+                                      <input type="radio" id="star5" name="reviewGrade" value="5"> <!--th:field="${reviewDTO.reviewGrade}"-->
                                       <label for="star5" id="label5"></label>
-                                      <input type="radio" id="star4" name="reviewGrade" value="4" th:field="${reviewDTO.reviewGrade}">
+                                      <input type="radio" id="star4" name="reviewGrade" value="4"> <!--th:field="${reviewDTO.reviewGrade}"-->
                                       <label for="star4" id="label4"></label>
-                                      <input type="radio" id="star3" name="reviewGrade" value="3" th:field="${reviewDTO.reviewGrade}">
+                                      <input type="radio" id="star3" name="reviewGrade" value="3"> <!--th:field="${reviewDTO.reviewGrade}"-->
                                       <label for="star3" id="label3"></label>
-                                      <input type="radio" id="star2" name="reviewGrade" value="2" th:field="${reviewDTO.reviewGrade}">
+                                      <input type="radio" id="star2" name="reviewGrade" value="2"> <!--th:field="${reviewDTO.reviewGrade}"-->
                                       <label for="star2" id="label2"></label>
-                                      <input type="radio" id="star1" name="reviewGrade" value="1" th:field="${reviewDTO.reviewGrade}">
+                                      <input type="radio" id="star1" name="reviewGrade" value="1"> <!--th:field="${reviewDTO.reviewGrade}"-->
                                       <label for="star1" id="label1"></label>
                                   </div>
                                   <!-- <div class="score">0점</div> -->
@@ -381,7 +381,7 @@
                                   <legend class="formTitle_legend">
                                       <span>내용</span>
                                   </legend>
-                                  <textarea id="input-content" class="detailText_text" placeholder="함께한 경험을 작성해주세요." th:field="*{reviewContent}"></textarea>
+                                  <textarea id="input-content" class="detailText_text" placeholder="함께한 경험을 작성해주세요." ></textarea>
                               </div>
                           </div>
                       </div>
@@ -486,7 +486,13 @@
               <div class="store_tab_div">
                 <div style="margin: 0 0 40px;">
                   <h3 class="address">반품 보내실 주소</h3>
-                  <div class="address_div">(10256) 경기 고양시 일산동구 지영로148번길 93 로페코</div>
+                  <div class="address_div" > <!--th:text="${purchaseBoardDTO.memberDTO.address.address} + ${purchaseBoardDTO.memberDTO.address.addressDetail}"-->
+                    <span th:text="${purchaseBoardDTO.memberDTO.address.address}">
+                    </span>
+                    <br>
+                    <span th:text="${purchaseBoardDTO.memberDTO.address.addressDetail}">
+                    </span>
+                  </div>
                 </div>
                 <div style="margin: 0 0 40px;">
                   <h3 class="address">교환/환불 정책</h3>
@@ -510,9 +516,13 @@
       </section>
     </div>
   </body>
+<script th:inline="javascript">
+  let purchaseBoardDTO = [[${purchaseBoardDTO}]];
+  console.log(purchaseBoardDTO);
+</script>
 <script>
 
-  <!-- 스토리, 만족도, 교환반품 클릭시 css 변경 -->
+  // <!-- 스토리, 만족도, 교환반품 클릭시 css 변경 -->
   function switchTab(tabIndex) {
     const activeClass = 'DetailTab_isActive__2Amuh';
     const tabs = document.querySelectorAll('.DetailTab_container__1NVYg li');

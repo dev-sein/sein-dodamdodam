@@ -8,6 +8,8 @@ import com.app.dodamdodam.repository.board.purchase.PurchaseBoardRepository;
 import com.app.dodamdodam.repository.file.purchase.PurchaseFileRepository;
 import com.app.dodamdodam.repository.member.MemberRepository;
 import com.app.dodamdodam.repository.product.ProductRepository;
+import com.app.dodamdodam.repository.purchase.PurchaseRepository;
+import com.app.dodamdodam.repository.reply.purchaseReview.PurchaseReviewRepository;
 import com.app.dodamdodam.search.PurchaseBoardSearch;
 import com.app.dodamdodam.search.board.AdminPurchaseBoardSearch;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +20,9 @@ import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -32,6 +36,8 @@ public class PurchaseBoardServiceImpl implements PurchaseBoardService {
     private final MemberRepository memberRepository;
     private final PurchaseFileRepository purchaseFileRepository;
     private final ProductRepository productRepository;
+    private final PurchaseRepository purchaseRepository;
+    private final PurchaseReviewRepository purchaseReviewRepository;
 
 
     /*게시글 등록*/
@@ -94,13 +100,29 @@ public class PurchaseBoardServiceImpl implements PurchaseBoardService {
 
     /*게시글 조회*/
     @Override
-    public PurchaseBoardDTO getPurchaseBoard(Long boardId){
+    public Map<String, Object> getPurchaseBoard(Long boardId){
+        Map<String, Object> result = new HashMap<>();
+
         Optional<PurchaseBoard> optionalPurchaseBoard = purchaseBoardRepository.findPurchaseBoardById_QueryDSL(boardId);
+
         PurchaseBoardDTO purchaseBoardDTO = null;
+        Long purchaseCount = null;
+        Long purchaseReviewCount = null;
+
         if (optionalPurchaseBoard.isPresent()){
             purchaseBoardDTO = toPurchaseBoardDTO(optionalPurchaseBoard.get());
+            purchaseCount = purchaseRepository.findPurchaseCountByProduct_QueryDSL(purchaseBoardDTO.getProductDTO().getId());
+            purchaseReviewCount = purchaseReviewRepository.findReviewCountByBoardId_QueryDSL(purchaseBoardDTO.getId());
         }
-        return purchaseBoardDTO;
+
+
+
+        result.put("purchaseBoardDTO", purchaseBoardDTO);
+        result.put("purchaseCount", purchaseCount);
+        result.put("purchaseReviewCount", purchaseReviewCount);
+
+
+        return result;
     }
 
     /* 내가 작성한 판매 게시글 목록 */
