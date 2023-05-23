@@ -20,7 +20,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Controller
-@RequestMapping("recruitment/*")
+@RequestMapping("/recruitment/*")
 @RequiredArgsConstructor
 @Slf4j
 public class RecruitmentBoardController {
@@ -66,9 +66,15 @@ public class RecruitmentBoardController {
     @PostMapping("recruit")
     @ResponseBody
     public void getRecruit(@RequestBody Long boardId, HttpSession session) {
-        Long memberId = (Long) session.getAttribute("memberId");
+        Long memberId = null;
+        log.info("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+        log.info(String.valueOf(boardId));
+        if(session.getAttribute("memberId") != null) {
+            memberId = (Long) session.getAttribute("memberId");
+        }
         recruitmentBoardService.getRecruitment(memberId, boardId);
     }
+
 //  모집 게시글 삭제
     @GetMapping("delete-board/{boardId}")
     public RedirectView deleteBoard(@PathVariable(value = "boardId")Long boardId){

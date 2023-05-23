@@ -61,7 +61,7 @@
                         </div>
                         <p class="recruitment-status"><strong th:text="${boardDetail.recruitmentStatus.toString == 'APPLYING' ? '모집중' : '모집완료'}">모집중</strong></p>
                         <div class="recruitment-btn-apply">
-                            <button type="button" class="submit-btn" onClick="javascript:popOpen();">신청하기</button></div>
+                            <button id="recruit-btn" type="button" class="submit-btn" onClick="javascript:popOpen();">신청하기</button></div>
 
                     </div>
                     <div class="sns-share">
@@ -189,24 +189,26 @@
 <script th:inline="javascript">
     let boardDetail = [[${boardDetail}]];
     let memberId = [[${session.memberId}]];
+    const boardId = boardDetail.id;
 
-    // 현재 경로를 가져오기
-    let currentPath = window.location.pathname;
+    console.log(boardDetail);
+    // // 현재 경로를 가져오기
+    // let currentPath = window.location.pathname;
+    //
+    // // 경로를 "/"로 분할하여 배열로 저장
+    // let pathArray = currentPath.split("/");
+    //
+    // // boardId 값을 추출
+    // let boardId = pathArray[3];
+    //
+    // // number 타입으로 변경
+    // boardId *= 1;
 
-    // 경로를 "/"로 분할하여 배열로 저장
-    let pathArray = currentPath.split("/");
-
-    // boardId 값을 추출
-    let boardId = pathArray[3];
-
-    // number 타입으로 변경
-    boardId *= 1;
-
-    $('.submit-btn').on('click', function(){
+    $('.recruit-btn').on('click', function(){
         $.ajax({
             url: `/recruitment/recruit`,
             type: "post",
-            data : boardId,
+            data : {boardId: boardId},
             success: function() {
                 // location.reload();
             },
