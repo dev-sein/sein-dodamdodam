@@ -2,23 +2,21 @@ package com.app.dodamdodam.service.board.recruitmentBoard;
 
 import com.app.dodamdodam.domain.*;
 import com.app.dodamdodam.entity.member.Member;
-import com.app.dodamdodam.entity.purchase.Product;
-import com.app.dodamdodam.entity.purchase.PurchaseBoard;
-import com.app.dodamdodam.entity.purchase.PurchaseFile;
 import com.app.dodamdodam.entity.recruitment.Recruitment;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
 import com.app.dodamdodam.entity.recruitment.RecruitmentFile;
-import com.app.dodamdodam.search.Inquiry.AdminInquirySearch;
-import com.app.dodamdodam.search.PurchaseBoardSearch;
 import com.app.dodamdodam.search.board.AdminRecruitmentSearch;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public interface RecruitmentBoardService {
+    //    작성하기
+    public void register(RecruitmentBoardDTO recruitmentBoardDTO, Long memberId);
 
 //    내가 작성한 모집 게시글 목록
     public List<RecruitmentBoardFileDTO> getRecruimentBoardListByMemberId(Pageable pageable, Long memberId);
@@ -31,6 +29,12 @@ public interface RecruitmentBoardService {
 
 //    모집 게시글 상세 보기
     public RecruitmentBoardFileDTO getRecruitmentBoardDetailByBoardId(Long boardId);
+
+//    모집 게시글 삭제
+    public void deleteRecruitmentBoardByBoardId(Long boardId);
+
+//    모집 게시글 수정
+    public void updateRecruitmentBoard(RecruitmentBoardFileDTO updatedBoard, Long boardId);
 
 //    관리자 목록 게시판
     public Page<RecruitmentBoardFileDTO> showList(Pageable pageable);
@@ -104,6 +108,42 @@ public interface RecruitmentBoardService {
         return RecruitmentMemberDTO.builder()
                 .recruitmentBoardId(recruitmentBoard.getId())
                 .memberDTOS(recruitmentBoard.getRecruitments().stream().map(recruitment -> toMemberDTO(recruitment.getMember())).collect(Collectors.toList()))
+                .build();
+    }
+
+    default Member toMemberEntity(MemberDTO memberDTO){
+        return Member.builder()
+                .memberId(memberDTO.getMemberId())
+                .memberPassword(memberDTO.getMemberPassword())
+                .memberEmail(memberDTO.getMemberEmail())
+                .memberName(memberDTO.getMemberName())
+                .memberPhone(memberDTO.getMemberPhone())
+                .memberStatus(memberDTO.getMemberStatus())
+                .memberRole(memberDTO.getMemberRole())
+                .build();
+    }
+
+    default RecruitmentFile toRecruitmentFileEntity(RecruitmentFileDTO recruitmentFileDTO){
+        return RecruitmentFile.builder()
+                .id(recruitmentFileDTO.getId())
+                .fileOriginalName(recruitmentFileDTO.getFileOriginalName())
+                .fileUuid(recruitmentFileDTO.getFileUuid())
+                .filePath(recruitmentFileDTO.getFilePath())
+                .build();
+    }
+
+    default RecruitmentBoard toRecruitmentBoardEntity(RecruitmentBoardDTO recruitmentBoardDTO){
+        return RecruitmentBoard.builder()
+                .id(recruitmentBoardDTO.getId())
+                .boardTitle(recruitmentBoardDTO.getBoardTitle())
+                .boardContent(recruitmentBoardDTO.getBoardContent())
+                .member(toMemberEntity(recruitmentBoardDTO.getMemberDTO()))
+                .recruitmentSubtitle(recruitmentBoardDTO.getRecruitmentSubtitle())
+                .recruitmentAddress(recruitmentBoardDTO.getRecruitmentAddress())
+                .recruitmentAddressDetail(recruitmentBoardDTO.getRecruitmentAddressDetail())
+                .recruitmentDate(recruitmentBoardDTO.getRecruitmentDate())
+                .recruitmentPeopleCount(recruitmentBoardDTO.getRecruitmentPeopleCount())
+                .recruitmentOpenChatting(recruitmentBoardDTO.getRecruitmentOpenChatting())
                 .build();
     }
 }

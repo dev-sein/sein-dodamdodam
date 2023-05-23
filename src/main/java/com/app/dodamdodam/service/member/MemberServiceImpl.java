@@ -1,5 +1,6 @@
 package com.app.dodamdodam.service.member;
 
+import com.app.dodamdodam.domain.FreeBoardFileDTO;
 import com.app.dodamdodam.domain.MemberDTO;
 import com.app.dodamdodam.domain.RecruitmentBoardFileDTO;
 import com.app.dodamdodam.entity.free.FreeBoard;
@@ -293,6 +294,12 @@ public class MemberServiceImpl implements MemberService/*, OAuth2UserService<OAu
                 .map(this::toMemberDTO)
                 .collect(Collectors.toList());
         return new PageImpl<>(adminMemberSearchDTOS, pageable, memberPage.getTotalElements());
+    }
+
+    @Override
+    public List<MemberDTO> getRecentMemberList() {
+        List<MemberDTO> memberDTOS = memberRepository.findRecentMemberList_QueryDSL().stream().map(memberList -> toMemberDTO(memberList)).collect(Collectors.toList());
+        return memberDTOS;
     }
 
 }

@@ -1,19 +1,23 @@
 package com.app.dodamdodam.service.board.recruitmentBoard;
 
-import com.app.dodamdodam.domain.*;
-import com.app.dodamdodam.entity.free.FreeBoard;
-import com.app.dodamdodam.entity.inquiry.Inquiry;
+import com.app.dodamdodam.domain.RecruitmentBoardDTO;
+import com.app.dodamdodam.domain.RecruitmentBoardFileDTO;
+import com.app.dodamdodam.domain.RecruitmentFileDTO;
+import com.app.dodamdodam.domain.RecruitmentMemberDTO;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
+import com.app.dodamdodam.entity.recruitment.RecruitmentFile;
 import com.app.dodamdodam.repository.board.recruitment.RecruitmentBoardRepository;
-import com.app.dodamdodam.search.Inquiry.AdminInquirySearch;
+import com.app.dodamdodam.repository.board.recruitment.RecruitmentFileRepository;
+import com.app.dodamdodam.repository.member.MemberRepository;
 import com.app.dodamdodam.search.board.AdminRecruitmentSearch;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,9 +25,35 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
+@Slf4j
 public class RecruitmentBoardServiceImpl implements RecruitmentBoardService {
     @Autowired
     private RecruitmentBoardRepository recruitmentBoardRepository;
+    private final MemberRepository memberRepository;
+    private final RecruitmentFileRepository recruitmentFileRepository;
+
+    // 이벤트 게시판 등록
+    @Override
+    public void register(RecruitmentBoardDTO recruitmentBoardDTO, Long memberId) {
+        List<RecruitmentFileDTO> recruitmentFileDTOS = recruitmentBoardDTO.getRecruitmentFileDTOS();
+
+        memberRepository.findById(memberId).ifPresent(
+                member -> recruitmentBoardDTO.setMemberDTO(toMemberDTO(member))
+        );
+
+        RecruitmentBoard recruitmentBoard = recruitmentBoardRepository.save(toRecruitmentBoardEntity(recruitmentBoardDTO));
+
+        if(recruitmentFileDTOS != null){
+            for (int i = 0; i < recruitmentFileDTOS.size(); i++) {
+                RecruitmentFileDTO recruitmentFileDTO = recruitmentFileDTOS.get(i);
+                RecruitmentFile recruitmentFile = toRecruitmentFileEntity(recruitmentFileDTO);
+                recruitmentFile.setRecruitmentBoard(recruitmentBoard);
+
+                recruitmentFileRepository.save(recruitmentFile);
+            }
+        }
+    }
 
 //    내가 작성한 모집 게시글 목록
     @Override
@@ -52,6 +82,28 @@ public class RecruitmentBoardServiceImpl implements RecruitmentBoardService {
         RecruitmentBoardFileDTO recruitmentBoardFileDTO = toRecruitmentBoardFileDto(recruitmentBoardRepository.findById(boardId).get());
         return recruitmentBoardFileDTO;
     }
+
+//    모집 게시글 삭제
+    @Override
+    public void deleteRecruitmentBoardByBoardId(Long boardId) {
+        recruitmentBoardRepository.findById(boardId).ifPresent(recruitmentBoard -> recruitmentBoardRepository.delete(recruitmentBoard));
+    }
+
+//    모집 게시글 수정
+    @Override
+    public void updateRecruitmentBoard(RecruitmentBoardFileDTO updatedBoard, Long boardId) {
+        recruitmentBoardRepository.findById(boardId).ifPresent(recruitmentBoard -> {
+            recruitmentBoard.setBoardTitle(updatedBoard.getBoardTitle());
+            recruitmentBoard.setRecruitmentSubtitle(updatedBoard.getRecruitmentSubtitle());
+            recruitmentBoard.setRecruitmentAddress(updatedBoard.getRecruitmentAddress());
+            recruitmentBoard.setRecruitmentAddressDetail(updatedBoard.getRecruitmentAddressDetail());
+            recruitmentBoard.setRecruitmentDate(updatedBoard.getRecruitmentDate());
+            recruitmentBoard.setRecruitmentPeopleCount(updatedBoard.getRecruitmentPeopleCount());
+            recruitmentBoard.setRecruitmentOpenChatting(updatedBoard.getRecruitmentOpenChatting());
+            recruitmentBoard.setBoardContent(updatedBoard.getBoardContent());
+        });
+    }
+
 
     //  관리자 목록
     @Override

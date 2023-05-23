@@ -17,7 +17,7 @@ import java.util.List;
 @Entity
 @Getter
 @Table(name = "TBL_RECRUITMENT_BOARD")
-@ToString(callSuper = true)
+@ToString(exclude = "member", callSuper = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DynamicInsert
 @DynamicUpdate
@@ -46,7 +46,7 @@ public class RecruitmentBoard extends Board {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "recruitmentBoard")
     private List<RecruitmentReply> recruitmentReplies;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
@@ -69,7 +69,56 @@ public class RecruitmentBoard extends Board {
         this.recruitmentAddressDetail = recruitmentAddressDetail;
     }
 
+    public void setRecruitmentSubtitle(String recruitmentSubtitle) {
+        this.recruitmentSubtitle = recruitmentSubtitle;
+    }
+
+    public void setRecruitmentDate(LocalDate recruitmentDate) {
+        this.recruitmentDate = recruitmentDate;
+    }
+
+    public void setRecruitmentPeopleCount(int recruitmentPeopleCount) {
+        this.recruitmentPeopleCount = recruitmentPeopleCount;
+    }
+
+    public void setRecruitmentOpenChatting(String recruitmentOpenChatting) {
+        this.recruitmentOpenChatting = recruitmentOpenChatting;
+    }
+
+    public void setRecruitmentPassword(String recruitmentPassword) {
+        this.recruitmentPassword = recruitmentPassword;
+    }
+
+    public void setRecruitmentStatus(RecruitmentType recruitmentStatus) {
+        this.recruitmentStatus = recruitmentStatus;
+    }
+
+    public void setRecruitmentAddress(String recruitmentAddress) {
+        this.recruitmentAddress = recruitmentAddress;
+    }
+
+    public void setRecruitmentAddressDetail(String recruitmentAddressDetail) {
+        this.recruitmentAddressDetail = recruitmentAddressDetail;
+    }
+
     public void setMember(Member member) {
         this.member = member;
+    }
+
+    @Builder
+    public RecruitmentBoard(Long id, String boardTitle, String boardContent, String recruitmentSubtitle, LocalDate recruitmentDate, int recruitmentPeopleCount, String recruitmentOpenChatting, String recruitmentPassword, RecruitmentType recruitmentStatus, String recruitmentAddress, String recruitmentAddressDetail, List<RecruitmentFile> recruitmentFiles, List<RecruitmentReply> recruitmentReplies, Member member, List<Recruitment> recruitments) {
+        super(id, boardTitle, boardContent);
+        this.recruitmentSubtitle = recruitmentSubtitle;
+        this.recruitmentDate = recruitmentDate;
+        this.recruitmentPeopleCount = recruitmentPeopleCount;
+        this.recruitmentOpenChatting = recruitmentOpenChatting;
+        this.recruitmentPassword = recruitmentPassword;
+        this.recruitmentStatus = recruitmentStatus;
+        this.recruitmentAddress = recruitmentAddress;
+        this.recruitmentAddressDetail = recruitmentAddressDetail;
+        this.recruitmentFiles = recruitmentFiles;
+        this.recruitmentReplies = recruitmentReplies;
+        this.member = member;
+        this.recruitments = recruitments;
     }
 }

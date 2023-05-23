@@ -1,6 +1,5 @@
 package com.app.dodamdodam.config;
 
-import com.app.dodamdodam.filter.CustomLogginFilter;
 import com.app.dodamdodam.service.member.MemberOAuthService;
 import com.app.dodamdodam.type.Role;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +18,6 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @EnableWebSecurity
@@ -48,7 +46,7 @@ public class SecurityConfig {
 //    private static final String RECRUITMENT_PATH = "/recruitment/**";
     private static final String RECRUITMENT_BOARD_LIST_PATH = "/recruitment/list/**";
     private static final String RECRUITMENT_BOARD_DETAIL_PATH = "/recruitment/detail/**";
-    private static final String RECRUITMENT_BOARD_WRITE_PATH = "/recruitment/write-board";
+    private static final String RECRUITMENT_BOARD_WRITE_PATH = "/recruitment/write";
     private static final String RECRUITMENT_BOARD_UPDATE_PATH = "/recruitment/update-board/**";
 //    이벤트 게시판
 //    private static final String EVENT_PATH = "/event/**";
