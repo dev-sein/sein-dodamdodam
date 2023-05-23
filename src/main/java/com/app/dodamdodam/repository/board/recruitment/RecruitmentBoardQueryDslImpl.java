@@ -95,11 +95,27 @@ public class RecruitmentBoardQueryDslImpl implements RecruitmentBoardQueryDsl {
                 .fetchOne();
     }
 
+    /* 내가 참가한 모집게시글 개수 가져오기 */
     @Override
     public Long findRecruitmentedBoardListCountByMemberId_QueryDSL(Long memberId) {
         return query.select(recruitmentBoard.count()).from(recruitmentBoard)
                 .where(recruitmentBoard.recruitments.any().member.id.eq(memberId))
                 .fetchOne();
+    }
+
+    /* 모집 게시글 전체 리스트 가져오기 */
+    @Override
+    public Page<RecruitmentBoard> findRecruitmentBoardList_QueryDSL(Pageable pageable) {
+        List<RecruitmentBoard> recruitmentBoards = query.select(recruitmentBoard).from(recruitmentBoard)
+                .join(recruitmentBoard.member).fetchJoin()
+                .leftJoin(recruitmentBoard.recruitmentFiles).fetchJoin()
+                .orderBy(recruitmentBoard.id.desc())
+                .offset(pageable.getOffset()).limit(pageable.getPageSize())
+                .fetch();
+
+        Long count = query.select(recruitmentBoard.count()).from(recruitmentBoard).fetchOne();
+
+        return new PageImpl<>(recruitmentBoards, pageable, count);
     }
 
     //관리자 모집 게시판 검색

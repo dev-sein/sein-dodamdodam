@@ -79,6 +79,13 @@ public class RecruitmentBoardServiceImpl implements RecruitmentBoardService {
         return toRecruitmentBoardFileDto(recruitmentBoard.get());
     }
 
+
+    // 모집 게시글 목록
+    @Override
+    public List<RecruitmentBoardFileDTO> getRecruitmentBoardListByPaging(Pageable pageable) {
+        return recruitmentBoardRepository.findRecruitmentBoardList_QueryDSL(pageable).stream().map(recruitmentBoard -> toRecruitmentBoardFileDto(recruitmentBoard)).collect(Collectors.toList());
+    }
+
     /* 모집 게시판 최근 게시글 5개 */
     @Override
     public List<RecruitmentBoardFileDTO> getRecentRecruitmentBoardList() {
