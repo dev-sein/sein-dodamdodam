@@ -50,11 +50,13 @@ public class PurchaseBoardController {
     @GetMapping("list")
     public String goPurchaseBoardList(HttpSession session, Model model){
         log.info("@@@");
-        if (session.getAttribute("memberId") != null) {
-            Long memberId = (Long) session.getAttribute("memberId");
-            MemberDTO member = memberService.getMemberInfo(memberId);
-            model.addAttribute("member", member);
-        }
+
+//        if (session.getAttribute("memberId") != null) {
+//            Long memberId = (Long) session.getAttribute("memberId");
+//            MemberDTO member = memberService.getMemberInfo(memberId);
+//            model.addAttribute("member", member);
+//        }
+
         return "/sell-board/sell-list";
     }
     
@@ -64,6 +66,8 @@ public class PurchaseBoardController {
         log.info("@@@@@@");
 
         PageRequest pageRequest = PageRequest.of(page - 1, 12);
+        log.info("purchaseBoardSearch.toString() ========================");
+        log.info(purchaseBoardSearch + "");
         log.info(pageRequest + "");
         Slice<PurchaseBoardDTO> purchaseBoardDTOs = purchaseBoardService.getPurchaseBoardsWithSearch(purchaseBoardSearch, pageRequest);
 

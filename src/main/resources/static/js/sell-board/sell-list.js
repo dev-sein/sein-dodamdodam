@@ -13,13 +13,18 @@ function keyDownEnter() {
     $('.input-keyword').on('keydown', function(e) {
         if (e.keyCode == 13) { // Enter 키를 눌렀을 때
             e.preventDefault(); // 기본 이벤트 막기
-            $listResults.empty(); // 기존 내용 비우기
-            page = 1;
-            showKeyword(); // purchaseBoardSearch에 키워드 담아주는 메소드
-            load(page, purchaseBoardSearch);
+            keyDownEnterOrClickSearchButtonAfter();
         }
     });
 }
+
+function keyDownEnterOrClickSearchButtonAfter() {
+    $listResults.empty(); // 기존 내용 비우기
+    page = 1;
+    showKeyword(); // purchaseBoardSearch에 키워드 담아주는 메소드
+    load(page, purchaseBoardSearch);
+}
+
 
 window.addEventListener('scroll', function() {
     // 현재 스크롤 위치 확인
@@ -88,13 +93,14 @@ function showList(list){
     let purchaseBoardDTOs = list.content;
 
     var text = "";
-    purchaseBoardDTOs.forEach(purchaseBoardsDTO => {
-        console.log(purchaseBoardsDTO);
-        var date = purchaseBoardsDTO.createdDate;
-        var realDate = changeDate(date);
-        let presentFileDTO = purchaseBoardsDTO.purchaseFileDTOs[0];
-        let filePath = '/file/display?fileName=' + presentFileDTO.filePath + '/t_' + presentFileDTO.fileUuid + '_' + presentFileDTO.fileOriginalName;
-        text +=`
+    if (list != null || $listResults.hasChildNodes()) {
+        purchaseBoardDTOs.forEach(purchaseBoardsDTO => {
+            console.log(purchaseBoardsDTO);
+            var date = purchaseBoardsDTO.createdDate;
+            var realDate = changeDate(date);
+            let presentFileDTO = purchaseBoardsDTO.purchaseFileDTOs[0];
+            let filePath = '/file/display?fileName=' + presentFileDTO.filePath + '/t_' + presentFileDTO.fileUuid + '_' + presentFileDTO.fileOriginalName;
+            text +=`
             <li class="event-instance" >
                 <div class="instance">
                     <img class="thumbnail" src="${filePath}" onclick="location.href='/purchase/detail/${purchaseBoardsDTO.id}'">
@@ -107,21 +113,34 @@ function showList(list){
                 </div>
             </li>
         `
-    });
+        });
+    } else {
+        text += `
+            <li class="event-instance" >
+                <div class="instance">
+                    <div class="instance-detail">
+                        <div class="detail-title">검색 결과가 없습니다.</div>
+                    </div>
+                </div>
+            </li>
+        `;
+    }
 
     $listResults.append(text);
 }
 
 
-$('.search-button').on('click', showKeyword)
-$('#searchbox').on('keyup', showKeyword)
+$('.search-button').on('click', keyDownEnterOrClickSearchButtonAfter);
+// $('#searchbox').on('keyup', showKeyword)
 
 function showKeyword() {
     let $selectedVal = $(".total-inner select").val();
     if($selectedVal === "boardTitle") {
         purchaseBoardSearch.boardTitle = $('.search-input').val();
+        console.log("showKeyworkd() if문 들어옴");
     } else {
         purchaseBoardSearch.memberName = $('.search-input').val();
+        console.log("showKeyworkd() else문 들어옴");
     }
     console.log(purchaseBoardSearch);
 }
