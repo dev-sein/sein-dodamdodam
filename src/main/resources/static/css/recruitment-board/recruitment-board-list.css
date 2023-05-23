@@ -13,7 +13,7 @@ html{
 
 a {
     text-decoration: none;
-  }
+}
 
 body {
     -webkit-font-smoothing: antialiased;
@@ -79,18 +79,18 @@ body {
 
 
 #apply-text{
-        text-align: center;
-        color: #495057;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-        letter-spacing: -.3px;
-        line-height: 28px;
-        margin-bottom: 12px;
-        margin-top: 12px;
-        border: 0;
-        margin: 0;
-        padding: 0;
+    text-align: center;
+    color: #495057;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: -.3px;
+    line-height: 28px;
+    margin-bottom: 12px;
+    margin-top: 12px;
+    border: 0;
+    margin: 0;
+    padding: 0;
 }
 
 p {
@@ -110,7 +110,7 @@ p {
 
 .apply{
     color:#006633;
-        font-weight: 700!important;
+    font-weight: 700!important;
 }
 
 .btn{
@@ -292,7 +292,7 @@ svg:not(:root) {
 }
 
 .photo-thumbnail{
-    background-image:url(https://cdn2.wadiz.kr/2021/10/01/12e4ff89-bf54-41ce-bf08-70a4f14a8c33.jpg/wadiz/resize/500/format/jpg/quality/85/);
+    /*background-image:url(https://cdn2.wadiz.kr/2021/10/01/12e4ff89-bf54-41ce-bf08-70a4f14a8c33.jpg/wadiz/resize/500/format/jpg/quality/85/);*/
     border-radius: 8px;
     opacity: 1;
     position: absolute;
@@ -303,7 +303,7 @@ svg:not(:root) {
     transition-property: opacity;
     transition-timing-function: ease-in-out;
     transition-duration: .25s;
-   /*  background: no-repeat 50%/cover border-box; */
+    /*  background: no-repeat 50%/cover border-box; */
     width: 100%;
     max-width: 100%;
     height: auto;
@@ -365,7 +365,9 @@ svg:not(:root) {
     display: inline-flex;
     flex-shrink: 0;
     align-items: center;
+    width: 100%;
     color: #495057;
+    justify-content: space-between;
 }
 
 .print-data{
@@ -394,6 +396,7 @@ svg:not(:root) {
     display: inline-flex;
     flex-direction: column;
     margin-top: 2px;
+    width: fit-content;
 }
 
 .like-count-container{
@@ -530,6 +533,7 @@ svg:not(:root) {
 
 .loca-status-container{
     /* position:absolute; */
+    /* display: flex; */
 }
 
 .inline-flex{
@@ -539,9 +543,12 @@ svg:not(:root) {
 .status-community{
     background-color: #f2f4f6;
     position: relative;
-    margin-left: 214px;
+    margin-left: 220px;
     margin-top: -24px;
     border-radius: 7px;
+    width: fit-content;
+    text-align: center;
+    display: flex;
 }
 
 .second-confirm{
@@ -549,7 +556,7 @@ svg:not(:root) {
     height: 15px;
     display: inline-block;
     margin-bottom: -1px;
-    
+
 }
 
 .ing{
@@ -558,7 +565,9 @@ svg:not(:root) {
     color: #495057;
     font-weight: 600;
     text-align: center;
-    margin-left: 10px;
+    /* margin-left: 10px; */
+    padding: 0 10px;
+    /* padding-bottom: 5px; */
 }
 
 .finish{
@@ -665,10 +674,10 @@ html.scroll-top .top-btn-container {
 }
 
 @media screen and (min-width: 1097px){
-.main-wrapper-content {
-    padding-top: 0;
-    padding-bottom: 0;
-}
+    .main-wrapper-content {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
 }
 
 @media screen and (min-width: 1097px){
@@ -677,43 +686,43 @@ html.scroll-top .top-btn-container {
         height: 60px;
         font-size: 32px;
     }
-    }
+}
 
 @media screen and (min-width: 1097px){
     .collection-container{
         padding: 0;
     }
-    }
+}
 
-    @media screen and (min-width: 1097px){
+@media screen and (min-width: 1097px){
     .collection-list{
         margin-top: 80px;
     }
-    }
+}
 
-    @media screen and (min-width: 1097px){
+@media screen and (min-width: 1097px){
     .list-title {
         line-height: 24px;
         letter-spacing: -.6px;
-        font-size: 16px;    
+        font-size: 16px;
     }
 }
 
 
 @media screen and (min-width: 1097px){
-.list-footer {
-    display: inline-flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
+    .list-footer {
+        display: inline-flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }
 
 @media screen and (min-width: 1097px){
-.top-btn {
-    width: 60px;
-    height: 60px;
-    font-size: 32px;
-}
+    .top-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 32px;
+    }
 }
 
 
@@ -721,5 +730,5 @@ html.scroll-top .top-btn-container {
     #open-apply {
         height: 55px;
     }
-    }
+}
     
