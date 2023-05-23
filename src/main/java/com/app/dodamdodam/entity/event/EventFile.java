@@ -28,9 +28,5 @@ public class EventFile extends BoardFile {
 
     public void setEventBoard(EventBoard eventBoard) {
         this.eventBoard = eventBoard;
-
-        if(!eventBoard.getEventFiles().contains(this)){
-            eventBoard.getEventFiles().add(this);
-        }
     }
 }

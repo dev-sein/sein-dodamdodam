@@ -6,7 +6,6 @@ import com.app.dodamdodam.service.board.eventBoard.EventBoardService;
 import com.app.dodamdodam.service.board.eventBoard.eventReply.EventReplyService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +18,6 @@ import javax.servlet.http.HttpSession;
 @RequiredArgsConstructor
 @Slf4j
 public class EventBoardController {
-    @Qualifier
     private final EventBoardService eventBoardService;
     private final EventReplyService eventReplyService;
 
@@ -29,12 +27,14 @@ public class EventBoardController {
         return "event-board/event-board-list";
     }
 
-    //    이벤트 게시판 상세보기
-    @GetMapping("detail/{id}")
-    public String goEventDetail(@PathVariable Long id, Model model) {
-        model.addAttribute("event", eventBoardService.getDetail(id));
+    /* 상세페이지 */
+    @GetMapping("detail/{eventBoardId}")
+    public String goToDetail(Model model/*, @AuthenticationPrincipal UserDetail userDetail*/, @PathVariable("eventBoardId") Long eventBoardId) {
+        EventBoardDTO eventBoardDTO = eventBoardService.getDetail(eventBoardId);
+        model.addAttribute("eventBoardDTO", eventBoardDTO);
         return "event-board/event-board-detail";
     }
+
 
     // 작성하기
     @GetMapping("write")
@@ -45,13 +45,10 @@ public class EventBoardController {
     @ResponseBody
     @PostMapping("write")
     public void getEventWriteForm(@RequestBody EventBoardDTO eventBoardDTO, HttpSession session){
-//        MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
-//        Long memberId = memberDTO.getId();
+        log.info("eventBoardDTO.toString()");
+        log.info(eventBoardDTO.toString());
         Long memberId = (Long) session.getAttribute("memberId");
-        log.info(memberId + "");
         eventBoardService.register(eventBoardDTO, memberId);
-
-//        return new RedirectView("/event/list");
     }
 
 

@@ -3,7 +3,6 @@ package com.app.dodamdodam.entity.event;
 import com.app.dodamdodam.entity.board.Board;
 import com.app.dodamdodam.entity.embeddable.Address;
 import com.app.dodamdodam.entity.member.Member;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.app.dodamdodam.type.EventType;
 import com.sun.istack.NotNull;
 import lombok.*;
@@ -50,7 +49,6 @@ public class EventBoard extends Board {
      private String eventBusinessEmail;
 
     /* 댓글 */
-    @JsonManagedReference
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "eventBoard")
     private List<EventReply> eventReplies = new ArrayList<>();;
 

@@ -1,16 +1,15 @@
 package com.app.dodamdodam.service.board.eventBoard;
 
 import com.app.dodamdodam.domain.EventBoardDTO;
-import com.app.dodamdodam.domain.FileDTO;
+import com.app.dodamdodam.domain.EventFileDTO;
 import com.app.dodamdodam.entity.event.EventBoard;
-import com.app.dodamdodam.exception.BoardNotFoundException;
+import com.app.dodamdodam.entity.event.EventFile;
 import com.app.dodamdodam.repository.board.event.board.EventBoardRepository;
 import com.app.dodamdodam.repository.board.event.file.EventFileRepository;
 import com.app.dodamdodam.repository.member.MemberRepository;
 import com.app.dodamdodam.search.EventBoardSearch;
 import com.app.dodamdodam.search.board.AdminEventBoardSearch;
 import com.app.dodamdodam.type.EventType;
-import com.app.dodamdodam.type.FileType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -28,39 +27,38 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 @Qualifier("eventBoard") @Primary
+@Transactional
 @Slf4j
 public class EventBoardServiceImpl implements EventBoardService {
     private final EventBoardRepository eventBoardRepository;
     private final MemberRepository memberRepository;
     private final EventFileRepository eventFileRepository;
 
+//    상세보기
     @Override
-    public EventBoardDTO getDetail(Long id) {
-        EventBoard eventBoard = eventBoardRepository.findEventBoardById_QueryDSL(id).orElseThrow(() -> {
-            throw new BoardNotFoundException();
-        });
-        return eventBoardToDTO(eventBoard);
+    public EventBoardDTO getDetail(Long eventBoardId) {
+        Optional<EventBoard> eventBoard = eventBoardRepository.findEventBoardById_QueryDSL(eventBoardId);
+        return eventBoardToDTO(eventBoard.get());
     }
 
     // 이벤트 게시판 등록
-    @Override @Transactional
+    @Override
     public void register(EventBoardDTO eventBoardDTO, Long memberId) {
-        List<FileDTO> fileDTOS = eventBoardDTO.getFileDTOS();
+        List<EventFileDTO> eventFileDTOS = eventBoardDTO.getEventFileDTOS();
 
         memberRepository.findById(memberId).ifPresent(
                 member -> eventBoardDTO.setMemberDTO(toMemberDTO(member))
         );
 
-        eventBoardRepository.save(toEventBoardEntity(eventBoardDTO));
-        if(fileDTOS != null){
-            for (int i = 0; i < fileDTOS.size(); i++) {
-                if(i == 0){
-                    fileDTOS.get(i).setFileType(FileType.REPRESENTATIVE);
-                }else {
-                    fileDTOS.get(i).setFileType(FileType.NORMAL);
-                }
-                fileDTOS.get(i).setEventBoard(getCurrentSequence());
-                eventFileRepository.save(toEventFileEntity(fileDTOS.get(i)));
+        EventBoard eventBoard = eventBoardRepository.save(toEventBoardEntity(eventBoardDTO));
+
+        if(eventFileDTOS != null){
+            for (int i = 0; i < eventFileDTOS.size(); i++) {
+                EventFileDTO eventFileDTO = eventFileDTOS.get(i);
+                EventFile eventFile = toEventFileEntity(eventFileDTO);
+                eventFile.setEventBoard(eventBoard);
+
+                eventFileRepository.save(eventFile);
             }
         }
     }

@@ -2,7 +2,6 @@ package com.app.dodamdodam.service.board.eventBoard;
 
 import com.app.dodamdodam.domain.EventBoardDTO;
 import com.app.dodamdodam.domain.EventFileDTO;
-import com.app.dodamdodam.domain.FileDTO;
 import com.app.dodamdodam.domain.MemberDTO;
 import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.event.EventFile;
@@ -13,14 +12,13 @@ import com.app.dodamdodam.type.EventType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public interface EventBoardService {
 
 //    상세보기
-    public EventBoardDTO getDetail(Long id);
+    public EventBoardDTO getDetail(Long eventBoardId);
     // 저장
     public void register(EventBoardDTO eventBoardDTO, Long memberId);
 
@@ -49,17 +47,30 @@ public interface EventBoardService {
                 .boardTitle(eventBoard.getBoardTitle())
                 .boardContent(eventBoard.getBoardContent())
                 .createdDate(eventBoard.getCreatedDate())
-                .updatedDate(eventBoard.getUpdatedDate())
+                .address(eventBoard.getAddress())
+                .eventBusinessNumber(eventBoard.getEventBusinessNumber())
+                .eventBusinessEmail(eventBoard.getEventBusinessEmail())
+                .eventBusinessName(eventBoard.getEventBusinessName())
+                .eventBusinessTel(eventBoard.getEventBusinessTel())
+                .eventStartDate(eventBoard.getEventStartDate())
+                .eventEndDate(eventBoard.getEventEndDate())
                 .memberDTO(toMemberDTO(eventBoard.getMember()))
                 .build();
     }
 
     default EventBoardDTO toEventSearchBoardDTO(EventBoard eventBoard){
-        return EventBoardDTO.builder().id(eventBoard.getId()).boardTitle(eventBoard.getBoardTitle())
-                .boardContent(eventBoard.getBoardContent()).createdDate(eventBoard.getCreatedDate())
+        return EventBoardDTO.builder()
+                .id(eventBoard.getId())
+                .boardTitle(eventBoard.getBoardTitle())
+                .boardContent(eventBoard.getBoardContent())
+                .createdDate(eventBoard.getCreatedDate())
                 .address(eventBoard.getAddress())
                 .eventBusinessNumber(eventBoard.getEventBusinessNumber())
-                .eventStatus(eventBoard.getEventStatus())
+                .eventBusinessEmail(eventBoard.getEventBusinessEmail())
+                .eventBusinessName(eventBoard.getEventBusinessName())
+                .eventBusinessTel(eventBoard.getEventBusinessTel())
+                .eventStartDate(eventBoard.getEventStartDate())
+                .eventEndDate(eventBoard.getEventEndDate())
                 .memberDTO(toMemberDTO(eventBoard.getMember()))
                 .build();
     }
@@ -88,8 +99,8 @@ public interface EventBoardService {
                 .eventBusinessNumber(eventBoardDTO.getEventBusinessNumber())
                 .eventBusinessEmail(eventBoardDTO.getEventBusinessEmail())
                 .eventBusinessTel(eventBoardDTO.getEventBusinessTel())
-                .eventStartDate(LocalDate.parse(eventBoardDTO.getEventStartDate()))
-                .eventEndDate(LocalDate.parse(eventBoardDTO.getEventEndDate()))
+                .eventStartDate(eventBoardDTO.getEventStartDate())
+                .eventEndDate(eventBoardDTO.getEventEndDate())
                 .address(eventBoardDTO.getAddress())
                 .build();
     }
@@ -124,14 +135,13 @@ public interface EventBoardService {
         return eventFileDTOS;
     }
 
-    default EventFile toEventFileEntity(FileDTO fileDTO){
+    default EventFile toEventFileEntity(EventFileDTO eventFileDTO){
         return EventFile.builder()
-                .id(fileDTO.getId())
-                .fileOriginalName(fileDTO.getFileOriginalName())
-                .fileUuid(fileDTO.getFileUuid())
-                .filePath(fileDTO.getFilePath())
-                .eventBoard(fileDTO.getEventBoard())
-                .fileType(fileDTO.getFileType())
+                .id(eventFileDTO.getId())
+                .fileOriginalName(eventFileDTO.getFileOriginalName())
+                .fileUuid(eventFileDTO.getFileUuid())
+                .filePath(eventFileDTO.getFilePath())
+                .eventBoard(eventFileDTO.getEventBoard())
                 .build();
     }
 

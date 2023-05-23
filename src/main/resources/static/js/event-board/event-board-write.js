@@ -10,6 +10,7 @@ const $eventBusinessTel = $('.eventBusinessTel'); // 상품수
 const $eventBusinessEmail = $('.eventBusinessEmail'); // 상품수
 
 const fileArray = new Array();
+let formData = new FormData(); // input 태그 담는 폼
 
 /* 신청 유형 선택, 개인과 기업  */
 $(function(){
@@ -174,28 +175,20 @@ let sel_files = [];  // 전역 변수로 이동
 //     }
 //
 // })
-var formData = new FormData();
 
 document.getElementById("btnAtt").addEventListener("change", function (e) {
     const files = e.target.files;
 
+    console.log("files");
+    console.log(files);
+
+    formData = new FormData();
     for (let i = 0; i < files.length; i++) {
-        const file = files[i];
-        formData.append("file", file);
+        formData.append("file", files[i]);
     }
+
     console.log(formData);
-});
 
-$('.submit-btn').on('click', function (e) {
-    e.preventDefault();
-    // FormData 객체 생성
-
-
-    // 이미지 파일을 formData에 추가
-
-
-
-    // Ajax를 사용하여 formData를 서버로 전송
     $.ajax({
         url: '/file/upload',
         data: formData,
@@ -218,7 +211,10 @@ $('.submit-btn').on('click', function (e) {
             }
         }
     });
+});
 
+$('.submit-btn').on('click', function (e) {
+    e.preventDefault();
     writeBoard();
 });
 
@@ -235,6 +231,7 @@ function writeBoard(){
     console.log($eventBusinessName.val());
     console.log($eventBusinessTel.val());
     console.log($eventBusinessEmail.val());
+
     let eventBoardDTO = {
         boardTitle : $boardTitle.val(),
         boardContent : $boardContent.val(),
@@ -248,8 +245,12 @@ function writeBoard(){
         eventBusinessName : $eventBusinessName.val(),
         eventBusinessTel : $eventBusinessTel.val(),
         eventBusinessEmail : $eventBusinessEmail.val(),
-        fileDTOS : fileArray
+        eventFileDTOS : fileArray
     };
+
+    console.log("eventBoardDTO");
+    console.log(eventBoardDTO);
+
     $.ajax({
         url: '/event/write',
         data: JSON.stringify(eventBoardDTO),
@@ -257,7 +258,8 @@ function writeBoard(){
         processData: false,
         contentType: 'application/json',
         success: function() {
-            // location.href='/event/list';
+            console.log("event/write ajax 성공");
+            location.href='/event/list';
         }
     });
 }
