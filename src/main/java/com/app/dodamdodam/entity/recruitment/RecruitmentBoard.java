@@ -72,4 +72,21 @@ public class RecruitmentBoard extends Board {
     public void setMember(Member member) {
         this.member = member;
     }
+
+    @Builder
+    public RecruitmentBoard(Long id, String boardTitle, String boardContent, String recruitmentSubtitle, LocalDate recruitmentDate, int recruitmentPeopleCount, String recruitmentOpenChatting, String recruitmentPassword, RecruitmentType recruitmentStatus, String recruitmentAddress, String recruitmentAddressDetail, List<RecruitmentFile> recruitmentFiles, List<RecruitmentReply> recruitmentReplies, Member member, List<Recruitment> recruitments) {
+        super(id, boardTitle, boardContent);
+        this.recruitmentSubtitle = recruitmentSubtitle;
+        this.recruitmentDate = recruitmentDate;
+        this.recruitmentPeopleCount = recruitmentPeopleCount;
+        this.recruitmentOpenChatting = recruitmentOpenChatting;
+        this.recruitmentPassword = recruitmentPassword;
+        this.recruitmentStatus = recruitmentStatus;
+        this.recruitmentAddress = recruitmentAddress;
+        this.recruitmentAddressDetail = recruitmentAddressDetail;
+        this.recruitmentFiles = recruitmentFiles;
+        this.recruitmentReplies = recruitmentReplies;
+        this.member = member;
+        this.recruitments = recruitments;
+    }
 }

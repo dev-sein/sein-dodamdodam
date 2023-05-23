@@ -1,26 +1,16 @@
 package com.app.dodamdodam.controller.board.recruitment;
 
-import com.app.dodamdodam.domain.FreeBoardDTO;
-import com.app.dodamdodam.domain.FreeBoardFileDTO;
-import com.app.dodamdodam.domain.FreeReplyDTO;
+import com.app.dodamdodam.domain.RecruitmentBoardDTO;
 import com.app.dodamdodam.domain.RecruitmentBoardFileDTO;
-import com.app.dodamdodam.entity.free.FreeBoard;
-import com.app.dodamdodam.entity.free.FreeReply;
-import com.app.dodamdodam.search.FreeBoardSearch;
-import com.app.dodamdodam.service.board.freeBoard.FreeBoardService;
-import com.app.dodamdodam.service.board.freeBoard.freeReply.FreeReplyService;
 import com.app.dodamdodam.service.board.recruitmentBoard.RecruitmentBoardService;
 import com.app.dodamdodam.service.member.MemberService;
-import com.app.dodamdodam.type.CategoryType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -70,6 +60,23 @@ public class RecruitmentBoardController {
 //
 //        model.addAttribute("checkLike",freeBoardService.checkFreeLikeByBoardIdAndMemberId(boardId, memberId));
         return "recruitment-board/recruitment-board-detail";
+    }
+
+    /* 이벤트 작성하기 */
+    @GetMapping("write")
+    public String goToWriteForm(HttpSession session) {
+        /* 임시로 세션에 memberId 담아둠 */
+        session.setAttribute("memberId", 1L);
+        return "recruitment-board/recruitment-board-write";
+    }
+
+    @ResponseBody
+    @PostMapping("write")
+    public void getRecruitmentWriteForm(@RequestBody RecruitmentBoardDTO recruitmentBoardDTO, HttpSession session){
+        log.info("recruitmentBoardDTO.toString()");
+        log.info(recruitmentBoardDTO.toString());
+        Long memberId = (Long) session.getAttribute("memberId");
+        recruitmentBoardService.register(recruitmentBoardDTO, memberId);
     }
 
 }
