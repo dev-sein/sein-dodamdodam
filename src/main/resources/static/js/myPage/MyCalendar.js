@@ -236,96 +236,6 @@ $(document).ready(function () {
       });
 
 
-//       if(end < now ){
-//         /* status 받기? */
-//         passText = '이미 지나간 체험학습 입니다'
-//       } else {
-//         passText = '현재 진행가능한 체험학습 입니다'
-//       }
-//
-//       /* 바뀐 시간 및 이미 지나간 체험학습인지 확인 */
-//       console.log('passText : ' + passText)
-//       console.log('startFormat : ' + startFormat)
-//       console.log('endFormat : ' + endFormat)
-//
-//       if(category == '농촌'){
-//         iconBackground = '#2e51ef'
-//       } else if(category == '스포츠'){
-//         iconBackground = '#9f867';
-//       } else if(category == '전통'){
-//         iconBackground = '#705f53'
-//       } else if(category == '박물관'){
-//         iconBackground = '#90949c'
-//       }
-//       let eventAll =
-//       `
-//       <!-- 왼쪽 컨텐츠 한개 -->
-//       <div class="lecture">
-//         <div class="lecture-wrap">
-//         <span class="lecture-image visible">
-//             <img src="https://cdn.wadiz.kr/ft/images/green001/2023/0313/20230313133752303_null.jpg/wadiz/thumbnail/253/format/jpg/quality/95/) 1x, url(https://cdn.wadiz.kr/ft/images/green001/2023/0313/20230313133752303_null.jpg/wadiz/thumbnail/506/format/jpg/quality/95/" alt="">
-//         </span>
-//
-//         <div class="lecture-wrapper">
-//           <div class="lecture-content">
-//             <p class="lecture-type">
-//               <span><i class="reward" style='background:${iconBackground}'></i>입문</span>
-//             </p>
-//             <p class="lecture-title">
-//               ${eventTitle}
-//             </p>
-//             <p class="lecture-subtitle">
-//               ${eventBody}
-//             </p>
-//             <p class="lecture-info">
-//               시작 : ${startFormat}
-//               <br>
-//               종료 : ${endFormat}
-//               <br />장소 : ${location}
-//               라이브
-//             </p>
-//             <p class="lecture-number">
-//               <em><strong>${passText}</strong></em>
-//             </p>
-//           </div>
-//         </div>
-//       </div>
-//       <div class="table-wrapper">
-//         <table class="children-table">
-//           <thead>
-//             <tr>
-//               <th class="num">No.</th>
-//               <th class="nickname">닉네임</th>
-//               <th class="name">이름</th>
-//               <th class="place">체험 이름</th>
-//               <th class="participant">체험 날짜</th>
-//             </tr>
-//           </thead>
-//           <tbody>
-//             <tr>
-//               <td class="num">1</td>
-//               <td class="nickname">lovelyU</td>
-//               <td class="name">한동석</td>
-//               <td class="place">진흙놀이</td>
-//               <td class="participant">2023-04-22 18:26:00</td>
-//             </tr>
-//             <tr>
-//               <td class="num">1</td>
-//               <td class="nickname">lovelyU</td>
-//               <td class="name">한동석</td>
-//               <td class="place">진흙놀이</td>
-//               <td class="participant">2023-04-22 18:26:00</td>
-//             </tr>
-//           </tbody>
-//         </table>
-//         </div>
-//       </div>
-// <!-- 한개 끝 -->
-//       `;
-//       $(".lecture-list").html(eventAll)
-//
-//     });
-//   });
 
 //  날짜 마우스 오버, 마우스 아웃 이벤트
       let $temp;
@@ -473,13 +383,26 @@ $(document).ready(function () {
 
         for (var i = 0; i < result.length; i++) {
           console.log("들어옴" + i);
+          if (result[i].recruitmentFileDTOS.length != 0){
+            globalThis.filePath = '/file/display?fileName=' + result[i].recruitmentFileDTOS[0].filePath + '/t_' + result[i].recruitmentFileDTOS[0].fileUuid + '_' + result[i].recruitmentFileDTOS[0].fileOriginalName;
+          }
           eventAll +=
               `
       <!-- 왼쪽 컨텐츠 한개 -->
       <div class="lecture">
         <div class="lecture-wrap">
         <span class="lecture-image visible">
-            <img src="https://cdn.wadiz.kr/ft/images/green001/2023/0313/20230313133752303_null.jpg/wadiz/thumbnail/253/format/jpg/quality/95/) 1x, url(https://cdn.wadiz.kr/ft/images/green001/2023/0313/20230313133752303_null.jpg/wadiz/thumbnail/506/format/jpg/quality/95/" alt="">
+        `;
+          if (result[i].recruitmentFileDTOS.length != 0) {
+            eventAll += `
+            <img src="${filePath}" alt="/images/free-board/basic-image.png">
+                      `;
+          } else {
+            eventAll += `
+            <img src="/images/free-board/basic-image.png" alt="">
+                      `;
+          }
+          eventAll += `
         </span>
         
         <div class="lecture-wrapper">

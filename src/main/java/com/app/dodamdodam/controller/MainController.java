@@ -23,9 +23,9 @@ public class MainController {
     @GetMapping("home")
     public String main(HttpSession session, Model model){
         log.info("==================== main controller =====================");
-        log.info(session.getAttribute("member") + "");
+//        log.info(session.getAttribute("member") + "");
         log.info("=========================================");
-        model.addAttribute("id", session.getId());
+//        model.addAttribute("id", session.getId());
         return  "main/main";
     }
 
