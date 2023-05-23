@@ -41,6 +41,9 @@ public interface RecruitmentBoardService {
 //    관리자 상세보기
     public RecruitmentBoardFileDTO getAdminRecruitmentBoardDetail(Long id);
 
+    /* 최근 작성된 자유 게시글 리스트 */
+    public List<RecruitmentBoardFileDTO> getRecentRecruitmentBoardList();
+
     default RecruitmentBoardFileDTO toRecruitmentBoardFileDto(RecruitmentBoard recruitmentBoard){
         return RecruitmentBoardFileDTO.builder()
                 .id(recruitmentBoard.getId())

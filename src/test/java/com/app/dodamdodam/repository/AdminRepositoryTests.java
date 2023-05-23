@@ -1,10 +1,14 @@
 package com.app.dodamdodam.repository;
 
 import com.app.dodamdodam.entity.banner.BannerApply;
+import com.app.dodamdodam.entity.board.Board;
+import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.point.Point;
+import com.app.dodamdodam.entity.purchase.Purchase;
 import com.app.dodamdodam.entity.purchase.PurchaseBoard;
+import com.app.dodamdodam.entity.recruitment.Recruitment;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
 import com.app.dodamdodam.repository.banner.BannerRepository;
 import com.app.dodamdodam.repository.board.event.board.EventBoardRepository;
@@ -65,6 +69,44 @@ public class AdminRepositoryTests {
 //    public void eventBoardsaveTest(){
 //        EventBoard eventBoard = new EventBoard("모집 게시글 제목", LocalDateTime.now(), )
 //    }
+
+    /* 판매 게시글 등록*/
+    @Test
+    public void purchaseSaveTest(){
+           for(int i= 1; i<= 10; i ++){
+        PurchaseBoard purchaseBoard = PurchaseBoard.builder()
+                .boardTitle("판매 게시글 제목" + i)
+                .boardContent("이벤트 게시글 내용" + i)
+                .build();
+//            eventBoard.setMember(member);
+
+//            for(int j = 0; j < 5; j ++){
+//                EventFile eventFile = new EventFile(UUID.randomUUID().toString(), "test" + i+1, 10L, eventBoard, 500, "");
+//                eventFileRepository.save(eventFile);
+//            }
+
+        purchaseBoardRepository.save(purchaseBoard);
+    }
+}
+//
+//    @Test
+//    public void recruitmentSaveTest(){
+//        for(int i= 1; i<= 10; i ++){
+//            Recruitment recruitment = RecruitmentBoard.builder()
+//                    .boardTitle("판매 게시글 제목" + i)
+//                    .boardContent("이벤트 게시글 내용" + i)
+//                    .build();
+////            eventBoard.setMember(member);
+//
+////            for(int j = 0; j < 5; j ++){
+////                EventFile eventFile = new EventFile(UUID.randomUUID().toString(), "test" + i+1, 10L, eventBoard, 500, "");
+////                eventFileRepository.save(eventFile);
+////            }
+//
+//            purchaseBoardRepository.save(purchaseBoard);
+//        }
+//    }
+
 
     /*모집 게시글 등록*/
     @Test

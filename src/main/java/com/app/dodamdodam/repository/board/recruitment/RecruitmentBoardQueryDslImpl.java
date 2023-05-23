@@ -18,6 +18,7 @@ import org.springframework.data.domain.Pageable;
 import java.time.LocalDate;
 import java.util.List;
 
+import static com.app.dodamdodam.entity.free.QFreeBoard.freeBoard;
 import static com.app.dodamdodam.entity.inquiry.QInquiry.inquiry;
 import static com.app.dodamdodam.entity.recruitment.QRecruitmentBoard.recruitmentBoard;
 public class RecruitmentBoardQueryDslImpl implements RecruitmentBoardQueryDsl {
@@ -153,5 +154,15 @@ public class RecruitmentBoardQueryDslImpl implements RecruitmentBoardQueryDsl {
                 .fetch();
 
         return recruitmentBoards;
+    }
+
+    /* 도담 모집 게시판 최근 게시글 5개 불러오기 */
+    @Override
+    public List<RecruitmentBoard> findRecentRecruitmentBoardList_QueryDSL() {
+        return query.selectFrom(recruitmentBoard)
+                .leftJoin(recruitmentBoard.recruitmentFiles).fetchJoin()
+                .orderBy(recruitmentBoard.id.desc())
+                .limit(5)
+                .fetch();
     }
 }

@@ -133,8 +133,8 @@ public class PurchaseBoardServiceImpl implements PurchaseBoardService {
     /* 메인 판매 게시글 최근 5개 */
     @Override
     public List<PurchaseBoardFileDTO> getRecentPurchaseBoardList() {
-        List<PurchaseBoardFileDTO> purchaseBoardDTOS = purchaseBoardRepository.findRecentFreeBoardList_QueryDSL().stream().map(purchaseBoard -> toPurchaseBoardFileDTO(purchaseBoard)).collect(Collectors.toList());
-        return purchaseBoardDTOS;
+        List<PurchaseBoardFileDTO> purchaseBoardDTOs = purchaseBoardRepository.findRecentFreeBoardList_QueryDSL().stream().map(purchaseBoard -> toPurchaseBoardFileDTO(purchaseBoard)).collect(Collectors.toList());
+        return purchaseBoardDTOs;
     }
 
 
