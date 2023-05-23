@@ -1,8 +1,6 @@
 package com.app.dodamdodam.repository;
 
-import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.free.FreeBoard;
-import com.app.dodamdodam.entity.free.FreeFile;
 import com.app.dodamdodam.entity.free.FreeReply;
 import com.app.dodamdodam.entity.purchase.Product;
 import com.app.dodamdodam.entity.purchase.PurchaseBoard;
@@ -14,6 +12,7 @@ import com.app.dodamdodam.repository.board.purchase.PurchaseBoardRepository;
 import com.app.dodamdodam.repository.board.recruitment.RecruitmentBoardRepository;
 import com.app.dodamdodam.repository.file.freeFile.FreeFileRepository;
 import com.app.dodamdodam.repository.member.MemberRepository;
+import com.app.dodamdodam.repository.product.ProductRepository;
 import com.app.dodamdodam.repository.recruitment.RecruitmentRepository;
 import com.app.dodamdodam.repository.reply.freeReply.FreeReplyRepository;
 import com.app.dodamdodam.type.CategoryType;
@@ -29,8 +28,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.UUID;
 
 @SpringBootTest
 @Rollback(false)
@@ -62,6 +59,10 @@ public class BoardRepositoryTests {
     @Autowired
     private EventBoardRepository eventBoardRepository;
 
+    @Autowired
+    private ProductRepository productRepository;
+
+
     ArrayList<CategoryType> categoryTypes = new ArrayList<CategoryType>(Arrays.asList(CategoryType.ALL, CategoryType.CULTURE, CategoryType.DAILY, CategoryType.EVENT, CategoryType.PURCHASE, CategoryType.RECRUITMENT));
 
     /*모집 게시글 등록*/
@@ -75,6 +76,8 @@ public class BoardRepositoryTests {
        /* RecruitmentBoard recruitmentBoard = new RecruitmentBoard("모집 게시글 제목", LocalDate.now(),10, "https://open.kakao.com/o/ggmF0Jkf", "1234", "경기도 성남시 분당구 수내동", "탄천앞");
         memberRepository.findById(1L).ifPresent(member -> recruitmentBoard.setMember(member));*/
 //        memberRepository.findById(5L).ifPresent(member -> recruitmentBoard.setMember(member));
+//        RecruitmentBoard recruitmentBoard = new RecruitmentBoard("욱성이의 시그니엘 체험", LocalDate.of(2023,7,12),20, "https://open.kakao.com/o/ggmF0Jkf", "1234", "서울특별시 송파구", "롯데타워 앞");
+//        memberRepository.findById(5L).ifPresent(member -> recruitmentBoard.setMember(member));
 //        recruitmentBoard.addRecruitment();
 //        recruitmentBoardRepository.save(recruitmentBoard);
     }
@@ -85,6 +88,12 @@ public class BoardRepositoryTests {
 //        memberRepository.findById(201L).ifPresent(member -> eventBoard.setMember(member));
 //        eventBoardRepository.save(eventBoard);
     }
+//    @Test
+//    public void saveTest6(){
+//        EventBoard eventBoard = new EventBoard("이벤트 게시글 제목1","테스트1");
+//        memberRepository.findById(201L).ifPresent(member -> eventBoard.setMember(member));
+//        eventBoardRepository.save(eventBoard);
+//    }
 
 
     /*자유 게시글 등록*/
@@ -93,19 +102,29 @@ public class BoardRepositoryTests {
 //        FreeBoard freeBoard = new FreeBoard("자유 게시글 제목","자유 게시글 내용" , categoryTypes.get(1), );
 //        memberRepository.findById(5L).ifPresent(member -> freeBoard.setMember(member));
 //        freeBoardRepository.save(freeBoard);
-//        for (int i=1; i<=100; i++){
-//            FreeBoard freeBoard = new FreeBoard("자유 게시글 제목" + i,"자유 게시글 내용" + i, categoryTypes.get(i % 6));
+        for (int i=1; i<=100; i++){
+            FreeBoard freeBoard = FreeBoard.builder().boardTitle("자유게시글 제목" + i).boardContent("자유 게시글 내용" + i).freeCategory(categoryTypes.get(i % 6))
+                    .likeCount(0).member(memberRepository.findById(5L).get()).build();
+//            new FreeBoard("자유 게시글 제목" + i,"자유 게시글 내용" + i, categoryTypes.get(i % 6));
 //            memberRepository.findById(5L).ifPresent(member -> freeBoard.setMember(member));
-//            freeBoardRepository.save(freeBoard);
-//        }
+            freeBoardRepository.save(freeBoard);
+        }
     }
 
     /*판매 게시글 등록*/
 /*    @Test
     public void saveTest3(){
         for (int i=1; i<=100; i++){
+<<<<<<< HEAD
             PurchaseBoard purchaseBoard = new PurchaseBoard("판매 게시글 제목" + i, "판매 게시글 내용"+ i);
             Product product = new Product("상품" + i, 1000 * i, (long)i, purchaseBoard);
+=======
+            PurchaseBoard purchaseBoard = PurchaseBoard.builder().boardContent("판매 게시글 내용" + i)
+                    .boardTitle("판매 게시글 제목" + i)
+                    .build();
+            Product product = new Product("상품" + i, 1000 * i, (long)i, purchaseBoard);
+            productRepository.save(product);
+>>>>>>> project/master
 
             memberRepository.findById(2L).ifPresent(member -> {
                 purchaseBoard.setMember(member);
@@ -114,6 +133,7 @@ public class BoardRepositoryTests {
 
             purchaseBoardRepository.save(purchaseBoard);
         }
+<<<<<<< HEAD
     }*/
 
     /* id로 내가 작성한 자유게시글 목록 가져오기*/
@@ -135,11 +155,11 @@ public class BoardRepositoryTests {
     /* 200번 모집 게시글에 임의로 5번 유저 참석 시켰음*/
     @Test
     public void saveTest4(){
-        memberRepository.findById(8L).ifPresent(member ->
+        memberRepository.findById(405L).ifPresent(member ->
 //        memberRepository.findById(5L).ifPresent(member ->
         {
             Recruitment recruitment = new Recruitment(member);
-            recruitmentBoardRepository.findById(403L).ifPresent(recruitmentBoard -> recruitment.setRecruitmentBoard(recruitmentBoard));
+            recruitmentBoardRepository.findById(413L).ifPresent(recruitmentBoard -> recruitment.setRecruitmentBoard(recruitmentBoard));
             recruitmentRepository.save(recruitment);
         });
     }
@@ -295,7 +315,6 @@ public class BoardRepositoryTests {
     @Test
     public void deleteFreeReplyTest(){
         freeBoardRepository.findById(201L).ifPresent(freeBoard -> freeReplyRepository.delete(freeBoard.getFreeReplies().get(0)));
-    }
 
     /* 자유 게시판 댓글 id로 board 조회해서 총 댓글 수 가져오기 */
     @Test
@@ -306,7 +325,7 @@ public class BoardRepositoryTests {
     /* 내가 참여한 모집 게시글 날짜로 검색*/
     @Test
     public void findRecruitmentBoardListByMemberIdAndDateTest(){
-        recruitmentBoardRepository.findRecruitmentBoardListByMemberIdAndDate(5L,LocalDate.of(2023,05,14)).stream().map(RecruitmentBoard::toString).forEach(log::info);
+        recruitmentBoardRepository.findRecruitmentBoardListByMemberIdAndDate_QueryDSL(5L,LocalDate.of(2023,05,14)).stream().map(RecruitmentBoard::toString).forEach(log::info);
     }
 
     /* 내가 구매한 판매 게시글 검색 */

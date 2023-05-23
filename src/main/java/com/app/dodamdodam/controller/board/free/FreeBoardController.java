@@ -9,6 +9,7 @@ import com.app.dodamdodam.entity.free.FreeReply;
 import com.app.dodamdodam.search.FreeBoardSearch;
 import com.app.dodamdodam.service.board.freeBoard.FreeBoardService;
 import com.app.dodamdodam.service.board.freeBoard.freeReply.FreeReplyService;
+import com.app.dodamdodam.service.member.MemberService;
 import com.app.dodamdodam.type.CategoryType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -29,6 +30,7 @@ import java.util.List;
 public class FreeBoardController {
     private final FreeBoardService freeBoardService;
     private final FreeReplyService freeReplyService;
+    private final MemberService memberService;
 
     //    자유 게시판 메인
     @GetMapping("list")
@@ -76,13 +78,14 @@ public class FreeBoardController {
     //    자유 게시판 상세
     @GetMapping("detail/{boardId}")
     public String freeBoardDetail(Model model, @PathVariable(value = "boardId") Long boardId, HttpSession session){
-        session.setAttribute("memberId",6L);    /* 임시로 세션에 memberId 값 담아둠 */
+//        session.setAttribute("memberId",6L);    /* 임시로 세션에 memberId 값 담아둠 */
         Long memberId = (Long)session.getAttribute("memberId");
         model.addAttribute("freeBoardDetail", freeBoardService.getFreeBoardById(boardId));
         model.addAttribute("top5",freeBoardService.getTop5FreeBoards());
         /* PageRequest는 뭐 넣어도 상관없이 개수 가져와서 아무렇게나 넣음 */
         model.addAttribute("replyCount",freeReplyService.getFreeRepliesCountByBoardId(PageRequest.of(0, 5), boardId));
         model.addAttribute("recentFreeBoards",freeBoardService.getRecentFreeBoardList());
+
         model.addAttribute("checkLike",freeBoardService.checkFreeLikeByBoardIdAndMemberId(boardId, memberId));
 
         return "free-board/free-board-detail";
@@ -197,27 +200,37 @@ public class FreeBoardController {
 //    좋아요
     @PostMapping("like/{boardId}")
     @ResponseBody
-    public int addLike(HttpSession session, @PathVariable(value = "boardId") Long boardId){
+    public Integer addLike(HttpSession session, @PathVariable(value = "boardId") Long boardId){
         log.info("좋아요 들어옴");
         log.info(boardId + "");
         Long memberId = (Long)session.getAttribute("memberId");
-        freeBoardService.setLikeCountPlus(boardId,memberId);
-        // 좋아요 개수 return
-        int likeCount = freeBoardService.getFreeBoardById(boardId).getLikeCount();
-        return likeCount;
+        if (memberId == null) {
+            int likeCount = freeBoardService.getFreeBoardById(boardId).getLikeCount();
+            return likeCount;
+        } else {
+            freeBoardService.setLikeCountPlus(boardId,memberId);
+            // 좋아요 개수 return
+            int likeCount = freeBoardService.getFreeBoardById(boardId).getLikeCount();
+            return likeCount;
+        }
     }
 
 //    좋아요 취소
     @PostMapping("cancel-like/{boardId}")
     @ResponseBody
-    public int removeLike(HttpSession session, @PathVariable(value = "boardId") Long boardId){
+    public Integer removeLike(HttpSession session, @PathVariable(value = "boardId") Long boardId){
         log.info("좋아요 취소 들어옴");
         log.info(boardId + "");
         Long memberId = (Long)session.getAttribute("memberId");
-        freeBoardService.setLikeCountMinus(boardId,memberId);
-        // 좋아요 개수 return
-        int likeCount = freeBoardService.getFreeBoardById(boardId).getLikeCount();
-        return likeCount;
+        if (memberId == null) {
+            int likeCount = freeBoardService.getFreeBoardById(boardId).getLikeCount();
+            return likeCount;
+        } else {
+            freeBoardService.setLikeCountMinus(boardId,memberId);
+            // 좋아요 개수 return
+            int likeCount = freeBoardService.getFreeBoardById(boardId).getLikeCount();
+            return likeCount;
+        }
     }
 
 

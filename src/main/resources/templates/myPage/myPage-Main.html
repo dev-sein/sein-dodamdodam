@@ -39,7 +39,9 @@
                     <div class="MyWadizSupporterProfile_profileContainer__1q7eh">
                         <div style="position: relative; top: -46px; left: -12px;" id="rankModalButton">
                    <span style="background-color: #ff6b6b1f;
-                   border-radius: 99px;">씨앗</span>등급 <img id="myImg" src="/images/myPage/bigseed.png" alt="Bigseed" style="position: absolute; right: 3.5em; top: 3em; cursor: pointer;">
+                   border-radius: 99px;" th:text="${myGrade.gradeName}">씨앗</span>등급 <img id="myImg" th:src="${myGrade.gradeTitle}" alt="/images/myPage/bigseed.png" style="position: absolute; right: 3.5em; top: 3em; cursor: pointer; width: 65px">
+<!--                   <span style="background-color: #ff6b6b1f;-->
+<!--                   border-radius: 99px;">씨앗</span>등급 <img id="myImg" src="/images/myPage/bigseed.png" alt="Bigseed" style="position: absolute; right: 3.5em; top: 3em; cursor: pointer;">-->
                             <button >
                             </button>
                         </div>

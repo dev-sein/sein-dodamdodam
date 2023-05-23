@@ -309,7 +309,7 @@ $(container).on({
         $(this).css("display", "inline-block");
         $(this).css("width", "35px");
         $(this).css("height", "35px");
-        $(this).css("line-height", "35px");
+        // $(this).css("line-height", "35px");
         $(this).css("color", "white");
     }, "mouseout":function(){
         if(check) {return;}
@@ -334,7 +334,7 @@ $(container).on("click", ".toastui-calendar-weekday-grid-date", function(){
     $(this).css("display", "inline-block");
     $(this).css("width", "35px");
     $(this).css("height", "35px");
-    $(this).css("line-height", "35px");
+    // $(this).css("line-height", "35px");
     $(this).css("color", "white");
 });
 

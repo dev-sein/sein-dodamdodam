@@ -35,9 +35,14 @@ public interface RecruitmentBoardQueryDsl {
 //    관리자 도담 게시판 페이징
     public Page<RecruitmentBoard> findAllWithPaging(Pageable pageable);
 
-//    내가 참여한 모집 게시글 날짜로 검색
-    public List<RecruitmentBoard> findRecruitmentBoardListByMemberIdAndDate(Long memberId, LocalDate recruitmentDate);
+////    내가 참여한 모집 게시글 날짜로 검색
+//    public List<RecruitmentBoard> findRecruitmentBoardListByMemberIdAndDate(Long memberId, LocalDate recruitmentDate);
 
     //    모집 게시판 최근 게시물 5개
     public List<RecruitmentBoard> findRecentRecruitmentBoardList_QueryDSL();
+    public List<RecruitmentBoard> findRecruitmentBoardListByMemberIdAndDate_QueryDSL(Long memberId, LocalDate recruitmentDate);
+
+//    내가 참여한 모집 게시글들의 날짜 가져오기
+    public List<LocalDate> findRecruimentDateByMemberId_QueryDSL(Long memberId);
+    
 }

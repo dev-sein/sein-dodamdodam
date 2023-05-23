@@ -3,6 +3,7 @@ package com.app.dodamdodam.service.member;
 import com.app.dodamdodam.domain.MemberDTO;
 import com.app.dodamdodam.domain.RecruitmentBoardFileDTO;
 import com.app.dodamdodam.entity.free.FreeBoard;
+import com.app.dodamdodam.entity.member.Grade;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.point.Point;
 import com.app.dodamdodam.entity.banner.BannerApply;
@@ -261,10 +262,29 @@ public class MemberServiceImpl implements MemberService/*, OAuth2UserService<OAu
     /* 캘린더 눌렀을 때 누른 날짜로 내가 참가한 모집게시글 리스트 가져오기 */
     @Override
     public List<RecruitmentBoardFileDTO> getRecruitmentBoardListByMemberIdAndDate(Long memberId, LocalDate recruitmentDate) {
-        List<RecruitmentBoard> recruitmentBoards = recruitmentBoardRepository.findRecruitmentBoardListByMemberIdAndDate(memberId, recruitmentDate);
+        List<RecruitmentBoard> recruitmentBoards = recruitmentBoardRepository.findRecruitmentBoardListByMemberIdAndDate_QueryDSL(memberId, recruitmentDate);
         List<RecruitmentBoardFileDTO> recruitmentBoardFileDTOS = recruitmentBoards.stream().map(recruitmentBoard -> toRecruitmentBoardFileDto(recruitmentBoard)).collect(Collectors.toList());
         return recruitmentBoardFileDTOS;
     }
+
+    /* 내가 참여한 모집 게시글 모집 날짜 리스트 가져오기 */
+    @Override
+    public List<LocalDate> getMyRecruimentDateByMemberId(Long memberId) {
+        return recruitmentBoardRepository.findRecruimentDateByMemberId_QueryDSL(memberId);
+    }
+
+    /* 내 등급, 등급 명 가져오기 */
+    @Override
+    public Grade getMyGradeByMemberId(Long memberId) {
+        return memberRepository.findMemberGradeByMemberId_QueryDSL(memberId);
+    }
+
+    /* 내 등급 가져오기 */
+    @Override
+    public String getMemberGrade(Long memberId) {
+        return memberRepository.findAdminMemberDetail_QueryDSL(memberId);
+    }
+
     /* 관리자 멤버 검색 */
     @Override
     public Page<MemberDTO> showMemberWithSearch_QueryDSL(Pageable pageable, AdminMemberSearch adminMemberSearch) {

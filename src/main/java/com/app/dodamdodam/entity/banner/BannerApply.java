@@ -26,6 +26,9 @@ public class BannerApply extends Period {
     private LocalDate bannerRegisterDate;
     private int period;
 
+    private String bannerContent;
+    private String fileOriginalName;
+    private String fileUuid;
     // 수락대기, 수락, 수락거절
     @ColumnDefault("'WAITING'")
     @Enumerated(EnumType.STRING)
