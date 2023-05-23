@@ -25,4 +25,5 @@ public class RecruitmentReplyDTO {
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;
     }
+
 }

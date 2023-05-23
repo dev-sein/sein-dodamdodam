@@ -25,6 +25,9 @@ public interface RecruitmentBoardService {
 //    내가 참가한 모집 게시글 목록
     public List<RecruitmentBoardFileDTO> getRecruimentedBoardListByMemberId(Pageable pageable, Long memberId);
 
+//    모집 게시글 상세 보기
+    public RecruitmentBoardFileDTO getRecruitmentBoardDetailByBoardId(Long boardId);
+
 //    관리자 목록 게시판
     public Page<RecruitmentBoardFileDTO> showList(Pageable pageable);
 
