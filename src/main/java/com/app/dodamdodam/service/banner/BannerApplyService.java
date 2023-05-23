@@ -5,6 +5,8 @@ import com.app.dodamdodam.entity.banner.BannerApply;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.search.banner.AdminBannerSearch;
 import com.app.dodamdodam.search.board.AdminFreeBoardSearch;
+import com.app.dodamdodam.type.BannerType;
+import com.app.dodamdodam.type.MemberStatus;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -24,6 +26,9 @@ public interface BannerApplyService {
 
     //관리자 : 배너 삭제
     public void deleteAdminBannerList(List<Long> bannerApplyIds);
+
+    /* 관리자 배너 상태 변경*/
+    public void setBannerStatus(List<Long> ids, BannerType bannerStatus);
 
     default BannerDTO toBannerDTO(BannerApply bannerApply){
         return BannerDTO.builder().id(bannerApply.getId()).bannerRegisterDate(bannerApply.getBannerRegisterDate())

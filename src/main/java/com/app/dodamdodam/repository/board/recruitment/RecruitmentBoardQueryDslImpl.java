@@ -18,6 +18,7 @@ import org.springframework.data.domain.Pageable;
 import java.time.LocalDate;
 import java.util.List;
 
+import static com.app.dodamdodam.entity.free.QFreeBoard.freeBoard;
 import static com.app.dodamdodam.entity.inquiry.QInquiry.inquiry;
 import static com.app.dodamdodam.entity.recruitment.QRecruitmentBoard.recruitmentBoard;
 public class RecruitmentBoardQueryDslImpl implements RecruitmentBoardQueryDsl {
@@ -142,6 +143,8 @@ public class RecruitmentBoardQueryDslImpl implements RecruitmentBoardQueryDsl {
 
     }
 
+
+
     /* 내가 참가한 모집 날짜로 검색 */
     @Override
     public List<RecruitmentBoard> findRecruitmentBoardListByMemberIdAndDate_QueryDSL(Long memberId, LocalDate recruitmentDate) {
@@ -155,6 +158,16 @@ public class RecruitmentBoardQueryDslImpl implements RecruitmentBoardQueryDsl {
         return recruitmentBoards;
     }
 
+    /* 도담 모집 게시판 최근 게시글 5개 불러오기 */
+    @Override
+    public List<RecruitmentBoard> findRecentRecruitmentBoardList_QueryDSL() {
+        return query.selectFrom(recruitmentBoard)
+                .leftJoin(recruitmentBoard.recruitmentFiles).fetchJoin()
+                .orderBy(recruitmentBoard.id.desc())
+                .limit(5)
+                .fetch();
+
+    }
     /* 내가 참가한 모집게시글 날짜 가져오기 */
     @Override
     public List<LocalDate> findRecruimentDateByMemberId_QueryDSL(Long memberId) {

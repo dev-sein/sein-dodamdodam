@@ -174,4 +174,14 @@ public class PurchaseBoardQueryDslImpl implements PurchaseBoardQueryDsl {
 
     }
 
+    //최근 게시글 5개
+    @Override
+    public List<PurchaseBoard> findRecentFreeBoardList_QueryDSL() {
+        return query.selectFrom(purchaseBoard)
+                .leftJoin(purchaseBoard.purchaseFiles).fetchJoin()
+                .orderBy(purchaseBoard.id.desc())
+                .limit(5)
+                .fetch();
+    }
+
 }

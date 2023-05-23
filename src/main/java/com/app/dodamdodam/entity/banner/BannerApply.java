@@ -25,6 +25,7 @@ public class BannerApply extends Period {
     private Long id;
     private LocalDate bannerRegisterDate;
     private int period;
+
     private String bannerContent;
     private String fileOriginalName;
     private String fileUuid;

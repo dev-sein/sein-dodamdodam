@@ -15,3 +15,23 @@ $('.answer-button').on('click', function(){
 $('#cancel-btn2').on('click', function(){
     $('#send-modal').hide();
 });
+
+// var inquiryId = $('#inquiryId').val();
+// var answer = $('#answer').val(); // 답변 내용
+
+$('#confirm-btn2').click(function() {
+    console.log("들어옴");
+    $('#send-modal').css('display', 'none');
+    var inquiryId = $('#inquiryId').val();
+    var answer = $('#inquiryAnswer').val(); // 답변 내용
+    // $('#inquiryForm').attr('action', '/admins/inquiry/detail/' + inquiryId);
+    document.inquiryForm.submit();
+    $('#inquiryForm').submit();
+    console.log("제출됨");
+});
+
+$('#inquiryForm').on('submit', function(event) {
+    var form = event.target;
+    var id = form.getAttribute("data-id");
+    form.action = form.action.replace("{id}", id);
+});

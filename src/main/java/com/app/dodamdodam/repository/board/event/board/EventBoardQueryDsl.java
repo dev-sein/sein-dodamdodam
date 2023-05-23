@@ -6,6 +6,7 @@ import com.app.dodamdodam.search.EventBoardSearch;
 import com.app.dodamdodam.type.EventType;
 import com.app.dodamdodam.search.board.AdminEventBoardSearch;
 import com.app.dodamdodam.search.board.AdminFreeBoardSearch;
+import jdk.jfr.Event;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -34,5 +35,7 @@ public interface EventBoardQueryDsl {
     // 댓글 id로 자유게시글 접근해서 그 안에 달린 댓글 갯수 가져오기
     public Integer findReplyCountByReplyId_QueryDsl(Long replyId);
 
+    //    자유 게시판 최근 게시물 5개
+    public List<EventBoard> findRecentEventBoardList_QueryDSL();
 
 }

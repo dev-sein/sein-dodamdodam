@@ -1,9 +1,6 @@
 package com.app.dodamdodam.service.board.purchase;
 
-import com.app.dodamdodam.domain.ProductDTO;
-import com.app.dodamdodam.domain.PurchaseBoardDTO;
-import com.app.dodamdodam.domain.PurchaseBoardFileDTO;
-import com.app.dodamdodam.domain.PurchaseFileDTO;
+import com.app.dodamdodam.domain.*;
 import com.app.dodamdodam.entity.purchase.Product;
 import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.entity.purchase.PurchaseFile;
@@ -131,6 +128,13 @@ public class PurchaseBoardServiceImpl implements PurchaseBoardService {
     public PurchaseBoardDTO getAdminPurchaseBoardDetail(Long id) {
         Optional<PurchaseBoard> purchaseBoard = purchaseBoardRepository.findById(id);
         return toPurchaseBoardDTO(purchaseBoard.get());
+    }
+
+    /* 메인 판매 게시글 최근 5개 */
+    @Override
+    public List<PurchaseBoardFileDTO> getRecentPurchaseBoardList() {
+        List<PurchaseBoardFileDTO> purchaseBoardDTOs = purchaseBoardRepository.findRecentFreeBoardList_QueryDSL().stream().map(purchaseBoard -> toPurchaseBoardFileDTO(purchaseBoard)).collect(Collectors.toList());
+        return purchaseBoardDTOs;
     }
 
 

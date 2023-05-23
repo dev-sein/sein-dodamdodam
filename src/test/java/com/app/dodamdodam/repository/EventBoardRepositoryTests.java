@@ -66,7 +66,7 @@ public class EventBoardRepositoryTests {
                     .eventLikeCount(0)
                     .eventReplyCount(0)
                     .build();
-            memberRepository.findById(1L).ifPresent(member1 -> eventBoard1.setMember(member1));
+            memberRepository.findById(2L).ifPresent(member1 -> eventBoard1.setMember(member1));
 //            eventBoard.setMember(member);
 //            for(int j = 0; j < 5; j ++){
 //                EventFile eventFile = new EventFile(UUID.randomUUID().toString(), "test" + i+1, 10L, eventBoard, 500, "");
