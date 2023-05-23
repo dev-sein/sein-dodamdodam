@@ -313,9 +313,10 @@ public class BoardRepositoryTests {
 
     /* 자유 게시판 댓글 삭제 */
     @Test
-    public void deleteFreeReplyTest(){
+    public void deleteFreeReplyTest() {
         freeBoardRepository.findById(201L).ifPresent(freeBoard -> freeReplyRepository.delete(freeBoard.getFreeReplies().get(0)));
 
+    }
     /* 자유 게시판 댓글 id로 board 조회해서 총 댓글 수 가져오기 */
     @Test
     public void findReplyCountByReplyId_QueryDSLTest(){
