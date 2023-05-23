@@ -8,6 +8,8 @@ import com.app.dodamdodam.entity.recruitment.RecruitmentFile;
 import com.app.dodamdodam.search.board.AdminRecruitmentSearch;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,6 +29,12 @@ public interface RecruitmentBoardService {
 
 //    모집 게시글 상세 보기
     public RecruitmentBoardFileDTO getRecruitmentBoardDetailByBoardId(Long boardId);
+
+//    모집 게시글 삭제
+    public void deleteRecruitmentBoardByBoardId(Long boardId);
+
+//    모집 게시글 수정
+    public void updateRecruitmentBoard(RecruitmentBoardFileDTO updatedBoard, Long boardId);
 
 //    관리자 목록 게시판
     public Page<RecruitmentBoardFileDTO> showList(Pageable pageable);
