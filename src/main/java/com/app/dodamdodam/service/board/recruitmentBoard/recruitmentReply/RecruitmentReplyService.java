@@ -4,6 +4,7 @@ import com.app.dodamdodam.domain.FreeReplyDTO;
 import com.app.dodamdodam.domain.MemberDTO;
 import com.app.dodamdodam.domain.RecruitmentBoardFileDTO;
 import com.app.dodamdodam.domain.RecruitmentReplyDTO;
+import com.app.dodamdodam.entity.event.EventReply;
 import com.app.dodamdodam.entity.free.FreeReply;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.recruitment.RecruitmentReply;
@@ -14,7 +15,16 @@ import java.util.List;
 
 @Service
 public interface RecruitmentReplyService {
-    /* 댓글 리스트 가져오기 */
+    /* 댓글 작성 */
+    public void saveRecruitmentReply(RecruitmentReply , Long boardId, Long memberId);
+
+    /* 댓글 수정 */
+    public void setRecruitmentReplyContent(EventReply UpdatedEventReply, Long replyId);
+
+    /* 댓글 삭제 */
+    public void removeRecruitmentReply(Long replyId);
+
+    /* 댓글 조회 */
     public List<RecruitmentReplyDTO> getFreeRepliesByBoardId(Pageable pageable, Long boardId);
 
     /* 총 댓글수 조회 */
