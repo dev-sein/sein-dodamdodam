@@ -202,7 +202,8 @@ function writeBoard(){
         recruitmentAddressDetail : $recruitmentAddressDetail.val(),
         recruitmentDate : $recruitmentDate.val(),
         recruitmentPeopleCount : $recruitmentPeopleCount.val() * 1.0,
-        recruitmentOpenChatting : $recruitmentOpenChatting.val()
+        recruitmentOpenChatting : $recruitmentOpenChatting.val(),
+        recruitmentFileDTOS : fileArray
     };
     console.log("recruitmentBoardDTO");
     console.log(recruitmentBoardDTO);
@@ -214,7 +215,7 @@ function writeBoard(){
         processData: false,
         contentType: 'application/json',
         success: function() {
-            console.log("event/write ajax 성공");
+            console.log("recruitment/write ajax 성공");
             location.href='/recruitment/list';
         }
     });

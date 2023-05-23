@@ -17,7 +17,7 @@ import java.util.List;
 @Entity
 @Getter
 @Table(name = "TBL_RECRUITMENT_BOARD")
-@ToString(callSuper = true)
+@ToString(exclude = "member", callSuper = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DynamicInsert
 @DynamicUpdate
@@ -46,7 +46,7 @@ public class RecruitmentBoard extends Board {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "recruitmentBoard")
     private List<RecruitmentReply> recruitmentReplies;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
