@@ -149,7 +149,7 @@ font-size:12px;
 .arrow-button{
     cursor: pointer;
     position: absolute;
-    top: 40%;
+    top: 25%;
     z-index: 9999;
 }
 
@@ -163,7 +163,7 @@ font-size:12px;
     cursor: pointer;
     z-index:9999;
     position: absolute;
-    top: 50%;
+    top: 42%;
     left:0%;
 }
 

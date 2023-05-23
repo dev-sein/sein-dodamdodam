@@ -43,6 +43,13 @@ public class EventBoardController {
         return "event-board/event-board-list";
     }
 
+    /* 문화공간 게시판 */
+    @GetMapping("culture-space")
+    public String cultureSpace(Model model){
+        log.info("문화공간 게시판 들어옴");
+        return "culture-space/banner-test";
+    }
+
     /* 이벤트 게시판 리스트(최신순) */
     @ResponseBody
     @GetMapping("list-search")
