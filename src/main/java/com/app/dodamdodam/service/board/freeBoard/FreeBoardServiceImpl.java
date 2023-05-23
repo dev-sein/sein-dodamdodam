@@ -141,6 +141,9 @@ public class FreeBoardServiceImpl implements FreeBoardService {
     /* 좋아요 눌렀는지 체크 */
     @Override
     public boolean checkFreeLikeByBoardIdAndMemberId(Long boardId, Long memberId) {
+        if (memberId == null){
+            return false;
+        }
         return freeBoardLikeRepository.checkLikeByBoardIdAndMemberId_QueryDSL(boardId,memberId);
     }
 

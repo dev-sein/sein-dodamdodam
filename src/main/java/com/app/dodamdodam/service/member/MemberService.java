@@ -3,6 +3,7 @@ package com.app.dodamdodam.service.member;
 import com.app.dodamdodam.domain.*;
 import com.app.dodamdodam.entity.banner.BannerApply;
 import com.app.dodamdodam.entity.free.FreeBoard;
+import com.app.dodamdodam.entity.member.Grade;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.point.Point;
 import com.app.dodamdodam.entity.recruitment.Recruitment;
@@ -79,6 +80,15 @@ public interface MemberService extends UserDetailsService {
 
     /* 캘린더 눌렀을 때 누른 날짜로 내가 참가한 모집게시글 리스트 가져오기 */
     public List<RecruitmentBoardFileDTO> getRecruitmentBoardListByMemberIdAndDate(Long memberId, LocalDate recruitmentDate);
+
+    /* 내가 참여한 모집 게시글 모집 날짜 리스트 가져오기 */
+    public List<LocalDate> getMyRecruimentDateByMemberId(Long memberId);
+
+    /* 내 등급, 등급 이름 가져오기 */
+    public Grade getMyGradeByMemberId(Long memberId);
+    
+    /* 내 등급 가져오기 */
+    public String getMemberGrade(Long memberId);
     
     /* 관리자 회원 변경*/
     public void setMemberStatus(List<Long> ids, MemberStatus memberStatus);
@@ -100,6 +110,12 @@ public interface MemberService extends UserDetailsService {
                 .memberPhone(member.getMemberPhone())
                 .memberPoint(member.getMemberPoint())
                 .memberStatus(member.getMemberStatus())
+                .address(member.getAddress())
+                .memberType(member.getMemberType())
+                .createdDate(member.getCreatedDate())
+                .memberRole(member.getMemberRole())
+                .memberPassword(member.getMemberPassword())
+                .participationCount(member.getParticipationCount())
                 .build();
     }
 

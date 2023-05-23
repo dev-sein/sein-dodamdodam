@@ -11,6 +11,39 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+/* 맨 위로가기 버튼*/
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #ffffffa1;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    z-index: 9999;
+}
+
+.back-to-top:before {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: 17px;
+    border-style: solid;
+    border-width: 0 3px 3px 0;
+    transform: rotate(-135deg);
+    width: 12px;
+    height: 12px;
+}
+
+.back-to-top:active,
+.back-to-top:focus {
+    outline: none;
+}
+/* 맨 위로가기 버튼*/
+
 a, address, article, aside, audio, b, body, button, canvas, caption, dd, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, html, i, img, input, label, legend, li, nav, ol, p, pre, section, small, span, strong, summary, table, tbody, td, th, thead, time, tr, ul, video {
     margin: 0;
     border: 0;

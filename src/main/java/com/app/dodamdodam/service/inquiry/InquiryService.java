@@ -1,8 +1,12 @@
 package com.app.dodamdodam.service.inquiry;
 
 import com.app.dodamdodam.domain.InquiryDTO;
+import com.app.dodamdodam.domain.MailDTO;
+import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.inquiry.Inquiry;
 import com.app.dodamdodam.search.Inquiry.AdminInquirySearch;
+import com.app.dodamdodam.type.InquiryStatus;
+import com.app.dodamdodam.type.InquiryType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -26,6 +30,13 @@ public interface InquiryService {
 
     //관리자 : 문의사항 상세
     public InquiryDTO getAdminInquiryDetail(Long id);
+    
+    //관리자 : 메일 답장 보내기 - 메일
+    public void sendAnswerMail(Long id, MailDTO mailDTO);
+
+    //관리자 : 문의사항 답장 보내기
+    public void updateInquiryAnsewrStatus(Long inquiryId, InquiryDTO inquiryDTO);
+
 
     default Inquiry toInquiryEntity(InquiryDTO inquiryDTO){
         return Inquiry.builder().id(inquiryDTO.getId()).inquiryEmail(inquiryDTO.getInquiryEmail()).inquiryContent(inquiryDTO.getInquiryContent())

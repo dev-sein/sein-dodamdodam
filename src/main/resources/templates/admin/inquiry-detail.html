@@ -93,7 +93,7 @@
         <content>
             <div class="inner-wrapper">
                 <div class="page-title">문의 관리</div>
-                <button type="button" class="delete-button" id="delete-button">삭제하기</button> 
+                <button type="button" class="delete-button" id="delete-button">삭제하기</button>
                 <div class="inner-box-wrapper">
                     <div class="inner-left-wrapper">
                         <div class="inner-right-title">문의사항</div>
@@ -128,7 +128,9 @@
                         <div class="inner-right-title">답변</div>
                         <div class="right-info-wrapper answer-wrapper">
                             <div class="classification-wrapper">
-                                <form action="" name="" style="width: 100%; height: fit-content;">
+<!--                                    <form id="inquiryForm" action="/admins/inquiry/detail" method="post" style="width: 100%; height: fit-content;">-->
+                                        <form method="post" action="/admins/inquiry/detail" name="inquiryForm" >
+                                    <input type="hidden" name="inquiryId" id="inquiryId" th:value="${inquiryDTO.id}" /> <!-- inquiryId 값을 숨은 필드로 추가 -->
                                     <div class="answer-header">
                                         <div class="classification">문의 답변</div>
                                         <div class="button-wrapper">
@@ -139,7 +141,7 @@
                                         </div>
                                     </div>
                                     <div class="answer-box">
-                                        <textarea name="answer" id="answer"></textarea>
+                                        <textarea name="inquiryAnswer" id="answer"></textarea>
                                     </div>
                                 </form>
                             </div>
@@ -153,5 +155,104 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/js/admin/admin.js"></script>
-<script src="/js/admin/management-board-detail.js"></script>
+<script>
+    // $(document).ready(function() {
+    //     // 삭제 버튼 클릭 시
+    //     $('.answer-button').click(function() {
+    //         var inquiryId = $('#inquiryId').val(); // 폼으로부터 inquiryId를 받아옴
+    //         console.log(inquiryId);
+    //         // inquiryId가 없는 경우 경고창을 표시하고 함수를 종료
+    //         if (!inquiryId) {
+    //             alert('문의 ID를 받아올 수 없습니다.');
+    //             return;
+    //         }
+    //
+    //         $('#send-modal').show(); // 삭제 모달창 열기
+    //
+    //         $('#confirm-btn2').click(function() { // 모달창의 확인 버튼 눌렀을 경우 데이터 전송
+    //             var data = {
+    //                 inquiryId: inquiryId
+    //             };
+    //
+    //             $.ajax({
+    //                 url: '/admins/inquiry/detail',
+    //                 type: 'PATCH',
+    //                 contentType: 'application/json',
+    //                 data: JSON.stringify(data),
+    //                 success: function (response) {
+    //                     location.reload(); // 수정 완료 후 페이지 새로고침
+    //                 },
+    //                 error: function (xhr, status, error) {
+    //                     alert('오류가 발생했습니다. 다시 시도해주세요.');
+    //                     console.log(error);
+    //                 }
+    //             });
+    //         });
+    //     });
+    // });
+
+
+</script>
+<!--<script src="/js/admin/management-board-detail.js"></script>-->
+<script>
+    $('.answer-button').on('mouseover', function(){
+        $('.airplane').attr('src', '../../static/images/admin/changed-plane.png')
+        $('.answer-button').css('border-color', '#006633b3');
+    })
+
+    $('.answer-button').on('mouseout', function(){
+        $('.airplane').attr('src', '../../static/images/admin/paper-plane.png')
+        $('.answer-button').css('border-color', '#00000029');
+    })
+
+    $('.answer-button').on('click', function(){
+        $('#send-modal').css('display', 'flex');
+    });
+
+    $('#cancel-btn2').on('click', function(){
+        $('#send-modal').hide();
+    });
+
+    $('#confirm-btn2').click(function() {
+        console.log("들어옴");
+        $('#send-modal').css('display', 'none');
+        // var inquiryId = $('#inquiry-Id').val();
+        // var answer = $('#inquiryAnswer').val(); // 답변 내용
+        // $('#inquiryForm').attr('action', '/admins/inquiry/detail/' + inquiryId);
+        var inquiryId = $('#inquiry-Id').val();
+        $('#inquiryForm').attr('action', '/admins/inquiry/detail/' + inquiryId);
+        document.inquiryForm.submit();
+        // $('#inquiryForm').submit();
+        console.log("제출됨");
+    });
+
+
+    // $('#confirm-btn2').click(function() {
+    //     console.log("들어옴");
+    //     $('#send-modal').css('display', 'none');
+    //     var inquiryId = $('#inquiryId').val(); // inquiryId 값을 가져옴
+    //     var answer = $('#answer').val(); // 답변 내용
+    //     $.ajax({
+    //         url: '/admins/inquiry/detail', // 수정 요청을 보낼 URL
+    //         type: 'POST',
+    //         data: {
+    //             inquiryId: inquiryId, // 수정 요청에 inquiryId를 포함하여 보냄
+    //             inquiryAnswer: answer // 수정 요청에 답변 내용을 포함하여 보냄
+    //         },
+    //         success: function(response) {
+    //             console.log("제출됨");
+    //             window.location.href = "/admin/inquiry/detail?update=ok"; // 수정이 완료되면 페이지를 다시 로드
+    //         },
+    //         error: function(xhr) {
+    //             console.log(xhr.responseText);
+    //         }
+    //     });
+    // });
+
+    $('#inquiryForm').on('submit', function(event) {
+        var form = event.target;
+        var inquiryId = $('#inquiryId').val();
+        form.action = form.action.replace("{inquiryId}", id);
+    });
+</script>
 </html>

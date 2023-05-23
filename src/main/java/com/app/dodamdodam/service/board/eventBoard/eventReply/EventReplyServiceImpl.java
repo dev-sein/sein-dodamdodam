@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,6 +20,7 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 @Qualifier("eventBoard")
+@Transactional
 public class EventReplyServiceImpl implements EventReplyService {
     @Autowired
     private EventBoardRepository eventBoardRepository;
@@ -40,7 +42,7 @@ public class EventReplyServiceImpl implements EventReplyService {
     /* 이벤트 게시글 댓글 수정 */
     @Override
     public void setEventReplyContent(EventReply updatedEventReply, Long replyId) {
-        eventReplyRepository.findById(replyId).ifPresent(eventReply -> eventReply.setEventReplyContent(updatedEventReply.getReplyContent()));
+        eventReplyRepository.findById(replyId).ifPresent(eventReply -> eventReply.setReplyContent(updatedEventReply.getReplyContent()));
     }
 
     /* 이벤트 게시글 댓글 삭제 */

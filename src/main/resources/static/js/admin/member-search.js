@@ -111,7 +111,6 @@ function showList(data) {
     console.log("showList 들어옴");
     let members = data.content;
     members.forEach(member => {
-        // const formattedDate = formatDate(new Date(inquiry.parentsBoardRegisterDate));
         console.log("text 들어옴");
         var text = "";
         text += `
@@ -143,3 +142,39 @@ function showList(data) {
 
 getList();
 
+
+
+/*항목 삭제*/
+$(document).ready(function() {
+    // 삭제 버튼 클릭 시
+    $('.delete-button').click(function() {
+        var selectedItems = [];
+        // 체크된 항목의 ID를 배열에 추가
+        $('input.substituted.select-member:checked').each(function() {
+            var memberId = $(this).closest('tr').find('.numbers').text();
+            selectedItems.push(parseInt(memberId));
+        });
+
+        // 선택된 항목이 없는 경우 경고창을 표시하고 함수를 종료
+        if (selectedItems.length === 0) {
+            alert('탈퇴할 회원을 선택해주세요.');
+            return;
+        }
+        $('#delete-modal').show(); //삭제 모달창 열기
+        $('#confirm-btn').click(function() { //모달창의 확인 버튼 눌렀을 경우 데이터 변경
+            $.ajax({
+                url: '/admins/member/withdraw',
+                type: 'PATCH',
+                contentType: 'application/json',
+                data: JSON.stringify(selectedItems),
+                success: function (response) {
+                    location.reload() //변경완료 후 새로고침
+                },
+                error: function (xhr, status, error) {
+                    alert('오류가 발생했습니다. 다시 시도해주세요.');
+                    console.log(error);
+                }
+            });
+        });
+    });
+});

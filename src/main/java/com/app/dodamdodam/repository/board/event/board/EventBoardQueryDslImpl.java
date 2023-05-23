@@ -113,5 +113,23 @@ public class EventBoardQueryDslImpl implements EventBoardQueryDsl {
         return query.select(eventBoard.eventReplies.size()).from(eventBoard).where(eventBoard.eventReplies.any().id.eq(replyId)).fetchOne();
     }
 
+    @Override
+    public List<EventBoard> findRecentEventBoardList_QueryDSL() {
+        return query.selectFrom(eventBoard)
+                .leftJoin(eventBoard.eventFiles).fetchJoin()
+                .orderBy(eventBoard.id.desc())
+                .limit(5)
+                .fetch();
+    }
+
+    /* 게시글 상세페이지 board 정보, reply정보 */
+    @Override
+    public Optional<EventBoard> findEventBoardAndEventRepliesById_QueryDSL(Long boardId) {
+        return Optional.ofNullable(query.select(eventBoard).from(eventBoard)
+                .leftJoin(eventBoard.eventReplies).fetchJoin()
+                .where(eventBoard.id.eq(boardId))
+                .fetchOne());
+    }
+
 
 }

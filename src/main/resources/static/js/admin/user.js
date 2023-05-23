@@ -27,6 +27,7 @@ $('tbody tr').on('click', function(e){
 
 function showModal(){
     $('.modal-whole').css('display', 'flex');
+    $('.modal').css('display', 'block');
 }
 
 function closeModal(){

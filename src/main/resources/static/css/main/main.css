@@ -551,7 +551,7 @@
     border-radius: 10px;
     transition: all 0.2s ease-in-out 0s;
     cursor: pointer;
-    background-image: url(https://static.makercenter.wadiz.kr/board/image/d3662fba-7660-49d7-997a-fe20fb368be1.png);
+    /*background-image: url(https://static.makercenter.wadiz.kr/board/image/d3662fba-7660-49d7-997a-fe20fb368be1.png);*/
     max-width: 305px;
     height: 160px;
 }

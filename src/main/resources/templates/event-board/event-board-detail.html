@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>이벤트 정보 게시판 상세</title>
-    <link rel="stylesheet" href="../../static/css/recruitment-board/recruitment-board-detail.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gugi&display=swap">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">  
-    <link rel="shortcut icon" href="/static/images/components/dodam-favicon.png">
+    <link rel="stylesheet" href="/css/recruitment-board/recruitment-board-detail.css">
+    <link rel="shortcut icon" href="/images/components/dodam-favicon.png">
 </head>
 <body>
     <div id="wrap">
@@ -52,7 +53,7 @@
                             <button type="button" class="wish-button"  aria-pressed="false">
                                 <span>
                                     <span class="wish-button-children">
-                                        <img class="heart-icon" src ="../../static/images/recruitment-board/non-heart-icon.png">
+                                        <img class="heart-icon" src ="/images/recruitment-board/non-heart-icon.png">
                                         <div>
                                             <!-- <svg viewBox="0 0 32 32" focusable="false" role="presentation" class="withIcon-icon" aria-hidden="true" style="width: 24px; height: 24px;"> -->
                                                 <!-- <path d="M22.16 4h-.007a8.142 8.142 0 0 0-6.145 2.79A8.198 8.198 0 0 0 9.76 3.998a7.36 7.36 0 0 0-7.359 7.446c0 5.116 4.64 9.276 11.6 15.596l2 1.76 2-1.76c6.96-6.32 11.6-10.48 11.6-15.6v-.08A7.36 7.36 0 0 0 22.241 4h-.085zm-5.28 21.84l-.88.8-.88-.8h-.08C8.4 19.76 4 15.84 4 11.44l-.001-.082A5.76 5.76 0 0 1 9.928 5.6a6.542 6.542 0 0 1 4.865 2.232l.486.567h1.52l.48-.56a6.548 6.548 0 0 1 4.877-2.24l.084-.001a5.76 5.76 0 0 1 5.76 5.76l-.001.085c0 4.396-4.4 8.316-11.12 14.396z"></path></svg> -->
@@ -64,9 +65,10 @@
                     </div>
                     <div class="sns-share">
                         <span>주변 분들과 함께 참가하고 싶으신가요? 페이지를 공유해보세요!</span>
-                        <a class="icon_sns_fb" target="_blank" href="https://www.facebook.com/sharer/sharer.php?app_id=190622721088710&amp;u=http://127.0.0.1:5500/templates/event-board/event-board-detail.html" title="facebook">facebook</a>
-                        <a class="icon_sns_tw" target="_blank" href="https://twitter.com/intent/tweet?text=글제목글제목%20https://127.0.0.1:5500/templates/event-board/event-board-detail.html title="twitter">twitter</a>
-                        <a href="#" onclick="clip(); return false;"><button class="icon_sns_share" id="urlCopyBtn" data-clipboard-target="#shareLink" title="공유하기" onClick="javascript:popCopyOpen();">공유하기</button>
+<!--                        <a class="icon_sns_fb" target="_blank" href="https://www.facebook.com/sharer/sharer.php?app_id=190622721088710&amp;u=http://127.0.0.1:5500/templates/event-board/event-board-detail.html" title="facebook">facebook</a>-->
+<!--                        <a class="icon_sns_tw" target="_blank" href="https://twitter.com/intent/tweet?text=글제목글제목%20https://127.0.0.1:5500/templates/event-board/event-board-detail.html title="twitter">twitter</a>-->
+                        <a href="#" onclick="clip(); return false;">
+                            <button class="icon_sns_share" id="urlCopyBtn" data-clipboard-target="#shareLink" title="공유하기" onClick="javascript:popCopyOpen();">공유하기</button>
                         </a>
                     </div>
 
@@ -109,47 +111,52 @@
                                 </p>
                             </div>
                             <p class="comment-count">
-                                <em>3</em>개의 댓글이 달려있습니다.
+                                <em><span id="reply-count" th:text="${replyCount}"></span></em>개의 댓글이 달려있습니다.
                             </p>
                             <div class="main-comment">
-                                <textarea name="" id="" placeholder="댓글을 입력하세요."></textarea>
-                                <div class="btn-complete">
-                                    <button class="btn-color">댓글달기</button>
-                                </div>
+                                <form action="/event/write-reply" id="reply-form" method="post" name="replyForm" style="height: 100%; width: 100%">
+                                    <textarea name="replyContent" id="replyContent" placeholder="댓글을 입력하세요."></textarea>
+                                    <input type="hidden" name="boardId" id="boardId" th:value="${eventBoardDetail.id}">
+                                    <div class="btn-complete">
+                                        <button class="btn-color" type="button" onclick="sendData()">댓글달기</button>
+                                    </div>
+                                </form>
                             </div>
-                            <div class="comment-list">
-                                <ul id="comment-list-detail">
-                                    <li class="top" style="display: list-item;">
-                                        <div class="comment-wrap">
-                                            <div class="comment-info">
-                                                <img src="/static/images/badge/medal_gold_winner_badge_reward_icon.png">
-                                                <span class="name">김욱성</span>
-                                                <button class="comment-util" onclick="showList(this)"></button>
-                                                <ul class="comment-util-list">
-                                                    <li>
-                                                        <button type="button" class="modify-button">수정</button>
-                                                    </li>
-                                                    <li>
-                                                        <button>삭제</button>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <p class="comment-content">둘 다 재밌음 [스포]</p>
-                                            <textarea id="" class="modify-textarea" style="display: none;">둘 다 재밌음 [스포]</textarea>
-                                            <div class="comment-date">
-                                                2023.04.23 23:56
-                                            </div>
-                                            <div class="comment-bottom" style="display:none;">
-                                                <button type="button" class="modify-cancel">취소</button>
-                                                <button type="button" class="modify-confirm">수정완료</button>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
+                            <div class="comment-list-wrapper" style="width: 100%; height: fit-content;">
+<!--                            <div class="comment-list">-->
+<!--                                <ul id="comment-list-detail">-->
+<!--                                    <li class="top" style="display: list-item;">-->
+<!--                                        <div class="comment-wrap">-->
+<!--                                            <div class="comment-info">-->
+<!--                                                <img src="/static/images/badge/medal_gold_winner_badge_reward_icon.png">-->
+<!--                                                <span class="name">김욱성</span>-->
+<!--                                                <button class="comment-util" onclick="showList(this)"></button>-->
+<!--                                                <ul class="comment-util-list">-->
+<!--                                                    <li>-->
+<!--                                                        <button type="button" class="modify-button">수정</button>-->
+<!--                                                    </li>-->
+<!--                                                    <li>-->
+<!--                                                        <button>삭제</button>-->
+<!--                                                    </li>-->
+<!--                                                </ul>-->
+<!--                                            </div>-->
+<!--                                            <p class="comment-content">둘 다 재밌음 [스포]</p>-->
+<!--                                            <textarea id="" class="modify-textarea" style="display: none;">둘 다 재밌음 [스포]</textarea>-->
+<!--                                            <div class="comment-date">-->
+<!--                                                2023.04.23 23:56-->
+<!--                                            </div>-->
+<!--                                            <div class="comment-bottom" style="display:none;">-->
+<!--                                                <button type="button" class="modify-cancel">취소</button>-->
+<!--                                                <button type="button" class="modify-confirm">수정완료</button>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
                             </div>
                         </div>
                         <div class="btn-place">
-                            <button class="btn-comment">댓글 더 보기</button>
+                            <button class="btn-comment" id="show-more-btn">댓글 더 보기</button>
                             <button class="btn-comment" style="display: none;">댓글 닫기</button>
                         </div>
                     </div>
@@ -182,14 +189,14 @@
                     <!-- //modal 영역 -->
 
 
+                </div>
+            </div> <!--wrap -->
         </div>
-    </div> <!--wrap -->
-</div>
-<textarea style="display:none;">
-</textarea>
-</body>ㄴ
+    </div>
+<textarea style="display:none;"></textarea>
+</body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="/static/js/recruitment-board/recruitment-board-detail.js"></script>
+<script src="/js/recruitment-board/recruitment-board-detail.js"></script>
 <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.min.js"
   integrity="sha384-dpu02ieKC6NUeKFoGMOKz6102CLEWi9+5RQjWSV0ikYSFFd8M3Wp2reIcquJOemx" crossorigin="anonymous">
 </script>
@@ -201,7 +208,7 @@
 $(function(){
     $('.wish-button').click(function(e){
         if($('.wish-button').attr('aria-pressed') == 'false'){
-            $(".heart-icon").attr("src", "../../static/images/recruitment-board/heart-background.png");
+            $(".heart-icon").attr("src", "/images/recruitment-board/heart-background.png");
             $('.wish-button').attr('aria-pressed','true') //하트 색 채우기
             $('.like-cancel-text').hide(); //해제 문구
             $('#like-modal').fadeIn();
@@ -213,7 +220,7 @@ $(function(){
             $('#like-modal').delay(500).fadeOut(); //사라지기
         
         }else{
-            $(".heart-icon").attr("src", "../../static/images/recruitment-board/non-heart-icon.png");
+            $(".heart-icon").attr("src", "/images/recruitment-board/non-heart-icon.png");
             $('.wish-button').attr('aria-pressed','false') //색 비우기
             $('.like-text').hide();  //찜 추가 문구
             // $('#like-modal').css({right: '-30%'}); //오->왼 슬라이드 등장
@@ -238,7 +245,6 @@ var textarea = document.createElement("textarea");
     document.body.removeChild(textarea);
 }
 
-
 /* 복사 완료 모달 */
 function popCopyOpen() {
 var modalPop = $('.modal-copy');
@@ -260,7 +266,7 @@ var delay = 400;
 /* top show-hide */
 $(window).scroll(function() {
     if($(this).scrollTop() > 200 ) {
-        console.log(topEle);
+        // console.log(topEle);
 		$('.top-btn').fadeIn();
 	} else {
 		$('.top-btn').fadeOut();
@@ -272,8 +278,194 @@ $('.top-btn').click( function() {
 	$('html, body').animate({scrollTop:0}, delay );
 	return false;
 });
+</script>
+<script th:inline="javascript">
+    // let freeBoardDetail = [[${freeBoardDetail}]];
+    // console.log(freeBoardDetail);
+
+    let nextPage = 0;
+    let boardId = $('#boardId').val();
+    let memberId = null;
+    if ([[${session.memberId}]] != null){
+        memberId = [[${session.memberId}]];
+    }
+    let checkStatus = false;
+
+    console.log(boardId);
+
+    /* 날짜 변환 (년, 월, 일) */
+    function changeDateToString(e){
+        let month = "";
+        date = new Date(e.createdDate);
+        month = date.getMonth() + 1;
+        if (month < 10){
+            month = "0" + month;
+        }
+        return date.getFullYear() + "." + month + "." + date.getDate() + " " + date.getHours() + ":" + date.getMinutes();
+    }
+
+    // ajax로 게시글 목록 불러오기(5개씩 가져옴)
+    const fetchData = () => {
+        console.log("게시글 목록(fetchData)");
+        let page = nextPage;
+        nextPage++;
+        console.log("nextPage : " + nextPage);
+        checkStatus = false;
+        $.ajax({
+            type: 'GET',
+            url: `/event/replies/${page}`,
+            success: function (result) {
+                console.log(result);
+                // showList(result); // 새로운 값을 담기
+                setTimeout(function(){checkStatus = true;},500);
+                showList(result);
+
+            },
+            error: function (error) {
+                console.log('Error fetching data:', error);
+            }
+        });
+    };
+
+    // ajax로 댓글 작성
+    const sendData = () => {
+        console.log("댓글작성(sendData)");
+        $.ajax({
+            type: 'POST',
+            url: `/event/write-reply`,
+            data: $('#reply-form').serialize(),
+            success: function (result) {
+                console.log(result);
+                $('#replyContent').val('');
+                $('#reply-count').text(result);
+                $(".comment-list-wrapper").empty();
+                nextPage = 0;
+                fetchData();
+            },
+            error: function (error) {
+                console.log('Error fetching data:', error);
+            }
+        });
+    };
+
+    // 처음에 화면에 목록 뿌려주기
+    $(document).ready(function () {
+        console.log("Ready 들어옴");
+        fetchData();
+    });
+
+    // 댓글 더 보기
+    $('#show-more-btn').on('click', function () {
+        if (checkStatus){
+            fetchData();
+        }
+    });
+
+    // ajax로 삭제하기
+    function deleteReply(e) {
+        console.log("댓글삭제(deleteReply)");
+        console.log($(e).next().val());
+        let replyId = $(e).next().val();
+
+        $.ajax({
+            type: 'POST',
+            url: `/event/delete-reply/${replyId}`,
+            success: function (result) {
+                console.log(result);
+                $(".comment-list-wrapper").empty();
+                $('#reply-count').text(result);
+                nextPage = 0;
+                fetchData();
+            },
+            error: function (error) {
+                console.log('Error fetching data:', error);
+            }
+        });
+    }
+
+    // ajax로 댓글 수정하기
+    const updateData = (e) => {
+        console.log("댓글수정(updateData)");
+        console.log($(e).next().val());
+        let replyId = $(e).next().val();
+        /**/
+        let $form = $(e).closest('.comment-wrap').find('.update-form');
+        console.log($form);
+        console.log(replyId);
+        /**/
+
+        $.ajax({
+            type: 'POST',
+            url: `/event/update-reply/${replyId}`,
+            data: $form.serialize(),
+            success: function (result) {
+                console.log(result);
+                $(".comment-list-wrapper").empty();
+                nextPage = 0;
+                fetchData();
+            },
+            error: function (error) {
+                console.log('Error fetching data:', error);
+            }
+        });
+    };
 
 
-
+    // 화면에 데이터 받아온거 뿌려주기
+    function showList(result) {
+        console.log("화면에 데이터 받아온거 뿌려주기");
+        for (let i=0; i < result.length; i++) {
+            let text = "";
+            /* 날짜 변환해서 담아둠*/
+            let date = changeDateToString(result[i]);
+            /* 리스트 하나하나의 내용 */
+            /* background-image 쪽 추가로 작업해야함, 밋밋하면 likeCount 추가 DTO에 만들어 둠 */
+            text += `
+                    <div class="comment-list">
+                        <ul id="comment-list-detail">
+                            <li class="top" style="display: list-item;">
+                                <div class="comment-wrap">
+                                    <div class="comment-info">
+                                        <img src="/images/badge/medal_gold_winner_badge_reward_icon.png">
+                                        <span class="name">${result[i].memberDTO.memberName}</span>
+                                        `;
+            /* 내가 작성한 댓글일 때에만 수정, 삭제 버튼 볼수있게 */
+            if (memberId == result[i].memberDTO.id) {
+                text += `
+                                        <button class="comment-util" onclick="showButton(this)"></button>
+                                        `;
+            }
+            text += `
+                                        <ul class="comment-util-list">
+                                            <li>
+                                                <button type="button" class="modify-button" onclick="showReplyUpdate(this)">수정</button>
+                                            </li>
+                                            <li>
+                                                <button type="button" onclick="deleteReply(this)">삭제</button>
+                                                <input type="hidden" name="replyId" value="${result[i].id}">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <p class="comment-content">${result[i].replyContent}</p>
+                                    <form class="update-form" name="updateForm" style="width: 100%; height: 100%; display: none">
+                                        <textarea class="modify-textarea" name="updatedEventReply">${result[i].replyContent}</textarea>
+                                    </form>
+                                    <div class="comment-date">
+                                        ${date}
+                                    </div>
+                                    <div class="comment-bottom" style="display:none;">
+                                        <button type="button" class="modify-cancel">취소</button>
+                                        <button type="button" class="modify-confirm" onclick="updateData(this)">수정완료</button>
+                                        <input type="hidden" name="replyId" value="${result[i].id}">
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    `;
+            /* 추가한 내용 화면에 뿌려주기 */
+            $(".comment-list-wrapper").append(text);
+        }
+    }
 </script>
 </html>

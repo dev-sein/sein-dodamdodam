@@ -115,7 +115,7 @@ function showList(data) {
         console.log("text 들어옴");
         var text = "";
         text += `
-         <tr onclick="redirectToDetail(${freeBoard.id})">
+         <tr>
                 <td>
                     <!-- 체크박스 -->
                     <div class="checkbox-wrapper-21">
@@ -126,11 +126,11 @@ function showList(data) {
                     </div>
                     <!-- 체크박스 -->
                 </td>
-                <td class="numbers">${freeBoard.id}</td>
-                <td>${freeBoard.boardTitle}</td>
-                <td>${freeBoard.memberDTO.memberName}</td>
-                <td>${freeBoard.freeCategory}</td>
-                 <td>${formatDate(new Date(freeBoard.createdDate))}</td>
+                <td onclick="redirectToDetail(${freeBoard.id})" class="numbers">${freeBoard.id}</td>
+                <td onclick="redirectToDetail(${freeBoard.id})">${freeBoard.boardTitle}</td>
+                <td onclick="redirectToDetail(${freeBoard.id})">${freeBoard.memberDTO.memberName}</td>
+                <td onclick="redirectToDetail(${freeBoard.id})">${freeBoard.freeCategory}</td>
+                 <td onclick="redirectToDetail(${freeBoard.id})">${formatDate(new Date(freeBoard.createdDate))}</td>
                 <!-- <td>{point.pointStatus}</td> -->
                 <!-- <td>2000.01.01 21:05:04</td>-->
                 <!-- <td><button class="show-detail" onclick="showModal()">상세보기</button></td> -->
@@ -147,3 +147,40 @@ getList();
 function redirectToDetail(id) {
     window.location.href = "/admins/free-board/detail/" + id;
 }
+
+
+/*항목 삭제*/
+$(document).ready(function() {
+    // 삭제 버튼 클릭 시
+    $('.delete-button').click(function() {
+        var selectedItems = [];
+        // 체크된 항목의 ID를 배열에 추가
+        $('input.substituted.select-member:checked').each(function() {
+            var boardId = $(this).closest('tr').find('.numbers').text();
+            selectedItems.push(parseInt(boardId));
+        });
+
+        // 선택된 항목이 없는 경우 경고창을 표시하고 함수를 종료
+        if (selectedItems.length === 0) {
+            alert('삭제할 항목을 선택해주세요.');
+            return;
+        }
+        $('#delete-modal').show(); //삭제 모달창 열기
+        $('#confirm-btn').click(function() { //모달창의 확인 버튼 눌렀을 경우 데이터 삭제
+            $.ajax({
+                url: '/admins/free-board/delete',
+                type: 'DELETE',
+                contentType: 'application/json',
+                data: JSON.stringify(selectedItems),
+                success: function (response) {
+                    // alert(response); // 서버로부터의 응답 메시지를 알림으로 표시(모달로 바꾸기)
+                    location.reload() //삭제완료 후 새로고침
+                },
+                error: function (xhr, status, error) {
+                    alert('오류가 발생했습니다. 다시 시도해주세요.');
+                    console.log(error);
+                }
+            });
+        });
+    });
+});
