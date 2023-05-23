@@ -40,15 +40,15 @@ public class EventBoardRepositoryTests {
     @Test
     public void saveTest(){
         /* 회원 추가 */
-//        for (int i=1; i<=10; i++) {
-//            Address address = new Address("서울시", "강남구");
-//
-//            Member member = Member.builder().memberName("테스트" + i).memberEmail("test" + i + "@naver.com").memberId("testId" + i)
-//                    .memberPassword("1234").memberPhone("01012341234").memberPoint(0).address(address)
-//                    .memberRole(Role.MEMBER).memberType(MemberType.GENERAL).memberStatus(MemberStatus.NORMAL)
-//                    .build();
-//            memberRepository.save(member);
-//        }
+        for (int i=1; i<=10; i++) {
+            Address address = new Address("서울시", "강남구");
+
+            Member member = Member.builder().memberName("테스트" + i).memberEmail("test" + i + "@naver.com").memberId("testId" + i)
+                    .memberPassword("1234").memberPhone("01012341234").memberPoint(0).address(address)
+                    .memberRole(Role.MEMBER).memberType(MemberType.GENERAL).memberStatus(MemberStatus.NORMAL)
+                    .build();
+            memberRepository.save(member);
+        }
 
         /* 이벤트 게시글 추가 */
         for(int i= 1; i<= 10; i ++){
@@ -68,7 +68,6 @@ public class EventBoardRepositoryTests {
                     .build();
             memberRepository.findById(1L).ifPresent(member1 -> eventBoard1.setMember(member1));
 //            eventBoard.setMember(member);
-
 //            for(int j = 0; j < 5; j ++){
 //                EventFile eventFile = new EventFile(UUID.randomUUID().toString(), "test" + i+1, 10L, eventBoard, 500, "");
 //                eventFileRepository.save(eventFile);
@@ -81,18 +80,18 @@ public class EventBoardRepositoryTests {
     /* 이벤트 게시글 상세글 */
     @Test
     public void findByIdTest(){
-        eventBoardRepository.findById(1L).map(EventBoard::toString).ifPresent(log::info);
+        eventBoardRepository.findById(201L).map(EventBoard::toString).ifPresent(log::info);
     }
 
     /* 이벤트 게시글 삭제 */
     @Test
     public void deleteTest(){
-        eventBoardRepository.findById(101L).ifPresent(eventBoardRepository::delete);
+        eventBoardRepository.findById(201L).ifPresent(eventBoardRepository::delete);
     }
 
     @Test
     public void findEventBoardById_QueryDSLTest(){
-        eventBoardRepository.findEventBoardById_QueryDSL(1L)
+        eventBoardRepository.findEventBoardById_QueryDSL(201L)
                 .ifPresent(eventBoard -> log.info(eventBoard.toString()));
     }
 
@@ -101,7 +100,7 @@ public class EventBoardRepositoryTests {
     public void eventReplySaveTest(){
         for(int i= 1; i<= 10; i ++) {
             EventReply eventReply = new EventReply("댓글1" + i);
-            eventReply.setEventBoard(eventBoardRepository.findById(201L).get());
+            eventReply.setEventBoard(eventBoardRepository.findById(31L).get());
             eventReplyRepository.save(eventReply);
         }
     }
@@ -118,10 +117,16 @@ public class EventBoardRepositoryTests {
 
     @Test
     public void updateTest(){
-        eventBoardRepository.findById(101L).ifPresent(eventBoard -> {
+        eventBoardRepository.findById(31L).ifPresent(eventBoard -> {
             eventBoard.setBoardTitle("수정제목1");
             eventBoard.setBoardContent("수정내용1");
         });
+    }
+
+    /* 자유 게시판 댓글 수정 */
+    @Test
+    public void updateEventReplyTest(){
+        eventBoardRepository.findById(45L).ifPresent(eventBoard -> eventBoard.getEventReplies().get(0).setReplyContent("수정된 댓글"));
     }
 
 }

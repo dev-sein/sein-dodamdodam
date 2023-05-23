@@ -49,32 +49,32 @@ PurchaseBoardRepositoryTests {
     @Autowired
     private PurchaseReviewRepository purchaseReviewRepository;
 
-   /* @Test
-    public void saveTest(){
-        Address address = new Address("test-address", "test-detail");
-        Member member = new Member( 1000L, "test1234", "1234", "구매테스트", "test1234@gmail.com", "01012345678", address, MemberStatus.NORMAL, MemberType.GENERAL, Role.MEMBER);
+    /* @Test
+     public void saveTest(){
+         Address address = new Address("test-address", "test-detail");
+         Member member = new Member( 1000L, "test1234", "1234", "구매테스트", "test1234@gmail.com", "01012345678", address, MemberStatus.NORMAL, MemberType.GENERAL, Role.MEMBER);
 
-        memberRepository.save(member);
+         memberRepository.save(member);
 
-        for (int i = 0; i < 10; i++) {
+         for (int i = 0; i < 10; i++) {
 
 
-            PurchaseBoard purchaseBoard = new PurchaseBoard("판매 게시글" + i, "판매 게시글 내용" + i);
-            purchaseBoard.setMember(member);
+             PurchaseBoard purchaseBoard = new PurchaseBoard("판매 게시글" + i, "판매 게시글 내용" + i);
+             purchaseBoard.setMember(member);
 
-            Product product = new Product("테스트상품명" + i, 10000 * i, Long.valueOf(100 * i), purchaseBoard);
+             Product product = new Product("테스트상품명" + i, 10000 * i, Long.valueOf(100 * i), purchaseBoard);
 
-            productRepository.save(product);
+             productRepository.save(product);
 
-            for (int j = 0; j < 5; j++) {
-                PurchaseFile purchaseFile = new PurchaseFile("test" + (i+1) + ".png", UUID.randomUUID().toString(), "test" + (i+1), 1024L, purchaseBoard);
-                purchaseFileRepository.save(purchaseFile);
-            }
+             for (int j = 0; j < 5; j++) {
+                 PurchaseFile purchaseFile = new PurchaseFile("test" + (i+1) + ".png", UUID.randomUUID().toString(), "test" + (i+1), 1024L, purchaseBoard);
+                 purchaseFileRepository.save(purchaseFile);
+             }
 
-            purchaseBoardRepository.save(purchaseBoard);
-        }
+             purchaseBoardRepository.save(purchaseBoard);
+         }
 
-    }*/
+     }*/
     @Test
     public void productSaveTest(){
         PurchaseBoard purchaseBoard = purchaseBoardRepository.findById(23L).get();
