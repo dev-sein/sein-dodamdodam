@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -13,9 +13,9 @@
   rel="stylesheet"
 />
 <link rel="shortcut icon" href="/static/images/components/dodam-favicon.png">
-<link rel="stylesheet" href="/css/sell/sell-detail.css" >
-<link rel="stylesheet" href="/css/sell/sell-detail-second.css" >
-<link rel="stylesheet" href="/css/sell/sell-review.css">
+<link rel="stylesheet" href="../../static/css/sell/sell-detail.css" >
+<link rel="stylesheet" href="../../static/css/sell/sell-detail-second.css" >
+<link rel="stylesheet" href="../../static/css/sell/sell-review.css">
 
   </head>
   <body>
@@ -84,17 +84,17 @@
                 <div class="DetailInfoHeader_container__2EKRL">
                   <h2 class="DetailInfoHeader_textBlind__2owz5">스토어 스토리 상세페이지</h2>
                   <div class="DetailInfoHeader_searchInfoWrapper__1R1Pn">
-                    <div class="ProjectSearchTags_container__7YZNA" >
+                    <div th:if="${session.memberId != null}" class="ProjectSearchTags_container__7YZNA" >
                       <a
                         class="ProjectSearchTags_category__3ofgG ProjectSearchTags_gaElement__1mZHZ"
-                        href="/web/wcampaign/search?category=288,sc002"
+                        th:href="/purchase/update/${id}"
                         style="position: absolute;
                         right: 34px;"
                         >수정</span
                         ></a>
                         <a
                         class="ProjectSearchTags_category__3ofgG ProjectSearchTags_gaElement__1mZHZ"
-                        href="/web/wcampaign/search?category=288,sc002"
+                        th:href="/purchase/delete/${id}"
                         style="position: absolute;
                         right: 0px;"
                         ><span aria-label="카테고리" >삭제</span
@@ -104,8 +104,8 @@
                     </div>
                   </div>
                   <div class="DetailInfoHeader_titleInfo__2nx8Q">
-                    <h3 class="DetailInfoHeader_title__i0kaY">
-                      블루라이트 차단 렌즈+풀 티타늄 티에어 명품 안경테
+                    <h3 class="DetailInfoHeader_title__i0kaY" th:text="${boardTitle}">
+<!--                      블루라이트 차단 렌즈+풀 티타늄 티에어 명품 안경테-->
                     </h3>
                   </div>
                   <div class="DetailInfoHeader_participationInfo__1FHhm">
@@ -117,18 +117,18 @@
                           class="RatingScore_container__AeQ_I RatingScore_smTitle__1OhOH DetailInfoHeader_score__3mi3k"
                         >
                           <div class="RatingScore_icon__rIS_k"></div>
-                          <span class="RatingScore_score__2a-SN">4.5</span>
+                          <span class="RatingScore_score__2a-SN">4.5 이건 나중에</span>
                         </div>
                        </a
                       >
                     </div>
                     <div class="DetailInfoHeader_orderInfo__3SR8a">
-                      <span class="DetailInfoHeader_text__2P224">12명</span>구매
+                      <span class="DetailInfoHeader_text__2P224">12명 이것도 나중에</span>구매
                     </div>
                   </div>
                   <div class="DetailInfoHeader_buyInfo__160ZZ">
                     <em class="DetailInfoHeader_price__2PVzf"
-                      ><span>65,000</span><span class="DetailInfoHeader_unit__2s2Vz">원</span></em
+                      ><span th:text="productDTO.productPrice">65,000</span><span class="DetailInfoHeader_unit__2s2Vz">원</span></em
                     >
                   </div>
                   <div class="DetailInfoHeader_productInfo__2Sqwq">
@@ -139,7 +139,7 @@
                           <div class="WaDelivery_container__1rUdD WaDelivery_md__3zQ7U">
                             <div class="WaDelivery_infoBox__-KOnU">
                               <span class="WaDelivery_text__2E3D-"
-                                >15개 남았습니다.</span
+                                >15개 남았습니다. 나중에</span
                               >
                               <div class="WaDelivery_infoFree__2vg5K">
                                 <div class="DetailInfoHeader_shippingChargeContainer__1VbQ9">
@@ -169,7 +169,7 @@
                   </div>
                 </div>
                 <!-- 구매하기 -->
-                <div class="ProductBuyInfo_container__1nPti undefined" style=" position:relative; top: 22px;">
+                <div class="ProductBuyInfo_container__1nPti undefined" style=" position:relative; top: 132px;">
                   <div class="ProductFloatButton_container__2jWfi">
                     <button
                       rel="noreferrer noopener"
@@ -184,7 +184,7 @@
                 </div>
 
                 <!-- 문의하기 -->
-                <div class="ProductBuyInfo_container__1nPti undefined" style=" position:relative; top: 22px;">
+                <!--<div class="ProductBuyInfo_container__1nPti undefined" style=" position:relative; top: 22px;">
                   <div class="ProductFloatButton_container__2jWfi">
                     <button
                       rel="noreferrer noopener"
@@ -199,7 +199,7 @@
                       >
                     </button>
                   </div>
-                </div>
+                </div>-->
                 <!-- 문의하기 끝 -->
 
                 <div class="ProductBuyInfo_container__1nPti undefined" style="position:relative; top:22px; display: none;">
@@ -278,9 +278,9 @@
                     </div>
                     <div class="StoreGuide_storeGuide__1xzFN">
                       <img
-                        alt="팬들이 인정한 성공펀딩 집합샵 가이드"
+                        th:alt="${purchaseFileDTOs[1].fileOriginalName}"
                         class="StoreGuide_image__Lk8Bn"
-                        src="https://static.wadiz.kr/main/media/store-wa-delivery-guide-pc.e7e38062.png"
+                        th:src=""
                       />
                     </div>
                     <div class="ProjectChangeNotice_container__3tNIH">

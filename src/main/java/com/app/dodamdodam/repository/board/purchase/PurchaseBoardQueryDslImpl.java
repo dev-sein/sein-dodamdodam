@@ -56,7 +56,7 @@ public class PurchaseBoardQueryDslImpl implements PurchaseBoardQueryDsl {
                         .fetchJoin()
                         .join(purchaseBoard.member)
                         .fetchJoin()
-                        .join(purchaseBoard.purchaseFiles)
+                        .leftJoin(purchaseBoard.purchaseFiles)
                         .fetchJoin()
                         .where(purchaseBoard.id.eq(boardId))
                         .fetchOne()

@@ -33,6 +33,8 @@ public class PurchaseBoardServiceImpl implements PurchaseBoardService {
     private final PurchaseFileRepository purchaseFileRepository;
     private final ProductRepository productRepository;
 
+
+    /*게시글 등록*/
     @Override
     public void register(PurchaseBoardDTO purchaseBoardDTO, Long memberId) {
         ProductDTO productDTO = purchaseBoardDTO.getProductDTO();
@@ -77,6 +79,7 @@ public class PurchaseBoardServiceImpl implements PurchaseBoardService {
 
     }
 
+    /*게시글 목록*/
     @Override
     public Slice<PurchaseBoardDTO> getPurchaseBoardsWithSearch(PurchaseBoardSearch purchaseBoardSearch, Pageable pageable) {
         Slice<PurchaseBoard> purchaseBoards = purchaseBoardRepository.findAllWithSearch_QueryDSL(purchaseBoardSearch, pageable);
@@ -87,6 +90,17 @@ public class PurchaseBoardServiceImpl implements PurchaseBoardService {
 
 
         return new SliceImpl<>(purchaseBoardDTOS, pageable, hasNext);
+    }
+
+    /*게시글 조회*/
+    @Override
+    public PurchaseBoardDTO getPurchaseBoard(Long boardId){
+        Optional<PurchaseBoard> optionalPurchaseBoard = purchaseBoardRepository.findPurchaseBoardById_QueryDSL(boardId);
+        PurchaseBoardDTO purchaseBoardDTO = null;
+        if (optionalPurchaseBoard.isPresent()){
+            purchaseBoardDTO = toPurchaseBoardDTO(optionalPurchaseBoard.get());
+        }
+        return purchaseBoardDTO;
     }
 
     /* 내가 작성한 판매 게시글 목록 */

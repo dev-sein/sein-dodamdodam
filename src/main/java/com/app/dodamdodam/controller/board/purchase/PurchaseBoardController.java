@@ -79,9 +79,8 @@ public class PurchaseBoardController {
 
     @GetMapping("detail/{id}")
     public String getPurchaseBoardDetail(@PathVariable("id") Long boardId, Model model){
-
-//        purchaseBoardService.get
-//        model.addAttribute()
+        PurchaseBoardDTO purchaseBoardDTO = purchaseBoardService.getPurchaseBoard(boardId);
+        model.addAttribute(purchaseBoardDTO);
 
         return "sell-board/sell-detail";
     }

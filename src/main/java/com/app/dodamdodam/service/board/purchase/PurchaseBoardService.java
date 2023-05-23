@@ -15,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public interface PurchaseBoardService {
@@ -23,6 +24,9 @@ public interface PurchaseBoardService {
 
 //    내가 작성한 판매 게시글 목록
     public List<PurchaseBoardFileDTO> getPurchaseBoardListByMemberId(Pageable pageable, Long memberId);
+
+//    게시글 상세보기
+    public PurchaseBoardDTO getPurchaseBoard(Long boardId);
 
 //    저장
     public void register(PurchaseBoardDTO purchaseBoardDTO, Long memberId);
