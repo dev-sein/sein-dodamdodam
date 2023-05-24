@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public interface RecruitmentReplyService {
     /* 댓글 작성 */
-    public void saveRecruitmentReply(RecruitmentReply recruitmentReply, Long boardId, Long memberId);
+    public void saveRecruitmentBoardReply(RecruitmentReply recruitmentReply, Long boardId, Long memberId);
 
     /* 댓글 수정 */
     public void setRecruitmentReplyContent(RecruitmentReply recruitmentReply, Long replyId);

@@ -85,7 +85,7 @@ public class MemberRepositoryTests {
 //    세션에 담긴 id 값으로 회원정보 가져오기
     @Test
     public void findByIdTest(){
-        memberRepository.findById(2L).ifPresent(member -> log.info(member.toString()));
+        memberRepository.findById(1L).ifPresent(member -> log.info(member.toString()));
     }
 
 //    세션에 담긴 id 값으로 회원정보 가져오기(이 유저가 참가한 회수가 이미 있는데 DTO로 참가 회수 넣어서 만들었는데 어떻게 해야할지 애매함)
@@ -143,7 +143,7 @@ public class MemberRepositoryTests {
 //    회원 탈퇴
     @Test
     public void deleteMemberByIdTest(){
-        memberRepository.findById(3L).ifPresent(member -> memberRepository.delete(member));
+        memberRepository.findById(1L).ifPresent(member -> memberRepository.delete(member));
     }
 
 //    아이디 찾기
