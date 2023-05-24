@@ -170,6 +170,9 @@ public class RecruitmentBoardServiceImpl implements RecruitmentBoardService {
     @Override
     public void getRecruitment(Long boardId, Long memberId){
 
+        log.info("boardId :" + boardId);
+        log.info("memberId :" + memberId);
+
         Optional<Member> memberOptional = memberRepository.findById(memberId);
         Member member = null;
 
@@ -177,10 +180,12 @@ public class RecruitmentBoardServiceImpl implements RecruitmentBoardService {
         RecruitmentBoard recruitmentBoard = null;
 
         if(recruitmentBoardOptional.isPresent()){
+            log.info("들어옴...??");
             recruitmentBoard = recruitmentBoardOptional.get();
         }
 
         if(memberOptional.isPresent()){
+            log.info("들어옴...??>>>");
             member = memberOptional.get();
         }
 
