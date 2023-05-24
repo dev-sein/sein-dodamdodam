@@ -185,7 +185,11 @@
     let boardDetail = [[${boardDetail}]];
 
     let boardId = boardDetail.id;
-    let memberId = [[${session.memberId}]];
+
+    let memberId = null;
+    if ([[${session.memberId}]] != null){
+        memberId = [[${session.memberId}]];
+    }
 
     console.log("memberId : " + memberId);
     console.log(boardId);
@@ -195,11 +199,8 @@
 <script>Kakao.init('e21d13e33dbb10932785f7663d4603f1'); // 사용하려는 앱의 JavaScript 키 입력</script>
 <script th:inline="javascript">
     let nextPage = 0;
-    let boardId = $('#boardId').val();
-    let memberId = null;
-    if ([[${session.memberId}]] != null){
-        memberId = [[${session.memberId}]];
-    }
+    // let boardId = $('#boardId').val();
+
     let checkStatus = false;
 
     console.log("게시물 id : " + boardId);

@@ -56,7 +56,7 @@ public class RecruitmentBoardController {
     //    모집 게시판 상세
     @GetMapping("detail/{boardId}")
     public String recruitmentBoardDetail(Model model, @PathVariable(value = "boardId") Long boardId, HttpSession session){
-        session.setAttribute("memberId", 1L);
+//        session.setAttribute("memberId", 1L);
         Long memberId = (Long)session.getAttribute("memberId");
         log.info("모집 게시판 상세 들어옴");
         model.addAttribute("boardDetail", recruitmentBoardService.getRecruitmentBoardDetailByBoardId(boardId));
@@ -163,6 +163,7 @@ public class RecruitmentBoardController {
         log.info("모집 게시판 댓글 : " + replyContent);
         log.info("게시판 ID : " + boardId);
         Long memberId = (Long)session.getAttribute("memberId");
+        log.info("memberId : " + memberId);
         recruitmentReplyService.saveRecruitmentBoardReply(recruitmentReply, boardId, memberId);
         Long replyCount = recruitmentReplyService.getRecruitmentRepliesCountByBoardId(PageRequest.of(0, 5), boardId);
         return replyCount;
