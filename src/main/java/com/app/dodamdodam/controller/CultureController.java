@@ -18,4 +18,11 @@ public class CultureController {
         log.info("문화공간 게시판 들어옴");
         return "culture/culture-space";
     }
+
+    /* 문화공간 게시판 */
+    @GetMapping("service")
+    public String comingSoon(){
+        log.info("문화공간 게시판 들어옴");
+        return "error/coming-soon";
+    }
 }

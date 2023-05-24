@@ -1,14 +1,9 @@
 package com.app.dodamdodam.service.board.recruitmentBoard.recruitmentReply;
 
-import com.app.dodamdodam.domain.FreeReplyDTO;
 import com.app.dodamdodam.domain.RecruitmentReplyDTO;
-import com.app.dodamdodam.entity.free.FreeReply;
-import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
 import com.app.dodamdodam.entity.recruitment.RecruitmentReply;
-import com.app.dodamdodam.repository.board.free.FreeBoardRepository;
 import com.app.dodamdodam.repository.board.recruitment.RecruitmentBoardRepository;
 import com.app.dodamdodam.repository.member.MemberRepository;
-import com.app.dodamdodam.repository.reply.freeReply.FreeReplyRepository;
 import com.app.dodamdodam.repository.reply.recruitmentReply.RecruitmentReplyRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
