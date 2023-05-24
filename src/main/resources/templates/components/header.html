@@ -11,14 +11,14 @@
     <title>header</title>
 </head>
 <body>
-        <header th:fragment="header-dodam" class="header">
+    <header th:fragment="header-dodam" class="header">
         <div class="web-header">
             <div class="web-header-large">
                 <header class="header-wrapper">
                     <div class="header-container">
                         <ul class="header-menu-category-ul">
                             <li class="header-menu-category-li"><a
-                                class="header-menu-category-a" href="/templates/main/main.html">
+                                class="header-menu-category-a"onclick="location.href='/home'">
                                     <h1 class="wadiz-logo">
                                         <span>도담도담</span>
                                     </h1>
@@ -31,39 +31,49 @@
                                 class="header-menu-category-a" onclick="location.href='/culture/culture-space'"> <span>문화공간</span>
                             </a></li>
                             <li class="header-menu-category-li"><a
-                                class="header-menu-category-a" onclick="location.href='/event/list'"> <span>이벤트 정보</span>
+                                class="header-menu-category-a" onclick="location.href='/service'"> <span>이벤트 정보</span>
                             </a></li>
                             <li class="header-menu-category-li"><a
-                                class="header-menu-category-a"onclick="location.href='/recruitment/free'"><span>도담게시판</span>
+                                class="header-menu-category-a"onclick="location.href='/recruitment/list'"><span>도담게시판</span>
                             </a></li>
                             <li class="header-menu-category-li"><a
                                 class="header-menu-category-a" onclick="location.href='/free/list'"> <span>자유게시판</span>
                             </a></li>
                             <li class="header-menu-category-li"><a
-                                class="header-menu-category-a" onclick="location.href='/purchase/list'"><span>판매게시판</span>
+                                class="header-menu-category-a" onclick="location.href='/service'"><span>판매게시판</span>
                             </a></li>
                             <li class="header-menu-category-li"><a
                                 class="header-menu-category-a" onclick="location.href='/helpcenter'"> <span>고객센터</span>
                             </a></li>
                         </ul>
                         <div class="web-header-utils">
-                            <div class="buttonWrap headerButton">
-                                <button class="listButton logoutButton">
-                                </button>
-                            </div>
-                            <div class="header-user-div">
-                            <div class="header-user-container">
-                                <button type="button" class="header-user-button" onclick="location.href='/member/login'">로그인</button>
-                                <button data-event="iam.signup" class="header-user-button" onclick="location.href='/member/join'">회원가입</button>
-                            </div>
-                            </div>
+                            <!-- 로그아웃 상태 -->
+                            <th:block sec:authorize="!isAuthenticated()">
+                                <div class="header-user-div">
+                                    <div class="header-user-container">
+                                        <button type="button" class="header-user-button" onclick="location.href='/member/login'">로그인</button>
+                                        <button data-event="iam.signup" class="header-user-button" onclick="location.href='/member/join'">회원가입</button>
+                                    </div>
+                                </div>
+                            </th:block>
+                            <!-- 로그인 상태 -->
+                            <th:block sec:authorize="isAuthenticated()">
+                                <div class="header-user-div">
+                                    <div class="header-user-container">
+                                        <div class="user-text" th:text="${session.member.memberName}">박다예</div>
+                                    </div>
+                                </div>
+                                <div class="buttonWrap headerButton">
+                                    <button class="listButton logoutButton"></button>
+                                </div>
+                            </th:block>
                             <div class="web-header-funding-open funding-open">
                                 <div>
                                     <div>
-                                        <button class="header-make-button header-make-button2 header-make-button3 funding-open-button" type="button">
+                                        <button class="header-make-button header-make-button2 header-make-button3 funding-open-button" type="button" onclick="location.href='/recruitment/list'">
                                             <span> 
                                                 <span class="header-make-project-span">
-                                                    이벤트 참여하기
+                                                    도담 참여하기
                                                 </span>
                                             </span>
                                         </button>
