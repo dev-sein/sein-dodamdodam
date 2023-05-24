@@ -47,10 +47,6 @@
                             </a></li>
                         </ul>
                         <div class="web-header-utils">
-                            <div class="buttonWrap headerButton">
-                                <button class="listButton logoutButton">
-                                </button>
-                            </div>
                             <!-- 로그아웃 상태 -->
                             <th:block sec:authorize="!isAuthenticated()">
                                 <div class="header-user-div">
@@ -66,6 +62,9 @@
                                     <div class="header-user-container">
                                         <div class="user-text" th:text="${session.member.memberName}">박다예</div>
                                     </div>
+                                </div>
+                                <div class="buttonWrap headerButton">
+                                    <button class="listButton logoutButton"></button>
                                 </div>
                             </th:block>
                             <div class="web-header-funding-open funding-open">
