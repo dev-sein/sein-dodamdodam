@@ -21,6 +21,12 @@ public class CustomError implements ErrorController {
         }
         return "/error/500";
     }
+
+
+    @GetMapping("/service")
+    public String comingSoon(){
+        return "error/coming-soon";
+    }
 }
 
 
