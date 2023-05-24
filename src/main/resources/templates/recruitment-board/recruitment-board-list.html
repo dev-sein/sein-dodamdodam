@@ -11,8 +11,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">  
     <link rel="shortcut icon" href="/images/components/dodam-favicon.png">
     <link rel="stylesheet" href="/css/free-board/modal.css">
+    <link rel="stylesheet" href="/css/components/header.css">
+    <link rel="stylesheet" href="/css/components/footer.css">
 </head>
 <body>
+<div th:insert="~{/components/header :: header-dodam}"></div>
 <!--모달창-->
 <div id="myModal" class="modal" th:if="${#strings.equals(param.login, 'false')}">
     <div class="modal-content">
@@ -549,9 +552,10 @@
         </main>
 
     </div> <!-- page container -->
-
+<div th:insert="~{/components/footer :: footer}"></div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="/js/components/chat-modal"></script>
 <script th:inline="javascript">
     let nextPage = 0;
     let checkStatus = false;

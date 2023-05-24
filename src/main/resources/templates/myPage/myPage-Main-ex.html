@@ -17,8 +17,11 @@
     <link rel="stylesheet" href="/css/myPage/myPage-calendar.css">
     <!-- 캘린더 누르면 나오는 박스 css -->
     <link rel="stylesheet" href="/css/myPage/calendar.css" />
+    <link rel="stylesheet" href="/css/components/header.css">
+    <link rel="stylesheet" href="/css/components/footer.css">
 </head>
 <body>
+<div th:insert="~{/components/header :: header-dodam}"></div>
 <div class="MainWrapper_content__GZkTa">
     <div class="MyWadizPage_myWadizPage__wOTdS">
         <div class="MyWadizPage_profileBackground__T_LTr" aria-hidden="true"></div>
@@ -479,8 +482,10 @@
     </div>
 </div>
 <!-- 모달 끝 -->
+<div th:insert="~{/components/footer :: footer}"></div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/js/components/chat-modal"></script>
 <script src="/js/myPage/myPage-main.js"></script>
 <script src="/js/myPage/myPage-calendar.js"></script>
 </html>

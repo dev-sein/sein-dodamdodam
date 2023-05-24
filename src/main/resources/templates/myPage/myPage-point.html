@@ -13,8 +13,11 @@
     <link rel="stylesheet" href="/css/myPage/myPage-point.css" />
     <link rel="stylesheet" href="/css/myPage/myPage-banner.css" >
     <link rel="shortcut icon" href="/static/images/components/dodam-favicon.png">
+      <link rel="stylesheet" href="/css/components/header.css">
+      <link rel="stylesheet" href="/css/components/footer.css">
   </head>
   <body>
+  <div th:insert="~{/components/header :: header-dodam}"></div>
     <div id="wadizContainer">
       <div id="mypageWrap">
         <div class="mybenefit-wrap">
@@ -92,8 +95,10 @@
         </div>
       </div>
     </div>
+  <div th:insert="~{/components/footer :: footer}"></div>
   </body>
   <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="/js/components/chat-modal"></script>
   <script th:inline="javascript">
       points = [[${points}]];
       console.log(points);

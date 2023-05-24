@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -15,8 +15,11 @@
     <link rel="stylesheet" href="../../static/css/myPage/myPage-payment.css" />
     <link rel="stylesheet" href="../../static/css/myPage/myPage-rankModal.css" />
     <link rel="shortcut icon" href="/static/images/components/dodam-favicon.png">
+      <link rel="stylesheet" href="/css/components/header.css">
+      <link rel="stylesheet" href="/css/components/footer.css">
   </head>
   <body>
+  <div th:insert="~{/components/header :: header-dodam}"></div>
     <div id="wadizContainer">
       <div id="mypageWrap">
         <div class="mybenefit-wrap">
@@ -138,5 +141,7 @@
         </div>
       </div>
     </div>
+  <div th:insert="~{/components/footer :: footer}"></div>
   </body>
+  <script src="/js/components/chat-modal"></script>
 </html>

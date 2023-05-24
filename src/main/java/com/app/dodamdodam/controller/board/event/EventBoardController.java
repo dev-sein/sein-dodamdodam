@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -97,6 +98,21 @@ public class EventBoardController {
         log.info(eventBoardDTO.toString());
         Long memberId = (Long) session.getAttribute("memberId");
         eventBoardService.register(eventBoardDTO, memberId);
+    }
+
+    //    자유 게시글 작성 로그인 확인
+    @GetMapping("write-board-check")
+    public RedirectView checkLoginForWriteBoard(HttpSession session){
+        Long memberId = (Long)session.getAttribute("memberId");
+//        로그인 상태가 아니라면
+        if (memberId == null){
+//            다시 리스트로 보내면서 로그인 해달라는 모달 띄우게 param 으로 값 보내기
+            return new RedirectView("/event/list?login=false");
+//            로그인 상태라면
+        } else {
+//            작성 페이지로
+            return new RedirectView("/event/write");
+        }
     }
 
 
