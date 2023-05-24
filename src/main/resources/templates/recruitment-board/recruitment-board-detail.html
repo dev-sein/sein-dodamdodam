@@ -120,7 +120,7 @@
                                     </p>
                                 </div>
                                 <p class="comment-count">
-                                    <em th:text="${replyCount}">3</em>개의 댓글이 달려있습니다.
+                                    <em id="reply-count" th:text="${replyCount}">3</em>개의 댓글이 달려있습니다.
                                 </p>
                                 <div class="main-comment">
                                     <form action="/recruitment/write-reply" id="reply-form" method="post" name="replyForm" style="height: 100%; width: 100%">
