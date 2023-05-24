@@ -4,6 +4,7 @@ import com.app.dodamdodam.domain.EventBoardDTO;
 import com.app.dodamdodam.domain.EventFileDTO;
 import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.event.EventFile;
+import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.repository.board.event.board.EventBoardRepository;
 import com.app.dodamdodam.repository.board.event.file.EventFileRepository;
 import com.app.dodamdodam.repository.member.MemberRepository;
@@ -45,11 +46,14 @@ public class EventBoardServiceImpl implements EventBoardService {
     public void register(EventBoardDTO eventBoardDTO, Long memberId) {
         List<EventFileDTO> eventFileDTOS = eventBoardDTO.getEventFileDTOS();
 
-        memberRepository.findById(memberId).ifPresent(
-                member -> eventBoardDTO.setMemberDTO(toMemberDTO(member))
-        );
+        Optional<Member> optionalMember = memberRepository.findById(memberId);
+        Member member = null;
+        if (optionalMember.isPresent()) member = optionalMember.get();
 
-        EventBoard eventBoard = eventBoardRepository.save(toEventBoardEntity(eventBoardDTO));
+        EventBoard eventBoard = toEventBoardEntity(eventBoardDTO);
+        eventBoard.setMember(member);
+
+        eventBoardRepository.save(eventBoard);
 
         if(eventFileDTOS != null){
             for (int i = 0; i < eventFileDTOS.size(); i++) {

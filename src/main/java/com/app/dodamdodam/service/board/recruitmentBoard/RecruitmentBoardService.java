@@ -140,7 +140,6 @@ public interface RecruitmentBoardService {
                 .id(recruitmentBoardDTO.getId())
                 .boardTitle(recruitmentBoardDTO.getBoardTitle())
                 .boardContent(recruitmentBoardDTO.getBoardContent())
-                .member(toMemberEntity(recruitmentBoardDTO.getMemberDTO()))
                 .recruitmentSubtitle(recruitmentBoardDTO.getRecruitmentSubtitle())
                 .recruitmentAddress(recruitmentBoardDTO.getRecruitmentAddress())
                 .recruitmentAddressDetail(recruitmentBoardDTO.getRecruitmentAddressDetail())

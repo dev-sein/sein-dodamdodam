@@ -21,7 +21,7 @@ public class AccessDeniedHandlerImpl implements AccessDeniedHandler {
         log.error("접근 권한 없음");
 //        UserDetail userDetail = (UserDetail)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        response.sendRedirect(REDIRECT_URL);
+        response.sendError(403);
     }
 }
 

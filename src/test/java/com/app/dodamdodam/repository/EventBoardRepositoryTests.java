@@ -40,6 +40,7 @@ public class EventBoardRepositoryTests {
     @Test
     public void saveTest() {
         /* 회원 추가 */
+        Address address = new Address("서울시", "강남구");
 //        for (int i=1; i<=10; i++) {
 //            Address address = new Address("서울시", "강남구");
 //
@@ -76,7 +77,6 @@ public class EventBoardRepositoryTests {
 //            eventBoardRepository.save(eventBoard1);
 //        }
         for (int i=1; i<=10; i++) {
-            Address address = new Address("서울시", "강남구");
 
             Member member = Member.builder().memberName("테스트" + i).memberEmail("test" + i + "@naver.com").memberId("testId" + i)
                     .memberPassword("1234").memberPhone("01012341234").memberPoint(0).address(address)
@@ -90,6 +90,7 @@ public class EventBoardRepositoryTests {
             EventBoard eventBoard1 = EventBoard.builder()
                     .boardTitle("이벤트 게시글 제목" + i)
                     .boardContent("이벤트 게시글 내용" + i)
+                    .address(address)
                     .eventBusinessEmail("test1@naver.com")
                     .eventBusinessName("기업이름" + i)
                     .eventBusinessNumber("10000" + i)
