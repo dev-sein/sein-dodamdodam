@@ -1299,3 +1299,80 @@ div.banner div {
     width: 33.3333%;
     left: 0%;
 }
+
+
+/* 모달 창 */
+/* 모달창 스타일 */
+/* 전체 페이지 스타일 */
+
+/* 모달창 스타일 */
+.main-modal {
+    /* 모달창은 처음에는 보이지 않도록 설정 */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4); /* 배경은 반투명한 검은색으로 설정 */
+    align-items: center;
+    /* display: flex; */
+    top: 0px;
+    display: none;
+    /*font-family: 'TheJamsil5Bold';*/
+    z-index: 9999;
+}
+
+/* 모달창 내용 스타일 */
+.modal-content {
+    background-color: #fff;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 30%;
+    height: 211px;
+    position: relative;
+    top: 50%;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+    color: black;
+    font-font: 'Noto Sans KR';
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.modal-content p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+/* 모달창 안의 버튼들 스타일 */
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.modal-buttons button {
+    background-color: #fff;
+    color: #444;
+    border: 1px solid #aaa;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    font-family: 'TheJamsil5Bold';
+}
+
+.modal-buttons button:hover {
+    background-color: #006633;
+    color: #fff;
+    border: 0;
+}
+/* 모달 창 */

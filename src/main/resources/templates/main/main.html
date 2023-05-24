@@ -14,6 +14,18 @@
     <link rel="shortcut icon" href="/images/components/dodam-favicon.png">
 </head>
 <body>
+<div id="main-modal" class="main-modal" style="display:block;">
+    <div class="modal-content">
+        <p>본 사이트는 학습용 사이트이므로<br>
+        회원가입 및 서비스 이용을 금지합니다.<br>
+        위 내용을 무시하고 서비스 이용 중 손해 발생 시<br>
+            저희 도담도담측은 책임지지 않습니다.<br></p>
+        <div class="modal-buttons">
+            <button id="confirm-btn">동의합니다</button>
+        </div>
+    </div>
+</div>
+
     <header>
         <div class="web-header">
             <div class="web-header-large">
@@ -202,7 +214,7 @@
                     Quick! 바로가기
                 </div>
                 <div class="quick-menu-list">
-                    <a href="/event/culture-space" target="_blank" class="quick-menu">
+                    <a href="/culture/culture-space" target="_blank" class="quick-menu">
                         <svg width="54" height="36" viewBox="0 0 57 38" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 5px;">
                             <path d="M49.5962 1H6.90385C5.44423 1 4.25 2.05 4.25 3.33333V31H52.25V3.33333C52.25 2.05 51.0558 1 49.5962 1Z" fill="white" stroke="#212529" stroke-width="2" stroke-miterlimit="10"></path><path d="M9.25 26V6H47.25V26H9.25Z" fill="#aed7c3" stroke="#212529" stroke-width="2"></path>
                             <path d="M1.25 31C1.25 34.3075 3.39049 36.985 7.0611 36.985L18.6611 37H35.8389L49.4389 36.985C53.1095 36.985 55.25 34.3075 55.25 31H1.25Z" fill="var(--main-sub3)" stroke="#212529" stroke-width="2" stroke-miterlimit="10"></path><path d="M24.25 34H32.25" stroke="#212529" stroke-width="2" stroke-miterlimit="10"></path>
@@ -269,13 +281,14 @@
                     <div class="guide-frequent-select">
                         <div class="guide-frequent-container">
                             <div class="frequent-title-bar">
-                                <div class="frequent-title">자주 묻는 질문</div>
+                                <a href="/helpcenter"><div class="frequent-title">자주 묻는 질문</div>
                                 <div class="plus-menu">
                                     <div class="plus">더보기</div>
                                     <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M1 11L6 6L1 1" stroke="white" stroke-linecap="round" stroke-linejoin="round"></path>
                                     </svg>
                                 </div>
+
                             </div>
                             <div class="context-container">
                                 <div class="context-mark">
@@ -283,10 +296,11 @@
                                 </div>
                                 <div class="context-inner">
                                     <div class="context">
-                                        배너광고 프로모션 상품을 신청했는데, 할인 금액이<span class="more">...</span>
+                                       이벤트 참여를 했는데 어떻게 연락을...<span class="more">...</span>
                                     </div>
                                 </div>
                             </div>
+                            </a>
                         </div>
                         <div class="guide-frequent">
                             <div class="container-noselect">
@@ -306,6 +320,7 @@
 
                     <div class="guide-use-select">
                         <div class="guide-use-container">
+                            <a href="">
                             <div class="use-title-bar">
                                 <div class="use-title">이용 가이드</div>
                                 <div class="plus-menu">
@@ -319,13 +334,15 @@
                                 <div class="context-mark">Q</div>
                                 <div class="context-inner">
                                     <div class="context">
-                                        서포터가 교환·반품(환불)을 신청했어요. 어떻게 해야<span class="more">...</span>
+                                        이벤트 모집을 하고 싶어요. 어떤 단계로 시작해야<span class="more">...</span>
                                     </div>
                                 </div>
                             </div>
+                            </a>
                         </div>
                         <div class="guide-use">
                             <div class="container-noselect">
+                                <a href="/helpcenter">
                                 <div class="title-bar-noselect">
                                     이용<br>가이드
                                 </div>
@@ -340,14 +357,16 @@
                                     <path d="M37 31H22.1781C21.6004 31 21.0464 30.684 20.638 30.1213C20.2295 29.5587 20 28.7956 20 28H36.9469V29.5L37 31Z" fill="white" stroke="#212529" stroke-width="1.2"></path>
                                     <path d="M3 28H20C20 28.7956 19.7691 29.5587 19.358 30.1213C18.947 30.684 18.3895 31 17.8082 31H3V28Z" fill="white" stroke="#212529" stroke-width="1.2"></path>
                                 </svg>
+                                </a>
                             </div>
                         </div>
                     </div>
                     
                     <div class="guide-reserve-select">
                         <div class="guide-reserve-container">
+                            <a href="/introduce">
                             <div class="reserve-title-bar">
-                                <div class="reserve-title">백wa사전</div>
+                                <div class="reserve-title">도담사전</div>
                                 <div class="plus-menu">
                                     <div class="plus">더보기</div>
                                     <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -363,11 +382,12 @@
                                 </div>
                                 <div class="context-inner">
                                     <div class="context">
-                                        광고센터 알아보기 | 와디즈 광고 서비스 이용하고 싶<span class="more">...</span>
+                                        도담도담 알아보기 | 도담도담에 대해 알아보고 싶다면 클릭해<span class="more">...</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        </a>
                         <div class="guide-reserve">
                             <div class="container-noselect">
                                 <div class="title-bar-noselect">
@@ -475,7 +495,9 @@
                             </div>
                         </div>
                         <div class="board-register-date">
+                            date
                             <span th:text="${#temporals.format(eventBoards[0].updatedDate, 'yyyy-MM-dd')}"></span>
+                            <span th:text="${eventBoards[0].updatedDate}"></span>
                         </div>
                     </div>
                     <!-- 게시글 1개 끝 -->
@@ -1025,7 +1047,7 @@
                 <div class="sell-box-context">${recruitmentBoard.boardContent}</div>
             </div>
             <div class="sell-box-date-container">
-                ${formatDate(new Date(recruitmentBoard.createdDate))}
+<!--                {formatDate(new Date(recruitmentBoard.createdDate))}-->
             </div>
         </div>
     </div>
@@ -1033,6 +1055,11 @@
         $(".swiper-wrapper").append(text);
     });
 
+
+        $('#confirm-btn').click(function() {
+            $('.modal-content').hide();
+            $('.main-modal').hide();
+        });
 
 
 </script>

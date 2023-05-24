@@ -1,11 +1,9 @@
 package com.app.dodamdodam.service.board.eventBoard;
 
-import com.app.dodamdodam.domain.EventBoardDTO;
-import com.app.dodamdodam.domain.EventFileDTO;
-import com.app.dodamdodam.domain.FreeBoardFileDTO;
-import com.app.dodamdodam.domain.MemberDTO;
+import com.app.dodamdodam.domain.*;
 import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.event.EventFile;
+import com.app.dodamdodam.entity.free.FreeFile;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.search.EventBoardSearch;
 import com.app.dodamdodam.search.board.AdminEventBoardSearch;
@@ -15,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public interface EventBoardService {
 
@@ -53,6 +52,7 @@ public interface EventBoardService {
                 .boardContent(eventBoard.getBoardContent())
                 .createdDate(eventBoard.getCreatedDate())
                 .address(eventBoard.getAddress())
+                .eventStatus(eventBoard.getEventStatus())
                 .eventBusinessNumber(eventBoard.getEventBusinessNumber())
                 .eventBusinessEmail(eventBoard.getEventBusinessEmail())
                 .eventBusinessName(eventBoard.getEventBusinessName())
@@ -60,6 +60,9 @@ public interface EventBoardService {
                 .eventStartDate(eventBoard.getEventStartDate())
                 .eventEndDate(eventBoard.getEventEndDate())
                 .memberDTO(toMemberDTO(eventBoard.getMember()))
+                .eventFileDTOS(
+                        eventBoard.getEventFiles().stream().map(e -> toEventFileDTO(e)).collect(Collectors.toList())
+                )
                 .build();
     }
 
@@ -147,6 +150,15 @@ public interface EventBoardService {
                 .fileUuid(eventFileDTO.getFileUuid())
                 .filePath(eventFileDTO.getFilePath())
                 .eventBoard(eventFileDTO.getEventBoard())
+                .build();
+    }
+
+    default EventFileDTO toEventFileDTO(EventFile eventFile){
+        return EventFileDTO.builder().id(eventFile.getId())
+                .fileOriginalName(eventFile.getFileOriginalName())
+                .filePath(eventFile.getFilePath())
+                .fileUuid(eventFile.getFileUuid())
+                .fileSize(eventFile.getFileSize())
                 .build();
     }
 
