@@ -1,16 +1,9 @@
 package com.app.dodamdodam.controller.board.recruitment;
 
-import com.app.dodamdodam.domain.FreeReplyDTO;
 import com.app.dodamdodam.domain.RecruitmentBoardDTO;
 import com.app.dodamdodam.domain.RecruitmentBoardFileDTO;
 import com.app.dodamdodam.domain.RecruitmentReplyDTO;
-import com.app.dodamdodam.entity.event.EventReply;
-import com.app.dodamdodam.entity.free.FreeBoard;
-import com.app.dodamdodam.entity.free.FreeReply;
 import com.app.dodamdodam.entity.recruitment.RecruitmentReply;
-import com.app.dodamdodam.search.FreeBoardSearch;
-import com.app.dodamdodam.service.board.freeBoard.FreeBoardService;
-import com.app.dodamdodam.service.board.freeBoard.freeReply.FreeReplyService;
 import com.app.dodamdodam.service.board.recruitmentBoard.RecruitmentBoardService;
 import com.app.dodamdodam.service.board.recruitmentBoard.recruitmentReply.RecruitmentReplyService;
 import com.app.dodamdodam.service.member.MemberService;
@@ -71,6 +64,12 @@ public class RecruitmentBoardController {
         model.addAttribute("replyCount", recruitmentReplyService.getRecruitmentRepliesCountByBoardId(PageRequest.of(0,5), boardId));
 
         return "recruitment-board/recruitment-board-detail";
+    }
+//    모집
+    @PostMapping("recruit")
+    @ResponseBody
+    public void getRecruit(@RequestParam("boardId") Long boardId ,@RequestParam("memberId") Long memberId) {
+        recruitmentBoardService.getRecruitment(memberId, boardId);
     }
 
 //  모집 게시글 삭제

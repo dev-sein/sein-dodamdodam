@@ -32,10 +32,9 @@ window.addEventListener('scroll', function() {
     var windowSize = window.innerHeight;
     var bodyHeight = document.body.offsetHeight;
 
-    page ++;
-
     // 스크롤이 페이지 맨 아래에 도달할 때 데이터 로드
     if (scrollPosition + windowSize >= bodyHeight) {
+        page ++;
         load(page, purchaseBoardSearch);
     }
 });
@@ -90,16 +89,34 @@ function load(page, purchaseBoardSearch) {
 
 /*목록*/
 function showList(list){
+
+    console.log(list);
+    console.log($listResults);
+
     let purchaseBoardDTOs = list.content;
 
     var text = "";
-    if (list != null || $listResults.hasChildNodes()) {
+    if (list.empty && $listResults.length == 0) {
+        console.log("if문 들어옴?")
+        text += `
+            <li class="event-instance" >
+                <div class="instance">
+                    <div class="instance-detail" id="border-bottom-zero">
+                        <div class="detail-title">검색 결과가 없습니다.</div>
+                    </div>
+                </div>
+            </li>
+        `;
+    } else {
         purchaseBoardDTOs.forEach(purchaseBoardsDTO => {
             console.log(purchaseBoardsDTO);
             var date = purchaseBoardsDTO.createdDate;
             var realDate = changeDate(date);
             let presentFileDTO = purchaseBoardsDTO.purchaseFileDTOs[0];
-            let filePath = '/file/display?fileName=' + presentFileDTO.filePath + '/t_' + presentFileDTO.fileUuid + '_' + presentFileDTO.fileOriginalName;
+
+            let filePath = "/images/free-board/basic-image.png";
+            if (presentFileDTO != null) filePath = '/file/display?fileName=' + presentFileDTO.filePath + '/t_' + presentFileDTO.fileUuid + '_' + presentFileDTO.fileOriginalName;
+
             text +=`
             <li class="event-instance" >
                 <div class="instance">
@@ -114,16 +131,7 @@ function showList(list){
             </li>
         `
         });
-    } else {
-        text += `
-            <li class="event-instance" >
-                <div class="instance">
-                    <div class="instance-detail">
-                        <div class="detail-title">검색 결과가 없습니다.</div>
-                    </div>
-                </div>
-            </li>
-        `;
+
     }
 
     $listResults.append(text);

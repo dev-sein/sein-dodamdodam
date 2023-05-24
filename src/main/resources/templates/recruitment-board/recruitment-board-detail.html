@@ -18,13 +18,17 @@
             <div class="like-modal-container" id="like-modal" style="display:none;">
                 <span class="like-text" style="display:none;">찜 목록에 추가했습니다</span>
                 <span class="like-cancel-text"style="display:none;">찜 목록에서 제외했습니다</span>
-            </div>
+
+
+               </div>
             <!-- 모달끝 -->
             <div id="recruitment-container">
                 <div class="container-form">
                     <div class="recruitment-title">
                         <h3 th:text="${boardDetail.boardTitle}" >LG트윈스VS삼성라이온즈 잠실 경기 보러가실 분</h3>
                         <p class="sub-text"  th:text="${boardDetail.recruitmentSubtitle}">소제목 칸입니다 외쳐라 무적엘지</p>
+
+
                     </div>
                     <div class="recruitment-info">
                         <div class="info-img">
@@ -177,6 +181,15 @@
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script th:inline="javascript">
+    let boardDetail = [[${boardDetail}]];
+
+    let boardId = boardDetail.id;
+    let memberId = [[${session.memberId}]];
+
+    console.log("memberId : " + memberId);
+    console.log(boardId);
+</script>
 <script src="/js/recruitment-board/recruitment-board-detail.js"></script>
 <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.min.js" integrity="sha384-dpu02ieKC6NUeKFoGMOKz6102CLEWi9+5RQjWSV0ikYSFFd8M3Wp2reIcquJOemx" crossorigin="anonymous"></script>
 <script>Kakao.init('e21d13e33dbb10932785f7663d4603f1'); // 사용하려는 앱의 JavaScript 키 입력</script>
@@ -401,10 +414,49 @@ $(function(){
 
 /* 신청 완료 모달 */
 function popOpen() {
-var modalPop = $('.modal-wrap');
-var modalBg = $('.modal-bg'); 
-    $(modalPop).show();
-    $(modalBg).show();
+
+
+
+    var modalPop = $('.modal-wrap');
+    var modalBg = $('.modal-bg');
+
+    console.log(boardDetail);
+    // // 현재 경로를 가져오기
+    // let currentPath = window.location.pathname;
+    //
+    // // 경로를 "/"로 분할하여 배열로 저장
+    // let pathArray = currentPath.split("/");
+    //
+    // // boardId 값을 추출
+    // let boardId = pathArray[3];
+    //
+    // // number 타입으로 변경
+    // boardId *= 1;
+
+    console.log("들어옴?");
+
+    $.ajax({
+        url: `/recruitment/recruit`,
+        type: "post",
+        data : {
+            boardId : boardId,
+            memberId : memberId
+        },
+        success: function() {
+            console.log("들어옴?");
+            $(modalPop).show();
+            $(modalBg).show();
+            // location.reload();
+        },
+        error: function (error) {
+            console.log('Error fetching data:', error);
+        }
+    })
+
+
+
+
+
 }
 function popClose() {
 var modalPop = $('.modal-wrap');
