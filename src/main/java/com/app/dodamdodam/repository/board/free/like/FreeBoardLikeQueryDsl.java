@@ -1,6 +1,7 @@
 package com.app.dodamdodam.repository.board.free.like;
 
 import com.app.dodamdodam.entity.free.FreeBoard;
+import com.app.dodamdodam.entity.free.FreeLike;
 import com.app.dodamdodam.search.FreeBoardSearch;
 import com.app.dodamdodam.search.board.AdminFreeBoardSearch;
 import com.app.dodamdodam.type.CategoryType;
@@ -16,4 +17,7 @@ public interface FreeBoardLikeQueryDsl {
 
 //    boardId, memberId 받아와서 좋아요 누른 게시글인지 확인
     public boolean checkLikeByBoardIdAndMemberId_QueryDSL(Long boardId, Long memberId);
+
+//    게시글 삭제할 때 안에 좋아요 담긴 것들도 전부 삭제
+    public List<FreeLike> findByFreeBoardId_QueryDSL(Long boardId);
 }

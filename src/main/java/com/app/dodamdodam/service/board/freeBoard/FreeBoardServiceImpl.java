@@ -77,6 +77,8 @@ public class FreeBoardServiceImpl implements FreeBoardService {
     /* 자유 게시글 삭제 */
     @Override
     public void deleteFreeBoard(Long boardId) {
+        List<FreeLike> freeLikes = freeBoardLikeRepository.findByFreeBoardId_QueryDSL(boardId);
+        freeBoardLikeRepository.deleteAll(freeLikes);
         freeBoardRepository.findById(boardId).ifPresent(freeBoard -> freeBoardRepository.delete(freeBoard));
     }
 
