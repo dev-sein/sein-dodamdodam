@@ -55,8 +55,6 @@ public class EventBoardRepositoryTests {
             EventBoard eventBoard1 = EventBoard.builder()
                     .boardTitle("이벤트 게시글 제목" + i)
                     .boardContent("이벤트 게시글 내용" + i)
-                    .eventAddress("서울시")
-                    .eventAddressDetail("강남구")
                     .eventBusinessEmail("test1@naver.com")
                     .eventBusinessName("기업이름" + i)
                     .eventBusinessNumber("10000" + i)
@@ -66,8 +64,8 @@ public class EventBoardRepositoryTests {
                     .eventLikeCount(0)
                     .eventReplyCount(0)
                     .build();
-            memberRepository.findById(2L).ifPresent(member1 -> eventBoard1.setMember(member1));
-//            eventBoard.setMember(member);
+            memberRepository.findById(1L).ifPresent(member1 -> eventBoard1.setMember(member1));
+
 //            for(int j = 0; j < 5; j ++){
 //                EventFile eventFile = new EventFile(UUID.randomUUID().toString(), "test" + i+1, 10L, eventBoard, 500, "");
 //                eventFileRepository.save(eventFile);
