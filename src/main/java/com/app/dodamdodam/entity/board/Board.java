@@ -11,6 +11,7 @@ import javax.persistence.*;
 @Inheritance(strategy = InheritanceType.JOINED)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DynamicInsert
+@AllArgsConstructor
 public class Board extends Period {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
@@ -26,14 +27,4 @@ public class Board extends Period {
         this.boardContent = boardContent;
     }
 
-    public Board(String boardTitle, String boardContent) {
-        this.boardTitle = boardTitle;
-        this.boardContent = boardContent;
-    }
-
-    public Board(Long id, String boardTitle, String boardContent) {
-        this.id = id;
-        this.boardTitle = boardTitle;
-        this.boardContent = boardContent;
-    }
 }

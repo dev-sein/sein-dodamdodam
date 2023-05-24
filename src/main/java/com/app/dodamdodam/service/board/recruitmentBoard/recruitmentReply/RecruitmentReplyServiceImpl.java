@@ -37,7 +37,7 @@ public class RecruitmentReplyServiceImpl implements RecruitmentReplyService {
 
     /* 모집 게시글 댓글 작성 */
     @Override
-    public void saveRecruitmentReply(RecruitmentReply recruitmentReply, Long boardId, Long memberId) {
+    public void saveRecruitmentBoardReply(RecruitmentReply recruitmentReply, Long boardId, Long memberId) {
         recruitmentReply.setRecruitmentBoard(recruitmentBoardRepository.findById(boardId).get());
         recruitmentReply.setMember(memberRepository.findById(memberId).get());
         recruitmentReplyRepository.save(recruitmentReply);
@@ -73,8 +73,7 @@ public class RecruitmentReplyServiceImpl implements RecruitmentReplyService {
     /* 댓글 지운 후 그 board에 남아있는 댓글 수 조회 */
     @Override
     public Integer getRecruitmentRepliesCountByReplyId(Long replyId) {
-//        return recruitmentBoardRepository;
-        return null;
+        return recruitmentBoardRepository.findReplyCountByReplyId_QueryDsl(replyId);
     }
 
 

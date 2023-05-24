@@ -1,5 +1,6 @@
 package com.app.dodamdodam.repository;
 
+import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.free.FreeReply;
 import com.app.dodamdodam.entity.purchase.Product;
@@ -69,10 +70,10 @@ public class BoardRepositoryTests {
     /*모집 게시글 등록*/
     @Test
     public void saveTest(){
-        for (int i=1; i<=100; i++){
-//            RecruitmentBoard recruitmentBoard = new RecruitmentBoard("모집 게시글 제목" + i, LocalDate.now(),10 + i, "www.naver.com", "1234", "경기도 성남시", "분당구 수내동");
-//            memberRepository.findById(2L).ifPresent(member -> recruitmentBoard.setMember(member));
-//            recruitmentBoardRepository.save(recruitmentBoard);
+        for (int i=1; i<=10; i++){
+            RecruitmentBoard recruitmentBoard = new RecruitmentBoard("모집 게시글 제목" + i, LocalDate.now(),10 + i, "www.naver.com", "1234", "경기도 성남시", "분당구 수내동");
+            memberRepository.findById(2L).ifPresent(member -> recruitmentBoard.setMember(member));
+            recruitmentBoardRepository.save(recruitmentBoard);
        /* RecruitmentBoard recruitmentBoard = new RecruitmentBoard("모집 게시글 제목", LocalDate.now(),10, "https://open.kakao.com/o/ggmF0Jkf", "1234", "경기도 성남시 분당구 수내동", "탄천앞");
         memberRepository.findById(1L).ifPresent(member -> recruitmentBoard.setMember(member));*/
 //        memberRepository.findById(5L).ifPresent(member -> recruitmentBoard.setMember(member));
@@ -89,20 +90,21 @@ public class BoardRepositoryTests {
 //        memberRepository.findById(1L).ifPresent(member -> recruitmentBoard.setMember(member));
 //        memberRepository.findById(5L).ifPresent(member -> recruitmentBoard.setMember(member));
 //        RecruitmentBoard recruitmentBoard = new RecruitmentBoard("욱성이의 시그니엘 체험" + i, LocalDate.of(2023,5,25),20, "https://open.kakao.com/o/ggmF0Jkf", "1234", "서울특별시 송파구", "롯데타워 앞");
-        RecruitmentBoard recruitmentBoard = RecruitmentBoard.builder().boardTitle("욱성이의 오리배 체험" + i)
-                .boardContent("게시글 내용 게시글 내용 " + i)
-                .recruitmentAddress("서울특별시 송파구")
-                .recruitmentAddressDetail("석촌호수 앞")
-                .recruitmentDate(LocalDate.of(2023,06,1))
-                .recruitmentOpenChatting("https://open.kakao.com/o/ggmF0Jkf")
-                .recruitmentPeopleCount(30)
-                .recruitmentSubtitle("욱성 해버렸다")
-                .recruitmentStatus(RecruitmentType.APPLYING)
-                .build();
+//        RecruitmentBoard recruitmentBoard = RecruitmentBoard.builder().boardTitle("욱성이의 오리배 체험" + i)
+//                .boardContent("게시글 내용 게시글 내용 " + i)
+//                .recruitmentAddress("서울특별시 송파구")
+//                .recruitmentAddressDetail("석촌호수 앞")
+//                .recruitmentDate(LocalDate.of(2023,06,1))
+//                .recruitmentOpenChatting("https://open.kakao.com/o/ggmF0Jkf")
+//                .recruitmentPeopleCount(30)
+//                .recruitmentSubtitle("욱성 해버렸다")
+//                .recruitmentStatus(RecruitmentType.APPLYING)
+//                .build();
 
         memberRepository.findById(201L).ifPresent(member -> recruitmentBoard.setMember(member));
+//        memberRepository.findById(5L).ifPresent(member -> recruitmentBoard.setMember(member));
 
-        recruitmentBoardRepository.save(recruitmentBoard);
+//        recruitmentBoardRepository.save(recruitmentBoard);
         }
     }
 

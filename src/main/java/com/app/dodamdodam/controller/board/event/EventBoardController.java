@@ -86,7 +86,7 @@ public class EventBoardController {
         session.setAttribute("boardId", 31L);
         Long boardId = (Long)session.getAttribute("boardId");
         EventReply eventReply = new EventReply(replyContent);
-        log.info("=============================댓글작성들어옴=====================================");
+        log.info("댓글작성들어옴");
         log.info("이벤트 게시판 댓글 : " + replyContent);
         log.info("게시판 ID : " + boardId);
         Long memberId = (Long)session.getAttribute("memberId");

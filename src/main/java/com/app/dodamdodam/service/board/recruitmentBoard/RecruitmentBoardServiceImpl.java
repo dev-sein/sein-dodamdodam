@@ -5,11 +5,13 @@ import com.app.dodamdodam.domain.RecruitmentBoardFileDTO;
 import com.app.dodamdodam.domain.RecruitmentFileDTO;
 import com.app.dodamdodam.domain.RecruitmentMemberDTO;
 import com.app.dodamdodam.entity.member.Member;
+import com.app.dodamdodam.entity.recruitment.Recruitment;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
 import com.app.dodamdodam.entity.recruitment.RecruitmentFile;
 import com.app.dodamdodam.repository.board.recruitment.RecruitmentBoardRepository;
 import com.app.dodamdodam.repository.board.recruitment.RecruitmentFileRepository;
 import com.app.dodamdodam.repository.member.MemberRepository;
+import com.app.dodamdodam.repository.recruitment.RecruitmentRepository;
 import com.app.dodamdodam.search.board.AdminRecruitmentSearch;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,15 +28,15 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-@Transactional
 @Slf4j
 public class RecruitmentBoardServiceImpl implements RecruitmentBoardService {
     private final RecruitmentBoardRepository recruitmentBoardRepository;
+    private final RecruitmentRepository recruitmentRepository;
     private final MemberRepository memberRepository;
     private final RecruitmentFileRepository recruitmentFileRepository;
 
     // 이벤트 게시판 등록
-    @Override
+    @Override @Transactional
     public void register(RecruitmentBoardDTO recruitmentBoardDTO, Long memberId) {
         List<RecruitmentFileDTO> recruitmentFileDTOS = recruitmentBoardDTO.getRecruitmentFileDTOS();
 
@@ -102,7 +104,7 @@ public class RecruitmentBoardServiceImpl implements RecruitmentBoardService {
     }
 
 //    모집 게시글 수정
-    @Override
+    @Override @Transactional
     public void updateRecruitmentBoard(RecruitmentBoardFileDTO updatedBoard, Long boardId) {
         recruitmentBoardRepository.findById(boardId).ifPresent(recruitmentBoard -> {
             recruitmentBoard.setBoardTitle(updatedBoard.getBoardTitle());
@@ -162,6 +164,36 @@ public class RecruitmentBoardServiceImpl implements RecruitmentBoardService {
     public List<RecruitmentBoardFileDTO> getRecentRecruitmentBoardList() {
         List<RecruitmentBoardFileDTO> recruitmentBoardFileDTOS = recruitmentBoardRepository.findRecentRecruitmentBoardList_QueryDSL().stream().map(recentRecruitmentBoardList -> toRecruitmentBoardFileDto(recentRecruitmentBoardList)).collect(Collectors.toList());
         return recruitmentBoardFileDTOS;
+    }
+
+    //    모집 신청
+    @Override
+    public void getRecruitment(Long boardId, Long memberId){
+
+        Optional<Member> memberOptional = memberRepository.findById(memberId);
+        Member member = null;
+
+        Optional<RecruitmentBoard> recruitmentBoardOptional = recruitmentBoardRepository.findById(boardId);
+        RecruitmentBoard recruitmentBoard = null;
+
+        if(recruitmentBoardOptional.isPresent()){
+            recruitmentBoard = recruitmentBoardOptional.get();
+        }
+
+        if(memberOptional.isPresent()){
+            member = memberOptional.get();
+        }
+
+        log.info(recruitmentBoard.toString());
+        log.info(member.toString());
+
+        Recruitment recruitment = Recruitment.builder().member(member).recruitmentBoard(recruitmentBoard).build();
+
+        recruitmentRepository.save(recruitment);
+
+//        memberRepository.findById(memberId).ifPresent(member -> recruitment.setMember(member));
+//        recruitmentBoardRepository.findById(boardId).ifPresent(recruitmentBoard -> recruitment.setRecruitmentBoard(recruitmentBoard));
+//        recruitmentRepository.save(recruitment);
     }
 
 }

@@ -57,7 +57,7 @@ public class SecurityConfig {
 
 //    문화공간 소개 게시판
 //    private static final String CULTURE_PATH = "/culture/**";
-    private static final String CULTURE_BOARD_LIST_PATH = "/culture/list/**";
+    private static final String CULTURE_BOARD_LIST_PATH = "/culture/culture-space/**";
     private static final String CULTURE_BOARD_DETAIL_PATH = "/culture/detail/**";
 //    private static final String CULTURE_BOARD_WRITE_PATH = "/culture/write-board";
 //    private static final String CULTURE_BOARD_UPDATE_PATH = "/culture/update-board/**";
