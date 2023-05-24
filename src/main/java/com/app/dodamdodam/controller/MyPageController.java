@@ -47,7 +47,7 @@ public class MyPageController {
         model.addAttribute("point",memberService.getMyPointList(memberId));
 //        model.addAttribute("myGrade",memberService.getMemberGrade(memberId));
         model.addAttribute("myGrade",memberService.getMyGradeByMemberId(memberId));
-        return"myPage/myPage-Main";
+        return"myPage/myPage-Main-ex";
     }
 
     /*마이 페이지 메인*/
@@ -62,20 +62,10 @@ public class MyPageController {
         model.addAttribute("point",memberService.getMyPointList(memberId));
 //        model.addAttribute("myGrade",memberService.getMemberGrade(memberId));
         model.addAttribute("myGrade",memberService.getMyGradeByMemberId(memberId));
-        return"myPage/mypage-main-test";
+        return"myPage/mypage-main";
     }
 
     /* 마이페이지 프로필*/
-
-    /* 내가 작성한 자유 게시글*/
-    @GetMapping("free-board")
-    public String myPageFreeBoard(Model model, HttpSession session) {
-        log.info("들어옴@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-        Pageable pageable = PageRequest.of(0, 10);
-        model.addAttribute("freeBoard",freeBoardService.getAllFreeBoards(pageable));
-
-        return"myPage/myPage-Main";  /*테스트로 아무 페이지에나 보내봄*/
-    }
 
     /* 포인트 내역 */
     @GetMapping("point")
@@ -152,7 +142,6 @@ public class MyPageController {
     @ResponseBody
     @GetMapping("purchase-board/{page}")
     public List<PurchaseBoardFileDTO> myPurchaseBoardList(HttpSession session, @PathVariable(value = "page") Integer page){
-//        session.setAttribute("memberId", 5L);
         Long memberId = (Long)session.getAttribute("memberId");
 
         /* 한번에 12개씩 */
@@ -252,6 +241,7 @@ public class MyPageController {
 //        session.setAttribute("memberId", 5L);
         Long memberId = (Long)session.getAttribute("memberId");
         model.addAttribute("member",memberService.getMemberInfo(memberId));
+        model.addAttribute("myGrade",memberService.getMyGradeByMemberId(memberId));
 //        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member",member));
 
         return "myPage/myPage-profileUpdate";
