@@ -1,6 +1,7 @@
 package com.app.dodamdodam.repository.board.free.like;
 
 import com.app.dodamdodam.entity.free.FreeBoard;
+import com.app.dodamdodam.entity.free.FreeLike;
 import com.app.dodamdodam.entity.free.QFreeLike;
 import com.app.dodamdodam.search.FreeBoardSearch;
 import com.app.dodamdodam.search.board.AdminFreeBoardSearch;
@@ -38,5 +39,11 @@ public class FreeBoardLikeQueryDslImpl implements FreeBoardLikeQueryDsl {
         } else {
             return true;
         }
+    }
+
+    //    게시글 삭제할 때 안에 좋아요 담긴 것들도 전부 삭제
+    @Override
+    public List<FreeLike> findByFreeBoardId_QueryDSL(Long boardId) {
+        return query.selectFrom(freeLike).where(freeLike.freeBoard.id.eq(boardId)).fetch();
     }
 }

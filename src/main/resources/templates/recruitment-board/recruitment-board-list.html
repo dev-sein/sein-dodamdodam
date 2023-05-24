@@ -10,21 +10,31 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">  
     <link rel="shortcut icon" href="/images/components/dodam-favicon.png">
+    <link rel="stylesheet" href="/css/free-board/modal.css">
 </head>
 <body>
+<!--모달창-->
+<div id="myModal" class="modal" th:if="${#strings.equals(param.login, 'false')}">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>로그인 후 이용해주세요.</p>
+        <button id="closeModalBtn" onclick="location.href='/member/login'">확인</button>
+    </div>
+</div>
+<!--모달창-->
     <div id="page-container">
         <!-- 헤더 -->
         <!-- <img src="/images/recruitment-board/together.jpeg"> -->
         <div class="image-wrapper">
             <img class="list-photo" src="/images/recruitment-board/event-photo.jpg">
             <div class="recruitment-main-description">
-            <p class="recruit-title">모집 등록</h1>
+            <p class="recruit-title" >모집 등록</h1>
                 <p class="recruit-introduction">혼자라는 이유로 쉽게 도전하지 못 했던 취미 생활을
                     도담도담의 회원들과 함께 참여해보세요.<br>
                     함께여서 더욱 즐거운 취미 생활!<br>
                     아주 사소한 계획이라도 누구든지 등록 가능
                 </p>
-                <button class="btn write" onclick="location.href='/recruitment/write'">모집하러 가기<span>></span></button>
+                <button class="btn write" onclick="location.href='/recruitment/write-board-check'" >모집하러 가기<span>></span></button>
             </div>
         </div>
 

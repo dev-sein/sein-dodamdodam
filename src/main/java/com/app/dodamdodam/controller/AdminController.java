@@ -3,6 +3,7 @@ package com.app.dodamdodam.controller;
 import com.app.dodamdodam.domain.*;
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.inquiry.Inquiry;
+import com.app.dodamdodam.entity.member.Grade;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.recruitment.Recruitment;
 import com.app.dodamdodam.search.Inquiry.AdminInquirySearch;
@@ -35,6 +36,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.persistence.criteria.CriteriaBuilder;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -53,8 +55,8 @@ public class AdminController {
     private final BannerApplyService bannerApplyService;
     private final EventBoardService eventBoardService;
 
-
-    /*홈*/
+/*
+    *//*홈*//*
     @GetMapping("/home")
     public String adminHome(Model model){
         model.addAttribute("members", memberService.getRecentMemberList());
@@ -62,7 +64,12 @@ public class AdminController {
         model.addAttribute("eventBoards", eventBoardService.getRecentEventBoardList());
         model.addAttribute("purchaseBoards", purchaseBoardService.getRecentPurchaseBoardList());
         model.addAttribute("recruitmentBoards", recruitmentBoardService.getRecentRecruitmentBoardList());
-        return "admin/home";}
+        return "admin/home";}*/
+
+    /*발표 버전*/
+    @GetMapping("/home")
+    public String adminHome(Model model){
+        return "admin/member-list";}
 
     /*문의 게시판*/
     @GetMapping("inquiry/list") //문의 게시판 목록
@@ -219,10 +226,17 @@ public class AdminController {
 
     @ResponseBody
     @GetMapping("member/detail/{memberId}") // 멤버 상세
-    public ResponseEntity<MemberDTO> getMemberDetail(@PathVariable Long memberId) {
+    public ResponseEntity<Map<String, Object>> getMemberDetail(@PathVariable Long memberId) {
+        Map<String, Object> result = new HashMap<>();
+
         MemberDTO memberDTO = memberService.getAdminMemberDetail(memberId);
+        Grade memberGrade = memberService.getMyGradeByMemberId(memberId);
+
+        result.put("memberDTO", memberDTO);
+        result.put("memberGrade", memberGrade);
+
         if (memberDTO != null) {
-            return ResponseEntity.ok(memberDTO);
+            return ResponseEntity.ok(result);
         } else {
             return ResponseEntity.notFound().build();
         }
