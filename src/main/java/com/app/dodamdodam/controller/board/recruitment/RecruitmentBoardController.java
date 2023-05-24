@@ -87,7 +87,7 @@ public class RecruitmentBoardController {
 
 //    모집 게시글 수정
     @PostMapping("update-board/{boardId}")
-    public RedirectView updateFreeBoard(RecruitmentBoardFileDTO updatedBoard, String date,  @PathVariable(value = "boardId") Long boardId){
+    public RedirectView updateFreeBoard(RecruitmentBoardFileDTO updatedBoard, String date, @PathVariable(value = "boardId") Long boardId){
         log.info("수정 들어옴");
         log.info("date : " + date);
         log.info("boardId : " + boardId);

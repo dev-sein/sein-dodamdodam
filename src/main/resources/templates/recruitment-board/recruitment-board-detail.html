@@ -28,7 +28,9 @@
                 </div>
                 <div class="recruitment-info">
                     <div class="info-img">
-                        <img src="https://www.wadiz.kr/ft/images/green001/2023/0313/20230313132913160_null.png"></div>
+<!--                        <img src="https://www.wadiz.kr/ft/images/green001/2023/0313/20230313132913160_null.png"></div>-->
+                        <img src="/images/free-board/basic-image.png" th:if="${boardDetail.recruitmentFileDTOS.size == 0}">
+                        <img th:if="${boardDetail.recruitmentFileDTOS.size > 0}" th:src="'/file/display?fileName=' + ${boardDetail.recruitmentFileDTOS[0].filePath} + '/t_' + ${boardDetail.recruitmentFileDTOS[0].fileUuid} + '_' + ${boardDetail.recruitmentFileDTOS[0].fileOriginalName}"></div>
                     <div class="info-sum">
                         <dl>
                             <dt>모집인</dt>
