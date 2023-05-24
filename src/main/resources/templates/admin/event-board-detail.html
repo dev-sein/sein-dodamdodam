@@ -52,9 +52,9 @@
         <nav>
             <div class="menu-bar">
                 <ul>
-                    <li class="menu">
+                    <!--<li class="menu">
                         <a class="menus" href="/admins/home">홈</a>
-                    </li>
+                    </li>-->
                     <li class="menu">
                         <a class="menus" href="/admins/member/list">회원 목록</a>
                     </li>
@@ -125,18 +125,18 @@
                                 <div class="writer info"><span th:text="${eventBoardDTO.memberDTO.memberName}"></div>
                             </div>
                             <div class="classification-wrapper">
-                                <div class="classification">이벤트 장소</div>
-                                <div class="date info"><span th:text="${eventBoardDTO.eventAddress}"></div>
+                                <div class="classification">이벤트 기간</div>
+                                <div class="date info"><span th:text="${eventBoardDTO.eventStartDate + ' ~ ' + eventBoardDTO.eventEndDate}"></span></div>
                             </div>
                             <div class="classification-wrapper">
-                                <div class="classification">진행 상태</div>
-                                <div class="recruit-numbers info"><span th:text="${eventBoardDTO.eventStatus}"></div>
+                                <div class="classification">이벤트 장소</div>
+                                <div class="recruit-numbers info"><span th:text ="${eventBoardDTO.address.address + eventBoardDTO.address.addressDetail}"></div>
                             </div>
                             <div class="classification-wrapper">
                                 <div class="classification">이벤트 소개</div>
                                 <div class="contents">
                                     <div class="contents-inner">
-                                        <span th:text="${eventBoardDTO.eventIntroduction}">
+                                        <span th:text="${eventBoardDTO.boardContent}">
                                     </div>
                                 </div>
                             </div>

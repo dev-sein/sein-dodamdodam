@@ -391,4 +391,8 @@ content{
     width: 17% !important;
 }
 
-.modal
+.ready{
+    margin-top: 20px;
+    margin-bottom: 100px;
+    margin-left: 550px;
+}
