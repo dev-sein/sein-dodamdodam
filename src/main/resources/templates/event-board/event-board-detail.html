@@ -215,11 +215,7 @@
 $(function(){
     $('.wish-button').click(function(e){
         if($('.wish-button').attr('aria-pressed') == 'false'){
-<<<<<<< HEAD
-            $(".heart-icon").attr("src", "images/recruitment-board/heart-background.png");
-=======
             $(".heart-icon").attr("src", "/images/recruitment-board/heart-background.png");
->>>>>>> a8053b9a945c810d1abec504f5a2525204a09ddb
             $('.wish-button').attr('aria-pressed','true') //하트 색 채우기
             $('.like-cancel-text').hide(); //해제 문구
             $('#like-modal').fadeIn();
@@ -231,11 +227,7 @@ $(function(){
             $('#like-modal').delay(500).fadeOut(); //사라지기
         
         }else{
-<<<<<<< HEAD
-            $(".heart-icon").attr("src", "images/recruitment-board/non-heart-icon.png");
-=======
             $(".heart-icon").attr("src", "/images/recruitment-board/non-heart-icon.png");
->>>>>>> a8053b9a945c810d1abec504f5a2525204a09ddb
             $('.wish-button').attr('aria-pressed','false') //색 비우기
             $('.like-text').hide();  //찜 추가 문구
             // $('#like-modal').css({right: '-30%'}); //오->왼 슬라이드 등장

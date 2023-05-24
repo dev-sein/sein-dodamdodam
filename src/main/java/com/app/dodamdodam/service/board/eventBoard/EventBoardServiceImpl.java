@@ -2,7 +2,6 @@ package com.app.dodamdodam.service.board.eventBoard;
 
 import com.app.dodamdodam.domain.EventBoardDTO;
 import com.app.dodamdodam.domain.EventFileDTO;
-import com.app.dodamdodam.domain.FreeBoardFileDTO;
 import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.event.EventFile;
 import com.app.dodamdodam.repository.board.event.board.EventBoardRepository;
@@ -10,7 +9,6 @@ import com.app.dodamdodam.repository.board.event.file.EventFileRepository;
 import com.app.dodamdodam.repository.member.MemberRepository;
 import com.app.dodamdodam.search.EventBoardSearch;
 import com.app.dodamdodam.search.board.AdminEventBoardSearch;
-import com.app.dodamdodam.type.EventType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -63,6 +61,13 @@ public class EventBoardServiceImpl implements EventBoardService {
             }
         }
     }
+
+    /* 이벤트 게시글 검색 + 목록 */
+    @Override
+    public List<EventBoardDTO> getEventBoardsBySearch(Pageable pageable, EventBoardSearch eventBoardSearch) {
+        return eventBoardRepository.findEventBoardBySearchWithPaging_QueryDSL(eventBoardSearch, pageable).stream().map(eventBoard -> eventBoardToDTO(eventBoard)).collect(Collectors.toList());
+    }
+
 //    현재 시퀀스 가져오기
     @Override
     public EventBoard getCurrentSequence() {
@@ -70,16 +75,8 @@ public class EventBoardServiceImpl implements EventBoardService {
     }
 
 
-    /* 이벤트 게시글 검색 */
-    @Override
-    public List<EventBoardDTO> getEventBoardsBySearch(Pageable pageable, EventBoardSearch eventBoardSearch, EventType eventStatus) {
-        return eventBoardRepository.findEventBoardBySearchWithPaging_QueryDSL(eventBoardSearch, pageable, eventStatus).stream().map(eventBoard -> eventBoardToDTO(eventBoard)).collect(Collectors.toList());
-    }
-
-
     @Override
     public void update(EventBoardDTO eventBoardDTO) {
-
     }
 
 

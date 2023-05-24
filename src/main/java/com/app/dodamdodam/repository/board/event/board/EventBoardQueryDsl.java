@@ -13,7 +13,7 @@ import java.util.Optional;
 
 public interface EventBoardQueryDsl {
     //    이벤트 게시판 검색 + 무한스크롤
-    public Page<EventBoard> findEventBoardBySearchWithPaging_QueryDSL(EventBoardSearch eventBoardSearch, Pageable pageable, EventType eventStatus);
+    public Page<EventBoard> findEventBoardBySearchWithPaging_QueryDSL(EventBoardSearch eventBoardSearch, Pageable pageable);
 
     // 리스트
     public Slice<EventBoard> findByMemberIdEventBoard_QueryDsl(String sort, Pageable pageable);
