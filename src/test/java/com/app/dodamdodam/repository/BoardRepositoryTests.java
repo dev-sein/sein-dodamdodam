@@ -76,6 +76,8 @@ public class BoardRepositoryTests {
 //            recruitmentBoardRepository.save(recruitmentBoard);
 //        RecruitmentBoard recruitmentBoard = new RecruitmentBoard("모집 게시글 제목", LocalDate.now(),10, "https://open.kakao.com/o/ggmF0Jkf", "1234", "경기도 성남시 분당구 수내동", "탄천앞");
 //        memberRepository.findById(5L).ifPresent(member -> recruitmentBoard.setMember(member));
+//        RecruitmentBoard recruitmentBoard = new RecruitmentBoard("모집 게시글 제목", LocalDate.now(),10, "https://open.kakao.com/o/ggmF0Jkf", "1234", "경기도 성남시 분당구 수내동", "탄천앞");
+//        memberRepository.findById(1L).ifPresent(member -> recruitmentBoard.setMember(member));
 //        memberRepository.findById(5L).ifPresent(member -> recruitmentBoard.setMember(member));
 //        RecruitmentBoard recruitmentBoard = new RecruitmentBoard("욱성이의 시그니엘 체험", LocalDate.of(2023,7,12),20, "https://open.kakao.com/o/ggmF0Jkf", "1234", "서울특별시 송파구", "롯데타워 앞");
 //        memberRepository.findById(5L).ifPresent(member -> recruitmentBoard.setMember(member));
