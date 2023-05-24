@@ -16,7 +16,7 @@
     <!-- 삭제 모달창 -->
     <div id="delete-modal" class="delete-modal">
         <div class="modal-content">
-        <p>정말로 변경하시겠습니까?</p>
+        <p>정말로 삭제하시겠습니까?</p>
         <div class="modal-buttons">
             <button id="cancel-btn">취소</button>
             <button id="confirm-btn">확인</button>
@@ -40,9 +40,9 @@
         <nav>
             <div class="menu-bar">
                 <ul>
-                    <li class="menu">
+                   <!-- <li class="menu">
                         <a class="menus" href="/admins/home">홈</a>
-                    </li>
+                    </li>-->
                     <li class="menu">
                         <a class="menus" href="/admins/member/list">회원 목록</a>
                     </li>
@@ -90,36 +90,45 @@
             <!-- 검색 창 -->
             <div class="inner-wrapper">
                 <div class="title-wrapper">
-                    <div class="page-title">이벤트 게시글</div>
-                    <div class="delete-button">수락하기</div>
+                    <div class="page-title">이벤트 내역</div>
+                    <div class="delete-button">삭제하기</div>
                 </div>
-                <table id="eventboard-table">
-                    <thead>
-                    <tr>
-                        <th>
-                            <!-- 체크박스 -->
-                            <div class="checkbox-wrapper-21">
-                                <label class="control control--checkbox">
-                                    <input type="checkbox" id="select-all" class="substituted" style="display: none;"/>
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </div>
-                            <!-- 체크박스 -->
-                            <!-- <input type="checkbox" id="select-all" class="substituted"> -->
-                        </th>
-                        <th class="number">번호</th>
-                        <th class="title">이벤트명</th>
-                        <th class="writer">개최자</th>
-                        <th class="views">이벤트 날짜</th>
-                        <th class="like-count">이벤트 장소</th>
-                        <th class="register-time">진행상태</th>
-                        <!-- <th class="detail-top">상세보기</th> -->
-                    </tr>
-                    </thead>
-                    <tbody>
-                    
-                    </tbody>
-                </table>
+                <div class="ready" style="margin-top: 20px; margin-bottom: 100px; margin-left: 550px;">
+                    서비스 준비중입니다.
+                </div>
+
+<!--            <div class="inner-wrapper">-->
+<!--                <div class="title-wrapper">-->
+<!--                    <div class="page-title">이벤트 게시글</div>-->
+<!--                    <div class="delete-button">삭제하기</div>-->
+<!--                </div>-->
+<!--                <table id="eventboard-table">-->
+<!--                    <thead>-->
+<!--                    <tr>-->
+<!--                        <th>-->
+<!--                            &lt;!&ndash; 체크박스 &ndash;&gt;-->
+<!--                            <div class="checkbox-wrapper-21">-->
+<!--                                <label class="control control&#45;&#45;checkbox">-->
+<!--                                    <input type="checkbox" id="select-all" class="substituted" style="display: none;"/>-->
+<!--                                    <div class="control__indicator"></div>-->
+<!--                                </label>-->
+<!--                            </div>-->
+<!--                            &lt;!&ndash; 체크박스 &ndash;&gt;-->
+<!--                            &lt;!&ndash; <input type="checkbox" id="select-all" class="substituted"> &ndash;&gt;-->
+<!--                        </th>-->
+<!--                        <th class="number">번호</th>-->
+<!--                        <th class="title">이벤트명</th>-->
+<!--                        <th class="writer">개최자</th>-->
+<!--                        <th class="views">이벤트 날짜</th>-->
+<!--                        <th class="like-count">이벤트 장소</th>-->
+<!--                        <th class="register-time">진행상태</th>-->
+<!--                        &lt;!&ndash; <th class="detail-top">상세보기</th> &ndash;&gt;-->
+<!--                    </tr>-->
+<!--                    </thead>-->
+<!--                    <tbody>-->
+<!--                    -->
+<!--                    </tbody>-->
+<!--                </table>-->
                 <div class="pages-wrapper">
                     <div class="arrow-left"></div>
                     <div class="page active">1</div>

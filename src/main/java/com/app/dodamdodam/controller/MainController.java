@@ -30,6 +30,27 @@ public class MainController {
     private final PurchaseBoardService purchaseBoardService;
     private final RecruitmentBoardService recruitmentBoardService;
 
+    /*=========================== 발표 버전 메인 ========================================*/
+
+    @GetMapping("home")
+    public String main(HttpSession session, Model model){
+        log.info("==================== main controller =====================");
+//        log.info(session.getAttribute("member") + "");
+        log.info("=========================================");
+        model.addAttribute("id", session.getId());
+        purchaseBoardService.getRecentPurchaseBoardList().stream().map(PurchaseBoardFileDTO::getPurchaseFileDTOS);
+
+        model.addAttribute("freeBoards", freeBoardService.getRecentFreeBoardList());
+        model.addAttribute("eventBoards", eventBoardService.getRecentEventBoardList());
+        model.addAttribute("purchaseBoards", purchaseBoardService.getRecentPurchaseBoardList());
+        model.addAttribute("purchaseBoardsFile", purchaseBoardService.getRecentPurchaseBoardList().stream().map(PurchaseBoardFileDTO::getBoardContent));
+        model.addAttribute("recruitmentBoards", recruitmentBoardService.getRecentRecruitmentBoardList());
+//        model.addAttribute("id", session.getId());
+        return "main/main-first";
+    }
+
+
+/*
     @GetMapping("home")
     public String main(HttpSession session, Model model){
         log.info("==================== main controller =====================");
@@ -45,7 +66,10 @@ public class MainController {
         model.addAttribute("recruitmentBoards", recruitmentBoardService.getRecentRecruitmentBoardList());
 //        model.addAttribute("id", session.getId());
         return  "main/main";
-    }
+    }*/
+
+
+
 
     @GetMapping("introduce")
     public String introduce(){

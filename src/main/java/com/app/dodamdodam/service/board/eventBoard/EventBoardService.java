@@ -52,6 +52,7 @@ public interface EventBoardService {
                 .boardContent(eventBoard.getBoardContent())
                 .createdDate(eventBoard.getCreatedDate())
                 .address(eventBoard.getAddress())
+                .eventStatus(eventBoard.getEventStatus())
                 .eventBusinessNumber(eventBoard.getEventBusinessNumber())
                 .eventBusinessEmail(eventBoard.getEventBusinessEmail())
                 .eventBusinessName(eventBoard.getEventBusinessName())
