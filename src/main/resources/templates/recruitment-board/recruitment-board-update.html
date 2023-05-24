@@ -15,7 +15,7 @@
     <div id="page-container">
         <main id="container">
 <!--            <form id="submit-btn" class="event-register" th:action="/update-board/${board.id}" method="post">-->
-            <form id="submit-btn" class="event-register" th:action="@{/recruitment/update-board/{boardId}(boardId=${board.id})}" th:method="post" name="updateForm">
+            <form class="event-register" th:action="@{/recruitment/update-board/{boardId}(boardId=${board.id})}" th:method="post" name="updateForm">
                 <!-- 회원 유형 선택 -->
                 <section class="info-register">
 
@@ -129,7 +129,7 @@
                     </div>
                     <div class="input-container">
                         <div class="waffle input">
-                            <input class="open-kakao-password number" placeholder="오픈채팅 비밀번호를 입력해주세요" name="openKakaoPassword" required>
+                            <input class="open-kakao-password number" placeholder="오픈채팅 비밀번호를 입력해주세요" name="openKakaoPassword">
                         </div>
                         <div class="waffle helper mb"></div>
                         <div class="open-password-error error"></div>
@@ -150,9 +150,8 @@
                     </div>
                     <div class="waffle helper mb">10MB 이내 pdf, jpeg, png 파일을 등록하세요.</div>
                     <div class="submit-container" style="width: 118%; display: flex; justify-content: space-between;">
-                    <button class="submit-btn btn back-btn" type="button" onClick="javascript:backmodal();">돌아가기</button>
-<!--                    <input class="submit-btn btn update-btn" type="submit" value="수정하기">-->
-                    <input class="submit-btn btn update-btn" type="button" value="수정하기" onClick="javascript:modifymodal();">
+                    <button class="submit-btn btn back-btn" type="button" onclick="backmodal();">돌아가기</button>
+                    <input class="submit-btn btn update-btn" type="button" value="수정하기" onclick="modifymodal();">
                     <p class="submit-notice"></p>
                 </div>
 
@@ -175,7 +174,7 @@
         </div>
               <!-- //modal 영역 -->
     </div>
-</section>
+    </section>
 </form>
 
         </main>
@@ -183,7 +182,7 @@
 
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="/js/recruitment-board/recruitment-board-write.js"></script>
+<script src="/js/recruitment-board/recruitment-board-update.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>

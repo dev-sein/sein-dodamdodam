@@ -16,6 +16,7 @@ import com.app.dodamdodam.repository.product.ProductRepository;
 import com.app.dodamdodam.repository.recruitment.RecruitmentRepository;
 import com.app.dodamdodam.repository.reply.freeReply.FreeReplyRepository;
 import com.app.dodamdodam.type.CategoryType;
+import com.app.dodamdodam.type.RecruitmentType;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,8 +88,19 @@ public class BoardRepositoryTests {
 //        RecruitmentBoard recruitmentBoard = new RecruitmentBoard("모집 게시글 제목", LocalDate.now(),10, "https://open.kakao.com/o/ggmF0Jkf", "1234", "경기도 성남시 분당구 수내동", "탄천앞");
 //        memberRepository.findById(1L).ifPresent(member -> recruitmentBoard.setMember(member));
 //        memberRepository.findById(5L).ifPresent(member -> recruitmentBoard.setMember(member));
-        RecruitmentBoard recruitmentBoard = new RecruitmentBoard("욱성이의 시그니엘 체험" + i, LocalDate.of(2023,5,25),20, "https://open.kakao.com/o/ggmF0Jkf", "1234", "서울특별시 송파구", "롯데타워 앞");
-        memberRepository.findById(5L).ifPresent(member -> recruitmentBoard.setMember(member));
+//        RecruitmentBoard recruitmentBoard = new RecruitmentBoard("욱성이의 시그니엘 체험" + i, LocalDate.of(2023,5,25),20, "https://open.kakao.com/o/ggmF0Jkf", "1234", "서울특별시 송파구", "롯데타워 앞");
+        RecruitmentBoard recruitmentBoard = RecruitmentBoard.builder().boardTitle("욱성이의 오리배 체험" + i)
+                .boardContent("게시글 내용 게시글 내용 " + i)
+                .recruitmentAddress("서울특별시 송파구")
+                .recruitmentAddressDetail("석촌호수 앞")
+                .recruitmentDate(LocalDate.of(2023,06,1))
+                .recruitmentOpenChatting("https://open.kakao.com/o/ggmF0Jkf")
+                .recruitmentPeopleCount(30)
+                .recruitmentSubtitle("욱성 해버렸다")
+                .recruitmentStatus(RecruitmentType.APPLYING)
+                .build();
+
+        memberRepository.findById(201L).ifPresent(member -> recruitmentBoard.setMember(member));
 
         recruitmentBoardRepository.save(recruitmentBoard);
         }

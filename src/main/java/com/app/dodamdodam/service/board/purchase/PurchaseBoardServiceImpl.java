@@ -1,6 +1,7 @@
 package com.app.dodamdodam.service.board.purchase;
 
 import com.app.dodamdodam.domain.*;
+import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.entity.purchase.Product;
 import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.entity.purchase.PurchaseFile;
@@ -43,9 +44,9 @@ public class PurchaseBoardServiceImpl implements PurchaseBoardService {
         log.info(purchaseFileDTOs.toString());
         log.info("==============================");
 
-        memberRepository.findById(memberId).ifPresent(
-                member -> purchaseBoardDTO.setMemberDTO(toMemberDTO(member))
-        );
+        Optional<Member> optionalMember = memberRepository.findById(memberId);
+        Member member = null;
+        if (optionalMember.isPresent()) member = optionalMember.get();
 
         Product product = toProductEntity(productDTO);
 
@@ -53,8 +54,10 @@ public class PurchaseBoardServiceImpl implements PurchaseBoardService {
         log.info(product + "");
 
 //        productRepository.save(product);
+        PurchaseBoard purchaseBoard = toPurchaseBoardEntity(purchaseBoardDTO);
+        purchaseBoard.setMember(member);
 
-        PurchaseBoard purchaseBoard = purchaseBoardRepository.save(toPurchaseBoardEntity(purchaseBoardDTO));
+        purchaseBoardRepository.save(purchaseBoard);
 
         log.info(purchaseBoard.getId() + "");
 //        Optional<PurchaseBoard> optionalPurchaseBoard = purchaseBoardRepository.findById(purchaseBoard.getId());

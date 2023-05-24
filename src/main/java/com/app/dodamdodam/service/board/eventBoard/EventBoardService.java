@@ -99,7 +99,6 @@ public interface EventBoardService {
         return EventBoard.builder()
                 .boardTitle(eventBoardDTO.getBoardTitle())
                 .boardContent(eventBoardDTO.getBoardContent())
-                .member(toMemberEntity(eventBoardDTO.getMemberDTO()))
                 .eventBusinessName(eventBoardDTO.getEventBusinessName())
                 .eventBusinessNumber(eventBoardDTO.getEventBusinessNumber())
                 .eventBusinessEmail(eventBoardDTO.getEventBusinessEmail())

@@ -63,11 +63,12 @@ public class Member extends Period {
 //        this.memberType = memberType;
 //        this.memberRole = memberRole;
 //    }
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "member", cascade = CascadeType.REMOVE)
-    private List<EventBoard> eventBoards;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "member", cascade = CascadeType.REMOVE)
-    private List<RecruitmentBoard> recruitmentBoards;
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "member", cascade = CascadeType.REMOVE)
+//    private List<EventBoard> eventBoards;
+//
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "member", cascade = CascadeType.REMOVE)
+//    private List<RecruitmentBoard> recruitmentBoards;
 
     @Builder
     public Member(Long id, String memberId, String memberPassword, String memberName, String memberEmail, String memberPhone, Address address, MemberStatus memberStatus, Integer memberPoint, int participationCount, MemberType memberType, Role memberRole) {

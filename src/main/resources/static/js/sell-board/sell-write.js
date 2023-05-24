@@ -115,7 +115,7 @@ document.querySelector(".btn-attach-thumb").addEventListener("click", function (
       modal.style.display = "none";
     };
   }
-ㄴ
+
 
   /* 모든 항목 입력 확인 js */
   document.querySelector(".button-button").addEventListener("click", function (event) {

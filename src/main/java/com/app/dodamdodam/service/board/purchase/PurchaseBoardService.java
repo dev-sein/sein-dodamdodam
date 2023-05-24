@@ -125,7 +125,6 @@ public interface PurchaseBoardService {
         return PurchaseBoard.builder().id(purchaseBoardDTO.getId())
                 .boardTitle(purchaseBoardDTO.getBoardTitle())
                 .boardContent(purchaseBoardDTO.getBoardContent())
-                .member(toMemberEntity(purchaseBoardDTO.getMemberDTO()))
                 .product(toProductEntity(purchaseBoardDTO.getProductDTO()))
                 .build();
     }
