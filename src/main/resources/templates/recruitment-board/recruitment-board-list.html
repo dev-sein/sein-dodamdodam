@@ -24,7 +24,7 @@
                     함께여서 더욱 즐거운 취미 생활!<br>
                     아주 사소한 계획이라도 누구든지 등록 가능
                 </p>
-                <button class="btn write">모집하러 가기<span>></span></button>
+                <button class="btn write" onclick="location.href='/recruitment/write'">모집하러 가기<span>></span></button>
             </div>
         </div>
 
@@ -617,7 +617,7 @@
                         </div>
                         <div class="list-content">
                             <div class="list-title">
-                                ${result[i].recruitmentSubtitle}
+                                ${result[i].boardTitle}
                             </div>
                             <div class="list-writer">${result[i].memberDTO.memberName}</div>
                             <div clsas="list-footer">
@@ -634,7 +634,7 @@
                                     <div class="loca-status-container">
                                         <span class="deadline location">${result[i].recruitmentAddressDetail}</span>
                                         <div class="status-community">
-                                        <span class="ing">${result[i].recruitmentStatus.toString == "APPLYING" ? "모집중" : "완료"}</span>
+                                        <span class="ing">${result[i].recruitmentStatus == "APPLYING" ? "모집중" : "완료"}</span>
                                     </div>
                                 </div>
                             </div>

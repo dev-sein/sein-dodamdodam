@@ -54,6 +54,9 @@ public interface RecruitmentBoardService {
     /* 최근 작성된 자유 게시글 리스트 */
     public List<RecruitmentBoardFileDTO> getRecentRecruitmentBoardList();
 
+//    모집 신청
+    public void getRecruitment(Long boardId, Long memberId);
+
     default RecruitmentBoardFileDTO toRecruitmentBoardFileDto(RecruitmentBoard recruitmentBoard){
         return RecruitmentBoardFileDTO.builder()
                 .id(recruitmentBoard.getId())
@@ -137,7 +140,6 @@ public interface RecruitmentBoardService {
                 .id(recruitmentBoardDTO.getId())
                 .boardTitle(recruitmentBoardDTO.getBoardTitle())
                 .boardContent(recruitmentBoardDTO.getBoardContent())
-                .member(toMemberEntity(recruitmentBoardDTO.getMemberDTO()))
                 .recruitmentSubtitle(recruitmentBoardDTO.getRecruitmentSubtitle())
                 .recruitmentAddress(recruitmentBoardDTO.getRecruitmentAddress())
                 .recruitmentAddressDetail(recruitmentBoardDTO.getRecruitmentAddressDetail())

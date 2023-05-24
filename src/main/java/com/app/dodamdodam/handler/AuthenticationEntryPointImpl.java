@@ -18,7 +18,7 @@ public class AuthenticationEntryPointImpl implements AuthenticationEntryPoint {
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
         log.error("사용자 인증 자격 만료");
-        response.sendRedirect(REDIRECT_URL);
+        response.sendError(401);
     }
 }
 

@@ -36,7 +36,7 @@ dependencies {
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
     implementation 'org.springframework.session:spring-session-data-redis'
     implementation 'org.springframework.boot:spring-boot-starter-websocket'
-//    implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.7.1' // 잠깐 민우가 추가
+    implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.7.1' // 잠깐 민우가 추가
     implementation 'org.webjars:sockjs-client:1.5.1'
     implementation 'org.webjars:stomp-websocket:2.3.4'
     implementation 'org.springframework.session:spring-session-data-redis'

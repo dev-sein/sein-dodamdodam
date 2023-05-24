@@ -2,12 +2,8 @@ package com.app.dodamdodam.controller.board.recruitment;
 
 import com.app.dodamdodam.domain.RecruitmentBoardDTO;
 import com.app.dodamdodam.domain.RecruitmentBoardFileDTO;
-import com.app.dodamdodam.entity.free.FreeBoard;
-import com.app.dodamdodam.entity.free.FreeReply;
+import com.app.dodamdodam.domain.RecruitmentReplyDTO;
 import com.app.dodamdodam.entity.recruitment.RecruitmentReply;
-import com.app.dodamdodam.search.FreeBoardSearch;
-import com.app.dodamdodam.service.board.freeBoard.FreeBoardService;
-import com.app.dodamdodam.service.board.freeBoard.freeReply.FreeReplyService;
 import com.app.dodamdodam.service.board.recruitmentBoard.RecruitmentBoardService;
 import com.app.dodamdodam.service.board.recruitmentBoard.recruitmentReply.RecruitmentReplyService;
 import com.app.dodamdodam.service.member.MemberService;
@@ -26,7 +22,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Controller
-@RequestMapping("recruitment/*")
+@RequestMapping("/recruitment/*")
 @RequiredArgsConstructor
 @Slf4j
 public class RecruitmentBoardController {
@@ -59,19 +55,26 @@ public class RecruitmentBoardController {
 
     //    모집 게시판 상세
     @GetMapping("detail/{boardId}")
-    public String freeBoardDetail(Model model, @PathVariable(value = "boardId") Long boardId, HttpSession session){
+    public String recruitmentBoardDetail(Model model, @PathVariable(value = "boardId") Long boardId, HttpSession session){
+//        session.setAttribute("memberId", 1L);
         Long memberId = (Long)session.getAttribute("memberId");
-        log.info("들어옴");
+        log.info("모집 게시판 상세 들어옴");
         model.addAttribute("boardDetail", recruitmentBoardService.getRecruitmentBoardDetailByBoardId(boardId));
 //        /* PageRequest는 뭐 넣어도 상관없이 개수 가져와서 아무렇게나 넣음 */
         model.addAttribute("replyCount", recruitmentReplyService.getRecruitmentRepliesCountByBoardId(PageRequest.of(0,5), boardId));
 
         return "recruitment-board/recruitment-board-detail";
     }
+//    모집
+    @PostMapping("recruit")
+    @ResponseBody
+    public void getRecruit(@RequestParam("boardId") Long boardId ,@RequestParam("memberId") Long memberId) {
+        recruitmentBoardService.getRecruitment(memberId, boardId);
+    }
 
 //  모집 게시글 삭제
     @GetMapping("delete-board/{boardId}")
-    public RedirectView deleteBoard(@PathVariable(value = "boardId")Long boardId){
+    public RedirectView deleteRecruitmentBoard(@PathVariable(value = "boardId")Long boardId){
         log.info("삭제 컨트롤러 들어옴");
         recruitmentBoardService.deleteRecruitmentBoardByBoardId(boardId);
         return new RedirectView("/recruitment/list");
@@ -79,7 +82,7 @@ public class RecruitmentBoardController {
 
 //    모집 게시글 수정
     @GetMapping("update/{boardId}")
-    public String updateFreeBoard(@PathVariable(value = "boardId") Long boardId, Model model){
+    public String updateRecruitmentBoard(@PathVariable(value = "boardId") Long boardId, Model model){
         model.addAttribute("board",recruitmentBoardService.getAdminRecruitmentBoardDetail(boardId));
 
         return "recruitment-board/recruitment-board-update";
@@ -87,7 +90,7 @@ public class RecruitmentBoardController {
 
 //    모집 게시글 수정
     @PostMapping("update-board/{boardId}")
-    public RedirectView updateFreeBoard(RecruitmentBoardFileDTO updatedBoard, String date,  @PathVariable(value = "boardId") Long boardId){
+    public RedirectView updateRecruitmentBoard(RecruitmentBoardFileDTO updatedBoard, String date,  @PathVariable(value = "boardId") Long boardId){
         log.info("수정 들어옴");
         log.info("date : " + date);
         log.info("boardId : " + boardId);
@@ -148,4 +151,54 @@ public class RecruitmentBoardController {
         Long memberId = (Long) session.getAttribute("memberId");
         recruitmentBoardService.register(recruitmentBoardDTO, memberId);
     }
+
+    /*===============================================모집 댓글=========================================================*/
+
+    /* 모집 게시판 댓글 작성 */
+    @PostMapping("write-reply")
+    @ResponseBody
+    public Long writeReply(String replyContent, Long boardId, HttpSession session){
+        RecruitmentReply recruitmentReply = new RecruitmentReply(replyContent);
+        log.info("댓글 작성 들어옴");
+        log.info("모집 게시판 댓글 : " + replyContent);
+        log.info("게시판 ID : " + boardId);
+        Long memberId = (Long)session.getAttribute("memberId");
+        log.info("memberId : " + memberId);
+        recruitmentReplyService.saveRecruitmentBoardReply(recruitmentReply, boardId, memberId);
+        Long replyCount = recruitmentReplyService.getRecruitmentRepliesCountByBoardId(PageRequest.of(0, 5), boardId);
+        return replyCount;
+    }
+
+    /* 모집 게시판 댓글 수정 */
+    @PostMapping("update-reply/{replyId}")
+    @ResponseBody
+    public String updateReply(String updatedRecruitmentReply, @PathVariable(value = "replyId") Long replyId) {
+        log.info("댓글 수정 들어옴");
+        log.info("댓글 : " + updatedRecruitmentReply);
+        log.info("댓글 : " + replyId);
+        RecruitmentReply updatedReply = new RecruitmentReply(updatedRecruitmentReply);
+        recruitmentReplyService.setRecruitmentReplyContent(updatedReply, replyId);
+        return "success : update-reply";
+    }
+
+    /* 모집 게시판 댓글 삭제 */
+    @PostMapping("delete-reply/{replyId}")
+    @ResponseBody
+    public Integer deleteReply(@PathVariable(value = "replyId") Long replyId){
+        log.info("댓글 삭제 들어옴");
+        Integer replyCount = recruitmentReplyService.getRecruitmentRepliesCountByReplyId(replyId);
+        recruitmentReplyService.removeRecruitmentReply(replyId);
+        return replyCount - 1;
+    }
+
+    /* 자유 게시판 댓글 리스트 */
+    @GetMapping("replies/{boardId}/{page}")
+    @ResponseBody
+    public List<RecruitmentReplyDTO> getReplies(@PathVariable(value = "boardId") Long boardId , @PathVariable(value = "page") int page){
+        log.info("자유 게시판 댓글 리스트 들어옴");
+        log.info("게시판 아이디" + boardId + " || " + "게시판 페이지" + page);
+        Pageable pageable = PageRequest.of(page,5);
+        return recruitmentReplyService.getRecruitmentRepliesByBoardId(pageable, boardId);
+    }
+
 }
