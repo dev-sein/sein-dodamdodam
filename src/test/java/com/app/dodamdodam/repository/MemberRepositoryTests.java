@@ -143,7 +143,7 @@ public class MemberRepositoryTests {
 //    회원 탈퇴
     @Test
     public void deleteMemberByIdTest(){
-        memberRepository.findById(1L).ifPresent(member -> memberRepository.delete(member));
+        memberRepository.findById(3L).ifPresent(member -> memberRepository.delete(member));
     }
 
 //    아이디 찾기
