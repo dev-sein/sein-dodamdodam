@@ -9,7 +9,7 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-@ToString
+@ToString(callSuper = true,exclude = "recruitmentBoard")
 @Table(name = "TBL_RECRUITMENT_REPLY")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class RecruitmentReply extends Reply {
@@ -38,8 +38,8 @@ public class RecruitmentReply extends Reply {
     }
 
     @Builder
-    public RecruitmentReply(String replyContent, RecruitmentBoard recruitmentBoard) {
-        super(replyContent);
+    public RecruitmentReply(String replyContent, Member member, RecruitmentBoard recruitmentBoard) {
+        super(replyContent, member);
         this.recruitmentBoard = recruitmentBoard;
     }
 }

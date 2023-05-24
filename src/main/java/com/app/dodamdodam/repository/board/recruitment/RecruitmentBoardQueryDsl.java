@@ -1,5 +1,6 @@
 package com.app.dodamdodam.repository.board.recruitment;
 
+import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.free.FreeBoard;
 import com.app.dodamdodam.entity.purchase.PurchaseBoard;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
@@ -9,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 public interface RecruitmentBoardQueryDsl {
 //    세션에 담긴 id 값 받아와서 내가 작성한 모집 게시글 리스트 가져오기
@@ -48,5 +50,10 @@ public interface RecruitmentBoardQueryDsl {
 
 //    내가 참여한 모집 게시글들의 날짜 가져오기
     public List<LocalDate> findRecruimentDateByMemberId_QueryDSL(Long memberId);
-    
+
+    // 자유게시글 상세 페이지 댓글
+    public Optional<RecruitmentBoard> findRecruitmentBoardAndRecruitmentRepliesById_QueryDSL(Long boardId);
+
+    // 댓글 id로 자유게시글 접근해서 그 안에 달린 댓글 갯수 가져오기
+    public Integer findReplyCountByReplyId_QueryDsl(Long replyId);
 }
