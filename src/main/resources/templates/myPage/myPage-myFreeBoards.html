@@ -23,7 +23,7 @@
                         <h3 class="BlindText"></h3>
                         <!-- 프로필 이미지 -->
                         <div aria-hidden="true" class="Avatar" >
-                            <span class="Avatar_image" style="background-image: url('https://static.wadiz.kr/assets/icon/profile-icon-6.png'); border: 1px solid rgb(221, 226, 230);"></span>
+                            <span class="Avatar_image" th:style="'background-image: url(\'' + ${myGrade.gradeTitle} + '\'); border: 1px solid rgb(221, 226, 230);'"></span>
                         </div>
                         <!-- 사업자 회원 정보 -->
                         <div class="ProfileCorp_info">
