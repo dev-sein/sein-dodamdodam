@@ -2,6 +2,7 @@ package com.app.dodamdodam.controller.board.recruitment;
 
 import com.app.dodamdodam.domain.RecruitmentBoardDTO;
 import com.app.dodamdodam.domain.RecruitmentBoardFileDTO;
+import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
 import com.app.dodamdodam.service.board.recruitmentBoard.RecruitmentBoardService;
 import com.app.dodamdodam.service.board.recruitmentBoard.recruitmentReply.RecruitmentReplyService;
 import com.app.dodamdodam.service.member.MemberService;
@@ -65,13 +66,7 @@ public class RecruitmentBoardController {
 //    모집
     @PostMapping("recruit")
     @ResponseBody
-    public void getRecruit(@RequestBody Long boardId, HttpSession session) {
-        Long memberId = null;
-        log.info("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
-        log.info(String.valueOf(boardId));
-        if(session.getAttribute("memberId") != null) {
-            memberId = (Long) session.getAttribute("memberId");
-        }
+    public void getRecruit(@RequestParam("boardId") Long boardId ,@RequestParam("memberId") Long memberId) {
         recruitmentBoardService.getRecruitment(memberId, boardId);
     }
 

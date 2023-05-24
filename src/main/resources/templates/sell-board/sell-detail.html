@@ -43,12 +43,8 @@
                         >
                           <div>
                             <div tabindex="-1" style="width: 100%; display: inline-block">
-                              <div
-                                class="StoreSlider_slickBackgroundImage__1CH4Y"
-                                style="
-                                  background-image: url('https://cdn2.wadiz.kr/2021/09/04/9ef63043-f2a8-409f-8526-1355debab9e6');
-                                "
-                              ></div>
+                              <div class="StoreSlider_slickBackgroundImage__1CH4Y"
+                                   style="background-image: url('@{/file/display?fileName=' + ${purchaseBoardsDTO.purchaseFileDTOs[0].filePath} +'_' +${purchaseBoardDTO.purchaseFileDTOs[0].fileUuid} + '_' + ${purchaseBoardDTO.purchaseFileDTOs[0].fileOriginalName}');"></div>
                             </div>
                           </div>
                         </div>
@@ -70,7 +66,7 @@
                             </div>
                           </div>
                         </div>
-                        
+
                       </div>
                     </div>
                   </div>
@@ -215,7 +211,7 @@
                     </button>
                   </div>
                 </div>
-                
+
                 <div class="DetailInfo_observer__1F3B3"></div>
               </div>
             </div>
@@ -283,7 +279,7 @@
                         th:src="'/file/display?fileName=' + ${purchaseFileDTO.filePath} + '/t_' + ${purchaseFileDTO.fileUuid} + '_' + ${purchaseFileDTO.fileOriginalName}"
                       />
                     </div>
-                    <div class="ProjectChangeNotice_container__3tNIH">
+                    <!--<div class="ProjectChangeNotice_container__3tNIH">
                       <div>
                         <section class="ContentFoldHeight_container__1-2AN">
                           <div
@@ -313,7 +309,7 @@
                               </div>
                             </div>
                           </div>
-                          <!--<div class="ContentFoldHeight_foldContainer__38f2_">
+                          &lt;!&ndash;<div class="ContentFoldHeight_foldContainer__38f2_">
                             <div
                               class="MoreButton_button__3qNcH ProjectChangeNotice_foldButton__3lKOM"
                             >
@@ -330,10 +326,10 @@
                                 ></path>
                               </svg>
                             </div>
-                          </div>-->
+                          </div>&ndash;&gt;
                         </section>
                       </div>
-                    </div>
+                    </div>-->
               </div>
             </div>
           </div>

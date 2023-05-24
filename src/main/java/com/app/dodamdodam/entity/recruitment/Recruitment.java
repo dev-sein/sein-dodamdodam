@@ -16,8 +16,8 @@ import java.util.List;
 @ToString(exclude = {"recruitmentBoard"})
 //@ToString(exclude = {"member", "recruitmentBoard"})
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@DynamicInsert
-@DynamicUpdate
+//@DynamicInsert
+//@DynamicUpdate
 public class Recruitment extends Period {
     @Id
     @GeneratedValue
@@ -25,9 +25,11 @@ public class Recruitment extends Period {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "RECRUITMENT_BOARD_ID")
     private RecruitmentBoard recruitmentBoard;
 
     public Recruitment(Member member) {

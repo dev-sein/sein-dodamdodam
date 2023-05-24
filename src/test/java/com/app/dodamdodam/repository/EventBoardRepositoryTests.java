@@ -40,41 +40,41 @@ public class EventBoardRepositoryTests {
     @Test
     public void saveTest() {
         /* 회원 추가 */
-        for (int i=1; i<=10; i++) {
-            Address address = new Address("서울시", "강남구");
-
-            Member member = Member.builder().memberName("테스트" + i).memberEmail("test" + i + "@naver.com").memberId("testId" + i)
-                    .memberPassword("1234").memberPhone("01012341234").memberPoint(0).address(address)
-                    .memberRole(Role.MEMBER).memberType(MemberType.GENERAL).memberStatus(MemberStatus.NORMAL)
-                    .build();
-            memberRepository.save(member);
-        }
-
-        /* 이벤트 게시글 추가 */
-        for (int i = 1; i <= 10; i++) {
-            EventBoard eventBoard1 = EventBoard.builder()
-                    .boardTitle("이벤트 게시글 제목" + i)
-                    .boardContent("이벤트 게시글 내용" + i)
-                    .eventAddress("서울시")
-                    .eventAddressDetail("강남구")
-                    .eventBusinessEmail("test1@naver.com")
-                    .eventBusinessName("기업이름" + i)
-                    .eventBusinessNumber("10000" + i)
-                    .eventBusinessTel("01012341234")
-                    .eventStartDate((LocalDate.now()))
-                    .eventEndDate(LocalDate.of(2023, 6, 20))
-                    .eventLikeCount(0)
-                    .eventReplyCount(0)
-                    .build();
-            memberRepository.findById(2L).ifPresent(member1 -> eventBoard1.setMember(member1));
-//            eventBoard.setMember(member);
-//            for(int j = 0; j < 5; j ++){
-//                EventFile eventFile = new EventFile(UUID.randomUUID().toString(), "test" + i+1, 10L, eventBoard, 500, "");
-//                eventFileRepository.save(eventFile);
-//            }
-
-            eventBoardRepository.save(eventBoard1);
-        }
+//        for (int i=1; i<=10; i++) {
+//            Address address = new Address("서울시", "강남구");
+//
+//            Member member = Member.builder().memberName("테스트" + i).memberEmail("test" + i + "@naver.com").memberId("testId" + i)
+//                    .memberPassword("1234").memberPhone("01012341234").memberPoint(0).address(address)
+//                    .memberRole(Role.MEMBER).memberType(MemberType.GENERAL).memberStatus(MemberStatus.NORMAL)
+//                    .build();
+//            memberRepository.save(member);
+//        }
+//
+//        /* 이벤트 게시글 추가 */
+//        for (int i = 1; i <= 10; i++) {
+//            EventBoard eventBoard1 = EventBoard.builder()
+//                    .boardTitle("이벤트 게시글 제목" + i)
+//                    .boardContent("이벤트 게시글 내용" + i)
+//                    .eventAddress("서울시")
+//                    .eventAddressDetail("강남구")
+//                    .eventBusinessEmail("test1@naver.com")
+//                    .eventBusinessName("기업이름" + i)
+//                    .eventBusinessNumber("10000" + i)
+//                    .eventBusinessTel("01012341234")
+//                    .eventStartDate((LocalDate.now()))
+//                    .eventEndDate(LocalDate.of(2023, 6, 20))
+//                    .eventLikeCount(0)
+//                    .eventReplyCount(0)
+//                    .build();
+//            memberRepository.findById(2L).ifPresent(member1 -> eventBoard1.setMember(member1));
+////            eventBoard.setMember(member);
+////            for(int j = 0; j < 5; j ++){
+////                EventFile eventFile = new EventFile(UUID.randomUUID().toString(), "test" + i+1, 10L, eventBoard, 500, "");
+////                eventFileRepository.save(eventFile);
+////            }
+//
+//            eventBoardRepository.save(eventBoard1);
+//        }
     }
 
     /* 이벤트 게시글 상세글 */

@@ -28,16 +28,16 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-@Transactional
 @Slf4j
 public class RecruitmentBoardServiceImpl implements RecruitmentBoardService {
+
     private final RecruitmentBoardRepository recruitmentBoardRepository;
     private final RecruitmentRepository recruitmentRepository;
     private final MemberRepository memberRepository;
     private final RecruitmentFileRepository recruitmentFileRepository;
 
     // 이벤트 게시판 등록
-    @Override
+    @Override @Transactional
     public void register(RecruitmentBoardDTO recruitmentBoardDTO, Long memberId) {
         List<RecruitmentFileDTO> recruitmentFileDTOS = recruitmentBoardDTO.getRecruitmentFileDTOS();
 
@@ -93,7 +93,7 @@ public class RecruitmentBoardServiceImpl implements RecruitmentBoardService {
     }
 
 //    모집 게시글 수정
-    @Override
+    @Override @Transactional
     public void updateRecruitmentBoard(RecruitmentBoardFileDTO updatedBoard, Long boardId) {
         recruitmentBoardRepository.findById(boardId).ifPresent(recruitmentBoard -> {
             recruitmentBoard.setBoardTitle(updatedBoard.getBoardTitle());
@@ -158,26 +158,31 @@ public class RecruitmentBoardServiceImpl implements RecruitmentBoardService {
     //    모집 신청
     @Override
     public void getRecruitment(Long boardId, Long memberId){
-        Optional<Member> optionalMember = memberRepository.findById(memberId);
-        Optional<RecruitmentBoard> optionalRecruitmentBoard = recruitmentBoardRepository.findById(boardId);
 
+        Optional<Member> memberOptional = memberRepository.findById(memberId);
         Member member = null;
+
+        Optional<RecruitmentBoard> recruitmentBoardOptional = recruitmentBoardRepository.findById(boardId);
         RecruitmentBoard recruitmentBoard = null;
 
-        if (optionalMember.isPresent()) {
-            member = optionalMember.get();
+        if(recruitmentBoardOptional.isPresent()){
+            recruitmentBoard = recruitmentBoardOptional.get();
         }
 
-        if (optionalRecruitmentBoard.isPresent()) {
-            recruitmentBoard = optionalRecruitmentBoard.get();
+        if(memberOptional.isPresent()){
+            member = memberOptional.get();
         }
 
-        Recruitment recruitment = Recruitment.builder()
-                .member(member)
-                .recruitmentBoard(recruitmentBoard)
-                .build();
+        log.info(recruitmentBoard.toString());
+        log.info(member.toString());
+
+        Recruitment recruitment = Recruitment.builder().member(member).recruitmentBoard(recruitmentBoard).build();
 
         recruitmentRepository.save(recruitment);
+
+//        memberRepository.findById(memberId).ifPresent(member -> recruitment.setMember(member));
+//        recruitmentBoardRepository.findById(boardId).ifPresent(recruitmentBoard -> recruitment.setRecruitmentBoard(recruitmentBoard));
+//        recruitmentRepository.save(recruitment);
     }
 
 }
