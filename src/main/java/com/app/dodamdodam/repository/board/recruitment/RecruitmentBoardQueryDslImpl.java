@@ -17,6 +17,7 @@ import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import static com.app.dodamdodam.entity.free.QFreeBoard.freeBoard;
 import static com.app.dodamdodam.entity.inquiry.QInquiry.inquiry;
@@ -191,5 +192,20 @@ public class RecruitmentBoardQueryDslImpl implements RecruitmentBoardQueryDsl {
                 .where(recruitmentBoard.recruitments.any().member.id.eq(memberId))
                 .orderBy(recruitmentBoard.recruitmentDate.desc())
                 .fetch();
+    }
+
+//    게시글 상세페이지 board 정보, reply정보
+    @Override
+    public Optional<RecruitmentBoard> findRecruitmentBoardAndRecruitmentRepliesById_QueryDSL(Long boardId) {
+        return Optional.ofNullable(query.select(recruitmentBoard).from(recruitmentBoard)
+                .leftJoin(recruitmentBoard.recruitmentReplies).fetchJoin()
+                .where(recruitmentBoard.id.eq(boardId))
+                .fetchOne());
+    }
+
+//    댓글 id로 자유게시글 접근해서 그 안에 달린 댓글 개수 가져오기
+    @Override
+    public Integer findReplyCountByReplyId_QueryDsl(Long replyId) {
+        return query.select(recruitmentBoard.recruitmentReplies.size()).from(recruitmentBoard).where(recruitmentBoard.recruitmentReplies.any().id.eq(replyId)).fetchOne();
     }
 }

@@ -13,7 +13,6 @@ public class ProductDTO {
     private String productName;
     private Integer productPrice;
     private Long productCount;
-//    private PurchaseBoard purchaseBoard;
 
     @QueryProjection
     public ProductDTO(Long id, String productName, Integer productPrice, Long productCount) {
