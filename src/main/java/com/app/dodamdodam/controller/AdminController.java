@@ -55,8 +55,8 @@ public class AdminController {
     private final BannerApplyService bannerApplyService;
     private final EventBoardService eventBoardService;
 
-
-    /*홈*/
+/*
+    *//*홈*//*
     @GetMapping("/home")
     public String adminHome(Model model){
         model.addAttribute("members", memberService.getRecentMemberList());
@@ -64,7 +64,12 @@ public class AdminController {
         model.addAttribute("eventBoards", eventBoardService.getRecentEventBoardList());
         model.addAttribute("purchaseBoards", purchaseBoardService.getRecentPurchaseBoardList());
         model.addAttribute("recruitmentBoards", recruitmentBoardService.getRecentRecruitmentBoardList());
-        return "admin/home";}
+        return "admin/home";}*/
+
+    /*발표 버전*/
+    @GetMapping("/home")
+    public String adminHome(Model model){
+        return "admin/member-list";}
 
     /*문의 게시판*/
     @GetMapping("inquiry/list") //문의 게시판 목록
