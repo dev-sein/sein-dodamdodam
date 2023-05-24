@@ -3,6 +3,7 @@ package com.app.dodamdodam.controller.board.event;
 import com.app.dodamdodam.domain.EventBoardDTO;
 import com.app.dodamdodam.domain.EventReplyDTO;
 import com.app.dodamdodam.entity.event.EventReply;
+import com.app.dodamdodam.search.EventBoardSearch;
 import com.app.dodamdodam.service.board.eventBoard.EventBoardService;
 import com.app.dodamdodam.service.board.eventBoard.eventReply.EventReplyService;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +29,26 @@ public class EventBoardController {
     @GetMapping("list")
     public String goList(Model model){
         return "event-board/event-board-list";
+    }
+
+    //    자유 게시판 무한 스크롤  // 검색으로 수정하기
+    @ResponseBody
+    @GetMapping("list-search")
+    public List<EventBoardDTO> getEventBoardList(@RequestParam int page, @RequestParam String search){
+        EventBoardSearch eventBoardSearch = new EventBoardSearch();
+        eventBoardSearch.setBoardContent(search);
+        eventBoardSearch.setBoardTitle(search);
+        eventBoardSearch.setWriterName(search);
+
+        log.info(eventBoardSearch.toString());
+
+        Pageable pageable = PageRequest.of(page,12);
+
+        List<EventBoardDTO> eventBoardDTOS = eventBoardService.getEventBoardsBySearch(pageable, eventBoardSearch);
+        log.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        log.info(eventBoardDTOS.toString());
+
+        return eventBoardDTOS;
     }
 
     /* 상세페이지 */
