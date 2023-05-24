@@ -200,7 +200,6 @@
         </div>
     </div>
 <textarea style="display:none;"></textarea>
->>>>>>> a8053b9a945c810d1abec504f5a2525204a09ddb
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/js/recruitment-board/recruitment-board-detail.js"></script>
@@ -215,7 +214,7 @@
 $(function(){
     $('.wish-button').click(function(e){
         if($('.wish-button').attr('aria-pressed') == 'false'){
-            $(".heart-icon").attr("src", "/images/recruitment-board/heart-background.png");
+            $(".heart-icon").attr("src", "images/recruitment-board/heart-background.png");
             $('.wish-button').attr('aria-pressed','true') //하트 색 채우기
             $('.like-cancel-text').hide(); //해제 문구
             $('#like-modal').fadeIn();
@@ -227,7 +226,7 @@ $(function(){
             $('#like-modal').delay(500).fadeOut(); //사라지기
         
         }else{
-            $(".heart-icon").attr("src", "/images/recruitment-board/non-heart-icon.png");
+            $(".heart-icon").attr("src", "images/recruitment-board/non-heart-icon.png");
             $('.wish-button').attr('aria-pressed','false') //색 비우기
             $('.like-text').hide();  //찜 추가 문구
             // $('#like-modal').css({right: '-30%'}); //오->왼 슬라이드 등장

@@ -3,6 +3,7 @@ package com.app.dodamdodam.entity.member;
 import com.app.dodamdodam.audit.Period;
 import com.app.dodamdodam.entity.embeddable.Address;
 import com.app.dodamdodam.entity.event.EventBoard;
+import com.app.dodamdodam.entity.recruitment.Recruitment;
 import com.app.dodamdodam.entity.recruitment.RecruitmentBoard;
 import com.app.dodamdodam.type.MemberStatus;
 import com.app.dodamdodam.type.MemberType;
@@ -14,6 +15,7 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -49,8 +51,8 @@ public class Member extends Period {
     @Enumerated(EnumType.STRING)
     private Role memberRole;
 
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "member", cascade = CascadeType.REMOVE)
-//    private List<Recruitment> recruitments = new ArrayList<>();
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "member", cascade = CascadeType.REMOVE)
+    private List<Recruitment> recruitments = new ArrayList<>();
 
 //    public Member(String memberId, String memberPassword, String memberName, String memberEmail, String memberPhone, Address address, MemberStatus memberStatus, MemberType memberType, Role memberRole) {
 //        this.memberId = memberId;
@@ -68,6 +70,10 @@ public class Member extends Period {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "member", cascade = CascadeType.REMOVE)
     private List<RecruitmentBoard> recruitmentBoards;
+
+    public void setRecruitments(List<Recruitment> recruitments) {
+        this.recruitments = recruitments;
+    }
 
     @Builder
     public Member(Long id, String memberId, String memberPassword, String memberName, String memberEmail, String memberPhone, Address address, MemberStatus memberStatus, Integer memberPoint, int participationCount, MemberType memberType, Role memberRole) {
