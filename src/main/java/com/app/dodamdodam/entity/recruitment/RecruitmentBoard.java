@@ -46,7 +46,7 @@ public class RecruitmentBoard extends Board {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "recruitmentBoard")
     private List<RecruitmentReply> recruitmentReplies;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 

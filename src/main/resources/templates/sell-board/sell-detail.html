@@ -43,8 +43,7 @@
                         >
                           <div>
                             <div tabindex="-1" style="width: 100%; display: inline-block">
-                              <div class="StoreSlider_slickBackgroundImage__1CH4Y"
-                                   style="background-image: url('@{/file/display?fileName=' + ${purchaseBoardsDTO.purchaseFileDTOs[0].filePath} +'_' +${purchaseBoardDTO.purchaseFileDTOs[0].fileUuid} + '_' + ${purchaseBoardDTO.purchaseFileDTOs[0].fileOriginalName}');"></div>
+                              <div class="StoreSlider_slickBackgroundImage__1CH4Y"></div>
                             </div>
                           </div>
                         </div>
@@ -83,14 +82,14 @@
                     <div th:if="${session.memberId != null}" class="ProjectSearchTags_container__7YZNA" >
                       <a
                         class="ProjectSearchTags_category__3ofgG ProjectSearchTags_gaElement__1mZHZ"
-                        th:href="/purchase/update/${id}"
+                        href="/purchase/update/${id}"
                         style="position: absolute;
                         right: 34px;"
                         >수정</span
                         ></a>
                         <a
                         class="ProjectSearchTags_category__3ofgG ProjectSearchTags_gaElement__1mZHZ"
-                        th:href="/purchase/delete/${id}"
+                        href="/purchase/delete/${id}"
                         style="position: absolute;
                         right: 0px;"
                         ><span aria-label="카테고리" >삭제</span
@@ -334,7 +333,7 @@
             </div>
           </div>
 
-<!-- 만족도 -->          
+<!-- 만족도 -->
 
           <div class="satisfaction_wrap" style="display: none;">
             <div class="satisfaction_wrap_div">
@@ -467,7 +466,7 @@
                         </div>
                       </div>
                       <!-- 두번째글 끝 -->
-                      
+
                     </div>
                     <div></div>
                   </div>
@@ -512,9 +511,15 @@
       </section>
     </div>
   </body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script th:inline="javascript">
   let purchaseBoardDTO = [[${purchaseBoardDTO}]];
   console.log(purchaseBoardDTO);
+  // url('https://cdn2.wadiz.kr/2021/09/01/7ba81656-973b-4ecc-916b-f4163dcb83f2')
+  // presentFileDTO = purchaseBoardsDTO.purchaseFileDTOs[0];
+  // '/file/display?fileName=' + purchaseBoardsDTO.purchaseFileDTOs[0].filePath + '/t_' + purchaseBoardsDTO.purchaseFileDTOs[0].fileUuid + '_' + purchaseBoardsDTO.purchaseFileDTOs[0].fileOriginalName;
+
+  $(".StoreSlider_slickBackgroundImage__1CH4Y").css("background-image", "url('/file/display?fileName=' + purchaseBoardsDTO.purchaseFileDTOs[0].filePath + '/t_' + purchaseBoardsDTO.purchaseFileDTOs[0].fileUuid + '_' + purchaseBoardsDTO.purchaseFileDTOs[0].fileOriginalName)");
 </script>
 <script>
 

@@ -15,7 +15,7 @@ import com.app.dodamdodam.repository.recruitment.RecruitmentRepository;
 import com.app.dodamdodam.search.board.AdminRecruitmentSearch;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -30,7 +30,6 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Slf4j
 public class RecruitmentBoardServiceImpl implements RecruitmentBoardService {
-
     private final RecruitmentBoardRepository recruitmentBoardRepository;
     private final RecruitmentRepository recruitmentRepository;
     private final MemberRepository memberRepository;
@@ -41,11 +40,23 @@ public class RecruitmentBoardServiceImpl implements RecruitmentBoardService {
     public void register(RecruitmentBoardDTO recruitmentBoardDTO, Long memberId) {
         List<RecruitmentFileDTO> recruitmentFileDTOS = recruitmentBoardDTO.getRecruitmentFileDTOS();
 
-        memberRepository.findById(memberId).ifPresent(
-                member -> recruitmentBoardDTO.setMemberDTO(toMemberDTO(member))
-        );
+        log.info(recruitmentFileDTOS.toString());
+        log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 
-        RecruitmentBoard recruitmentBoard = recruitmentBoardRepository.save(toRecruitmentBoardEntity(recruitmentBoardDTO));
+        Optional<Member> optionalMember = memberRepository.findById(memberId);
+        Member member = null;
+        if (optionalMember.isPresent()) member = optionalMember.get();
+//        recruitmentBoardDTO.setMemberDTO(toMemberDTO(member));
+
+        log.info(recruitmentBoardDTO.toString());
+        log.info(toRecruitmentBoardEntity(recruitmentBoardDTO).toString());
+        RecruitmentBoard recruitmentBoard = toRecruitmentBoardEntity(recruitmentBoardDTO);
+        recruitmentBoard.setMember(member);
+
+        // 저장
+        recruitmentBoardRepository.save(recruitmentBoard);
+
+        log.info("**************************************");
 
         if(recruitmentFileDTOS != null){
             for (int i = 0; i < recruitmentFileDTOS.size(); i++) {
@@ -159,6 +170,9 @@ public class RecruitmentBoardServiceImpl implements RecruitmentBoardService {
     @Override
     public void getRecruitment(Long boardId, Long memberId){
 
+        log.info("boardId :" + boardId);
+        log.info("memberId :" + memberId);
+
         Optional<Member> memberOptional = memberRepository.findById(memberId);
         Member member = null;
 
@@ -166,10 +180,12 @@ public class RecruitmentBoardServiceImpl implements RecruitmentBoardService {
         RecruitmentBoard recruitmentBoard = null;
 
         if(recruitmentBoardOptional.isPresent()){
+            log.info("들어옴...??");
             recruitmentBoard = recruitmentBoardOptional.get();
         }
 
         if(memberOptional.isPresent()){
+            log.info("들어옴...??>>>");
             member = memberOptional.get();
         }
 
