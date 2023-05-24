@@ -4,7 +4,6 @@ import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.event.QEventBoard;
 import com.app.dodamdodam.search.EventBoardSearch;
 import com.app.dodamdodam.search.board.AdminEventBoardSearch;
-import com.app.dodamdodam.type.EventType;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +21,7 @@ public class EventBoardQueryDslImpl implements EventBoardQueryDsl {
 
     /*검색 + 목록*/
     @Override
-    public Page<EventBoard> findEventBoardBySearchWithPaging_QueryDSL(EventBoardSearch eventBoardSearch, Pageable pageable, EventType eventStatus) {
+    public Page<EventBoard> findEventBoardBySearchWithPaging_QueryDSL(EventBoardSearch eventBoardSearch, Pageable pageable) {
         BooleanExpression writerNameEq = eventBoardSearch.getWriterName() == null ? null : eventBoard.member.memberName.contains(eventBoardSearch.getWriterName());
         BooleanExpression eventTitleEq = eventBoardSearch.getBoardTitle() == null ? null : eventBoard.boardTitle.contains(eventBoardSearch.getBoardTitle());
         BooleanExpression eventContentEq = eventBoardSearch.getBoardContent() == null ? null : eventBoard.boardContent.contains(eventBoardSearch.getBoardContent());
@@ -40,6 +39,7 @@ public class EventBoardQueryDslImpl implements EventBoardQueryDsl {
 
         return new PageImpl<>(eventBoards, pageable, count);
     }
+
 
     // 리스트
     @Override

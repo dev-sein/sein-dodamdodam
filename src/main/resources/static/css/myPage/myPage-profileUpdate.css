@@ -63,6 +63,7 @@ body li, body ol, body ul {
     background: #f9f9f9;
     font-family: 'Noto Sans KR';
     -webkit-font-smoothing: antialiased;/* webkit-font-smoothing : 부드러운 폰트 */
+    padding-top: 50px;
 }
 
 .waccount-wrap {
@@ -107,7 +108,7 @@ body li, body ol, body ul {
     margin: 0 auto 25px;
     background: #000;
     border: none;
-    border-radius: 50%;
+    /* border-radius: 50%; */
     overflow: hidden;
 }
 

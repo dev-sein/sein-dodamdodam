@@ -1,13 +1,13 @@
 package com.app.dodamdodam.service.board.eventBoard;
 
-import com.app.dodamdodam.domain.*;
+import com.app.dodamdodam.domain.EventBoardDTO;
+import com.app.dodamdodam.domain.EventFileDTO;
+import com.app.dodamdodam.domain.MemberDTO;
 import com.app.dodamdodam.entity.event.EventBoard;
 import com.app.dodamdodam.entity.event.EventFile;
-import com.app.dodamdodam.entity.free.FreeFile;
 import com.app.dodamdodam.entity.member.Member;
 import com.app.dodamdodam.search.EventBoardSearch;
 import com.app.dodamdodam.search.board.AdminEventBoardSearch;
-import com.app.dodamdodam.type.EventType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -22,8 +22,8 @@ public interface EventBoardService {
     // 저장
     public void register(EventBoardDTO eventBoardDTO, Long memberId);
 
-    /* 자유 게시글 검색 */
-    public List<EventBoardDTO> getEventBoardsBySearch(Pageable pageable, EventBoardSearch eventBoardSearch, EventType eventStatus);
+    /* 이벤트 게시글 검색 */
+    public List<EventBoardDTO> getEventBoardsBySearch(Pageable pageable, EventBoardSearch eventBoardSearch);
 
     //    현재 시퀀스 가져오기
     public EventBoard getCurrentSequence();
@@ -60,9 +60,7 @@ public interface EventBoardService {
                 .eventStartDate(eventBoard.getEventStartDate())
                 .eventEndDate(eventBoard.getEventEndDate())
                 .memberDTO(toMemberDTO(eventBoard.getMember()))
-                .eventFileDTOS(
-                        eventBoard.getEventFiles().stream().map(e -> toEventFileDTO(e)).collect(Collectors.toList())
-                )
+                .eventFileDTOS(eventBoard.getEventFiles().stream().map(e -> toEventFileDTO(e)).collect(Collectors.toList()))
                 .build();
     }
 
