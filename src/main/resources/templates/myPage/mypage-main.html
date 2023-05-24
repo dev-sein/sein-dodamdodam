@@ -21,8 +21,11 @@
     <link rel="stylesheet" href="https://uicdn.toast.com/tui.pagination/latest/tui-pagination.css"/>
     <link rel="stylesheet" href="https://uicdn.toast.com/calendar/latest/toastui-calendar.min.css"/>
     <link rel="stylesheet" href="https://uicdn.toast.com/tui-grid/latest/tui-grid.css"/>
+    <link rel="stylesheet" href="/css/components/header.css">
+    <link rel="stylesheet" href="/css/components/footer.css">
 </head>
 <body>
+<div th:insert="~{/components/header :: header}"></div>
 <div class="MainWrapper_content__GZkTa">
     <div class="MyWadizPage_myWadizPage__wOTdS">
         <div class="MyWadizPage_profileBackground__T_LTr" aria-hidden="true"></div>
@@ -68,7 +71,7 @@
                         </div>
                         <div class="MyWadizSupporterProject_container__2uWcZ">
                             <div class="MyWadizSupporterProject_title__1IOfu">
-                                <div class="MyWadizSupporterProject_accumulate__1nyx5">
+                                <div class="MyWadizSupporterProject_accumulate__1nyx5" style="display: none">
                                     <div class="MyWadizSupporterProject_value__7aQ4B">
                                         <a
                                                 class="MyWadizSupporterAccumulate_container__h_OVK"
@@ -295,7 +298,7 @@
                                             <span class="arrowImg2" ><img src="/images/myPage/moreThan.png" style="width: 22px;"></span>
                                         </a>
                                     </li>
-                                    <li class="MyWadizMenu_menu__3b-H-">
+                                    <li class="MyWadizMenu_menu__3b-H-" style="display: none">
                                         <a href="/mypage/point">
                                             <span class="MyWadizMenu_icon__1sqne" aria-hidden="true"></span>
                                             <span class="MyWadizMenu_text__9ryGW">내 포인트 내역</span>
