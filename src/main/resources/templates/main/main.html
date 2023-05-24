@@ -56,8 +56,8 @@
                             </div>
                             <div class="header-user-div">
                             <div class="header-user-container">
-                                <button type="button" class="header-user-button" onclick="location.href='//member/join.html'">로그인</button>
-                                <button data-event="iam.signup" class="header-user-button" onclick="location.href='//member/join.html'">회원가입</button>
+                                <button type="button" class="header-user-button" onclick="location.href='/member/login'">로그인</button>
+                                <button data-event="iam.signup" class="header-user-button" onclick="location.href='/member/join'">회원가입</button>
                             </div>
                             </div>
                             <div class="web-header-funding-open funding-open">
@@ -526,8 +526,7 @@
                 <div class="sell-banner">
                     <div class="sell-title">
                         <div class="sell-title-conatainer">
-                            판매게시판
-                        </div>
+                            도담 모집 게시판                     </div>
                         <div class="plus-menu">
                             <div class="plus">
                                 <a href="/purchase/list">
@@ -991,77 +990,49 @@
         return year + '-' + month + '-' + day;
     };
 
-   console.log(recruitmentBoard);
+
+    // // Get the URL of the first file only
+    // var firstImageUrl = imageUrls[0];
+
+    console.log(recruitmentBoard);
     recruitmentBoard.forEach(recruitmentBoard => {
         console.log("foreach 들어옴");
         var imageUrls = recruitmentBoard.recruitmentFileDTOS.map(file => `/file/display?fileName=${encodeURIComponent(file.filePath)}/${file.fileUuid}_${file.fileOriginalName}`);
-        var imageElements = imageUrls.map(url => `<img src="${url}">`);
-        var imageElementsString = imageElements.join('');
+
+        // Get the URL of the first file only
+        var firstImageUrl = imageUrls[0];
+
+        var imageElementsString = `<img src="${firstImageUrl}">`;
+
 
         var text = `
-        <div class="sell-swiper1 sell-swiper-box">
-            <div class="sell-swiper-image-container">
-                <div class="sell-swiper-image">
-                   ${imageElementsString}
-                </div>
-                <div class="sell-status">
-                    <div></div>
-                    <div class="status-container">
-                        <div class="important-status">중요</div>
-                        <div class="finish-status">종료</div>
-                    </div>
-                </div>
-                <div class="sell-box-title-container">
-                    <div class="sell-box-title">${recruitmentBoard.boardTitle}</div>
-                </div>
-                <div class="sell-box-context-container">
-                    <div class="sell-box-context">${recruitmentBoard.boardContent}</div>
-                </div>
-                <div class="sell-box-date-container">
-                    ${formatDate(new Date(recruitmentBoard.updatedDate))}
+    <div class="sell-swiper1 sell-swiper-box">
+        <div class="sell-swiper-image-container">
+            <div class="sell-swiper-image">
+               ${imageElementsString}
+            </div>
+            <div class="sell-status">
+                <div></div>
+                <div class="status-container">
+                    <div class="important-status">중요</div>
+                    <div class="finish-status">모집</div>
                 </div>
             </div>
+            <div class="sell-box-title-container">
+                <div class="sell-box-title">${recruitmentBoard.boardTitle}</div>
+            </div>
+            <div class="sell-box-context-container">
+                <div class="sell-box-context">${recruitmentBoard.boardContent}</div>
+            </div>
+            <div class="sell-box-date-container">
+                ${formatDate(new Date(recruitmentBoard.createdDate))}
+            </div>
         </div>
+    </div>
     `;
         $(".swiper-wrapper").append(text);
     });
-/*
 
-    console.log(recruitmentBoard);
-    recruitmentBoard.forEach((recruitmentBoard) => {
-        console.log("recruitmentBoard 시작");
-        var imageUrls = recruitmentBoard.recruitmentFileDTOS.map(file => `/file/display?fileName=${encodeURIComponent(file.filePath)}/${file.fileUuid}_${file.fileOriginalName}`);
-        var imageElements = imageUrls.map(url => `<img src="${url}">`);
-        var imageElementsString = imageElements.join('');
-        var text = `
-                    <div class="third-banner1 third-banners">
-                                <div class="third-banner-image-wrapper">
-                                    <div class="third-banner-image"> ${imageElementsString}</div>
-                                </div>
-                                <div class="third-banner-text-wrapper">
-                                    <div class="third-banner-text">
-                                        ${recruitmentBoard.boardTitle}
-                                    </div>
-                                </div>
-                            </div>
-    `;
-        $(".third-banner").append(text);
-    });
-
-*/
-
-    // // JavaScript 코드
-    // const recruitmentFileDTOS = recruitmentBoard.recruitmentFileDTOS; /* 이미지 파일 데이터를 담고 있는 배열 */;
-    // const secondImageDiv = document.querySelectorAll(".second-banner-image");
-    //
-    // recruitmentFileDTOS.forEach((file, i) => {
-    //     const filePath = file.filePath;
-    //     const fileUuid = file.fileUuid;
-    //     const fileOriginalName = file.fileOriginalName;
-    //
-    //     const imageUrl = `/file/display?fileName=${filePath}/${fileUuid}_${fileOriginalName}`;
-    //     secondImageDiv[i].style.backgroundImage = `url(${imageUrl})`;
-    // });
 
 
 </script>

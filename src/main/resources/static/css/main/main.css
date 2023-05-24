@@ -556,6 +556,11 @@
     height: 160px;
 }
 
+.sell-swiper-image img {
+    width: 305px;
+    height: 150px;
+}
+
 .event-swiper-image:hover, .sell-swiper-image:hover {
     background-size: 120%;
 }
