@@ -10,8 +10,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">  
     <link rel="shortcut icon" href="/images/components/dodam-favicon.png">
+    <link rel="stylesheet" href="/css/components/header.css">
+    <link rel="stylesheet" href="/css/components/footer.css">
 </head>
 <body>
+<div th:insert="~{/components/header :: header-dodam}"></div>
     <div id="page-container">
         <main id="container">
 <!--            <form id="submit-btn" class="event-register" th:action="/update-board/${board.id}" method="post">-->
@@ -142,7 +145,7 @@
                         <label class="waffle label">
                             <label>파일 첨부</label>
                                 <button class="file-button" type="button">
-                                    <input class="file-input" id='btnAtt' type="file" multiple="multiple" name="fileNames" accept="application/pdf,image/jpg,image/jpeg,image/png" required>등록
+                                    <input class="file-input file" id='btnAtt' type="file" multiple="multiple" name="fileNames" accept="application/pdf,image/jpg,image/jpeg,image/png" required>등록
                                     </button>
                             <label id="btnAtt-error" class="error" for="btnAtt">필수 항목입니다.</label>
                             <div id='att_zone'></div>
@@ -179,9 +182,10 @@
 
         </main>
     </div><!-- page container -->
-
+<div th:insert="~{/components/footer :: footer}"></div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="/js/components/chat-modal"></script>
 <script src="/js/recruitment-board/recruitment-board-update.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

@@ -12,8 +12,11 @@
     <link rel="stylesheet" href="/css/free-board/free-board-write.css">
     <link rel="stylesheet" href="/css/free-board/free-board.css">
     <link rel="shortcut icon" href="/images/components/dodam-favicon.png">
+    <link rel="stylesheet" href="/css/components/header.css">
+    <link rel="stylesheet" href="/css/components/footer.css">
 </head>
 <body>
+<div th:insert="~{/components/header :: header-dodam}"></div>
     <form action="">
         <div id="header">
             <div id="header_div">
@@ -115,7 +118,9 @@
         </div>
     </div>
     <!-- 취소 버튼 클릭 모달 시작 -->
+<div th:insert="~{/components/footer :: footer}"></div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script src="/js/components/chat-modal"></script>
 <script src="/js/free-board/free-board-write.js"></script>
 </html>

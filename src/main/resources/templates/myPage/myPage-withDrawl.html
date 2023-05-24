@@ -11,8 +11,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/myPage/myPage-withDrawal.css">
     <link rel="shortcut icon" href="/static/images/components/dodam-favicon.png">
+    <link rel="stylesheet" href="/css/components/header.css">
+    <link rel="stylesheet" href="/css/components/footer.css">
 </head>
 <body>
+<div th:insert="~{/components/footer :: footer}"></div>
     <div>
         <div id="wz-header"></div>
         <main class="account-drop wzui">
@@ -63,8 +66,9 @@
               </div>
             </main>
     </div>
-    </body>
+<div th:insert="~{/components/footer :: footer}"></div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/js/components/chat-modal"></script>
 <script src="/js/myPage/myPage-wthiDrawal.js"></script>
 </html>
