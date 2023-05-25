@@ -176,6 +176,7 @@ public class RecruitmentBoardServiceImpl implements RecruitmentBoardService {
 
         Optional<Member> memberOptional = memberRepository.findById(memberId);
         Member member = memberOptional.get();
+        member.setParticipationCountPlus();
 
         Optional<RecruitmentBoard> recruitmentBoardOptional = recruitmentBoardRepository.findById(boardId);
         RecruitmentBoard recruitmentBoard = recruitmentBoardOptional.get();
