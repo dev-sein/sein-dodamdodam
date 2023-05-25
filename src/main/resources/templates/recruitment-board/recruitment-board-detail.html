@@ -35,8 +35,9 @@
                     </div>
                     <div class="recruitment-info">
                         <div class="info-img">
-                            <img src="https://www.wadiz.kr/ft/images/green001/2023/0313/20230313132913160_null.png"></div>
-                        <div class="info-sum">
+<!--                            <img src="https://www.wadiz.kr/ft/images/green001/2023/0313/20230313132913160_null.png"></div>-->
+                            <img th:src="'/file/display?fileName=' + ${boardDetail.recruitmentFileDTOS[0].filePath} + '/t_' + ${boardDetail.recruitmentFileDTOS[0].fileUuid} + '_' + ${boardDetail.recruitmentFileDTOS[0].fileOriginalName}"></div>
+                    <div class="info-sum">
                             <dl>
                                 <dt>모집인</dt>
                                 <dd th:text="${boardDetail.memberDTO.memberName}">정세인</dd>
@@ -53,9 +54,6 @@
                                 <dt>현재 / 총 모집 인원</dt>
                                 <dd><span th:text="${boardDetail.recruitmentDTOS.size}"></span>명 / <span th:text="${boardDetail.recruitmentPeopleCount}"></span>명</dd>
                             </dl>
-
-
-
                             <div class="wish-button-box">
                                 <button type="button" class="wish-button"  aria-pressed="false" style="display: none">
                                     <span>
@@ -65,18 +63,18 @@
                                             </div>
                                             </span>
                                         </span></button>
-                                <dt style="float: left; width: 120px; height: 50px; line-height: 50px; padding-left: 20px; font-size: 14px; line-height: 3;">모집 상태</dt>
+                                <dt style="float: left; width: 120px; height: 50px; line-height: 50px; padding-left: 20px; font-size: 14px; line-height: 4;">모집 상태</dt>
                             </div>
-                            <p class="recruitment-status"><strong th:text="${boardDetail.recruitmentStatus.toString == 'APPLYING' ? '모집중' : '모집완료'}">모집중</strong></p>
+                            <p class="recruitment-status"><strong style="line-height: 3.3;" th:text="${boardDetail.recruitmentStatus.toString == 'APPLYING' ? '모집중' : '모집완료'}">모집중</strong></p>
                             <div class="recruitment-btn-apply">
-                                <button type="button" class="submit-btn" onClick="javascript:popOpen();">신청하기</button></div>
+                                <button type="button" class="submit-btn" onclick="javascript:popOpen();">신청하기</button></div>
 
                         </div>
                         <div class="sns-share">
                             <span>주변 분들과 함께 참가하고 싶으신가요? 페이지를 공유해보세요!</span>
                             <a class="icon_sns_fb" target="_blank" href="https://www.facebook.com/sharer/sharer.php?app_id=190622721088710&amp;u=http://127.0.0.1:5500/templates/recruitment-board/recruitment-board-detail.html" title="facebook">facebook</a>
                             <a class="icon_sns_tw" target="_blank" href="https://twitter.com/intent/tweet?text=글제목글제목%20https://127.0.0.1:5500/templates/recruitment-board/recruitment-board-detail.html">twitter</a>
-                            <a href="#" onclick="clip(); return false;"><button class="icon_sns_share" id="urlCopyBtn" data-clipboard-target="#shareLink" title="공유하기"  onClick="javascript:popCopyOpen();">공유하기</button>
+                            <a href="#" onclick="clip(); return false;"><button class="icon_sns_share" id="urlCopyBtn" data-clipboard-target="#shareLink" title="공유하기"  onclick="javascript:popCopyOpen();">공유하기</button>
                             </a>
                         </div>
 
@@ -101,8 +99,9 @@
                     </div>
                     <div class="contents-detail">
                         <div class="recruitment-detail-container">
-                        <img src="https://www.wadiz.kr/ft/images/green001/2023/0313/20230313132659562_1164.png">
-                    </div>
+                            <img th:each="recruitmentFileDTO : ${boardDetail.recruitmentFileDTOS}" th:src="'/file/display?fileName=' + ${recruitmentFileDTO.filePath} + '/t_' + ${recruitmentFileDTO.fileUuid} + '_' + ${recruitmentFileDTO.fileOriginalName}" >
+                            <div th:text="${boardDetail.boardContent}"></div>
+                        </div>
                     </div>
                     <div class="my-board">
                         <button class="btn list"><a href="/recruitment/list">목록</a></button>
@@ -182,17 +181,17 @@
                             </button>
                         </div>
                         <!-- 신청완료  modal 영역 -->
-                        <div class="modal-bg" onClick="javascript:popClose();"></div>
+                        <div class="modal-bg" onclick="javascript:popClose();"></div>
                         <div class="modal-wrap">
                             <span>신청이 완료되었습니다</span>
-                            <button type="button" class="modal-close submit-btn modal" onClick="javascript:popClose();">닫기</button>
+                            <button type="button" class="modal-close submit-btn modal" onclick="javascript:popClose();">닫기</button>
                         </div>
                         <!-- //modal 영역 -->
                         <!-- 복사완료  modal 영역 -->
-                        <div class="modal-bg" onClick="javascript:popCopyClose();"></div>
+                        <div class="modal-bg" onclick="javascript:popCopyClose();"></div>
                         <div class="modal-copy">
                             <span>복사 완료되었습니다</span>
-                            <button type="button" class="modal-close submit-btn modal" onClick="javascript:popCopyClose();">닫기</button>
+                            <button type="button" class="modal-close submit-btn modal" onclick="javascript:popCopyClose();">닫기</button>
                         </div>
                         <!-- //modal 영역 -->
                     </div>
@@ -201,7 +200,6 @@
             <textarea style="display:none;"></textarea>
         </div>
     </div>
-<!--<div th:insert="~{/components/footer :: footer}"></div>-->
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/js/components/chat-modal"></script>
