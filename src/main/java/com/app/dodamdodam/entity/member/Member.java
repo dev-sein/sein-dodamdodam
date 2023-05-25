@@ -113,6 +113,10 @@ public class Member extends Period {
         return this;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getRoleKey() {
         return this.memberRole.getSecurityRole();
     }

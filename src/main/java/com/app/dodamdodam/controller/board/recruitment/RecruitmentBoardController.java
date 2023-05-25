@@ -84,7 +84,7 @@ public class RecruitmentBoardController {
     @PostMapping("recruit")
     @ResponseBody
     public void getRecruit(@RequestParam("boardId") Long boardId ,@RequestParam("memberId") Long memberId) {
-        recruitmentBoardService.getRecruitment(memberId, boardId);
+        recruitmentBoardService.getRecruitment(boardId, memberId);
     }
 
 //  모집 게시글 삭제

@@ -110,25 +110,25 @@ p{
     width: calc(50% - 4px);
 }
 
-.business-type-btn(:disaled){
-    cursor: pointer;
-}
+/*.business-type-btn(:disaled){*/
+/*    cursor: pointer;*/
+/*}*/
 
 .btn{
-        position: relative;
-        transition-property: background-color,border-color,color,opacity;
-        transition-duration: .15s;
-        border: 1px solid #cdd3d8;
-        border-radius: 4px;
-        background-color: #0000;
-        padding: 9px 16px;
-        vertical-align: middle;
-        text-decoration: none;
-        white-space: nowrap;
-        font-weight: 500;
-        box-sizing: border-box!important;
-        -webkit-appearance: none;
-        -webkit-font-smoothing: antialiased;
+    position: relative;
+    transition-property: background-color,border-color,color,opacity;
+    transition-duration: .15s;
+    border: 1px solid #cdd3d8;
+    border-radius: 4px;
+    background-color: #0000;
+    padding: 9px 16px;
+    vertical-align: middle;
+    text-decoration: none;
+    white-space: nowrap;
+    font-weight: 500;
+    box-sizing: border-box!important;
+    -webkit-appearance: none;
+    -webkit-font-smoothing: antialiased;
 }
 
 .business-type-btn span{
@@ -197,7 +197,7 @@ p{
 }
 
 input::placeholder {
-   font-weight: 400;
+    font-weight: 400;
 }
 
 .waffle.helper{
@@ -283,7 +283,7 @@ button:not(:disabled) {
     color: #fff;
     border-radius: 3px;
     border: 1px solid #006633;
-    width: 116px;
+    width: 102px;
     font-size: 15px;
     font-weight: 500;
     font-family: inherit;
@@ -315,6 +315,7 @@ button:not(:disabled) {
     line-height: 1.2em;
     font-size: 15px;
     font-weight: 300;
+    /* width: 311px; */
 }
 
 .mb13{
@@ -346,7 +347,7 @@ input[name=address]::placeholder {
     font-weight: 500;
     font-family: inherit;
     letter-spacing: -.3px;
-  }
+}
 
 /* #startDate{
     margin-bottom: 7px;
@@ -354,7 +355,7 @@ input[name=address]::placeholder {
 
 .file-button{
     position: relative!important;
-    width: 444px;
+    width: 411px;
     transition-property: background-color,border-color,color,opacity;
     transition-duration: .15s;
     border: 1px solid #cdd3d8;
@@ -383,7 +384,7 @@ input[name=address]::placeholder {
     line-height: 1.4;
     font-size: 18px;
     font-family: inherit;
-    width: 444px;
+    width: 414px;
 }
 
 .submit-btn[disabled]{
@@ -413,7 +414,7 @@ input[name=address]::placeholder {
 }
 
 
-/* 에러 메세지 */
+/* ì—ëŸ¬ ë©”ì„¸ì§€ */
 .error{
     color: red;
     font-size: 12px;
@@ -466,7 +467,7 @@ input[name=address]::placeholder {
     margin-bottom: 5px;
 }
 
-/* 모달 */
+/* ëª¨ë‹¬ */
 .modal-bg {
     display:none;
     width:100%;
