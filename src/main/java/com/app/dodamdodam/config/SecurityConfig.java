@@ -94,7 +94,7 @@ public class SecurityConfig {
 //                .antMatchers(RECRUITMENT_PATH) //임시
 //                .antMatchers(EVENT_PATH) //임시
 //                .antMatchers(CULTURE_PATH) //임시
-                .antMatchers(ADMIN_PATH) //임시
+//                .antMatchers(ADMIN_PATH) //임시
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()); //static 경로도 필터에서 제외
     }
 
@@ -123,7 +123,7 @@ public class SecurityConfig {
                 .csrf().disable()
 
                 .authorizeRequests() // 인가 설정(권한 설정)
-//                .antMatchers(ADMIN_PATH).hasRole(Role.ADMIN.name())
+                .antMatchers(ADMIN_PATH).hasRole(Role.ADMIN.name())
                 .antMatchers(MYPAGE_PATH).hasRole(Role.MEMBER.name())
                 .antMatchers(PURCHASE_BOARD_WRITE_PATH).hasRole(Role.MEMBER.name())
                 .antMatchers(RECRUITMENT_BOARD_WRITE_PATH).hasRole(Role.MEMBER.name())
