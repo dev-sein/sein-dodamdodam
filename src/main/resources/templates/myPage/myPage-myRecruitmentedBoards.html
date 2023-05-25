@@ -17,7 +17,7 @@
 </head>
 <body>
 <div id="container">
-    <div th:insert="~{/components/header :: header-dodam}"></div>
+    <div th:insert="~{/components/header :: header}"></div>
     <div id="mypageWrap">
         <div class="myprofile-wrap">
             <div id="iam-profile-app" data-profile-image="https://static.wadiz.kr/static/icon/profile-icon-4.png" data-nickname="익명의 서포터 993" data-accnttype-name="개인 회원" data-is-valid-joined-premium-membership="false" data-my-self="true" data-my-funding-all-count="0" data-signature-cnt="0" data-follower-cnt="0" data-following-cnt="0" data-target-enc-user-id="" data-target-user-id="6034797" data-introduceme="" data-is-following="false" data-my-interest-user-keyword="">
@@ -26,7 +26,7 @@
                         <h3 class="BlindText"></h3>
                         <!-- 프로필 이미지 -->
                         <div aria-hidden="true" class="Avatar" >
-                            <span class="Avatar_image" style="background-image: url('https://static.wadiz.kr/assets/icon/profile-icon-6.png'); border: 1px solid rgb(221, 226, 230);"></span>
+                            <span class="Avatar_image" th:style="'background-image: url(\'' + ${myGrade.gradeTitle} + '\'); border: 1px solid rgb(221, 226, 230);'"></span>
                         </div>
                         <!-- 사업자 회원 정보 -->
                         <div class="ProfileCorp_info">
@@ -689,13 +689,26 @@
             let text = "";
             /* 날짜 변환해서 담아둠*/
             let date = changeDateToString(result[i]);
+            if (result[i].recruitmentFileDTOS.length != 0){
+                globalThis.filePath = '/file/display?fileName=' + result[i].recruitmentFileDTOS[0].filePath + '/t_' + result[i].recruitmentFileDTOS[0].fileUuid + '_' + result[i].recruitmentFileDTOS[0].fileOriginalName;
+            }
             /* background-image 쪽 추가로 작업해야함, 밋밋하면 likeCount 추가 DTO에 만들어 둠 */
             text += `
                     <li class="reward " data-hiddentype="F" data-campaintype="RWD" data-campaignid="155943" data-campaignhiddenseq="">
                         <div>
                             <div class="project-card">
                                 <div class="card-img-section" style="cursor: pointer" onclick="window.open('/recruitment/detail/${result[i].id}')">
-                                    <em class="project-img" style="background-image:url(https://cdn.wadiz.kr/wwwwadiz/green001/2023/0320/20230320212007743_200034.png/wadiz/format/jpg/quality/80)"></em>
+                                `;
+            if (result[i].recruitmentFileDTOS.length != 0) {
+                text += `
+                                      <em class="project-img" style="background-image:url(${filePath})"></em>
+                    `;
+            } else {
+                text += `
+                                      <em class="project-img" style="background-image:url(/images/free-board/basic-image.png)"></em>
+                    `;
+            }
+            text += `
                                     <em class="project-type reward">내가 참여한 모집</em>
                                 </div>
                                 <div class="card-info-section">

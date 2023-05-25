@@ -89,6 +89,8 @@ public class MyPageController {
         model.addAttribute("member",memberService.getMemberInfo(memberId));
 //        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
 
+        model.addAttribute("myGrade",memberService.getMyGradeByMemberId(memberId));
+
         /* 내가 작성한 자유 게시글 개수 */
         model.addAttribute("freeBoardCount",memberService.getMyFreeBoardListCount(memberId));
         /* 내가 작성한 판매 게시글 개수 */
@@ -162,6 +164,8 @@ public class MyPageController {
         model.addAttribute("member",memberService.getMemberInfo(memberId));
 //        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
 
+        model.addAttribute("myGrade",memberService.getMyGradeByMemberId(memberId));
+
         /* 내가 작성한 자유 게시글 개수 */
         model.addAttribute("freeBoardCount",memberService.getMyFreeBoardListCount(memberId));
         /* 내가 작성한 판매 게시글 개수 */
@@ -207,6 +211,8 @@ public class MyPageController {
 
         model.addAttribute("member",memberService.getMemberInfo(memberId));
 //        memberService.getMemberInfo(memberId).ifPresent(member -> model.addAttribute("member", member));
+
+        model.addAttribute("myGrade",memberService.getMyGradeByMemberId(memberId));
 
         /* 내가 작성한 자유 게시글 개수 */
         model.addAttribute("freeBoardCount",memberService.getMyFreeBoardListCount(memberId));

@@ -534,6 +534,7 @@ svg:not(:root) {
 .loca-status-container{
     /* position:absolute; */
     /* display: flex; */
+    height: 30px;
 }
 
 .inline-flex{
@@ -731,4 +732,3 @@ html.scroll-top .top-btn-container {
         height: 55px;
     }
 }
-    
