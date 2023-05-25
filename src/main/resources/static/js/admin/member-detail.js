@@ -2,7 +2,7 @@
 const $detailResults = $("body");
 const $memberTable = $("#membertable");
 
-$memberTable.on("click", "td", function(e) {
+$memberTable.on("click", "tr", function(e) {
     console.log("클릭 이벤트 들어옴");
     console.log($(e.target));
     showModal($(this).find(".numbers").text());
