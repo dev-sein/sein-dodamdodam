@@ -168,33 +168,35 @@ public class RecruitmentBoardServiceImpl implements RecruitmentBoardService {
 
     //    모집 신청
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void getRecruitment(Long boardId, Long memberId){
 
         log.info("boardId :" + boardId);
         log.info("memberId :" + memberId);
 
-        Optional<Member> memberOptional = memberRepository.findById(memberId);
-        Member member = null;
+        Optional<Member> memberOptional = memberRepository.findById(boardId);
+        Member member = memberOptional.get();
 
-        Optional<RecruitmentBoard> recruitmentBoardOptional = recruitmentBoardRepository.findById(boardId);
-        RecruitmentBoard recruitmentBoard = null;
+        Optional<RecruitmentBoard> recruitmentBoardOptional = recruitmentBoardRepository.findById(memberId);
+        RecruitmentBoard recruitmentBoard = recruitmentBoardOptional.get();
 
-        if(recruitmentBoardOptional.isPresent()){
-            log.info("들어옴...??");
-            recruitmentBoard = recruitmentBoardOptional.get();
-        }
+//        if(recruitmentBoardOptional.isPresent()){
+//            log.info("들어옴...??");
+//            recruitmentBoard = recruitmentBoardOptional.get();
+//        }
+//
+//        if(memberOptional.isPresent()){
+//            log.info("들어옴...??>>>");
+//            member = memberOptional.get();
+//        }
 
-        if(memberOptional.isPresent()){
-            log.info("들어옴...??>>>");
-            member = memberOptional.get();
-        }
-
-        log.info(recruitmentBoard.toString());
-        log.info(member.toString());
+//        log.info(recruitmentBoard.toString());
+//        log.info(member.toString());
 
         Recruitment recruitment = Recruitment.builder().member(member).recruitmentBoard(recruitmentBoard).build();
+//        Recruitment recruitment = Recruitment.builder().build();
 
-        recruitmentRepository.save(recruitment);
+        Recruitment savedRecruitment = recruitmentRepository.save(recruitment);
 
 //        memberRepository.findById(memberId).ifPresent(member -> recruitment.setMember(member));
 //        recruitmentBoardRepository.findById(boardId).ifPresent(recruitmentBoard -> recruitment.setRecruitmentBoard(recruitmentBoard));

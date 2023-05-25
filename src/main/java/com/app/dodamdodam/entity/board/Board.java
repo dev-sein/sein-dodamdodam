@@ -19,6 +19,10 @@ public class Board extends Period {
     private String boardTitle;
     private String boardContent;
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public void setBoardTitle(String boardTitle) {
         this.boardTitle = boardTitle;
     }
