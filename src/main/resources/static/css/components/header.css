@@ -502,3 +502,7 @@ input::placeholder {
 	    border: 1px solid #00c4c4;
 	}
 }
+
+.user-text{
+    margin-top: 15px;
+}
