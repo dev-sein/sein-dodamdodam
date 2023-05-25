@@ -125,11 +125,11 @@ function showList(data) {
                     </div>
                     <!-- 체크박스 -->
                 </td>
-                <td class="numbers">${member.id}</td>
-                <td>${member.memberName}</td>
-                <td>${member.memberPhone}</td>
-                <td>${member.memberEmail}</td>
-                <td>${member.memberStatus}</td>
+                <td class="numbers memberDetail">${member.id}</td>
+                <td class="memberDetail">${member.memberName}</td>
+                <td class="memberDetail">${member.memberPhone}</td>
+                <td class="memberDetail">${member.memberEmail}</td>
+                <td class="memberDetail">${member.memberStatus}</td>
                 <!--  <td>{point.pointStatus}</td> -->
                 <!-- <td>2000.01.01 21:05:04</td>-->
                 <!-- <td><button class="show-detail" onclick="showModal()">상세보기</button></td> -->
