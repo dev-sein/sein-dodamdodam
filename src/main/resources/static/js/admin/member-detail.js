@@ -65,8 +65,8 @@ function showDetail(member) {
                                 <div class="info-value">${member.memberDTO.memberEmail}</div>
                             </div>
                             <div class="info-row">
-                                <div class="info-label">참여횟수:</div>
-                                <div class="info-value">${member.memberDTO.participationCount}</div>
+                                <div class="info-label">회원유형:</div>
+                                <div class="info-value">${member.memberDTO.memberStatus}</div>
                             </div>
                         </div>
                     </div>

@@ -9,33 +9,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/introduce/introduce.css">
     <link rel="shortcut icon" href="/images/components/dodam-favicon.png">
+    <link rel="stylesheet" href="/css/components/header.css">
+    <link rel="stylesheet" href="/css/components/footer.css">
     <title></title>
 </head>
 <body>
+<div th:insert="~{/components/header :: header}"></div>
     <main>
         <div id="wadiz-about-landing">
-            <header class="header">
-                <div class="inner">
-                    <h1 class="logo">
-                        <a href="/" aria-label="wadiz">
-                            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="85" height="25" viewBox="0 0 85 25">
-                                <path fill="#fff" fill-rule="nonzero" d="M58.49 2.23h2.11v21.29H59a1.73 1.73 0 0 1-1.62-1.16 9 9 0 0 1-10.93-.28 7.48 7.48 0 0 1-2.75-6.29 7.65 7.65 0 0 1 12.79-5.07V4.23a2 2 0 0 1 2-2zm-6.3 18.62a4.36 4.36 0 0 0 4.16-4.52 4.19 4.19 0 1 0-8.35 0 4.36 4.36 0 0 0 4.19 4.52zM42 23.52h-1.52a1.73 1.73 0 0 1-1.64-1.16 9 9 0 0 1-10.93-.28 7.48 7.48 0 0 1-2.75-6.29A7.65 7.65 0 0 1 38 10.72a2 2 0 0 1 1.9-1.79H42v14.59zm-8.41-2.67h.02a4.35 4.35 0 0 0 4.15-4.52 4.35 4.35 0 0 0-4.17-4.51 4.35 4.35 0 0 0-4.17 4.51 4.36 4.36 0 0 0 4.17 4.52zM83.47 8.94v2.11l-7.07 9.06h7.06v3.47h-13v-2.1l7.08-9.07h-6.62v-1.47a2 2 0 0 1 2-2h10.55zM65.86 7.3a2.48 2.48 0 1 1 0-4.96 2.48 2.48 0 0 1 0 4.96zM21.21 8.94h4.14l-4.86 14.59h-4.15l-3.21-9.36-3.21 9.36H5.77L.92 8.94h4.13L8 18l2.5-7.74a2 2 0 0 1 1.86-1.34h2.9l3 9.08 2.95-9.06zm42.65 14.59l-.04-12.59a2 2 0 0 1 2-2h2.11v14.59h-4.07z"></path>
-                            </svg> -->
-                            <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" width="200" height="50">
-                                <text x="50" y="35" font-size="28" font-weight="600" fill="#fff" font-family="Noto Sans KR">도담도담</text>
-                            </svg> -->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="85" height="25" viewBox="0 0 85 25">
-                                <text x="42.5" y="16" font-size="22" font-weight="600" fill="#fff" font-family="Noto Sans KR" text-anchor="middle" dominant-baseline="middle">도담도담</text>
-                            </svg>
-                        </a>
-                    </h1>
-                    <ul class="lnb">
-                        <li class="lnbItem active">
-                            <!-- <a href="#valueContainer">About</a> -->
-                        </li>
-                    </ul>
-                </div>
-            </header>
+<!--            <header class="header">-->
+<!--                <div class="inner">-->
+<!--                    <h1 class="logo">-->
+<!--                        <a href="/" aria-label="wadiz">-->
+<!--                            &lt;!&ndash; <svg xmlns="http://www.w3.org/2000/svg" width="85" height="25" viewBox="0 0 85 25">-->
+<!--                                <path fill="#fff" fill-rule="nonzero" d="M58.49 2.23h2.11v21.29H59a1.73 1.73 0 0 1-1.62-1.16 9 9 0 0 1-10.93-.28 7.48 7.48 0 0 1-2.75-6.29 7.65 7.65 0 0 1 12.79-5.07V4.23a2 2 0 0 1 2-2zm-6.3 18.62a4.36 4.36 0 0 0 4.16-4.52 4.19 4.19 0 1 0-8.35 0 4.36 4.36 0 0 0 4.19 4.52zM42 23.52h-1.52a1.73 1.73 0 0 1-1.64-1.16 9 9 0 0 1-10.93-.28 7.48 7.48 0 0 1-2.75-6.29A7.65 7.65 0 0 1 38 10.72a2 2 0 0 1 1.9-1.79H42v14.59zm-8.41-2.67h.02a4.35 4.35 0 0 0 4.15-4.52 4.35 4.35 0 0 0-4.17-4.51 4.35 4.35 0 0 0-4.17 4.51 4.36 4.36 0 0 0 4.17 4.52zM83.47 8.94v2.11l-7.07 9.06h7.06v3.47h-13v-2.1l7.08-9.07h-6.62v-1.47a2 2 0 0 1 2-2h10.55zM65.86 7.3a2.48 2.48 0 1 1 0-4.96 2.48 2.48 0 0 1 0 4.96zM21.21 8.94h4.14l-4.86 14.59h-4.15l-3.21-9.36-3.21 9.36H5.77L.92 8.94h4.13L8 18l2.5-7.74a2 2 0 0 1 1.86-1.34h2.9l3 9.08 2.95-9.06zm42.65 14.59l-.04-12.59a2 2 0 0 1 2-2h2.11v14.59h-4.07z"></path>-->
+<!--                            </svg> &ndash;&gt;-->
+<!--                            &lt;!&ndash; <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" width="200" height="50">-->
+<!--                                <text x="50" y="35" font-size="28" font-weight="600" fill="#fff" font-family="Noto Sans KR">도담도담</text>-->
+<!--                            </svg> &ndash;&gt;-->
+<!--                            <svg xmlns="http://www.w3.org/2000/svg" width="85" height="25" viewBox="0 0 85 25">-->
+<!--                                <text x="42.5" y="16" font-size="22" font-weight="600" fill="#fff" font-family="Noto Sans KR" text-anchor="middle" dominant-baseline="middle">도담도담</text>-->
+<!--                            </svg>-->
+<!--                        </a>-->
+<!--                    </h1>-->
+<!--                    <ul class="lnb">-->
+<!--                        <li class="lnbItem active">-->
+<!--                            &lt;!&ndash; <a href="#valueContainer">About</a> &ndash;&gt;-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </header>-->
             <div class="background"></div>
             <section class="visualContainer">
                 <div class="content">
