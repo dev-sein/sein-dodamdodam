@@ -60,7 +60,9 @@
                             <th:block sec:authorize="isAuthenticated()">
                                 <div class="header-user-div">
                                     <div class="header-user-container">
+                                        <a href="/mypage/main">
                                         <div class="user-text" th:text="${session.member.memberName}">박다예</div>
+                                        </a>
                                     </div>
                                 </div>
                                 <div class="buttonWrap headerButton">
