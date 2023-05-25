@@ -130,6 +130,7 @@ function showList(data) {
                 <td onclick="redirectToDetail(${freeBoard.id})">${freeBoard.boardTitle}</td>
                 <td onclick="redirectToDetail(${freeBoard.id})">${freeBoard.memberDTO.memberName}</td>
                 <td onclick="redirectToDetail(${freeBoard.id})">${freeBoard.freeCategory}</td>
+                <td onclick="redirectToDetail(${freeBoard.id})">${freeBoard.boardContent}</td>
                  <td onclick="redirectToDetail(${freeBoard.id})">${formatDate(new Date(freeBoard.createdDate))}</td>
                 <!-- <td>{point.pointStatus}</td> -->
                 <!-- <td>2000.01.01 21:05:04</td>-->
