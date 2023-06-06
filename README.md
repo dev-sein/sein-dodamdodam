@@ -43,7 +43,7 @@ STEP 3. 운전연수의 접근성을 용이하게 하여 초보운전자들의 �
 - 
 
 <h2>4. ERD</h2>
-![dodamdodam](https://github.com/dev-mwYoon/dodamdodam/assets/122762471/35c5c3c8-afc6-453e-9516-248be04971f1)
+<img src="https://github.com/dev-mwYoon/dodamdodam/assets/122762471/35c5c3c8-afc6-453e-9516-248be04971f1">
 
   
 <h2>5. 담당 업무</h2>
