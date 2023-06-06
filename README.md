@@ -45,7 +45,7 @@ STEP 3. 운전연수의 접근성을 용이하게 하여 초보운전자들의 �
 <h2>4. ERD</h2>
 <img src="https://github.com/dev-mwYoon/dodamdodam/assets/122762471/35c5c3c8-afc6-453e-9516-248be04971f1">
 
-  
+ 
 <h2>5. 담당 업무</h2>
 5-1 프론트엔드<br>
 <img src="https://github.com/dev-sein/dev-sein/assets/122762143/248e4def-c7fb-4f6f-a391-d38e4fcfb608">
@@ -114,7 +114,7 @@ STEP 3. 운전연수의 접근성을 용이하게 하여 초보운전자들의 �
 
 <h2>6. 느낀점</h2>
 <h3>6-1. 어려웠던 부분</h3>
-<h6>📌 회원 등급 조회 시 참여수에 따른 비등가조인 쿼리문을 작성하는 게 어려웠다.</h6> <br>
+<h4>📌 회원 등급 조회 시 참여수에 따른 비등가조인 쿼리문을 작성하는 게 어려웠다.</h4> <br>
 
 <img src="https://github.com/dev-sein/dev-sein/assets/122762143/80b84e08-f718-4afc-a59b-75034fb4b34a">
 <잘못된 코드><br>
@@ -122,7 +122,7 @@ STEP 3. 운전연수의 접근성을 용이하게 하여 초보운전자들의 �
 <img src="https://github.com/dev-sein/dev-sein/assets/122762143/c544ba9c-f1c6-4361-9948-97c3126e7ef9">
 <오류 화면><br>
 <img src="https://github.com/dev-sein/dev-sein/assets/122762143/43d76b4c-e12f-46d8-b581-1999b71fa97a">
-<완성 코드><br>
+<완성 코드><br><br>
 ✔ JPA가 익숙하지 않은 상태에서 비등가조인을 작성하고자 할 때 문법 등 막막한 점이 있었다. 검색을 해보아도 명확한 예제가 없어 직접 작성해가며 부딪히는 수밖에는 없었는데 제법 시간이 걸렸다. 계속해서 주석을 달고, test를 해보는 수밖에는 없었다. 거의 다왔을 때쯤에는 return 값을 계속 여러값을 불러와서 문제였는데, where 절에 memberId를 불러오지 않아 여러값을 불러왔었다. 그러나 구글의 도움 없이 내가 직접 새로운 기술을 적용시켰다는 점이 뿌듯했다. <br><br>
 <br>
 
