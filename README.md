@@ -11,7 +11,6 @@
 
 </div>
 
-
 <h2>2. 기대 효과</h2>
 <img src="https://lh3.googleusercontent.com/fife/APg5EOY8ytbtjdN1tbnB5pHjTfm-uf_IIIsEsvW3XJlZD8gmJ440-myM9IDsULAMHTNSqNE9IJWkhp305wNpXDpzr4i9wMjeOS8jy5N8egZ9mN0fjf6Plk7-wge9WiBTdnhSpOehogr7iLpm9rIkQcHVyA5w5b_Tl7MxJKj_aOwL6JSgOxX0HU-26tPzlFTV9bvyD5YIJG7SFb-_m1WqUrHBv-8VzZrtcOUcnVA3JMR-ljh0eosDFtfgXIGjAaFyyvggFojzndTXsaTPO9fAjAO4Wy2DTIArkV9KjPnfcKwfSWIsVjZSb63j7A9D3EcFQ2jiQ3str7rb-lPjrcr1vELl0OOPnu6HpOKgPlgT9UnMX_nsINQWDq1HIxszYcWgOj63NVeE6rpAz4O5oENgy2Ef2Gm7Q8uAA33YEz3JZc91LdxdfgTwSPzlcRFutddYPhmgrQnngzpQAq4Ij6wnECHikv1_Wtcc3ltz2zm8hMpl6qY-tqba_Lj2E1HpfnRN_EQp3RylVHwmXFTn61mIk77dM52gSZvQqFjyoAVciDYJ8FRjh9yM7IC3DIf6KVK8kyqLu7R94-dT-NqUbOk6PT7AQsrP3TrbBy0slOih1w9R52Bgwrj82O4uJO0WhGQhGUsFgzq8l5ocDg0u69knDHSRHCJZKCT-mD8P9iu3t5tnn14M3XnW3Mipan6L4A5tFyLm9um8F2vJWFIE4fedq9O3f0X4nf6XTgWXazEbIXsPAigY2Q4NapguAIZRgBzmq4TSwAQcYFQpldzZtoqVf0Ht9Q-5ojeK21xJYA02xdTPPmPZeegDXKboqqCSkPV-oaYqrTfSKnhKli8HbSnZk0XtP751B6ymLrR94agMD_mwSU-DHJYOXqSPeRXXMJpPpYa4_pJR_TAeQh-OGqlC7DFDodLt0quXb5bfbokHW9y4VJvPdxG2Ur6UeWhGW72N-nF5WwfoBSipy5qCa-xG7V46qVznaPp3Q18RDauIubRoLqVv-DMPPI9r92TIsd_ytFzbsKYDdQ5iDr5ktQQfc8zPqzMXDx87fAFfZu1tMJOS_8BKy_MsSBEbLjhIBLCCWVtSvmGJ-MU8RJIz7PPWtPwasqQdl74EzvvinXEf07t98xKaBkX1xWITbZCxoGADwHAnq_ChECujA_dchHReQ-sYZfdCsys4OMuHhzEM5ucJWUx3ZzQjXam9KUjcrB4D0iW1zr0F3Y4ZUGfUSHRTC2CcDBnVeX9N2H1phOIAVIfCi7F4N9vG3V5jrv_iSGIsz0U50s3hgkrrb5SM7XcJba2A3rCyooqQHGlZUn735GHbQUeHuySOmtD0Rdox67kraQZiuJvIf9Dij6HM94DoJXSY_eC1TLOtOpxQHGzRBG243jxdVNZd-5EE4q4jhxWI7eUWZdOezqpwghhM_mv5OmGQeqeHF1RWqK_OHuCOyvBnYoewMPLg6x_lk1YbKqsPQayfhJcpJqi6p6FSZWeYOgD1B4MkUs0XCY3jiWCxf1kXRH_oMskwmQF7kihyVOlq=w1920-h892" style = "width: 80%; height : 480">
 STEP 1. 베테랑 연수자와 초보 연수자가 원하는 날짜와 지역을 선택할 수 있게 하여 시간과 장소에 구애받지 않도록 한다. 따라서 바쁜 현대인들도 정해진 스케줄이 아니라 맞춤형 검색 시스템을 이용하여 사용자들의 편의를 제공한다.<br>
@@ -112,33 +111,33 @@ STEP 3. 운전연수의 접근성을 용이하게 하여 초보운전자들의 �
 
 <h2>6. 느낀점</h2>
 <h3>6-1. 어려웠던 부분</h3>
-📌MVC 단계를 순차적으로 진행하는 것이 어려웠다. <br>
-✔ 단계가 익숙하지 않아 mapper부터 controller까지 진행하는 것이 어려웠지만, 단계별로 완성될 때마다 단위 테스트 등을 통해 진행하여 순서를 익혔다.<br><br>
+📌 회원 등급 조회 시 참여수에 따른 비등가조인 쿼리문을 작성하는 게 어려웠다. <br>
+✔ JPA가 익숙하지 않은 상태에서 비등가조인을 작성하고자 할 때 문법 등 막막한 점이 있었다. 검색을 해보아도 명확한 예제가 없어 직접 작성해가며 부딪히는 수밖에는 없었는데 제법 시간이 걸렸다. 계속해서 주석을 달고, test를 해보는 수밖에는 없었다. 거의 다왔을 때쯤에는 return 값을 계속 여러값을 불러와서 문제였는데, where 절에 memberId를 불러오지 않아 여러값을 불러왔었다. 그러나 구글의 도움 없이 내가 직접 새로운 기술을 적용시켰다는 점이 뿌듯했다. <br><br>
+<★쿼리 사진 첨부하기> 
 <br>
 
 <h3>6-2. 문제를 해결했던 부분</h3>
-<h4>📌로그인에서의 생각의 전환</h4>
+<h4>📌Z-index로 해결한 카카오맵 슬라이드</h4>
 🌩문제 상황🌩<br>
-네이버 간편로그인을 할 경우, 로그인 토큰을 인식하고 자동 로그인이 되는 과정에서 흰 화면(callback.html)이 1~2초가량 무조건 노출되었다. <br>
+위도, 경도를 받아와 카카오맵 API를 사용하여 지도를 출력하는 코드에서  <br><br>
 🚨문제 원인🚨 <br>
-기능 구현에는 문제가 없었으나, 서버 구동 속도가 느릴 경우 callback.html 화면이 비춰지며 보이는 현상이었다. <br>
+기능 구현에는 문제가 없었으나, 서버 구동 속도가 느릴 경우 callback.html 화면이 비춰지며 보이는 현상이었다. <br><br>
 🚀해결 방법🚀<br>
 네이버 로그인 API 설명 페이지에서는 로그인 페이지에서 데이터 이동 시 post로 callback.html로 이동시킨 후 로그인 컨트롤러로 이동할 수 있도록 설명되어 있었다. 그러나 로그인.html에서 바로 데이터를 넘겨받아 메인으로 이동하도록 하였다. 따라서 페이지 이동이 한 번 줄어들어 해당 증상이 없어졌다. 아주 간단한 생각의 전환이었지만 기다리는 사용자의 입장에서 생각해본 해결방법이었다. 
-<br>
+<br><br>
 
-<h4>📌운전면허 API 로딩 사건</h4> <br>
+<h4>📌무조건 1페이지만! </h4> <br>
 🌩문제 상황🌩<br>
- 스캔한 운전면허증을 첨부할 경우 구글 클라우드 비전 api를 사용하여 운전면허증 취득일자를 인식한다. 데이터를 받는 과정에서 7초~10초 정도 소요되었다.<br>
+페이징 처리를 하였으나 페이지 항목의 어떠한 숫자를 눌러도 무조건 1페이지만 출력되었다.<br><br>
 🚨문제 원인🚨 <br>
-ajax에서 데이터를 받아 처리하는 과정이 많다보니 문제가 발생하였다. 취득일자를 문자열로 받아 int 타입으로 바꾸고, 이를 날짜 계산하여 시스템 날짜와 비교하여 5년 단위 기준으로 나눈다. 이후 5년이 지나지 않았을 경우 초보자, 5년이 넘었을 경우 베테랑으로 회원 구분을 하기 때문에 처리 과정이 많아 최종적인 데이터가 산출될 때까지 적지 않은 시간이 소요되었다. <br>
+<br><br>
 🚀해결 방법🚀<br>
 운전연수 사이트인만큼 운전면허증의 취득일자를 받는 것은 필수적이었기 때문에 해당 과정이 필요했다. 따라서 사용자가 로딩 과정을 인식할 수 있도록 처리 시작부터 마지막 순간까지 로딩중 화면을 띄워 화면에서 진행경과를 알 수 있도록 하였다. 
-<br>
+<br><br>
 
 <h4>📌유지되지 않는 코스</h4> <br>
 🌩문제 상황🌩<br>
-첫번째 페이지에서 선택한 항목(코스)이 두번째 페이지까지 이어지지 않아 최종 연수 신청이 되지 않았다. 
-<br>
+첫번째 페이지에서 선택한 항목(코스)이 두번째 페이지까지 이어지지 않아 최종 연수 신청이 되지 않았다. <br><br>
 🚨문제 원인🚨 <br>
 운전연수 신청은 총 두페이지로 나뉜다. 페이지 이동 시 컨트롤러에서 선택값을 세션에 담았으나 페이지 이동 시 폼에서 제출되지 않았다. 
  <br>
