@@ -114,9 +114,11 @@ STEP 3. 운전연수의 접근성을 용이하게 하여 초보운전자들의 �
 
 <h2>6. 느낀점</h2>
 <h3>6-1. 어려웠던 부분</h3>
+<h6>📌 회원 등급 조회 시 참여수에 따른 비등가조인 쿼리문을 작성하는 게 어려웠다.</h6> <br>
+
 <img src="https://github.com/dev-sein/dev-sein/assets/122762143/80b84e08-f718-4afc-a59b-75034fb4b34a">
 <잘못된 코드><br>
-📌 회원 등급 조회 시 참여수에 따른 비등가조인 쿼리문을 작성하는 게 어려웠다. <br>
+
 <img src="https://github.com/dev-sein/dev-sein/assets/122762143/c544ba9c-f1c6-4361-9948-97c3126e7ef9">
 <오류 화면><br>
 <img src="https://github.com/dev-sein/dev-sein/assets/122762143/43d76b4c-e12f-46d8-b581-1999b71fa97a">
