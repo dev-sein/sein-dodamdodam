@@ -115,19 +115,19 @@
 <h3>6-1. 어려웠던 부분</h3>
 <h4>📌 회원 등급 조회 시 참여수에 따른 비등가조인 쿼리문을 작성하는 게 어려웠다.</h4> <br>
 
-<img src="https://github.com/dev-sein/dev-sein/assets/122762143/80b84e08-f718-4afc-a59b-75034fb4b34a">
+<img src="https://github.com/dev-sein/dev-sein/assets/122762143/80b84e08-f718-4afc-a59b-75034fb4b34a"> <br>
 <잘못된 코드><br>
 member의 participationCount를 사용하여 grade의 gradeTitle을 조회하는 쿼리이다. 시행착오를 겪으며 어느정도 완성된 쿼리이나 계속해서 하단의 오류가 발생하였다. 그러나 내 코드에 대한 확신이 없어서 어느 부분을 수정해야할 지 찾아가는 것이 어려웠다. <br>
 
-<img src="https://github.com/dev-sein/dev-sein/assets/122762143/c544ba9c-f1c6-4361-9948-97c3126e7ef9">
+<img src="https://github.com/dev-sein/dev-sein/assets/122762143/c544ba9c-f1c6-4361-9948-97c3126e7ef9"> <br>
 <오류 화면><br>
-결과값은 memberId 마다 나와야 하기 때문에 무조건 하나의 값만 도출되어야 하는데(fetchOne) 결과값이 계속해서 여러개가 리턴되는 오류였다.<br>
+결과값은 memberId 마다 나와야 하기 때문에 무조건 하나의 값만 도출되어야 하는데(fetchOne) 결과값이 계속해서 여러개가 리턴되는 오류였다.<br> <br>
  
-<img src="https://github.com/dev-sein/dev-sein/assets/122762143/43d76b4c-e12f-46d8-b581-1999b71fa97a">
+<img src="https://github.com/dev-sein/dev-sein/assets/122762143/43d76b4c-e12f-46d8-b581-1999b71fa97a"> <br>
 <완성 코드><br>
  오류코드에서 where 절을 추가하면 쉽게 해결되는 코드였다. 그러나 문법에 대한 확신이 없어 헤매는 와중 마주친 오류에 원인을 찾기 어려웠다. 그래서 QueryDSL이 아닌 비등가조인 기본 예제들을 다시 한번 되짚어보며 빠진 부분을 찾고 해결했다. <br><br><br>
  
- ✔ JPA가 익숙하지 않은 상태에서 비등가조인을 작성하고자 할 때 문법 등 막막한 점이 있었다. 검색을 해보아도 <strong>QueryDSL 비등가조인에 대한 </strong>명확한 예제가 없어 직접 작성해가며 부딪히는 수밖에는 없었는데 제법 시간이 걸렸다. 계속해서 주석을 달고, test를 해보는 수밖에는 없었다. 거의 다왔을 때쯤에는 return 값을 계속 여러값을 불러와서 문제였는데, where 절에 memberId를 불러오지 않아 여러값을 불러왔었다. 그러나 구글의 도움 없이 내가 직접 새로운 기술을 적용시켰다는 점이 뿌듯했다. <br><br><br>
+ ✔ JPA가 익숙하지 않은 상태에서 비등가조인을 작성하고자 할 때 문법 등 막막한 점이 있었다. 검색을 해보아도 <strong>QueryDSL 비등가조인</strong>에 대한 명확한 예제가 없어 직접 작성해가며 부딪히는 수밖에는 없었는데 제법 시간이 걸렸다. <strong>계속해서 주석을 달며 test를 해보는</storng> 수밖에는 없었다. 문제해결에 거의 다다랐을 때쯤에는 return 값을 계속 여러값을 불러와서 문제였는데, where 절에 memberId를 불러오지 않아 여러값을 불러왔었다. <strong>새로운 기술이라는 점을 의식하다보니, 기본적인 것을 놓친 것이다.</strong> 문제를 해결하고는 다소 허탈하긴 했으나, 구글의 도움 없이 내가 직접 새로운 기술을 적용시켰다는 점이 뿌듯했다. <br><br><br>
 
 <h3>6-2. 문제를 해결했던 부분</h3>
 <h4>📌Z-index로 해결한 카카오맵 슬라이드</h4>
